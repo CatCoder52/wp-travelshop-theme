@@ -1,0 +1,14 @@
+{
+  "require": {
+    "pressmind/lib": "dev-master"
+  },
+  "scripts": {
+    "install": [
+      "cp -r .htaccess vendor/pressmind/lib/.htaccess",
+      "php install.php"
+    ],
+    "post-install-cmd": [
+      "@install"
+    ]
+  }
+}

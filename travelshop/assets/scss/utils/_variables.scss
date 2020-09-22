@@ -1,0 +1,14 @@
+/***
+ ** Define own variables in this file
+ ***/
+// -- header heights
+$header-height:                70px !default;
+$header-height-md:             80px !default;
+$header-height-lg:             90px !default;
+$header-height-xl:             100px !default;
+
+// -- add text-color
+$body-color-light:            $gray-500 !default;
+ 
+// -- z-index
+$zindex-offcanvas:            $zindex-tooltip !default;

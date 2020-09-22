@@ -1,0 +1,53 @@
+// -- vendors
+@import "vendors/bootstrap/bootstrap";
+//@import "vendors/line-awesome/line-awesome";
+//@import "vendors/socicon/socicon";
+@import "vendors/ion-rangeslider/range-slider";
+@import "vendors/tiny-slider/tiny-slider"; 
+@import "vendors/daterangepicker/daterangepicker";
+
+// -- abstracts
+@import "abstracts/variables";
+
+// -- utls
+@import "utils/variables";
+@import "utils/mixins";
+
+// -- base
+@import "base/typography";
+@import "base/container";
+
+// -- icons
+@import "icons/tabler-icons.css";
+
+// -- components
+@import "components/offcanvas";
+@import "components/travel-teaser";
+@import "components/travel-slider";
+@import "components/list-filter";
+@import "components/detail-gallery";
+@import "components/detail-booking";
+@import "components/content-blocks";
+@import "components/teaser";
+@import "components/image-teaser";
+@import "components/breadcrumb";
+@import "components/badges";
+@import "components/forms";
+@import "components/search-header";
+@import "components/jumbotron";
+
+// -- layout
+@import "layout/footer";
+@import "layout/header";
+@import "layout/navigation";
+
+// -- pages
+@import "pages/home";
+@import "pages/list";
+@import "pages/detail";
+
+// -- themes
+
+body{
+  font-display: swap !important;
+}

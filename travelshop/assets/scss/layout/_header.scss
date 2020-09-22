@@ -1,0 +1,329 @@
+.header-main {
+
+  border-bottom: 1px solid $gray-200;
+
+  // -- change row handling for mobile devices.
+  @include media-breakpoint-down(md) {
+    > .container > .row {
+      margin-left: ($grid-gutter-width / 3) * -1;
+      margin-right: ($grid-gutter-width / 3) * -1;
+
+      > div {
+        padding-left: $grid-gutter-width / 3;
+        padding-right: $grid-gutter-width / 3;
+      }
+    }
+  }
+
+  // -- brand
+  .navbar-brand {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    height: $header-height;
+
+    vertical-align: middle;
+    align-items: center;
+
+    display: -ms-flex;
+    display: flex;
+
+    @include media-breakpoint-up(md) {
+      height: $header-height-md;
+    }
+
+    @include media-breakpoint-up(lg) {
+      height: $header-height-lg;
+    }
+
+    @include media-breakpoint-up(xl) {
+      height: $header-height-xl;
+    }
+
+    // -- img
+    img {
+      @include media-breakpoint-down(sm) {
+        height: 14px !important;
+      }
+    }
+  }
+
+  // -- spacing navbar
+  nav.navbar {
+
+    padding-top:0;
+    padding-bottom: 0;
+
+    // -- change style of navbar little
+
+    ul.navbar-nav {
+      > li {
+        > a {
+          font-size: 1.25rem;
+          color: $gray-700;
+          transition: color .3s;
+
+          &:active, &:focus {
+            color: $gray-700;
+          }
+
+          &:hover,
+          &:hover:active,
+          &:hover:focus {
+            color: $primary;
+          }
+        }
+
+        &.active > a {
+          color: $primary;
+        }
+      }
+    }
+
+    // -- changes sm expand nav
+    @include media-breakpoint-up(sm) {
+      &.navbar-expand-sm .navbar-nav .nav-link {
+        padding-left:0;
+        padding-right:0;
+      }
+
+      &.navbar-expand-sm .navbar-nav .nav-item + .nav-item {
+        margin-left: 1.5rem;
+      }
+    }
+
+    // -- changes md expand nav
+    @include media-breakpoint-up(md) {
+      &.navbar-expand-md .navbar-nav .nav-link {
+        padding-left:0;
+        padding-right:0;
+      }
+
+      &.navbar-expand-md .navbar-nav .nav-item + .nav-item {
+        margin-left: 1.5rem;
+      }
+    }
+
+    // -- changes lg expand nav
+    @include media-breakpoint-up(lg) {
+      &.navbar-expand-lg .navbar-nav .nav-link {
+        padding-left:0;
+        padding-right:0;
+      }
+
+      &.navbar-expand-lg .navbar-nav .nav-item + .nav-item {
+        margin-left: 1.5rem;
+      }
+    }
+
+    // -- changes xl expand nav
+    @include media-breakpoint-up(xl) {
+      &.navbar-expand-xl .navbar-nav .nav-link {
+        padding-left:0;
+        padding-right:0;
+      }
+
+      &.navbar-expand-xl .navbar-nav .nav-item + .nav-item {
+        margin-left: 1.5rem;
+      }
+    }
+  }
+
+  // -- search toggle
+  .toggler.search-toggler {
+    transition: all .3s;
+
+    &:hover {
+      color: $primary;
+    }
+
+    i {
+      font-size: 1.5rem; // 24px;
+    }
+  }
+
+  // -- wishlist
+  .toggler.wishlist-toggler {
+    position: relative;
+    padding-right: .75rem;
+
+    transition: all .3s;
+
+    &:hover {
+      color: $primary;
+    }
+
+    i {
+      font-size: 1.5rem; // 24px;
+    }
+
+    .count {
+      position: absolute;
+      top:0;
+      right:0;
+      font-size: .5rem; // 8px;
+      color: #fff;
+      width: 1.125rem; // 18px
+      height: 1.125rem; // 18px
+      border-radius: 9px;
+
+      display: block;
+      line-height: 1.125rem; // 18px
+      text-align: center;
+
+      background-color: $primary;
+    }
+  }
+
+  .dropdown-menu-wishlist {
+    padding: ( $grid-gutter-width / 3 ) * 2;
+    min-width: 15rem; // 240px, min width, to make it look nicer
+
+    .wishlist-items {
+      margin-bottom: $grid-gutter-width / 3;
+      margin-top: ( $grid-gutter-width / 3 ) * -1;
+
+      .wishlist-item {
+        padding-bottom: $grid-gutter-width / 3;
+        padding-top: $grid-gutter-width / 3;
+        position: relative;
+
+
+        button.wishlist-delete {
+          @include resetbutton();
+          transition: all .3s;
+          color: $body-color-light;
+
+          position: absolute;
+          right:0;
+          top: 50%;
+          transform: translateY(-50%);
+
+          width: 1.5rem; // 24px;
+          height: 1.5rem; // 24px;
+
+          text-align: right;
+          line-height: 1.5rem; // 24px;
+
+          &:hover {
+            color: $body-color;
+          }
+
+        }
+
+        span.name > a {
+          font-weight: 700;
+          color: $body-color;
+          transition: all .3s;
+
+          &:active, &:focus, &:hover {
+            text-decoration: none;
+          }
+
+          &:active, &:focus {
+            color: $body-color;
+          }
+
+          &:hover {
+            color: $primary;
+          }
+        }
+
+        + .wishlist-item {
+          border-top: 1px solid $gray-200;
+        }
+
+      }
+    }
+  }
+}
+
+.navbar-toggler {
+  padding-left:0;
+  padding-right:0;
+
+  border: 0;
+
+  &:hover, &:active, &:focus {
+    outline: none;
+  }
+
+  transition: all .3s;
+
+  &:hover {
+    color: $primary;
+  }
+
+  i {
+    font-size: 1.5rem; // 24px;
+  }
+}
+
+.toggler {
+  @extend .navbar-toggler;
+}
+
+/// -- navbar, remove Caret
+.navbar-nav  {
+  .nav-item {
+    .nav-link {
+      display: block;
+
+      &.dropdown-toggle {
+
+        i {
+          font-size: $font-size-sm;
+          color: $body-color-light;
+        }
+
+        &:after {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+// -- mixin for different expanded headers
+@mixin searchmobile() {
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+
+  z-index: $zindex-offcanvas;
+  background-color: #fff;
+  border-bottom: 1px solid $gray-200;
+
+  display: block !important;
+  padding: $grid-gutter-width;
+
+  pointer-events: none;
+  opacity:1;
+  transform: translateY(-100%);
+
+  transition:transform .3s;
+
+  &.is--open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0%);
+  }
+}
+
+// -- search-field
+@include media-breakpoint-down(lg) {
+  #search.col-search.d-xl-block {
+    @include searchmobile();
+  }
+}
+@include media-breakpoint-down(md) {
+  #search.col-search.d-lg-block {
+    @include searchmobile();
+  }
+}
+@include media-breakpoint-down(sm) {
+  #search.col-search.d-md-block {
+    @include searchmobile();
+  }
+}

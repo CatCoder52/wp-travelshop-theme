@@ -1,0 +1,141 @@
+ // -- input group
+.input-group {
+  position: relative;
+
+  .form-control {
+    border-radius: $input-border-radius !important;
+  }
+
+  .input-group-append {
+    position: absolute;
+    top:0;
+    right:0;
+
+    z-index: 5;
+
+    button.btn.btn-link {
+      color: rgba($body-color, .5);
+      transition:all .3s;
+      text-align: center;
+      font-size: $font-size-base;
+      font-size: 1.125rem;
+
+      // -- height settings, and width
+      padding:0;
+      border:0;
+
+      height: 2.375rem; // 38px;
+      width: 2.375rem;
+      line-height: 2.375rem;
+
+      &:hover, &:focus, &:active {
+        text-decoration: none;
+      }
+
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+}
+
+.form-check {
+  @include noselect();
+}
+
+.form-control.bootstrap-multiselect {
+  display: none !important;
+}
+
+// -- disable X on search inputs.
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance:none;
+}
+
+// -- autocomplete
+.autocomplete-suggestions {
+  padding: ( $grid-gutter-width / 3 ) * 2;
+  min-width: 15rem; // 240px, min width, to make it look nicer
+
+  @include border-radius($dropdown-border-radius);
+  background: $dropdown-bg;
+  border: $dropdown-border-width solid $dropdown-border-color;
+  margin-top: $dropdown-spacer;
+  box-shadow: $dropdown-box-shadow;
+
+  .autocomplete-suggestion {
+    + .autocomplete-suggestion {
+      margin-top: .5rem; // 8px;
+    }
+
+    cursor: pointer;
+    transition: all .3s;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+// -- Select
+.dropdown-menu.dropdown-menu-select {
+  padding: ( $grid-gutter-width / 3 ) * 2;
+  min-width: 15rem;
+  text-align: left;
+}
+
+// -- select button
+button.select-from-control {
+  @extend .form-control;
+  text-align: left;
+
+  &:after {
+    display: none !important;
+  }
+
+  position: relative;
+
+  span.selected-options {
+    white-space: nowrap;
+    width: auto;
+    display: block;
+    overflow: hidden;
+
+    position: relative;
+    z-indeX: 1;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top:0;
+      right:0;
+      bottom:0;
+      width: 60px;
+      pointer-events: none;
+
+      @include gradient-x(rgba(#fff, 0), #fff, 0, 70%);
+    }
+  }
+
+  i.la {
+    position: absolute;
+    right: .75rem;
+    top: 50%;
+
+    transition: transform .3s;
+
+    z-index: 3;
+
+    margin-top: -8px;
+  }
+}
+
+.dropdown.show button.select-from-control {
+  i.la {
+    transform: rotate(180deg);
+  }
+}

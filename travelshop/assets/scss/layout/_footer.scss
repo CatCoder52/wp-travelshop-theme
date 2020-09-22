@@ -1,0 +1,39 @@
+ .footer-main {
+   padding-top: $grid-gutter-width;
+   background-color: $gray-200;
+
+   @include media-breakpoint-up(lg) {
+     padding-top: $grid-gutter-width * 2;
+     padding-bottom: $grid-gutter-width;
+   }
+
+   .footer-boxes > div {
+     padding-bottom: $grid-gutter-width;
+
+     .h5 {
+       margin: 0 0 1rem 0;
+     }
+   }
+
+  // -- change spacing behaviour of p-tags for footer
+   p {
+     margin-bottom: 0;
+     margin-top: 0;
+
+     + p {
+       margin-top: 1rem;
+     }
+   }
+
+
+   // -- change nav flex-column for footer
+   nav.nav.flex-column {
+    a.nav-link {
+      padding:0;
+
+      + a.nav-link {
+        margin-top: .5rem;
+      }
+    }
+   }
+ }

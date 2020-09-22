@@ -1,0 +1,47 @@
+// -- detail box
+.content-block.content-block-detail-booking {
+  border-top: 1px solid $gray-200;
+
+  h2 {
+    margin: 0 0 ( $grid-gutter-width / 2 ) 0;
+
+    @include media-breakpoint-up(md) {
+      margin: 0 0 $grid-gutter-width 0;
+    }
+  }
+
+  .content-block-detail-booking-inner {
+    margin: 0 0 $grid-gutter-width 0;
+
+    .booking-row {
+      > div {
+        padding: .75rem;
+        line-height: 1;
+      }
+
+      border-top: 1px solid $gray-200;
+      border-bottom: 1px solid $gray-200;
+
+      + .booking-row {
+        border-top:0;
+      }
+
+
+      &.booking-row-head {
+        font-size: 1.25rem;
+        color: $gray-700;
+      }
+
+      &.booking-row-programm  {
+        font-size: .7125rem;
+        font-weight: bold;
+        background-color: $gray-200;
+        color: $gray-700;
+      }
+
+      &.booking-row-date {
+        font-size: $font-size-sm;
+      }
+    }
+  }
+}
