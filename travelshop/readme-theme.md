@@ -50,6 +50,7 @@ Use the `pressmind S3 Stateless` Plugin for this case.
 Don't use a other S3 plugins (they don't know and can not handle pressmind product pages)
 
 
+
 ## The Template files
 * assets
     * /img (example pictures, don't use in production)
@@ -164,7 +165,8 @@ Don't use a other S3 plugins (they don't know and can not handle pressmind produ
 * singular.php
 * style.css (theme description, not more, will not loaded)
 
-
+## Icons
+Icons are currently used from https://tablericons.com/ (SVG only - no icon fonts)
                 
         
         
