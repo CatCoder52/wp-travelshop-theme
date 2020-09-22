@@ -77,7 +77,7 @@ class PMTravelShop{
         $this->RouteProcessor = RouteProcessor::init(new Router('pmwc_routes'), $routes, TS_TEMPLATE_DIR);
         $this->Shortcodes = new Shortcodes();
         $this->AdminPage = new AdminPage();
-        $this->PluginActivation = new PluginActivation();
+        //$this->PluginActivation = new PluginActivation();
         if(defined(PM_REDIS_HOST) === true){
             $this->Redis = new Redis();
             $this->Redis->connect(PM_REDIS_HOST, PM_REDIS_PORT);
