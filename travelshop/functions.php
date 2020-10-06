@@ -77,6 +77,7 @@ class PMTravelShop{
         $this->RouteProcessor = RouteProcessor::init(new Router('pmwc_routes'), $routes, TS_TEMPLATE_DIR);
         $this->Shortcodes = new Shortcodes();
         $this->AdminPage = new AdminPage();
+        // @todo plugin activation in theme context?
         //$this->PluginActivation = new PluginActivation();
         if(defined(PM_REDIS_HOST) === true){
             $this->Redis = new Redis();

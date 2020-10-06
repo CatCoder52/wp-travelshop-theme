@@ -17,7 +17,7 @@ class BuildSearch
      *
      * Possible Parameters
      * $_GET['pm-ot'] object Type ID
-     * $_GET['pm-t'] term pm-ot required!
+     * $_GET['pm-t'] term
      * $_GET['pm-c'] category id's separated by comma (search with "or") or plus (search with "and")   e.g. pm-c[land_default]=xxx,yyyy = or Suche, + and Suche
      * $_GET['pm-pr'] price range 123-1234
      * $_GET['pm-dr'] date range 20200101-20200202
@@ -37,20 +37,15 @@ class BuildSearch
         $validated_search_parameters = [];
         $conditions = array();
         if (empty($id_object_type = intval($request[$prefix.'-ot'])) === false) {
-
             $conditions[] = Pressmind\Search\Condition\ObjectType::create($id_object_type);
             $validated_search_parameters[$prefix.'-ot'] = $id_object_type;
+        }
 
-            // @todo fulltext search.. ()
-            if (empty($request[$prefix.'-t']) === false &&
-                empty($searchProperties = DEFAULT_SEARCH_FIELDS[$id_object_type]) === false) {
-                $term = $request[$prefix.'-t'];
-                $conditions[] = Pressmind\Search\Condition\Text::create($id_object_type, $term, $searchProperties);
-                //@todo
-                //$conditions[] = Pressmind\Search\Condition\Fulltext::create($id_object_type, $term, $searchProperties);
-                $validated_search_parameters[$prefix.'-t'] = $request[$prefix.'-t'];
-            }
 
+        if (empty($request[$prefix.'-t']) === false){
+            $term = $request[$prefix.'-t'];
+            $conditions[] = Pressmind\Search\Condition\Fulltext::create($term, ['fulltext'], 'AND', 'NATURAL LANGUAGE MODE');
+            $validated_search_parameters[$prefix.'-t'] = $request[$prefix.'-t'];
         }
 
 
@@ -62,6 +57,7 @@ class BuildSearch
             $validated_search_parameters[$prefix.'-pr'] = $price_range_from.'-'.$price_range_to;
 
         }
+
 
         if (isset($request[$prefix.'-dr']) === true) {
             $dateRange = self::extractDaterange($request[$prefix.'-dr']);

@@ -36,7 +36,7 @@ if (empty($treeItems) === false) {
             <button class="select-from-control dropdown-toggle" type="button"
                     id="dropdownReiseziel" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                <span class="selected-options" data-placeholder="Bitte wählen">Bitte wählen</span>
+                <span class="selected-options" data-placeholder="bitte wählen">bitte wählen</span>
 
                 <i class="la la-angle-down"></i>
             </button>
