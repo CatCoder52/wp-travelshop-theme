@@ -3,12 +3,9 @@
     "pressmind/lib": "dev-master"
   },
   "scripts": {
-    "install": [
+    "post-install-cmd": [
       "cp -r .htaccess vendor/pressmind/lib/.htaccess",
       "php install.php"
-    ],
-    "post-install-cmd": [
-      "@install"
     ]
   }
 }
