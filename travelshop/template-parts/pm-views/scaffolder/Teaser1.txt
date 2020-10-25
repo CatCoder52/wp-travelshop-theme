@@ -4,7 +4,7 @@
  */
 
 /**
- * @var Custom\MediaType\Reise $reise
+ * @var Custom\MediaType\###CLASSNAME### $reise
  */
 $reise = $data['data'];
 

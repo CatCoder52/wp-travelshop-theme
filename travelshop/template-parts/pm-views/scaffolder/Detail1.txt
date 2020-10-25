@@ -10,7 +10,7 @@ use Pressmind\Search\CheapestPrice;
  */
 
 /**
- * @var Custom\MediaType\Reise $moc
+ * @var Custom\MediaType\###CLASSNAME### $moc
  */
 $moc = $data['data'];
 

@@ -1,10 +1,10 @@
-# Installation
+# Installation with Composer
 #### 1. WordPress Theme
  Install the WordPress Theme (extract travelshop.zip to your theme dir (wp-content/themes/travelshop))
 
 #### 2. Run Composer
 run composer install in the plugin dir
-```
+```shell script
 cd /var/www/htdocs/wp-content/themes/travelshop
 composer install
 ```
@@ -47,7 +47,7 @@ Run the web-core installer.
 The script will install the customer specific data objects and configures the sdk with custom models.
 
 ```shell script
-cd /var/www/htdocs/wp-content/themes/travelshop/vendor/pressmind/cli/
+cd /var/www/htdocs/wp-content/themes/travelshop/vendor/pressmind/lib/cli/
 php install.php
 ```
 
@@ -68,12 +68,12 @@ if the fullimport is ready you can build your site.
 
 
 #### pressmind PIM Integration
-Please send the path to your WordPress Site (stage and/or production) 
-to your pressmind Integration Manager.
-After our Integration is done, the pressmind Application will push data changes to your site.
+Please send the path to your WordPress site (stage and/or production) 
+to your pressmind integration manager.
+After our integration is done, the pressmind application will push data changes to your site.
 Even the user can click on a preview-button or can trigger the databaseupdate manually.
 
-The Pressmind uses the two endpoints:
+The Pressmind uses this two endpoints:
 
 ```
 // Case 1: Push data on change to your site
@@ -85,7 +85,7 @@ https://www.yoursite.de/wp-content/themes/travelshop/pm-preview.php?id_media_obj
 
 ## Maintaince & Troubleshooting
 
-If something will change on the pressmind modell run:
+If something will change on the pressmind model run:
 ````shell script
 php install.php
 php import.php fullimport
@@ -132,7 +132,7 @@ Build awesome sites! Per default you need two routes
 1. The route to the product detail page
 2. A route to the search
 
-In real World-Cases a travelshop have different product types like 
+In real world cases a travelshop have different product types like 
 day-trips, roundtrips, hotel-only and so one. 
 For each of these product type you can build a custom route, with custom templates 
 
@@ -173,9 +173,9 @@ $routes = array(
 if you configure you're custom routing or want to modify meta tags for pressmind product pages, look at the `pmwc_detail_hook`
 in `wp-content/themes/travelshop/config-routing.php` 
 
-How is this Route Hook used:
-1. The Hook is fired before the WordPress Page is loaded
-2. Modify the WP Request
+How is this route hook used:
+1. The Hook is fired before the WordPress page is loaded
+2. Modify the wp request
 3. Load product data by a seo friendly url
 4. Add metadata like description, title, etc. in the WordPress header template
 

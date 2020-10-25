@@ -1,11 +1,8 @@
 <?php
 
-ini_set('error_reporting', -1);
-ini_set('display_errors', 'On');
-
 // Config
 use Pressmind\Travelshop\AdminPage;
-use Pressmind\Travelshop\PluginActivation;
+use Pressmind\Travelshop\ThemeActivation;
 use Pressmind\Travelshop\Shortcodes;
 use Pressmind\Travelshop\WPFunctions;
 use Pressmind\Travelshop\RouteProcessor;
@@ -40,7 +37,7 @@ require_once 'config-theme.php';
 require_once 'vendor/pressmind/lib/bootstrap.php';
 
 // admin/system related functions
-require_once 'src/PluginActivation.php';
+require_once 'src/ThemeActivation.php';
 require_once 'src/AdminPage.php';
 require_once 'src/Shortcodes.php';
 require_once 'src/WPFunctions.php';
@@ -67,18 +64,17 @@ class PMTravelShop{
 
     public $Shortcodes;
     public $AdminPage;
-    public $PluginActivation;
+    public $ThemeActivation;
     public $RouteProcessor;
     public $Redis = null;
 
 
     public function __construct($routes)
     {
-        $this->RouteProcessor = RouteProcessor::init(new Router('pmwc_routes'), $routes, TS_TEMPLATE_DIR);
+        $this->RouteProcessor = RouteProcessor::init(new Router('pmwc_routes'), $routes);
         $this->Shortcodes = new Shortcodes();
         $this->AdminPage = new AdminPage();
-        // @todo plugin activation in theme context?
-        //$this->PluginActivation = new PluginActivation();
+        $this->ThemeActivation = new ThemeActivation();
         if(defined(PM_REDIS_HOST) === true){
             $this->Redis = new Redis();
             $this->Redis->connect(PM_REDIS_HOST, PM_REDIS_PORT);

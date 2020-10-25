@@ -29,15 +29,14 @@ $Config->development->data->preview_url = "\/examples\/detail.php?id={{id_media_
 
 // Setup some Pathes, all relative to to pressmind lib
 $Config->development->view_scripts->base_path = "../../../template-parts/pm-views";
-$Config->development->file_download->download_file_path = "../../../uploads/pressmind/downloads";
+$Config->development->file_download->download_file_path = "../../../../../uploads/pressmind/downloads";
 
-// Setup Scaffolder Templates @todo
-//$Config->development->scaffolder_templates->overwrite_existing_templates = false;
-//$Config->development->scaffolder_templates->base_path = "../../../template-parts/pm-views/scaffolder";
-
+// Setup Scaffolder Templates
+$Config->development->scaffolder_templates->overwrite_existing_templates = false;
+$Config->development->scaffolder_templates->base_path = "../../../template-parts/pm-views/scaffolder";
 
 // Image Processor
-$Config->development->imageprocessor->image_file_path = "../../../uploads/pressmind/images";
+$Config->development->imageprocessor->image_file_path = "../../../../../uploads/pressmind/images";
 $Config->development->imageprocessor->image_http_path = "/wp-content/uploads/pressmind/images/";
 
 // Enable WebPicture Support

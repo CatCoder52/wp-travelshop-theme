@@ -2,12 +2,12 @@
 
 namespace Pressmind\Travelshop;
 
-class PluginActivation
+class ThemeActivation
 {
 
     public function __construct()
     {
-        register_activation_hook(__FILE__, [$this, 'activate']);
+        add_action('after_switch_theme', [$this, 'activate']);
     }
 
 
@@ -15,7 +15,7 @@ class PluginActivation
     {
 
         // Install
-        $themeConfigFile = plugin_dir_path(__FILE__) . '/config-theme.php';
+        $themeConfigFile = get_template_directory() . '/config-theme.php';
         $themeConfig = file_get_contents($themeConfigFile);
 
         // set the page url to a fixed constant
