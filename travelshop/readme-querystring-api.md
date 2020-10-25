@@ -2,7 +2,7 @@
 You can create deeplinks or use the shortcodes to search and display products, also the ajax search uses the query string api.
 
 
-### Example Usage
+## Example Usage
 ```
 Use as deeplink:
 --
@@ -20,15 +20,15 @@ Use as shortcode with a special view-template
 --
 ```
 
-### Query Parameter
+## Query Parameter
 
-####pm-ot
+###pm-ot
 pressmind object-type id, (int)
 ```
 GET https://yoursite.de/search/?pm-ot=12
 ```
 
-####pm-t
+###pm-t
 fulltext search in the defined pressmind fields.
 see theme-config.php, constant SEARCH_FIELDS 
 Additional parameter pm-o required!
@@ -36,20 +36,20 @@ Additional parameter pm-o required!
 GET https://yoursite.de/search/?pm-o=12&pm-t=Italien
 ```
 
-####pm-pr
+###pm-pr
 search by price-range. Allowed Pattern ([0-9]+)\-([0-9])+
 ```
 GET https://yoursite.de/search/?pm-pr=100-1000
 ```
 
 
-####pm-dr
+###pm-dr
 search by date-range. Allowed Pattern: YYYYMMDD-YYYYMMDD
 ```
 GET https://yoursite.de/search/?pm-dr=20201231-20213101
 ```
 
-####pm-c[]
+###pm-c[]
 search by one or more pressmind categorytree-attributes
 Pattern: pm-c[{FIELDNAME_SECTIONNAME}]={ITEM_UUID}{OPERATOR}{ITEM_UUID}
 Allowed Operator , or +
@@ -61,7 +61,7 @@ GET https://yoursite.de/search/?pm-c[land_default]=xxx,yyyy
 GET https://yoursite.de/search/?pm-c[land_default]=xxx+yyyy
 ```
 
-####pm-o
+###pm-o
 order the result list
 Allowed values:
 rand, price-desc, price-asc, name-asc, name-desc, code-asc, code-desc
@@ -71,7 +71,7 @@ rand, price-desc, price-asc, name-asc, name-desc, code-asc, code-desc
 GET https://yoursite.de/search/?pm-o=price-asc
 ```
 
-####pm-l
+###pm-l
 paginator, pages through the search result
 {PAGE},{NUMBER}
 Pattern ([0-9]+\,[0-9]+)
