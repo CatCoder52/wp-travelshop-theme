@@ -77,10 +77,10 @@ The Pressmind uses this two endpoints:
 
 ```
 // Case 1: Push data on change to your site
-https://www.yoursite.de/wp-content/themes/travelshop/travelshop/vendor/pressmind/lib/api.php?id_media_object={INT}
+https://www.yoursite.de/wp-content/themes/travelshop/vendor/pressmind/lib/api.php?type=import&id_media_object={ID}
 
 // Case 2: Preview a Detailpages
-https://www.yoursite.de/wp-content/themes/travelshop/pm-preview.php?id_media_object={INT}
+https://www.yoursite.de/wp-content/themes/travelshop/pm-preview.php?id_media_object={ID}
 ```
 
 ## Maintaince & Troubleshooting

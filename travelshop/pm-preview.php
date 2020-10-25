@@ -14,6 +14,6 @@ if(empty($id_media_object) === true){
 }
 
 $mediaObject = new Pressmind\ORM\Object\MediaObject($id_media_object);
-$url = SITE_URL.'/'.$mediaObject->getPrettyUrl().'/?no_cache='.time().'&preview=1';
+$url = SITE_URL.'/'.$mediaObject->getPrettyUrl().'?no_cache='.time();
 header('Location: '.$url,TRUE,302);
 exit();

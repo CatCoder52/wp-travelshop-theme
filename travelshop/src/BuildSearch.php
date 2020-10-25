@@ -33,9 +33,12 @@ class BuildSearch
             $item = urldecode($item);
         });
 
-
         $validated_search_parameters = [];
         $conditions = array();
+
+        // set the default visibility
+        $conditions[] = Pressmind\Search\Condition\Visibility::create(TS_VISIBILTY);
+
         if (empty($id_object_type = intval($request[$prefix.'-ot'])) === false) {
             $conditions[] = Pressmind\Search\Condition\ObjectType::create($id_object_type);
             $validated_search_parameters[$prefix.'-ot'] = $id_object_type;

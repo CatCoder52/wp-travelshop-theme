@@ -82,13 +82,13 @@ $cheapest_price = $args['cheapest_price'];
                                             -
                                             <?php echo HelperFunctions::dayNumberToLocalDayName($date->arrival->format('N'), 'short') ?> <?php echo $date->arrival->format('d.m.Y'); ?>
 
-
                                             <span class="badge badge-success">Buchbar</span>
-
 
                                         </div>
                                         <div class="col-2">
-                                            <?php echo $date->code; ?>
+                                            <?php
+                                            echo implode('/', array_filter([$date->code, $housing_option->code]));
+                                            ?>
                                         </div>
                                         <div class="col-2">
                                             <?php
