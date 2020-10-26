@@ -5,6 +5,8 @@ It's based on the pressmind® web-core SDK.
 #### Demopage
 [https://travelshop-theme.pressmind.de](https://travelshop-theme.pressmind.de)
 
+![Overview Image Demopage](./travelshop/assets/img/overview.jpg)
+
 #### What is it not?
 * it's not the pressmind's truetravel source, it's just an integration example for the pressmind® web-core sdk
 * a full featured, plug & play travelshop 
