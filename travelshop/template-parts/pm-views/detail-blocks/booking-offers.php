@@ -34,7 +34,7 @@ $cheapest_price = $args['cheapest_price'];
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h2>Termine & Buchung</h2>
+                    <h2>Termine &amp; Preise</h2>
 
                     <div class="content-block-detail-booking-inner">
 
@@ -101,9 +101,8 @@ $cheapest_price = $args['cheapest_price'];
                                         </div>
                                         <div class="col-3">
 
-                                            <a class="btn btn-outline-primary btn-block"
-                                               href="http://my_ibe_url.pressmind-ibe.net/?imo=<?php echo $booking_package->id_media_object; ?>&idbp=<?php echo $booking_package->id; ?>&idhp=<?php echo $housing_package->id; ?>&idd=<?php echo $date->id; ?>&iho[<?php echo $housing_option->id; ?>]=1">
-
+                                            <a class="btn btn-outline-primary btn-block" target="_blank" rel="nofollow"
+                                               href="https://demo.pressmind-ibe.net/?imo=<?php echo $booking_package->id_media_object; ?>&idbp=<?php echo $booking_package->id; ?>&idhp=<?php echo $housing_package->id; ?>&idd=<?php echo $date->id; ?>&iho[<?php echo $housing_option->id; ?>]=1">
                                                 Jetzt Buchen
                                             </a>
                                         </div>

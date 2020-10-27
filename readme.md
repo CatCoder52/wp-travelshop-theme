@@ -5,6 +5,7 @@ It's based on the pressmind® web-core SDK.
 #### Demopage
 [https://travelshop-theme.pressmind.de](https://travelshop-theme.pressmind.de)
 
+#### Screenshot
 ![Overview Image Demopage](./travelshop/assets/img/overview.jpg)
 
 #### What is it not?

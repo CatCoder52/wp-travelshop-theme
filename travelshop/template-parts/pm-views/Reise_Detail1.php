@@ -1,5 +1,6 @@
 <?php
 
+global $PMTravelShop;
 
 use Pressmind\HelperFunctions;
 use Pressmind\Search\CheapestPrice;
@@ -41,6 +42,7 @@ if (empty($_GET['pm-dr']) === false) {
 $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
 
 
+
 ?>
 
     <!-- CONTENT: START -->
@@ -54,11 +56,13 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
             $tmp->url = site_url();
             $breadcrumb[] = $tmp;
 
+
+            $breadcrumb_search_url = site_url() . '/' . $PMTravelShop->RouteProcessor->get_url_by_object_type($mo->id_object_type) . '/?pm-o='.$mo->id_object_type;
             foreach ($moc->reiseart_default as $item) {
                 $reiseart = $item->toStdClass();
                 $tmp = new stdClass();
                 $tmp->name = $reiseart->item->name;
-                $tmp->url = '#';
+                $tmp->url = $breadcrumb_search_url.'&pm-c[reiseart_default]='.$reiseart->item->id;
                 $breadcrumb[] = $tmp;
             }
 
@@ -67,7 +71,7 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
                 $zielgebiet = $item->toStdClass();
                 $tmp = new stdClass();
                 $tmp->name = $zielgebiet->item->name;
-                $tmp->url = '#';
+                $tmp->url = $breadcrumb_search_url.'&pm-c[zielgebiet_default]='.$zielgebiet->item->id;;
                 $breadcrumb[] = $tmp;
             }
 
@@ -115,11 +119,7 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
 
                         <div class="detail-reise-content">
                             <p>
-                                <?php echo $moc->einleitung_default;
-
-
-
-                                ?>
+                                <?php echo $moc->einleitung_default; ?>
                             </p>
                         </div>
 
@@ -133,8 +133,12 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
                                                  data-toggle="tooltip"
                                                  data-placement="bottom" data-html="true"
                                                  alt="<?php echo $moc->bilder_default[3]->alt; ?>"
-                                                 title="<?php echo $moc->bilder_default[3]->caption; ?><br><small><?php echo $moc->bilder_default[3]->copyright; ?></small>"/>
-                                        </div>
+                                                 title="<?php
+                                                 $caption = [];
+                                                 $caption[] = !empty($moc->bilder_default[3]->caption) ? $moc->bilder_default[3]->caption : '';
+                                                 $caption[] = !empty($moc->bilder_default[3]->copyright) ? '<small>' . $moc->bilder_default[3]->copyright . '</small>' : '';
+                                                 echo implode('<br>', array_filter($caption));
+                                                 ?>"/></div>
                                     <?php } ?>
 
                                     <div class="col-md-6 col-lg-7">
@@ -193,8 +197,12 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
                                              data-toggle="tooltip"
                                              data-placement="bottom" data-html="true"
                                              alt="<?php echo $moc->bilder_default[1]->alt; ?>"
-                                             title="<?php echo $moc->bilder_default[1]->caption; ?><br><small><?php echo $moc->bilder_default[1]->copyright; ?></small>"/>
-                                    </div>
+                                             title="<?php
+                                             $caption = [];
+                                             $caption[] = !empty($moc->bilder_default[1]->caption) ? $moc->bilder_default[1]->caption : '';
+                                             $caption[] = !empty($moc->bilder_default[1]->copyright) ? '<small>' . $moc->bilder_default[1]->copyright . '</small>' : '';
+                                             echo implode('<br>', array_filter($caption));
+                                             ?>"/></div>
                                 <?php } ?>
 
                                 <?php if (empty($moc->unterkunftsbeschreibungen_default) === false) { ?>
@@ -257,7 +265,7 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
                                 </div>
                                 <a class="btn btn-primary btn-booking btn-block btn-lg"
                                    href="#content-block-detail-booking">
-                                    Buchen
+                                    Termine &amp; Preise
                                 </a>
                             <?php } else { ?>
                                 <div class="detail-price-box">
@@ -275,6 +283,7 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
             </section>
             <?php
             // Detail Booking
+            // @todo does not work with scaffolder engine
             load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/booking-offers.php', false, array_merge($data, array('cheapest_price' => $cheapest_price)));
             ?>
         </div>

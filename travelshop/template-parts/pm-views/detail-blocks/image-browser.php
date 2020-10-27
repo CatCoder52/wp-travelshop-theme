@@ -15,7 +15,12 @@ $pictures = $args;
                          data-toggle="tooltip"
                          data-placement="bottom" data-html="true"
                          alt="<?php echo $pictures[0]->alt; ?>"
-                         title="<?php echo $pictures[0]->caption; ?><br><small><?php echo $pictures[0]->copyright; ?></small>"/>
+                         title="<?php
+                         $caption = [];
+                         $caption[] = !empty($pictures[0]->caption) ? $pictures[0]->caption : '';
+                         $caption[] = !empty($pictures[0]->copyright) ? '<small>' . $pictures[0]->copyright . '</small>' : '';
+                         echo implode('<br>', array_filter($caption));
+                         ?>"/>
                 </div>
             </div>
         </div>
@@ -29,8 +34,12 @@ $pictures = $args;
                                  data-toggle="tooltip"
                                  data-placement="bottom" data-html="true"
                                  alt="<?php echo $pictures[1]->alt; ?>"
-                                 title="<?php echo $pictures[1]->caption; ?><br><small><?php echo $pictures[1]->copyright; ?></small>"/>
-                        </div>
+                                 title="<?php
+                                 $caption = [];
+                                 $caption[] = !empty($pictures[1]->caption) ? $pictures[1]->caption : '';
+                                 $caption[] = !empty($pictures[1]->copyright) ? '<small>' . $pictures[1]->copyright . '</small>' : '';
+                                 echo implode('<br>', array_filter($caption));
+                                 ?>"/></div>
                     </div>
                 </div>
                 <div class="col-6 col-md-12">
@@ -52,8 +61,12 @@ $pictures = $args;
                                  data-toggle="tooltip"
                                  data-placement="bottom" data-html="true"
                                  alt="<?php echo $pictures[2]->alt; ?>"
-                                 title="<?php echo $pictures[2]->caption; ?><br><small><?php echo $pictures[2]->copyright; ?></small>"/>
-                        </div>
+                                 title="<?php
+                                 $caption = [];
+                                 $caption[] = !empty($pictures[2]->caption) ? $pictures[2]->caption : '';
+                                 $caption[] = !empty($pictures[2]->copyright) ? '<small>' . $pictures[2]->copyright . '</small>' : '';
+                                 echo implode('<br>', array_filter($caption));
+                                 ?>"/></div>
                     </div>
                 </div>
             </div>
