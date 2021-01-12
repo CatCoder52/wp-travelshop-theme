@@ -4,7 +4,7 @@
  */
 
 require_once 'config-theme.php';
-require_once 'vendor/pressmind/lib/bootstrap.php';
+require_once 'bootstrap.php';
 
 $id_media_object = (int)$_GET['id_media_object'];
 if(empty($id_media_object) === true){

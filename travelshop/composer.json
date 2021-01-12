@@ -1,11 +1,7 @@
 {
   "require": {
-    "pressmind/lib": "dev-master"
-  },
-  "scripts": {
-    "post-install-cmd": [
-      "cp -r .htaccess vendor/pressmind/lib/.htaccess",
-      "php install.php"
-    ]
+    "pressmind/sdk": "dev-master",
+    "ext-json": "*",
+    "ext-readline": "*"
   }
 }

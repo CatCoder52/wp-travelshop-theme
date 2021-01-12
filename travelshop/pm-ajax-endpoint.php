@@ -4,7 +4,7 @@
  */
 
 require_once 'config-theme.php';
-require_once 'vendor/pressmind/lib/bootstrap.php';
+require_once 'bootstrap.php';
 require_once 'src/BuildSearch.php';
 
 header('Content-type: application/json');

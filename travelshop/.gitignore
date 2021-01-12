@@ -1,6 +1,0 @@
-.idea
-vendor
-composer.lock
-mockup
-**/.sass-cache/
-template-parts/pm-views/*_Example.php

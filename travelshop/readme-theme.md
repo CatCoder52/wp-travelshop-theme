@@ -52,6 +52,7 @@ Don't use a other S3 plugins (they don't know and can not handle pressmind produ
 
 
 ## The Template files
+* config.php (the pressmind web-core sdk config, look he're for database credentials, pressmind api settings or image sizes)
 * assets
     * /img (example pictures, don't use in production)
         * img.jpg 
@@ -83,6 +84,11 @@ Don't use a other S3 plugins (they don't know and can not handle pressmind produ
             * app.css (the whole css file)
 * /cli
     * regenerate-images.php (run, to regenerate WordPress Image Derivates, if you haved changed them)
+    * ...
+    * import.php (importer for pressmind data)
+    * install.php (installs the pressmind data model)
+    * integrity_check.php (check/sync the datamodell with the pressmind® PIM)
+    
 * /functions
     * cleanup_meta_includes.php (remove unnessary stuff from WordPress)
     * disable_emojis.php (remove unnessary emojis)
@@ -139,14 +145,7 @@ Don't use a other S3 plugins (they don't know and can not handle pressmind produ
 * /vendor (home of the pressmind web-core sdk)
     * ...
     * /pressmind
-        * /lib
-            * ...
-            * /cli (a tool collection for maintaining the web-core sdk)
-                * ...
-                * import.php (importer for pressmind data)
-                * install.php (installs the pressmind data model)
-                * integrity_check.php (check/sync the datamodell with the pressmind® PIM)
-                * config.json (the pressmind web-core sdk config, look he're for database credentials, pressmind api settings or image sizes)
+                
 * 404.php
 * composer.json
 * config-routing.php (setup your a custom routing here)

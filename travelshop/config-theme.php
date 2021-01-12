@@ -6,7 +6,7 @@
  * during installation (install.php) this value will be set to wordpress's site_url()
  */
 
-define('SITE_URL', '');
+define('SITE_URL', 'http://travelshop.local');
 
 /**
  * we' have to renormalize the generic pressmind entities,

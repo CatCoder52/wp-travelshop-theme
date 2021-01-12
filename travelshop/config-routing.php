@@ -7,18 +7,16 @@
  * from the content from pressmind's web-core sdk, sample above
  */
 
-use Pressmind\Config;
-use Pressmind\ORM\Object\MediaObject;
+use Pressmind\Registry;
 use Pressmind\Travelshop\Route;
 use Pressmind\Travelshop\WPFunctions;
 
 /**
  * Routing
- * Generating the routes dynamically based on the pressmind web-core pretty_url config, see config.json
+ * Generating the routes dynamically based on the pressmind web-core pretty_url config, see config.php
  * In real world you should check if all routes are required by your project
- *
- *  @var $config (previosly defined in vendor/pressmind/lib/bootstrap.php)
  */
+$config = Registry::getInstance()->get('config');
 $routes = array();
 foreach ($config['data']['media_types_pretty_url'] as $id_object_type => $pretty_url) {
 

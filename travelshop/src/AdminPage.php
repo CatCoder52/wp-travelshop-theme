@@ -3,6 +3,9 @@
 namespace Pressmind\Travelshop;
 
 
+use Pressmind\HelperFunctions;
+use Pressmind\Registry;
+
 class AdminPage
 {
 
@@ -31,7 +34,7 @@ class AdminPage
         $configFiles = [];
         $configFiles[] = array('config-theme.php', 'Common Config: (config-theme.php)');
         $configFiles[] = array('config-routing.php', 'Routing: (config-routing.php)');
-        $configFiles[] = array('vendor%2Fpressmind%2Flib%2Fconfig.json', 'pressmind web-core SDK: (config.json)');
+        $configFiles[] = array('config.php', 'pressmind web-core SDK: (config.php)');
         foreach ($configFiles as $config) {
             echo '<a href="theme-editor.php?file='.$config[0].'&theme='.wp_get_theme().'">'.$config[1].'</a><br>';
         }
@@ -40,12 +43,12 @@ class AdminPage
 
         echo '<h2>Loaded Object Type Description</h2>';
         echo '<p>
-              this is a auto generated report during pressmind web-core sdk installation.<br>
-              it represents the current datamodell. you can use the property_name in your templates.
+              This is a auto generated report created during pressmind web-core sdk installation.<br>
+              It represents the current datamodel. You can use the property_names in your templates.
               </p>
             ';
-        $themedir = get_theme_file_path();
-        foreach (glob($themedir.'/vendor/pressmind/lib/docs/objecttypes/*.html') as $file) {
+        $sdk_config = Registry::getInstance()->get('config');
+        foreach (glob(HelperFunctions::replaceConstantsFromConfig($sdk_config['docs_dir']).'/objecttypes/*.html') as $file) {
 
             $content = file_get_contents($file);
             $str = str_replace('h1>', 'b><br>', $content);

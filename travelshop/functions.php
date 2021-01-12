@@ -10,11 +10,11 @@ use Pressmind\Travelshop\Router;
 use Pressmind\Travelshop\Route;
 
 // this code is only for a better onboarding, remove in production
-    if(file_exists(get_template_directory().'/vendor/pressmind/lib/config.json') === false ){
-        if(file_exists(get_template_directory().'/vendor/pressmind/lib/bootstrap.php') === false ) {
+    if(file_exists(get_template_directory().'/config.php') === false ){
+        if(file_exists(get_template_directory().'/bootstrap.php') === false ) {
             echo 'Error: pressmind web-core SDK is not installed<br>';
             echo 'run "composer install" in ' . __DIR__;
-        } else if(file_exists(get_template_directory().'/vendor/pressmind/lib/config.json') === false ) {
+        } else if(file_exists(get_template_directory().'/config.php') === false ) {
             echo 'Error: pressmind web-core SDK is not installed correctly<br>';
             echo 'config.json is missing';
         }
@@ -22,10 +22,10 @@ use Pressmind\Travelshop\Route;
     }
 
     // check if web-core sdk installation is done
-    if(file_exists(get_template_directory().'/vendor/pressmind/lib/src/Custom/MediaType') === true
-        && count(glob(get_template_directory().'/vendor/pressmind/lib/src/Custom/MediaType/*.php')) <= 1){
+    if(file_exists(get_template_directory().'/Custom/MediaType') === true
+        && count(glob(get_template_directory().'/Custom/MediaType/*.php')) <= 1){
             echo 'Error: pressmind web-core SDK is not configured correctly.<br>';
-            echo 'run "php install.php " in ' . get_template_directory().'/vendor/pressmind/lib/cli/';
+            echo 'run "php install.php " in ' . get_template_directory().'/cli/';
             exit();
     }
 
@@ -34,7 +34,7 @@ use Pressmind\Travelshop\Route;
 require_once 'config-theme.php';
 
 // pressmind web-core sdk
-require_once 'vendor/pressmind/lib/bootstrap.php';
+require_once 'bootstrap.php';
 
 // admin/system related functions
 require_once 'src/ThemeActivation.php';
