@@ -88,13 +88,13 @@ php install.php
 php import.php fullimport
 ````
 
-For pressmind web-core updates run (don't try this in production)
-Look at the https://github.com/pressmind/web-core to check the last changes
+For pressmind sdk updates run (don't try this in production)
 ```shell script
 composer update
 php install.php
 php import.php fullimport
 ```
+Have a look at https://github.com/pressmind/sdk to check the last changes
 
 #### Routing
 the theme contains a route processor, based on WordPress `parse_request` hook. 
