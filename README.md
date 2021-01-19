@@ -26,8 +26,6 @@ In most cases this is the basic setup for each travelshop:
 * pressmind® IB3 (seamless booking engine, with connectors to a lot of german tour-operator Systems like BusPro, Blank, DaVinci, TouPac, turista 2/3, STADIS)
 * pressmind® web-core SDK or this theme
 
-This setup has most effort, if you like to design and build a nice travelshop. The pressmind® applications will reduce your complexity
-
 #### Quick Install
 * Download the [latest theme Build](https://github.com/pressmind/wp-travelshop-theme/releases/latest)
 * Extract the zip or tarball file to your WordPress theme directory
