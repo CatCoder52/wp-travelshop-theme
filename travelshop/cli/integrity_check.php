@@ -89,6 +89,74 @@ try {
     echo $e->getMessage();
 }
 
+echo 'Checking default configuration for newly added options' . "\n";
+$sdk_directory = dirname(__DIR__)
+    . DIRECTORY_SEPARATOR
+    . 'vendor'
+    . DIRECTORY_SEPARATOR
+    . 'pressmind'
+    . DIRECTORY_SEPARATOR
+    . 'sdk';
+
+$default_config_file = $sdk_directory . DIRECTORY_SEPARATOR . 'config.default.json';
+$config_file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'config.php';
+$default_config = json_decode(file_get_contents($default_config_file), true);
+
+include $config_file;
+
+$changes = walkArray($default_config['development'], $config['development']);
+if($changes['has_changes'] == true) {
+    $config['development'] = $changes['settings'];
+    $config_text = "<?php\n\$config = " . _var_export($config, true) . ';';
+    file_put_contents($config_file, $config_text);
+    echo 'New configuration options were added to ' . $config_file . "\n" . 'Please check this file for possible errors before continuing' . "\n";
+} else {
+    echo 'Current configuration is up to date with default configuration' . "\n";
+}
+
+function walkArray($default_settings, &$current_settings) {
+    $has_changes = false;
+    foreach ($default_settings as $default_setting_key => $default_setting) {
+        if(!key_exists($default_setting_key, $current_settings)) {
+            echo 'New option "' . $default_setting_key . '" found. Added to current configuration file' . "\n";
+            $current_settings[$default_setting_key] = $default_settings[$default_setting_key];
+            $has_changes = true;
+        }
+        if(is_array($default_setting) && isArrayAssociative($default_setting)) {
+            walkArray($default_settings[$default_setting_key], $current_settings[$default_setting_key]);
+        }
+    }
+    return ['has_changes' => $has_changes, 'settings' => $current_settings];
+}
+
+/**
+ * @param $expression
+ * @param bool $return
+ * @return mixed|string|string[]|null
+ */
+function _var_export($expression, $return = false) {
+    $export = var_export($expression, true);
+    $export = preg_replace("/^([ ]*)(.*)/m", '$1$1$2', $export);
+    $array = preg_split("/\r\n|\n|\r/", $export);
+    $array = preg_replace(["/\s*array\s\($/", "/\)(,)?$/", "/\s=>\s$/"], [NULL, ']$1', ' => ['], $array);
+    $export = join(PHP_EOL, array_filter(["["] + $array));
+    if ($return) {
+        return $export;
+    } else  {
+        echo $export;
+    }
+    return null;
+}
+
+function isArrayAssociative($array) {
+    foreach ($array as $key => $value) {
+        if(is_string($key)) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function modifyDatabaseTableColumn($tableName, $columnName, $type) {
     $sql = 'ALTER TABLE ' . $tableName . ' MODIFY ' . $columnName . ' ' . $type . ' NULL';
     $db = Registry::getInstance()->get('db');
