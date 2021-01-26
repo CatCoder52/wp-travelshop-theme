@@ -58,10 +58,10 @@ require_once APPLICATION_PATH . '/vendor/autoload.php';
  * Here we will use the PHP config-adapter to load and parse a configuration file
  * you can also use JSON Files for configuration.
  * It is required that in every configuration the keys development, testing and production do exist.
- * @See the generated config.php file (which is created during the install process) for the required structure and options
+ * @See the generated pm-config.php file (which is created during the install process) for the required structure and options
  * @See the different config adapters for further information on YAML, XML and INI files (Pressmind\Config\Adapter)
  */
-$config_adapter = new Config('php', HelperFunctions::buildPathString([APPLICATION_PATH, 'config.php']), ENV);
+$config_adapter = new Config('php', HelperFunctions::buildPathString([APPLICATION_PATH, 'pm-config.php']), ENV);
 $config = $config_adapter->read();
 
 /**

@@ -34,7 +34,7 @@ class AdminPage
         $configFiles = [];
         $configFiles[] = array('config-theme.php', 'Common Config: (config-theme.php)');
         $configFiles[] = array('config-routing.php', 'Routing: (config-routing.php)');
-        $configFiles[] = array('config.php', 'pressmind web-core SDK: (config.php)');
+        $configFiles[] = array('pm-config.php', 'pressmind web-core SDK: (pm-config.php)');
         foreach ($configFiles as $config) {
             echo '<a href="theme-editor.php?file='.$config[0].'&theme='.wp_get_theme().'">'.$config[1].'</a><br>';
         }

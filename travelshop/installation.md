@@ -39,7 +39,7 @@ php install.php
 #### 5. Import the data
 the import script will import the whole data from pressmind to your server.
 the script inserts records in the database, will download images
-and processes the images to the defined image derivatives (see config.php)
+and processes the images to the defined image derivatives (see pm-config.php)
 all images are processed in the background 
 (use `top` to see what is happens after or between the script is running) 
 

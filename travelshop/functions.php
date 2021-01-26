@@ -10,13 +10,13 @@ use Pressmind\Travelshop\Router;
 use Pressmind\Travelshop\Route;
 
 // this code is only for a better onboarding, remove in production
-    if(file_exists(get_template_directory().'/config.php') === false ){
+    if(file_exists(get_template_directory().'/pm-config.php') === false ){
         if(file_exists(get_template_directory().'/bootstrap.php') === false ) {
             echo 'Error: pressmind web-core SDK is not installed<br>';
             echo 'run "composer install" in ' . __DIR__;
-        } else if(file_exists(get_template_directory().'/config.php') === false ) {
+        } else if(file_exists(get_template_directory().'/pm-config.php') === false ) {
             echo 'Error: pressmind web-core SDK is not installed correctly<br>';
-            echo 'config.php is missing';
+            echo 'pm-config.php is missing';
         }
         exit();
     }

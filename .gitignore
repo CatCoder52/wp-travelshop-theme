@@ -1,7 +1,7 @@
 .idea
 travelshop/vendor
 travelshop/composer.lock
-travelshop/config.php
+travelshop/pm-config.php
 travelshop/template-parts/pm-views/*_Detail1.php
 travelshop/template-parts/pm-views/*_Teaser1.php
 travelshop/Custom/MediaType/*.php

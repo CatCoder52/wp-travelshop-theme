@@ -13,7 +13,7 @@ use Pressmind\Travelshop\WPFunctions;
 
 /**
  * Routing
- * Generating the routes dynamically based on the pressmind web-core pretty_url config, see config.php
+ * Generating the routes dynamically based on the pressmind web-core pretty_url config, see pm-config.php
  * In real world you should check if all routes are required by your project
  */
 $config = Registry::getInstance()->get('config');

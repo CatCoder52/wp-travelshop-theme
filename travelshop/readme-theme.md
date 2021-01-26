@@ -52,7 +52,7 @@ Don't use a other S3 plugins (they don't know and can not handle pressmind produ
 
 
 ## The Template files
-* config.php (the pressmind web-core sdk config, look he're for database credentials, pressmind api settings or image sizes)
+* pm-config.php (the pressmind web-core sdk config, look he're for database credentials, pressmind api settings or image sizes)
 * assets
     * /img (example pictures, don't use in production)
         * img.jpg 

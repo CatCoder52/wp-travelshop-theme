@@ -99,7 +99,7 @@ $sdk_directory = dirname(__DIR__)
     . 'sdk';
 
 $default_config_file = $sdk_directory . DIRECTORY_SEPARATOR . 'config.default.json';
-$config_file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'config.php';
+$config_file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'pm-config.php';
 $default_config = json_decode(file_get_contents($default_config_file), true);
 
 include $config_file;

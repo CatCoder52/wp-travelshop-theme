@@ -10,7 +10,7 @@ if (php_sapi_name() !== 'cli') {
     die("This file is meant to be run from command line");
 }
 
-$first_install = !file_exists(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'config.php');
+$first_install = !file_exists(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'pm-config.php');
 
 if($first_install) {
     $sdk_directory = dirname(__DIR__)
@@ -109,7 +109,7 @@ if($first_install) {
     $config['development']['image_handling']['processor']['derivatives']['detail']['webp_create'] = true;
     $config['development']['image_handling']['processor']['derivatives']['detail']['webp_quality'] = 80;
 
-    $config_file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'config.php';
+    $config_file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'pm-config.php';
     $config_text = "<?php\n\$config = " . _var_export($config, true) . ';';
     echo 'Writing config to ' . $config_file . "\n";
     file_put_contents($config_file, $config_text);
