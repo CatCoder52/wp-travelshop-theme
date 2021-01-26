@@ -16,7 +16,7 @@ use Pressmind\Travelshop\Route;
             echo 'run "composer install" in ' . __DIR__;
         } else if(file_exists(get_template_directory().'/config.php') === false ) {
             echo 'Error: pressmind web-core SDK is not installed correctly<br>';
-            echo 'config.json is missing';
+            echo 'config.php is missing';
         }
         exit();
     }

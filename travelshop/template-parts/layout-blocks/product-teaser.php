@@ -31,7 +31,7 @@
        //$conditions[] = Pressmind\Search\Condition\PriceRange::create(1, 9999);
        //$conditions[] = Pressmind\Search\Condition\PriceRange::create(new DateTime($atts['date_range_from']), new DateTime($atts['date_range_to']));
        $search = new Pressmind\Search($conditions, ['start' => 0, 'length' => 4], ['' => 'RAND()']);
-       $products = $tour_search->getResults();
+       $products = $search->getResults();
        foreach ($products as $product) {
            echo  $product->render('Teaser1', 'de');
        }
