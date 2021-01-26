@@ -42,10 +42,10 @@ In most cases this is the basic setup for each travelshop:
             * ...
 * create a database and a database user
 * on a console move to the themes folder (cd /var/www/vhosts/my-project/wp-content/themes/travelshop)
-* run "composer install inside the themes directory (wp-content/themes/travelshop)"
-* run "php install.php " in travelshop/cli/ and enter the requested credentials
+* run "composer install" inside the themes directory (wp-content/themes/travelshop)
+* move to the directory travelshop/cli, run "php install.php" in travelshop/cli/ enter the requested credentials when asked by installation script
 * activate the theme
-* run "php import.php fullimport " in travelshop/cli/
+* run "php import.php fullimport" in travelshop/cli/
 * after a few minutes your travelshop is running
 
 #### More Information:
