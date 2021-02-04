@@ -22,7 +22,7 @@ if($first_install) {
         . 'sdk';
     if(!is_dir($sdk_directory)) {
         echo "ERROR!\n";
-        echo "pressmind sdk seems not to be installed. Please run 'composer install' to install all required dependencies before running this script\n";
+        echo "pressmind sdk seems not to be installed. Please run 'composer install' in " . dirname(__DIR__) . " to install all required dependencies before running this script\n";
         die();
     }
 
@@ -126,6 +126,7 @@ if($args[1] != 'only_static') {
     $config = Registry::getInstance()->get('config');
 
     if($first_install) {
+        $first_install_success = true;
         Writer::write('Creating required directories', Writer::OUTPUT_SCREEN, 'install', Writer::TYPE_INFO);
         $required_directories = [];
         $required_directories[] = HelperFunctions::buildPathString([APPLICATION_PATH, 'Custom', 'MediaType']);
@@ -141,9 +142,17 @@ if($args[1] != 'only_static') {
 
         foreach ($required_directories as $directory) {
             if (!is_dir($directory)) {
-                mkdir($directory, 0775, true);
-                Writer::write('Directory ' . $directory . ' created', Writer::OUTPUT_SCREEN, 'install', Writer::TYPE_INFO);
+                if(mkdir($directory, 0775, true)) {
+                    Writer::write('Directory ' . $directory . ' created', Writer::OUTPUT_SCREEN, 'install', Writer::TYPE_INFO);
+                } else {
+                    Writer::write('Failed to create directory ' . $directory, Writer::OUTPUT_SCREEN, 'install', Writer::TYPE_INFO);
+                    $first_install_success = false;
+                }
             }
+        }
+        if(!$first_install_success) {
+            Writer::write('Creating required directories failed! Installation aborted!', Writer::OUTPUT_SCREEN, 'install', Writer::TYPE_INFO);
+            die();
         }
     }
 
