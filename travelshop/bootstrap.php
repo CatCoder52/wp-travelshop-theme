@@ -88,7 +88,7 @@ try {
         empty($config['database']['host']) || empty($config['database']['dbname']) ||
         empty($config['database']['username']) || empty($config['database']['password'])
     ) {
-        echo 'Error: database is not configured yet, please check ' . __DIR__ . '/config.json';
+        echo 'Error: database is not configured yet, please check ' . __DIR__ . '/pm-config.php';
     }
 
     echo 'Error: ';
