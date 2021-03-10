@@ -27,6 +27,10 @@ pressmind object-type id, (int)
 ```
 GET https://yoursite.de/search/?pm-ot=12
 ```
+```
+WORDPRESS SHORTCODE [ts-list pm-ot="12"]
+```
+
 
 ### pm-t
 fulltext search in the defined pressmind fields.
@@ -35,23 +39,31 @@ Additional parameter pm-o required!
 ```
 GET https://yoursite.de/search/?pm-o=12&pm-t=Italien
 ```
+```
+WORDPRESS SHORTCODE [ts-list pm-ot="12" pm-t="Italien"]
+```
 
 ### pm-pr
-search by price-range. Allowed Pattern ([0-9]+)\-([0-9])+
+search by price-range. Allowed pattern ([0-9]+)\-([0-9])+
 ```
 GET https://yoursite.de/search/?pm-pr=100-1000
 ```
-
+```
+WORDPRESS SHORTCODE [ts-list pm-pr="100-1000"]
+```
 
 ### pm-dr
-search by date-range. Allowed Pattern: YYYYMMDD-YYYYMMDD
+search by date-range. Allowed pattern: YYYYMMDD-YYYYMMDD
 ```
 GET https://yoursite.de/search/?pm-dr=20201231-20213101
+```
+```
+WORDPRESS SHORTCODE [ts-list pm-dr="20201231-20213101"]
 ```
 
 ### pm-c[]
 search by one or more pressmind categorytree-attributes
-Pattern: pm-c[{FIELDNAME_SECTIONNAME}]={ITEM_UUID}{OPERATOR}{ITEM_UUID}
+pattern: pm-c[{FIELDNAME_SECTIONNAME}]={ITEM_UUID}{OPERATOR}{ITEM_UUID}
 Allowed Operator , or +
 ```
 // list products that contain attributes xxx OR yyy
@@ -60,15 +72,25 @@ GET https://yoursite.de/search/?pm-c[land_default]=xxx,yyyy
 // list products that contain both attributes xxx AND yyy
 GET https://yoursite.de/search/?pm-c[land_default]=xxx+yyyy
 ```
+```
+WORDPRESS SHORTCODE [ts-list pm-c-land_default="xxx+yyyy"]
+
+WORDPRESS SHORTCODE [ts-list pm-c-land_default="xxx,yyyy"]
+! brackets [] are not supported in shortcodes, so the pattern is slightly different to the GET request.
+```
+
 
 ### pm-o
 order the result list
-Allowed values:
+allowed values:
 rand, price-desc, price-asc, name-asc, name-desc, code-asc, code-desc
 
 ```
 // Order the result by price, lowest price first
 GET https://yoursite.de/search/?pm-o=price-asc
+```
+```
+WORDPRESS SHORTCODE [ts-list pm-o="price-asc"]
 ```
 
 ### pm-l
@@ -78,6 +100,9 @@ Pattern ([0-9]+\,[0-9]+)
 ```
 // get page one (with 10 items) of the result
 GET https://yoursite.de/search/?pm-l=1,10
+```
+```
+WORDPRESS SHORTCODE [ts-list pm-l="1,10"]
 ```
 
  

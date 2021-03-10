@@ -25,9 +25,18 @@ class Shortcodes
     public function list($atts)
     {
 
+
         // support constants as Object Type ID, for better theme normalization
         if(preg_match('/^([0-9]+)$/', $atts['pm-ot']) == 0){
             $atts['pm-ot'] = constant($atts['pm-ot']);
+        }
+
+        // remap wordpress shortcode to subkeys
+        foreach ($atts as $key => $value) {
+            if (preg_match('/^pm\-c\-([a-zA-Z0-9_\-]+)$/', $key, $matches) > 0) {
+                $atts['pm-c'][$matches[1]] = $value;
+                unset($atts[$key]);
+            }
         }
 
 
