@@ -4,6 +4,9 @@
    .teaser-image {
      @include border-radius($card-border-radius);
 
+     height: 218px;
+     background-color: lightgray;
+
      &:after {
        content: '';
        display: block;

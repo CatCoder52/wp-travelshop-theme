@@ -44,7 +44,7 @@ if (isset($param['new-site']) === true) {
 } else if (isset($param['all']) === true) {
 } else {
     echo 'usage:' . "\r\n";
-    echo '--new-site    example: php migrate-site.php.php --new-site=http://wordpress.local ' . "\r\n";
+    echo '--new-site    example: php migrate-site.php --new-site=http://wordpress.local ' . "\r\n";
     exit;
 }
 
