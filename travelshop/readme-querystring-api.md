@@ -36,7 +36,7 @@ Additional parameter pm-o required!
 GET https://yoursite.de/search/?pm-o=12&pm-t=Italien
 ```
 
-###pm-pr
+### pm-pr
 search by price-range. Allowed Pattern ([0-9]+)\-([0-9])+
 ```
 GET https://yoursite.de/search/?pm-pr=100-1000
