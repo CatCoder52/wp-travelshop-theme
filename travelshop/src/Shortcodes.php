@@ -41,8 +41,8 @@ class Shortcodes
         */
 
         $view = 'Teaser1';
-        if(empty($att['view']) === false){
-            $view = $att['view'];
+        if(empty($atts['view']) === false){
+            $view = $atts['view'];
         }
 
         $output = '<div class="container">
