@@ -105,17 +105,18 @@
 <?php
 
 $js_files = array();
-$js_files[] = array('src' => '/assets/js/jquery-3.5.1.min.js', 'defer' => true);
-$js_files[] = array('src' => '/assets/js/popper-1.14.7.min.js', 'defer' => true);
-$js_files[] = array('src' => '/assets/js/bootstrap.min.js', 'defer' => true);
-$js_files[] = array('src' => '/assets/js/moment.min.js', 'defer' => false); //- 20 Punkte
-$js_files[] = array('src' => '/assets/js/daterangepicker.min.js', 'defer' => true);
-$js_files[] = array('src' => '/assets/js/autocomplete.min.js', 'defer' => true);
-$js_files[] = array('src' => '/assets/js/ion.rangeSlider.min.js', 'defer' => true);
-$js_files[] = array('src' => '/assets/js/tiny-slider.min.js', 'defer' => false);
-$js_files[] = array('src' => '/assets/js/ui.min.js', 'defer' => true);
-$js_files[] = array('src' => '/assets/js/search.min.js', 'defer' => true);
-$js_files[] = array('src' => '/assets/js/ajax.min.js', 'defer' => true);
+$js_files[] = array('src' => '/assets/js/jquery-3.5.1.min.js', 'defer' => true,'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/jquery-3.5.1.min.js'));
+$js_files[] = array('src' => '/assets/js/popper-1.14.7.min.js', 'defer' => true,'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/popper-1.14.7.min.js'));
+$js_files[] = array('src' => '/assets/js/bootstrap.min.js', 'defer' => true,'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/bootstrap.min.js'));
+$js_files[] = array('src' => '/assets/js/moment.min.js', 'defer' => false,'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/moment.min.js')); //- 20 Punkte
+$js_files[] = array('src' => '/assets/js/daterangepicker.min.js', 'defer' => true, 'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/daterangepicker.min.js'));
+$js_files[] = array('src' => '/assets/js/autocomplete.min.js', 'defer' => true, 'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/autocomplete.min.js'));
+$js_files[] = array('src' => '/assets/js/ion.rangeSlider.min.js', 'defer' => true, 'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/ion.rangeSlider.min.js'));
+$js_files[] = array('src' => '/assets/js/tiny-slider.min.js', 'defer' => false, 'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/tiny-slider.min.js'));
+$js_files[] = array('src' => '/assets/js/ui.min.js', 'defer' => true, 'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/ui.min.js'));
+$js_files[] = array('src' => '/assets/js/detail-page.min.js', 'defer' => true, 'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/detail-page.min.js'));
+$js_files[] = array('src' => '/assets/js/search.min.js', 'defer' => true, 'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/search.min.js'));
+$js_files[] = array('src' => '/assets/js/ajax.min.js', 'defer' => true, 'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/ajax.min.js'));
 
 /* JS inline - test performance?
 echo '<script type="application/javascript">';
