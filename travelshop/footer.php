@@ -114,7 +114,6 @@ $js_files[] = array('src' => '/assets/js/autocomplete.min.js', 'defer' => true, 
 $js_files[] = array('src' => '/assets/js/ion.rangeSlider.min.js', 'defer' => true, 'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/ion.rangeSlider.min.js'));
 $js_files[] = array('src' => '/assets/js/tiny-slider.min.js', 'defer' => false, 'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/tiny-slider.min.js'));
 $js_files[] = array('src' => '/assets/js/ui.min.js', 'defer' => true, 'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/ui.min.js'));
-$js_files[] = array('src' => '/assets/js/detail-page.min.js', 'defer' => true, 'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/detail-page.min.js'));
 $js_files[] = array('src' => '/assets/js/search.min.js', 'defer' => true, 'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/search.min.js'));
 $js_files[] = array('src' => '/assets/js/ajax.min.js', 'defer' => true, 'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/ajax.min.js'));
 

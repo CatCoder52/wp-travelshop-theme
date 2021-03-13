@@ -103,7 +103,7 @@ class BuildSearch
         if (empty($request[$prefix.'-o']) === false && in_array($request[$prefix.'-o'], $allowed_orders) === true) {
 
             if($request[$prefix.'-o'] == 'rand'){
-                $order = array('' => $request[$prefix.'-o'] . '()');
+                $order = array('' => 'RAND()');
             }else{
                 list($property, $direction) =  explode('-', $request[$prefix.'-o']);
                 $order = array($property => $direction);
