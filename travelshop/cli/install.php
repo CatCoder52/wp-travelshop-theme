@@ -59,6 +59,10 @@ if($first_install) {
 
     $config['development']['server']['document_root'] = 'BASE_PATH';
     $config['development']['docs_dir'] = 'APPLICATION_PATH/docs';
+
+    // Setup REST server
+    $config['development']['rest']['server']['api_endpoint'] = '/wp-content/themes/travelshop/rest';
+
     // Setup the Preview URL
     $config['development']['data']['preview_url'] = "/examples/detail.php?id={{id_media_object}}&preview={{preview}}";
 
