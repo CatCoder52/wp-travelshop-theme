@@ -14,7 +14,7 @@ $search = BuildSearch::fromRequest($_GET, 'pm', true, $page_size);
 $mediaObjects = $search->getResults();
 $total_result = $search->getTotalResultCount();
 $current_page = $search->getPaginator()->getCurrentPage();
-$pages = ceil($total_result / $search->getPaginator()->getPageSize());
+$pages = $search->getPaginator()->getTotalPages();
 ?>
 
 <!-- CONTENT_SECTION_LIST_HEADER: START -->
