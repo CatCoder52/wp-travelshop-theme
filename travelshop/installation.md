@@ -1,54 +1,94 @@
-# Installation with Composer
-#### 1. WordPress Theme
- Install the WordPress Theme (extract wp-travelshop-theme.zip to your theme dir (wp-content/themes/travelshop))  .
- After extracting the zip file your themes folder should look something like this: 
-* themes
-    * travelshop
-        * assets/
-        * cli/
-        * Custom/
-        * functions/
-        * src/
-        * template-parts
-        * ...
+# Installation
+#### 1. Download
+Install the WordPress Theme. 
+Download the [latest theme Build](https://github.com/pressmind/wp-travelshop-theme/releases/latest) 
+and extract it to your theme dir (wp-content/themes/travelshop))  .
+After extracting the zip/tarball file your themes folder should look something like this: 
+* wp-content
+    * themes
+        * travelshop
+            * assets/
+            * cli/
+            * Custom/
+            * functions/
+            *  src/
+            * template-parts
+            * ...
 
-#### 2. Run Composer
-run composer install in the plugin dir
-```shell script
-cd /var/www/htdocs/wp-content/themes/travelshop
-composer install
-```
-
-#### 3. Create a database 
-It's recommend to create a dedicated database for the pressmind content.
+    
+#### 2. Create a database 
+It's recommend to create a dedicated database for the pressmind content
+(don't use the wordpress default database).
 ```shell script
 mysql -u root -p;
 mysql> CREATE DATABASE pressmind;
 mysql> GRANT ALL ON pressmind.* TO 'my_database_user'@'localhost' IDENTIFIED BY 'my_database_password' WITH GRANT OPTION;
 ```
 
-#### 4. Setup pressmind web-core SDK
-Run the web-core installer. 
-The script will ask for some database- and pressmind API credentials and then will install the customer specific data objects and configures the sdk with custom models.
+#### 3. Run Composer
+Install theme dependencies
+```shell script
+cd /var/www/htdocs/wp-content/themes/travelshop
+composer install
+```
+
+#### 4. Setup pressmind SDK
+Run the pressmind SDK installer. 
+The script will ask for some database- and pressmind API credentials and then 
+it will configures the sdk with custom models.
 
 ```shell script
 cd /var/www/htdocs/wp-content/themes/travelshop/cli/
 php install.php
 ```
 
+the install script creates a config file, edit if you need it.
+if you have a big system, it's recommend to check this properties.
+
+```shell script
+nano /var/www/htdocs/wp-content/themes/travelshop/cli/pm-config.php
+```
+
+to check a valid installation, read the command line output.
+also you can take look in you're database, you will find a some tables there.
+
 #### 5. Import the data
 the import script will import the whole data from pressmind to your server.
 the script inserts records in the database, will download images
 and processes the images to the defined image derivatives (see pm-config.php)
-all images are processed in the background 
+all images are processed in the background.
 (use `top` to see what is happens after or between the script is running) 
+this process can take an while.
 
 ```shell script
+cd /var/www/htdocs/wp-content/themes/travelshop/cli/
 php import.php fullimport
 ```
-#### 6. Ready!
-if the full import is done you can build your site.
 
+if you need only a few products (for testing) use this command instead the fullimport:
+```shell script
+php import.php mediaobject 12345,12346
+```
+
+to check a valid import, look in the database, some of the tables named with "objectdata_*" 
+must contain data.
+
+#### 6. Theme activation
+activate the theme
+(and pls remove the wordpress default theme's like twenty*)
+
+
+#### 7. check config files
+check this files for advanced configuration:
+* config-theme.php
+* config-routing.php
+* pm-config.php (pressmind SDK config)
+
+Also check functions.php, the first few lines containing onboarding code, that can be removed.
+
+
+#### 8. Ready!
+if the full import is done you can build your site.
 
 #### pressmind PIM Integration
 Please send the path to your WordPress site (stage and/or production) 
@@ -56,7 +96,7 @@ to your pressmind integration manager.
 After our integration is done, the pressmind application will push data changes to your site.
 Even the user can click on a preview-button or can trigger the database update manually.
 
-The Pressmind uses this two endpoints:
+The Pressmind application uses this two endpoints:
 
 ```
 // Case 1: Push data on change to your site

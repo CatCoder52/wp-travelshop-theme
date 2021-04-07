@@ -18,7 +18,7 @@ It's based on the pressmind® web-core SDK.
 * the travelshop matches the german tour-operator market
 
 #### For Freelance Web-Developers & Agencies
-If you're planning a travelshop for german tour-operators, it's possible to use this theme as a starting point for your project.
+If you're planning a travelshop for german (DACH) tour-operators, it's possible to use this theme as a starting point for your project.
 Keep in mind that you need pressmind®, so you do not build or integrate complex booking technology.
 
 In most cases this is the basic setup for each travelshop:
@@ -26,30 +26,17 @@ In most cases this is the basic setup for each travelshop:
 * pressmind® IB3 (seamless booking engine, with connectors to a lot of german tour-operator Systems like BusPro, Blank, DaVinci, TouPac, turista 2/3, STADIS)
 * pressmind® web-core SDK or this theme
 
-#### Quick Install
-* Download the [latest theme Build](https://github.com/pressmind/wp-travelshop-theme/releases/latest)
-* Extract the zip or tarball file to your WordPress theme directory
-*  After extracting the zip file your themes folder should look something like this:
-    * themes
-        * some_other_theme/
-        * travelshop/
-            * assets/
-            * cli/
-            * Custom/
-            * functions/
-            * src/
-            * template-parts
-            * ...
-* create a database and a database user
-* on a console move to the themes folder (cd /var/www/vhosts/my-project/wp-content/themes/travelshop)
-* run "composer install" inside the themes directory (wp-content/themes/travelshop)
-* move to the directory travelshop/cli, run "php install.php" in travelshop/cli/ enter the requested credentials when asked by installation script
-* activate the theme
-* run "php import.php fullimport" in travelshop/cli/
-* after a few minutes your travelshop is running
 
 #### More Information:
-* [Installation via Composer](./travelshop/installation.md)
+* [Installation Documentation](./travelshop/installation.md)
 * [Common Theme Documentation](./travelshop/readme-theme.md)
-* [QueryString API](./travelshop/readme-querystring-api.md)
+
+#### How to generate product list? 
+it's possible to output product listings on three different ways:
+
+* list by the media object default list route by GET params
+* list by shortcodes
+* list by the default pressmind sdk framework
+
+For examples and more informations look at the theme specific [QueryString API](./travelshop/readme-querystring-api.md)
 
