@@ -46,7 +46,6 @@ In most cases this is the basic setup for each travelshop:
 * [Installation Documentation](./travelshop/installation.md)
 * [Common Theme Documentation](./travelshop/readme-theme.md)
 
-
 #### How to generate product lists? 
 It's possible to output product listings on three different ways:
 
@@ -56,4 +55,10 @@ It's possible to output product listings on three different ways:
 
 For examples and more informations look at the 
 theme specific [QueryString API](./travelshop/readme-querystring-api.md)
+
+#### Theme Developer Documentation
+Take a look at the [pressmind web-core project](https://github.com/pressmind/web-core-skeleton-basic/#quickstart), 
+most of the pressmind sdk implementation in this theme is based on those examples.
+
+
 
