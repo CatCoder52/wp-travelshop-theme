@@ -127,7 +127,7 @@ $cheapest_price = $args['cheapest_price'];
                 <div class="row">
                     <div class="col-12">
                         <small>Es konnten keine gültigen Termine gefunden werden. Bitte wenden Sie sich an
-                            unsere Service-Center.</small>
+                            unser Service-Center.</small>
                     </div>
                 </div>
             </div>
