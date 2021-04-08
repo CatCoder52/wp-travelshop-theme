@@ -37,6 +37,7 @@ if ( $('[data-type="daterange"]').length > 0 ) {
         "maxYear": moment().add(1, 'years').format('YYYY'),
         "minDate": moment().format('DD/MM/YYYY'),
         "maxDate": moment().add(1, 'years').format('DD/MM/YYYY'),
+        "showCustomRangeLabel": false,
         // "autoApply": true,
         "locale": {
             "format": "DD.MM.YYYY",
