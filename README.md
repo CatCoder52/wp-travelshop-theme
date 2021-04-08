@@ -41,6 +41,10 @@ In most cases this is the basic setup for each travelshop:
 * Amazon S3 support
 * ... and many more
 
+#### System overview
+
+![system overview](./travelshop/assets/img/pressmind_travelshop.png)
+
 
 #### More Information:
 * [Installation Documentation](./travelshop/installation.md)
@@ -55,6 +59,7 @@ It's possible to output product listings on three different ways:
 
 For examples and more informations look at the 
 theme specific [QueryString API](./travelshop/readme-querystring-api.md)
+
 
 #### Theme Developer Documentation
 Take a look at the [pressmind web-core project](https://github.com/pressmind/web-core-skeleton-basic/#quickstart), 
