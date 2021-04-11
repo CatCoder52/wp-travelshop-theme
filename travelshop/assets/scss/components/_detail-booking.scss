@@ -15,8 +15,11 @@
 
     .booking-row {
       > div {
-        padding: .75rem;
-        line-height: 1;
+        padding: .5rem 1rem;
+        line-height: 1.5;
+        @include media-breakpoint-up(md) {
+          padding: .75rem;
+        }
       }
 
       border-top: 1px solid $gray-200;
@@ -25,7 +28,6 @@
       + .booking-row {
         border-top:0;
       }
-
 
       &.booking-row-head {
         font-size: 1.25rem;
@@ -41,6 +43,16 @@
 
       &.booking-row-date {
         font-size: $font-size-sm;
+        @include border-radius($card-border-radius);
+
+        &:nth-child(even) {
+          background: $gray-200;
+        }
+
+        @include media-breakpoint-down(sm) {
+          padding: .75rem 0;
+        }
+
       }
     }
   }
