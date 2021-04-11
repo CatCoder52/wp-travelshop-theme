@@ -47,42 +47,44 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
 
     <!-- CONTENT: START -->
     <div class="content-main">
+
+        <?php
+
+        $breadcrumb = array();
+        $tmp = new stdClass();
+        $tmp->name = 'Startseite';
+        $tmp->url = site_url();
+        $breadcrumb[] = $tmp;
+
+
+        $breadcrumb_search_url = site_url() . '/' . $PMTravelShop->RouteProcessor->get_url_by_object_type($mo->id_object_type) . '/';
+        foreach ($moc->reiseart_default as $item) {
+            $reiseart = $item->toStdClass();
+            $tmp = new stdClass();
+            $tmp->name = $reiseart->item->name;
+            $tmp->url = $breadcrumb_search_url.'?pm-c[reiseart_default]='.$reiseart->item->id;
+            $breadcrumb[] = $tmp;
+        }
+
+
+        foreach ($moc->zielgebiet_default as $item) {
+            $zielgebiet = $item->toStdClass();
+            $tmp = new stdClass();
+            $tmp->name = $zielgebiet->item->name;
+            $tmp->url = $breadcrumb_search_url.'?pm-c[zielgebiet_default]='.$zielgebiet->item->id;;
+            $breadcrumb[] = $tmp;
+        }
+
+
+        $tmp = new stdClass();
+        $tmp->name = strip_tags($moc->headline_default);
+        $tmp->url = null;
+        $breadcrumb[] = $tmp;
+
+        the_breadcrumb(null, null, $breadcrumb);
+        ?>
+
         <div class="container">
-            <?php
-
-            $breadcrumb = array();
-            $tmp = new stdClass();
-            $tmp->name = 'Startseite';
-            $tmp->url = site_url();
-            $breadcrumb[] = $tmp;
-
-
-            $breadcrumb_search_url = site_url() . '/' . $PMTravelShop->RouteProcessor->get_url_by_object_type($mo->id_object_type) . '/';
-            foreach ($moc->reiseart_default as $item) {
-                $reiseart = $item->toStdClass();
-                $tmp = new stdClass();
-                $tmp->name = $reiseart->item->name;
-                $tmp->url = $breadcrumb_search_url.'?pm-c[reiseart_default]='.$reiseart->item->id;
-                $breadcrumb[] = $tmp;
-            }
-
-
-            foreach ($moc->zielgebiet_default as $item) {
-                $zielgebiet = $item->toStdClass();
-                $tmp = new stdClass();
-                $tmp->name = $zielgebiet->item->name;
-                $tmp->url = $breadcrumb_search_url.'?pm-c[zielgebiet_default]='.$zielgebiet->item->id;;
-                $breadcrumb[] = $tmp;
-            }
-
-
-            $tmp = new stdClass();
-            $tmp->name = strip_tags($moc->headline_default);
-            $tmp->url = null;
-            $breadcrumb[] = $tmp;
-
-            the_breadcrumb(null, null, $breadcrumb);
-            ?>
 
             <!-- CONTENT_SECTION_DETAIL_HEADER: START -->
             <section class="content-block content-block-detail-header">
