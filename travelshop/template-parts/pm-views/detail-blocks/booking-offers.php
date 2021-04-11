@@ -30,6 +30,7 @@ $cheapest_price = $args['cheapest_price'];
 
 ?>
 <?php if (!is_null($cheapest_price)) { ?>
+
     <section class="content-block content-block-detail-booking" id="content-block-detail-booking">
         <div class="container">
             <div class="row">
@@ -39,7 +40,7 @@ $cheapest_price = $args['cheapest_price'];
                     <div class="content-block-detail-booking-inner">
 
                         <!-- BOOKING_ROW_HEAD: START -->
-                        <div class="booking-row no-gutters row booking-row-head">
+                        <div class="booking-row no-gutters row booking-row-head d-none d-md-flex">
                             <div class="col-3">
                                 Termin
                             </div>
@@ -76,7 +77,10 @@ $cheapest_price = $args['cheapest_price'];
 
                                     <!-- BOOKING_ROW_DATE: START -->
                                     <div class="booking-row no-gutters row booking-row-date">
-                                        <div class="col-3">
+                                        <div class="col-6 d-block d-md-none">
+                                            Termin
+                                        </div>
+                                        <div class="col-6 col-md-3">
 
                                             <?php echo HelperFunctions::dayNumberToLocalDayName($date->departure->format('N'), 'short') ?> <?php echo $date->departure->format('d.m.'); ?>
                                             -
@@ -85,21 +89,30 @@ $cheapest_price = $args['cheapest_price'];
                                             <span class="badge badge-success">Buchbar</span>
 
                                         </div>
-                                        <div class="col-2">
+                                        <div class="col-6 d-block d-md-none">
+                                            Code
+                                        </div>
+                                        <div class="col-6 col-md-2">
                                             <?php
                                             echo implode('/', array_filter([$date->code, $housing_option->code]));
                                             ?>
                                         </div>
-                                        <div class="col-2">
+                                        <div class="col-6 d-block d-md-none">
+                                            Info
+                                        </div>
+                                        <div class="col-6 col-md-2">
                                             <?php
                                             echo implode(',', array_filter([$housing_package->name, $housing_option->name, $housing_option->board_type]));
                                             ?>
                                         </div>
-                                        <div class="col-2">
+                                        <div class="col-6 d-block d-md-none">
+                                            Preis p.P.
+                                        </div>
+                                        <div class="col-6 col-md-2">
                                             <strong class="price"><?php echo HelperFunctions::number_format($housing_option->price); ?>
                                                 €</strong>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-12 col-md-3">
 
                                             <a class="btn btn-outline-primary btn-block" target="_blank" rel="nofollow"
                                                href="https://demo.pressmind-ibe.net/?imo=<?php echo $booking_package->id_media_object; ?>&idbp=<?php echo $booking_package->id; ?>&idhp=<?php echo $housing_package->id; ?>&idd=<?php echo $date->id; ?>&iho[<?php echo $housing_option->id; ?>]=1">

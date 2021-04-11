@@ -11358,40 +11358,62 @@ hr {
   }
 }
 
-.card.card-travel {
-  margin-bottom: 30px;
-  height: 480px;
+.card-travel-wrapper {
+  padding-bottom: 30px;
 }
-.card.card-travel .attribute-row {
+@media (max-width: 575.98px) {
+  .card-travel-wrapper {
+    padding: 0 0 30px 0;
+  }
+}
+.card-travel-wrapper .card.card-travel {
+  height: 100%;
+}
+.card-travel-wrapper .card.card-travel .card-body {
+  padding: 1.25rem 1.25rem 9rem 1.25rem;
+  position: relative;
+}
+.card-travel-wrapper .card.card-travel .card-body .attribute-row {
   height: 26px;
   overflow: hidden;
 }
-.card.card-travel .subline {
-  position: absolute;
-  top: 280px;
-  height: 80px;
+.card-travel-wrapper .card.card-travel .card-body .subline {
+  height: auto;
   overflow: hidden;
-}
-.card.card-travel .fade-out {
-  display: block;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 80px;
-  background: linear-gradient(transparent 40px, white);
-}
-.card.card-travel .price-row {
-  position: absolute;
-  bottom: 60px;
-}
-.card.card-travel a.btn {
-  position: absolute;
-  bottom: 20px;
-}
-.card.card-travel .card-image-holder {
   position: relative;
 }
-.card.card-travel .card-image-holder .card-badge {
+@media (min-width: 768px) {
+  .card-travel-wrapper .card.card-travel .card-body .subline {
+    height: 80px;
+  }
+}
+@media (min-width: 768px) {
+  .card-travel-wrapper .card.card-travel .card-body .subline .fade-out {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(0deg, white 0%, rgba(255, 255, 255, 0) 40px);
+  }
+}
+.card-travel-wrapper .card.card-travel .card-body .price-row {
+  position: absolute;
+  bottom: calc(2rem + 38px);
+  left: 1.25rem;
+  right: 1.25rem;
+  margin-bottom: 0;
+}
+.card-travel-wrapper .card.card-travel .card-body a.btn {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+}
+.card-travel-wrapper .card.card-travel .card-image-holder {
+  position: relative;
+}
+.card-travel-wrapper .card.card-travel .card-image-holder .card-badge {
   position: absolute;
   top: 1.25rem;
   left: 1.25rem;
@@ -11402,10 +11424,10 @@ hr {
   padding: 0.375rem;
   border-radius: 0.25rem;
 }
-.card.card-travel .card-image-holder .card-badge--new {
+.card-travel-wrapper .card.card-travel .card-image-holder .card-badge--new {
   background-color: #dc3545;
 }
-.card.card-travel .card-image-holder .card-badge--top-offer {
+.card-travel-wrapper .card.card-travel .card-image-holder .card-badge--top-offer {
   background-color: #28a745;
 }
 
@@ -11993,8 +12015,13 @@ hr {
   border-bottom: 1px solid #e9ecef;
 }
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div {
-  padding: 0.75rem;
-  line-height: 1;
+  padding: 0.5rem 1rem;
+  line-height: 1.5;
+}
+@media (min-width: 768px) {
+  .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div {
+    padding: 0.75rem;
+  }
 }
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row + .booking-row {
   border-top: 0;
@@ -12011,6 +12038,15 @@ hr {
 }
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-date {
   font-size: 0.875rem;
+  border-radius: 0.25rem;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-date:nth-child(even) {
+  background: #e9ecef;
+}
+@media (max-width: 767.98px) {
+  .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-date {
+    padding: 0.75rem 0;
+  }
 }
 
 .content-block {
@@ -12084,22 +12120,19 @@ hr {
 }
 .teaser.image-teaser .teaser-image {
   border-radius: 0.25rem;
-  height: 218px;
   background-color: lightgray;
+  background-position: center;
+  background-size: cover;
+  height: 218px;
 }
 .teaser.image-teaser .teaser-image:after {
   content: "";
-  display: block;
-  clear: both;
   position: absolute;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  top: 0;
-  border-radius: 0.25rem;
-  /*@include gradient-y(rgba(#000, 0), rgba(#000, .5));*/
-}
-.teaser.image-teaser .teaser-image img {
+  background: rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
 }
 .teaser.image-teaser .teaser-body {
@@ -12256,24 +12289,22 @@ button.select-from-control i.la {
 .layout-block.layout-block-search-header {
   position: relative;
 }
+@media (min-width: 768px) {
+  .layout-block.layout-block-search-header {
+    background-image: url(../img/slide-1.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+}
 .layout-block.layout-block-search-header .layout-block-search-header--search {
   z-index: 10;
-}
-@media (min-width: 768px) {
-  .layout-block.layout-block-search-header .layout-block-search-header--search {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-  }
 }
 .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper {
   padding: 30px 0;
 }
 @media (min-width: 768px) {
   .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper {
-    padding: 0;
+    padding: 30px 0;
   }
   .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper .h1 {
     color: #fff;
@@ -12290,34 +12321,6 @@ button.select-from-control i.la {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
     border-radius: 0.25rem;
   }
-}
-.layout-block.layout-block-search-header .layout-block-search-header--background {
-  display: none;
-  position: relative;
-}
-@media (min-width: 768px) {
-  .layout-block.layout-block-search-header .layout-block-search-header--background {
-    display: block;
-  }
-}
-.layout-block.layout-block-search-header .layout-block-search-header--background:before {
-  display: block;
-  content: "";
-  width: 100%;
-  padding-top: 28.5714285714%;
-}
-.layout-block.layout-block-search-header .layout-block-search-header--background > div {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.layout-block.layout-block-search-header .layout-block-search-header--background > div img {
-  height: 100%;
-  width: 100%;
-  object-position: center;
-  object-fit: cover;
 }
 
 .jumbotron {

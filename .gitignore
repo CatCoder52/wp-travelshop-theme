@@ -6,3 +6,4 @@ travelshop/template-parts/pm-views/*_Detail1.php
 travelshop/template-parts/pm-views/*_Teaser1.php
 travelshop/Custom/MediaType/*.php
 travelshop/docs/objecttypes
+travelshop/assets/scss/*.map
