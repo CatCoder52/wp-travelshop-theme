@@ -22,7 +22,7 @@ $pages = $search->getPaginator()->getTotalPages();
 
     <div class="list-filter-toggle mb-4 ">
         <button class="btn btn-block btn-secondary list-filter-open">
-            <i class="la la-filter"></i> Reisen filtern
+            Reisen filtern
         </button>
     </div>
 

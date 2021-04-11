@@ -8,11 +8,11 @@ $('#search-filter').on('click', '.toggle-second-level', function(e) {
 // ------------------------------------------------
 // --- Filter toggle
 // ------------------------------------------------
-$('#search-filter').on('click', '.list-filter-close', function(e) {
+$('#search-result').on('click', '.list-filter-close', function(e) {
     $('.content-block-list-filter').removeClass('is--open');
 });
 
-$('#search-filter').on('click', '.list-filter-open', function(e) {
+$('#search-result').on('click', '.list-filter-open', function(e) {
     $('.content-block-list-filter').addClass('is--open');
 });
 

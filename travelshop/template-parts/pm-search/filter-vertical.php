@@ -12,21 +12,6 @@ if(empty($_GET['pm-ot']) === true){ // if the id_object_type is not defined by s
 }
 
 
-
-/**
- * build the filter based on the current search request
- */
-
-$search = new Pressmind\Search(
-    [
-        //Pressmind\Search\Condition\Category::create('zielgebiet_default', ['304E15ED-302F-CD33-9153-14B8C6F955BD', '4C5833CB-F29A-A0F4-5A10-14B762FB4019', '78321653-CF81-2EF1-ED02-9D07E01651C1']),
-        //Pressmind\Search\Condition\PriceRange::create(100, 3000),
-        //Pressmind\Search\Condition\DurationRange::create(0, 30),
-        //Pressmind\Search\Condition\Visibility::create([10,30]),
-        Pressmind\Search\Condition\ObjectType::create($id_object_type),
-    ]
-);
-
 $search = BuildSearch::fromRequest($_GET, 'pm', false);
 
 ?>
@@ -39,7 +24,13 @@ $search = BuildSearch::fromRequest($_GET, 'pm', false);
             <div class="h4 mt-0 mb-4"><i class="la la-filter"></i> Filter</div>
 
             <button class="list-filter-close">
-                <i class="la la-times"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="28" height="28"
+                     viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z"/>
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
             </button>
 
             <div class="list-filter-boxes">
