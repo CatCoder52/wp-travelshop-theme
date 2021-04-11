@@ -37,7 +37,7 @@ rest_output_link_header, rsd_link,wlwmanifest_link, wp_shortlink_wp_head,wp_gene
 #### High Availibilty (HA)
 It's possible to use this theme for high traffic and availibility setups (e.g. AWS, Google, Kubernetes). 
 ask you're pressmind team for further informations. 
-in advance: don't use plugin's. ask us.
+in advance: don't use wordpress plugin's. ask us.
  
 #### Caching
 the theme is ready for redis object caching (based on PECL phpredis). It's also possible to use

@@ -19,24 +19,25 @@ $('#search-filter').on('click', '.list-filter-open', function(e) {
 // -------------------------------------------------
 // --- Daterangepicker
 // -------------------------------------------------
+
 if ( $('[data-type="daterange"]').length > 0 ) {
     $('[data-type="daterange"]').daterangepicker({
         "ranges": {
-            'Today': [moment(), moment()],
-            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-            'This Month': [moment().startOf('month'), moment().endOf('month')],
-            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            'Heute': [moment(), moment()],
+            'Abreise in 30 Tagen': [moment().add(30, 'days'), moment().add(1, 'year')],
+            'Abreise in 60 Tagen': [moment().add(60, 'days'), moment().add(1, 'year')],
+            'in diesem Monat': [moment().startOf('month'), moment().endOf('month')],
+            'im nächsten Monat': [moment().add(1, 'month').startOf('month'), moment().add(1, 'month').endOf('month')],
         },
         "showWeekNumbers": true,
         "autoUpdateInput": false,
         "alwaysShowCalendars": true,
         "showDropdowns": true,
-        "minYear": 2020,
-        "maxYear": 2021,
-        "minDate": "01/01/2020",
-        "maxDate": "01/01/2021",
+        "minYear": moment().format('YYYY'),
+        "maxYear": moment().add(1, 'years').format('YYYY'),
+        "minDate": moment().format('DD/MM/YYYY'),
+        "maxDate": moment().add(1, 'years').format('DD/MM/YYYY'),
+        "showCustomRangeLabel": false,
         // "autoApply": true,
         "locale": {
             "format": "DD.MM.YYYY",
