@@ -11490,10 +11490,18 @@ hr {
 .card-travel-wrapper .card.card-travel .card-image-holder .card-badge--top-offer {
   background-color: #28a745;
 }
+.card-travel-wrapper .card.card-travel .card-image-holder img {
+  border-bottom-left-radius: calc(0.25rem - 1px);
+  border-bottom-right-radius: calc(0.25rem - 1px);
+}
 @media (min-width: 768px) {
   .card-travel-wrapper .card.card-travel .card-image-holder {
     height: fit-content;
     flex: 0 0 auto;
+  }
+  .card-travel-wrapper .card.card-travel .card-image-holder img {
+    border-bottom-left-radius: unset;
+    border-bottom-right-radius: unset;
   }
 }
 @media (min-width: 768px) {

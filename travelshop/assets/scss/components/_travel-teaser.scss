@@ -146,11 +146,23 @@
         &--top-offer {
           background-color: $success;
         }
+
+      }
+
+      img {
+        border-bottom-left-radius: calc(0.25rem - 1px);
+        border-bottom-right-radius: calc(0.25rem - 1px);
       }
 
       @include media-breakpoint-up(md)  {
         height: fit-content;
         flex: 0 0 auto;
+
+        img {
+          border-bottom-left-radius:unset;
+          border-bottom-right-radius: unset;
+        }
+
       }
 
     }
