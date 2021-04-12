@@ -11540,14 +11540,14 @@ hr {
 }
 .content-block.content-block-list-filter .list-filter button.list-filter-close {
   display: none;
-  padding: 0;
-  line-height: 40px;
-  height: 40px;
+  padding: 4px;
+  line-height: 0;
   border-radius: 20px;
   border: 0;
   outline: none;
   background-color: #fff;
-  width: 40px;
+  width: 36px;
+  height: 36px;
   position: absolute;
   top: 30px;
   right: 30px;
