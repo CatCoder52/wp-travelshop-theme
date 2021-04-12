@@ -168,6 +168,8 @@
   }
 
   @include media-breakpoint-up(md)  {
+    padding: 0 15px $grid-gutter-width 15px;
+
     .row {
       margin: 0 -15px;
       align-items: unset;

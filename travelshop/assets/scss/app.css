@@ -11506,6 +11506,9 @@ hr {
   }
 }
 @media (min-width: 768px) {
+  .card-travel-wrapper {
+    padding: 0 15px 30px 15px;
+  }
   .card-travel-wrapper .row {
     margin: 0 -15px;
     align-items: unset;
@@ -12123,9 +12126,7 @@ hr {
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-programm {
   font-size: 1rem;
   font-weight: bold;
-  background: #495057;
-  background: -webkit-linear-gradient(to right, #495057, #adb5bd);
-  background: linear-gradient(to right, #495057, #adb5bd);
+  background: #adb5bd;
   color: #fff;
 }
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-date {
