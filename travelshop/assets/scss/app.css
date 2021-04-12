@@ -11374,7 +11374,7 @@ hr {
   height: 100%;
 }
 .card-travel-wrapper .card.card-travel .card-body {
-  padding: 0.25rem 1rem;
+  padding: 0.25rem 0 0.25rem 1rem;
   position: relative;
 }
 .card-travel-wrapper .card.card-travel .card-body .card-title {
