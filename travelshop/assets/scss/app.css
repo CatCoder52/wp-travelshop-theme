@@ -11359,7 +11359,7 @@ hr {
 }
 
 .card-travel-wrapper {
-  padding-bottom: 30px;
+  padding: 0 0 30px 0;
 }
 .card-travel-wrapper .row {
   margin: 0 -30px;
