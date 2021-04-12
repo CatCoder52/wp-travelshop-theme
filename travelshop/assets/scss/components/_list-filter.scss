@@ -1,6 +1,14 @@
 .list-filter-toggle {
   display: none;
 
+  .list-filter-open {
+    span {
+      display: inline-block;
+      margin-left: .25rem;
+      transform: translateY(2px);
+    }
+  }
+
   @include media-breakpoint-down(sm) {
     display: block;
   }

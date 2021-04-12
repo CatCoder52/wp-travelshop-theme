@@ -11361,33 +11361,76 @@ hr {
 .card-travel-wrapper {
   padding-bottom: 30px;
 }
-@media (max-width: 575.98px) {
-  .card-travel-wrapper {
-    padding: 0 0 30px 0;
-  }
+.card-travel-wrapper .row {
+  margin: 0 -30px;
+  align-items: center;
 }
 .card-travel-wrapper .card.card-travel {
   height: 100%;
+  border-width: 0;
+}
+.card-travel-wrapper .card.card-travel .container, .card-travel-wrapper .card.card-travel .row {
+  position: relative;
+  height: 100%;
 }
 .card-travel-wrapper .card.card-travel .card-body {
-  padding: 1.25rem 1.25rem 9rem 1.25rem;
+  padding: 0.25rem 1rem;
   position: relative;
 }
+.card-travel-wrapper .card.card-travel .card-body .card-title {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+.card-travel-wrapper .card.card-travel .card-body .card-title a {
+  color: #212529;
+}
 .card-travel-wrapper .card.card-travel .card-body .attribute-row {
-  height: 26px;
-  overflow: hidden;
+  display: none;
 }
 .card-travel-wrapper .card.card-travel .card-body .subline {
   height: auto;
   overflow: hidden;
   position: relative;
+  font-size: 0.75rem;
+  margin-bottom: 0;
+}
+.card-travel-wrapper .card.card-travel .card-body .price-row {
+  line-height: 1.3;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.card-travel-wrapper .card.card-travel .card-body .price-row .small span {
+  font-weight: 500;
+}
+.card-travel-wrapper .card.card-travel .card-body .price-row a {
+  color: #fff;
+  background: #007bff;
+  padding: 0.1rem 0.4rem;
+  border-radius: 5px;
+}
+.card-travel-wrapper .card.card-travel .card-body .price-row a strong {
+  white-space: nowrap;
+  font-size: 1rem;
+}
+.card-travel-wrapper .card.card-travel .card-body a.btn {
+  display: none;
 }
 @media (min-width: 768px) {
+  .card-travel-wrapper .card.card-travel .card-body {
+    padding: 1.25rem 1.25rem 9rem 1.25rem;
+    flex: 1 0 auto;
+  }
+  .card-travel-wrapper .card.card-travel .card-body .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
   .card-travel-wrapper .card.card-travel .card-body .subline {
+    font-size: 1rem;
+    margin-bottom: 1rem;
     height: 80px;
   }
-}
-@media (min-width: 768px) {
   .card-travel-wrapper .card.card-travel .card-body .subline .fade-out {
     display: block;
     position: absolute;
@@ -11396,27 +11439,44 @@ hr {
     height: 80px;
     background: linear-gradient(0deg, white 0%, rgba(255, 255, 255, 0) 40px);
   }
-}
-.card-travel-wrapper .card.card-travel .card-body .price-row {
-  position: absolute;
-  bottom: calc(2rem + 38px);
-  left: 1.25rem;
-  right: 1.25rem;
-  margin-bottom: 0;
-}
-.card-travel-wrapper .card.card-travel .card-body a.btn {
-  position: absolute;
-  bottom: 1.25rem;
-  left: 1.25rem;
-  right: 1.25rem;
+  .card-travel-wrapper .card.card-travel .card-body .attribute-row {
+    display: block;
+    height: 26px;
+    overflow: hidden;
+  }
+  .card-travel-wrapper .card.card-travel .card-body .price-row {
+    position: absolute;
+    bottom: calc(2rem + 38px);
+    left: 1.25rem;
+    right: 1.25rem;
+    display: block;
+  }
+  .card-travel-wrapper .card.card-travel .card-body .price-row small span {
+    font-weight: normal;
+  }
+  .card-travel-wrapper .card.card-travel .card-body .price-row a {
+    color: #212529;
+    background: transparent;
+    padding: 0;
+  }
+  .card-travel-wrapper .card.card-travel .card-body .price-row a strong {
+    font-size: 1.25rem;
+  }
+  .card-travel-wrapper .card.card-travel .card-body a.btn {
+    display: block;
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    right: 1.25rem;
+  }
 }
 .card-travel-wrapper .card.card-travel .card-image-holder {
   position: relative;
 }
 .card-travel-wrapper .card.card-travel .card-image-holder .card-badge {
   position: absolute;
-  top: 1.25rem;
-  left: 1.25rem;
+  top: 0.5rem;
+  left: 0.5rem;
   font-size: 0.7125rem;
   line-height: 1;
   color: #fff;
@@ -11430,9 +11490,39 @@ hr {
 .card-travel-wrapper .card.card-travel .card-image-holder .card-badge--top-offer {
   background-color: #28a745;
 }
+@media (min-width: 768px) {
+  .card-travel-wrapper .card.card-travel .card-image-holder {
+    height: fit-content;
+    flex: 0 0 auto;
+  }
+}
+@media (min-width: 768px) {
+  .card-travel-wrapper .card.card-travel {
+    border-width: 1px;
+  }
+  .card-travel-wrapper .card.card-travel .card-image-holder .card-badge {
+    top: 1.25rem;
+    left: 1.25rem;
+  }
+}
+@media (min-width: 768px) {
+  .card-travel-wrapper .row {
+    margin: 0 -15px;
+    align-items: unset;
+    flex-direction: column;
+  }
+  .card-travel-wrapper .row .col-md-12 {
+    flex: 0 0 auto;
+  }
+}
 
 .list-filter-toggle {
   display: none;
+}
+.list-filter-toggle .list-filter-open span {
+  display: inline-block;
+  margin-left: 0.25rem;
+  transform: translateY(2px);
 }
 @media (max-width: 767.98px) {
   .list-filter-toggle {
@@ -12031,10 +12121,12 @@ hr {
   color: #495057;
 }
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-programm {
-  font-size: 0.7125rem;
+  font-size: 1rem;
   font-weight: bold;
-  background-color: #e9ecef;
-  color: #495057;
+  background: #495057;
+  background: -webkit-linear-gradient(to right, #495057, #adb5bd);
+  background: linear-gradient(to right, #495057, #adb5bd);
+  color: #fff;
 }
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-date {
   font-size: 0.875rem;
@@ -12046,6 +12138,11 @@ hr {
 @media (max-width: 767.98px) {
   .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-date {
     padding: 0.75rem 0;
+  }
+}
+@media (min-width: 768px) {
+  .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-date {
+    align-items: center;
   }
 }
 
@@ -12300,7 +12397,7 @@ button.select-from-control i.la {
   z-index: 10;
 }
 .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper {
-  padding: 30px 0;
+  padding: 30px 0 1rem 0;
 }
 @media (min-width: 768px) {
   .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper {

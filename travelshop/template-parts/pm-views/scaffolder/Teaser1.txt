@@ -28,34 +28,58 @@ $class = empty($data['custom_data']->class) ? 'col-12 col-md-6 col-lg-3' : $data
  */
 ?>
 
+<?php
+    // Build the detail-page link,
+    // we add some search values to deliver to customize the offers on the the detail page
+    $url = SITE_URL . $media_object->getPrettyUrl();
+
+    // only this search params are transmitted, price range (pm-pr), date range (pm-dr)
+    $allowedParams = ['pm-pr', 'pm-dr'];
+    $filteredParams = array_filter($_GET,
+        function ($key) use ($allowedParams) {
+            return in_array($key, $allowedParams);
+        },
+        ARRAY_FILTER_USE_KEY
+    );
+
+    if(empty($filteredParams) === false){
+        $query_string = http_build_query($filteredParams);
+        $url .= '?'.$query_string;
+    }
+?>
+
 <div class="<?php echo $class; ?> card-travel-wrapper">
     <div class="card card-travel">
 
+        <div class="container">
+
+        <div class="row">
 
         <?php
         if (empty($reise->bilder_default[0]) === false) {
             ?>
 
-            <div class="card-image-holder">
+            <div class="card-image-holder col-4 col-sm-5 col-md-12 p-0">
                 <div class="card-badge card-badge--new">
                     <!--<div class="card-badge card-badge--top-offer">-->
                     Neu
                 </div>
-                <img src="<?php echo $reise->bilder_default[0]->getUri('teaser'); ?>"
-                     title="<?php echo $reise->bilder_default[0]->copyright; ?>"
-                     alt="<?php echo $reise->bilder_default[0]->alt; ?>"
-                     class="card-img-top"
-                     loading="lazy"
-                >
+                <a href="<?php echo $url; ?>">
+                    <img src="<?php echo $reise->bilder_default[0]->getUri('teaser'); ?>"
+                        title="<?php echo $reise->bilder_default[0]->copyright; ?>"
+                        alt="<?php echo $reise->bilder_default[0]->alt; ?>"
+                        class="card-img-top"
+                        loading="lazy"
+                    >
+                </a>
             </div>
 
         <?php } ?>
 
-        <div class="card-body">
+        <div class="card-body col-8 col-sm-7 col-md-12">
 
             <h5 class="card-title">
-
-                <?php echo $reise->headline_default; ?>
+                <a href="<?php echo $url; ?>"><?php echo strip_tags($reise->headline_default); ?></a>
             </h5>
             <p class="attribute-row">
                 <?php
@@ -91,43 +115,30 @@ $class = empty($data['custom_data']->class) ? 'col-12 col-md-6 col-lg-3' : $data
                 <?php
                 // cheapest price
                 if (empty($cheapest_price->price_option) === false) { ?>
-                    <span class="small"><?php
-                        echo $cheapest_price->duration . ' Tage Reise<br>';
+                    <span class="small">
+                        <?php
+                        echo '<span>' . $cheapest_price->duration . ' Tage Reise</span><br>';
                         echo $cheapest_price->date_departure->format('d.m') . ' - ' . $cheapest_price->date_arrival->format('d.m.Y');
-                        ?></span><br />
-                    <strong class="h5 mt-0 mb-0"><?php
-                        echo ' ab ' . number_format($cheapest_price->price_option, 0, ',', '.') . '&nbsp;€';
                         ?>
-                    </strong>
+                    </span><br class="d-none d-md-block" />
+                    <a href="<?php echo $url; ?>">
+                        <strong class="h5 mt-0 mb-0"><?php
+                            echo ' ab ' . number_format($cheapest_price->price_option, 0, ',', '.') . '&nbsp;€';
+                            ?>
+                        </strong>
+                    </a>
 
                     <?php
                 }
                 ?>
             </p>
 
-            <?php
-
-            // Build the detail-page link,
-            // we add some search values to deliver to customize the offers on the the detail page
-            $url = SITE_URL . $media_object->getPrettyUrl();
-
-            // only this search params are transmitted, price range (pm-pr), date range (pm-dr)
-            $allowedParams = ['pm-pr', 'pm-dr'];
-            $filteredParams = array_filter($_GET,
-                function ($key) use ($allowedParams) {
-                    return in_array($key, $allowedParams);
-                },
-                ARRAY_FILTER_USE_KEY
-            );
-
-            if(empty($filteredParams) === false){
-                $query_string = http_build_query($filteredParams);
-                $url .= '?'.$query_string;
-            }
-            ?>
-            <a href="<?php echo $url; ?>" class="btn btn-primary stretched-link">Details</a>
+            <a href="<?php echo $url; ?>" class="btn btn-primary stretched-link">Go somewhere</a>
         </div>
 
+        </div>
+
+        </div>
 
     </div>
 </div>
