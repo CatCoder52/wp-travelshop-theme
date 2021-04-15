@@ -1,9 +1,9 @@
 # Installation
 #### 1. Download
-Install the WordPress Theme. 
-Download the [latest theme Build](https://github.com/pressmind/wp-travelshop-theme/releases/latest) 
-and extract it to your theme dir (wp-content/themes/travelshop))  .
-After extracting the zip/tarball file your themes folder should look something like this: 
+Install the WordPress theme. 
+Download the [latest theme build](https://github.com/pressmind/wp-travelshop-theme/releases/latest) 
+and extract it to your theme dir (wp-content/themes/travelshop).
+After extracting the zip/tarball file, your themes folder should look like this: 
 * wp-content
     * themes
         * travelshop
@@ -17,16 +17,16 @@ After extracting the zip/tarball file your themes folder should look something l
 
     
 #### 2. Create a database 
-It's recommend to create a dedicated database for the pressmind content
-(don't use the wordpress default database).
+It is recommended to create a dedicated database for the pressmind content
+(do not use the wordpress default database).
 ```shell script
 mysql -u root -p;
 mysql> CREATE DATABASE pressmind;
 mysql> GRANT ALL ON pressmind.* TO 'my_database_user'@'localhost' IDENTIFIED BY 'my_database_password' WITH GRANT OPTION;
 ```
 
-#### 3. Run Composer
-Install theme dependencies
+#### 3. Run composer
+Install theme dependencies.
 ```shell script
 cd /var/www/htdocs/wp-content/themes/travelshop
 composer install
@@ -34,69 +34,69 @@ composer install
 
 #### 4. Setup pressmind SDK
 Run the pressmind SDK installer. 
-The script will ask for some database- and pressmind API credentials and then 
-it will configures the sdk with custom models.
+The script will ask for some database as well as pressmind API credentials and then 
+it will configure the sdk with custom models.
 
 ```shell script
 cd /var/www/htdocs/wp-content/themes/travelshop/cli/
 php install.php
 ```
 
-the install script creates a config file, edit if you need it.
-if you have a big system, it's recommend to check this properties.
+The install script creates a config file; edit if you need it.
+If you have a big system, it is recommended to check these properties.
 
 ```shell script
 nano /var/www/htdocs/wp-content/themes/travelshop/cli/pm-config.php
 ```
 
-to check a valid installation, read the command line output.
-also you can take look in you're database, you will find a some tables there.
+To check a valid installation, read the command line output.
+You can also have a look in your database; there you will find some tables.
 
 #### 5. Import the data
-the import script will import the whole data from pressmind to your server.
-the script inserts records in the database, will download images
-and processes the images to the defined image derivatives (see pm-config.php)
-all images are processed in the background.
-(use `top` to see what is happens after or between the script is running) 
-this process can take an while.
+The import script will import the whole data from pressmind to your server.
+The script inserts records in the database, downloads images
+and processes the images to the defined image derivatives (see pm-config.php).
+All images are processed in the background.
+(Use `top` to see what happens while the script is running.) 
+This process can take a while.
 
 ```shell script
 cd /var/www/htdocs/wp-content/themes/travelshop/cli/
 php import.php fullimport
 ```
 
-if you need only a few products (for testing) use this command instead the fullimport:
+If you need only a few products (for testing), use this command instead of the fullimport:
 ```shell script
 php import.php mediaobject 12345,12346
 ```
 
-to check a valid import, look in the database, some of the tables named with "objectdata_*" 
+In order to check a valid import, have a look into the database; some of the tables named with "objectdata_*" 
 must contain data.
 
 #### 6. Theme activation
-activate the theme
-(and pls remove the wordpress default theme's like twenty*)
+Activate the theme.
+(Please remove the wordpress default themes like twenty*).
 
 
-#### 7. check config files
-check this files for advanced configuration:
+#### 7. Check config files
+Check this files for advanced configuration:
 * config-theme.php
 * config-routing.php
 * pm-config.php (pressmind SDK config)
 
-Also check functions.php, the first few lines containing onboarding code, that can be removed.
+Also check functions.php: the first few lines contain onboarding code, that can be removed.
 
 
 #### 8. Ready!
-if the full import is done you can build your site.
+After the full import is done, you can build your site.
 
-#### pressmind PIM Integration
+#### pressmind PIM integration
 Please send the path to your WordPress site (stage and/or production) 
 to your pressmind integration manager.
 After our integration is done, the pressmind application will push data changes to your site.
-Even the user can click on a preview-button or can trigger the database update manually.
+Even the user can click on a preview button or can trigger the database update manually.
 
-The Pressmind application uses this two endpoints:
+The pressmind application uses these two endpoints:
 
 ```
 // Case 1: Push data on change to your site
@@ -106,7 +106,7 @@ https://www.yoursite.de/wp-content/themes/travelshop/pm-import.php?type=import&i
 https://www.yoursite.de/wp-content/themes/travelshop/pm-preview.php?id_media_object={ID}
 ```
 
-## Maintenance & Troubleshooting
+## Maintenance & troubleshooting
 
 If something has changed on the pressmind model run:
 ````shell script
@@ -114,12 +114,12 @@ php install.php
 php import.php fullimport
 ````
 
-If you think something on the data-model is buggy, try
+If you think that something on the data model is buggy, try:
 ````shell script
 php integrity_check.php
 ````
 
-If it's still buggy
+If it is still buggy:
 ````shell script
 mysql -u root -p;
 mysql> DROP database pressmind;
@@ -128,16 +128,16 @@ php install.php
 php import.php fullimport
 ````
 
-For pressmind sdk updates run (don't try this in production)
+For pressmind sdk updates run (do not try this in production):
 ```shell script
 composer update
 php install.php
 php import.php fullimport
 ```
-Have a look at https://github.com/pressmind/sdk to check the last changes
+Have a look at https://github.com/pressmind/sdk to check the last changes.
 
 #### Routing
-the theme contains a route processor, based on WordPress `parse_request` hook. 
+The theme contains a route processor, based on WordPress `parse_request` hook. 
 See src/RouteProcessor.php how it works.
 
 Each route has 3 properties:
@@ -145,19 +145,19 @@ Each route has 3 properties:
 2. A Hook (will trigger on match, can inject metadata but also matches product uri against the database)
 3. A template
 
-So it's possible to route a URL to a custom page with native WordPress 
+So it is possible to route a URL to a custom page with native WordPress 
 support like get_header() & get_footer() - stuff`
 but without the post type logic like `the_post`
 
 #### What can I do with this routing?
-Build awesome sites! By default, you need two routes
+Build awesome sites! By default, you need two routes:
 
 1. The route to the product detail page
 2. A route to the search
 
-In real world cases a travelshop have different product types like 
-day-trips, round-trips, hotel-only and so on. 
-For each of these products type you can build a custom route, with custom templates 
+In reality, a travelshop has different product types like 
+day trips, round trips, "hotel only" and so on. 
+For each of these product types you can build with custom templates a custom route.
 
 Default routes:
 ```
@@ -169,7 +169,7 @@ https://www.yoursites/detail/{PRODUCT URI}
 
 ```
 
-Example of a tour-operator specific routing:
+Example of a touroperator specific routing:
 ```
 // hotel search route (loads template: pm-hotelsearch.php)
 https://www.yoursites/hotels/
@@ -192,16 +192,16 @@ $routes = array(
     'pmwc_default_search_route' => new Route('^search/?', '', 'pm-search'),
 );
 ```
-#### Routing Hook
-if you configure you're custom routing or want to modify meta tags for pressmind product pages, look at the `pmwc_detail_hook`
-in `wp-content/themes/travelshop/config-routing.php` 
+#### Routing hook
+If you configure your custom routing or want to modify meta tags for pressmind product pages, look at the `pmwc_detail_hook`
+in `wp-content/themes/travelshop/config-routing.php`.
 
 How is this route hook used:
-1. The Hook is fired before the WordPress page is loaded
+1. The hook is fired before the WordPress page is loaded
 2. Modify the wp request
 3. Load product data by a seo friendly url
 4. Add metadata like description, title, etc. in the WordPress header template
 
-Pro Tip:
-Use a custom route for 301-redirects if you have to a lot product urls to migrate during a relaunch. 
+Pro hint:
+Use a custom route for 301-redirects if you have a lot of product urls to migrate during a relaunch. 
 
