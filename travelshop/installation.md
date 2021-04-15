@@ -75,16 +75,16 @@ must contain data.
 
 #### 6. Theme activation
 Activate the theme.
-(Please remove the wordpress default themes like twenty*).
+(Please remove the wordpress default themes like twenty*.)
 
 
 #### 7. Check config files
-Check this files for advanced configuration:
+Check these files for advanced configuration:
 * config-theme.php
 * config-routing.php
 * pm-config.php (pressmind SDK config)
 
-Also check functions.php: the first few lines contain onboarding code, that can be removed.
+Also check functions.php: the first few lines contain onboarding code that can be removed.
 
 
 #### 8. Ready!
@@ -102,7 +102,7 @@ The pressmind application uses these two endpoints:
 // Case 1: Push data on change to your site
 https://www.yoursite.de/wp-content/themes/travelshop/pm-import.php?type=import&id_media_object={ID}
 
-// Case 2: Preview a Detailpages
+// Case 2: Preview a detail page
 https://www.yoursite.de/wp-content/themes/travelshop/pm-preview.php?id_media_object={ID}
 ```
 
@@ -142,7 +142,7 @@ See src/RouteProcessor.php how it works.
 
 Each route has 3 properties:
 1. The Route-(Regex)
-2. A Hook (will trigger on match, can inject metadata but also matches product uri against the database)
+2. A Hook (will trigger on match, can inject metadata but also matches product uri against the database.)
 3. A template
 
 So it is possible to route a URL to a custom page with native WordPress 
@@ -169,7 +169,7 @@ https://www.yoursites/detail/{PRODUCT URI}
 
 ```
 
-Example of a touroperator specific routing:
+Example of a tour operator specific routing:
 ```
 // hotel search route (loads template: pm-hotelsearch.php)
 https://www.yoursites/hotels/
