@@ -196,11 +196,11 @@ $routes = array(
 If you configure your custom routing or want to modify meta tags for pressmind product pages, look at the `pmwc_detail_hook`
 in `wp-content/themes/travelshop/config-routing.php`.
 
-How is this route hook used:
-1. The hook is fired before the WordPress page is loaded
-2. Modify the wp request
-3. Load product data by a seo friendly url
-4. Add metadata like description, title, etc. in the WordPress header template
+How this route hook is used:
+1. The hook is fired before the WordPress page is loaded.
+2. It modifies the wp request.
+3. It loads product data by a seo friendly url.
+4. It adds metadata like description, title, etc. in the WordPress header template.
 
 Pro hint:
 Use a custom route for 301-redirects if you have a lot of product urls to migrate during a relaunch. 
