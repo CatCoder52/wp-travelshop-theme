@@ -1,4 +1,4 @@
-# Travelshop Example
+# Example travelshop
 This is an example travelshop theme for WordPress.
 It is based on the  [pressmind® SDK](https://github.com/pressmind/sdk)
 
