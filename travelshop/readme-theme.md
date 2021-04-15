@@ -8,7 +8,7 @@ on the pressmind® PIM-System.
 #### Booking engine 
 A booking engine is not included in the theme, but there are two different ways to include a booking engine:
 
-1. Bring/integrate your own booking engine.
+1. Integrate your own booking engine.
 2. Use the pressmind® IB3 Booking Engine to connect many customer reservation systems 
 (mostly based on the german market, like Kuschick, Bewotec, Blank, turista).
 3. If you need a simple booking solution, have a look on the pressmind IB3 Engine. It can also handle 
@@ -34,7 +34,7 @@ rest_output_link_header, rsd_link,wlwmanifest_link, wp_shortlink_wp_head,wp_gene
 
 7. Theme for Pros. Less WordPress admin pages, all settings are configured in config files.
 
-#### High availabilty (HA)
+#### High availability (HA)
 It is possible to use this theme for high traffic and availability setups (e.g. AWS, Google, Kubernetes). 
 Ask your pressmind team for further information.
 (Do not use wordpress plugins - please contact us for further questions.)
@@ -102,9 +102,9 @@ Do not use an other S3 plugin (They are not able to handle pressmind product pag
     * AdminPage.php (themes admin page)
     * BuildSearch.php (abstracts get parameter for the complex pressmind, see section GET-Requests/Deeplinks)
     * PluginActivation.php 
-    * Route.php (part of Routing)
-    * RouteProcessor.php (part of Routing)
-    * Router.php (part of Routing)
+    * Route.php (part of routing)
+    * RouteProcessor.php (part of routing)
+    * Router.php (part of routing)
     * Shortcodes.php (enables the shortcode feature for pressmind search query)
     * WPFunctions.php
     
@@ -137,7 +137,7 @@ Do not use an other S3 plugin (They are not able to handle pressmind product pag
         * search-bar.php
     * /pm-views (pressmind views, you need a view for each pressmind media_object type)
         *   Reise_Detail1.php (Media Object Type "Reise" Detailview)
-        *   Reise_Teaser1.php (Media Object Type "Reise" view as Teaser, in use on the startpage or as searchresult)
+        *   Reise_Teaser1.php (Media Object Type "Reise" view as teaser, in use on the start page or as search result)
         *   *_Example.php (during installation pressmind web-core sdk is creating some fullblown examples, named by *_Example.php)
     * /wp-views (wordpress views)
         *   image-teaser-view.php 
