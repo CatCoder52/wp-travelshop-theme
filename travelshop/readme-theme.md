@@ -1,60 +1,60 @@
-# Travelshop Theme
+# Travelshop theme
 
-## The whole Concept
-This theme is an example theme for building a enterprise ready travelshop.
-It's just a basic boilerplate for creating awesome travelshop's based 
+## The whole concept
+This theme is an example theme for building an enterprise ready travelshop.
+It is just a basic boilerplate for creating awesome travelshops based 
 on the pressmind® PIM-System. 
 
-#### Booking Engine 
-The theme has no booking engine included. There are two ways to include a booking Engine
+#### Booking engine 
+A booking engine is not included in the theme, but there are two different ways to include a booking engine:
 
-1. Bring/Integrate your own Booking Engine
-2. Use the pressmind® IB3 Booking Engine to connect to many customer reservation systems 
-(mostly based on the german market, like Kuschick, Bewotec, Blank, turista)
-3. if you need a simple booking solution take also a look on the pressmind IB3 Engine, it can also handle 
-bookings without a connected crs system in your backoffice
+1. Integrate your own booking engine.
+2. Use the pressmind® IB3 Booking Engine to connect many customer reservation systems 
+(mostly based on the german market, like Kuschick, Bewotec, Blank, turista).
+3. If you need a simple booking solution, have a look on the pressmind IB3 Engine. It can also handle 
+bookings without a connected crs system in your backoffice.
 
 
-#### The Template Concept
+#### The template concept
 
 Speed fst:
 1. All WordPress related overload is removed:
 (disabled functions: rest_output_link_wp_head, wp_oembed_add_discovery_links, 
-rest_output_link_header, rsd_link,wlwmanifest_link, wp_shortlink_wp_head,wp_generator, emojis some more)
+rest_output_link_header, rsd_link,wlwmanifest_link, wp_shortlink_wp_head,wp_generator, emojis, etc.)
 
 2. SASS Style, splitted in granular components to build critical path css on a smart way
 
 3. Bootstrap
 
-4. Less JS Frameworks, more pure JS.
+4. Less JS Frameworks, more pure JS
 
 5. All JS is loaded in the footer
 
 6. WEBP Support
 
-7. Theme for Pro's. Less WordPress Admin Pages, all settings are configured in config files.
+7. Theme for Pros. Less WordPress admin pages, all settings are configured in config files.
 
-#### High Availibilty (HA)
-It's possible to use this theme for high traffic and availibility setups (e.g. AWS, Google, Kubernetes). 
-ask you're pressmind team for further informations. 
-in advance: don't use wordpress plugin's. ask us.
+#### High availability (HA)
+It is possible to use this theme for high traffic and availability setups (e.g. AWS, Google, Kubernetes). 
+Ask your pressmind team for further information.
+(Do not use wordpress plugins - please contact us for further questions.)
  
 #### Caching
-the theme is ready for redis object caching (based on PECL phpredis). It's also possible to use
-the pressmind `advanced_cache.php` dropin. ask pressmind.
-Don't use a other page cache (they don't know and can not handle pressmind product pages)
+The theme is ready for redis object caching (based on PECL phpredis). It is also possible to use
+the pressmind `advanced_cache.php` dropin. For further information ask your pressmind integration manager.
+Do not use an other page cache (They are not able to handle pressmind product pages.)
 
 #### Amazon S3 
-It's possible to store all assets (WordPress Media Library and the pressmind product images on Amazon S3 Storage).
+It is possible to store all assets (WordPress media library and the pressmind product images on Amazon S3 storage).
 Use the `pressmind S3 Stateless` Plugin for this case.
-Don't use a other S3 plugins (they don't know and can not handle pressmind product pages)
+Do not use an other S3 plugin (They are not able to handle pressmind product pages.)
 
 
 
-## The Template files
-* pm-config.php (the pressmind web-core sdk config, look he're for database credentials, pressmind api settings or image sizes)
+## The template files
+* pm-config.php (the pressmind web-core sdk config, look here for database credentials, pressmind api settings or image sizes)
 * assets
-    * /img (example pictures, don't use in production)
+    * /img (example pictures, do not use in production)
         * img.jpg 
         * logo.svg 
         * slide.jpg|webp
@@ -90,8 +90,8 @@ Don't use a other S3 plugins (they don't know and can not handle pressmind produ
     * integrity_check.php (check/sync the datamodell with the pressmind® PIM)
     
 * /functions
-    * cleanup_meta_includes.php (remove unnessary stuff from WordPress)
-    * disable_emojis.php (remove unnessary emojis)
+    * cleanup_meta_includes.php (removes unnecessary stuff from WordPress)
+    * disable_emojis.php (removes unnessary emojis)
     * http_header.php (configures the http header)
     * image-sizes.php (defines the WordPress images sizes)
     * menus.php (menu related stuff)
@@ -102,9 +102,9 @@ Don't use a other S3 plugins (they don't know and can not handle pressmind produ
     * AdminPage.php (themes admin page)
     * BuildSearch.php (abstracts get parameter for the complex pressmind, see section GET-Requests/Deeplinks)
     * PluginActivation.php 
-    * Route.php (Part of Routing)
-    * RouteProcessor.php (Part of Routing)
-    * Router.php (Part of Routing)
+    * Route.php (part of routing)
+    * RouteProcessor.php (part of routing)
+    * Router.php (part of routing)
     * Shortcodes.php (enables the shortcode feature for pressmind search query)
     * WPFunctions.php
     
@@ -137,7 +137,7 @@ Don't use a other S3 plugins (they don't know and can not handle pressmind produ
         * search-bar.php
     * /pm-views (pressmind views, you need a view for each pressmind media_object type)
         *   Reise_Detail1.php (Media Object Type "Reise" Detailview)
-        *   Reise_Teaser1.php (Media Object Type "Reise" view as Teaser, in use on the startpage or as searchresult)
+        *   Reise_Teaser1.php (Media Object Type "Reise" view as teaser, in use on the start page or as search result)
         *   *_Example.php (during installation pressmind web-core sdk is creating some fullblown examples, named by *_Example.php)
     * /wp-views (wordpress views)
         *   image-teaser-view.php 
@@ -148,24 +148,24 @@ Don't use a other S3 plugins (they don't know and can not handle pressmind produ
                 
 * 404.php
 * composer.json
-* config-routing.php (setup your a custom routing here)
-* config-theme.php (some theme related settings, don't put the constant to the wp-config.php, this is file is also used for a WordPressless Bootstrap in some file, like the pm-ajax-endpoint.php)
+* config-routing.php (setup a custom routing here)
+* config-theme.php (some theme related settings, do not put the constant to the wp-config.php, this file is also used for a WordPressless Bootstrap in some file, like the pm-ajax-endpoint.php)
 * footer.php
 * functions.php (the main theme bootstrap)
 * header.php 
 * index.php (startpage)
-* install.php (called from composer.json on post install. you can delete it in production enviroment)
-* pm-ajax-endpoint.php (the ajax endpoint is for pressmind data only, currently it's mostly in use for the ajax base product search)
+* install.php (called from composer.json on post install, you can delete it in the production enviroment)
+* pm-ajax-endpoint.php (the ajax endpoint is for pressmind data only, currently it is mostly in use for the ajax base product search)
 * pm-detail.php (the product page, the url/base route is configured in config-routing.php, you can setup a special page for each pressmind media object type)
-* pm-preview.php (this url is called from pressmind PIM, it's just a redirect to preview the detailpage - don't edit this file)
+* pm-preview.php (this url is called from pressmind PIM, it is just a redirect to preview the detailpage - do not edit this file)
 * pm-search.php (the search site, the url is configured in config-routing.php)
 * readme.md
 * readme-theme.md
 * singular.php
-* style.css (theme description, not more, will not loaded)
+* style.css (only a theme description, will not be loaded)
 
 ## Icons
-Icons are currently used from https://tablericons.com/ (SVG only - no icon fonts)
+Icons are currently used from https://tablericons.com/ (SVG only - no icon fonts).
                 
         
         

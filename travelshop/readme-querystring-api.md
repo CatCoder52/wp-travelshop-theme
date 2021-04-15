@@ -1,4 +1,4 @@
-# The Query String API
+# The query string API
 You can list products (pressmind media objects) on several ways:
 
 1. use a deeplink on base route for the media object type
@@ -25,7 +25,7 @@ Use as shortcode with a special view-template
 --
 ```
 
-## Query Parameter
+## Query parameter
 
 ### pm-ot
 pressmind object-type id, (int)
@@ -50,7 +50,7 @@ foreach ($search->getResults() as $mediaObject) {
 
 
 ### pm-t
-fulltext search in the defined pressmind fields.
+Fulltext search in the defined pressmind fields.
 see theme-config.php, constant SEARCH_FIELDS 
 Additional parameter pm-o required!
 ```
@@ -73,7 +73,7 @@ foreach ($search->getResults() as $mediaObject) {
 ```
 
 ### pm-pr
-search by price-range. Allowed pattern ([0-9]+)\-([0-9])+
+Search by price range. Allowed pattern ([0-9]+)\-([0-9])+
 ```
 GET https://yoursite.de/search/?pm-pr=100-1000
 ```
@@ -93,7 +93,7 @@ foreach ($search->getResults() as $mediaObject) {
 ```
 
 ### pm-dr
-search by date-range. Allowed pattern: YYYYMMDD-YYYYMMDD
+Search by date range. Allowed pattern: YYYYMMDD-YYYYMMDD
 ```
 GET https://yoursite.de/search/?pm-dr=20201231-20213101
 ```
@@ -113,7 +113,7 @@ foreach ($search->getResults() as $mediaObject) {
 ```
 
 ### pm-c[]
-search by one or more pressmind categorytree-attributes
+Search by one or more pressmind categorytree attributes
 pattern: pm-c[{FIELDNAME_SECTIONNAME}]={ITEM_UUID}{OPERATOR}{ITEM_UUID}
 Allowed Operator , or +
 ```
@@ -144,8 +144,8 @@ foreach ($search->getResults() as $mediaObject) {
 
 
 ### pm-o
-order the result list
-allowed values:
+Order the result list.
+Allowed values:
 rand, price-desc, price-asc, name-asc, name-desc, code-asc, code-desc
 
 ```
@@ -170,7 +170,7 @@ foreach ($search->getResults() as $mediaObject) {
 ```
 
 ### pm-l
-paginator, pages through the search result
+Paginator, pages through the search result
 {PAGE},{NUMBER}
 Pattern ([0-9]+\,[0-9]+)
 ```
