@@ -8,7 +8,7 @@ $current_post = $args;
 $id_post_thumbnail = get_post_thumbnail_id($current_post);
 $url_post_thumbnail = wp_get_attachment_image_url($id_post_thumbnail, 'medium');
 ?>
-<div class="col-12 col-sm-12 col-lg-4">
+<div class="col-12 col-sm-6 col-lg-4">
     <div class="teaser image-teaser">
         <div class="teaser-image"
             <?php 

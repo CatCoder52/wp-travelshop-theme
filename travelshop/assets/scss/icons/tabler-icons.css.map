@@ -1,7 +1,1 @@
-{
-"version": 3,
-"mappings": "AAAA,YAAa;EACX,UAAU,EAAE,IAAI",
-"sources": ["tabler-icons.scss"],
-"names": [],
-"file": "tabler-icons.css"
-}
+{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"tabler-icons.css"}

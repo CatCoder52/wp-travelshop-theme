@@ -1,34 +1,83 @@
 .card-travel-wrapper {
-  padding-bottom: $grid-gutter-width;
+  padding: 0 0 $grid-gutter-width 0;
 
-  @include media-breakpoint-down(xs)  {
-    padding: 0 0 $grid-gutter-width 0;
+  .row {
+    margin: 0 -30px;
+    align-items: flex-start;
   }
 
   .card.card-travel {
     height: 100%;
+    border-width: 0;
+
+    .container, .row {
+      position: relative;
+      height: 100%;
+    }
   
     .card-body {
-      padding: 1.25rem 1.25rem 9rem 1.25rem;
+      padding: 0 0 .25rem 1rem;
       position: relative;
-  
+      
+      .card-title {
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+        a {
+          color: $body-color;
+        }
+      }
+
       .attribute-row{
-        height: 26px;
-        overflow: hidden;
+        display: none;
       }
     
-      .subline{
+      .subline {
         height: auto;
         overflow: hidden;
         position: relative;
+        font-size: .75rem;
+        margin-bottom: 0;
+      }
 
-        @include media-breakpoint-up(md)  {
-          height: 80px;
+      .price-row {
+        line-height: 1.3;
+        margin-bottom: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        .small {
+          span {
+            font-weight: 500;
+          }
         }
+        a {
+          color: #fff;
+          background: $blue;
+          padding: .1rem .4rem;
+          border-radius: 5px;
+          strong {
+            white-space: nowrap;
+            font-size: 1rem;
+          }
+        }
+      }
 
-        .fade-out{
-
-          @include media-breakpoint-up(md)  {
+      a.btn {
+        display: none;
+      }
+    
+      @include media-breakpoint-up(md)  {
+        padding: 1.25rem 1.25rem 9rem 1.25rem;
+        flex: 1 0 auto;
+        .card-title {
+          font-size: 1.25rem;
+          margin-bottom: 0.75rem;
+        }
+        .subline {
+          font-size: 1rem;
+          margin-bottom: 1rem;
+          height: 80px;
+          .fade-out {
             display: block;
             position: absolute;
             bottom: 0;
@@ -36,34 +85,52 @@
             height: 80px;
             background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 40px);
           }
-          
+        }
+        .attribute-row {
+          display: block;
+          height: 26px;
+          overflow: hidden;
+        }
+        .price-row {
+          position: absolute;
+          bottom: calc(2rem + 38px);
+          left: 1.25rem;
+          right: 1.25rem;
+          display: block;
+          small {
+            span {
+              font-weight: normal;
+            }
+          }
+          a {
+            color: $body-color;
+            background: transparent;
+            padding: 0;
+            strong {
+              font-size: 1.25rem;
+            }
+          }
+        }
+      
+        a.btn {
+          display: block;
+          position: absolute;
+          bottom: 1.25rem;
+          left: 1.25rem;
+          right: 1.25rem;
         }
       }
-    
-      .price-row{
-        position: absolute;
-        bottom: calc(2rem + 38px);
-        left: 1.25rem;
-        right: 1.25rem;
-        margin-bottom: 0;
-      }
-    
-      a.btn{
-        position: absolute;
-        bottom: 1.25rem;
-        left: 1.25rem;
-        right: 1.25rem;
-      }
+
     }
   
     .card-image-holder {
       position: relative;
-  
+
       // -- badge
       .card-badge {
         position: absolute;
-        top: 1.25rem;
-        left: 1.25rem;
+        top: .5rem;
+        left: .5rem;
         font-size: .7125rem;
         line-height: 1;
         color: #fff;
@@ -79,6 +146,48 @@
         &--top-offer {
           background-color: $success;
         }
+
+      }
+
+      img {
+        border-bottom-left-radius: calc(0.25rem - 1px);
+        border-bottom-right-radius: calc(0.25rem - 1px);
+      }
+
+      @include media-breakpoint-up(md)  {
+        height: fit-content;
+        flex: 0 0 auto;
+
+        img {
+          border-bottom-left-radius:unset;
+          border-bottom-right-radius: unset;
+        }
+
+      }
+
+    }
+
+    @include media-breakpoint-up(md)  {
+      border-width: 1px;
+
+      .card-image-holder {
+        .card-badge {
+          top: 1.25rem;
+          left: 1.25rem;
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-up(md)  {
+    padding: 0 15px $grid-gutter-width 15px;
+
+    .row {
+      margin: 0 -15px;
+      align-items: unset;
+      flex-direction: column;
+      .col-md-12 {
+        flex: 0 0 auto;
       }
     }
   }

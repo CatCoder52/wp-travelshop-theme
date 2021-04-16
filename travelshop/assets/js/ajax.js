@@ -152,12 +152,15 @@ TSAjax = function (endpoint_url) {
 
     this.filter  = function(){
 
-        $("#search-filter").on('change', ".list-filter-box input, .list-filter-box select", function (e) {
-            var form = $(this).closest('form');
-            var query_string =_this.buildSearchQuery(form);
-            _this.call(query_string, '#search-result');
-            e.preventDefault();
-        });
+        // dont run default realtime ajax-functions on small viewport
+        if ($(window).width() > 768) {
+            $("#search-filter").on('change', ".list-filter-box input, .list-filter-box select", function (e) {
+                var form = $(this).closest('form');
+                var query_string =_this.buildSearchQuery(form);
+                _this.call(query_string, '#search-result');
+                e.preventDefault();
+            });
+        }
 
         $("#search-filter").on('click', ".list-filter-box-submit", function (e) {
             var form = $(this).closest('form');
@@ -165,7 +168,6 @@ TSAjax = function (endpoint_url) {
             _this.call(query_string, '#search-result');
             e.preventDefault();
         });
-
 
     }
 
@@ -203,5 +205,5 @@ TSAjax = function (endpoint_url) {
 
 var Search = new TSAjax('/wp-content/themes/travelshop/pm-ajax-endpoint.php');
 Search.pagination();
-Search.filter();
 Search.searchbox();
+Search.filter();

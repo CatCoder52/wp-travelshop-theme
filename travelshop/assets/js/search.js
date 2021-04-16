@@ -8,11 +8,13 @@ $('#search-filter').on('click', '.toggle-second-level', function(e) {
 // ------------------------------------------------
 // --- Filter toggle
 // ------------------------------------------------
-$('#search-result').on('click', '.list-filter-close', function(e) {
+$('.list-filter-close').on('click', function(e) {
+    e.preventDefault();
     $('.content-block-list-filter').removeClass('is--open');
 });
 
 $('#search-result').on('click', '.list-filter-open', function(e) {
+    e.preventDefault();
     $('.content-block-list-filter').addClass('is--open');
 });
 

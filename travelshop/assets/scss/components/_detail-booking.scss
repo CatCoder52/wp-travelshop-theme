@@ -35,10 +35,10 @@
       }
 
       &.booking-row-programm  {
-        font-size: .7125rem;
+        font-size: 1rem;
         font-weight: bold;
-        background-color: $gray-200;
-        color: $gray-700;
+        background: $gray-500;
+        color: #fff;
       }
 
       &.booking-row-date {
@@ -51,6 +51,10 @@
 
         @include media-breakpoint-down(sm) {
           padding: .75rem 0;
+        }
+
+        @include media-breakpoint-up(md) {
+          align-items: center;
         }
 
       }

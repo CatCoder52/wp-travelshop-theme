@@ -1,6 +1,14 @@
 .list-filter-toggle {
   display: none;
 
+  .list-filter-open {
+    span {
+      display: inline-block;
+      margin-left: .25rem;
+      transform: translateY(2px);
+    }
+  }
+
   @include media-breakpoint-down(sm) {
     display: block;
   }
@@ -14,22 +22,19 @@
 
     button.list-filter-close {
       display: none;
-      padding:0;
-      line-height: 40px;
-      height: 40px;
+      padding: 4px;
+      line-height: 0;
       border-radius: 20px;
       border:0;
       outline: none;
       background-color: #fff;
-      width: 40px;
-
+      width: 36px;
+      height: 36px;
       position: absolute;
       top:$grid-gutter-width;
       right: $grid-gutter-width;
-
       color: rgba($body-color, .5);
       background-color: rgba(#000, .1);
-
       transition:all .3s;
 
       &:hover, &:focus, &:active {

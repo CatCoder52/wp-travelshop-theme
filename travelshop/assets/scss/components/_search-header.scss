@@ -11,12 +11,17 @@
     z-index: 10;
 
     .search-wrapper {
-      padding: $grid-gutter-width 0;
+      padding: $grid-gutter-width 0 1rem 0;
+
+      .h1 {
+        font-size: 1.5rem;
+      }
 
       @include media-breakpoint-up(md) {
         padding: $grid-gutter-width 0;
 
         .h1 {
+          font-size: 2.5rem;
           color: #fff;
           text-shadow: 0 5px 10px rgba(#000, .25);
         }
