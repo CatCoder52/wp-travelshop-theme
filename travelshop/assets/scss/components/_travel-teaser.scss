@@ -3,7 +3,7 @@
 
   .row {
     margin: 0 -30px;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .card.card-travel {
@@ -16,7 +16,7 @@
     }
   
     .card-body {
-      padding: .25rem 0 .25rem 1rem;
+      padding: 0 0 .25rem 1rem;
       position: relative;
       
       .card-title {

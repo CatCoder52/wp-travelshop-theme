@@ -77,10 +77,10 @@ $cheapest_price = $args['cheapest_price'];
 
                                     <!-- BOOKING_ROW_DATE: START -->
                                     <div class="booking-row no-gutters row booking-row-date">
-                                        <div class="col-6 d-block d-md-none">
+                                        <div class="col-3 d-block d-md-none">
                                             Termin
                                         </div>
-                                        <div class="col-6 col-md-3">
+                                        <div class="col-9 col-md-3">
 
                                             <?php echo HelperFunctions::dayNumberToLocalDayName($date->departure->format('N'), 'short') ?> <?php echo $date->departure->format('d.m.'); ?>
                                             -
@@ -89,26 +89,26 @@ $cheapest_price = $args['cheapest_price'];
                                             <span class="badge badge-success">Buchbar</span>
 
                                         </div>
-                                        <div class="col-6 d-block d-md-none">
+                                        <div class="col-3 d-block d-md-none">
                                             Code
                                         </div>
-                                        <div class="col-6 col-md-2">
+                                        <div class="col-9 col-md-2">
                                             <?php
                                             echo implode('/', array_filter([$date->code, $housing_option->code]));
                                             ?>
                                         </div>
-                                        <div class="col-6 d-block d-md-none">
+                                        <div class="col-3 d-block d-md-none">
                                             Info
                                         </div>
-                                        <div class="col-6 col-md-2">
+                                        <div class="col-9 col-md-2">
                                             <?php
                                             echo implode(',', array_filter([$housing_package->name, $housing_option->name, $housing_option->board_type]));
                                             ?>
                                         </div>
-                                        <div class="col-6 d-block d-md-none">
+                                        <div class="col-3 d-block d-md-none text-nowrap">
                                             Preis p.P.
                                         </div>
-                                        <div class="col-6 col-md-2">
+                                        <div class="col-9 col-md-2">
                                             <strong class="price"><?php echo HelperFunctions::number_format($housing_option->price); ?>
                                                 €</strong>
                                         </div>
