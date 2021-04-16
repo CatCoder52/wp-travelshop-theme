@@ -11,7 +11,7 @@ use Pressmind\Search\CheapestPrice;
  */
 
 /**
- * @var Custom\MediaType\###CLASSNAME### $moc
+ * @var Custom\MediaType\Reise $moc
  */
 $moc = $data['data'];
 
@@ -131,14 +131,14 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
                                         <hr>
                                         <div class="h5"><i class="la la-calendar"></i> Reisetermine</div>
                                         <p><?php echo $cheapest_price->date_departure->format('d.m') . ' - ' . $cheapest_price->date_arrival->format('d.m.Y'); ?></p>
-                                        <p class="mb-0">
+                                        
                                         <div class="dropdown dropdown-termine">
                                             <a href="#content-block-detail-booking">
                                                 weitere Termine <i class="la la-angle-down"></i>
                                             </a>
 
                                         </div>
-                                        </p>
+                                       
 
                                         <!--
                                         <hr>
