@@ -11363,7 +11363,7 @@ hr {
 }
 .card-travel-wrapper .row {
   margin: 0 -30px;
-  align-items: center;
+  align-items: flex-start;
 }
 .card-travel-wrapper .card.card-travel {
   height: 100%;
@@ -11374,7 +11374,7 @@ hr {
   height: 100%;
 }
 .card-travel-wrapper .card.card-travel .card-body {
-  padding: 0.25rem 0 0.25rem 1rem;
+  padding: 0 0 0.25rem 1rem;
   position: relative;
 }
 .card-travel-wrapper .card.card-travel .card-body .card-title {
@@ -12259,6 +12259,32 @@ hr {
   background-color: transparent;
   padding-left: 0;
   padding-right: 0;
+  align-items: stretch;
+  flex-wrap: nowrap;
+}
+.breadcrumb-wrapper .breadcrumb .breadcrumb-item:before {
+  display: none;
+}
+.breadcrumb-wrapper .breadcrumb li {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  padding: 0.3rem 0.75rem;
+  border-left: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+.breadcrumb-wrapper .breadcrumb li.bc-separator {
+  display: none;
+}
+.breadcrumb-wrapper .breadcrumb li:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.breadcrumb-wrapper .breadcrumb li:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-right: 1px solid #ccc;
 }
 
 .badge {
@@ -12408,11 +12434,15 @@ button.select-from-control i.la {
 .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper {
   padding: 30px 0 1rem 0;
 }
+.layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper .h1 {
+  font-size: 1.5rem;
+}
 @media (min-width: 768px) {
   .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper {
     padding: 30px 0;
   }
   .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper .h1 {
+    font-size: 2.5rem;
     color: #fff;
     text-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
   }

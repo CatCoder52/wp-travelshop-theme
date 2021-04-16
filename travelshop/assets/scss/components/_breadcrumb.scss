@@ -9,6 +9,12 @@
       align-items: stretch;
       flex-wrap: nowrap;
 
+      .breadcrumb-item {
+        &:before {
+          display: none;
+        }
+      }
+
       li {
         display: flex;
         align-items: center;

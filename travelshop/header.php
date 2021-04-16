@@ -91,6 +91,10 @@
                             </ul>
                         </div>
                     </nav>
+                <?php } else { ?>
+                    <nav class="navbar navbar-expand-lg offcanvas" id="navbar">
+                        <small style="padding: 1rem; display: inline-block;">menu: ‚Desktop Horizontal Menu‘ not configured</small>
+                    </nav>
                 <?php } ?>
             </div>
             <div class="col-auto align-self-center  d-none d-lg-block col-search" id="search">
