@@ -12,6 +12,12 @@ This theme is the perfect starting point in order to build professional travelsh
 #### Screenshot
 ![Overview Image Demo-Page](./travelshop/assets/img/overview.jpg)
 
+### Lighthouse Performance
+Current lighthouse performance at revision d66c162b (17.04.2021)
+(tested on demo page, without redis caching). 
+
+![Lighthouse](./travelshop/assets/img/lighthouse.jpg)
+
 #### What is it not?
 * It is not the pressmind's truetravel source, it is just a WordPress integration example for the [pressmind® SDK](https://github.com/pressmind/sdk).
 * A full featured, plug & play travelshop.
