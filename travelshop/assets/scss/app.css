@@ -11587,7 +11587,8 @@ hr {
 .content-block.content-block-list-filter .list-filter .list-filter-boxes .list-filter-box .list-filter-box-body .form-check .form-check-input + span {
   position: absolute;
   left: 0;
-  top: 5px;
+  top: 50%;
+  transform: translateY(-50%);
   display: block;
   width: 14px;
   height: 14px;
@@ -11761,7 +11762,8 @@ hr {
 .multi-level-checkboxes .form-check .form-check-input + span {
   position: absolute;
   left: 0;
-  top: 5px;
+  top: 50%;
+  transform: translateY(-50%);
   display: block;
   width: 14px;
   height: 14px;
@@ -12360,11 +12362,6 @@ hr {
   user-select: none;
   /* Non-prefixed version, currently
      supported by Chrome, Opera and Firefox */
-}
-
-.form-check-input {
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .form-control.bootstrap-multiselect, button.bootstrap-multiselect.select-from-control {
