@@ -1,10 +1,11 @@
 <div class="form-group mb-md-0">
     <label for="">Reisezeitraum</label>
     <input type="text"
-           class="form-control"
+           class="form-control travelshop-datepicker-input"
            data-type="daterange"
            name="pm-dr"
            autocomplete="off"
+           readonly
            placeholder="egal" value="<?php
     if (empty($_GET['pm-dr']) === false) {
         $dr = BuildSearch::extractDaterange($_GET['pm-dr']);

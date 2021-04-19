@@ -1,3 +1,7 @@
+.travelshop-datepicker-input[readonly] {
+    background: #fff;
+}
+
 @include media-breakpoint-down(sm) {
     .daterangepicker {
         width: auto;
