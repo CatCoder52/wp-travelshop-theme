@@ -12362,6 +12362,11 @@ hr {
      supported by Chrome, Opera and Firefox */
 }
 
+.form-check-input {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .form-control.bootstrap-multiselect, button.bootstrap-multiselect.select-from-control {
   display: none !important;
 }

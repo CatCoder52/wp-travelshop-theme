@@ -75,7 +75,8 @@
               + span {
                 position: absolute;
                 left:0;
-                top: 5px;
+                top: 50%;
+                transform: translateY(-50%);
 
                 display: block;
                 width: 14px;
@@ -306,7 +307,8 @@
       + span {
         position: absolute;
         left:0;
-        top: 5px;
+        top: 50%;
+        transform: translateY(-50%);
 
         display: block;
         width: 14px;
