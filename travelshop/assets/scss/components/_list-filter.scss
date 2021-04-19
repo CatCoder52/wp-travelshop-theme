@@ -338,6 +338,10 @@
         display: block;
         color: #fff;
         font-size: .6125rem;
+        pointer-events: none;
+        svg {
+          pointer-events: none;
+        }
       }
     }
 

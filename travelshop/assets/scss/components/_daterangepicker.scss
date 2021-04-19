@@ -12,6 +12,28 @@
         .ranges {
             display: none;
         }
+        .prettydropdown {
+            ul {
+                li {
+                    height: 35px;
+                    line-height: 35px;
+                }
+            }
+        }
+        .left {
+            .prettydropdown {
+                ul {
+                    z-index: 100;
+                }
+            }
+        }
+        .right {
+            .prettydropdown {
+                ul {
+                    z-index: 50;
+                }
+            }
+        }
         &.opensright.show-calendar.ltr.show-ranges {
             .left, .right {
                 padding: 0 1rem;
@@ -19,7 +41,8 @@
                 border-bottom: 0;
                 border-right: 0;
                 border-top: 0;
-                max-width: none;
+                width: 95vw;
+                max-width: 450px;
 
                 .calendar-table {
                     .table-condensed {
@@ -29,7 +52,6 @@
                             width: auto;
                             padding: .4rem .6rem;
                             border-collapse: separate;
-                            overflow: hidden;
                         }
                         td {
                             border: 1px solid #ccc;
@@ -45,7 +67,7 @@
                                 background: #007bff;
                                 color: #fff;
                                 font-weight: bold;
-                                transform: scale(1.25);
+                                transform: scale(1.175);
                                 border-radius: 5px;
                                 display: inline-block;
                                 width: 100%;
@@ -97,7 +119,14 @@
                 border-top: 0;
                 padding: 1rem 0;
                 .applyBtn {
-                    font-size: 1.3rem;
+                    font-size: 1rem;
+                    font-weight: normal;
+                    padding: 5px 8px 4px 8px;
+                }
+                .cancelBtn {
+                    position: absolute;
+                    top: 1.2rem;
+                    right: .4rem;
                 }
             }
             &:before, &:after {

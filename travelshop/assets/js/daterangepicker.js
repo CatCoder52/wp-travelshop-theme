@@ -536,6 +536,7 @@
             this.updateMonthsInView();
             this.updateCalendars();
             this.updateFormInputs();
+            $('.daterangepicker select').prettyDropdown();
         },
 
         updateMonthsInView: function() {
@@ -1243,6 +1244,7 @@
                 this.rightCalendar.month.subtract(1, 'month');
             }
             this.updateCalendars();
+            $('.daterangepicker select').prettyDropdown();
         },
 
         clickNext: function(e) {
@@ -1255,6 +1257,7 @@
                     this.leftCalendar.month.add(1, 'month');
             }
             this.updateCalendars();
+            $('.daterangepicker select').prettyDropdown();
         },
 
         hoverDate: function(e) {
@@ -1458,6 +1461,7 @@
                     this.leftCalendar.month = this.rightCalendar.month.clone().subtract(1, 'month');
             }
             this.updateCalendars();
+            $('.daterangepicker select').prettyDropdown();
         },
 
         timeChanged: function(e) {
@@ -1501,6 +1505,7 @@
 
             //update the calendars so all clickable dates reflect the new time component
             this.updateCalendars();
+            $('.daterangepicker select').prettyDropdown();
 
             //update the form inputs above the calendars with the new time
             this.updateFormInputs();

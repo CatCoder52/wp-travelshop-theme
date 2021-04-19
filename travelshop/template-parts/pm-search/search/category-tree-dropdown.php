@@ -33,8 +33,8 @@ if (empty($treeItems) === false) {
         <label for=""><?php echo $name; ?></label>
         <div class="dropdown">
 
-            <button class="select-from-control dropdown-toggle" type="button"
-                    id="dropdownReiseziel" data-toggle="dropdown"
+            <button class="dropdownReiseziel select-from-control dropdown-toggle" type="button"
+                    data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                 <span class="selected-options" data-placeholder="bitte wählen">bitte wählen</span>
 
@@ -111,7 +111,7 @@ if (empty($treeItems) === false) {
                     }
                     ?>
                 </div>
-                <button class="btn btn-outline-secondary btn-block mt-3 filter-prompt">
+                <button class="btn btn-primary btn-block mt-3 filter-prompt">
                     Auswahl übernehmen
                 </button>
             </div>

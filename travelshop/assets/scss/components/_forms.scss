@@ -82,7 +82,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 // -- Select
 .dropdown-menu.dropdown-menu-select {
-  padding: ( $grid-gutter-width / 3 ) * 2;
+  padding: .5rem 1rem 1rem 1rem;
   min-width: 100%;
   text-align: left;
 }
