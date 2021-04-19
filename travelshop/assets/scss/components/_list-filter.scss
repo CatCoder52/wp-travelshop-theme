@@ -401,6 +401,25 @@
       }
     }
   }
+  @include media-breakpoint-down(sm) {
+    .form-check {
+      font-size: 1.2rem;
+      margin: .5rem 0;
+      padding-left: calc(25px + .5rem);
+      .form-check-input {
+        +span {
+          width: 20px;
+          height: 20px;
+          top: 50%;
+          transform: translateY(-50%);
+          svg {
+            width: 20px !important;
+            height: 20px !important;
+          }
+        }
+      }
+    }
+  }
 }
 
 // -- open econd level by default for elements inside .multi-level-checkboxes

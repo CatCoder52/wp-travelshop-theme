@@ -11845,6 +11845,26 @@ hr {
 .multi-level-checkboxes .form-check.is--open button.toggle-second-level i {
   transform: rotate(180deg);
 }
+@media (max-width: 767.98px) {
+  .list-filter-box-body .form-check,
+.multi-level-checkboxes .form-check {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    padding-left: calc(25px + .5rem);
+  }
+  .list-filter-box-body .form-check .form-check-input + span,
+.multi-level-checkboxes .form-check .form-check-input + span {
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .list-filter-box-body .form-check .form-check-input + span svg,
+.multi-level-checkboxes .form-check .form-check-input + span svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
 
 .multi-level-checkboxes .list-filter-second-level {
   display: block;
@@ -12375,7 +12395,7 @@ input[type=search]::-webkit-search-results-decoration {
 
 .dropdown-menu.dropdown-menu-select {
   padding: 20px;
-  min-width: 15rem;
+  min-width: 100%;
   text-align: left;
 }
 
@@ -12510,6 +12530,7 @@ button.select-from-control i.la {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
   .daterangepicker .ranges {
     display: none;
