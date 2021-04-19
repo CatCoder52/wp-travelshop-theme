@@ -1,0 +1,100 @@
+@include media-breakpoint-down(sm) {
+    .daterangepicker {
+        width: auto;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .ranges {
+            display: none;
+        }
+        &.opensright.show-calendar.ltr.show-ranges {
+            .left, .right {
+                padding: 0 1rem;
+                border-left: 0;
+                border-bottom: 0;
+                border-right: 0;
+                border-top: 0;
+                max-width: none;
+
+                .calendar-table {
+                    .table-condensed {
+                        th, td {
+                            min-width: 0;
+                            height: auto;
+                            width: auto;
+                            padding: .4rem .6rem;
+                            border-collapse: separate;
+                            overflow: hidden;
+                        }
+                        td {
+                            border: 1px solid #ccc;
+                            background: #efefef;
+                            border-radius: 0;
+                            transition: 300ms ease-in-out all;
+                            &.in-range {
+                                background: lighten(#007bff, 20%);
+                                color: #fff;
+                                font-weight: bold;
+                            }
+                            &.active, &.end-date {
+                                background: #007bff;
+                                color: #fff;
+                                font-weight: bold;
+                                transform: scale(1.25);
+                            }
+                        }
+                        tbody {
+                            tr {
+                                &:first-child {
+                                    td {
+                                        border-top: 0;
+                                        &:first-child {
+                                            border-top-left-radius: 5px;
+                                        }
+                                        &:last-child {
+                                            border-top-right-radius: 5px;
+                                        }
+                                    }
+                                }
+                                &:last-child {
+                                    td {
+                                        border-bottom: 0;
+                                        &:first-child {
+                                            border-bottom-left-radius: 5px;
+                                        }
+                                        &:last-child {
+                                            border-bottom-right-radius: 5px;
+                                        }
+                                    }
+                                }
+                                td {
+                                    &:first-child {
+                                        border-left: 0;
+                                    }
+                                    &:last-child {
+                                        border-right: 0;
+                                    }
+                                }
+                            }
+                        }
+                        .monthselect, .yearselect {
+                            font-size: 1.3rem;
+                            margin: .75rem 0 0 0;
+                        }
+                    }
+                }
+            }
+            .drp-buttons {
+                border-top: 0;
+                padding: 1rem 0;
+                .applyBtn {
+                    font-size: 1.3rem;
+                }
+            }
+            &:before, &:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+}

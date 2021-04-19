@@ -33,7 +33,7 @@ $search = new Pressmind\Search(
                     ?>
                 </div>
 
-                <div class="col-12 col-md-3">
+                <div class="col-12 col-md-3 travelshop-datepicker">
                     <?php
                     require 'search/date-picker.php';
                     ?>
@@ -60,7 +60,12 @@ $search = new Pressmind\Search(
                     <div class="from-group mb-0">
                         <label class="d-none d-md-block">&nbsp;</label>
                         <a class="btn btn-primary btn-block" href="<?php echo site_url().'/'.$PMTravelShop->RouteProcessor->get_url_by_object_type(TS_TOUR_PRODUCTS).'/'; ?>">
-                            <i class="la la-search"></i> <span class="search-bar-total-count" data-default="Suchen" data-total-count-singular="Reise" data-total-count-plural="Reisen">Suchen</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <circle cx="10" cy="10" r="7" />
+                            <line x1="21" y1="21" x2="15" y2="15" />
+                        </svg> 
+                        <span class="search-bar-total-count" data-default="Suchen" data-total-count-singular="Reise" data-total-count-plural="Reisen">Suchen</span>
                         </a>
                     </div>
                 </div>

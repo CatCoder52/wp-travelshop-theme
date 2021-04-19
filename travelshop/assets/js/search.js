@@ -83,8 +83,11 @@ if ( $('[data-type="daterange"]').length > 0 ) {
         /*"startDate": moment().startOf('hour'),
         "endDate": moment().startOf('hour').add(64, 'hour')*/
     }, function(start, end, label) {
-
-
+        if($(window).width() <= 767) {
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $('.travelshop-datepicker').offset().top - 83
+            }, 500);
+        }
         console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
     });
 

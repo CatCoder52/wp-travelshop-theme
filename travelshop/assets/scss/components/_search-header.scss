@@ -1,11 +1,8 @@
 .layout-block.layout-block-search-header {
   position: relative;
-
-  @include media-breakpoint-up(md)  {
-    background-image: url(../img/slide-1.jpg);
-    background-position: center;
-    background-size: cover;
-  }
+  background-image: url(../img/slide-1.jpg);
+  background-position: center;
+  background-size: cover;
 
   .layout-block-search-header--search {
     z-index: 10;
@@ -15,6 +12,8 @@
 
       .h1 {
         font-size: 1.5rem;
+        color: #fff;
+        text-align: center;
       }
 
       @include media-breakpoint-up(md) {
@@ -22,7 +21,6 @@
 
         .h1 {
           font-size: 2.5rem;
-          color: #fff;
           text-shadow: 0 5px 10px rgba(#000, .25);
         }
       }
@@ -30,12 +28,18 @@
 
     .search-wrapper--inner {
       padding: 0;
+      padding: $grid-gutter-width;
+      background-color: #ffffff7a;
+      box-shadow: 0 5px 10px rgba(#000, .25);
+      @include border-radius($card-border-radius);
 
-      @include media-breakpoint-up(md) {
-        padding: $grid-gutter-width;
-        background-color: #ffffff7a;
-        box-shadow: 0 5px 10px rgba(#000, .25);
-        @include border-radius($card-border-radius);
+      .btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        svg {
+          margin-right: .25rem;
+        }
       }
     }
   }

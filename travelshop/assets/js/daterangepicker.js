@@ -1075,7 +1075,7 @@
                 } else if (containerLeft + containerWidth > $(window).width()) {
                     this.container.css({
                         top: containerTop,
-                        left: 'auto',
+                        left: 0,
                         right: 0
                     });
                 } else {
@@ -1088,17 +1088,33 @@
             } else {
                 var containerLeft = this.element.offset().left - parentOffset.left;
                 if (containerLeft + containerWidth > $(window).width()) {
-                    this.container.css({
-                        top: containerTop,
-                        left: 'auto',
-                        right: 0
-                    });
+                    if(window.innerWidth <= 767) {
+                        this.container.css({
+                            top: containerTop,
+                            left: 0,
+                            right: 0
+                        });
+                    } else {
+                        this.container.css({
+                            top: containerTop,
+                            left: 'auto',
+                            right: 0
+                        });
+                    }
                 } else {
-                    this.container.css({
-                        top: containerTop,
-                        left: containerLeft,
-                        right: 'auto'
-                    });
+                    if(window.innerWidth <= 767) {
+                        this.container.css({
+                            top: containerTop,
+                            left: 0,
+                            right: 0
+                        });
+                    } else {
+                        this.container.css({
+                            top: containerTop,
+                            left: containerLeft,
+                            right: 'auto'
+                        });
+                    }
                 }
             }
         },
@@ -1127,7 +1143,13 @@
             this.previousRightTime = this.endDate.clone();
 
             this.updateView();
-            this.container.show();
+            if(window.innerWidth <= 767) {
+                this.container.css({
+                    display: 'flex'
+                });
+            } else {
+                this.container.show();
+            }
             this.move();
             this.element.trigger('show.daterangepicker', this);
             this.isShowing = true;
