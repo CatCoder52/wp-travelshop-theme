@@ -12441,9 +12441,14 @@ button.select-from-control i.la {
 
 .layout-block.layout-block-search-header {
   position: relative;
-  background-image: url(../img/slide-1.jpg);
+  background-image: url(../img/slide-1-mobile.jpg);
   background-position: center;
   background-size: cover;
+}
+@media (min-width: 768px) {
+  .layout-block.layout-block-search-header {
+    background-image: url(../img/slide-1.jpg);
+  }
 }
 .layout-block.layout-block-search-header .layout-block-search-header--search {
   z-index: 10;
