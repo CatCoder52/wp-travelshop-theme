@@ -12449,7 +12449,7 @@ button.select-from-control i.la {
   z-index: 10;
 }
 .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper {
-  padding: 30px 0 1rem 0;
+  padding: 1rem 0 1rem 0;
 }
 .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper .h1 {
   font-size: 1.5rem;
@@ -12524,6 +12524,10 @@ button.select-from-control i.la {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.travelshop-datepicker-input[readonly] {
+  background: #fff;
+}
+
 @media (max-width: 767.98px) {
   .daterangepicker {
     width: auto;
@@ -12567,6 +12571,10 @@ button.select-from-control i.la {
     color: #fff;
     font-weight: bold;
     transform: scale(1.25);
+    border-radius: 5px;
+    display: inline-block;
+    width: 100%;
+    border: 0;
   }
   .daterangepicker.opensright.show-calendar.ltr.show-ranges .left .calendar-table .table-condensed tbody tr:first-child td, .daterangepicker.opensright.show-calendar.ltr.show-ranges .right .calendar-table .table-condensed tbody tr:first-child td {
     border-top: 0;
