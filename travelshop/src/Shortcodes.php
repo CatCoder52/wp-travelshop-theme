@@ -25,6 +25,9 @@ class Shortcodes
     public function list($atts)
     {
 
+        if(empty($atts['pm-ot'])){
+            return false;
+        }
 
         // support constants as Object Type ID, for better theme normalization
         if(preg_match('/^([0-9]+)$/', $atts['pm-ot']) == 0){

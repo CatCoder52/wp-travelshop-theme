@@ -1,12 +1,22 @@
-# Example travelshop
-This is an example travelshop theme for WordPress.
-It is based on the  [pressmind® SDK](https://github.com/pressmind/sdk).
+# WordPress travelshop theme
+This is a responsive travelshop theme for WordPress.
+The frontend is based on pure bootstrap components and a few common web libraries.
+The backend is based on the pressmind® PIM system and the [pressmind® SDK](https://github.com/pressmind/sdk).
+This theme is the perfect starting point in order to build professional travelshops.
+
+![Device Overview](./travelshop/assets/img/mockup.jpg)
 
 #### Demo page
 [https://travelshop-theme.pressmind.de](https://travelshop-theme.pressmind.de)
 
 #### Screenshot
 ![Overview Image Demo-Page](./travelshop/assets/img/overview.jpg)
+
+### Lighthouse Performance
+Current lighthouse performance at revision d66c162b (17.04.2021)
+(tested on demo page, without redis caching). 
+
+![Lighthouse](./travelshop/assets/img/lighthouse.jpg)
 
 #### What is it not?
 * It is not the pressmind's truetravel source, it is just a WordPress integration example for the [pressmind® SDK](https://github.com/pressmind/sdk).
@@ -40,6 +50,17 @@ In most cases, this is the basic setup for each travelshop:
 * Image handling: Thumbnailer, optimization
 * Amazon S3 support
 * ... and many more
+
+### Device compatibility
+- iPhone 5 - iPhone X, portrait/landscape
+- iPad (Pro), portrait/landscape
+
+### Browser
+* IE > 11
+* Edge (current)
+* Chrome (current)
+* Firefox (current)
+
 
 #### System overview
 
