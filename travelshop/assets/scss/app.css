@@ -11587,8 +11587,7 @@ hr {
 .content-block.content-block-list-filter .list-filter .list-filter-boxes .list-filter-box .list-filter-box-body .form-check .form-check-input + span {
   position: absolute;
   left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0.9rem;
   display: block;
   width: 14px;
   height: 14px;
@@ -11762,8 +11761,7 @@ hr {
 .multi-level-checkboxes .form-check .form-check-input + span {
   position: absolute;
   left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 5px;
   display: block;
   width: 14px;
   height: 14px;
