@@ -12378,12 +12378,23 @@ hr {
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-programm {
   font-size: 1rem;
   font-weight: bold;
-  background: #adb5bd;
-  color: #fff;
+  background: #dee2e6;
+  color: #333;
 }
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-date {
   font-size: 0.875rem;
   border-radius: 0.25rem;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-date > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-date > div .date {
+  margin: 0.125rem 0.3rem 0.125rem 0;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-date > div .badge {
+  margin: 0.125rem 0.125rem 0.125rem 0;
 }
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-date:nth-child(even) {
   background: #e9ecef;
