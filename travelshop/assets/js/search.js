@@ -245,9 +245,9 @@ if ( $('.dropdown-menu-select').length > 0 ) {
     // -- make span-checkboxes clickable
     $('.multi-level-checkboxes .form-check span').on('click', function(e) {
         if($(e.target).siblings('input').is(':checked')) {
-            $(e.target).siblings('input').prop('checked', false);
+            $(e.target).siblings('input').prop('checked', false).trigger( 'change' );
         } else {
-            $(e.target).parent().find('input').prop('checked', true);
+            $(e.target).parent().find('input').prop('checked', true).trigger( 'change' );
         }
     });
 
