@@ -11004,6 +11004,224 @@ Build date: 2018-12-12 00:07:25
     clear: none !important;
   }
 }
+.prettydropdown {
+  position: relative;
+  min-width: 72px;
+  /* 70px + borders */
+  display: inline-block;
+}
+
+.prettydropdown.loading {
+  min-width: 0;
+}
+
+.prettydropdown > ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+  border: 1px solid #a9a9a9;
+  box-sizing: content-box;
+  color: #000;
+  cursor: pointer;
+  font: normal 18px Calibri, sans-serif;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  /* Likely future */
+  z-index: 1;
+}
+
+.prettydropdown.loading > ul {
+  visibility: hidden;
+  white-space: nowrap;
+}
+
+.prettydropdown > ul:focus, .prettydropdown:not(.disabled) > ul:hover {
+  border-color: #7f7f7f;
+}
+
+.prettydropdown:not(.disabled) > ul.active {
+  width: auto;
+  max-height: none !important;
+  border-color: #1e90ff;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 99;
+}
+
+.prettydropdown > ul.active:focus {
+  outline: none;
+}
+
+.prettydropdown > ul.active.reverse {
+  top: auto;
+  bottom: 0;
+}
+
+.prettydropdown > ul > li {
+  position: relative;
+  min-width: 70px;
+  height: 48px;
+  /* 50px - borders */
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  box-sizing: border-box;
+  display: none;
+  line-height: 46px;
+  /* 48px - borders */
+  margin: 0;
+  padding-left: 0.8rem;
+}
+
+.prettydropdown.loading > ul > li {
+  min-width: 0;
+  display: block;
+  padding-right: 0.8rem;
+}
+
+.prettydropdown > ul:not(.active) > li:not(.selected):first-child {
+  visibility: hidden;
+  /* Prevent FOUC */
+}
+
+.prettydropdown > ul > li:first-child, .prettydropdown > ul.active > li {
+  display: block;
+}
+
+.prettydropdown > ul.active > li:not(.label):hover, .prettydropdown > ul.active > li.hover:not(.label), .prettydropdown > ul.active > li:first-child:hover:after {
+  background: #1e90ff;
+  color: #fff;
+}
+
+.prettydropdown > ul.active > li.nohover {
+  background: inherit !important;
+  color: inherit !important;
+}
+
+.prettydropdown > ul.active > li.hover:before, .prettydropdown > ul.active > li.nohover:after {
+  border-top-color: #fff !important;
+}
+
+.prettydropdown > ul.active > li.hover:after, .prettydropdown > ul.active > li.nohover:before {
+  border-top-color: #1e90ff !important;
+}
+
+.prettydropdown.arrow > ul > li.selected:before, .prettydropdown.arrow > ul > li.selected:after {
+  position: absolute;
+  top: 8px;
+  bottom: 0;
+  right: 8px;
+  height: 16px;
+  border: 8px solid transparent;
+  /* Arrow size */
+  box-sizing: border-box;
+  content: "";
+  display: block;
+  margin: auto;
+}
+
+.prettydropdown.arrow.small > ul > li.selected:before, .prettydropdown.arrow.small > ul > li.selected:after {
+  top: 4px;
+  height: 8px;
+  border-width: 4px;
+}
+
+.prettydropdown.arrow > ul > li.selected:before {
+  border-top-color: #a9a9a9;
+  /* Arrow color */
+}
+
+.prettydropdown.arrow > ul > li.selected:after {
+  top: 4px;
+  /* Chevron thickness */
+  border-top-color: #fff;
+  /* Match background colour */
+}
+
+.prettydropdown.arrow.small > ul > li.selected:after {
+  top: 2px;
+  /* Chevron thickness */
+}
+
+.prettydropdown.arrow.triangle > ul > li.selected:after {
+  content: none;
+}
+
+.prettydropdown > ul:hover > li.selected:before {
+  border-top-color: #7f7f7f;
+}
+
+.prettydropdown > ul.active > li.selected:before,
+.prettydropdown > ul.active > li.selected:after {
+  border: none;
+}
+
+.prettydropdown > ul:not(.active) > li > span.checked {
+  display: none;
+}
+
+/* Multi-Select */
+.prettydropdown.multiple > ul > li.selected {
+  overflow: hidden;
+  padding-right: 2rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.prettydropdown > ul > li > span.checked {
+  clear: both;
+  float: right;
+  font-weight: bold;
+  margin-right: 0.8rem;
+}
+
+/* Option Groups */
+.prettydropdown > ul > li.label {
+  cursor: default;
+  font-weight: bold;
+}
+
+.prettydropdown > ul > li.label:first-child,
+.prettydropdown.classic > ul > li.label ~ li.selected {
+  border-top: none;
+}
+
+.prettydropdown > ul > li.label ~ li:not(.label):not(.selected),
+.prettydropdown.classic > ul.active > li.label ~ li:not(.label) {
+  padding-left: 1.6rem;
+}
+
+/* Classic Behavior */
+.prettydropdown.classic > ul:not(.active) > li.selected:not(:first-child) {
+  position: absolute;
+  top: 0;
+  display: block;
+}
+
+/* Disabled */
+.prettydropdown.disabled, .prettydropdown > ul > li.disabled {
+  opacity: 0.3;
+}
+
+.prettydropdown.disabled > ul > li, .prettydropdown > ul > li.disabled {
+  cursor: not-allowed;
+}
+
+/* Divider Lines */
+.prettydropdown.multiple > ul > li.selected + li, .prettydropdown.multiple > ul.reverse > li.selected,
+.prettydropdown > ul > li.label, .prettydropdown > ul > li.label ~ li.selected {
+  border-top-color: #dedede;
+}
+
 /***
  ** Overwrite bootstrap variables in this file.
  ***/
@@ -11791,6 +12009,11 @@ hr {
   display: block;
   color: #fff;
   font-size: 0.6125rem;
+  pointer-events: none;
+}
+.list-filter-box-body .form-check > .form-check-input:checked + span i svg,
+.multi-level-checkboxes .form-check > .form-check-input:checked + span i svg {
+  pointer-events: none;
 }
 .list-filter-box-body .form-check + .form-check,
 .multi-level-checkboxes .form-check + .form-check {
@@ -12394,7 +12617,7 @@ input[type=search]::-webkit-search-results-decoration {
 }
 
 .dropdown-menu.dropdown-menu-select {
-  padding: 20px;
+  padding: 0.5rem 1rem 1rem 1rem;
   min-width: 100%;
   text-align: left;
 }
@@ -12402,14 +12625,16 @@ input[type=search]::-webkit-search-results-decoration {
 button.select-from-control {
   text-align: left;
   position: relative;
+  position: relative;
 }
 button.select-from-control:after {
   display: none !important;
 }
 button.select-from-control span.selected-options {
+  display: flex;
+  align-items: center;
   white-space: nowrap;
   width: auto;
-  display: block;
   overflow: hidden;
   position: relative;
   z-indeX: 1;
@@ -12425,6 +12650,21 @@ button.select-from-control span.selected-options:after {
   pointer-events: none;
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0, #fff 70%);
   background-repeat: repeat-x;
+}
+button.select-from-control span.selected-options span {
+  margin-right: 0.25rem;
+}
+button.select-from-control .dropdown-clear {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  pointer-events: visible;
+  display: none;
+}
+button.select-from-control .dropdown-clear path, button.select-from-control .dropdown-clear line {
+  pointer-events: none;
 }
 button.select-from-control i.la {
   position: absolute;
@@ -12544,23 +12784,46 @@ button.select-from-control i.la {
   .daterangepicker .ranges {
     display: none;
   }
+  .daterangepicker .prettydropdown ul li {
+    height: 35px;
+    line-height: 35px;
+  }
+  .daterangepicker .left .prettydropdown ul {
+    z-index: 100;
+  }
+  .daterangepicker .right .prettydropdown ul {
+    z-index: 50;
+  }
   .daterangepicker.opensright.show-calendar.ltr.show-ranges .left, .daterangepicker.opensright.show-calendar.ltr.show-ranges .right {
     padding: 0 1rem;
     border-left: 0;
     border-bottom: 0;
     border-right: 0;
     border-top: 0;
-    max-width: none;
+    width: 95vw;
+    max-width: 450px;
+  }
+  .daterangepicker.opensright.show-calendar.ltr.show-ranges .left .calendar-table .table-condensed, .daterangepicker.opensright.show-calendar.ltr.show-ranges .right .calendar-table .table-condensed {
+    margin-top: 1rem;
+  }
+  .daterangepicker.opensright.show-calendar.ltr.show-ranges .left .calendar-table .table-condensed tr, .daterangepicker.opensright.show-calendar.ltr.show-ranges .right .calendar-table .table-condensed tr {
+    display: flex;
+    justify-content: space-between;
   }
   .daterangepicker.opensright.show-calendar.ltr.show-ranges .left .calendar-table .table-condensed th, .daterangepicker.opensright.show-calendar.ltr.show-ranges .left .calendar-table .table-condensed td, .daterangepicker.opensright.show-calendar.ltr.show-ranges .right .calendar-table .table-condensed th, .daterangepicker.opensright.show-calendar.ltr.show-ranges .right .calendar-table .table-condensed td {
-    min-width: 0;
     height: auto;
-    width: auto;
-    padding: 0.4rem 0.6rem;
+    padding: 0.4rem 0.2rem;
     border-collapse: separate;
-    overflow: hidden;
+    min-width: 0;
+    width: auto;
+  }
+  .daterangepicker.opensright.show-calendar.ltr.show-ranges .left .calendar-table .table-condensed th, .daterangepicker.opensright.show-calendar.ltr.show-ranges .right .calendar-table .table-condensed th {
+    display: flex;
+    align-items: center;
   }
   .daterangepicker.opensright.show-calendar.ltr.show-ranges .left .calendar-table .table-condensed td, .daterangepicker.opensright.show-calendar.ltr.show-ranges .right .calendar-table .table-condensed td {
+    flex: 0 0 14.28%;
+    text-align: center;
     border: 1px solid #ccc;
     background: #efefef;
     border-radius: 0;
@@ -12575,7 +12838,7 @@ button.select-from-control i.la {
     background: #007bff;
     color: #fff;
     font-weight: bold;
-    transform: scale(1.25);
+    transform: scale(1.175);
     border-radius: 5px;
     display: inline-block;
     width: 100%;
@@ -12609,16 +12872,64 @@ button.select-from-control i.la {
     font-size: 1.3rem;
     margin: 0.75rem 0 0 0;
   }
+  .daterangepicker.opensright.show-calendar.ltr.show-ranges .left .calendar-table .table-condensed .prettydropdown, .daterangepicker.opensright.show-calendar.ltr.show-ranges .right .calendar-table .table-condensed .prettydropdown {
+    height: 30px;
+  }
+  .daterangepicker.opensright.show-calendar.ltr.show-ranges .left .calendar-table .table-condensed .prettydropdown ul, .daterangepicker.opensright.show-calendar.ltr.show-ranges .right .calendar-table .table-condensed .prettydropdown ul {
+    margin: 0 !important;
+  }
+  .daterangepicker.opensright.show-calendar.ltr.show-ranges .left .calendar-table .table-condensed .prettydropdown ul li, .daterangepicker.opensright.show-calendar.ltr.show-ranges .right .calendar-table .table-condensed .prettydropdown ul li {
+    font-size: 0.9rem;
+  }
+  .daterangepicker.opensright.show-calendar.ltr.show-ranges .left .calendar-table .table-condensed .prettydropdown:first-child, .daterangepicker.opensright.show-calendar.ltr.show-ranges .right .calendar-table .table-condensed .prettydropdown:first-child {
+    max-width: 115px;
+  }
+  .daterangepicker.opensright.show-calendar.ltr.show-ranges .left .calendar-table .table-condensed .prettydropdown:first-child ul, .daterangepicker.opensright.show-calendar.ltr.show-ranges .right .calendar-table .table-condensed .prettydropdown:first-child ul {
+    max-width: 115px;
+  }
+  .daterangepicker.opensright.show-calendar.ltr.show-ranges .left .calendar-table .table-condensed .prettydropdown:first-child ul li, .daterangepicker.opensright.show-calendar.ltr.show-ranges .right .calendar-table .table-condensed .prettydropdown:first-child ul li {
+    max-width: 115px;
+  }
+  .daterangepicker.opensright.show-calendar.ltr.show-ranges .left .calendar-table th.next span, .daterangepicker.opensright.show-calendar.ltr.show-ranges .left .calendar-table th.prev span, .daterangepicker.opensright.show-calendar.ltr.show-ranges .right .calendar-table th.next span, .daterangepicker.opensright.show-calendar.ltr.show-ranges .right .calendar-table th.prev span {
+    padding: 6px;
+  }
+  .daterangepicker.opensright.show-calendar.ltr.show-ranges .left .calendar-table th.next, .daterangepicker.opensright.show-calendar.ltr.show-ranges .right .calendar-table th.next {
+    padding: 0 0.85rem 0 0.5rem;
+  }
+  .daterangepicker.opensright.show-calendar.ltr.show-ranges .left .calendar-table th.prev, .daterangepicker.opensright.show-calendar.ltr.show-ranges .right .calendar-table th.prev {
+    padding: 0 0.5rem 0 0.85rem;
+  }
   .daterangepicker.opensright.show-calendar.ltr.show-ranges .drp-buttons {
     border-top: 0;
     padding: 1rem 0;
   }
   .daterangepicker.opensright.show-calendar.ltr.show-ranges .drp-buttons .applyBtn {
-    font-size: 1.3rem;
+    font-size: 1rem;
+    font-weight: normal;
+    padding: 5px 8px 4px 8px;
+  }
+  .daterangepicker.opensright.show-calendar.ltr.show-ranges .drp-buttons .cancelBtn {
+    position: absolute;
+    top: 1.2rem;
+    right: 0.4rem;
   }
   .daterangepicker.opensright.show-calendar.ltr.show-ranges:before, .daterangepicker.opensright.show-calendar.ltr.show-ranges:after {
     left: 50%;
     transform: translateX(-50%);
+  }
+}
+@media (min-width: 768px) {
+  .prettydropdown ul li {
+    font-size: 0.7rem;
+  }
+  .prettydropdown:first-child {
+    max-width: 95px;
+  }
+  .prettydropdown:first-child ul {
+    max-width: 95px;
+  }
+  .prettydropdown:first-child ul li {
+    max-width: 95px;
   }
 }
 .footer-main {
