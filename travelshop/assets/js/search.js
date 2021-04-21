@@ -306,6 +306,7 @@ if ( $('.dropdown-menu-select').length > 0 ) {
     });
 
     $('.dropdown-clear').on('click', function(e) {
+        e.stopPropagation();
         var placeHolderTag = $(e.target).parent().parent().find('.selected-options');
         var dropdown = $(e.target).parent().parent().parent().find('.dropdown-menu');
         var allBoxes = $(dropdown).find('input');
