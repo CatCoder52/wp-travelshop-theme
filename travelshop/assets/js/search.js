@@ -111,10 +111,14 @@ if ( $('[data-type="daterange"]').length > 0 ) {
 
     document.addEventListener("DOMContentLoaded", function(event) {
         $('.travelshop-datepicker-input').on('click', function() {
-            $('.daterangepicker select').prettyDropdown();
+            $('.daterangepicker select').prettyDropdown({
+                height: 30
+            });
         });
         $('.monthselect').on('change', function() {
-            $('.daterangepicker select').prettyDropdown();
+            $('.daterangepicker select').prettyDropdown({
+                height: 30
+            });
         });
     });
 
@@ -248,8 +252,8 @@ if ( $('.dropdown-menu-select').length > 0 ) {
     });
 
     // -- create label text on input change, put it into span
-    $('.dropdown-menu-select').on('change', 'input', function(e) {
-
+    $('.dropdown-menu-select').find('input').on('change', function(e) {
+        
         var placeHolderTag = $(this).parents('.dropdown').find('.selected-options'),
             placeHolderDefaultText = placeHolderTag.data('placeholder'),
             placeHolderGetText = placeHolderTag.text(),
@@ -262,6 +266,22 @@ if ( $('.dropdown-menu-select').length > 0 ) {
 
         var thatValue = that.parent().find('> label').text();
         thatValue = $.trim(thatValue);
+
+        var allBoxes = $(this).parent().parent().find('input');
+        var allEmpty = true;
+
+        $(allBoxes).each(function(key, input) {
+            if(input.checked) {
+                allEmpty = false;
+            }
+        });
+
+        // function to hide/show the clear-button
+        if(!allEmpty) {
+            $(this).parent().parent().parent().parent().find('.dropdownReiseziel .dropdown-clear').show();
+        } else {
+            $(this).parent().parent().parent().parent().find('.dropdownReiseziel .dropdown-clear').hide();
+        }
 
         if ( that.prop('checked') === true ) {
             if ( placeHolderOptionsText != '' ) {
@@ -278,12 +298,27 @@ if ( $('.dropdown-menu-select').length > 0 ) {
                 }
             } else {
                 placeHolderOptionsText = $.trim(placeHolderDefaultText);
-
             }
         }
 
         placeHolderTag.text(placeHolderOptionsText);
 
+    });
+
+    $('.dropdown-clear').on('click', function(e) {
+        var placeHolderTag = $(e.target).parent().parent().find('.selected-options');
+        var dropdown = $(e.target).parent().parent().parent().find('.dropdown-menu');
+        var allBoxes = $(dropdown).find('input');
+
+        $(allBoxes).each(function(key, input) {
+            if(input.checked) {
+                $(input).prop('checked', false).trigger( 'change' );
+            }
+        });
+
+        $(placeHolderTag).empty().text('bitte wählen');
+
+        $(e.target).hide();
     });
 
     // Init on load

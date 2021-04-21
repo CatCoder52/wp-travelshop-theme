@@ -46,14 +46,25 @@
 
                 .calendar-table {
                     .table-condensed {
+                        margin-top: 1rem;
+                        tr {
+                            display: flex;
+                            justify-content: space-between;
+                        }
                         th, td {
-                            min-width: 0;
                             height: auto;
-                            width: auto;
-                            padding: .4rem .6rem;
+                            padding: .4rem .2rem;
                             border-collapse: separate;
+                            min-width: 0;
+                            width: auto;
+                        }
+                        th {
+                            display: flex;
+                            align-items: center;
                         }
                         td {
+                            flex: 0 0 14.28%;
+                            text-align: center;
                             border: 1px solid #ccc;
                             background: #efefef;
                             border-radius: 0;
@@ -112,6 +123,35 @@
                             font-size: 1.3rem;
                             margin: .75rem 0 0 0;
                         }
+                        .prettydropdown {
+                            height: 30px;
+                            ul {
+                                margin: 0 !important;
+                                li {
+                                    font-size: .9rem;
+                                }
+                            }
+                            &:first-child {
+                                max-width: 115px;
+                                ul {
+                                    max-width: 115px;
+                                    li {
+                                        max-width: 115px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    th.next, th.prev {
+                        span {
+                            padding: 6px;
+                        }
+                    }
+                    th.next {
+                        padding: 0 .85rem 0 .5rem;
+                    }
+                    th.prev {
+                        padding: 0 .5rem 0 .85rem;
                     }
                 }
             }
@@ -132,6 +172,24 @@
             &:before, &:after {
                 left: 50%;
                 transform: translateX(-50%);
+            }
+        }
+    }
+}
+@include media-breakpoint-up(md) {
+    .prettydropdown {
+        ul {
+            li {
+                font-size: .7rem;
+            }
+        }
+        &:first-child {
+            max-width: 95px;
+            ul {
+                max-width: 95px;
+                li {
+                    max-width: 95px;
+                }
             }
         }
     }
