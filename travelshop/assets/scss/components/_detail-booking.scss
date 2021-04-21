@@ -50,7 +50,7 @@
           flex-wrap: wrap;
           align-items: flex-start;
           .date {
-            margin: .125rem .3rem .125rem 0;
+            margin: .125rem .5rem .125rem 0;
           }
           .badge {
             margin: .125rem .125rem .125rem 0;
@@ -63,6 +63,9 @@
 
         @include media-breakpoint-down(sm) {
           padding: .75rem 0;
+          .date {
+            font-weight: bold;
+          }
         }
 
         @include media-breakpoint-up(md) {
