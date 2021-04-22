@@ -11804,8 +11804,10 @@ hr {
 }
 .content-block.content-block-list-filter .list-filter .list-filter-boxes .list-filter-box .list-filter-box-body .form-check .form-check-input + span {
   position: absolute;
+  pointer-events: visible;
+  cursor: pointer;
   left: 0;
-  top: 0.9rem;
+  top: 0.3rem;
   display: block;
   width: 14px;
   height: 14px;
@@ -11815,6 +11817,13 @@ hr {
 }
 .content-block.content-block-list-filter .list-filter .list-filter-boxes .list-filter-box .list-filter-box-body .form-check .form-check-input + span i {
   display: none;
+}
+@media (max-width: 767.98px) {
+  .content-block.content-block-list-filter .list-filter .list-filter-boxes .list-filter-box .list-filter-box-body .form-check .form-check-input + span {
+    top: 0.9rem;
+    width: 20px;
+    height: 20px;
+  }
 }
 .content-block.content-block-list-filter .list-filter .list-filter-boxes .list-filter-box .list-filter-box-body .form-check:hover > .form-check-input + span {
   border-color: #007bff;
@@ -11868,6 +11877,16 @@ hr {
 }
 .content-block.content-block-list-filter .list-filter .list-filter-boxes .list-filter-box .list-filter-box-body button.toggle-second-level i {
   transition: all 0.3s;
+}
+@media (max-width: 767.98px) {
+  .content-block.content-block-list-filter .list-filter .list-filter-boxes .list-filter-box .list-filter-box-body button.toggle-second-level {
+    width: 25px;
+    height: 25px;
+  }
+  .content-block.content-block-list-filter .list-filter .list-filter-boxes .list-filter-box .list-filter-box-body button.toggle-second-level svg {
+    width: 25px;
+    height: 25px;
+  }
 }
 .content-block.content-block-list-filter .list-filter .list-filter-boxes .list-filter-box .list-filter-box-body .form-check.is--open .list-filter-second-level {
   display: block;
@@ -12787,6 +12806,38 @@ button.select-from-control i.la {
   background: #fff;
 }
 
+.travelshop-datepicker {
+  position: relative;
+}
+.travelshop-datepicker .datepicker-clear {
+  cursor: pointer;
+  position: absolute;
+  right: calc(15px + .55rem);
+  bottom: calc(1.275rem);
+  z-index: 10;
+  display: none;
+}
+.travelshop-datepicker .datepicker-clear path, .travelshop-datepicker .datepicker-clear line {
+  pointer-events: none;
+}
+.travelshop-datepicker .form-group > div {
+  position: relative;
+}
+.travelshop-datepicker .form-group > div:after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+  background: linear-gradient(270deg, white 0%, rgba(0, 0, 0, 0) 60%);
+}
+
 @media (max-width: 767.98px) {
   .daterangepicker {
     width: auto;
@@ -12944,6 +12995,18 @@ button.select-from-control i.la {
   }
   .prettydropdown:first-child ul li {
     max-width: 95px;
+  }
+
+  .daterangepicker .drp-buttons .cancelBtn {
+    position: absolute;
+    left: 0;
+    bottom: 0.1rem;
+    margin: 0;
+  }
+
+  .travelshop-datepicker .datepicker-clear {
+    right: calc(15px + .55rem);
+    bottom: calc(.23rem);
   }
 }
 .footer-main {

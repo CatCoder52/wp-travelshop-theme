@@ -94,7 +94,7 @@ $search = BuildSearch::fromRequest($_GET, 'pm', false);
 
                 <!-- FILTER_SUBMIT: START -->
                 <div class="list-filter-box list-filter-box-submit">
-                    <button type="button" class="btn btn-outline-primary btn-block filter-prompt">Filter anwenden</button>
+                    <button type="button" class="btn btn-primary btn-block filter-prompt">Filter anwenden</button>
                 </div>
                 <!-- FILTER_SUBMIT: END -->
 

@@ -122,6 +122,15 @@ if ( $('[data-type="daterange"]').length > 0 ) {
         });
     });
 
+    // -- show/hide clear button in datepicker
+    $('.travelshop-datepicker-input').on('change', function(e) {
+        if($(e.target).val() != '') {
+            $(e.target).parent().siblings('.datepicker-clear').show();
+        } else {
+            $(e.target).parent().siblings('.datepicker-clear').hide();
+        }
+    });
+
 }
 
 // -- offcanvas
@@ -184,10 +193,7 @@ if ( $('#search').length > 0 ) {
 
     $searchBackdrop.on('click', function(e) {
         e.preventDefault();
-        console.log('test');
-
         $searchBackdrop.modal('hide');
-
         e.stopPropagation();
     });
 
@@ -250,6 +256,18 @@ if ( $('.dropdown-menu-select').length > 0 ) {
             $(e.target).parent().find('input').prop('checked', true).trigger( 'change' );
         }
     });
+    // -- make filter span-checkboxes clickable
+    function addFilterCheckboxEventListener(form) {
+        $(form).find('.form-check span').on('click', function(e) {
+            if($(e.target).siblings('input').is(':checked')) {
+                $(e.target).siblings('input').prop('checked', false).trigger( 'change' );
+            } else {
+                $(e.target).siblings('input').prop('checked', true).trigger( 'change' );
+            }
+        });
+    }
+    addFilterCheckboxEventListener($('#filter'));
+    
 
     // -- create label text on input change, put it into span
     $('.dropdown-menu-select').find('input').on('change', function(e) {

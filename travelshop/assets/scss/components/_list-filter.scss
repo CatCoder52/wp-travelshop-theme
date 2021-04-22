@@ -74,8 +74,10 @@
 
               + span {
                 position: absolute;
+                pointer-events: visible;
+                cursor: pointer;
                 left:0;
-                top: .9rem;
+                top: .3rem;
 
                 display: block;
                 width: 14px;
@@ -87,6 +89,11 @@
 
                 i {
                   display: none;
+                }
+                @include media-breakpoint-down(sm) {
+                  top: .9rem;
+                  width: 20px;
+                  height: 20px;
                 }
               }
             }
@@ -156,6 +163,14 @@
 
             i {
               transition: all .3s;
+            }
+            @include media-breakpoint-down(sm) {
+              width: 25px;
+              height: 25px;
+              svg {
+                width: 25px;
+                height: 25px;
+              }
             }
           }
 

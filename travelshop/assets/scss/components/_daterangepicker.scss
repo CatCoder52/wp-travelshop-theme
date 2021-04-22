@@ -1,6 +1,39 @@
 .travelshop-datepicker-input[readonly] {
     background: #fff;
 }
+.travelshop-datepicker {
+    position: relative;
+    .datepicker-clear {
+        cursor: pointer;
+        position: absolute;
+        right: calc(15px + .55rem);
+        bottom: calc(1.275rem);
+        z-index: 10;
+        display: none;
+        path, line {
+            pointer-events: none;
+        }
+    }
+    .form-group {
+        >div {
+            position: relative;
+            &:after {
+                content: '';
+                position: absolute;
+                pointer-events: none;
+                z-index: 5;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgb(255,255,255);
+                background: linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(0,0,0,0) 60%);
+            }
+        }
+    }
+}
 
 @include media-breakpoint-down(sm) {
     .daterangepicker {
@@ -191,6 +224,22 @@
                     max-width: 95px;
                 }
             }
+        }
+    }
+    .daterangepicker {
+        .drp-buttons {
+            .cancelBtn {
+                position: absolute;
+                left: 0;
+                bottom: .1rem;
+                margin: 0;
+            }
+        }
+    }
+    .travelshop-datepicker {
+        .datepicker-clear {
+            right: calc(15px + .55rem);
+            bottom: calc(.23rem);
         }
     }
 }
