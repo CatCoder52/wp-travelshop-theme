@@ -426,8 +426,6 @@
             .on('click.daterangepicker', 'button.applyBtn', $.proxy(this.clickApply, this))
             .on('click.daterangepicker', 'button.cancelBtn', $.proxy(this.clickApply, this))
 
-        $('.travelshop-datepicker').on('click', '.datepicker-clear', $.proxy(this.clickCancel, this));
-
         if (this.element.is('input') || this.element.is('button')) {
             this.element.on({
                 'click.daterangepicker': $.proxy(this.show, this),
@@ -439,6 +437,9 @@
             this.element.on('click.daterangepicker', $.proxy(this.toggle, this));
             this.element.on('keydown.daterangepicker', $.proxy(this.toggle, this));
         }
+
+        $('.travelshop-datepicker').on('click', '.datepicker-clear', $.proxy(this.show, this));
+        $('.travelshop-datepicker').on('click', '.datepicker-clear', $.proxy(this.clickCancel, this));
 
         //
         // if attached to a text input, set the initial value

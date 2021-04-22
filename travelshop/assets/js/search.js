@@ -131,6 +131,8 @@ if ( $('[data-type="daterange"]').length > 0 ) {
         }
     });
 
+    console.log(picker);
+
 }
 
 // -- offcanvas
