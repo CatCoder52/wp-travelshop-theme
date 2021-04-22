@@ -248,7 +248,7 @@ if ( $('.dropdown-menu-select').length > 0 ) {
         e.stopPropagation();
     })
 
-    // -- make span-checkboxes clickable
+    // -- make dropdown span-checkboxes clickable
     $('.multi-level-checkboxes .form-check span').on('click', function(e) {
         if($(e.target).siblings('input').is(':checked')) {
             $(e.target).siblings('input').prop('checked', false).trigger( 'change' );
