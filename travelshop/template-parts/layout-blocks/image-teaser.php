@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-12">
             <h2 class="mt-0">
-                Reiseziele
+                Beliebte Reiseziele
             </h2>
             <p>
                 Diese Teaser basieren auf dem WordPress PostType "Beiträge".
