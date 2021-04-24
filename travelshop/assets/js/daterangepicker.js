@@ -1,9 +1,10 @@
 /**
-* @version: 3.0.5
-* @author: Dan Grossman http://www.dangrossman.info/
-* @copyright: Copyright (c) 2012-2019 Dan Grossman. All rights reserved.
-* @license: Licensed under the MIT license. See http://www.opensource.org/licenses/mit-license.php
-* @website: http://www.daterangepicker.com/
+    * !! Modified version for pressmind/travelshop theme!
+    * @version: 3.0.5
+    * @author: Dan Grossman http://www.dangrossman.info/
+    * @copyright: Copyright (c) 2012-2019 Dan Grossman. All rights reserved.
+    * @license: Licensed under the MIT license. See http://www.opensource.org/licenses/mit-license.php
+    * @website: http://www.daterangepicker.co
 */
 // Following the UMD template https://github.com/umdjs/umd/blob/master/templates/returnExportsGlobal.js
 (function (root, factory) {
