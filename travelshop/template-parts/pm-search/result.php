@@ -64,7 +64,7 @@ $pages = $search->getPaginator()->getTotalPages();
             ?>
             <div class="col-12">
                 <p>Zu Ihrer Suchanfrage wurden keine Ergebnisse gefunden. Bitte ändern Sie Ihre Suchanfrage.</p>
-                <a href="<?php echo SITE_URL.parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);?>">Suche zurücksetzen</a>
+                <a href="#" onclick="document.location.href = window.location.href.split('?')[0]">Suche zurücksetzen</a>
             </div>
             <?php
         }
