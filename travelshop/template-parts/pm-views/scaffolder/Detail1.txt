@@ -57,23 +57,25 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
         $breadcrumb[] = $tmp;
 
 
-        $breadcrumb_search_url = site_url() . '/' . $PMTravelShop->RouteProcessor->get_url_by_object_type($mo->id_object_type) . '/';
-        foreach ($moc->reiseart_default as $item) {
-            $reiseart = $item->toStdClass();
-            $tmp = new stdClass();
-            $tmp->name = $reiseart->item->name;
-            $tmp->url = $breadcrumb_search_url.'?pm-c[reiseart_default]='.$reiseart->item->id;
-            $breadcrumb[] = $tmp;
-        }
-
-
-        foreach ($moc->zielgebiet_default as $item) {
-            $zielgebiet = $item->toStdClass();
-            $tmp = new stdClass();
-            $tmp->name = $zielgebiet->item->name;
-            $tmp->url = $breadcrumb_search_url.'?pm-c[zielgebiet_default]='.$zielgebiet->item->id;;
-            $breadcrumb[] = $tmp;
-        }
+       $breadcrumb_search_url = site_url() . '/' . $PMTravelShop->RouteProcessor->get_url_by_object_type($mo->id_object_type) . '/';
+       if(!empty($moc->reiseart_default )){
+           foreach ($moc->reiseart_default as $item) {
+               $reiseart = $item->toStdClass();
+               $tmp = new stdClass();
+               $tmp->name = $reiseart->item->name;
+               $tmp->url = $breadcrumb_search_url.'?pm-c[reiseart_default]='.$reiseart->item->id;
+               $breadcrumb[] = $tmp;
+           }
+       }
+       if(!empty($moc->zielgebiet_default )){
+           foreach ($moc->zielgebiet_default as $item) {
+               $zielgebiet = $item->toStdClass();
+               $tmp = new stdClass();
+               $tmp->name = $zielgebiet->item->name;
+               $tmp->url = $breadcrumb_search_url.'?pm-c[zielgebiet_default]='.$zielgebiet->item->id;;
+               $breadcrumb[] = $tmp;
+           }
+       }
 
 
         $tmp = new stdClass();
@@ -90,18 +92,23 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
             <section class="content-block content-block-detail-header">
                 <p>
                     <?php
+                        $badges = array();
+                        if(!empty($moc->reiseart_default)){
+                            foreach ($moc->reiseart_default as $mocart_default_item) {
+                                $mocart = $mocart_default_item->toStdClass();
+                                $badges[] = $mocart->item->name;
+                            }
+                        }
 
-                    $badges = array();
-                    foreach ($moc->reiseart_default as $mocart_default_item) {
-                        $mocart = $mocart_default_item->toStdClass();
-                        $badges[] = $mocart->item->name;
-                    }
-
-                    foreach ($moc->zielgebiet_default as $k => $zielgebiet_default_item) {
-                        $zielgebiet = $zielgebiet_default_item->toStdClass();
-                        $badges[] = $zielgebiet->item->name;
-                    }
-                    echo '<span class="badge badge-secondary">' . implode('</span> <span class="badge badge-secondary">', $badges) . '</span>';
+                        if(!empty($moc->reiseart_default)){
+                            foreach ($moc->zielgebiet_default as $k => $zielgebiet_default_item) {
+                                $zielgebiet = $zielgebiet_default_item->toStdClass();
+                                $badges[] = $zielgebiet->item->name;
+                            }
+                        }
+                        if(!empty($badges)){
+                            echo '<span class="badge badge-secondary">' . implode('</span> <span class="badge badge-secondary">', $badges) . '</span>';
+                        }
                     ?>
                 </p>
                 <h1><?php echo strip_tags($moc->headline_default); ?></h1>
@@ -282,8 +289,8 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
                         </div>
 
 
-                        <?php
-
+                    <?php
+                    if(!empty($moc->textbaustein_default)){
                         foreach($moc->textbaustein_default as $textbaustein_link){
 
                             $textbaustein_mo = new \Pressmind\ORM\Object\MediaObject($textbaustein_link->id_media_object_link, true);
@@ -304,8 +311,8 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
                             </div>
                         <?php
                         }
-
-                        ?>
+                    }
+                    ?>
 
                     </div>
                     <div class="d-none d-lg-block col-lg-3">
