@@ -20,6 +20,11 @@ $config = Registry::getInstance()->get('config');
 $routes = array();
 foreach ($config['data']['media_types_pretty_url'] as $id_object_type => $pretty_url) {
 
+    //Build only routes for primary media object types
+    if(!empty($config['data']['primary_media_type_ids']) && !in_array($id_object_type, $config['data']['primary_media_type_ids'])){
+        continue;
+    }
+
     // Build a route for each media object type > detailpage <
     // e.g. www.xxx.de/reise/reisename/
     $route_prefix = trim($pretty_url['prefix'], '/');
@@ -61,11 +66,17 @@ function ts_detail_hook()
          */
         $id_media_object = $r[0]->id;
 
+        $id_media_objects = [];
+        foreach($r as $i){
+            $id_media_objects[] = $i->id;
+        }
+
         $mediaObject = null;
         $key = 'pm-ts-oc-' . $id_media_object;
         if (empty($_GET['no_cache'])) {
             $mediaObject = wp_cache_get($key, 'media-object');
         }
+
         if (empty($mediaObject) === true) {
             $mediaObject = new Pressmind\ORM\Object\MediaObject($id_media_object);
             if (empty($_GET['no_cache'])) {
@@ -77,8 +88,8 @@ function ts_detail_hook()
             WPFunctions::throw404();
         }
 
-        // Add custom headers
-        header('id-pressmind: ' . $id_media_object);
+        // Add custom headers, for better debugging
+        header('id-pressmind: ' . implode(',', $id_media_objects));
 
         // Add meta data
         // set the page title
