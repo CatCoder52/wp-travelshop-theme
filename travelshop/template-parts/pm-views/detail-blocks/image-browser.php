@@ -7,6 +7,7 @@ $pictures = $args;
 ?>
 <div class="detail-image-grid">
     <div class="row">
+        <?php if(!empty($pictures[0])){?>
         <div class="col-12 col-md-9">
             <div class="detail-image-grid-holder">
                 <div class="detail-image-grid-holder-inner">
@@ -24,8 +25,10 @@ $pictures = $args;
                 </div>
             </div>
         </div>
+        <?php } ?>
         <div class="col-12 col-md-3">
             <div class="row">
+                <?php if(!empty($pictures[1])){ ?>
                 <div class="col-6 col-md-12">
                     <div class="detail-image-grid-holder detail-image-grid-holder--small">
                         <div class="detail-image-grid-holder-inner">
@@ -42,6 +45,8 @@ $pictures = $args;
                                  ?>"/></div>
                     </div>
                 </div>
+                <?php } ?>
+                <?php if(!empty($pictures[2])){ ?>
                 <div class="col-6 col-md-12">
                     <div class="detail-image-grid-holder detail-image-grid-holder--small detail-image-grid-holder--more">
                           <span class="more-images">
@@ -66,9 +71,11 @@ $pictures = $args;
                                  $caption[] = !empty($pictures[2]->caption) ? $pictures[2]->caption : '';
                                  $caption[] = !empty($pictures[2]->copyright) ? '<small>' . $pictures[2]->copyright . '</small>' : '';
                                  echo implode('<br>', array_filter($caption));
-                                 ?>"/></div>
+                                 ?>"/>
+                        </div>
                     </div>
                 </div>
+                <?php } ?>
             </div>
         </div>
     </div>
