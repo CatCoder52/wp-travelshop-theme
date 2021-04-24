@@ -32,9 +32,10 @@ If you are planning a travelshop for german (DACH) tour operators, it is possibl
 Keep in mind that you need pressmind®, so you do not build or integrate complex booking technology.
 
 In most cases, this is the basic setup for each travelshop:
-* pressmind® Professional (PIM-System for tour operators)
+* pressmind® Professional (PIM-System for tour operators) see [pressmind.de](https://www.pressmind.de)
 * pressmind® IB3 (seamless booking engine, with connectors to a lot of german tour operator systems like BusPro, Blank, DaVinci, TouPac, turista 2/3, STADIS)
 * [pressmind® SDK](https://github.com/pressmind/sdk) or this theme
+* for custom ux design take also a look at [Google UX Playbook for travel](https://services.google.com/fh/files/events/pdf_travel_ux_playbook.pdf)
 
 #### Features
 * Display different tourism based products (packages, hotels, round trips, day trips, etc.)
