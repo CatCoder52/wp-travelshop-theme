@@ -106,7 +106,7 @@
 
 $js_files = array();
 $js_files[] = array('src' => '/assets/js/jquery-3.5.1.min.js', 'defer' => true,'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/jquery-3.5.1.min.js'));
-$js_files[] = array('src' => '/assets/js/jquery.prettydropdowns.js', 'defer' => true,'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/jquery.prettydropdowns.js'));
+$js_files[] = array('src' => '/assets/js/jquery.prettydropdowns.min.js', 'defer' => true,'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/jquery.prettydropdowns.js'));
 $js_files[] = array('src' => '/assets/js/popper-1.14.7.min.js', 'defer' => true,'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/popper-1.14.7.min.js'));
 $js_files[] = array('src' => '/assets/js/bootstrap.min.js', 'defer' => true,'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/bootstrap.min.js'));
 $js_files[] = array('src' => '/assets/js/moment.min.js', 'defer' => false,'version' => file_get_contents(get_stylesheet_directory() . '/assets/js/moment.min.js')); //- 20 Punkte
