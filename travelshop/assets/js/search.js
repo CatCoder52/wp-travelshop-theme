@@ -87,7 +87,7 @@ if ( $('[data-type="daterange"]').length > 0 ) {
                 scrollTop: $('.travelshop-datepicker').offset().top - 83
             }, 500);
         }
-        console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+        //console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
     });
 
     $('[data-type="daterange"]').on('apply.daterangepicker', function(ev, picker) {
@@ -130,8 +130,6 @@ if ( $('[data-type="daterange"]').length > 0 ) {
             $(e.target).parent().siblings('.datepicker-clear').hide();
         }
     });
-
-    console.log(picker);
 
 }
 
