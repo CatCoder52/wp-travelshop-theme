@@ -52,6 +52,7 @@ TSAjax = function (endpoint_url) {
                 }
 
                 window.history.pushState(null, '', window.location.pathname + '?' + query_string);
+                addFilterCheckboxEventListener($('#filter'));
             })
             .fail(function () {
                 console.log('ajax error');

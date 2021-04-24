@@ -11,6 +11,7 @@
 
   @include media-breakpoint-down(sm) {
     display: block;
+    margin-top: 1rem;
   }
 }
 
@@ -73,8 +74,10 @@
 
               + span {
                 position: absolute;
+                pointer-events: visible;
+                cursor: pointer;
                 left:0;
-                top: 5px;
+                top: .3rem;
 
                 display: block;
                 width: 14px;
@@ -86,6 +89,11 @@
 
                 i {
                   display: none;
+                }
+                @include media-breakpoint-down(sm) {
+                  top: .9rem;
+                  width: 20px;
+                  height: 20px;
                 }
               }
             }
@@ -155,6 +163,14 @@
 
             i {
               transition: all .3s;
+            }
+            @include media-breakpoint-down(sm) {
+              width: 25px;
+              height: 25px;
+              svg {
+                width: 25px;
+                height: 25px;
+              }
             }
           }
 
@@ -337,6 +353,10 @@
         display: block;
         color: #fff;
         font-size: .6125rem;
+        pointer-events: none;
+        svg {
+          pointer-events: none;
+        }
       }
     }
 
@@ -397,6 +417,25 @@
     button.toggle-second-level {
       i {
         transform: rotate(180deg);
+      }
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    .form-check {
+      font-size: 1.2rem;
+      margin: .5rem 0;
+      padding-left: calc(25px + .5rem);
+      .form-check-input {
+        +span {
+          width: 20px;
+          height: 20px;
+          top: 50%;
+          transform: translateY(-50%);
+          svg {
+            width: 20px !important;
+            height: 20px !important;
+          }
+        }
       }
     }
   }

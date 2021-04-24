@@ -82,8 +82,8 @@ input[type="search"]::-webkit-search-results-decoration {
 
 // -- Select
 .dropdown-menu.dropdown-menu-select {
-  padding: ( $grid-gutter-width / 3 ) * 2;
-  min-width: 15rem;
+  padding: .5rem 1rem 1rem 1rem;
+  min-width: 100%;
   text-align: left;
 }
 
@@ -91,6 +91,7 @@ input[type="search"]::-webkit-search-results-decoration {
 button.select-from-control {
   @extend .form-control;
   text-align: left;
+  position: relative;
 
   &:after {
     display: none !important;
@@ -99,9 +100,10 @@ button.select-from-control {
   position: relative;
 
   span.selected-options {
+    display: flex;
+    align-items: center;
     white-space: nowrap;
     width: auto;
-    display: block;
     overflow: hidden;
 
     position: relative;
@@ -118,6 +120,22 @@ button.select-from-control {
       pointer-events: none;
 
       @include gradient-x(rgba(#fff, 0), #fff, 0, 70%);
+    }
+    span {
+      margin-right: .25rem;
+    }
+  }
+
+  .dropdown-clear {
+    position: absolute;
+    right: .5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    pointer-events: visible;
+    display: none;
+    path, line {
+      pointer-events: none;
     }
   }
 

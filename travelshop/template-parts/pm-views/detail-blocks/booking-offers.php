@@ -77,14 +77,16 @@ $cheapest_price = $args['cheapest_price'];
 
                                     <!-- BOOKING_ROW_DATE: START -->
                                     <div class="booking-row no-gutters row booking-row-date">
-                                        <div class="col-3 d-block d-md-none">
-                                            Termin
+                                        <div class="col-3 d-md-none">
+                                            <span>Termin</span>
                                         </div>
                                         <div class="col-9 col-md-3">
 
-                                            <?php echo HelperFunctions::dayNumberToLocalDayName($date->departure->format('N'), 'short') ?> <?php echo $date->departure->format('d.m.'); ?>
-                                            -
-                                            <?php echo HelperFunctions::dayNumberToLocalDayName($date->arrival->format('N'), 'short') ?> <?php echo $date->arrival->format('d.m.Y'); ?>
+                                            <span class="date">
+                                                <?php echo HelperFunctions::dayNumberToLocalDayName($date->departure->format('N'), 'short') ?> <?php echo $date->departure->format('d.m.'); ?>
+                                                -
+                                                <?php echo HelperFunctions::dayNumberToLocalDayName($date->arrival->format('N'), 'short') ?> <?php echo $date->arrival->format('d.m.Y'); ?>
+                                            </span>
 
                                             <span class="badge badge-success">Buchbar</span>
 

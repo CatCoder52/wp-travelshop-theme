@@ -424,7 +424,7 @@
 
         this.container.find('.drp-buttons')
             .on('click.daterangepicker', 'button.applyBtn', $.proxy(this.clickApply, this))
-            .on('click.daterangepicker', 'button.cancelBtn', $.proxy(this.clickCancel, this))
+            .on('click.daterangepicker', 'button.cancelBtn', $.proxy(this.clickApply, this))
 
         if (this.element.is('input') || this.element.is('button')) {
             this.element.on({
@@ -437,6 +437,9 @@
             this.element.on('click.daterangepicker', $.proxy(this.toggle, this));
             this.element.on('keydown.daterangepicker', $.proxy(this.toggle, this));
         }
+
+        $('.travelshop-datepicker').on('click', '.datepicker-clear', $.proxy(this.show, this));
+        $('.travelshop-datepicker').on('click', '.datepicker-clear', $.proxy(this.clickCancel, this));
 
         //
         // if attached to a text input, set the initial value
@@ -536,6 +539,9 @@
             this.updateMonthsInView();
             this.updateCalendars();
             this.updateFormInputs();
+            $('.daterangepicker select').prettyDropdown({
+                height: 30
+            });
         },
 
         updateMonthsInView: function() {
@@ -1075,7 +1081,7 @@
                 } else if (containerLeft + containerWidth > $(window).width()) {
                     this.container.css({
                         top: containerTop,
-                        left: 'auto',
+                        left: 0,
                         right: 0
                     });
                 } else {
@@ -1088,17 +1094,33 @@
             } else {
                 var containerLeft = this.element.offset().left - parentOffset.left;
                 if (containerLeft + containerWidth > $(window).width()) {
-                    this.container.css({
-                        top: containerTop,
-                        left: 'auto',
-                        right: 0
-                    });
+                    if(window.innerWidth <= 767) {
+                        this.container.css({
+                            top: containerTop,
+                            left: 0,
+                            right: 0
+                        });
+                    } else {
+                        this.container.css({
+                            top: containerTop,
+                            left: 'auto',
+                            right: 0
+                        });
+                    }
                 } else {
-                    this.container.css({
-                        top: containerTop,
-                        left: containerLeft,
-                        right: 'auto'
-                    });
+                    if(window.innerWidth <= 767) {
+                        this.container.css({
+                            top: containerTop,
+                            left: 0,
+                            right: 0
+                        });
+                    } else {
+                        this.container.css({
+                            top: containerTop,
+                            left: containerLeft,
+                            right: 'auto'
+                        });
+                    }
                 }
             }
         },
@@ -1127,7 +1149,13 @@
             this.previousRightTime = this.endDate.clone();
 
             this.updateView();
-            this.container.show();
+            if(window.innerWidth <= 767) {
+                this.container.css({
+                    display: 'flex'
+                });
+            } else {
+                this.container.show();
+            }
             this.move();
             this.element.trigger('show.daterangepicker', this);
             this.isShowing = true;
@@ -1221,6 +1249,9 @@
                 this.rightCalendar.month.subtract(1, 'month');
             }
             this.updateCalendars();
+            $('.daterangepicker select').prettyDropdown({
+                height: 30
+            });
         },
 
         clickNext: function(e) {
@@ -1233,6 +1264,9 @@
                     this.leftCalendar.month.add(1, 'month');
             }
             this.updateCalendars();
+            $('.daterangepicker select').prettyDropdown({
+                height: 30
+            });
         },
 
         hoverDate: function(e) {
@@ -1436,6 +1470,9 @@
                     this.leftCalendar.month = this.rightCalendar.month.clone().subtract(1, 'month');
             }
             this.updateCalendars();
+            $('.daterangepicker select').prettyDropdown({
+                height: 30
+            });
         },
 
         timeChanged: function(e) {
@@ -1479,6 +1516,9 @@
 
             //update the calendars so all clickable dates reflect the new time component
             this.updateCalendars();
+            $('.daterangepicker select').prettyDropdown({
+                height: 30
+            });
 
             //update the form inputs above the calendars with the new time
             this.updateFormInputs();

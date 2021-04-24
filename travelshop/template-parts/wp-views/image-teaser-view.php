@@ -17,7 +17,7 @@ $url_post_thumbnail = wp_get_attachment_image_url($id_post_thumbnail, 'medium');
                     echo ' style="background-image: url(' . $url_post_thumbnail . ');" ';
                 } else {
                     // fallback image if there is no featured image
-                    echo ' style="background-image: url(' . get_stylesheet_directory_uri() . '/assets/img/slide-1.jpg' . ');" ';
+                    echo ' style="background-image: url(' . get_stylesheet_directory_uri() . '/assets/img/slide-1-mobile.jpg' . ');" ';
                 }
             ?>
         >

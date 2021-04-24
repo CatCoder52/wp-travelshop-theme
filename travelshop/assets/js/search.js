@@ -23,7 +23,7 @@ $('#search-result').on('click', '.list-filter-open', function(e) {
 // -------------------------------------------------
 
 if ( $('[data-type="daterange"]').length > 0 ) {
-    $('[data-type="daterange"]').daterangepicker({
+    let picker = $('[data-type="daterange"]').daterangepicker({
         "ranges": {
             'Heute': [moment(), moment()],
             'Abreise in 30 Tagen': [moment().add(30, 'days'), moment().add(1, 'year')],
@@ -31,7 +31,7 @@ if ( $('[data-type="daterange"]').length > 0 ) {
             'in diesem Monat': [moment().startOf('month'), moment().endOf('month')],
             'im nächsten Monat': [moment().add(1, 'month').startOf('month'), moment().add(1, 'month').endOf('month')],
         },
-        "showWeekNumbers": true,
+        "showWeekNumbers": false,
         "autoUpdateInput": false,
         "alwaysShowCalendars": true,
         "showDropdowns": true,
@@ -44,8 +44,7 @@ if ( $('[data-type="daterange"]').length > 0 ) {
         "locale": {
             "format": "DD.MM.YYYY",
             "separator": " - ",
-            "applyLabel": "OK",
-            "cancelLabel": "abbrechen",
+            "applyLabel": "Auswahl übernehmen",
             "fromLabel": "Von",
             "toLabel": "Bis",
             "customRangeLabel": "Custom",
@@ -78,13 +77,16 @@ if ( $('[data-type="daterange"]').length > 0 ) {
             "buttonClasses": "btn btn-outline-secondary btn-block",
             "applyButtonClasses": "btn btn-outline-secondary btn-block",
             "cancelClass": "btn-default",
-            "cancelLabel": 'Clear'
+            "cancelLabel": '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>'
         },
         /*"startDate": moment().startOf('hour'),
         "endDate": moment().startOf('hour').add(64, 'hour')*/
     }, function(start, end, label) {
-
-
+        if($(window).width() <= 767) {
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $('.travelshop-datepicker').offset().top - 83
+            }, 500);
+        }
         console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
     });
 
@@ -106,6 +108,31 @@ if ( $('[data-type="daterange"]').length > 0 ) {
     $('[data-type="daterange"]').on('cancel.daterangepicker', function(ev, picker) {
         $(this).val('');
     });
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+        $('.travelshop-datepicker-input').on('click', function() {
+            $('.daterangepicker select').prettyDropdown({
+                height: 30
+            });
+        });
+        $('.monthselect').on('change', function() {
+            $('.daterangepicker select').prettyDropdown({
+                height: 30
+            });
+        });
+    });
+
+    // -- show/hide clear button in datepicker
+    $('.travelshop-datepicker-input').on('change', function(e) {
+        if($(e.target).val() != '') {
+            $(e.target).parent().siblings('.datepicker-clear').show();
+        } else {
+            $(e.target).parent().siblings('.datepicker-clear').hide();
+        }
+    });
+
+    console.log(picker);
+
 }
 
 // -- offcanvas
@@ -149,7 +176,6 @@ $offcanvasBackdrop.on('hide.bs.modal', function(e) {
     $('.offcanvas.is--open').removeClass('is--open');
 });
 
-
 // ------------------------------------------
 // --- Search toggle
 // ------------------------------------------
@@ -169,10 +195,7 @@ if ( $('#search').length > 0 ) {
 
     $searchBackdrop.on('click', function(e) {
         e.preventDefault();
-        console.log('test');
-
         $searchBackdrop.modal('hide');
-
         e.stopPropagation();
     });
 
@@ -227,10 +250,30 @@ if ( $('.dropdown-menu-select').length > 0 ) {
         e.stopPropagation();
     })
 
+    // -- make dropdown span-checkboxes clickable
+    $('.multi-level-checkboxes .form-check span').on('click', function(e) {
+        if($(e.target).siblings('input').is(':checked')) {
+            $(e.target).siblings('input').prop('checked', false).trigger( 'change' );
+        } else {
+            $(e.target).parent().find('input').prop('checked', true).trigger( 'change' );
+        }
+    });
+    // -- make filter span-checkboxes clickable
+    function addFilterCheckboxEventListener(form) {
+        $(form).find('.form-check span').on('click', function(e) {
+            if($(e.target).siblings('input').is(':checked')) {
+                $(e.target).siblings('input').prop('checked', false).trigger( 'change' );
+            } else {
+                $(e.target).siblings('input').prop('checked', true).trigger( 'change' );
+            }
+        });
+    }
+    addFilterCheckboxEventListener($('#filter'));
+    
 
     // -- create label text on input change, put it into span
-    $('.dropdown-menu-select').on('change', 'input', function(e) {
-
+    $('.dropdown-menu-select').find('input').on('change', function(e) {
+        
         var placeHolderTag = $(this).parents('.dropdown').find('.selected-options'),
             placeHolderDefaultText = placeHolderTag.data('placeholder'),
             placeHolderGetText = placeHolderTag.text(),
@@ -243,6 +286,22 @@ if ( $('.dropdown-menu-select').length > 0 ) {
 
         var thatValue = that.parent().find('> label').text();
         thatValue = $.trim(thatValue);
+
+        var allBoxes = $(this).parent().parent().find('input');
+        var allEmpty = true;
+
+        $(allBoxes).each(function(key, input) {
+            if(input.checked) {
+                allEmpty = false;
+            }
+        });
+
+        // function to hide/show the clear-button
+        if(!allEmpty) {
+            $(this).parent().parent().parent().parent().find('.dropdownReiseziel .dropdown-clear').show();
+        } else {
+            $(this).parent().parent().parent().parent().find('.dropdownReiseziel .dropdown-clear').hide();
+        }
 
         if ( that.prop('checked') === true ) {
             if ( placeHolderOptionsText != '' ) {
@@ -259,12 +318,28 @@ if ( $('.dropdown-menu-select').length > 0 ) {
                 }
             } else {
                 placeHolderOptionsText = $.trim(placeHolderDefaultText);
-
             }
         }
 
         placeHolderTag.text(placeHolderOptionsText);
 
+    });
+
+    $('.dropdown-clear').on('click', function(e) {
+        e.stopPropagation();
+        var placeHolderTag = $(e.target).parent().parent().find('.selected-options');
+        var dropdown = $(e.target).parent().parent().parent().find('.dropdown-menu');
+        var allBoxes = $(dropdown).find('input');
+
+        $(allBoxes).each(function(key, input) {
+            if(input.checked) {
+                $(input).prop('checked', false).trigger( 'change' );
+            }
+        });
+
+        $(placeHolderTag).empty().text('bitte wählen');
+
+        $(e.target).hide();
     });
 
     // Init on load

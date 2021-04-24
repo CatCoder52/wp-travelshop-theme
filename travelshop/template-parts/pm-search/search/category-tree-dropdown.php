@@ -33,12 +33,15 @@ if (empty($treeItems) === false) {
         <label for=""><?php echo $name; ?></label>
         <div class="dropdown">
 
-            <button class="select-from-control dropdown-toggle" type="button"
-                    id="dropdownReiseziel" data-toggle="dropdown"
+            <button class="dropdownReiseziel select-from-control dropdown-toggle" type="button"
+                    data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                 <span class="selected-options" data-placeholder="bitte wählen">bitte wählen</span>
-
-                <i class="la la-angle-down"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x dropdown-clear" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
             </button>
 
             <div class="dropdown-menu dropdown-menu-select"
@@ -111,7 +114,7 @@ if (empty($treeItems) === false) {
                     }
                     ?>
                 </div>
-                <button class="btn btn-outline-secondary btn-block mt-3 filter-prompt">
+                <button class="btn btn-primary btn-block mt-3 filter-prompt">
                     Auswahl übernehmen
                 </button>
             </div>

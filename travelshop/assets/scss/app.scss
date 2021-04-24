@@ -5,6 +5,7 @@
 @import "vendors/ion-rangeslider/range-slider";
 @import "vendors/tiny-slider/tiny-slider"; 
 @import "vendors/daterangepicker/daterangepicker";
+@import "vendors/pretty-dropdowns/prettydropdowns";
 
 // -- abstracts
 @import "abstracts/variables";
@@ -35,6 +36,7 @@
 @import "components/forms";
 @import "components/search-header";
 @import "components/jumbotron";
+@import "components/daterangepicker";
 
 // -- layout
 @import "layout/footer";

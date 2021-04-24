@@ -37,13 +37,25 @@
       &.booking-row-programm  {
         font-size: 1rem;
         font-weight: bold;
-        background: $gray-500;
-        color: #fff;
+        background: $gray-300;
+        color: #333;
       }
 
       &.booking-row-date {
         font-size: $font-size-sm;
         @include border-radius($card-border-radius);
+
+        >div {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: flex-start;
+          .date {
+            margin: .125rem .5rem .125rem 0;
+          }
+          .badge {
+            margin: .125rem .125rem .125rem 0;
+          }
+        }
 
         &:nth-child(even) {
           background: $gray-200;
@@ -51,6 +63,9 @@
 
         @include media-breakpoint-down(sm) {
           padding: .75rem 0;
+          .date {
+            font-weight: bold;
+          }
         }
 
         @include media-breakpoint-up(md) {
