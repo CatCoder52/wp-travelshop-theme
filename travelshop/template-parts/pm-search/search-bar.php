@@ -21,7 +21,7 @@ $search = new Pressmind\Search(
 <form method="GET">
     <div class="search-wrapper">
         <div class="h1 text-md-center mt-0 mb-2 mb-4">
-            Finden Sie ihre Traumreise.
+            Finden deine Traumreise.
         </div>
 
         <div class="search-wrapper--inner search-box">
