@@ -1,0 +1,1 @@
+This directory contains generated interfaces for each media object type.
