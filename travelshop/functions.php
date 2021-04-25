@@ -50,6 +50,7 @@ require_once 'src/Router.php';
 // Cleanup
 require_once 'functions/cleanup_meta_includes.php';
 require_once 'functions/disable_emojis.php';
+require_once 'functions/disable_pagetypes.php';
 
 // Menus
 require_once 'functions/menus.php';
