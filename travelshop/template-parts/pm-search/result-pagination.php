@@ -1,6 +1,8 @@
 <?php
 /**
  * @var int $page_size
+ * @var int $current_page;
+ * @var int $pages;
  */
 
 ?>
@@ -13,7 +15,14 @@
                                                                                                href="?<?php echo BuildSearch::getCurrentQueryString($current_page - 1, $page_size); ?>">Previous</a>
                 </li>
                 <?php
+
+                //prevent result from overloading
+                if($current_page > $pages){
+                    $current_page = $pages;
+                }
+
                 for ($page = 1; $page <= $pages; $page++) {
+
                     ?>
                     <li class="page-item<?php echo ($current_page == $page) ? ' active' : ''; ?>"><a
                             class="page-link"
@@ -22,7 +31,7 @@
                 <?php } ?>
                 <li class="page-item<?php echo ($current_page == $pages) ? ' disabled' : ''; ?>"><a
                         class="page-link"
-                        href="?<?php echo BuildSearch::getCurrentQueryString($current_page + 1, $page_size); ?>">Next</a>
+                        href="<?php echo ($current_page >= $pages) ? '#' : '?'.BuildSearch::getCurrentQueryString($current_page + 1, $page_size); ?>">Next</a>
                 </li>
             </ul>
         </nav>
