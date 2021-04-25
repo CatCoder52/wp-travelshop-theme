@@ -18,6 +18,11 @@ Current lighthouse performance at revision d66c162b (17.04.2021)
 
 ![Lighthouse](./travelshop/assets/img/lighthouse.jpg)
 
+### Mobile experience
+
+![Lighthouse](./travelshop/assets/img/mobile.jpg)
+
+
 #### What is it not?
 * It is not the pressmind's truetravel source, it is just a WordPress integration example for the [pressmind® SDK](https://github.com/pressmind/sdk).
 * A full featured, plug & play travelshop.
@@ -82,10 +87,6 @@ It is possible to output product listings on three different ways:
 For examples and more information see the 
 theme specific [QueryString API](./travelshop/readme-querystring-api.md)
 
-
 #### Theme developer documentation
 Take a look at the [pressmind web-core project](https://github.com/pressmind/web-core-skeleton-basic/#quickstart), 
 most of the pressmind sdk implementation in this theme is based on those examples.
-
-
-
