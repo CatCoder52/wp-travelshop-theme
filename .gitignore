@@ -5,5 +5,5 @@ travelshop/pm-config.php
 travelshop/template-parts/pm-views/*_Detail1.php
 travelshop/template-parts/pm-views/*_Teaser1.php
 travelshop/Custom/MediaType/*.php
-travelshop/docs/objecttypes
+travelshop/docs/objecttypes/*.html
 travelshop/assets/scss/*.map

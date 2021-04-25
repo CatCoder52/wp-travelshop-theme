@@ -3,8 +3,6 @@
 namespace Pressmind\Travelshop;
 
 
-
-
 class Shortcodes
 {
 
@@ -13,24 +11,26 @@ class Shortcodes
         add_shortcode('ts-list', [$this, 'list']);
         add_shortcode('ts-searchroutes', [$this, 'searchRoutes']);
         add_shortcode('ts-searchpage', [$this, 'searchPage']);
+        // TODO
+        // add_shortcode('ts-ct-items', [$this, 'categoryTreeItems']);
     }
 
     /**
+     * @param $atts
+     * @return string
      * @example [ts-list view="Teaser1" pm-ot="123" pm-t="Italien"  pm-pr="1-1000" pm-dr=20201231-20210131 pm-*=...]
      * attr "view" defines the view template (default "Teaser1"), located in wp-content/themes/travelshop/template-parts/pm-views/*
      * @see for further Documentation and all possible attributes see readme.md section "Query API"
-     * @param $atts
-     * @return string
      */
     public function list($atts)
     {
 
-        if(empty($atts['pm-ot'])){
+        if (empty($atts['pm-ot'])) {
             return false;
         }
 
         // support constants as Object Type ID, for better theme normalization
-        if(preg_match('/^([0-9]+)$/', $atts['pm-ot']) == 0){
+        if (preg_match('/^([0-9]+)$/', $atts['pm-ot']) == 0) {
             $atts['pm-ot'] = constant($atts['pm-ot']);
         }
 
@@ -53,7 +53,7 @@ class Shortcodes
         */
 
         $view = 'Teaser1';
-        if(empty($atts['view']) === false){
+        if (empty($atts['view']) === false) {
             $view = $atts['view'];
         }
 
@@ -74,13 +74,20 @@ class Shortcodes
      * it's rendundant to the current defined routing.. so use it only for demonstration
      * @return string
      */
-    public function searchRoutes(){
+    public function searchRoutes()
+    {
         global $config;
         $output = '<ul>';
+
         foreach ($config['data']['media_types_pretty_url'] as $id_object_type => $pretty_url) {
-            $route = trim($pretty_url['prefix'], '/').'-suche';
-            $url = site_url().'/'.$route.'/';
-            $output .= '<li><a href="'.$url.'">'.$route.'</a></li>';
+
+            if (!empty($config['data']['primary_media_type_ids']) && !in_array($id_object_type, $config['data']['primary_media_type_ids'])) {
+                continue;
+            }
+
+            $route = trim($pretty_url['prefix'], '/') . '-suche';
+            $url = site_url() . '/' . $route . '/';
+            $output .= '<li><a href="' . $url . '">' . $route . '</a></li>';
         }
         $output .= '</ul>';
         return $output;
@@ -92,15 +99,48 @@ class Shortcodes
      * @param $atts
      * @return string|null
      */
-    public function searchPage($atts){
+    public function searchPage($atts)
+    {
         global $PMTravelShop;
         $page = $PMTravelShop->RouteProcessor->get_url_by_object_type(constant($atts['page']));
-        if($page == false){
+        if ($page == false) {
             return null;
         }
 
-        return site_url().'/'.$page.'/';
+        return site_url() . '/' . $page . '/';
 
     }
+
+
+    /**
+     * @TODO not final
+     * @param $atts
+     * @return string
+     */
+    public function categoryTreeItems($atts)
+    {
+
+        if (preg_match('/^([0-9]+)$/', $atts['pm-idt']) == 0) {
+            $id_tree = $atts['pm-idt']; // TODO
+        }
+
+        $url = trim($atts['pm-href'], '/');
+        $fieldname = $atts['pm-fieldname'];
+
+        $tree = new Pressmind\Search\Filter\Category($id_tree);
+        $treeItems = $tree->getResult();
+
+        $output = '<ul>';
+        foreach ($treeItems as $item) {
+            $item->toStdClass();
+            $href = $url . '?pm-c[' . $fieldname . ']=' . $item->id;
+            $output .= '<li><a href="'.$href.'">'.$item->name.'</a></li>';
+
+        }
+        $output .= '</ul>';
+        return $output;
+    }
+
+
 }
 

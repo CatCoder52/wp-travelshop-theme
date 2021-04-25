@@ -47,7 +47,7 @@
                     ?>
                     <nav class="navbar navbar-expand-lg offcanvas" id="navbar">
                         <button class="offcanvas-close">
-                            <i class="la la-times"></i> Menü schliessen
+                            <i class="la la-times"></i> Menü schließen
                         </button>
                         <div class="navbar-offcanvas">
                             <ul class="navbar-nav mr-auto ml-auto">

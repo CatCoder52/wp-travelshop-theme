@@ -18,6 +18,11 @@ Current lighthouse performance at revision d66c162b (17.04.2021)
 
 ![Lighthouse](./travelshop/assets/img/lighthouse.jpg)
 
+### Mobile experience
+
+![Lighthouse](./travelshop/assets/img/mobile.jpg)
+
+
 #### What is it not?
 * It is not the pressmind's truetravel source, it is just a WordPress integration example for the [pressmind® SDK](https://github.com/pressmind/sdk).
 * A full featured, plug & play travelshop.
@@ -32,9 +37,10 @@ If you are planning a travelshop for german (DACH) tour operators, it is possibl
 Keep in mind that you need pressmind®, so you do not build or integrate complex booking technology.
 
 In most cases, this is the basic setup for each travelshop:
-* pressmind® Professional (PIM-System for tour operators)
+* pressmind® Professional (PIM-System for tour operators) see [pressmind.de](https://www.pressmind.de)
 * pressmind® IB3 (seamless booking engine, with connectors to a lot of german tour operator systems like BusPro, Blank, DaVinci, TouPac, turista 2/3, STADIS)
 * [pressmind® SDK](https://github.com/pressmind/sdk) or this theme
+* for custom ux design take also a look at [Google UX Playbook for travel](https://services.google.com/fh/files/events/pdf_travel_ux_playbook.pdf)
 
 #### Features
 * Display different tourism based products (packages, hotels, round trips, day trips, etc.)
@@ -81,10 +87,6 @@ It is possible to output product listings on three different ways:
 For examples and more information see the 
 theme specific [QueryString API](./travelshop/readme-querystring-api.md)
 
-
 #### Theme developer documentation
 Take a look at the [pressmind web-core project](https://github.com/pressmind/web-core-skeleton-basic/#quickstart), 
 most of the pressmind sdk implementation in this theme is based on those examples.
-
-
-
