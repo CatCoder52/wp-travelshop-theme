@@ -34,8 +34,8 @@ if (empty($_GET['pm-dr']) === false) {
     $dateRange = BuildSearch::extractDaterange($_GET['pm-dr']);
     if ($dateRange !== false) {
         $CheapestPriceFilter = new CheapestPrice();
-        $CheapestPriceFilter->date_from = $dateRange[0]->format('Y-m-d');
-        $CheapestPriceFilter->date_to = $dateRange[1]->format('Y-m-d');
+        $CheapestPriceFilter->date_from = $dateRange[0];
+        $CheapestPriceFilter->date_to = $dateRange[1];
     }
 }
 
@@ -334,7 +334,21 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
                                         <a href="#content-block-detail-booking">
                                             weitere Termine <i class="la la-angle-down"></i>
                                         </a>
-
+                                    </div>
+                                    <div class="detail-wishlist">
+                                        <a data-object-id="<?php echo $mo->id; ?>" class="add-to-wishlist" href="#">
+                                            <?php   $wishlist = json_decode($_COOKIE["wishlistObjects"]); 
+                                                    if($wishlist) {
+                                                        if(in_array($mo->id, $wishlist)) {
+                                                            echo 'von Merkliste löschen';
+                                                        } else {
+                                                            echo 'auf die Merkliste';
+                                                        }
+                                                    } else {
+                                                        echo 'auf die Merkliste';
+                                                    }
+                                            ?>
+                                        </a>
                                     </div>
                                     </p>
 
