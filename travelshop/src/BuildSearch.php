@@ -16,11 +16,18 @@ class BuildSearch
      * Building a pressmind Search Query based on GET or POST Request
      *
      * Possible Parameters
+     * $_GET['pm-id'] media object id/s  separated by comma
      * $_GET['pm-ot'] object Type ID
      * $_GET['pm-t'] term
      * $_GET['pm-c'] category id's separated by comma (search with "or") or plus (search with "and")   e.g. pm-c[land_default]=xxx,yyyy = or Suche, + and Suche
      * $_GET['pm-pr'] price range 123-1234
      * $_GET['pm-dr'] date range 20200101-20200202
+     * $_GET['pm-vi'] visibiltiy
+     * $_GET['pm-st'] state
+     * $_GET['pm-bs'] booking state (date)
+     * $_GET['pm-po'] pool
+     * $_GET['pm-br'] brand
+     * $_GET['pm-vr'] valid from, valid to range
      * $_GET['pm-l'] limit 0,10
      * $_GET['pm-o'] order
      * @param $request
@@ -120,6 +127,78 @@ class BuildSearch
             }
 
             $validated_search_parameters[$prefix.'-o'] = $request[$prefix.'-o'];
+        }
+
+        if (empty($request[$prefix.'-id']) === false){
+            if(preg_match('/^[0-9\,]+$/', $request[$prefix.'-id']) > 0){ // search by OR, marked by ","
+                $ids = explode(',', $request[$prefix.'-id']);
+                $conditions[] = Pressmind\Search\Condition\MediaObjectID::create($ids);
+                $validated_search_parameters[$prefix.'-id'] = implode(',', $ids);
+
+            }
+        }
+
+        if (empty($request[$prefix.'-po']) === false){
+            if(preg_match('/^[0-9\,]+$/', $request[$prefix.'-po']) > 0){ // search by OR, marked by ","
+                $pools = explode(',', $request[$prefix.'-po']);
+                $conditions[] = Pressmind\Search\Condition\Pool::create($pools);
+                $validated_search_parameters[$prefix.'-po'] = implode(',', $pools);
+
+            }
+        }
+
+        if (empty($request[$prefix.'-st']) === false){
+            if(preg_match('/^[0-9\,]+$/', $request[$prefix.'-st']) > 0){ // search by OR, marked by ","
+                $states = explode(',', $request[$prefix.'-st']);
+                $conditions[] = Pressmind\Search\Condition\State::create($states);
+                $validated_search_parameters[$prefix.'-st'] = implode(',', $states);
+
+            }
+        }
+
+        if (empty($request[$prefix.'-br']) === false){
+            if(preg_match('/^[0-9\,]+$/', $request[$prefix.'-br']) > 0){ // search by OR, marked by ","
+                $brands = explode(',', $request[$prefix.'-br']);
+                $conditions[] = Pressmind\Search\Condition\Brand::create($brands);
+                $validated_search_parameters[$prefix.'-br'] = implode(',', $brands);
+
+            }
+        }
+
+        if (empty($request[$prefix.'-tr']) === false){
+            if(preg_match('/^[a-z,A-Z\,]+$/', $request[$prefix.'-tr']) > 0){ // search by OR, marked by ","
+                $transport_types = explode(',', $request[$prefix.'-tr']);
+                $conditions[] = Pressmind\Search\Condition\Transport::create($transport_types);
+                $validated_search_parameters[$prefix.'-tr'] = implode(',', $transport_types);
+
+            }
+        }
+
+        if (empty($request[$prefix.'-vi']) === false){
+            if(preg_match('/^[0-9\,]+$/', $request[$prefix.'-vi']) > 0){ // search by OR, marked by ","
+                $visibilities = explode(',', $request[$prefix.'-vi']);
+                $conditions[] = Pressmind\Search\Condition\Visibility::create($visibilities);
+                $validated_search_parameters[$prefix.'-vi'] = implode(',', $visibilities);
+
+            }
+        }
+
+        // Booking State (based on date)
+        if (empty($request[$prefix.'-bs']) === false){
+            if(preg_match('/^[0-9\,]+$/', $request[$prefix.'-bs']) > 0){ // search by OR, marked by ","
+                $booking_states = explode(',', $request[$prefix.'-bs']);
+                $conditions[] = Pressmind\Search\Condition\BookingState::create($booking_states);
+                $validated_search_parameters[$prefix.'-bs'] = implode(',', $booking_states);
+            }
+        }
+
+        if (isset($request[$prefix.'-vr']) === true) {
+            $dateRange = self::extractDaterange($request[$prefix.'-vr']);
+            if($dateRange !== false){
+                list($from, $to) = $dateRange;
+                $conditions[] = Pressmind\Search\Condition\Validity::create($from, $to);
+                $validated_search_parameters[$prefix.'-dr'] = $from->format('Y-m-d').'-'.$to->format('Y-m-d');
+            }
         }
 
         self::$current_search_query_string = urldecode(http_build_query($validated_search_parameters));

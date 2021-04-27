@@ -48,6 +48,172 @@ foreach ($search->getResults() as $mediaObject) {
 }
 ```
 
+### pm-id
+pressmind media object id/s, (int)
+```
+GET https://yoursite.de/search/?pm-id=12345,12346
+```
+```
+WORDPRESS SHORTCODE [ts-list pm-id="12345,123456"]
+```
+
+```php
+// pressmind/sdk search conditions
+$search = new Pressmind\Search(
+    [
+        \Pressmind\Search\Condition\MediaObjectID::create([12345,123456])
+    ]
+);
+foreach ($search->getResults() as $mediaObject) {
+    echo $mediaObject->render('Teaser1', 'de');
+}
+```
+
+### pm-po
+pressmind pool id/s, (int)
+```
+GET https://yoursite.de/search/?pm-po=123,124
+```
+```
+WORDPRESS SHORTCODE [ts-list pm-po="123,124"]
+```
+
+```php
+// pressmind/sdk search conditions
+$search = new Pressmind\Search(
+    [
+        \Pressmind\Search\Condition\Pool::create([123,124])
+    ]
+);
+foreach ($search->getResults() as $mediaObject) {
+    echo $mediaObject->render('Teaser1', 'de');
+}
+```
+
+### pm-vi
+visibilitiy enumeration
+
+10 = "Nobody"
+30 = "Public"
+40 = "Extranet"
+50 = "Intranet"
+```
+GET https://yoursite.de/search/?pm-vi=30,40
+```
+```
+WORDPRESS SHORTCODE [ts-list pm-tr="30,40"]
+```
+
+```php
+// pressmind/sdk search conditions
+$search = new Pressmind\Search(
+    [
+        \Pressmind\Search\Condition\Visibility::create([30, 40])
+    ]
+);
+foreach ($search->getResults() as $mediaObject) {
+    echo $mediaObject->render('Teaser1', 'de');
+}
+```
+
+### pm-st
+pressmind state enumeration
+
+30 = "Draft"
+40 = "Pending Review"
+50 = "OK"
+60 = "Closed"
+70 = "Closed (reason: age)"
+80 = "Closed (reason: law)"
+90 = "Closed (reason: bad quality)"
+100 = "Closed (reason: duplicate content)"
+110 = "Closed (reason: technical error)"
+200 = "Imported"
+
+custom states are possible, look at the pressmind client
+
+```
+GET https://yoursite.de/search/?pm-st=50
+```
+```
+WORDPRESS SHORTCODE [ts-list pm-st="50"]
+```
+
+```php
+// pressmind/sdk search conditions
+$search = new Pressmind\Search(
+    [
+        \Pressmind\Search\Condition\State::create([50])
+    ]
+);
+foreach ($search->getResults() as $mediaObject) {
+    echo $mediaObject->render('Teaser1', 'de');
+}
+```
+
+### pm-bs
+pressmind booking state enumeration (date based)
+
+```
+GET https://yoursite.de/search/?pm-bs=1
+```
+```
+WORDPRESS SHORTCODE [ts-list pm-bs="1"]
+```
+
+```php
+// pressmind/sdk search conditions
+$search = new Pressmind\Search(
+    [
+        \Pressmind\Search\Condition\BookingState::create([1])
+    ]
+);
+foreach ($search->getResults() as $mediaObject) {
+    echo $mediaObject->render('Teaser1', 'de');
+}
+```
+
+### pm-br
+media object brand
+```
+GET https://yoursite.de/search/?pm-br=12
+```
+```
+WORDPRESS SHORTCODE [ts-list pm-br="12"]
+```
+
+```php
+// pressmind/sdk search conditions
+$search = new Pressmind\Search(
+    [
+        \Pressmind\Search\Condition\Brand::create([12])
+    ]
+);
+foreach ($search->getResults() as $mediaObject) {
+    echo $mediaObject->render('Teaser1', 'de');
+}
+```
+
+### pm-tr
+transport type/s (string)
+```
+GET https://yoursite.de/search/?pm-tr=FLUG,PKW
+```
+```
+WORDPRESS SHORTCODE [ts-list pm-tr="FLUG,PKW"]
+```
+
+```php
+// pressmind/sdk search conditions
+$search = new Pressmind\Search(
+    [
+        \Pressmind\Search\Condition\Transport::create(['PKW', 'FLUG'])
+    ]
+);
+foreach ($search->getResults() as $mediaObject) {
+    echo $mediaObject->render('Teaser1', 'de');
+}
+```
 
 ### pm-t
 Fulltext search in the defined pressmind fields.
@@ -71,6 +237,8 @@ foreach ($search->getResults() as $mediaObject) {
     echo $mediaObject->render('Teaser1', 'de');
 }
 ```
+
+
 
 ### pm-pr
 Search by price range. Allowed pattern ([0-9]+)\-([0-9])+
@@ -105,6 +273,26 @@ WORDPRESS SHORTCODE [ts-list pm-dr="20201231-20213101"]
 $search = new Pressmind\Search(
     [
         \Pressmind\Search\Condition\DateRange::create(new DateTime('2020-12-31'), new DateTime('2021-01-31')),
+    ]
+);
+foreach ($search->getResults() as $mediaObject) {
+    echo $mediaObject->render('Teaser1', 'de');
+}
+```
+
+### pm-vr
+Search by valid from, valid to range. Allowed pattern: YYYYMMDD-YYYYMMDD
+```
+GET https://yoursite.de/search/?pm-vr=20201231-20213101
+```
+```
+WORDPRESS SHORTCODE [ts-list pm-vr="20201231-20213101"]
+```
+```php
+// pressmind/sdk search conditions
+$search = new Pressmind\Search(
+    [
+        \Pressmind\Search\Condition\Validity::create(new DateTime('2020-12-31'), new DateTime('2021-01-31')),
     ]
 );
 foreach ($search->getResults() as $mediaObject) {
