@@ -34,8 +34,8 @@ if (empty($_GET['pm-dr']) === false) {
     $dateRange = BuildSearch::extractDaterange($_GET['pm-dr']);
     if ($dateRange !== false) {
         $CheapestPriceFilter = new CheapestPrice();
-        $CheapestPriceFilter->date_from = $dateRange[0]->format('Y-m-d');
-        $CheapestPriceFilter->date_to = $dateRange[1]->format('Y-m-d');
+        $CheapestPriceFilter->date_from = $dateRange[0];
+        $CheapestPriceFilter->date_to = $dateRange[1];
     }
 }
 
@@ -330,12 +330,11 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
                                     <div class="h5"><i class="la la-calendar"></i> Reisetermine</div>
                                     <p><?php echo $cheapest_price->date_departure->format('d.m') . ' - ' . $cheapest_price->date_arrival->format('d.m.Y'); ?></p>
                                     <p class="mb-0">
-                                    <div class="dropdown dropdown-termine">
-                                        <a href="#content-block-detail-booking">
-                                            weitere Termine <i class="la la-angle-down"></i>
-                                        </a>
-
-                                    </div>
+                                        <div class="dropdown dropdown-termine">
+                                            <a href="#content-block-detail-booking">
+                                                weitere Termine <i class="la la-angle-down"></i>
+                                            </a>
+                                        </div>
                                     </p>
 
                                     <!--
