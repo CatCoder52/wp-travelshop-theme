@@ -59,6 +59,8 @@ table {
 
 header {
     padding: 2rem 0;
+    position: relative;
+    z-index: 500;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 
     .container {
@@ -70,7 +72,7 @@ header {
 
         .logo {
             max-width: 125px;
-            @media only screen and (min-width: 768px) {
+            @media only screen and (min-width: 900px) {
                 max-width: 175px;
             }
         }
@@ -80,7 +82,7 @@ header {
             svg {
                 pointer-events: none;
             }
-            @media only screen and (min-width: 768px) {
+            @media only screen and (min-width: 900px) {
                 display: none;
             }
         }
@@ -186,7 +188,31 @@ header {
                 }
             }
 
-            @media only screen and (min-width: 768px) {
+            .ibe_template_hotline {
+                background: #007bff;
+                color: #fff;
+                text-align: center;
+                padding: 1rem;
+                position: relative;
+                small {
+                    font-weight: bold;
+                    display: inline-block;
+                    margin-bottom: .25rem;
+                }
+                a {
+                    color: #fff;
+                    display: inline-block;
+                    text-decoration: none;
+                }
+                .phone-link {
+                    position: absolute;
+                    left: 1rem;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+
+            @media only screen and (min-width: 900px) {
                 position: relative;
                 top: auto;
                 left: auto;
@@ -196,6 +222,8 @@ header {
                 max-width: none;
                 min-height: 0;
                 box-shadow: none;
+                display: flex;
+                align-items: center;
 
                 ul {
                     display: flex;
@@ -205,9 +233,9 @@ header {
                         padding-bottom: 0;
                         &.dropdown {
                             .nav-link-dropdown {
-                                
+                                padding-right: 1.5rem;
                                 .dropdown-toggle {
-                                    display: none;
+                                    transform: translateY(-2px);
                                 }
                             }
                             .dropdown-menu {
@@ -228,11 +256,33 @@ header {
                             }
                         }
                         &:hover {
-                            text-decoration: underline;
+                            .nav-link {
+                                color: #34495e;
+                            }
+                        }
+                        &:last-child {
+                            margin-right: 1rem;
                         }
                         @media only screen and (min-width: 1024px) {
                             font-size: 1.25rem;
+
+                            &.dropdown {
+                                .nav-link-dropdown {
+                                    .dropdown-toggle {
+                                        transform: translateY(0px);
+                                    }
+                                }
+                            }
                         }
+                    }
+                }
+
+                .ibe_template_hotline {
+                    display: inline-block;
+                    padding: .5rem .5rem .5rem 3rem;
+                    border-radius: 5px;
+                    .phone-link {
+                        left: .5rem;
                     }
                 }
 
@@ -244,4 +294,52 @@ header {
 
     }
 
+}
+
+footer {
+    .ibe_above_footer {
+        background: #007bff;
+        background: -webkit-linear-gradient(to right, #2948ff, #396afc);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #2948ff, #396afc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        color: #fff;
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.16), inset 0 0 6px rgba(0,0,0,0.23);
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        .container {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            .ibe_trust_item {
+                text-align: center;
+                padding: 1rem;
+                flex: 0 0 50%;
+                span {
+                    display: block;
+                    margin-top: .5rem;
+                }
+                svg {
+                    max-width: 75px;
+                    height: auto;
+                    path, circle, line {
+                        
+                    }
+                }
+            }
+        }
+    }
+    @media only screen and (min-width: 900px) {
+        .ibe_above_footer {
+            .container {
+                .ibe_trust_item {
+                    flex: 0 0 25%;
+                    padding: 2rem 1rem;
+                    span {
+                    }
+                    svg {
+                        max-width: 100px;
+                    }
+                }
+            }
+        }
+    }
 }

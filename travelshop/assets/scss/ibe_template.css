@@ -64,6 +64,8 @@ table {
 
 header {
   padding: 2rem 0;
+  position: relative;
+  z-index: 500;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 header .container {
@@ -75,7 +77,7 @@ header .container {
 header .container .logo {
   max-width: 125px;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 900px) {
   header .container .logo {
     max-width: 175px;
   }
@@ -86,7 +88,7 @@ header .container .ibe_mobile_menu_toggle {
 header .container .ibe_mobile_menu_toggle svg {
   pointer-events: none;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 900px) {
   header .container .ibe_mobile_menu_toggle {
     display: none;
   }
@@ -181,7 +183,30 @@ header .container #ibe_main_nav.active {
 header .container #ibe_main_nav.active:after {
   opacity: 1;
 }
-@media only screen and (min-width: 768px) {
+header .container #ibe_main_nav .ibe_template_hotline {
+  background: #007bff;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+}
+header .container #ibe_main_nav .ibe_template_hotline small {
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+header .container #ibe_main_nav .ibe_template_hotline a {
+  color: #fff;
+  display: inline-block;
+  text-decoration: none;
+}
+header .container #ibe_main_nav .ibe_template_hotline .phone-link {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+@media only screen and (min-width: 900px) {
   header .container #ibe_main_nav {
     position: relative;
     top: auto;
@@ -192,6 +217,8 @@ header .container #ibe_main_nav.active:after {
     max-width: none;
     min-height: 0;
     box-shadow: none;
+    display: flex;
+    align-items: center;
   }
   header .container #ibe_main_nav ul {
     display: flex;
@@ -200,8 +227,11 @@ header .container #ibe_main_nav.active:after {
     border: 0;
     padding-bottom: 0;
   }
+  header .container #ibe_main_nav ul .nav-item.dropdown .nav-link-dropdown {
+    padding-right: 1.5rem;
+  }
   header .container #ibe_main_nav ul .nav-item.dropdown .nav-link-dropdown .dropdown-toggle {
-    display: none;
+    transform: translateY(-2px);
   }
   header .container #ibe_main_nav ul .nav-item.dropdown .dropdown-menu {
     position: absolute;
@@ -215,18 +245,73 @@ header .container #ibe_main_nav.active:after {
   header .container #ibe_main_nav ul .nav-item.dropdown:hover .dropdown-menu {
     display: block;
   }
-  header .container #ibe_main_nav ul .nav-item:hover {
-    text-decoration: underline;
+  header .container #ibe_main_nav ul .nav-item:hover .nav-link {
+    color: #34495e;
+  }
+  header .container #ibe_main_nav ul .nav-item:last-child {
+    margin-right: 1rem;
   }
 }
-@media only screen and (min-width: 768px) and (min-width: 1024px) {
+@media only screen and (min-width: 900px) and (min-width: 1024px) {
   header .container #ibe_main_nav ul .nav-item {
     font-size: 1.25rem;
   }
+  header .container #ibe_main_nav ul .nav-item.dropdown .nav-link-dropdown .dropdown-toggle {
+    transform: translateY(0px);
+  }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 900px) {
+  header .container #ibe_main_nav .ibe_template_hotline {
+    display: inline-block;
+    padding: 0.5rem 0.5rem 0.5rem 3rem;
+    border-radius: 5px;
+  }
+  header .container #ibe_main_nav .ibe_template_hotline .phone-link {
+    left: 0.5rem;
+  }
+}
+@media only screen and (min-width: 900px) {
   header .container #ibe_main_nav .ibe_menu_close {
     display: none;
+  }
+}
+
+footer .ibe_above_footer {
+  background: #007bff;
+  background: -webkit-linear-gradient(to right, #2948ff, #396afc);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2948ff, #396afc);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.16), inset 0 0 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+footer .ibe_above_footer .container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+footer .ibe_above_footer .container .ibe_trust_item {
+  text-align: center;
+  padding: 1rem;
+  flex: 0 0 50%;
+}
+footer .ibe_above_footer .container .ibe_trust_item span {
+  display: block;
+  margin-top: 0.5rem;
+}
+footer .ibe_above_footer .container .ibe_trust_item svg {
+  max-width: 75px;
+  height: auto;
+}
+@media only screen and (min-width: 900px) {
+  footer .ibe_above_footer .container .ibe_trust_item {
+    flex: 0 0 25%;
+    padding: 2rem 1rem;
+  }
+  footer .ibe_above_footer .container .ibe_trust_item svg {
+    max-width: 100px;
   }
 }
 
