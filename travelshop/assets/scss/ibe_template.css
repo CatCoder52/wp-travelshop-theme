@@ -1,0 +1,233 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* IBE TEMPLATE STYLES START */
+.container {
+  padding: 0 15px;
+  width: 100vw;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+header {
+  padding: 2rem 0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+header .container .logo {
+  max-width: 125px;
+}
+@media only screen and (min-width: 768px) {
+  header .container .logo {
+    max-width: 175px;
+  }
+}
+header .container .ibe_mobile_menu_toggle {
+  cursor: pointer;
+}
+header .container .ibe_mobile_menu_toggle svg {
+  pointer-events: none;
+}
+@media only screen and (min-width: 768px) {
+  header .container .ibe_mobile_menu_toggle {
+    display: none;
+  }
+}
+header .container #ibe_main_nav {
+  display: block;
+  position: fixed;
+  right: -100%;
+  top: 0;
+  width: 80vw;
+  max-width: 300px;
+  min-height: 100vh;
+  background: #fff;
+  transition: 300ms ease-in-out all;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+header .container #ibe_main_nav ul .nav-item {
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+header .container #ibe_main_nav ul .nav-item .nav-link {
+  display: block;
+  color: #007bff;
+  text-decoration: none;
+}
+header .container #ibe_main_nav ul .nav-item.dropdown .nav-link-dropdown {
+  padding-bottom: 1rem;
+  position: relative;
+}
+header .container #ibe_main_nav ul .nav-item.dropdown .nav-link-dropdown .dropdown-toggle {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+header .container #ibe_main_nav ul .nav-item.dropdown .nav-link-dropdown .dropdown-toggle path, header .container #ibe_main_nav ul .nav-item.dropdown .nav-link-dropdown .dropdown-toggle line, header .container #ibe_main_nav ul .nav-item.dropdown .nav-link-dropdown .dropdown-toggle polyline {
+  pointer-events: none;
+}
+header .container #ibe_main_nav ul .nav-item.dropdown .dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  margin: 0 -1rem;
+  background: #efefef;
+  margin-bottom: -1rem;
+  max-height: 0;
+  overflow: hidden;
+}
+header .container #ibe_main_nav ul .nav-item.dropdown .dropdown-menu .dropdown-item {
+  padding: 1rem;
+  display: block;
+  border-bottom: 1px solid #ccc;
+  color: #666;
+  text-decoration: none;
+}
+header .container #ibe_main_nav ul .nav-item.dropdown .dropdown-menu .dropdown-item:last-child {
+  border-bottom: 0;
+}
+header .container #ibe_main_nav ul .nav-item.dropdown .dropdown-menu .dropdown-item:first-child {
+  border-top: 1px solid #ccc;
+}
+header .container #ibe_main_nav ul .nav-item.dropdown.active .dropdown-menu {
+  max-height: none;
+}
+header .container #ibe_main_nav ul .nav-item.dropdown.active .dropdown-toggle {
+  transform: rotate(180deg);
+}
+header .container #ibe_main_nav .ibe_menu_close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  cursor: pointer;
+}
+header .container #ibe_main_nav .ibe_menu_close path, header .container #ibe_main_nav .ibe_menu_close line {
+  pointer-events: none;
+}
+header .container #ibe_main_nav:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 500%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  right: 100%;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: 300ms ease-in-out opacity;
+}
+header .container #ibe_main_nav.active {
+  right: 0;
+}
+header .container #ibe_main_nav.active:after {
+  opacity: 1;
+}
+@media only screen and (min-width: 768px) {
+  header .container #ibe_main_nav {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: auto;
+    max-width: none;
+    min-height: 0;
+    box-shadow: none;
+  }
+  header .container #ibe_main_nav ul {
+    display: flex;
+  }
+  header .container #ibe_main_nav ul .nav-item {
+    border: 0;
+    padding-bottom: 0;
+  }
+  header .container #ibe_main_nav ul .nav-item.dropdown .nav-link-dropdown .dropdown-toggle {
+    display: none;
+  }
+  header .container #ibe_main_nav ul .nav-item.dropdown .dropdown-menu {
+    position: absolute;
+    height: auto;
+    max-height: none;
+    display: none;
+  }
+  header .container #ibe_main_nav ul .nav-item.dropdown .dropdown-menu .dropdown-item:hover {
+    background: #dedede;
+  }
+  header .container #ibe_main_nav ul .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  header .container #ibe_main_nav ul .nav-item:hover {
+    text-decoration: underline;
+  }
+}
+@media only screen and (min-width: 768px) and (min-width: 1024px) {
+  header .container #ibe_main_nav ul .nav-item {
+    font-size: 1.25rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  header .container #ibe_main_nav .ibe_menu_close {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=ibe_template.css.map */

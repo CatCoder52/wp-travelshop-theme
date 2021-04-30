@@ -4,6 +4,8 @@ function travelshop_menus() {
     $locations = array(
         'primary'  => __( 'Desktop Horizontal Menu', 'travelshop' ),
         'expanded' => __( 'Desktop Expanded Menu', 'travelshop' ),
+        'ibe_head' => __( 'IBE Template Head Menu', 'travelshop' ),
+        'ibe_footer' => __( 'IBE Template Footer Menu', 'travelshop' ),
         'mobile'   => __( 'Mobile Menu', 'travelshop' ),
         'footer_column_1'   => __( 'Footer Column 1', 'travelshop' ),
         'footer_column_2'   => __( 'Footer Column 2', 'travelshop' ),
