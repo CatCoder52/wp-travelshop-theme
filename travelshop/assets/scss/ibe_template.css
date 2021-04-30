@@ -276,6 +276,10 @@ header .container #ibe_main_nav .ibe_template_hotline .phone-link {
   }
 }
 
+main {
+  padding: 2rem 0;
+}
+
 footer .ibe_above_footer {
   background: #007bff;
   background: -webkit-linear-gradient(to right, #2948ff, #396afc);
@@ -295,20 +299,25 @@ footer .ibe_above_footer .container {
 footer .ibe_above_footer .container .ibe_trust_item {
   text-align: center;
   padding: 1rem;
-  flex: 0 0 50%;
+  flex: 0 0 25%;
 }
 footer .ibe_above_footer .container .ibe_trust_item span {
   display: block;
   margin-top: 0.5rem;
+  font-size: 0.7rem;
+  line-height: 1.3;
 }
 footer .ibe_above_footer .container .ibe_trust_item svg {
-  max-width: 75px;
+  max-width: 40px;
   height: auto;
 }
 @media only screen and (min-width: 900px) {
   footer .ibe_above_footer .container .ibe_trust_item {
     flex: 0 0 25%;
     padding: 2rem 1rem;
+  }
+  footer .ibe_above_footer .container .ibe_trust_item span {
+    font-size: 1.2rem;
   }
   footer .ibe_above_footer .container .ibe_trust_item svg {
     max-width: 100px;

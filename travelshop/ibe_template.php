@@ -9,6 +9,9 @@
         <link rel="stylesheet" href="assets/scss/ibe_template.css">
         <title>Travelshop - Buchung</title>
 
+        <!-- ###PRESSMIND_IBE_HEADER_CSS###
+        ###PRESSMIND_IBE_HEADER_SCRIPTS### -->
+
     </head>
 
     <body>
@@ -88,6 +91,12 @@
             </div>
         </header>
 
+        <main>
+            <div class="container">
+                ###PRESSMIND_IBE_CONTENT###
+            </div>
+        </main>
+
         <footer>
             <div class="ibe_above_footer">
                 <div class="container">
@@ -133,6 +142,7 @@
 
         </footer>
 
+        <!-- ###PRESSMIND_IBE_FOOTER_SCRIPTS### -->
 
     </body>
     
