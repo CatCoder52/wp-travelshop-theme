@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=0">
     <link rel="preload" as="image" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/travelshop-logo.svg">
-    <link rel="preload" as="image" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/slide-1.webp">
+    <link rel="preload" as="image" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/slide-1.jpg">
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/scss/app.min.css?<?php echo filemtime(get_stylesheet_directory() . '/assets/scss/app.min.css'); ?>">
     <link rel="manifest" href="<?php echo get_stylesheet_directory_uri(); ?>/manifest-pwa.php">
     <meta name="theme-color" content="#f4f4f4"/>
