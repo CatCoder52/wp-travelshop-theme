@@ -26,7 +26,7 @@ Use as shortcode with a special view-template
 ```
 
 ## Overview
-Search by...
+**Search by...**
 * [Object Type (pm-ot)](#pm-ot-object-type)
 * [ID (pm-id)](#pm-id-id)
 * [Pool (pm-po)](#pm-po-pool)
@@ -41,9 +41,9 @@ Search by...
 * [Valid from/ Valid to (pm-vr)](#pm-vr-valid-from-valid-to)
 * [Category Tree Item/s (pm-c)](#pm-c-category-tree-items)
   
-Other
-* Order by (pm-o)
-* Pagination (pm-l)
+**Other**
+* [Order by (pm-o)](#pm-o-order)
+* [Pagination (pm-l)](#pm-l-limit)
 
 
 ## Query parameter
