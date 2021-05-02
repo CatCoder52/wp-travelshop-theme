@@ -23,7 +23,9 @@ Current lighthouse performance at revision d66c162b (17.04.2021)
 ![Lighthouse](./travelshop/assets/img/mobile.jpg)
 
 ### Progressive Web App  
-Basic PWA support is enabled. A simple service worker allows you use the page in offline mode.
+Basic PWA support is enabled. Page can be used as PWA in online mode. 
+The service worker provides a offline page if no network is available. 
+Use workbox if you plan a offline mode or a advanced local caching strategy.
 
 
 ### What is it not?

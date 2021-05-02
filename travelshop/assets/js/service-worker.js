@@ -1,29 +1,23 @@
-var cache = 'travelshop-cache-v3';
+var cacheName = 'travelshop-static';
 var urlsToCache = [
-    '/',
+    '/wp-content/themes/travelshop/offline.php',
 ];
 
 self.addEventListener('install', function(event) {
     // Perform install steps
     event.waitUntil(
-        caches.open(cache)
+        caches.open(cacheName)
             .then(function(cache) {
-                console.log('Opened cache');
                 return cache.addAll(urlsToCache);
             })
     );
 });
 
+
+// Simple offline fallback, for advanced offline caching use workbox instead reenginering caching strategies
 self.addEventListener('fetch', function(event) {
-    event.respondWith(
-        caches.match(event.request)
-            .then(function(response) {
-                    // Cache hit - return response
-                    if (response) {
-                        return response;
-                    }
-                    return fetch(event.request);
-                }
-            )
+    event.respondWith(fetch(event.request).catch(function() {
+                return caches.match('/wp-content/themes/travelshop/offline.php');
+        })
     );
 });

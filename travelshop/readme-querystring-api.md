@@ -25,9 +25,30 @@ Use as shortcode with a special view-template
 --
 ```
 
+## Overview
+Search by...
+* [Object Type (pm-ot)](#pm-ot-object-type)
+* [ID (pm-id)](#pm-id-id)
+* [Pool (pm-po)](#pm-po-pool)
+* [Visibility (pm-vi)](#pm-vi-visibility)
+* [State (pm-st)](#pm-st-state)
+* [Booking State (pm-bs)](#pm-bs-booking-state)
+* [Brand (pm-br)](#pm-br-brand)
+* [Transport (pm-tr)](#pm-tr-transport-type)
+* [Term/Fulltext (pm-t)](#pm-t-term--fulltext)
+* [Price Range (pm-pr)](#pm-pr-price-range)
+* [Date Range (pm-dr)](#pm-dr-date-range)
+* [Valid from/ Valid to (pm-vr)](#pm-vr-valid-from-valid-to)
+* [Category Tree Item/s (pm-c)](#pm-c-category-tree-items)
+  
+Other
+* Order by (pm-o)
+* Pagination (pm-l)
+
+
 ## Query parameter
 
-### pm-ot
+### pm-ot (Object Type)
 pressmind object-type id, (int)
 ```
 GET https://yoursite.de/search/?pm-ot=12
@@ -48,7 +69,7 @@ foreach ($search->getResults() as $mediaObject) {
 }
 ```
 
-### pm-id
+### pm-id (ID)
 pressmind media object id/s, (int)
 ```
 GET https://yoursite.de/search/?pm-id=12345,12346
@@ -69,7 +90,7 @@ foreach ($search->getResults() as $mediaObject) {
 }
 ```
 
-### pm-po
+### pm-po (Pool)
 pressmind pool id/s, (int)
 ```
 GET https://yoursite.de/search/?pm-po=123,124
@@ -90,13 +111,16 @@ foreach ($search->getResults() as $mediaObject) {
 }
 ```
 
-### pm-vi
+### pm-vi (Visibility)
 visibilitiy enumeration
 
-10 = "Nobody"
-30 = "Public"
-40 = "Extranet"
-50 = "Intranet"
+| enum  |description|
+|---    |---        |
+| 10    |Nobody     |
+| 30    |Public     |
+| 40    |Extranet   |
+| 50    |Intranet   |
+
 ```
 GET https://yoursite.de/search/?pm-vi=30,40
 ```
@@ -116,21 +140,23 @@ foreach ($search->getResults() as $mediaObject) {
 }
 ```
 
-### pm-st
+### pm-st (State)
 pressmind state enumeration
 
-30 = "Draft"
-40 = "Pending Review"
-50 = "OK"
-60 = "Closed"
-70 = "Closed (reason: age)"
-80 = "Closed (reason: law)"
-90 = "Closed (reason: bad quality)"
-100 = "Closed (reason: duplicate content)"
-110 = "Closed (reason: technical error)"
-200 = "Imported"
+| enum  |description                        |
+|---    |---                                |
+|30     |Draft                              |
+|40     |Pending Review                     |
+|50     |OK                                 |
+|60     |Closed                             |
+|70     |Closed (reason: age)               |
+|80     |Closed (reason: law)               |
+|90     |Closed (reason: bad quality)       |
+|100    |Closed (reason: duplicate content) |
+|110    |Closed (reason: technical error)   |
+|200    |Imported                           |
 
-custom states are possible, look at the pressmind client
+custom states are possible, take look at the pressmind PIM config
 
 ```
 GET https://yoursite.de/search/?pm-st=50
@@ -151,7 +177,7 @@ foreach ($search->getResults() as $mediaObject) {
 }
 ```
 
-### pm-bs
+### pm-bs (Booking State)
 pressmind booking state enumeration (date based)
 
 ```
@@ -173,7 +199,7 @@ foreach ($search->getResults() as $mediaObject) {
 }
 ```
 
-### pm-br
+### pm-br (Brand)
 media object brand
 ```
 GET https://yoursite.de/search/?pm-br=12
@@ -194,7 +220,7 @@ foreach ($search->getResults() as $mediaObject) {
 }
 ```
 
-### pm-tr
+### pm-tr (Transport Type)
 transport type/s (string)
 ```
 GET https://yoursite.de/search/?pm-tr=FLUG,PKW
@@ -215,7 +241,7 @@ foreach ($search->getResults() as $mediaObject) {
 }
 ```
 
-### pm-t
+### pm-t (Term / Fulltext)
 Fulltext search in the defined pressmind fields.
 see theme-config.php, constant SEARCH_FIELDS 
 Additional parameter pm-o required!
@@ -240,7 +266,7 @@ foreach ($search->getResults() as $mediaObject) {
 
 
 
-### pm-pr
+### pm-pr (Price Range)
 Search by price range. Allowed pattern ([0-9]+)\-([0-9])+
 ```
 GET https://yoursite.de/search/?pm-pr=100-1000
@@ -260,7 +286,7 @@ foreach ($search->getResults() as $mediaObject) {
 }
 ```
 
-### pm-dr
+### pm-dr (Date Range)
 Search by date range. Allowed pattern: YYYYMMDD-YYYYMMDD
 ```
 GET https://yoursite.de/search/?pm-dr=20201231-20213101
@@ -280,7 +306,7 @@ foreach ($search->getResults() as $mediaObject) {
 }
 ```
 
-### pm-vr
+### pm-vr (Valid from, Valid to)
 Search by valid from, valid to range. Allowed pattern: YYYYMMDD-YYYYMMDD
 ```
 GET https://yoursite.de/search/?pm-vr=20201231-20213101
@@ -300,9 +326,9 @@ foreach ($search->getResults() as $mediaObject) {
 }
 ```
 
-### pm-c[]
+### pm-c[] (Category Tree Item/s)
 Search by one or more pressmind categorytree attributes
-pattern: pm-c[{FIELDNAME_SECTIONNAME}]={ITEM_UUID}{OPERATOR}{ITEM_UUID}
+pattern:<br> pm-c[{FIELDNAME_SECTIONNAME}]={ITEM_UUID}{OPERATOR}{ITEM_UUID}
 Allowed Operator , or +
 ```
 // list products that contain attributes xxx OR yyy
@@ -331,7 +357,7 @@ foreach ($search->getResults() as $mediaObject) {
 ```
 
 
-### pm-o
+### pm-o (Order)
 Order the result list.
 Allowed values:
 rand, price-desc, price-asc, name-asc, name-desc, code-asc, code-desc
@@ -357,7 +383,7 @@ foreach ($search->getResults() as $mediaObject) {
 }
 ```
 
-### pm-l
+### pm-l (Limit)
 Paginator, pages through the search result
 {PAGE},{NUMBER}
 Pattern ([0-9]+\,[0-9]+)
