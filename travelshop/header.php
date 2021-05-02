@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=0">
     <link rel="preload" as="image" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/travelshop-logo.svg">
     <link rel="preload" as="image" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/slide-1.webp">
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/scss/app.min.css?<?php echo filemtime(get_stylesheet_directory() . '/assets/scss/app.min.css'); ?>">
+    <link rel="manifest" href="<?php echo get_stylesheet_directory_uri(); ?>/manifest-pwa.php">
+    <meta name="theme-color" content="#f4f4f4"/>
+    <link rel="icon" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/icon_192.png" sizes="192x192" type="image/png">
+    <link rel="apple-touch-icon" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/icon_180.png" sizes="180x180" type="image/png" >
+    <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/favicon.ico" type="image/x-icon">
+
     <style>
         <?php
             /*
@@ -37,7 +43,7 @@
             <div class="col-auto align-self-center ">
                 <a class="navbar-brand" href="<?php echo site_url(); ?>">
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/travelshop-logo.svg" height="24"
-                         class="d-inline-block align-middle" alt="">
+                         class="d-inline-block align-middle" alt="<?php echo get_bloginfo( 'name' );?>">
                 </a>
             </div>
             <div class="col align-self-center ">
@@ -102,7 +108,7 @@
                     <input class="form-control" type="search" data-autocomplete="true" placeholder="Suchbegriff..."
                            aria-label="Search">
                     <div class="input-group-append">
-                        <button class="btn btn-link">
+                        <button class="btn btn-link" aria-label="Suchen">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z"/>
                                 <circle cx="10" cy="10" r="7" />

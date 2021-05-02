@@ -37,7 +37,7 @@ foreach ($config['data']['media_types_pretty_url'] as $id_object_type => $pretty
     $routename = 'ts_default_' . $route_prefix . '_route';
     $data['id_object_type'] = $id_object_type;
     $data['base_url'] = $route_prefix;
-    $data['title'] = $config['data']['media_types'][$id_object_type] . ' - Suche';
+    $data['title'] = $config['data']['media_types'][$id_object_type] . ' - Suche | '.get_bloginfo( 'name' );
     $data['meta_description'] = '';
     $routes[$routename] = new Route('^' . $route_prefix . '/?', 'ts_search_hook', 'pm-search', $data);
 
@@ -93,7 +93,7 @@ function ts_detail_hook()
 
         // Add meta data
         // set the page title
-        $the_title = $mediaObject->name;
+        $the_title = $mediaObject->name.' | '.get_bloginfo( 'name' );
         add_filter('pre_get_document_title', function ($title_parts) use ($the_title) {
             return $the_title;
         });

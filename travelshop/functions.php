@@ -60,6 +60,10 @@ require_once 'functions/image-sizes.php';
 
 // Header
 require_once 'functions/http_header.php';
+require_once 'functions/add_meta.php';
+
+// Rewrite Rules
+require_once 'functions/rewrite_rules.php';
 
 class PMTravelShop{
 

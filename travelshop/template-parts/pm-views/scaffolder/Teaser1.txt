@@ -67,7 +67,7 @@ $class = empty($data['custom_data']->class) ? 'col-12 col-md-6 col-lg-3' : $data
                 <a href="<?php echo $url; ?>">
                     <img src="<?php echo $reise->bilder_default[0]->getUri('teaser'); ?>"
                         title="<?php echo $reise->bilder_default[0]->copyright; ?>"
-                        alt="<?php echo $reise->bilder_default[0]->alt; ?>"
+                        alt="<?php echo strip_tags($reise->headline_default); ?>"
                         class="card-img-top"
                         loading="lazy"
                     >
