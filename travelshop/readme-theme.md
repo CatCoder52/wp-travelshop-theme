@@ -49,7 +49,37 @@ It is possible to store all assets (WordPress media library and the pressmind pr
 Use the `pressmind S3 Stateless` Plugin for this case.
 Do not use an other S3 plugin (They are not able to handle pressmind product pages.)
 
+#### SEO Topics
 
+#### Headings
+Heading hierachy is on most pages present, but please check this based on real world content and modify it by yourself.
+
+#### Metadata for product descriptions
+All pressmind® media object related pages have title and meta descriptions.
+Each title and description can modified directly in the pressmind® PIM application.
+
+**How to edit the generation pattern?**
+
+For **media object detail pages**, see:
+```text
+config-routing.php:ts_detail_hook()
+````
+
+For **media media object default routes**, see:
+```text
+config-routing.php:ts_search_hook()
+````
+
+#### Metadata for WordPress posttypes
+There is a simple meta description feature included. It's just a sample. See
+themes/travelshop/functions/add_meta.php how it works.
+
+
+##### Sitemap
+Since 5.5, WordPress has a build in sitemap feature, so
+no additional plugins are needed.
+The travelshop theme removes unrelated sitemaps like users, categories and 
+adds a sitemap for each pressmind related media object type.
 
 ## The template files
 * pm-config.php (the pressmind web-core sdk config, look here for database credentials, pressmind api settings or image sizes)
