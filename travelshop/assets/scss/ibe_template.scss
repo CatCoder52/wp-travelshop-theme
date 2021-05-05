@@ -126,7 +126,7 @@ main {
 footer {
     .ibe_above_footer {
         background-color:#e9ecef;
-        color: #888;
+        color: #6c757d;
         box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
         position: relative;
         z-index: 500;
@@ -140,7 +140,10 @@ footer {
                 padding: 1rem;
                 flex: 0 0 25%;
                 div {
-                    background-color: #ccc;
+                    background: #bdc3c7;  /* fallback for old browsers */
+                    background: -webkit-radial-gradient(#999, #aaa);  /* Chrome 10-25, Safari 5.1-6 */
+                    background: radial-gradient(#999, #aaa); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
                     padding: .25rem;
                     border-radius: 50%;
                     display: inline-block;
