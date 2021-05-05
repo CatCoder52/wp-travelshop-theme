@@ -10437,9 +10437,9 @@ footer .ibe_above_footer .container .ibe_trust_item {
 footer .ibe_above_footer .container .ibe_trust_item div {
   background: #bdc3c7;
   /* fallback for old browsers */
-  background: -webkit-radial-gradient(#e9ecef, #fff);
+  background: -webkit-radial-gradient(#fff, #e9ecef);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: radial-gradient(#e9ecef, #fff);
+  background: radial-gradient(#fff, #e9ecef);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   padding: 0.25rem;
