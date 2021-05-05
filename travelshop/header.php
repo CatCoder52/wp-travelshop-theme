@@ -72,6 +72,10 @@
                                                 role="button"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <?php echo $item->title; ?> <i class="la la-angle-down"></i>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-down" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ccc" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M18 15l-6 -6l-6 6h12" transform="rotate(180 12 12)" />
+                                                    </svg>
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                                     <?php
@@ -87,8 +91,6 @@
                                             <?php
                                         }
                                     }
-                                } else {
-                                    echo '<div style="padding: 1rem;">please create a menu on display location "Desktop Horizontal Menu"</div>';
                                 }
                                 ?>
                             </ul>
