@@ -131,7 +131,7 @@
                 <div class="container">
                     <div class="ibe_trust_item">
                         <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shield-lock" width="300" height="300" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shield-lock" width="300" height="300" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6c757d" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" />
                                 <circle cx="12" cy="11" r="1" />
@@ -142,7 +142,7 @@
                     </div>
                     <div class="ibe_trust_item">
                         <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-discount" width="300" height="300" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-discount" width="300" height="300" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6c757d" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <line x1="9" y1="15" x2="15" y2="9" />
                                 <circle cx="9.5" cy="9.5" r=".5" fill="currentColor" />
@@ -154,7 +154,7 @@
                     </div>
                     <div class="ibe_trust_item">
                         <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-credit-card" width="300" height="300" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-credit-card" width="300" height="300" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6c757d" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <rect x="3" y="5" width="18" height="14" rx="3" />
                                 <line x1="3" y1="10" x2="21" y2="10" />
@@ -166,7 +166,7 @@
                     </div>
                     <div class="ibe_trust_item">
                         <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="300" height="300" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="300" height="300" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6c757d" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <rect x="3" y="5" width="18" height="14" rx="2" />
                                 <polyline points="3 7 12 13 21 7" />
