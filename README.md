@@ -22,7 +22,12 @@ Current lighthouse performance at revision d66c162b (17.04.2021)
 
 ![Lighthouse](./travelshop/assets/img/mobile.jpg)
 
+### Progressive Web App  
+Basic PWA support is enabled. Page can be used as PWA in online mode. 
+The service worker provides a offline page if no network is available. 
+Use workbox if you plan a offline mode or a advanced local caching strategy.
 
+### Additional information
 #### What is it not?
 * It is not the pressmind's truetravel source, it is just a WordPress integration example for the [pressmind® SDK](https://github.com/pressmind/sdk).
 * A full featured, plug & play travelshop.
@@ -32,7 +37,7 @@ Current lighthouse performance at revision d66c162b (17.04.2021)
 * A good starting point for developing a WordPress based travelshop based on the pressmind® PIM.
 * The travelshop matches the german tour operator market.
 
-#### For freelance web developers & agencies
+#### For developers
 If you are planning a travelshop for german (DACH) tour operators, it is possible to use this theme as a starting point for your project.
 Keep in mind that you need pressmind®, so you do not build or integrate complex booking technology.
 
@@ -42,7 +47,7 @@ In most cases, this is the basic setup for each travelshop:
 * [pressmind® SDK](https://github.com/pressmind/sdk) or this theme
 * for custom ux design take also a look at [Google UX Playbook for travel](https://services.google.com/fh/files/events/pdf_travel_ux_playbook.pdf)
 
-#### Features
+### Features
 * Display different tourism based products (packages, hotels, round trips, day trips, etc.)
 * List products in a defined order
 * Search products by defined attributes

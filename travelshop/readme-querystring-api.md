@@ -25,9 +25,30 @@ Use as shortcode with a special view-template
 --
 ```
 
+## Overview
+**Search by...**
+* [Object Type (pm-ot)](#pm-ot-object-type)
+* [ID (pm-id)](#pm-id-id)
+* [Pool (pm-po)](#pm-po-pool)
+* [Visibility (pm-vi)](#pm-vi-visibility)
+* [State (pm-st)](#pm-st-state)
+* [Booking State (pm-bs)](#pm-bs-booking-state)
+* [Brand (pm-br)](#pm-br-brand)
+* [Transport (pm-tr)](#pm-tr-transport-type)
+* [Term/Fulltext (pm-t)](#pm-t-term--fulltext)
+* [Price Range (pm-pr)](#pm-pr-price-range)
+* [Date Range (pm-dr)](#pm-dr-date-range)
+* [Valid from/ Valid to (pm-vr)](#pm-vr-valid-from-valid-to)
+* [Category Tree Item/s (pm-c)](#pm-c-category-tree-items)
+  
+**Other**
+* [Order by (pm-o)](#pm-o-order)
+* [Pagination (pm-l)](#pm-l-limit)
+
+
 ## Query parameter
 
-### pm-ot
+### pm-ot (Object Type)
 pressmind object-type id, (int)
 ```
 GET https://yoursite.de/search/?pm-ot=12
@@ -48,8 +69,179 @@ foreach ($search->getResults() as $mediaObject) {
 }
 ```
 
+### pm-id (ID)
+pressmind media object id/s, (int)
+```
+GET https://yoursite.de/search/?pm-id=12345,12346
+```
+```
+WORDPRESS SHORTCODE [ts-list pm-id="12345,123456"]
+```
 
-### pm-t
+```php
+// pressmind/sdk search conditions
+$search = new Pressmind\Search(
+    [
+        \Pressmind\Search\Condition\MediaObjectID::create([12345,123456])
+    ]
+);
+foreach ($search->getResults() as $mediaObject) {
+    echo $mediaObject->render('Teaser1', 'de');
+}
+```
+
+### pm-po (Pool)
+pressmind pool id/s, (int)
+```
+GET https://yoursite.de/search/?pm-po=123,124
+```
+```
+WORDPRESS SHORTCODE [ts-list pm-po="123,124"]
+```
+
+```php
+// pressmind/sdk search conditions
+$search = new Pressmind\Search(
+    [
+        \Pressmind\Search\Condition\Pool::create([123,124])
+    ]
+);
+foreach ($search->getResults() as $mediaObject) {
+    echo $mediaObject->render('Teaser1', 'de');
+}
+```
+
+### pm-vi (Visibility)
+visibilitiy enumeration
+
+| enum  |description|
+|---    |---        |
+| 10    |Nobody     |
+| 30    |Public     |
+| 40    |Extranet   |
+| 50    |Intranet   |
+
+```
+GET https://yoursite.de/search/?pm-vi=30,40
+```
+```
+WORDPRESS SHORTCODE [ts-list pm-tr="30,40"]
+```
+
+```php
+// pressmind/sdk search conditions
+$search = new Pressmind\Search(
+    [
+        \Pressmind\Search\Condition\Visibility::create([30, 40])
+    ]
+);
+foreach ($search->getResults() as $mediaObject) {
+    echo $mediaObject->render('Teaser1', 'de');
+}
+```
+
+### pm-st (State)
+pressmind state enumeration
+
+| enum  |description                        |
+|---    |---                                |
+|30     |Draft                              |
+|40     |Pending Review                     |
+|50     |OK                                 |
+|60     |Closed                             |
+|70     |Closed (reason: age)               |
+|80     |Closed (reason: law)               |
+|90     |Closed (reason: bad quality)       |
+|100    |Closed (reason: duplicate content) |
+|110    |Closed (reason: technical error)   |
+|200    |Imported                           |
+
+custom states are possible, take look at the pressmind PIM config
+
+```
+GET https://yoursite.de/search/?pm-st=50
+```
+```
+WORDPRESS SHORTCODE [ts-list pm-st="50"]
+```
+
+```php
+// pressmind/sdk search conditions
+$search = new Pressmind\Search(
+    [
+        \Pressmind\Search\Condition\State::create([50])
+    ]
+);
+foreach ($search->getResults() as $mediaObject) {
+    echo $mediaObject->render('Teaser1', 'de');
+}
+```
+
+### pm-bs (Booking State)
+pressmind booking state enumeration (date based)
+
+```
+GET https://yoursite.de/search/?pm-bs=1
+```
+```
+WORDPRESS SHORTCODE [ts-list pm-bs="1"]
+```
+
+```php
+// pressmind/sdk search conditions
+$search = new Pressmind\Search(
+    [
+        \Pressmind\Search\Condition\BookingState::create([1])
+    ]
+);
+foreach ($search->getResults() as $mediaObject) {
+    echo $mediaObject->render('Teaser1', 'de');
+}
+```
+
+### pm-br (Brand)
+media object brand
+```
+GET https://yoursite.de/search/?pm-br=12
+```
+```
+WORDPRESS SHORTCODE [ts-list pm-br="12"]
+```
+
+```php
+// pressmind/sdk search conditions
+$search = new Pressmind\Search(
+    [
+        \Pressmind\Search\Condition\Brand::create([12])
+    ]
+);
+foreach ($search->getResults() as $mediaObject) {
+    echo $mediaObject->render('Teaser1', 'de');
+}
+```
+
+### pm-tr (Transport Type)
+transport type/s (string)
+```
+GET https://yoursite.de/search/?pm-tr=FLUG,PKW
+```
+```
+WORDPRESS SHORTCODE [ts-list pm-tr="FLUG,PKW"]
+```
+
+```php
+// pressmind/sdk search conditions
+$search = new Pressmind\Search(
+    [
+        \Pressmind\Search\Condition\Transport::create(['PKW', 'FLUG'])
+    ]
+);
+foreach ($search->getResults() as $mediaObject) {
+    echo $mediaObject->render('Teaser1', 'de');
+}
+```
+
+### pm-t (Term / Fulltext)
 Fulltext search in the defined pressmind fields.
 see theme-config.php, constant SEARCH_FIELDS 
 Additional parameter pm-o required!
@@ -72,7 +264,9 @@ foreach ($search->getResults() as $mediaObject) {
 }
 ```
 
-### pm-pr
+
+
+### pm-pr (Price Range)
 Search by price range. Allowed pattern ([0-9]+)\-([0-9])+
 ```
 GET https://yoursite.de/search/?pm-pr=100-1000
@@ -92,7 +286,7 @@ foreach ($search->getResults() as $mediaObject) {
 }
 ```
 
-### pm-dr
+### pm-dr (Date Range)
 Search by date range. Allowed pattern: YYYYMMDD-YYYYMMDD
 ```
 GET https://yoursite.de/search/?pm-dr=20201231-20213101
@@ -112,9 +306,29 @@ foreach ($search->getResults() as $mediaObject) {
 }
 ```
 
-### pm-c[]
+### pm-vr (Valid from, Valid to)
+Search by valid from, valid to range. Allowed pattern: YYYYMMDD-YYYYMMDD
+```
+GET https://yoursite.de/search/?pm-vr=20201231-20213101
+```
+```
+WORDPRESS SHORTCODE [ts-list pm-vr="20201231-20213101"]
+```
+```php
+// pressmind/sdk search conditions
+$search = new Pressmind\Search(
+    [
+        \Pressmind\Search\Condition\Validity::create(new DateTime('2020-12-31'), new DateTime('2021-01-31')),
+    ]
+);
+foreach ($search->getResults() as $mediaObject) {
+    echo $mediaObject->render('Teaser1', 'de');
+}
+```
+
+### pm-c[] (Category Tree Item/s)
 Search by one or more pressmind categorytree attributes
-pattern: pm-c[{FIELDNAME_SECTIONNAME}]={ITEM_UUID}{OPERATOR}{ITEM_UUID}
+pattern:<br> pm-c[{FIELDNAME_SECTIONNAME}]={ITEM_UUID}{OPERATOR}{ITEM_UUID}
 Allowed Operator , or +
 ```
 // list products that contain attributes xxx OR yyy
@@ -143,7 +357,7 @@ foreach ($search->getResults() as $mediaObject) {
 ```
 
 
-### pm-o
+### pm-o (Order)
 Order the result list.
 Allowed values:
 rand, price-desc, price-asc, name-asc, name-desc, code-asc, code-desc
@@ -169,7 +383,7 @@ foreach ($search->getResults() as $mediaObject) {
 }
 ```
 
-### pm-l
+### pm-l (Limit)
 Paginator, pages through the search result
 {PAGE},{NUMBER}
 Pattern ([0-9]+\,[0-9]+)

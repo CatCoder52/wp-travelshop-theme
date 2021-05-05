@@ -1,7 +1,5 @@
 // -- vendors
 @import "vendors/bootstrap/bootstrap";
-//@import "vendors/line-awesome/line-awesome";
-//@import "vendors/socicon/socicon";
 @import "vendors/ion-rangeslider/range-slider";
 @import "vendors/tiny-slider/tiny-slider"; 
 @import "vendors/daterangepicker/daterangepicker";
@@ -17,9 +15,6 @@
 // -- base
 @import "base/typography";
 @import "base/container";
-
-// -- icons
-@import "icons/tabler-icons.css";
 
 // -- components
 @import "components/offcanvas";

@@ -7,3 +7,6 @@ travelshop/template-parts/pm-views/*_Teaser1.php
 travelshop/Custom/MediaType/*.php
 travelshop/docs/objecttypes/*.html
 travelshop/assets/scss/*.map
+/travelshop/assets/scss/.sass-cache/
+/travelshop/mockup/
+/travelshop/assets/scss/vendors/bootstrap/.sass-cache/

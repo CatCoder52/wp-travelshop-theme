@@ -45,11 +45,13 @@ require_once 'src/BuildSearch.php';
 require_once 'src/RouteProcessor.php';
 require_once 'src/Route.php';
 require_once 'src/Router.php';
+require_once 'src/SitemapProvider.php';
 
 
 // Cleanup
 require_once 'functions/cleanup_meta_includes.php';
 require_once 'functions/disable_emojis.php';
+require_once 'functions/disable_pagetypes.php';
 
 // Menus
 require_once 'functions/menus.php';
@@ -59,6 +61,13 @@ require_once 'functions/image-sizes.php';
 
 // Header
 require_once 'functions/http_header.php';
+require_once 'functions/add_meta.php';
+
+// Rewrite Rules
+require_once 'functions/rewrite_rules.php';
+
+// Sitemaps
+require_once 'functions/sitemaps.php';
 
 class PMTravelShop{
 
