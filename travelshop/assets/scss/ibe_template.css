@@ -9835,7 +9835,7 @@ h3 {
     background-color: #e9ecef;
   }
   .header-main .navbar.navbar-expand-md ul.navbar-nav .nav-item .dropdown-menu a.dropdown-item.active, .header-main .navbar.navbar-expand-md ul.navbar-nav .nav-item .dropdown-menu a.dropdown-item.active:hover {
-    color: #007bff;
+    color: #0066ff;
   }
 }
 @media (max-width: 991.98px) {
@@ -9941,7 +9941,7 @@ h3 {
     background-color: #e9ecef;
   }
   .header-main .navbar.navbar-expand-lg ul.navbar-nav .nav-item .dropdown-menu a.dropdown-item.active, .header-main .navbar.navbar-expand-lg ul.navbar-nav .nav-item .dropdown-menu a.dropdown-item.active:hover {
-    color: #007bff;
+    color: #0066ff;
   }
 }
 @media (max-width: 1199.98px) {
@@ -10047,7 +10047,7 @@ h3 {
     background-color: #e9ecef;
   }
   .header-main .navbar.navbar-expand-xl ul.navbar-nav .nav-item .dropdown-menu a.dropdown-item.active, .header-main .navbar.navbar-expand-xl ul.navbar-nav .nav-item .dropdown-menu a.dropdown-item.active:hover {
-    color: #007bff;
+    color: #0066ff;
   }
 }
 
@@ -10106,10 +10106,10 @@ h3 {
   color: #495057;
 }
 .header-main nav.navbar ul.navbar-nav > li > a:hover, .header-main nav.navbar ul.navbar-nav > li > a:hover:active, .header-main nav.navbar ul.navbar-nav > li > a:hover:focus {
-  color: #007bff;
+  color: #0066ff;
 }
 .header-main nav.navbar ul.navbar-nav > li.active > a {
-  color: #007bff;
+  color: #0066ff;
 }
 @media (min-width: 576px) {
   .header-main nav.navbar.navbar-expand-sm .navbar-nav .nav-link {
@@ -10151,7 +10151,7 @@ h3 {
   transition: all 0.3s;
 }
 .header-main .toggler.search-toggler:hover {
-  color: #007bff;
+  color: #0066ff;
 }
 .header-main .toggler.search-toggler i {
   font-size: 1.5rem;
@@ -10162,7 +10162,7 @@ h3 {
   transition: all 0.3s;
 }
 .header-main .toggler.wishlist-toggler:hover {
-  color: #007bff;
+  color: #0066ff;
 }
 .header-main .toggler.wishlist-toggler i {
   font-size: 1.5rem;
@@ -10179,7 +10179,7 @@ h3 {
   display: block;
   line-height: 1.125rem;
   text-align: center;
-  background-color: #007bff;
+  background-color: #0066ff;
 }
 .header-main .dropdown-menu-wishlist {
   padding: 20px;
@@ -10231,7 +10231,7 @@ h3 {
   color: #212529;
 }
 .header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item span.name > a:hover {
-  color: #007bff;
+  color: #0066ff;
 }
 .header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item + .wishlist-item {
   border-top: 1px solid #e9ecef;
@@ -10247,7 +10247,7 @@ h3 {
   outline: none;
 }
 .navbar-toggler:hover, .toggler:hover {
-  color: #007bff;
+  color: #0066ff;
 }
 .navbar-toggler i, .toggler i {
   font-size: 1.5rem;
