@@ -11,6 +11,7 @@ class Shortcodes
         add_shortcode('ts-list', [$this, 'list']);
         add_shortcode('ts-searchroutes', [$this, 'searchRoutes']);
         add_shortcode('ts-searchpage', [$this, 'searchPage']);
+        add_shortcode('ts-layoutblock', [$this, 'layoutBlock']);
         // TODO
         // add_shortcode('ts-ct-items', [$this, 'categoryTreeItems']);
     }
@@ -139,6 +140,25 @@ class Shortcodes
         }
         $output .= '</ul>';
         return $output;
+    }
+
+
+    /**
+     * @param $atts
+     * @return string
+     */
+    public function layoutBlock($atts){
+
+        $layoutblock_filename = '/template-parts/layout-blocks/'.$atts['f'].'.php';
+        if(!file_exists(get_template_directory().$layoutblock_filename)){
+            return '<pre>file not found: '.$layoutblock_filename.'</pre>';
+        }
+
+        ob_start();
+        load_template(get_template_directory().$layoutblock_filename, false, $atts);
+        $contents = ob_get_contents();
+        ob_end_clean();
+        return $contents;
     }
 
 
