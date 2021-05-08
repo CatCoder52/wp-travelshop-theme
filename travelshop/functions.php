@@ -66,6 +66,10 @@ require_once 'functions/add_meta.php';
 // Rewrite Rules
 require_once 'functions/rewrite_rules.php';
 
+// JS & CSS
+require_once  'functions/enqueue_js.php';
+require_once  'functions/enqueue_css.php';
+
 // Sitemaps
 require_once 'functions/sitemaps.php';
 
