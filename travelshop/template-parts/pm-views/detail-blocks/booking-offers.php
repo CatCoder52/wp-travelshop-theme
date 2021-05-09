@@ -22,7 +22,6 @@ $moc = $mo->getDataForLanguage();
  */
 $booking_packages = $mo->booking_packages;
 
-
 /**
  * @var Pressmind\ORM\Object\CheapestPriceSpeed $cheapest_price
  */
@@ -57,7 +56,7 @@ $cheapest_price = $args['cheapest_price'];
                         </div>
                         <!-- BOOKING_ROW_HEAD: END -->
 
-                        <?php foreach ($booking_packages as $booking_package) { ?>
+                        <?php foreach ($mo->booking_packages as $booking_package) { ?>
 
                             <!-- BOOKING_ROW_PROGRAMM: START -->
                             <div class="booking-row no-gutters row booking-row-programm">

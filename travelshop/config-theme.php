@@ -8,6 +8,17 @@
 
 define('SITE_URL', '');
 
+// Activate multilanguage support
+// one big change is the routing, if multilanguage, all routes have the language code as prefix:
+// domain.de/de/reisen/schoene-reise/ instead of domain.de/reisen/schoene-reise/
+// also we have alternate language html header
+define('MULTILANGUAGE_SITE', false);
+
+// Support for WPML multilanguage, if no lang is set, we set a default:
+if(!defined('ICL_LANGUAGE_CODE')){
+    define('ICL_LANGUAGE_CODE', 'de');
+}
+
 /**
  * we' have to renormalize the generic pressmind entities,
  * so it would be a easier handling in this shop context

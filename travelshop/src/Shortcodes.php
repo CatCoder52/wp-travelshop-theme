@@ -78,6 +78,7 @@ class Shortcodes
     public function searchRoutes()
     {
         global $config;
+        global $PMTravelShop;
         $output = '<ul>';
 
         foreach ($config['data']['media_types_pretty_url'] as $id_object_type => $pretty_url) {
@@ -86,9 +87,8 @@ class Shortcodes
                 continue;
             }
 
-            $route = trim($pretty_url['prefix'], '/') . '-suche';
-            $url = site_url() . '/' . $route . '/';
-            $output .= '<li><a href="' . $url . '">' . $route . '</a></li>';
+            $page = $PMTravelShop->RouteProcessor->get_url_by_object_type($id_object_type);
+            $output .= '<li><a href="' . site_url() . '/' . $page . '/' . '">' . $page . '</a></li>';
         }
         $output .= '</ul>';
         return $output;

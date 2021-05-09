@@ -39,7 +39,7 @@ $class = empty($data['custom_data']->class) ? 'col-12 col-md-6 col-lg-3' : $data
 <?php
     // Build the detail-page link,
     // we add some search values to deliver to customize the offers on the the detail page
-    $url = SITE_URL . $media_object->getPrettyUrl();
+    $url = SITE_URL .$mo->getPrettyUrl();
 
     // only this search params are transmitted, price range (pm-pr), date range (pm-dr)
     $allowedParams = ['pm-pr', 'pm-dr'];
@@ -64,7 +64,7 @@ $class = empty($data['custom_data']->class) ? 'col-12 col-md-6 col-lg-3' : $data
         <div class="row">
 
         <?php
-        if (empty($reise->bilder_default[0]) === false) {
+        if (empty($moc->bilder_default[0]) === false) {
             ?>
 
             <div class="card-image-holder col-4 col-sm-5 col-md-12 p-0">
@@ -73,9 +73,9 @@ $class = empty($data['custom_data']->class) ? 'col-12 col-md-6 col-lg-3' : $data
                     Neu
                 </div>
                 <a href="<?php echo $url; ?>">
-                    <img src="<?php echo $reise->bilder_default[0]->getUri('teaser'); ?>"
-                        title="<?php echo $reise->bilder_default[0]->copyright; ?>"
-                        alt="<?php echo strip_tags($reise->headline_default); ?>"
+                    <img src="<?php echo $moc->bilder_default[0]->getUri('teaser'); ?>"
+                        title="<?php echo $moc->bilder_default[0]->copyright; ?>"
+                        alt="<?php echo strip_tags($moc->headline_default); ?>"
                         class="card-img-top"
                         loading="lazy"
                     >
@@ -87,19 +87,19 @@ $class = empty($data['custom_data']->class) ? 'col-12 col-md-6 col-lg-3' : $data
         <div class="card-body col-8 col-sm-7 col-md-12">
 
             <h5 class="card-title">
-                <a href="<?php echo $url; ?>"><?php echo strip_tags($reise->headline_default); ?></a>
+                <a href="<?php echo $url; ?>"><?php echo strip_tags($moc->headline_default); ?></a>
             </h5>
             <p class="attribute-row">
                 <?php
                     $breadcrumb = array();
-                    if(!empty($reise->reiseart_default)){
-                        foreach ($reise->reiseart_default as $reiseart_default_item) {
-                            $reiseart = $reiseart_default_item->toStdClass();
-                            $breadcrumb[] = $reiseart->item->name;
+                    if(!empty($moc->reiseart_default)){
+                        foreach ($moc->reiseart_default as $mocart_default_item) {
+                            $mocart = $mocart_default_item->toStdClass();
+                            $breadcrumb[] = $mocart->item->name;
                         }
                     }
-                    if(!empty($reise->zielgebiet_default)){
-                        foreach ($reise->zielgebiet_default as $k => $zielgebiet_default_item) {
+                    if(!empty($moc->zielgebiet_default)){
+                        foreach ($moc->zielgebiet_default as $k => $zielgebiet_default_item) {
                             $zielgebiet = $zielgebiet_default_item->toStdClass();
                             $breadcrumb[] = $zielgebiet->item->name;
                         }
@@ -111,9 +111,9 @@ $class = empty($data['custom_data']->class) ? 'col-12 col-md-6 col-lg-3' : $data
                                ?>
             </p>
 
-            <?php if(empty($reise->subline_default) === false){?>
+            <?php if(empty($moc->subline_default) === false){?>
             <p class="card-text subline">
-                <?php echo strip_tags($reise->subline_default); ?>
+                <?php echo strip_tags($moc->subline_default); ?>
                 <span class="fade-out"></span>
             </p>
 
