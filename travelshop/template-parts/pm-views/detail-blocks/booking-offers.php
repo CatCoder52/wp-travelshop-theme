@@ -17,6 +17,10 @@ $mo = $args['media_object'];
  */
 $moc = $mo->getDataForLanguage();
 
+/**
+ * @var Pressmind\ORM\Object\Touristic\Booking\Package[] $booking_packages
+ */
+$booking_packages = $mo->booking_packages;
 
 /**
  * @var Pressmind\ORM\Object\CheapestPriceSpeed $cheapest_price

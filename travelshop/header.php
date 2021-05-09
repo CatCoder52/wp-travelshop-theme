@@ -49,37 +49,42 @@
 
                                 <?php
                                 $menu_items = wpse_nav_menu_2_tree('primary');
+                                if(isset($menu_items)) {
+                                    foreach ($menu_items as $item) {
 
-                                foreach ($menu_items as $item) {
-
-                                    // Top Level
-                                    if (empty($item->wpse_children) === true) { // Level 1
-                                        ?>
-                                        <li class="nav-item active">
-                                            <a class="nav-link"
-                                               href="<?php echo $item->url; ?>"><?php echo $item->title; ?></a>
-                                        </li>
-                                        <?php
-                                    } else { // Level 2
-                                        ?>
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                                               role="button"
-                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <?php echo $item->title; ?> <i class="la la-angle-down"></i>
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <?php
-                                                foreach ($item->wpse_children as $child_items) {
-                                                    ?>
-                                                    <a class="dropdown-item"
-                                                       href="<?php echo $child_items->url ?>"><?php echo $child_items->title; ?></a>
+                                        // Top Level
+                                        if (empty($item->wpse_children) === true) { // Level 1
+                                            ?>
+                                            <li class="nav-item active">
+                                                <a class="nav-link"
+                                                href="<?php echo $item->url; ?>"><?php echo $item->title; ?></a>
+                                            </li>
+                                            <?php
+                                        } else { // Level 2
+                                            ?>
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                                role="button"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <?php echo $item->title; ?> <i class="la la-angle-down"></i>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-down" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ccc" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M18 15l-6 -6l-6 6h12" transform="rotate(180 12 12)" />
+                                                    </svg>
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                                     <?php
-                                                }
-                                                ?>
-                                            </div>
-                                        </li>
-                                        <?php
+                                                    foreach ($item->wpse_children as $child_items) {
+                                                        ?>
+                                                        <a class="dropdown-item"
+                                                        href="<?php echo $child_items->url ?>"><?php echo $child_items->title; ?></a>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </div>
+                                            </li>
+                                            <?php
+                                        }
                                     }
                                 }
                                 ?>

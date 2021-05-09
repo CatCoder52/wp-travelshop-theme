@@ -18,6 +18,8 @@
         font-size: 1.5rem;
         color: #fff;
         text-align: center;
+        font-weight: 500;
+        font-family: inherit;
       }
 
       @include media-breakpoint-up(md) {
@@ -36,6 +38,11 @@
       background-color: #ffffff7a;
       box-shadow: 0 5px 10px rgba(#000, .25);
       @include border-radius($card-border-radius);
+
+      label {
+        color: #212529;
+        font-size: 1rem;
+      }
 
       .btn {
         display: flex;
