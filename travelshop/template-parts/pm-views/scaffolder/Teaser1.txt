@@ -11,7 +11,7 @@ $mo = $data['media_object'];
 /**
  * @var Custom\MediaType\###CLASSNAME### $moc
  */
-$moc = $data['data'];
+$moc = $mo->getDataForLanguage();
 
 $cheapest_price = $mo->getCheapestPrice();
 
@@ -26,7 +26,7 @@ $class = empty($data['custom_data']->class) ? 'col-12 col-md-6 col-lg-3' : $data
 <?php
     // Build the detail-page link,
     // we add some search values to deliver to customize the offers on the the detail page
-    $url = SITE_URL . $mo->getPrettyUrl();
+    $url = SITE_URL .$mo->getPrettyUrl();
 
     // only this search params are transmitted, price range (pm-pr), date range (pm-dr)
     $allowedParams = ['pm-pr', 'pm-dr'];
