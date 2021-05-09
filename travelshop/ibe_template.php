@@ -9,8 +9,8 @@
         <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/scss/ibe_template.css">
         <title>Travelshop - Buchung</title>
 
-        <!-- ###PRESSMIND_IBE_HEADER_CSS###
-        ###PRESSMIND_IBE_HEADER_SCRIPTS### -->
+        ###PRESSMIND_IBE_HEADER_CSS###
+        ###PRESSMIND_IBE_HEADER_SCRIPTS###
 
     </head>
 
@@ -229,7 +229,7 @@
 
         </footer>
 
-        <!-- ###PRESSMIND_IBE_FOOTER_SCRIPTS### -->
+        ###PRESSMIND_IBE_FOOTER_SCRIPTS###
 
     </body>
     
