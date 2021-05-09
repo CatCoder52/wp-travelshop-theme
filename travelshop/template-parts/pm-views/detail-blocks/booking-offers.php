@@ -8,19 +8,19 @@ use Pressmind\Search\CheapestPrice;
  */
 
 /**
+ * @var Pressmind\ORM\Object\MediaObject $mo
+ */
+$mo = $args['media_object'];
+
+/**
  * @var Custom\MediaType\Reise $moc
  */
-$moc = $args['data'];
+$moc = $mo->getDataForLanguage();
 
 /**
  * @var Pressmind\ORM\Object\Touristic\Booking\Package[] $booking_packages
  */
-$booking_packages = $args['booking_packages'];
-
-/**
- * @var Pressmind\ORM\Object\MediaObject $mo
- */
-$mo = $args['media_object'];
+$booking_packages = $mo->booking_packages;
 
 
 /**
