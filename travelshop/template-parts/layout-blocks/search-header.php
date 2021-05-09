@@ -1,9 +1,4 @@
-<?php
-//@todo die inline styles sorgen für einen sauberen ladevorgang. Diese Styles noch auslagern ins SASS
-
-?>
 <section class="layout-block layout-block-search-header">
-
     <div class="layout-block-search-header--search">
         <div class="container">
             <div class="row justify-content-center">
@@ -13,5 +8,4 @@
             </div>
         </div>
     </div>
-    
 </section>

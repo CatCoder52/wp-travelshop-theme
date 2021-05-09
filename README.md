@@ -72,6 +72,10 @@ In most cases, this is the basic setup for each travelshop:
 * Chrome (current)
 * Firefox (current)
 
+### Plugin compatibility (tested)
+* Revolution Slider
+* Elementor
+* ... all other (but test make a deep test before use in production)
 
 #### System overview
 
@@ -81,6 +85,7 @@ In most cases, this is the basic setup for each travelshop:
 #### More Information:
 * [Installation Documentation](./travelshop/installation.md)
 * [Common Theme Documentation](./travelshop/readme-theme.md)
+* [Shortcodes](./travelshop/readme-shortcodes.md)
 
 #### How to generate product lists? 
 It is possible to output product listings on three different ways:

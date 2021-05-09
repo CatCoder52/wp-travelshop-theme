@@ -6,25 +6,12 @@
     <link rel="preload" as="image" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/travelshop-logo.svg">
     <link rel="preload" as="image" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/slide-1.jpg" media="(min-width: 601px)">
     <link rel="preload" as="image" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/slide-1-mobile.jpg" media="(max-width: 600px)">
-    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/scss/app.min.css?<?php echo filemtime(get_stylesheet_directory() . '/assets/scss/app.min.css'); ?>">
     <link rel="manifest" href="<?php echo get_stylesheet_directory_uri(); ?>/manifest-pwa.php">
     <meta name="theme-color" content="#f4f4f4"/>
     <link rel="icon" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/icon_192.png" sizes="192x192" type="image/png">
     <link rel="apple-touch-icon" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/icon_180.png" sizes="180x180" type="image/png" >
     <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/favicon.ico" type="image/x-icon">
     <meta name="robots" content="index,follow">
-
-    <style>
-        <?php
-            /*
-             * for optimizing the critical path rendering, try this instead the css include above
-             * echo file_get_contents(get_stylesheet_directory().'/assets/scss/app.critical.min.css')."\r\n";
-             */
-
-            // load the wordpress default block library
-            echo file_get_contents(realpath(__DIR__.'/../../../wp-includes/css/dist/block-library/style.min.css'));
-            ?>
-    </style>
     <?php wp_head(); ?>
 </head>
 <body>
