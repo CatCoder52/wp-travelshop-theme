@@ -8,19 +8,14 @@ use Pressmind\Search\CheapestPrice;
  */
 
 /**
- * @var Custom\MediaType\Reise $moc
- */
-$moc = $args['data'];
-
-/**
- * @var Pressmind\ORM\Object\Touristic\Booking\Package[] $booking_packages
- */
-$booking_packages = $args['booking_packages'];
-
-/**
  * @var Pressmind\ORM\Object\MediaObject $mo
  */
 $mo = $args['media_object'];
+
+/**
+ * @var Custom\MediaType\Reise $moc
+ */
+$moc = $mo->getDataForLanguage();
 
 
 /**
@@ -57,7 +52,7 @@ $cheapest_price = $args['cheapest_price'];
                         </div>
                         <!-- BOOKING_ROW_HEAD: END -->
 
-                        <?php foreach ($booking_packages as $booking_package) { ?>
+                        <?php foreach ($mo->booking_packages as $booking_package) { ?>
 
                             <!-- BOOKING_ROW_PROGRAMM: START -->
                             <div class="booking-row no-gutters row booking-row-programm">
