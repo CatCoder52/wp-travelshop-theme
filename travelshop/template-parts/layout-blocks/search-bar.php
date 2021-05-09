@@ -1,6 +1,11 @@
-<?php global $colorScheme; ?>
+<?php
+/**
+ @var array $args
+ */
+
+?>
 <section class="layout-block layout-block-search-bar">
-    <div class="layout-block-search-bar--search <?php echo $colorScheme; ?>">
+    <div class="layout-block-search-bar--search <?php echo empty($args['class']) ? '' : $args['class']; ?>">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-11 col-xl-10">

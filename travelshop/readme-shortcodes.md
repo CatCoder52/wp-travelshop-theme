@@ -22,9 +22,16 @@ Parameter:<br>
 *f* = filename located in /travelshop/template-parts/layout-blocks without fileextension
 *special-heading* = this is an example attribute, each attribute is available as variable in the layoutblock template.
 
-**Shortcode examle:** (Display the layoutblock /travelshop/template-parts/pm-views/search-header.php and adds the value 'aa' as $arg['specialheading'])
+**Shortcode example "search-header":**<br>
+(Display the layoutblock /travelshop/template-parts/pm-views/search-header.php)
 ````
-[ts-layoutblock f="search-header" specialheading="aa"]
+[ts-layoutblock f="search-header"]
+````
+
+**Shortcode example "search-bar":**<br>
+(Display the layoutblock /travelshop/template-parts/pm-views/search-bar.php)
+````
+[ts-layoutblock f="search-bar" class="green-sheme"]
 ````
 
 

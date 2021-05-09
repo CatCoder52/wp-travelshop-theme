@@ -155,10 +155,6 @@ class Shortcodes
         }
 
         ob_start();
-        if(isset($atts['cs'])) {
-            global $colorScheme; 
-            $colorScheme = $atts['cs'];
-        }
         load_template(get_template_directory().$layoutblock_filename, false, $atts);
         $contents = ob_get_contents();
         ob_end_clean();
