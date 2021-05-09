@@ -11,20 +11,19 @@ use Pressmind\Search\CheapestPrice;
  */
 
 /**
- * @var Custom\MediaType\Reise $moc
- */
-$moc = $data['data'];
-
-/**
- * @var Pressmind\ORM\Object\Touristic\Booking\Package[] $booking_packages
- */
-$booking_packages = $data['booking_packages'];
-
-/**
  * @var Pressmind\ORM\Object\MediaObject $mo
  */
 $mo = $data['media_object'];
 
+/**
+ * @var Custom\MediaType\Reise $moc
+ */
+$moc = $mo->getDataForLanguage();
+
+/**
+ * @var Pressmind\ORM\Object\Touristic\Booking\Package[] $booking_packages
+ */
+$booking_packages = $mo->booking_packages;
 
 /**
  * Set the Cheapest Price, based on the current search parameters
@@ -40,8 +39,6 @@ if (empty($_GET['pm-dr']) === false) {
 }
 
 $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
-
-
 
 ?>
 

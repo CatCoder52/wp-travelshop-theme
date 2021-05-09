@@ -2,7 +2,7 @@
 get_header();
 ?>
     <main>
-        <?php load_template(get_template_directory().'/template-parts/layout-blocks/search-header.php');?>
+        <?php echo do_shortcode('[ts-layoutblock f="search-header"]'); ?>
         <div class="content-main">
             <div class="container">
                 <?php load_template(get_template_directory().'/template-parts/layout-blocks/image-teaser.php');?>
