@@ -12732,6 +12732,8 @@ button.select-from-control i.la {
   font-size: 1.5rem;
   color: #fff;
   text-align: center;
+  font-weight: 500;
+  font-family: inherit;
 }
 @media (min-width: 768px) {
   .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper {
@@ -12748,6 +12750,10 @@ button.select-from-control i.la {
   background-color: #ffffff7a;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
   border-radius: 0.25rem;
+}
+.layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper--inner label {
+  color: #212529;
+  font-size: 1rem;
 }
 .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper--inner .btn {
   display: flex;
@@ -12834,6 +12840,7 @@ button.select-from-control i.la {
   right: 0;
   bottom: 0;
   background: white;
+  border-radius: 0.25rem;
   background: linear-gradient(270deg, white 0%, rgba(0, 0, 0, 0) 60%);
 }
 
@@ -13008,6 +13015,58 @@ button.select-from-control i.la {
     bottom: calc(.23rem);
   }
 }
+.layout-block-search-bar .layout-block-search-bar--search .search-box {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 0.25rem;
+  margin: 1rem 0;
+  background: #fff;
+}
+.layout-block-search-bar .layout-block-search-bar--search .search-box > div > div > label {
+  color: #212529;
+}
+.layout-block-search-bar .layout-block-search-bar--search .search-box .btn-block {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+@media (min-width: 768px) {
+  .layout-block-search-bar .layout-block-search-bar--search .search-box {
+    flex-direction: row;
+  }
+  .layout-block-search-bar .layout-block-search-bar--search .search-box > div {
+    flex: 0 0 23%;
+  }
+  .layout-block-search-bar .layout-block-search-bar--search .search-box .btn-block {
+    margin: 1rem 0 0 0;
+  }
+}
+@media (min-width: 992px) {
+  .layout-block-search-bar .layout-block-search-bar--search .search-box {
+    align-items: flex-end;
+  }
+  .layout-block-search-bar .layout-block-search-bar--search .search-box > div {
+    flex: 0 0 19%;
+  }
+  .layout-block-search-bar .layout-block-search-bar--search .search-box .btn-block {
+    margin: 0;
+  }
+}
+.layout-block-search-bar .layout-block-search-bar--search.transparent .search-box {
+  background: rgba(255, 255, 255, 0.5);
+}
+.layout-block-search-bar .layout-block-search-bar--search.main-color .search-box {
+  background: #007bff;
+}
+.layout-block-search-bar .layout-block-search-bar--search.main-color .search-box > div > div > label {
+  color: #ffffff;
+}
+.layout-block-search-bar .layout-block-search-bar--search.silver .search-box {
+  background: #bdc3c7;
+}
+
 .footer-main {
   padding-top: 30px;
   background-color: #e9ecef;

@@ -86,6 +86,8 @@ In most cases, this is the basic setup for each travelshop:
 * [Installation Documentation](./travelshop/installation.md)
 * [Common Theme Documentation](./travelshop/readme-theme.md)
 * [Shortcodes](./travelshop/readme-shortcodes.md)
+* [Multilanguage Support](./travelshop/readme-multilanguage.md)
+* [Build in pressmind® IB3 template](./travelshop/readme-ibe-template.md)
 
 #### How to generate product lists? 
 It is possible to output product listings on three different ways:
