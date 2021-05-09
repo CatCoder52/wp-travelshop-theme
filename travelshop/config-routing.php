@@ -18,43 +18,76 @@ use Pressmind\Travelshop\WPFunctions;
  */
 $config = Registry::getInstance()->get('config');
 $routes = array();
-foreach ($config['data']['media_types_pretty_url'] as $id_object_type => $pretty_url) {
 
-    //Build only routes for primary media object types
-    if(!empty($config['data']['primary_media_type_ids']) && !in_array($id_object_type, $config['data']['primary_media_type_ids'])){
-        continue;
+
+$languages = [$config['data']['languages']['default']];
+if (MULTILANGUAGE_SITE) {
+    $languages = $config['data']['languages']['allowed'];
+}
+
+foreach ($languages as $language) {
+
+    foreach ($config['data']['media_types_pretty_url'] as $id_object_type => $pretty_url) {
+
+        //Build only routes for primary media object types
+        if (!empty($config['data']['primary_media_type_ids']) && !in_array($id_object_type, $config['data']['primary_media_type_ids'])) {
+            continue;
+        }
+
+        $language_prefix = '';
+        if (MULTILANGUAGE_SITE) {
+            $language_prefix = 'de/';
+        }
+
+        // Build a route for each media object type > detailpage <
+        // e.g. www.xxx.de/reise/reisename/
+        $route_prefix = $language_prefix . trim($pretty_url['prefix'], '/');
+        $routename = 'ts_default_' . $route_prefix . '_route';
+
+        $data = [];
+        $data['id_object_type'] = $id_object_type;
+        $data['type'] = 'detail';
+        $data['language'] = $language;
+        $data['base_url'] = $route_prefix;
+
+        $routes[$routename] = new Route('^' . $route_prefix . '/(.+?)', 'ts_detail_hook', 'pm-detail', $data);
+
+
+        // Build a route for each media object type > searchpage <
+        // e.g. www.xxx.de/reise/reisename/
+        $route_prefix = $language_prefix . trim($pretty_url['prefix'], '/') . '-suche';
+
+        $routename = 'ts_default_' . $route_prefix . '_route';
+        $data = [];
+        $data['id_object_type'] = $id_object_type;
+        $data['type'] = 'search';
+        $data['language'] = $language;
+        $data['base_url'] = $route_prefix;
+        $data['title'] = $config['data']['media_types'][$id_object_type] . ' - Suche | ' . get_bloginfo('name');
+        $data['meta_description'] = '';
+        $routes[$routename] = new Route('^' . $route_prefix . '/?', 'ts_search_hook', 'pm-search', $data);
+
     }
-
-    // Build a route for each media object type > detailpage <
-    // e.g. www.xxx.de/reise/reisename/
-    $route_prefix = trim($pretty_url['prefix'], '/');
-    $routename = 'ts_default_' . $route_prefix . '_route';
-    $routes[$routename] = new Route('^' . $route_prefix . '/(.+?)', 'ts_detail_hook', 'pm-detail');
-
-    // Build a route for each media object type > searchpage <
-    // e.g. www.xxx.de/reise/reisename/
-    $route_prefix = trim($pretty_url['prefix'], '/') . '-suche';
-    $routename = 'ts_default_' . $route_prefix . '_route';
-    $data['id_object_type'] = $id_object_type;
-    $data['base_url'] = $route_prefix;
-    $data['title'] = $config['data']['media_types'][$id_object_type] . ' - Suche | '.get_bloginfo( 'name' );
-    $data['meta_description'] = '';
-    $routes[$routename] = new Route('^' . $route_prefix . '/?', 'ts_search_hook', 'pm-search', $data);
-
 }
 
 /**
  * Each route can have its own hook,
  * This hook will be fire before html output. (useful for sending http status codes or set meta data...
  */
-function ts_detail_hook()
+function ts_detail_hook($data)
 {
     global $wp, $wp_query;
 
     try {
 
+        if (MULTILANGUAGE_SITE) {
+            $route = preg_replace('(^' . $data['language'] . '\/)', '', $wp->request);
+        } else {
+            $route = $wp->request;
+        }
+
         // get the media object id by url, language is not supported at this moment
-        $r = Pressmind\ORM\Object\MediaObject::getByPrettyUrl('/' . $wp->request . '/', null, 'de', null);
+        $r = Pressmind\ORM\Object\MediaObject::getByPrettyUrl('/' . $route . '/', $data['id_object_type'], $data['language'], null);
 
         if (empty($r[0]->id) === true) {
             WPFunctions::throw404();
@@ -67,7 +100,7 @@ function ts_detail_hook()
         $id_media_object = $r[0]->id;
 
         $id_media_objects = [];
-        foreach($r as $i){
+        foreach ($r as $i) {
             $id_media_objects[] = $i->id;
         }
 
@@ -93,7 +126,7 @@ function ts_detail_hook()
 
         // Add meta data
         // set the page title
-        $the_title = $mediaObject->name.' | '.get_bloginfo( 'name' );
+        $the_title = $mediaObject->name . ' | ' . get_bloginfo('name');
         add_filter('pre_get_document_title', function ($title_parts) use ($the_title) {
             return $the_title;
         });
@@ -129,6 +162,9 @@ function ts_search_hook($data)
 
     // reset post!
     $post = null;
+
+    // TODO
+    $data['language'] = 'de';
 
     // Add meta data
     // set the page title

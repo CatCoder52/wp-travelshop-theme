@@ -136,7 +136,7 @@ class RouteProcessor
      */
     public function register_routes()
     {
-        $routes = apply_filters('my_plugin_routes', $this->routes);
+        $routes = apply_filters('ts_routes', $this->routes);
 
         foreach ($routes as $name => $route) {
             $this->router->add_route($name, $route);
@@ -146,9 +146,9 @@ class RouteProcessor
 
         $routes_hash = md5(serialize($routes));
 
-        if ($routes_hash != get_option('my_plugin_routes_hash')) {
+        if ($routes_hash != get_option('ts_routes_hash')) {
             flush_rewrite_rules();
-            update_option('my_plugin_routes_hash', $routes_hash);
+            update_option('ts_routes_hash', $routes_hash);
         }
     }
 
@@ -159,7 +159,7 @@ class RouteProcessor
     public function get_url_by_object_type($id_object_type){
         foreach ($this->routes as $route) {
             $data = $route->get_data();
-            if(empty($data['id_object_type']) === false && $data['id_object_type'] == $id_object_type){
+            if($data['type'] == 'search' && empty($data['id_object_type']) === false && $data['id_object_type'] == $id_object_type){
                 return $data['base_url'];
             }
         }

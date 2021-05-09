@@ -55,7 +55,7 @@ $pages = $search->getPaginator()->getTotalPages();
         foreach ($mediaObjects as $mediaObject) {
             $data = new stdClass();
             $data->class = 'col-12 col-md-6 col-lg-4';
-            echo $mediaObject->render('Teaser1', 'de', $data);
+            echo $mediaObject->render('Teaser1', ICL_LANGUAGE_CODE, $data);
 
         } ?>
 
