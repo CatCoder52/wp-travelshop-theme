@@ -67,6 +67,5 @@ Returns:
     <li><a href="https://wordpress.local/reise-suche/">travel-search</a></li>
     <li><a href="https://wordpress.local/reise-suche/">hotel-search</a></li>
 </ul>
-https://www.travelshop.de/travel-search/
 ````
 
