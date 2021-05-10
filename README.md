@@ -13,7 +13,7 @@ This theme is the perfect starting point in order to build professional travelsh
 ![Overview Image Demo-Page](./travelshop/assets/img/overview.jpg)
 
 ### Lighthouse Performance
-Current lighthouse performance at revision d66c162b (17.04.2021)
+Current lighthouse performance at revision 3de848c (10.05.2021)
 (tested on demo page, without redis caching). 
 
 ![Lighthouse](./travelshop/assets/img/lighthouse.jpg)
