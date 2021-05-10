@@ -12,6 +12,9 @@ There are **many parameters available**, look at the [QueryString API](readme-qu
 This Shortcode shows all products that contain the term "italy" and uses the view "Teaser1" for display.
 (All viewfiles are stored in /travelshop/template-parts/pm-views)
 
+![shortcode example](assets/img/ts-list.jpg)
+
+
 ## 2. Display layoutblocks [ts-layoutblock]
 
 This shortcode display a defined layoutblock template. Use this to add special views 
@@ -28,6 +31,8 @@ Parameter:<br>
 [ts-layoutblock f="search-header"]
 ````
 
+![shortcode example](assets/img/ts-layoutblock.jpg)
+
 **Shortcode example "search-bar":**<br>
 (Display the layoutblock /travelshop/template-parts/pm-views/search-bar.php)
 ````
@@ -42,12 +47,26 @@ Parameter:<br>
 *page* = media object typ constant, (see config-theme.php)
 ````
 [ts-searchpage page="TS_TOUR_PRODUCTS"]
+
+--
+Returns: 
+https://www.travelshop.de/travel-search/
 ````
+
+
 
 
 ## 4. Display searchroutes [ts-searchroutes]
 This shortcode displays all searchroutes which media object types are declared as primary in pm-config.php
 ````
 [ts-searchroute]
+
+--
+Returns:
+<ul>
+    <li><a href="https://wordpress.local/reise-suche/">travel-search</a></li>
+    <li><a href="https://wordpress.local/reise-suche/">hotel-search</a></li>
+</ul>
+https://www.travelshop.de/travel-search/
 ````
 
