@@ -64,8 +64,8 @@ This shortcode displays all searchroutes which media object types are declared a
 --
 Returns:
 <ul>
-    <li><a href="https://wordpress.local/reise-suche/">travel-search</a></li>
-    <li><a href="https://wordpress.local/reise-suche/">hotel-search</a></li>
+    <li><a href="https://wordpress.local/travel-search/">travel-search</a></li>
+    <li><a href="https://wordpress.local/hotel-search/">hotel-search</a></li>
 </ul>
 ````
 
