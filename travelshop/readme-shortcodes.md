@@ -22,8 +22,7 @@ This shortcode display a defined layoutblock template. Use this to add special v
 (All layoutblocks are stored in /travelshop/template-parts/layout-blocks)
 
 Parameter:<br>
-*f* = filename located in /travelshop/template-parts/layout-blocks without fileextension
-*special-heading* = this is an example attribute, each attribute is available as variable in the layoutblock template.
+*f* = filename located in /travelshop/template-parts/layout-blocks (without extension)
 
 **Shortcode example "search-header":**<br>
 (Display the layoutblock /travelshop/template-parts/pm-views/search-header.php)
@@ -36,7 +35,7 @@ Parameter:<br>
 **Shortcode example "search-bar":**<br>
 (Display the layoutblock /travelshop/template-parts/pm-views/search-bar.php)
 ````
-[ts-layoutblock f="search-bar" class="green-sheme"]
+[ts-layoutblock f="search-bar" class="transparent"]
 ````
 
 
