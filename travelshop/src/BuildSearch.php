@@ -68,6 +68,14 @@ class BuildSearch
 
         }
 
+        if (isset($request[$prefix.'-du']) === true && preg_match('/^([0-9]+)\-([0-9]+)$/', $request[$prefix.'-du']) > 0) {
+            list($duration_range_from, $duration_range_to) = explode('-', $request[$prefix.'-du']);
+            $duration_range_from = empty(intval($duration_range_from)) ? 1 : intval($duration_range_from);
+            $duration_range_to = empty(intval($duration_range_to)) ? 99999 : intval($duration_range_to);
+            $conditions[] = Pressmind\Search\Condition\DurationRange::create($duration_range_from, $duration_range_to);
+            $validated_search_parameters[$prefix.'-du'] = $duration_range_from.'-'.$duration_range_to;
+        }
+
 
         if (isset($request[$prefix.'-dr']) === true) {
             $dateRange = self::extractDaterange($request[$prefix.'-dr']);
@@ -240,6 +248,29 @@ class BuildSearch
     public static function extractDaterange($str){
         if(preg_match('/^([0-9]{4}[0-9]{2}[0-9]{2})\-([0-9]{4}[0-9]{2}[0-9 ]{2})$/', $str, $m) > 0){
             return array(new DateTime($m[1]), new DateTime($m[2]));
+        }
+        return false;
+    }
+
+    /**
+     * @param $str
+     * @return int[]|bool
+     */
+    public static function extractDurationRange($str){
+        if(preg_match('/^([0-9]+)\-([0-9]+)$/', $str, $m) > 0){
+            return array($m[1], $m[2]);
+        }
+        return false;
+    }
+
+
+    /**
+     * @param $str
+     * @return int[]|bool
+     */
+    public static function extractPriceRange($str){
+        if(preg_match('/^([0-9]+)\-([0-9]+)$/', $str, $m) > 0){
+            return array($m[1], $m[2]);
         }
         return false;
     }
