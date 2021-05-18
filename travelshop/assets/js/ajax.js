@@ -6,6 +6,16 @@ jQuery(function ($) {
      * Search.get('test_id', {action: 'get'});
      */
 
+    // -----------------------------------------------
+    // -- Helper Functions
+    // -----------------------------------------------
+    function removeElement(array, elem) {
+        var index = array.indexOf(elem);
+        if (index > -1) {
+            array.splice(index, 1);
+        }
+    }
+
     TSAjax = function (endpoint_url) {
 
         var _this = this;
@@ -59,6 +69,56 @@ jQuery(function ($) {
                 .fail(function () {
                     console.log('ajax error');
                 });
+        }
+
+        this.getWishlistMediaObjects = function(query_string) {
+            var jqxhr = $.ajax({
+                url: this.endpoint_url + query_string,
+                method: 'GET',
+                data: null
+            })
+            .done(function (data) {
+                console.log(data);
+            })
+            .fail(function () {
+                console.log('ajax error');
+            });
+        }
+
+        this.renderWishlist = function() {
+            let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
+            if(wishlist !== null) {
+                let query_string = '?wishlistIDs=';
+                $('.wishlist-count').text(wishlist.length);
+                wishlist.forEach(function(item, key) {
+                    if(key !== wishlist.length - 1) {
+                        query_string += item + ',';
+                    } else {
+                        query_string += item;
+                    }
+                    
+                });
+                console.log(query_string);
+                _this.getWishlistMediaObjects(query_string);
+            }
+        }
+
+        this.addToWishlist = function() {
+            $('.add-to-wishlist').click(function(e) {
+                let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
+                if(wishlist == null) {
+                    wishlist = [];
+                }
+                if(wishlist.includes($(e.target).data('id'))) {
+                    removeElement(wishlist, $(e.target).data('id'));
+                    $('.wishlist-heart').removeClass('active');
+                } else {
+                    wishlist.push($(e.target).data('id'));
+                    $('.wishlist-heart').addClass('active');
+                }
+                window.localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                console.log(wishlist);
+            });
         }
 
         this.pagination = function () {
@@ -207,6 +267,8 @@ jQuery(function ($) {
     };
 
     var Search = new TSAjax('/wp-content/themes/travelshop/pm-ajax-endpoint.php');
+    Search.renderWishlist();
+    Search.addToWishlist();
     Search.pagination();
     Search.searchbox();
     Search.filter();

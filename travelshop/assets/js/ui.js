@@ -82,7 +82,7 @@ jQuery(function ($) {
                 bc.children().first().show();
                 bc.children().last().show();
             } else {
-                console.log(false);
+                // console.log(false);
                 bc.children().show();
                 $('.bc-separator').hide();
             }
@@ -94,6 +94,15 @@ jQuery(function ($) {
             renderBreadCrumb($('.breadcrumb'));
         })
     }
+// --------------------------------
+// --- WISHLIST UI
+// --------------------------------
+if ($('.add-to-wishlist').length > 0) {
+    let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
+    if(wishlist.includes(currentMediaObjectID)) {
+        $('.wishlist-heart').addClass('active');
+    }
+}
 
 // Register PWA ServiceWorker
     if ('serviceWorker' in navigator) {

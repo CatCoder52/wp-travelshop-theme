@@ -35,7 +35,7 @@ if (empty($request->action)) {
     $Output->result = $request;
     echo json_encode($Output);
     exit;
-}  else if ($request->action === 'get') {
+}  else if ($request->action === 'get' && !$_GET['wishlistIDs']) {
 
     if ($Redis !== false) {
         $cache = $Redis->get($redis_key);
@@ -66,6 +66,13 @@ if (empty($request->action)) {
     }
     echo $result;
     exit;
+} else if($_GET['wishlistIDs']) {
+    $wishlistIDs = explode(',', $_GET['wishlistIDs']);
+    $wishlistMOs = [];
+    foreach($wishlistIDs as $key => $ID) {
+        $wishlistMOs[$key] = new \Pressmind\ORM\Object\MediaObject($ID, true);
+    }
+    echo json_encode($wishlistMOs);
 } else {
     header("HTTP/1.0 404 Not Found");
     $Output->msg = 'error: action not known';
