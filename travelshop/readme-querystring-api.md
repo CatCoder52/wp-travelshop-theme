@@ -37,6 +37,7 @@ Use as shortcode with a special view-template
 * [Transport (pm-tr)](#pm-tr-transport-type)
 * [Term/Fulltext (pm-t)](#pm-t-term--fulltext)
 * [Price Range (pm-pr)](#pm-pr-price-range)
+* [Duration Range (pm-du)](#pm-du-duration-range)
 * [Date Range (pm-dr)](#pm-dr-date-range)
 * [Valid from/ Valid to (pm-vr)](#pm-vr-valid-from-valid-to)
 * [Category Tree Item/s (pm-c)](#pm-c-category-tree-items)
@@ -279,6 +280,26 @@ WORDPRESS SHORTCODE [ts-list pm-pr="100-1000"]
 $search = new Pressmind\Search(
     [
         \Pressmind\Search\Condition\PriceRange::create(100, 1000),
+    ]
+);
+foreach ($search->getResults() as $mediaObject) {
+    echo $mediaObject->render('Teaser1', 'de');
+}
+```
+
+### pm-du (Duration Range)
+Search by price range. Allowed pattern ([0-9]+)\-([0-9])+
+```
+GET https://yoursite.de/search/?pm-du=3-5
+```
+```
+WORDPRESS SHORTCODE [ts-list pm-du="3-5"]
+```
+```php
+// pressmind/sdk search conditions
+$search = new Pressmind\Search(
+    [
+        \Pressmind\Search\Condition\DurationRange::create(3, 5),
     ]
 );
 foreach ($search->getResults() as $mediaObject) {

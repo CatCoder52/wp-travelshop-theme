@@ -12,13 +12,20 @@ define('SITE_URL', '');
 // one big change is the routing, if multilanguage, all routes have the language code as prefix:
 // domain.de/de/reisen/schoene-reise/ instead of domain.de/reisen/schoene-reise/
 // also we have alternate language html header
-define('MULTILANGUAGE_SITE', false);
+define('MULTILANGUAGE_SITE', true);
 
 // Support for WPML multilanguage, if no lang is set, we set a default:
-if(!defined('ICL_LANGUAGE_CODE')){
-    define('ICL_LANGUAGE_CODE', 'de');
-}
+if(defined('ICL_LANGUAGE_CODE')){
 
+    /* if the language codes are different between wmpl and pressmind, you can build a map like this
+    $language_map = ['de-de' => 'de', 'en-gb' => 'en'];
+    define('TS_LANGUAGE_CODE', $language_map[ICL_LANGUAGE_CODE]);
+    */
+
+    define('TS_LANGUAGE_CODE', ICL_LANGUAGE_CODE);
+}else{
+    define('TS_LANGUAGE_CODE', 'de');
+}
 /**
  * we' have to renormalize the generic pressmind entities,
  * so it would be a easier handling in this shop context

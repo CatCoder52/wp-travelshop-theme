@@ -5,7 +5,7 @@ This theme is an example theme for building an enterprise ready travelshop.
 It is just a basic boilerplate for creating awesome travelshops based 
 on the pressmind® PIM-System. 
 
-#### Booking engine 
+## Booking engine 
 A booking engine is not included in the theme, but there are two different ways to include a booking engine:
 
 1. Integrate your own booking engine.
@@ -15,7 +15,7 @@ A booking engine is not included in the theme, but there are two different ways 
 bookings without a connected crs system in your backoffice.
 
 
-#### The template concept
+## The template concept
 
 Speed fst:
 1. All WordPress related overload is removed:
@@ -34,27 +34,27 @@ rest_output_link_header, rsd_link,wlwmanifest_link, wp_shortlink_wp_head,wp_gene
 
 7. Theme for Pros. Less WordPress admin pages, all settings are configured in config files.
 
-#### High availability (HA)
+## High availability (HA)
 It is possible to use this theme for high traffic and availability setups (e.g. AWS, Google, Kubernetes). 
 Ask your pressmind team for further information.
 (Do not use wordpress plugins - please contact us for further questions.)
  
-#### Caching
+## Caching
 The theme is ready for redis object caching (based on PECL phpredis). It is also possible to use
 the pressmind `advanced_cache.php` dropin. For further information ask your pressmind integration manager.
 Do not use an other page cache (They are not able to handle pressmind product pages.)
 
-#### Amazon S3 
+## Amazon S3 
 It is possible to store all assets (WordPress media library and the pressmind product images on Amazon S3 storage).
 Use the `pressmind S3 Stateless` Plugin for this case.
 Do not use an other S3 plugin (They are not able to handle pressmind product pages.)
 
-#### SEO Topics
+## SEO Topics
 
-#### Headings
+### Headings
 Heading hierachy is on most pages present, but please check this based on real world content and modify it by yourself.
 
-#### Metadata for product descriptions
+### Metadata for product descriptions
 All pressmind® media object related pages have title and meta descriptions.
 Each title and description can modified directly in the pressmind® PIM application.
 
@@ -70,16 +70,40 @@ For **media media object default routes**, see:
 config-routing.php:ts_search_hook()
 ````
 
-#### Metadata for WordPress posttypes
+### Metadata for WordPress posttypes
 There is a simple meta description feature included. It's just a sample. See
 themes/travelshop/functions/add_meta.php how it works.
 
 
-##### Sitemap
+### Sitemap
 Since 5.5, WordPress has a build in sitemap feature, so
 no additional plugins are needed.
 The travelshop theme removes unrelated sitemaps like users, categories and 
 adds a sitemap for each pressmind related media object type.
+
+
+### Custom url generation for products
+The url generation pattern is based on a defined list of media object values.
+
+See pm-config.php for configuration:
+````php
+ 'media_types_pretty_url' => [
+    607 => [
+        'prefix' => '/travel/',
+        'separator' => '-',
+        'fields' => [
+            'name',
+            'id',
+            'destination_default'
+        ],
+        'strategy' => 'unique',
+        'suffix' => '/',
+    ],
+ ],
+ 
+// generates this: https://www.domain/travel/special-roundtrip-12345-italy/
+````
+
 
 ## The template files
 * pm-config.php (the pressmind web-core sdk config, look here for database credentials, pressmind api settings or image sizes)

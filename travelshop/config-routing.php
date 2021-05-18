@@ -95,56 +95,71 @@ function ts_detail_hook($data)
 
         /**
          * based on the url strategy it's possible to retrieve more than one media object for url
-         * at this moment we support only one (the fst found) media object by url
+         * at this moment we support progress each media object, but we have no specific header logic,
+         * so the meta/header below will make usage only from the first...
          */
-        $id_media_object = $r[0]->id;
-
         $id_media_objects = [];
         foreach ($r as $i) {
             $id_media_objects[] = $i->id;
         }
 
-        $mediaObject = null;
-        $key = 'pm-ts-oc-' . $id_media_object;
-        if (empty($_GET['no_cache'])) {
-            $mediaObject = wp_cache_get($key, 'media-object');
-        }
+        $mediaObjects = [];
+        foreach($id_media_objects as $id_media_object){
 
-        if (empty($mediaObject) === true) {
-            $mediaObject = new Pressmind\ORM\Object\MediaObject($id_media_object);
+            $key = 'pm-ts-oc-' . $id_media_object;
             if (empty($_GET['no_cache'])) {
-                wp_cache_set($key, $mediaObject, 'media-object', 60);
+                $buffer = wp_cache_get($key, 'media-object');
             }
+
+            if (empty($buffer) === true) {
+                $buffer = new Pressmind\ORM\Object\MediaObject($id_media_object);
+                if (empty($_GET['no_cache'])) {
+                    wp_cache_set($key, $buffer, 'media-object', 60);
+                }
+            }
+
+            $mediaObjects[] = $buffer;
+
         }
 
-        if (empty($_GET['preview']) === false && $mediaObject->visibility != 30) {
+        // 404
+        if (empty($_GET['preview']) === false && $mediaObjects[0]->visibility != 30) {
             WPFunctions::throw404();
         }
+
 
         // Add custom headers, for better debugging
         header('id-pressmind: ' . implode(',', $id_media_objects));
 
         // Add meta data
         // set the page title
-        $the_title = $mediaObject->name . ' | ' . get_bloginfo('name');
+        $the_title = $mediaObjects[0]->name . ' | ' . get_bloginfo('name');
         add_filter('pre_get_document_title', function ($title_parts) use ($the_title) {
             return $the_title;
         });
 
         // set meta description
-        $meta_desc = '<meta name="description" content="' . $mediaObject->name . '">' . "\r\n";
+        $meta_desc = '<meta name="description" content="' . $mediaObjects[0]->name . '">' . "\r\n";
         add_action('wp_head', function () use ($meta_desc) {
             echo $meta_desc;
         });
 
         // set canonical url
-        $canonical = '<link rel="canonical" href="' . site_url() . $mediaObject->getPrettyUrl() . '">' . "\r\n";
+        $canonical = '<link rel="canonical" href="' . site_url() . $mediaObjects[0]->getPrettyUrl() . '">' . "\r\n";
         add_action('wp_head', function () use ($canonical) {
             echo $canonical;
         });
 
-        // set the id of the current media object as wp parameter
-        $wp_query->set('id_media_object', $id_media_object);
+        // set alternate languages
+        if(MULTILANGUAGE_SITE){
+            add_action('wp_head', function () use ($mediaObjects) {
+                foreach($mediaObjects[0]->getPrettyUrls() as $url){
+                    echo '<link rel="alternate" hreflang="'.$url->language.'" href="'.SITE_URL.$url->route.'" />'."\r\n";
+                }
+            });
+        }
+
+        $wp_query->set('id_media_objects', $id_media_objects);
         return;
 
     } catch (\Exception $e) {
@@ -188,6 +203,15 @@ function ts_search_hook($data)
     add_action('wp_head', function () use ($canonical) {
         echo $canonical;
     });
+
+
+    /* @TODO set alternate languages (sdk function is missing at this moment)
+    if(MULTILANGUAGE_SITE){
+        add_action('wp_head', function () use ($data) {
+           echo '<link rel="alternate" hreflang="" href="" />'."\r\n";
+        });
+    }
+     */
 
     // set the id of the current media object as wp parameter
     $wp_query->set('id_object_type', $data['id_object_type']);
