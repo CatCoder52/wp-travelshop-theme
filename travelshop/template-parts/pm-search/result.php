@@ -11,7 +11,10 @@ if(empty($_GET['pm-ot']) === true){ // if the id_object_type is not defined by s
 
 $page_size = 12;
 $search = BuildSearch::fromRequest($_GET, 'pm', true, $page_size);
+
+
 $mediaObjects = $search->getResults();
+
 $total_result = $search->getTotalResultCount();
 $current_page = $search->getPaginator()->getCurrentPage();
 $pages = $search->getPaginator()->getTotalPages();
@@ -52,12 +55,20 @@ $pages = $search->getPaginator()->getTotalPages();
 <section class="content-block content-block-travel-cols">
     <div id="pm-search-result" class="row">
         <?php
+
+        $view = 'Teaser1';
+        if(!empty($_GET['view']) && preg_match('/^[0-9A-Za-z\_]+$/', $_GET['view']) !== false){
+            $view = $_GET['view'];
+        }
+
         foreach ($mediaObjects as $mediaObject) {
             $data = new stdClass();
             $data->class = 'col-12 col-md-6 col-lg-4';
-            echo $mediaObject->render('Teaser1', TS_LANGUAGE_CODE, $data);
+            echo $mediaObject->render($view, TS_LANGUAGE_CODE, $data);
 
         } ?>
+
+        <!-- Lösche Filter  um alle 149 Produkte zu sehen- -->
 
         <?php
         if($total_result == 0){
