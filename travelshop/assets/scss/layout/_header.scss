@@ -1,6 +1,12 @@
 .header-main {
 
-  border-bottom: 1px solid $gray-200;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  z-index: 1500;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
 
   // -- change row handling for mobile devices.
   @include media-breakpoint-down(md) {
@@ -15,8 +21,15 @@
     }
   }
 
+  &.affix {
+    .navbar-brand {
+      height: $header-height;
+    }
+  }
+
   // -- brand
   .navbar-brand {
+    transition: 300ms ease-in-out all;
     padding-top: 0;
     padding-bottom: 0;
 
@@ -202,9 +215,10 @@
   }
 
   .dropdown-menu-wishlist {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     padding: .25rem 1rem .25rem 1rem;
     width: 90vw;
-    max-width: 350px;
+    max-width: 400px;
 
     .wishlist-items {
       p {
@@ -243,6 +257,8 @@
             }
             &.name {
               line-height: 1.2;
+              padding-bottom: .5rem;
+              font-weight: bold;
             }
             a {
               text-decoration: none;

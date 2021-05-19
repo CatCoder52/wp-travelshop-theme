@@ -11275,6 +11275,7 @@ hr {
     left: 0;
     opacity: 1;
     pointer-events: auto;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
   .header-main .navbar.navbar-expand-md .offcanvas-close {
     display: block;
@@ -11381,6 +11382,7 @@ hr {
     left: 0;
     opacity: 1;
     pointer-events: auto;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
   .header-main .navbar.navbar-expand-lg .offcanvas-close {
     display: block;
@@ -11487,6 +11489,7 @@ hr {
     left: 0;
     opacity: 1;
     pointer-events: auto;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
   .header-main .navbar.navbar-expand-xl .offcanvas-close {
     display: block;
@@ -13114,7 +13117,13 @@ button.select-from-control i.la {
 }
 
 .header-main {
-  border-bottom: 1px solid #e9ecef;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  z-index: 1500;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
 }
 @media (max-width: 991.98px) {
   .header-main > .container > .row {
@@ -13126,7 +13135,11 @@ button.select-from-control i.la {
     padding-right: 10px;
   }
 }
+.header-main.affix .navbar-brand {
+  height: 70px;
+}
 .header-main .navbar-brand {
+  transition: 300ms ease-in-out all;
   padding-top: 0;
   padding-bottom: 0;
   height: 70px;
@@ -13264,9 +13277,10 @@ button.select-from-control i.la {
   background-color: #0066ff;
 }
 .header-main .dropdown-menu-wishlist {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   padding: 0.25rem 1rem 0.25rem 1rem;
   width: 90vw;
-  max-width: 350px;
+  max-width: 400px;
 }
 .header-main .dropdown-menu-wishlist .wishlist-items p {
   padding: 0.75rem 0 0 0;
@@ -13307,6 +13321,8 @@ button.select-from-control i.la {
 }
 .header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item .wishlist-item-data span.name {
   line-height: 1.2;
+  padding-bottom: 0.5rem;
+  font-weight: bold;
 }
 .header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item .wishlist-item-data span a {
   text-decoration: none;
