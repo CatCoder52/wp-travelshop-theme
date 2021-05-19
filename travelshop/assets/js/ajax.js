@@ -154,7 +154,12 @@ jQuery(function ($) {
                 if(!jQuery.isEmptyObject(wishlist)) {
                     if(wishlist.includes($(e.target).data('id'))) {
                         removeElement(wishlist, $(e.target).data('id'));
-                        $('.wishlist-heart').removeClass('active');
+                        // $('.wishlist-heart').removeClass('active');
+                        $('.add-to-wishlist').each(function(key, item) {
+                            if($(item).data('id') == $(e.target).data('id')) {
+                                $(item).removeClass('active');
+                            }
+                        });
                     }
                 }
                 window.localStorage.setItem('wishlist', JSON.stringify(wishlist));
