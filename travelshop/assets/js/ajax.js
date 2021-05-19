@@ -78,7 +78,29 @@ jQuery(function ($) {
                 data: null
             })
             .done(function (data) {
-                console.log(data);
+                let html = '';
+                data.forEach(function(item, key) {
+                    html += `
+                        <div class="wishlist-item">
+                            <div class="wishlist-item-image">
+                                <a href="${item.mo.routes[0].route}">
+                                    <img src="${item.mo.data[0].bilder_default[0].tmp_url}&w=150" alt="${item.mo.data[0].bilder_default[0].alt}" />
+                                </a>
+                            </div>
+                            <div class="wishlist-item-data">
+                                <span class="name">
+                                    <a href="${item.mo.routes[0].route}">${item.mo.name}</a>
+                                </span>
+                                <span class="price">
+                                    <div data-id="${item.mo.id}" class="remove-from-wishlist">entfernen</div>
+                                    <a href="${item.mo.routes[0].route}">ab <strong>${item.cp.price_total} €</strong></a>
+                                </span>
+                            </div>
+                        </div>
+                    `;
+                });
+                $('.wishlist-items').html(html);
+                _this.removeFromWishlist();
             })
             .fail(function () {
                 console.log('ajax error');
@@ -87,37 +109,56 @@ jQuery(function ($) {
 
         this.renderWishlist = function() {
             let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
-            if(wishlist !== null) {
+            if(wishlist !== null && wishlist.length !== 0) {
                 let query_string = '?wishlistIDs=';
                 $('.wishlist-count').text(wishlist.length);
+                $('.wishlist-toggler').addClass('animate');
+                setTimeout(function() {
+                    $('.wishlist-toggler').removeClass('animate');
+                }, 1250);
                 wishlist.forEach(function(item, key) {
                     if(key !== wishlist.length - 1) {
                         query_string += item + ',';
                     } else {
                         query_string += item;
                     }
-                    
                 });
-                console.log(query_string);
                 _this.getWishlistMediaObjects(query_string);
+            } else {
+                $('.wishlist-count').text(0);
+                $('.wishlist-items').html(`<p>Keine Reisen auf der Merkliste</p>`);
             }
         }
 
         this.addToWishlist = function() {
             $('.add-to-wishlist').click(function(e) {
                 let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
-                if(wishlist == null) {
+                if(jQuery.isEmptyObject(wishlist)) {
                     wishlist = [];
                 }
                 if(wishlist.includes($(e.target).data('id'))) {
                     removeElement(wishlist, $(e.target).data('id'));
-                    $('.wishlist-heart').removeClass('active');
+                    $(e.target).removeClass('active');
                 } else {
                     wishlist.push($(e.target).data('id'));
-                    $('.wishlist-heart').addClass('active');
+                    $(e.target).addClass('active');
                 }
                 window.localStorage.setItem('wishlist', JSON.stringify(wishlist));
-                console.log(wishlist);
+                _this.renderWishlist();
+            });
+        }
+
+        this.removeFromWishlist = function() {
+            $('.remove-from-wishlist').click(function(e) {
+                let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
+                if(!jQuery.isEmptyObject(wishlist)) {
+                    if(wishlist.includes($(e.target).data('id'))) {
+                        removeElement(wishlist, $(e.target).data('id'));
+                        $('.wishlist-heart').removeClass('active');
+                    }
+                }
+                window.localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                _this.renderWishlist();
             });
         }
 

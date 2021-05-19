@@ -119,29 +119,12 @@
                         <path stroke="none" d="M0 0h24v24H0z"/>
                         <path d="M12 20l-7 -7a4 4 0 0 1 6.5 -6a.9 .9 0 0 0 1 0a4 4 0 0 1 6.5 6l-7 7" />
                     </svg>
-                    <span class="wishlist-count">3</span>
+                    <span class="wishlist-count">0</span>
                 </button>
 
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-wishlist">
                     <div class="wishlist-items">
-                        <div class="wishlist-item">
-                            <span class="name"><a href="#">Reise #1</a></span>
-                            <button class="wishlist-delete" type="button">
-                                <i class="la la-times"></i>
-                            </button>
-                        </div>
-                        <div class="wishlist-item">
-                            <span class="name"><a href="#">Reise #1</a></span>
-                            <button class="wishlist-delete" type="button">
-                                <i class="la la-times"></i>
-                            </button>
-                        </div>
-                        <div class="wishlist-item">
-                            <span class="name"><a href="#">Reise #1</a></span>
-                            <button class="wishlist-delete" type="button">
-                                <i class="la la-times"></i>
-                            </button>
-                        </div>
+                        <p>Keine Reisen auf der Merkliste</p>
                     </div>
 
                     <div class="wishlist-actions">

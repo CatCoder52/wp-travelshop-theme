@@ -16,8 +16,13 @@
       svg {
         pointer-events: none;
         .wishlist-heart {
-          fill: none;
-          &.active {
+          fill: #fff;
+        }
+      }
+      &.active {
+        svg {
+          .wishlist-heart {
+            // stroke: #fff;
             fill: #06f;
           }
         }

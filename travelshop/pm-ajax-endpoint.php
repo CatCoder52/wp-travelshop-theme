@@ -70,7 +70,9 @@ if (empty($request->action)) {
     $wishlistIDs = explode(',', $_GET['wishlistIDs']);
     $wishlistMOs = [];
     foreach($wishlistIDs as $key => $ID) {
-        $wishlistMOs[$key] = new \Pressmind\ORM\Object\MediaObject($ID, true);
+        $wishlistMOs[$key] = [];
+        $wishlistMOs[$key]['mo'] = new \Pressmind\ORM\Object\MediaObject($ID, true);
+        $wishlistMOs[$key]['cp'] = $wishlistMOs[$key]['mo']->getCheapestPrice();
     }
     echo json_encode($wishlistMOs);
 } else {

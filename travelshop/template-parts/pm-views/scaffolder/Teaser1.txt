@@ -9,7 +9,7 @@
 $mo = $data['media_object'];
 
 /**
- * @var Custom\MediaType\###CLASSNAME### $moc
+ * @var Custom\MediaType\Reise $moc
  */
 $moc = $mo->getDataForLanguage();
 
@@ -58,6 +58,12 @@ $class = empty($data['custom_data']->class) ? 'col-12 col-md-6 col-lg-3' : $data
                 <div class="card-badge card-badge--new">
                     <!--<div class="card-badge card-badge--top-offer">-->
                     Neu
+                </div>
+                <div data-id="<?php echo $mo->id; ?>" class="add-to-wishlist">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path class="wishlist-heart" d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                    </svg>
                 </div>
                 <a href="<?php echo $url; ?>">
                     <img src="<?php echo $moc->bilder_default[0]->getUri('teaser'); ?>"
