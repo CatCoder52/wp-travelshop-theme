@@ -13597,7 +13597,8 @@ a {
   .sticky-container {
     position: -webkit-sticky;
     position: sticky;
-    top: 30px;
+    top: 85px;
+    margin-bottom: 2rem;
   }
 }
 .sticky-booking-cta {
