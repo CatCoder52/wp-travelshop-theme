@@ -94,20 +94,6 @@ jQuery(function ($) {
             renderBreadCrumb($('.breadcrumb'));
         })
     }
-// --------------------------------
-// --- WISHLIST UI
-// --------------------------------
-if ($('.add-to-wishlist').length > 0) {
-    let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
-    if(!jQuery.isEmptyObject(wishlist)) {
-        $('.add-to-wishlist').each(function(key, item) {
-            if(wishlist.includes($(item).data('id'))) {
-                $(item).addClass('active');
-            }
-        });
-    }
-}
-
 // Register PWA ServiceWorker
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {

@@ -13264,7 +13264,7 @@ button.select-from-control i.la {
   background-color: #0066ff;
 }
 .header-main .dropdown-menu-wishlist {
-  padding: 0.25rem 1rem 1rem 1rem;
+  padding: 0.25rem 1rem 0.25rem 1rem;
   width: 90vw;
   max-width: 350px;
 }

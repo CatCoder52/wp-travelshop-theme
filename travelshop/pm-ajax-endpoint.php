@@ -35,7 +35,7 @@ if (empty($request->action)) {
     $Output->result = $request;
     echo json_encode($Output);
     exit;
-}  else if ($request->action === 'get' && !$_GET['wishlistIDs']) {
+}  else if ($request->action === 'get' && !isset($_GET['wishlistIDs'])) {
 
     if ($Redis !== false) {
         $cache = $Redis->get($redis_key);

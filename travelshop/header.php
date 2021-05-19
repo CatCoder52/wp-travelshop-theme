@@ -127,7 +127,7 @@
                         <p>Keine Reisen auf der Merkliste</p>
                     </div>
 
-                    <div class="wishlist-actions">
+                    <div style="display: none;" class="wishlist-actions">
                         <a href='#' class="btn btn-outline-primary btn-block">
                             Zur Merkliste
                         </a>

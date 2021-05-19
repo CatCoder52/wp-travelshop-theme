@@ -53,8 +53,6 @@ jQuery(function ($) {
                         } else {
                             total_count_span.html(total_count_span.data('total-count-default'));
                         }
-
-
                     }
 
                     if (scrollto) {
@@ -65,6 +63,9 @@ jQuery(function ($) {
 
                     window.history.pushState(null, '', window.location.pathname + '?' + query_string);
                     addFilterCheckboxEventListener($('#filter'));
+                })
+                .then(function() {
+                    _this.wishlist();
                 })
                 .fail(function () {
                     console.log('ajax error');
@@ -130,22 +131,32 @@ jQuery(function ($) {
             }
         }
 
-        this.addToWishlist = function() {
-            $('.add-to-wishlist').click(function(e) {
+        this.wishlist = function() {
+            if ($('.add-to-wishlist').length > 0) {
                 let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
-                if(jQuery.isEmptyObject(wishlist)) {
-                    wishlist = [];
+                if(!jQuery.isEmptyObject(wishlist)) {
+                    $('.add-to-wishlist').each(function(key, item) {
+                        if(wishlist.includes($(item).data('id'))) {
+                            $(item).addClass('active');
+                        }
+                    });
                 }
-                if(wishlist.includes($(e.target).data('id'))) {
-                    removeElement(wishlist, $(e.target).data('id'));
-                    $(e.target).removeClass('active');
-                } else {
-                    wishlist.push($(e.target).data('id'));
-                    $(e.target).addClass('active');
-                }
-                window.localStorage.setItem('wishlist', JSON.stringify(wishlist));
-                _this.renderWishlist();
-            });
+                $('.add-to-wishlist').click(function(e) {    
+                    if(jQuery.isEmptyObject(wishlist)) {
+                        wishlist = [];
+                    }
+                    if(wishlist.includes($(e.target).data('id'))) {
+                        removeElement(wishlist, $(e.target).data('id'));
+                        $(e.target).removeClass('active');
+                    } else {
+                        wishlist.push($(e.target).data('id'));
+                        $(e.target).addClass('active');
+                    }
+                    window.localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                    _this.renderWishlist();
+                });
+            }
+            _this.renderWishlist();
         }
 
         this.removeFromWishlist = function() {
@@ -313,8 +324,7 @@ jQuery(function ($) {
     };
 
     var Search = new TSAjax('/wp-content/themes/travelshop/pm-ajax-endpoint.php');
-    Search.renderWishlist();
-    Search.addToWishlist();
+    Search.wishlist();
     Search.pagination();
     Search.searchbox();
     Search.filter();
