@@ -123,7 +123,7 @@
                 </button>
 
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-wishlist">
-                    <div class="wishlist-items">
+                    <div id="wishlist-result" class="wishlist-items">
                         <p>Keine Reisen auf der Merkliste</p>
                     </div>
 

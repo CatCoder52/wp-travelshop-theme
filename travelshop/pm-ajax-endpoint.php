@@ -35,7 +35,7 @@ if (empty($request->action)) {
     $Output->result = $request;
     echo json_encode($Output);
     exit;
-}  else if ($request->action === 'get' && !isset($_GET['wishlistIDs'])) {
+}  else if ($request->action === 'get') {
 
     if ($Redis !== false) {
         $cache = $Redis->get($redis_key);
@@ -46,18 +46,25 @@ if (empty($request->action)) {
         }
     }
 
+    if($_GET['action'] == 'search' || !isset($_GET['action'])) {
+        ob_start();
+        require 'template-parts/pm-search/result.php';
+        $Output->count = (int)$total_result;
+        $Output->html['search-result'] = ob_get_contents();
+        ob_end_clean();
 
-    ob_start();
-    require 'template-parts/pm-search/result.php';
-    $Output->count = (int)$total_result;
-    $Output->html['search-result'] = ob_get_contents();
-    ob_end_clean();
+        ob_start();
+        require 'template-parts/pm-search/filter-vertical.php';
+        $Output->html['search-filter'] = ob_get_contents();
+        ob_end_clean();
+    }
 
-    ob_start();
-    require 'template-parts/pm-search/filter-vertical.php';
-    $Output->html['search-filter'] = ob_get_contents();
-    ob_end_clean();
-
+    if($_GET['action'] == 'wishlist') {
+        ob_start();
+        require 'template-parts/pm-search/wishlist-result.php';
+        $Output->html['wishlist-result'] = ob_get_contents();
+        ob_end_clean();
+    }
 
     $Output->error = false;
     $result = json_encode($Output);
@@ -66,15 +73,6 @@ if (empty($request->action)) {
     }
     echo $result;
     exit;
-} else if($_GET['wishlistIDs']) {
-    $wishlistIDs = explode(',', $_GET['wishlistIDs']);
-    $wishlistMOs = [];
-    foreach($wishlistIDs as $key => $ID) {
-        $wishlistMOs[$key] = [];
-        $wishlistMOs[$key]['mo'] = new \Pressmind\ORM\Object\MediaObject($ID, true);
-        $wishlistMOs[$key]['cp'] = $wishlistMOs[$key]['mo']->getCheapestPrice();
-    }
-    echo json_encode($wishlistMOs);
 } else {
     header("HTTP/1.0 404 Not Found");
     $Output->msg = 'error: action not known';

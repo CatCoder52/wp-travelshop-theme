@@ -10,10 +10,12 @@ jQuery(function ($) {
     // -- Helper Functions
     // -----------------------------------------------
     function removeElement(array, elem) {
-        var index = array.indexOf(elem);
-        if (index > -1) {
-            array.splice(index, 1);
-        }
+        array.some(function(item) {
+            if(item['pm-id'] == elem) {
+                var index = array.indexOf(item);
+                array.splice(index, 1);
+            }
+        });
     }
 
     TSAjax = function (endpoint_url) {
@@ -37,7 +39,6 @@ jQuery(function ($) {
                 data: null
             })
                 .done(function (data) {
-
                     for (var key in data.html) {
                         $('#' + key).html(data.html[key]);
                     }
@@ -60,58 +61,21 @@ jQuery(function ($) {
                             scrollTop: ($(scrollto).offset().top)
                         }, 500);
                     }
-
-                    window.history.pushState(null, '', window.location.pathname + '?' + query_string);
-                    addFilterCheckboxEventListener($('#filter'));
-                })
-                .then(function() {
-                    _this.wishlist();
+                    if(!query_string.includes('wishlist')) {
+                        window.history.pushState(null, '', window.location.pathname + '?' + query_string);
+                    }
+                    // addFilterCheckboxEventListener($('#filter'));
+                    _this.wishlistEventListeners();
                 })
                 .fail(function () {
                     console.log('ajax error');
                 });
         }
 
-        this.getWishlistMediaObjects = function(query_string) {
-            var jqxhr = $.ajax({
-                url: this.endpoint_url + query_string,
-                method: 'GET',
-                data: null
-            })
-            .done(function (data) {
-                let html = '';
-                data.forEach(function(item, key) {
-                    html += `
-                        <div class="wishlist-item">
-                            <div class="wishlist-item-image">
-                                <a href="${item.mo.routes[0].route}">
-                                    <img src="${item.mo.data[0].bilder_default[0].tmp_url}&w=150" alt="${item.mo.data[0].bilder_default[0].alt}" />
-                                </a>
-                            </div>
-                            <div class="wishlist-item-data">
-                                <span class="name">
-                                    <a href="${item.mo.routes[0].route}">${item.mo.name}</a>
-                                </span>
-                                <span class="price">
-                                    <div data-id="${item.mo.id}" class="remove-from-wishlist">entfernen</div>
-                                    <a href="${item.mo.routes[0].route}">ab <strong>${item.cp.price_total} €</strong></a>
-                                </span>
-                            </div>
-                        </div>
-                    `;
-                });
-                $('.wishlist-items').html(html);
-                _this.removeFromWishlist();
-            })
-            .fail(function () {
-                console.log('ajax error');
-            });
-        }
-
         this.renderWishlist = function() {
             let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
             if(wishlist !== null && wishlist.length !== 0) {
-                let query_string = '?wishlistIDs=';
+                let query_string = 'action=wishlist&pm-ot=607&view=Teaser2&pm-id=';
                 $('.wishlist-count').text(wishlist.length);
                 $('.wishlist-toggler').addClass('animate');
                 setTimeout(function() {
@@ -119,51 +83,24 @@ jQuery(function ($) {
                 }, 1250);
                 wishlist.forEach(function(item, key) {
                     if(key !== wishlist.length - 1) {
-                        query_string += item + ',';
+                        query_string += item['pm-id'] + ',';
                     } else {
-                        query_string += item;
+                        query_string += item['pm-id'];
                     }
                 });
-                _this.getWishlistMediaObjects(query_string);
+                _this.call(query_string);
             } else {
+                _this.wishlistEventListeners();
                 $('.wishlist-count').text(0);
                 $('.wishlist-items').html(`<p>Keine Reisen auf der Merkliste</p>`);
             }
         }
 
-        this.wishlist = function() {
-            if ($('.add-to-wishlist').length > 0) {
-                let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
-                if(!jQuery.isEmptyObject(wishlist)) {
-                    $('.add-to-wishlist').each(function(key, item) {
-                        if(wishlist.includes($(item).data('id'))) {
-                            $(item).addClass('active');
-                        }
-                    });
-                }
-                $('.add-to-wishlist').click(function(e) {    
-                    if(jQuery.isEmptyObject(wishlist)) {
-                        wishlist = [];
-                    }
-                    if(wishlist.includes($(e.target).data('id'))) {
-                        removeElement(wishlist, $(e.target).data('id'));
-                        $(e.target).removeClass('active');
-                    } else {
-                        wishlist.push($(e.target).data('id'));
-                        $(e.target).addClass('active');
-                    }
-                    window.localStorage.setItem('wishlist', JSON.stringify(wishlist));
-                    _this.renderWishlist();
-                });
-            }
-            _this.renderWishlist();
-        }
-
-        this.removeFromWishlist = function() {
+        this.wishlistEventListeners = function() {
             $('.remove-from-wishlist').click(function(e) {
                 let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
                 if(!jQuery.isEmptyObject(wishlist)) {
-                    if(wishlist.includes($(e.target).data('id'))) {
+                    if(wishlist.some( wi => wi['pm-id'] == $(e.target).data('id'))) {
                         removeElement(wishlist, $(e.target).data('id'));
                         // $('.wishlist-heart').removeClass('active');
                         $('.add-to-wishlist').each(function(key, item) {
@@ -176,6 +113,35 @@ jQuery(function ($) {
                 window.localStorage.setItem('wishlist', JSON.stringify(wishlist));
                 _this.renderWishlist();
             });
+            if ($('.add-to-wishlist').length > 0) {
+                let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
+                if(!jQuery.isEmptyObject(wishlist)) {
+                    $('.add-to-wishlist').each(function(key, item) {
+                        if(wishlist.some( wi => wi['pm-id'] == $(item).data('id'))) {
+                            $(item).addClass('active');
+                        }
+                    });
+                }
+                $('.add-to-wishlist').click(function(e) {    
+                    if(jQuery.isEmptyObject(wishlist)) {
+                        wishlist = [];
+                    }
+                    if(wishlist.some( wi => wi['pm-id'] == $(e.target).data('id'))) {
+                        removeElement(wishlist, $(e.target).data('id'));
+                        $(e.target).removeClass('active');
+                    } else {
+                        wishlist.push({
+                            'pm-ot': '607', 
+                            'pm-id': $(e.target).data('id'), 
+                            'pm-dr': $(e.target).data('daterange'),
+                            'pm-du': $(e.target).data('duration')
+                        });
+                        $(e.target).addClass('active');
+                    }
+                    window.localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                    _this.renderWishlist();
+                });
+            }
         }
 
         this.pagination = function () {
@@ -193,6 +159,8 @@ jQuery(function ($) {
         this.buildSearchQuery = function (form) {
 
             var query = [];
+
+            query.push('action=search');
 
             // the object type
             var id_object_type = $('input[name=pm-ot]').val();
@@ -324,10 +292,9 @@ jQuery(function ($) {
     };
 
     var Search = new TSAjax('/wp-content/themes/travelshop/pm-ajax-endpoint.php');
-    Search.wishlist();
+    Search.renderWishlist();
     Search.pagination();
     Search.searchbox();
     Search.filter();
-
 
 });

@@ -4,6 +4,7 @@ travelshop/composer.lock
 travelshop/pm-config.php
 travelshop/template-parts/pm-views/*_Detail1.php
 travelshop/template-parts/pm-views/*_Teaser1.php
+travelshop/template-parts/pm-views/*_Teaser2.php
 travelshop/Custom/MediaType/*.php
 travelshop/docs/objecttypes/*.html
 travelshop/assets/scss/*.map
