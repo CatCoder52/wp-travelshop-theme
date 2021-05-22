@@ -2,14 +2,14 @@
 /**
  * @todo optimize id, data tags in checkboxes
  * @var $name
- * @var $fieldname (feldname_sectioname)
+ * @var $fieldname (fieldname_sectioname)
  *
  * @var $id_tree
  */
 
 
 /**
- * @todo Pagination darf im Filter nicht verwendet werden.
+ * @todo Pagination darf im Filter nicht verwendet werden. #152888
  */
 
 if(empty($search) === false){

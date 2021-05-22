@@ -1,18 +1,27 @@
 <?php
-
-//@todo
-
+/**
+ * @var \Pressmind\Search $search
+ */
 
 return;
-
-
-/**
- * @var $search
- */
 if(empty($search) === false){
     // get the min and max price, based on the current search
-    $pRangeFilter = new Pressmind\Search\Filter\PriceRange($search);
+
+    // TODO #152888
+    // missing function
+    // $search1 = $search;
+    //$search1->removeCondition('PriceRange');
+
+    $pRangeFilter = new Pressmind\Search\Filter\PriceRange($search1);
     $pRange = $pRangeFilter->getResult();
+
+    if(empty($pRange->min) || empty($pRange->max)){
+        return;
+    }
+
+    // set the price range to the closest 100, 1000 and so on...
+    $pRange->min = str_pad(substr($pRange->min, 0,1), strlen($pRange->min), 0);
+    $pRange->max = str_pad(substr($pRange->max , 0,1)+1, strlen($pRange->max ) + strlen(substr($pRange->max, 0,1)+1)-1, 0);
 }
 
 if (isset($_GET['pm-pr']) === true && preg_match('/^([0-9]+)\-([0-9]+)$/', $_GET['pm-pr'], $m) > 0) {
@@ -22,6 +31,7 @@ if (isset($_GET['pm-pr']) === true && preg_match('/^([0-9]+)\-([0-9]+)$/', $_GET
     $from = $pRange->min;
     $to = $pRange->max;
 }
+
 
 
 ?>
@@ -40,6 +50,11 @@ if (isset($_GET['pm-pr']) === true && preg_match('/^([0-9]+)\-([0-9]+)$/', $_GET
                data-grid="false"
                data-prefix="€ "
                data-step="100"
+               data-input-values-separator="-"
+               data-disable="<?php
+               // disable the picker if there is no plausible step to pick
+               echo ($pRange->min == $pRange->max || ($pRange->max - $pRange->min) == 100) ? 'true' : 'false';
+               ?>"
         />
 
     </div>

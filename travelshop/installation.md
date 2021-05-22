@@ -2,6 +2,7 @@
 #### 1. Download
 Install the WordPress theme. 
 Download the [latest theme build](https://github.com/pressmind/wp-travelshop-theme/releases/latest) 
+or use the current [development master](https://github.com/pressmind/wp-travelshop-theme/archive/refs/heads/master.zip)
 and extract it to your theme dir (wp-content/themes/travelshop).
 After extracting the zip/tarball file, your themes folder should look like this: 
 * wp-content

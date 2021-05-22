@@ -9,16 +9,13 @@ if(empty($id_object_type) === true){
 
 $search = new Pressmind\Search(
     [
-        //Pressmind\Search\Condition\Category::create('zielgebiet_default', ['304E15ED-302F-CD33-9153-14B8C6F955BD', '4C5833CB-F29A-A0F4-5A10-14B762FB4019', '78321653-CF81-2EF1-ED02-9D07E01651C1']),
-        //Pressmind\Search\Condition\PriceRange::create(100, 3000),
-        //Pressmind\Search\Condition\DurationRange::create(0, 30),
         Pressmind\Search\Condition\Visibility::create(TS_VISIBILTY),
         Pressmind\Search\Condition\ObjectType::create($id_object_type),
     ]
 );
 
 ?>
-<form method="GET">
+<form method="GET" action="<?php echo site_url().'/'.$PMTravelShop->RouteProcessor->get_url_by_object_type(TS_TOUR_PRODUCTS).'/'; ?>">
     <div class="search-wrapper">
         <div class="h1 text-md-center mt-0 mb-2 mb-4">
             Finde deine Traumreise.

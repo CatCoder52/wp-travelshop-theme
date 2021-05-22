@@ -11690,6 +11690,24 @@ hr {
     right: 1.25rem;
   }
 }
+.card-travel-wrapper .card.card-travel .card-body .circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  text-align: center;
+  display: inline-block;
+  background-color: gray;
+  margin-right: 4px;
+}
+.card-travel-wrapper .card.card-travel .card-body .circle.green {
+  background-color: #28a745;
+}
+.card-travel-wrapper .card.card-travel .card-body .circle.orange {
+  background-color: orange;
+}
+.card-travel-wrapper .card.card-travel .card-body .circle.red {
+  background-color: red;
+}
 .card-travel-wrapper .card.card-travel .card-image-holder {
   position: relative;
 }
@@ -13086,6 +13104,39 @@ button.select-from-control i.la {
   background: #bdc3c7;
 }
 
+.autocomplete-suggestions {
+  border: 1px solid #999;
+  background: #FFF;
+  overflow: auto;
+  padding: 4px 0px 4px 0px;
+  font-size: 14px;
+}
+.autocomplete-suggestions .autocomplete-suggestion {
+  padding: 2px 10px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.autocomplete-suggestions .autocomplete-selected {
+  background: #F0F0F0;
+}
+.autocomplete-suggestions .autocomplete-suggestions strong {
+  font-weight: normal;
+  color: #3399FF;
+}
+.autocomplete-suggestions .autocomplete-group {
+  padding: 2px 10px;
+  font-weight: bold;
+  font-style: italic;
+  border-top: 1px solid silver;
+}
+.autocomplete-suggestions .autocomplete-group:first-child {
+  border-top: none;
+}
+.autocomplete-suggestions .autocomplete-group strong {
+  display: block;
+  border-bottom: 1px solid #000;
+}
+
 .footer-main {
   padding-top: 30px;
   background-color: #e9ecef;
@@ -13506,6 +13557,24 @@ a {
   margin: 0.5rem 0 0 0;
   padding-top: 0.5rem;
   border-top: 1px solid #ced4da;
+}
+.content-block-detail-info-grid .detail-price-box .circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  text-align: center;
+  display: inline-block;
+  background-color: gray;
+  margin-right: 4px;
+}
+.content-block-detail-info-grid .detail-price-box .circle.green {
+  background-color: #28a745;
+}
+.content-block-detail-info-grid .detail-price-box .circle.orange {
+  background-color: orange;
+}
+.content-block-detail-info-grid .detail-price-box .circle.red {
+  background-color: red;
 }
 .content-block-detail-info-grid a.btn-booking {
   margin: 0 0 30px 0;

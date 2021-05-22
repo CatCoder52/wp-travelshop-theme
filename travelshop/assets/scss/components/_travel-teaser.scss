@@ -121,6 +121,29 @@
         }
       }
 
+      .circle {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        text-align: center;
+        display: inline-block;
+        background-color: gray;
+        margin-right: 4px;
+
+        &.green{
+            background-color: #28a745;
+        }
+
+        &.orange{
+          background-color: orange;
+        }
+
+        &.red{
+          background-color: red;
+        }
+
+      }
+
     }
   
     .card-image-holder {

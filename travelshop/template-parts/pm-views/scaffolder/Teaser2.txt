@@ -1,4 +1,7 @@
 <?php
+
+// This Teaser is used for the wish-/favlist feature
+
 /**
  * @var array $data
  */
@@ -9,21 +12,19 @@
 $mo = $data['media_object'];
 
 /**
- * @var Custom\MediaType\Reise $moc
+ * @var Custom\MediaType\###CLASSNAME### $moc
  */
-$moc = $mo->getDataForLanguage();
+$moc = $mo->getDataForLanguage(TS_LANGUAGE_CODE);
 
 $cheapest_price = $mo->getCheapestPrice();
 
 /**
  * DON'T USE WordPress Stuff here
  */
-?>
 
-<?php
     // Build the detail-page link,
     // we add some search values to deliver to customize the offers on the the detail page
-    $url = SITE_URL .$mo->getPrettyUrl();
+    $url = SITE_URL .$mo->getPrettyUrl(TS_LANGUAGE_CODE);
 
     // only this search params are transmitted, price range (pm-pr), date range (pm-dr)
     $allowedParams = ['pm-pr', 'pm-dr'];

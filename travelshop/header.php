@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var PMTravelShop $PMTravelShop
+ */
+global $PMTravelShop;
+?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -98,9 +104,9 @@
                 <?php } ?>
             </div>
             <div class="col-auto align-self-center  d-none d-lg-block col-search" id="search">
-                <form class="input-group my-2 my-lg-0">
-                    <input class="form-control" type="search" data-autocomplete="true" placeholder="Suchbegriff..."
-                           aria-label="Search">
+                <form class="input-group my-2 my-lg-0" action="<?php echo site_url().'/'.$PMTravelShop->RouteProcessor->get_url_by_object_type(TS_TOUR_PRODUCTS).'/'; ?>" method="GET">
+                    <input class="form-control auto-complete" type="search" data-autocomplete="true" placeholder="Suchbegriff..."
+                           aria-label="Search" name="pm-t">
                     <div class="input-group-append">
                         <button class="btn btn-link" aria-label="Suchen">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">

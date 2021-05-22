@@ -22,25 +22,33 @@ jQuery(function ($) {
 
         var _this = this;
         this.endpoint_url = endpoint_url;
-
-        // @todo name me
-        if ($('.js-range-slider').length > 0) {
-            $(".js-range-slider").ionRangeSlider({
-                    input_values_separator: '-'
-                }
-            );
-        }
+        this.requests = new Array();
 
         this.call = function (query_string, scrollto, total_result_span_id) {
 
-            var jqxhr = $.ajax({
+            for(var i = 0; i < this.requests.length; i++){
+                this.requests[i].abort();
+            }
+
+            this.requests.push($.ajax({
                 url: this.endpoint_url + '?' + query_string,
                 method: 'GET',
                 data: null
             })
                 .done(function (data) {
                     for (var key in data.html) {
-                        $('#' + key).html(data.html[key]);
+
+                        if(key == 'search-result'){
+                            $('#' + key).html(data.html[key]).find('.content-block-travel-cols').fadeIn()
+                                .css({top:1000,position:'relative'})
+                                .animate({top:0}, 200, 'swing')
+                        }else{
+                            $('#' + key).html(data.html[key]);
+                        }
+
+                        if (key == 'search-filter' && $('.js-range-slider').length > 0) {
+                            $(".js-range-slider").ionRangeSlider({});
+                        }
                     }
 
                     if (total_result_span_id != null) {
@@ -57,19 +65,19 @@ jQuery(function ($) {
                     }
 
                     if (scrollto) {
-                        $('html, body').animate({
-                            scrollTop: ($(scrollto).offset().top)
-                        }, 500);
+                      $('html, body').stop().animate({
+                            'scrollTop': $(scrollto).offset().top - $('header.affix').height()
+                        }, 200, 'swing');
                     }
+
                     if(!query_string.includes('wishlist')) {
                         window.history.pushState(null, '', window.location.pathname + '?' + query_string);
                     }
-                    // addFilterCheckboxEventListener($('#filter'));
-                    _this.wishlistEventListeners();
+
                 })
                 .fail(function () {
                     console.log('ajax error');
-                });
+                }));
         }
 
         this.renderWishlist = function() {
@@ -97,7 +105,12 @@ jQuery(function ($) {
         }
 
         this.wishlistEventListeners = function() {
-            $('.remove-from-wishlist').click(function(e) {
+
+            $('body').on('DOMSubtreeModified', '#search-result', function(){
+              _this.wishListInit();
+            });
+
+            $('body').on('click', '.remove-from-wishlist', function(e) {
                 let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
                 if(!jQuery.isEmptyObject(wishlist)) {
                     if(wishlist.some( wi => wi['pm-id'] == $(e.target).data('id'))) {
@@ -115,14 +128,7 @@ jQuery(function ($) {
             });
             if ($('.add-to-wishlist').length > 0) {
                 let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
-                if(!jQuery.isEmptyObject(wishlist)) {
-                    $('.add-to-wishlist').each(function(key, item) {
-                        if(wishlist.some( wi => wi['pm-id'] == $(item).data('id'))) {
-                            $(item).addClass('active');
-                        }
-                    });
-                }
-                $('.add-to-wishlist').click(function(e) {    
+                $('body').on('click', '.add-to-wishlist', function(e) {
                     if(jQuery.isEmptyObject(wishlist)) {
                         wishlist = [];
                     }
@@ -144,9 +150,19 @@ jQuery(function ($) {
             }
         }
 
+        this.wishListInit = function (){
+            let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
+            if(!jQuery.isEmptyObject(wishlist)) {
+                $('.add-to-wishlist').each(function(key, item) {
+                    if(wishlist.some( wi => wi['pm-id'] == $(item).data('id'))) {
+                        $(item).addClass('active');
+                    }
+                });
+            }
+        }
+
         this.pagination = function () {
 
-            // @todo load item list at the end of the existing list
             $("#search-result").on('click', ".page-link", function (e) {
                 var href = $(this).attr('href').split('?');
                 var query_string = href[1];
@@ -159,7 +175,6 @@ jQuery(function ($) {
         this.buildSearchQuery = function (form) {
 
             var query = [];
-
             query.push('action=search');
 
             // the object type
@@ -210,8 +225,16 @@ jQuery(function ($) {
 
             // check and set price-range
             var price_range = $('input[name=pm-pr]').val();
-            if (price_range && price_range != '') {
+            var price_mm_range = $('input[name=pm-pr]').data('min') + '-' + $('input[name=pm-pr]').data('max');
+            if (price_range && price_mm_range != price_range && price_range != '') {
                 query.push('pm-pr=' + price_range);
+            }
+
+            // check and set duration-range
+            var duration_range = $('input[name=pm-du]').val();
+            var duration_mm_range = $('input[name=pm-du]').data('min') + '-' + $('input[name=pm-du]').data('max');
+            if (duration_range && duration_mm_range != duration_range && duration_range != '') {
+                query.push('pm-du=' + duration_range);
             }
 
             // check and set date-range
@@ -293,8 +316,12 @@ jQuery(function ($) {
 
     var Search = new TSAjax('/wp-content/themes/travelshop/pm-ajax-endpoint.php');
     Search.renderWishlist();
+    Search.wishlistEventListeners();
+    Search.wishListInit();
     Search.pagination();
     Search.searchbox();
     Search.filter();
+
+    console.log('ajax init');
 
 });

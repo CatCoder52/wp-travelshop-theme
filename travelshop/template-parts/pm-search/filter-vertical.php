@@ -45,10 +45,14 @@ $search = BuildSearch::fromRequest($_GET, 'pm', false);
                 <?php require 'filter/price-range.php'; ?>
                 <!-- FILTER_PRICE: END -->
 
+                <!-- FILTER_DURATION: START -->
+                <?php require 'filter/duration-range.php'; ?>
+                <!-- FILTER_DURATION: END -->
+
                 <!-- FILTER_DESTINATION: START -->
                 <?php
 
-                // @todo all Items as
+                // @todo refactor
                 $id_tree = 1207;
                 $name = 'Zielgebiete';
                 $fieldname = 'zielgebiet_default';

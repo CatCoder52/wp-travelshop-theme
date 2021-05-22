@@ -15,14 +15,16 @@ use Pressmind\Search\CheapestPrice;
  $mo = $data['media_object'];
 
 /**
- * @var Custom\MediaType\Reise $moc
+ * @var Custom\MediaType\###CLASSNAME### $moc
  */
-$moc = $mo->getDataForLanguage();
+$moc = $mo->getDataForLanguage(TS_LANGUAGE_CODE);
 
 
 /**
  * Set the Cheapest Price, based on the current search parameters
  */
+
+// @TODO erweiterung der Abfrage #152888
 $CheapestPriceFilter = null;
 if (empty($_GET['pm-dr']) === false) {
     $dateRange = BuildSearch::extractDaterange($_GET['pm-dr']);
@@ -34,6 +36,11 @@ if (empty($_GET['pm-dr']) === false) {
 }
 
 $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
+
+// TODO, current sdk hotfix, initialize magic methods, to check them with empty() on later usages
+foreach(['reiseart_default', 'zielgebiet_default'] as $v){
+    is_callable($moc->{$v});
+}
 
 ?>
 
@@ -50,7 +57,7 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
 
 
        $breadcrumb_search_url = site_url() . '/' . $PMTravelShop->RouteProcessor->get_url_by_object_type($mo->id_object_type) . '/';
-       if(!empty($moc->reiseart_default )){
+       if(!empty($moc->reiseart_default)){
            foreach ($moc->reiseart_default as $item) {
                $reiseart = $item->toStdClass();
                $tmp = new stdClass();
@@ -92,7 +99,7 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
                             }
                         }
 
-                        if(!empty($moc->reiseart_default)){
+                        if(!empty($moc->zielgebiet_default)){
                             foreach ($moc->zielgebiet_default as $k => $zielgebiet_default_item) {
                                 $zielgebiet = $zielgebiet_default_item->toStdClass();
                                 $badges[] = $zielgebiet->item->name;
@@ -120,57 +127,10 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
 
                         <!-- Price Box underneath the image gallery for mobile devices-->
                         <div class="d-block d-lg-none">
-                            <?php if (empty($cheapest_price) === false) { ?>
-                                    <div class="detail-price-box">
-                                        <div class="price">
-                                            <span class="h5 mb-0 mt-0">ab</span> <span
-                                                    class="h3 mb-0 mt-0"><?php echo number_format($cheapest_price->price_option, 0, ',', '.') . ' €'; ?></span>
-                                        </div>
-                                        <p class="small mt-2"><?php echo $cheapest_price->option_name; ?> p.P.</p>
-                                        <hr>
-                                        <div class="h5"><i class="la la-calendar"></i> Reisetermine</div>
-                                        <p><?php echo $cheapest_price->date_departure->format('d.m') . ' - ' . $cheapest_price->date_arrival->format('d.m.Y'); ?></p>
-                                        
-                                        <div class="dropdown dropdown-termine">
-                                            <a href="#content-block-detail-booking">
-                                                weitere Termine <i class="la la-angle-down"></i>
-                                            </a>
-
-                                        </div>
-                                    
-                                        <div data-id="<?php echo $mo->id; ?>" class="add-to-wishlist">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                                <path class="wishlist-heart" d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
-                                            </svg>
-                                        </div>
-                                        <!--
-                                        <hr>
-                                        <p class="mb-0">
-                                            <a href="#" class="detail-pdf-download"><i class="la la-download"></i> PDF
-                                                Downloaden</a>
-                                        </p>
-                                        -->
-                                    </div>
-                                    <a class="btn btn-primary btn-booking btn-block btn-lg"
-                                    href="#content-block-detail-booking">
-                                        Termine &amp; Preise
-                                    </a>
-                                <?php } else { ?>
-                                    <div class="detail-price-box">
-                                        <p class="small mt-2">Diese Reise ist zur Zeit nur auf Anfrage buchbar.</p>
-                                    </div>
-                                    <a class="btn btn-primary btn-booking btn-block btn-lg"
-                                    href="#content-block-detail-booking">
-                                        Anfragen
-                                    </a>
-                                    <div data-id="<?php echo $mo->id; ?>" class="add-to-wishlist">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                            <path class="wishlist-heart" d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
-                                        </svg>
-                                    </div>
-                            <?php } ?>
+                            <?php
+                            // pricepox
+                            load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/price-box.php', false, array_merge($data, array('cheapest_price' => $cheapest_price)));
+                            ?>
                         </div>
 
                         <div class="detail-reise-content">
@@ -322,63 +282,16 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
                         <!-- DETAIL_PRICE_BOX: START -->
                         <!-- Price Box beside the image gallery for desktop devices-->
                         <div class="sticky-container">
-                            <?php if (empty($cheapest_price) === false) { ?>
-                                <div class="detail-price-box">
-                                    <div class="price">
-                                        <span class="h5 mb-0 mt-0">ab</span> <span
-                                                class="h3 mb-0 mt-0"><?php echo number_format($cheapest_price->price_option, 0, ',', '.') . ' €'; ?></span>
-                                    </div>
-                                    <p class="small mt-2"><?php echo $cheapest_price->option_name; ?> p.P.</p>
-                                    <hr>
-                                    <div class="h5"><i class="la la-calendar"></i> Reisetermine</div>
-                                    <p><?php echo $cheapest_price->date_departure->format('d.m') . ' - ' . $cheapest_price->date_arrival->format('d.m.Y'); ?></p>
-                                    <p class="mb-0">
-                                        <div class="dropdown dropdown-termine">
-                                            <a href="#content-block-detail-booking">
-                                                weitere Termine <i class="la la-angle-down"></i>
-                                            </a>
-                                        </div>
-                                    </p>
-                                    <div data-id="<?php echo $mo->id; ?>" class="add-to-wishlist">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                            <path class="wishlist-heart" d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
-                                        </svg>
-                                    </div>
-                                    <!--
-                                     <hr>
-                                     <p class="mb-0">
-                                         <a href="#" class="detail-pdf-download"><i class="la la-download"></i> PDF
-                                             Downloaden</a>
-                                     </p>
-                                    -->
-                                </div>
-                                <a class="btn btn-primary btn-booking btn-block btn-lg"
-                                   href="#content-block-detail-booking">
-                                    Termine &amp; Preise
-                                </a>
-                            <?php } else { ?>
-                                <div class="detail-price-box">
-                                    <p class="small mt-2">Diese Reise ist zur Zeit nur auf Anfrage buchbar.</p>
-                                </div>
-                                <a class="btn btn-primary btn-booking btn-block btn-lg"
-                                   href="#content-block-detail-booking">
-                                    Anfragen
-                                </a>
-                                <div data-id="<?php echo $mo->id; ?>" class="add-to-wishlist">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path class="heart" stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <path class="wishlist-heart" d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
-                                    </svg>
-                                </div>
-                            <?php } ?>
+                            <?php
+                            // pricepox
+                            load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/price-box.php', false, array_merge($data, array('cheapest_price' => $cheapest_price)));
+                            ?>
                         </div>
                         <!-- DETAIL_PRICE_BOX: END -->
                     </div>
                 </div>
             </section>
         </div>
-        <script> const currentMediaObjectID = <?php echo $mo->id; ?>; </script>
         <?php
         // Detail Booking
         load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/booking-offers.php', false, array_merge($data, array('cheapest_price' => $cheapest_price)));
