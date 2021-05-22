@@ -26,6 +26,21 @@ jQuery(function ($) {
             }
         });
     }
+// --------------------------------
+// --- Affix Header
+// --------------------------------
+$('body').css('margin-top', $('.header-main').height());
+$(window).resize(function() {
+    $('body').css('margin-top', $('.header-main').height());
+});
+$(window).scroll(function() {
+    var scroll = $(window).scrollTop();
+    if (scroll >= 200) {
+        $('.header-main').addClass('affix');
+    } else {
+        $('.header-main').removeClass('affix');
+    }
+});
 
 // -----------------------------------------------
 // -- Tooltips for images
@@ -82,7 +97,7 @@ jQuery(function ($) {
                 bc.children().first().show();
                 bc.children().last().show();
             } else {
-                console.log(false);
+                // console.log(false);
                 bc.children().show();
                 $('.bc-separator').hide();
             }
@@ -94,7 +109,6 @@ jQuery(function ($) {
             renderBreadCrumb($('.breadcrumb'));
         })
     }
-
 // Register PWA ServiceWorker
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {

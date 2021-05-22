@@ -126,6 +126,28 @@
     .card-image-holder {
       position: relative;
 
+      // -- wishlist
+      .add-to-wishlist {
+        position: absolute;
+        cursor: pointer;
+        top: .5rem;
+        right: .5rem;
+        svg {
+          pointer-events: none;
+          .wishlist-heart {
+            fill: #fff;
+          }
+        }
+        &.active {
+          svg {
+            .wishlist-heart {
+              stroke: #fff;
+              fill: #06f;
+            }
+          }
+        }
+      }
+
       // -- badge
       .card-badge {
         position: absolute;

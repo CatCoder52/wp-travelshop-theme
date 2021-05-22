@@ -46,18 +46,25 @@ if (empty($request->action)) {
         }
     }
 
+    if($_GET['action'] == 'search' || !isset($_GET['action'])) {
+        ob_start();
+        require 'template-parts/pm-search/result.php';
+        $Output->count = (int)$total_result;
+        $Output->html['search-result'] = ob_get_contents();
+        ob_end_clean();
 
-    ob_start();
-    require 'template-parts/pm-search/result.php';
-    $Output->count = (int)$total_result;
-    $Output->html['search-result'] = ob_get_contents();
-    ob_end_clean();
+        ob_start();
+        require 'template-parts/pm-search/filter-vertical.php';
+        $Output->html['search-filter'] = ob_get_contents();
+        ob_end_clean();
+    }
 
-    ob_start();
-    require 'template-parts/pm-search/filter-vertical.php';
-    $Output->html['search-filter'] = ob_get_contents();
-    ob_end_clean();
-
+    if($_GET['action'] == 'wishlist') {
+        ob_start();
+        require 'template-parts/pm-search/wishlist-result.php';
+        $Output->html['wishlist-result'] = ob_get_contents();
+        ob_end_clean();
+    }
 
     $Output->error = false;
     $result = json_encode($Output);
