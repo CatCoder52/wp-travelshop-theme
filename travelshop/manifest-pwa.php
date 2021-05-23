@@ -52,6 +52,6 @@ if ( !defined('ABSPATH') ) {
     "theme_color": "#f4f4f4",
     "start_url": "/?source=pwa",
     "scope": "/",
-    "display": "minimal-ui",
+    "display": "standalone",
     "orientation": "portrait-primary"
 }
