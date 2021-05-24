@@ -140,7 +140,6 @@ $mo = $args['mo'];
 
                             $unterkunft_mo = new \Pressmind\ORM\Object\MediaObject($unterkunft_link->id_media_object_link, true);
 
-                            echo $unterkunft_link->id_media_object_link;
                             // if the linked object is not available (in most cases it must be public)
                             if (empty($unterkunft_mo->id)) {
                                 continue;
