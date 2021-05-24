@@ -38,7 +38,7 @@ if (empty($_GET['pm-dr']) === false) {
 $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
 
 // TODO, current sdk hotfix, initialize magic methods, to check them with empty() on later usages
-foreach(['reiseart_default', 'zielgebiet_default'] as $v){
+foreach(['reiseart_default', 'zielgebiet_default', 'bilder_default', 'highlights_default', 'unterkunftsbeschreibungen_default', 'textbaustein_default'] as $v){
     is_callable($moc->{$v});
 }
 
@@ -57,7 +57,7 @@ foreach(['reiseart_default', 'zielgebiet_default'] as $v){
 
 
        $breadcrumb_search_url = site_url() . '/' . $PMTravelShop->RouteProcessor->get_url_by_object_type($mo->id_object_type) . '/';
-       if(!empty($moc->reiseart_default)){
+       if( !empty($moc->reiseart_default)){
            foreach ($moc->reiseart_default as $item) {
                $reiseart = $item->toStdClass();
                $tmp = new stdClass();
@@ -139,143 +139,12 @@ foreach(['reiseart_default', 'zielgebiet_default'] as $v){
                             </p>
                         </div>
 
-                        <?php if (empty($moc->highlights_default) === false) { ?>
-                            <div class="detail-reise-content">
-                                <div class="row">
-                                    <?php if (empty($moc->bilder_default[3]) === false) { ?>
-                                        <div class="col-md-6 col-lg-5">
-                                            <img class="w-100 h-auto"
-                                                 src="<?php echo $moc->bilder_default[3]->getUri('detail'); ?>"
-                                                 data-toggle="tooltip"
-                                                 data-placement="bottom" data-html="true"
-                                                 alt="<?php echo $moc->bilder_default[3]->alt; ?>"
-                                                 title="<?php
-                                                 $caption = [];
-                                                 $caption[] = !empty($moc->bilder_default[3]->caption) ? $moc->bilder_default[3]->caption : '';
-                                                 $caption[] = !empty($moc->bilder_default[3]->copyright) ? '<small>' . $moc->bilder_default[3]->copyright . '</small>' : '';
-                                                 echo implode('<br>', array_filter($caption));
-                                                 ?>"/></div>
-                                    <?php } ?>
 
-                                    <div class="col-md-6 col-lg-7">
-                                        <h3>Highlights</h3>
-                                        <ul class="default-list">
-                                            <?php
-                                            foreach ($moc->highlights_default as $highlight) {
-                                                echo '<li>' . $highlight->item->name . '</li>';
-                                            }
-                                            ?>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                            </div>
-                        <?php } ?>
-
-
-                        <?php if (empty($moc->beschreibung_text_default) === false) { ?>
-                            <div class="detail-reise-content">
-                                <h3><?php echo $moc->beschreibung_headline_default; ?></h3>
-                                <?php
-                                // Set the span style to the correct semantic tag, for example h5
-
-                                $style_search = [];
-                                $style_search[] = '/<span[^>]*?class="Head_1"[^>]*>(.*?)<\/span>/';
-                                $style_replace[] = '<h5>$1</h5>';
-                                $style_search[] = '/\<ul\>/';
-                                $style_replace[] = '<ul class="default-list">';
-
-
-                                echo preg_replace($style_search, $style_replace, $moc->beschreibung_text_default);
-
-
-                                ?>
-                            </div>
-                        <?php } ?>
-
-                        <?php if (empty($moc->leistungen_default) === false) { ?>
-                            <div class="detail-reise-content">
-                                <h3><?php echo $moc->leistungen_headline_default; ?></h3>
-                                <?php
-                                echo str_replace('<ul>', '<ul class="default-list">', $moc->leistungen_default);
-                                ?>
-                            </div>
-                        <?php } ?>
-
-                        <!-- DETAIL_REISE_CONTENT: START -->
-                        <div class="detail-reise-content">
-                            <div class="row">
-
-                                <?php if (empty($moc->bilder_default[1]) === false) { ?>
-                                    <div class="col-md-6 col-lg-5">
-                                        <img class="w-100 h-auto"
-                                             src="<?php echo $moc->bilder_default[1]->getUri('detail'); ?>"
-                                             data-toggle="tooltip"
-                                             data-placement="bottom" data-html="true"
-                                             alt="<?php echo $moc->bilder_default[1]->alt; ?>"
-                                             title="<?php
-                                             $caption = [];
-                                             $caption[] = !empty($moc->bilder_default[1]->caption) ? $moc->bilder_default[1]->caption : '';
-                                             $caption[] = !empty($moc->bilder_default[1]->copyright) ? '<small>' . $moc->bilder_default[1]->copyright . '</small>' : '';
-                                             echo implode('<br>', array_filter($caption));
-                                             ?>"/></div>
-                                <?php } ?>
-
-                                <?php
-                                // object link example
-                                if (empty($moc->unterkunftsbeschreibungen_default) === false) {
-
-                                    ?>
-                                    <div class="col-md-6 col-lg-7">
-                                        <?php
-                                        foreach ($moc->unterkunftsbeschreibungen_default as $unterkunft_link) {
-                                            $unterkunft_mo = new \Pressmind\ORM\Object\MediaObject($unterkunft_link->id_media_object_link, true);
-
-                                            // if the linked object is not available (in most cases it must be public)
-                                            if(empty($unterkunft_mo->id)){
-                                                continue;
-                                            }
-
-                                            /**
-                                             * this is for better code complementation in lovely phpstorm
-                                             * @var $unterkunft_moc \Custom\MediaType\Unterkunft
-                                             */
-                                            $unterkunft_moc = $unterkunft_mo->data[0];
-
-                                            ?>
-                                            <h3><?php echo $unterkunft_moc->headline_default; ?></h3>
-                                            <?php echo $unterkunft_moc->beschreibung_text_default; ?>
-                                        <?php } ?>
-                                    </div>
-                                <?php } ?>
-                            </div>
-                        </div>
-
-
-                    <?php
-                    if(!empty($moc->textbaustein_default)){
-                        foreach($moc->textbaustein_default as $textbaustein_link){
-
-                            $textbaustein_mo = new \Pressmind\ORM\Object\MediaObject($textbaustein_link->id_media_object_link, true);
-
-                            // if the linked object is not available (in most cases it must be public)
-                            if(empty($textbaustein_mo->id)){
-                                continue;
-                            }
-
-                            /**
-                             * this is for better code complementation in lovely phpstorm
-                             * @var $textbaustein_moc \Custom\MediaType\Textbaustein
-                             */
-                            $textbaustein_moc = $textbaustein_mo->data[0];
-                            ?>
-                            <div class="detail-reise-content" id="reise-hinweis">
-                                <p><?php echo $textbaustein_moc->text_default; ?></p>
-                            </div>
                         <?php
-                        }
-                    }
-                    ?>
+                        // tabs
+                        load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/tabs.php', false, array('moc' => $moc, 'mo' => $mo, 'cheapest_price' => $cheapest_price));
+                        ?>
+
 
                     </div>
                     <div class="d-none d-lg-block col-lg-3">
