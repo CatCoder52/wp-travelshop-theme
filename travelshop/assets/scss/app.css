@@ -13198,21 +13198,28 @@ button.select-from-control i.la {
   text-decoration: none;
   outline: none;
 }
-.nice-accordion .accordion-main:before {
-  content: "";
-  width: 1px;
-  background: #607D8B;
-  position: absolute;
-  top: 24px;
-  left: 9px;
-  bottom: 20px;
+@media (min-width: 768px) {
+  .nice-accordion .accordion-main:before {
+    content: "";
+    width: 1px;
+    background: #607D8B;
+    position: absolute;
+    top: 24px;
+    left: 9px;
+    bottom: 20px;
+  }
 }
 .nice-accordion .accordion-main .panel {
   border: none;
   border-radius: 0.25rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  margin: 0 0 12px 40px;
+  margin: 0 0 12px 0px;
   position: relative;
+}
+@media (min-width: 768px) {
+  .nice-accordion .accordion-main .panel {
+    margin: 0 0 12px 40px;
+  }
 }
 .nice-accordion .accordion-main .panel:before {
   content: "";
@@ -13236,17 +13243,19 @@ button.select-from-control i.la {
   margin-bottom: 5px;
   margin-right: 3px;
 }
-.nice-accordion .accordion-main .panel-heading:before {
-  content: "";
-  width: 15px;
-  height: 15px;
-  border-radius: 50px;
-  background: #fff;
-  border: 1.5px solid #607D8B;
-  position: absolute;
-  top: 50%;
-  left: -38px;
-  transform: translateY(-50%);
+@media (min-width: 768px) {
+  .nice-accordion .accordion-main .panel-heading:before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    border-radius: 50px;
+    background: #fff;
+    border: 1.5px solid #607D8B;
+    position: absolute;
+    top: 50%;
+    left: -38px;
+    transform: translateY(-50%);
+  }
 }
 .nice-accordion .accordion-main .panel-title a {
   display: block;
