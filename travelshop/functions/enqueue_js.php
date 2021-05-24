@@ -19,6 +19,7 @@ add_action('wp_enqueue_scripts', function () {
     $js_files[] = array('handle' => 'popper', 'src' => '/assets/js/popper-1.14.7.min.js', 'defer' => true, 'version' => null);
     $js_files[] = array('handle' => 'bootstrap', 'src' => '/assets/js/bootstrap.min.js', 'defer' => true, 'version' => null);
     $js_files[] = array('handle' => 'moment', 'src' => '/assets/js/moment.min.js', 'defer' => true, 'version' => null);
+    $js_files[] = array('handle' => 'pulltorefresh', 'src' => '/assets/js/pulltorefresh.min.js', 'defer' => true, 'version' => null);
     $js_files[] = array('handle' => 'daterangepicker', 'src' => '/assets/js/daterangepicker.min.js', 'defer' => true, 'version' => null);
     $js_files[] = array('handle' => 'autocomplete', 'src' => '/assets/js/autocomplete.min.js', 'defer' => true, 'version' => null);
     $js_files[] = array('handle' => 'rangeslider', 'src' => '/assets/js/ion.rangeSlider.min.js', 'defer' => true, 'version' => null);

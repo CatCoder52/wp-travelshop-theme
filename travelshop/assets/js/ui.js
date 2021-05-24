@@ -4,16 +4,28 @@ jQuery(function ($) {
 // -- smooth scroll
 // ------------------------------------------------
 
-$('.smoothscroll').on('click',function(e) {
-    e.preventDefault();
-    var target = this.hash;
-    var $target = $(target);
-    $('html, body').stop().animate({
-        'scrollTop': $target.offset().top
-    }, 900, 'swing', function () {
-        window.location.hash = target;
+    $('.smoothscroll').on('click', function (e) {
+        e.preventDefault();
+        var target = this.hash;
+        var $target = $(target);
+        $('html, body').stop().animate({
+            'scrollTop': $target.offset().top
+        }, 900, 'swing', function () {
+            window.location.hash = target;
+        });
     });
-});
+
+// ------------------------------------------------
+// -- pull to refresh feature
+// ------------------------------------------------
+
+    PullToRefresh.init({
+        mainElement: 'body',
+        distIgnore: 50,
+        onRefresh: function () {
+            window.location.reload();
+        }
+    });
 
 // ------------------------------------------------
 // -- sticky / hide handling sticky booking cta
@@ -44,18 +56,18 @@ $('.smoothscroll').on('click',function(e) {
 // --------------------------------
 // --- Affix Header
 // --------------------------------
-$('body').css('margin-top', $('.header-main').height());
-$(window).resize(function() {
     $('body').css('margin-top', $('.header-main').height());
-});
-$(window).scroll(function() {
-    var scroll = $(window).scrollTop();
-    if (scroll >= 200) {
-        $('.header-main').addClass('affix');
-    } else {
-        $('.header-main').removeClass('affix');
-    }
-});
+    $(window).resize(function () {
+        $('body').css('margin-top', $('.header-main').height());
+    });
+    $(window).scroll(function () {
+        var scroll = $(window).scrollTop();
+        if (scroll >= 200) {
+            $('.header-main').addClass('affix');
+        } else {
+            $('.header-main').removeClass('affix');
+        }
+    });
 
 // -----------------------------------------------
 // -- Tooltips for images
