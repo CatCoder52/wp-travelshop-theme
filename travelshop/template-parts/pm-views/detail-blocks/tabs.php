@@ -100,8 +100,21 @@ $mo = $args['mo'];
         <?php } ?>
 
         <?php
+        // Accommodation
         // object link example
-        if (empty($moc->unterkunftsbeschreibungen_default) === false) { ?>
+        $uc = 0;
+        if(empty($moc->unterkunftsbeschreibungen_default) === false){
+            foreach ($moc->unterkunftsbeschreibungen_default as $unterkunft_link) {
+                $unterkunft_mo = new \Pressmind\ORM\Object\MediaObject($unterkunft_link->id_media_object_link, true);
+                // if the linked object is not available (in most cases it must be public)
+                if (empty($unterkunft_mo->id)) {
+                    continue;
+                }
+                $uc++;
+            }
+        }
+
+        if ($uc > 0) { ?>
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingThree">
                     <h4 class="panel-title">
@@ -124,8 +137,10 @@ $mo = $args['mo'];
 
                         <?php
                         foreach ($moc->unterkunftsbeschreibungen_default as $unterkunft_link) {
+
                             $unterkunft_mo = new \Pressmind\ORM\Object\MediaObject($unterkunft_link->id_media_object_link, true);
 
+                            echo $unterkunft_link->id_media_object_link;
                             // if the linked object is not available (in most cases it must be public)
                             if (empty($unterkunft_mo->id)) {
                                 continue;
@@ -135,7 +150,7 @@ $mo = $args['mo'];
                              * this is for better code complementation in lovely phpstorm
                              * @var $unterkunft_moc \Custom\MediaType\Unterkunft
                              */
-                            $unterkunft_moc = $unterkunft_mo->data[0];
+                            $unterkunft_moc = $unterkunft_mo->getDataForLanguage(TS_LANGUAGE_CODE);
 
                             ?>
                             <b><?php echo $unterkunft_moc->headline_default; ?></b>
