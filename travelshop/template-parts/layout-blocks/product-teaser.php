@@ -15,27 +15,21 @@
 
        <?php
 
-       //@todo
-
-       // Examples "How to display for random products as teaser"
-       // Note: the View-Template "Teaser1" can be found in travelshop/template-parts/pm-views/{OBJECT_TYPE_NAME}_{VIEWNAME}.php
-
        // Example 1: Using the the shortcode ts-list for displaying the product teasers
-       echo do_shortcode( '[ts-list view="Teaser1" pm-ot="607" pm-l="1,4" pm-o="RAND"]');
+       //echo do_shortcode( '[ts-list view="Teaser1" pm-ot="607" pm-l="1,4" pm-o="RAND"]');
+       // Note: the View-Template "Teaser1" can be found in travelshop/template-parts/pm-views/{OBJECT_TYPE_NAME}_{VIEWNAME}.php
 
 
        // Example 2: Using the pressmind® web-core SDK
-       /*
        $conditions = array();
-       $conditions[] = Pressmind\Search\Condition\ObjectType::create(607);
-       //$conditions[] = Pressmind\Search\Condition\PriceRange::create(1, 9999);
-       //$conditions[] = Pressmind\Search\Condition\PriceRange::create(new DateTime($atts['date_range_from']), new DateTime($atts['date_range_to']));
+       $conditions[] = Pressmind\Search\Condition\ObjectType::create(TS_LANGUAGE_CODE);
        $search = new Pressmind\Search($conditions, ['start' => 0, 'length' => 4], ['' => 'RAND()']);
        $products = $search->getResults();
        foreach ($products as $product) {
-           echo  $product->render('Teaser1', 'de');
+           echo  $product->render('Teaser1', TS_LANGUAGE_CODE);
        }
-       */
+
+
 
        ?>
     </div>
