@@ -9,16 +9,18 @@ if (empty($_GET['pm-ot']) === true) { // if the id_object_type is not defined by
     $_GET['pm-ot'] = $id_object_type;
 }
 
-$page_size = 12;
+$page_size = 100;
 $search = BuildSearch::fromRequest($_GET, 'pm', true, $page_size);
 $mediaObjects = $search->getResults();
+$total_count = $search->getTotalResultCount();
 
 $view = 'Teaser1';
 if (!empty($_GET['view']) && preg_match('/^[0-9A-Za-z\_]+$/', $_GET['view']) !== false) {
     $view = $_GET['view'];
 }
-
+$ids = [];
 foreach ($mediaObjects as $mediaObject) {
+    $ids[] = $mediaObject->id;
     $data = new stdClass();
     $data->class = 'col-12 col-md-6 col-lg-4';
     echo $mediaObject->render($view, TS_LANGUAGE_CODE, $data);

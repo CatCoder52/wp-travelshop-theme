@@ -15,7 +15,8 @@ $search = new Pressmind\Search(
 );
 
 ?>
-<form method="GET" action="<?php echo site_url().'/'.$PMTravelShop->RouteProcessor->get_url_by_object_type(TS_TOUR_PRODUCTS).'/'; ?>">
+<form method="GET" action="<?php echo site_url().'/'.$PMTravelShop->RouteProcessor->get_url_by_object_type(TS_TOUR_PRODUCTS).'/' ?>">
+    <input type="hidden" name="pm-ot" value="<?php echo $id_object_type;?>">
     <div class="search-wrapper">
         <div class="h1 text-md-center mt-0 mb-2 mb-4">
             Finde deine Traumreise.

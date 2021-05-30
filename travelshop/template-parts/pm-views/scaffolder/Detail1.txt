@@ -32,6 +32,7 @@ if (empty($_GET['pm-dr']) === false) {
         $CheapestPriceFilter = new CheapestPrice();
         $CheapestPriceFilter->date_from = $dateRange[0];
         $CheapestPriceFilter->date_to = $dateRange[1];
+
     }
 }
 
@@ -157,7 +158,9 @@ foreach(['reiseart_default', 'zielgebiet_default', 'bilder_default', 'highlights
                             ?>
                         </div>
                         <!-- DETAIL_PRICE_BOX: END -->
+
                     </div>
+
                 </div>
             </section>
         </div>
