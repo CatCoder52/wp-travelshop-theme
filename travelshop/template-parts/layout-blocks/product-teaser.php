@@ -22,7 +22,7 @@
 
        // Example 2: Using the pressmind® web-core SDK
        $conditions = array();
-       $conditions[] = Pressmind\Search\Condition\ObjectType::create(TS_LANGUAGE_CODE);
+       $conditions[] = Pressmind\Search\Condition\ObjectType::create(TS_TOUR_PRODUCTS);
        $search = new Pressmind\Search($conditions, ['start' => 0, 'length' => 4], ['' => 'RAND()']);
        $products = $search->getResults();
        foreach ($products as $product) {
