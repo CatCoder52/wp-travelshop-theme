@@ -1,25 +1,21 @@
-<!-- CONTENT_SECTION_LIST_FILTER: START -->
 <?php
 /**
  * @var $id_object_type
  */
 
 
-if(empty($_GET['pm-ot']) === true){ // if the id_object_type is not defined by search, we use the information from the route
+if (empty($_GET['pm-ot']) === true) { // if the id_object_type is not defined by search, we use the information from the route
     $_GET['pm-ot'] = $id_object_type;
-}else{
+} else {
     $id_object_type = (int)$_GET['pm-ot'];
 }
 
 
 $search = BuildSearch::fromRequest($_GET, 'pm', false);
-
 ?>
 <div class="content-block content-block-list-filter">
-
     <form id="filter" action="" method="GET">
-
-        <input type="hidden" name="pm-ot" value="<?php echo $id_object_type;?>">
+        <input type="hidden" name="pm-ot" value="<?php echo $id_object_type; ?>">
         <div class="list-filter">
             <div class="h4 mt-0 mb-4"><i class="la la-filter"></i> Filter</div>
 
@@ -32,25 +28,11 @@ $search = BuildSearch::fromRequest($_GET, 'pm', false);
                     <line x1="6" y1="6" x2="18" y2="18"/>
                 </svg>
             </button>
-
             <div class="list-filter-boxes">
-
-                <!-- FILTER_SORT: START -->
-               <?php
-               require 'filter/order.php';
-               ?>
-                <!-- FILTER_SORT: END -->
-
-                <!-- FILTER_PRICE: START -->
-                <?php require 'filter/price-range.php'; ?>
-                <!-- FILTER_PRICE: END -->
-
-                <!-- FILTER_DURATION: START -->
-                <?php require 'filter/duration-range.php'; ?>
-                <!-- FILTER_DURATION: END -->
-
-                <!-- FILTER_DESTINATION: START -->
                 <?php
+                require 'filter/order.php';
+                require 'filter/price-range.php';
+                require 'filter/duration-range.php';
 
                 // @todo refactor
                 $id_tree = 1207;
@@ -59,52 +41,38 @@ $search = BuildSearch::fromRequest($_GET, 'pm', false);
 
                 require 'filter/category-tree.php';
 
-                ?>
-                <!-- FILTER_DESTINATION: END -->
-
-                <!-- FILTER_ANREISE: START -->
-                <?php
 
                 $id_tree = 1206;
                 $name = 'Reiseart';
                 $fieldname = 'reiseart_default';
                 require 'filter/category-tree.php';
 
-                ?>
-                <!-- FILTER_ANREISE: END -->
-
-                <!-- FILTER_ANREISE: START -->
-                <?php
 
                 $id_tree = 2655;
                 $name = 'Beförderung';
                 $fieldname = 'befoerderung_default';
                 require 'filter/category-tree.php';
 
-                ?>
-                <!-- FILTER_ANREISE: END -->
-
-
-                <!-- FILTER_ANREISE: START -->
-                <?php
 
                 $id_tree = 1204;
                 $name = 'Saison';
                 $fieldname = 'saison_default';
                 require 'filter/category-tree.php';
 
-                ?>
-                <!-- FILTER_ANREISE: END -->
+                // Example of a category tree from a sub object
+                /*
+                $id_tree = 1205;
+                $name = 'Hotelkategorie';
+                $fieldname = 'kategorie_default';
+                require 'filter/category-tree.php';
+                */
 
-                <!-- FILTER_SUBMIT: START -->
+                ?>
                 <div class="list-filter-box list-filter-box-submit">
                     <button type="button" class="btn btn-primary btn-block filter-prompt">Filter anwenden</button>
                 </div>
-                <!-- FILTER_SUBMIT: END -->
-
             </div>
         </div>
 
     </form>
 </div>
-<!-- CONTENT_SECTION_LIST_FILTER: END -->

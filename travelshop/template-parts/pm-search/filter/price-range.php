@@ -3,16 +3,10 @@
  * @var \Pressmind\Search $search
  */
 
-return;
 if(empty($search) === false){
+
     // get the min and max price, based on the current search
-
-    // TODO #152888
-    // missing function
-    // $search1 = $search;
-    //$search1->removeCondition('PriceRange');
-
-    $pRangeFilter = new Pressmind\Search\Filter\PriceRange($search1);
+    $pRangeFilter = new Pressmind\Search\Filter\PriceRange($search);
     $pRange = $pRangeFilter->getResult();
 
     if(empty($pRange->min) || empty($pRange->max)){
@@ -40,7 +34,9 @@ if (isset($_GET['pm-pr']) === true && preg_match('/^([0-9]+)\-([0-9]+)$/', $_GET
         <strong>Preis</strong>
     </div>
     <div class="list-filter-box-body">
-
+        <?php
+        // ion.rangeSlider is used here, see API Docu: @link http://ionden.com/a/plugins/ion.rangeSlider/api.html
+        ?>
         <input type="text" class="js-range-slider" name="pm-pr" value=""
                data-type="double"
                data-min="<?php echo empty($pRange->min) ? 0 : $pRange->min; ?>"
@@ -50,6 +46,8 @@ if (isset($_GET['pm-pr']) === true && preg_match('/^([0-9]+)\-([0-9]+)$/', $_GET
                data-grid="false"
                data-prefix="€ "
                data-step="100"
+               data-hide-min-max="1"
+               data-hide-min-min="1"
                data-input-values-separator="-"
                data-disable="<?php
                // disable the picker if there is no plausible step to pick

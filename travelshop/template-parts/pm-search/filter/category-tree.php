@@ -8,9 +8,6 @@
  */
 
 
-/**
- * @todo Pagination darf im Filter nicht verwendet werden. #152888
- */
 
 if(empty($search) === false){
     $tree = new Pressmind\Search\Filter\Category($id_tree, $search);

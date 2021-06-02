@@ -3,15 +3,8 @@
  * @var \Pressmind\Search $search
  */
 
-return;
 // get the min and max duration, based on the current search
-
-// TODO #152888
-// missing function
-//$search1 = $search;
-//$search1->removeCondition('DurationRange');
-
-$dRangeFilter = new Pressmind\Search\Filter\Duration($search1);
+$dRangeFilter = new Pressmind\Search\Filter\Duration($search);
 $dRange = $dRangeFilter->getResult();
 
 if(empty($dRange->min) || empty($dRange->max)){
@@ -26,15 +19,16 @@ if (isset($_GET['pm-du']) === true && preg_match('/^([0-9]+)\-([0-9]+)$/', $_GET
     $duration_to = $dRange->max;
 }
 
-
-
 ?>
 <div class="list-filter-box list-filter-box-price">
     <div class="list-filter-box-title">
-        <strong>Dauer</strong>
+        <strong>Dauer <small>(in Tagen)</small></strong>
     </div>
     <div class="list-filter-box-body">
 
+        <?php
+        // ion.rangeSlider is used here, see API Docu: @link http://ionden.com/a/plugins/ion.rangeSlider/api.html
+        ?>
         <input type="text" class="js-range-slider" name="pm-du" value=""
                data-type="double"
                data-min="<?php echo $dRange->min; ?>"
@@ -44,6 +38,8 @@ if (isset($_GET['pm-du']) === true && preg_match('/^([0-9]+)\-([0-9]+)$/', $_GET
                data-grid="false"
                data-prefix=""
                data-step="1"
+               data-hide-min-max="1"
+               data-hide-min-min="1"
                data-input-values-separator="-"
                data-disable="<?php
                // disable the picker if there is no plausible step to pick
