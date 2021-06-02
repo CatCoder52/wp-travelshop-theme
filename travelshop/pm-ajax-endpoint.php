@@ -3,6 +3,9 @@
  * Custom Ajax Endpoint to avoid loading a full wordpress stack load with WordPress's regular admin-ajax.php
  */
 
+//error_reporting(-1);
+//ini_set('display_errors', 'On');
+
 require_once 'config-theme.php';
 require_once 'bootstrap.php';
 require_once 'src/BuildSearch.php';
@@ -69,8 +72,14 @@ if (empty($_GET['action'])) {
 
 }  else if ($_GET['action'] == 'wishlist'){
 
+    /**
+     * @var int $total_result
+     * @var array $ids
+     */
     ob_start();
     require 'template-parts/pm-search/wishlist-result.php';
+    $Output->count = (int)$total_result;
+    $Output->ids = $ids;
     $Output->html['wishlist-result'] = ob_get_contents();
     ob_end_clean();
 
