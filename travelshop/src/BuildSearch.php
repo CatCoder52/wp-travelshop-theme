@@ -46,7 +46,7 @@ class BuildSearch
         // set the default visibility
         $conditions[] = Pressmind\Search\Condition\Visibility::create(TS_VISIBILTY);
 
-        if (empty($id_object_type = intval($request[$prefix.'-ot'])) === false) {
+        if (isset($request[$prefix.'-ot']) && empty($id_object_type = intval($request[$prefix.'-ot'])) === false) {
             $conditions[] = Pressmind\Search\Condition\ObjectType::create($id_object_type);
             $validated_search_parameters[$prefix.'-ot'] = $id_object_type;
         }
@@ -104,10 +104,19 @@ class BuildSearch
                     }
 
                     $item_ids = explode($delimiter,$item_ids);
-                    $conditions[] = Pressmind\Search\Condition\Category::create($property_name, $item_ids, $operator);
+                    $conditions[] = Pressmind\Search\Condition\Category::create($property_name, $item_ids, $operator, true);
                     $validated_search_parameters[$prefix.'-c'][$property_name] = implode($delimiter, $item_ids);
                 }
 
+            }
+        }
+
+
+        if (empty($request[$prefix.'-ho']) === false){
+            if(preg_match('/^[0-9\,]+$/', $request[$prefix.'-ho']) > 0){
+                $occupancies = explode(',', $request[$prefix.'-ho']);
+                $conditions[] = Pressmind\Search\Condition\HousingOption::create($occupancies);
+                $validated_search_parameters[$prefix.'-ho'] = implode(',', $occupancies);
             }
         }
 
@@ -138,7 +147,7 @@ class BuildSearch
         }
 
         if (empty($request[$prefix.'-id']) === false){
-            if(preg_match('/^[0-9\,]+$/', $request[$prefix.'-id']) > 0){ // search by OR, marked by ","
+            if(preg_match('/^[0-9\,]+$/', $request[$prefix.'-id']) > 0){
                 $ids = explode(',', $request[$prefix.'-id']);
                 $conditions[] = Pressmind\Search\Condition\MediaObjectID::create($ids);
                 $validated_search_parameters[$prefix.'-id'] = implode(',', $ids);
@@ -147,7 +156,7 @@ class BuildSearch
         }
 
         if (empty($request[$prefix.'-po']) === false){
-            if(preg_match('/^[0-9\,]+$/', $request[$prefix.'-po']) > 0){ // search by OR, marked by ","
+            if(preg_match('/^[0-9\,]+$/', $request[$prefix.'-po']) > 0){
                 $pools = explode(',', $request[$prefix.'-po']);
                 $conditions[] = Pressmind\Search\Condition\Pool::create($pools);
                 $validated_search_parameters[$prefix.'-po'] = implode(',', $pools);
@@ -156,7 +165,7 @@ class BuildSearch
         }
 
         if (empty($request[$prefix.'-st']) === false){
-            if(preg_match('/^[0-9\,]+$/', $request[$prefix.'-st']) > 0){ // search by OR, marked by ","
+            if(preg_match('/^[0-9\,]+$/', $request[$prefix.'-st']) > 0){
                 $states = explode(',', $request[$prefix.'-st']);
                 $conditions[] = Pressmind\Search\Condition\State::create($states);
                 $validated_search_parameters[$prefix.'-st'] = implode(',', $states);
@@ -165,7 +174,7 @@ class BuildSearch
         }
 
         if (empty($request[$prefix.'-br']) === false){
-            if(preg_match('/^[0-9\,]+$/', $request[$prefix.'-br']) > 0){ // search by OR, marked by ","
+            if(preg_match('/^[0-9\,]+$/', $request[$prefix.'-br']) > 0){
                 $brands = explode(',', $request[$prefix.'-br']);
                 $conditions[] = Pressmind\Search\Condition\Brand::create($brands);
                 $validated_search_parameters[$prefix.'-br'] = implode(',', $brands);
@@ -174,7 +183,7 @@ class BuildSearch
         }
 
         if (empty($request[$prefix.'-tr']) === false){
-            if(preg_match('/^[a-z,A-Z\,]+$/', $request[$prefix.'-tr']) > 0){ // search by OR, marked by ","
+            if(preg_match('/^[a-z,A-Z\,]+$/', $request[$prefix.'-tr']) > 0){
                 $transport_types = explode(',', $request[$prefix.'-tr']);
                 $conditions[] = Pressmind\Search\Condition\Transport::create($transport_types);
                 $validated_search_parameters[$prefix.'-tr'] = implode(',', $transport_types);
@@ -183,7 +192,7 @@ class BuildSearch
         }
 
         if (empty($request[$prefix.'-vi']) === false){
-            if(preg_match('/^[0-9\,]+$/', $request[$prefix.'-vi']) > 0){ // search by OR, marked by ","
+            if(preg_match('/^[0-9\,]+$/', $request[$prefix.'-vi']) > 0){
                 $visibilities = explode(',', $request[$prefix.'-vi']);
                 $conditions[] = Pressmind\Search\Condition\Visibility::create($visibilities);
                 $validated_search_parameters[$prefix.'-vi'] = implode(',', $visibilities);
@@ -193,7 +202,7 @@ class BuildSearch
 
         // Booking State (based on date)
         if (empty($request[$prefix.'-bs']) === false){
-            if(preg_match('/^[0-9\,]+$/', $request[$prefix.'-bs']) > 0){ // search by OR, marked by ","
+            if(preg_match('/^[0-9\,]+$/', $request[$prefix.'-bs']) > 0){
                 $booking_states = explode(',', $request[$prefix.'-bs']);
                 $conditions[] = Pressmind\Search\Condition\BookingState::create($booking_states);
                 $validated_search_parameters[$prefix.'-bs'] = implode(',', $booking_states);
