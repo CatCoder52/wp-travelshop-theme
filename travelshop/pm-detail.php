@@ -32,7 +32,6 @@ if(count($id_media_objects) > 1 && !empty($_GET['preview'])){ ?>
         this detail page is showing the <b>first object</b> listed below.<br>
         <ul>
             <?php
-                $fst = false;
                 foreach ($mediaObjects as $mediaObject) { ?>
                 <li><?php echo $mediaObject->getId();?></li>
                 <?php
