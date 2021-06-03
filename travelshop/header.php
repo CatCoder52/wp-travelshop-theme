@@ -50,7 +50,7 @@ global $PMTravelShop;
                          class="d-inline-block align-middle" alt="<?php echo get_bloginfo( 'name' );?>">
                 </a>
             </div>
-            <div class="col align-self-center ">
+            <div class="col align-self-center p-0">
 
                 <?php
                 if (has_nav_menu('primary') === true) {
@@ -127,6 +127,20 @@ global $PMTravelShop;
                     </div>
                 </form>
             </div>
+            <div class="col-auto align-self-center">
+                <div class="travelshop_hotline_batch">
+                    <small>Service-Hotline</small><br/>
+                    <a href="#">+49 180 654 321</a>
+                    <a class="phone-link" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone" width="35"
+                             height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" fill="none"
+                             stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
             <div class="col-auto align-self-center dropdown">
                 <button class="toggler wishlist-toggler" type="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false" data-offset="40,20">
@@ -149,7 +163,7 @@ global $PMTravelShop;
                     </div>
                 </div>
             </div>
-            <div class="col-auto align-self-center  d-block d-lg-none">
+            <div class="col-auto align-self-center d-none">
                 <button class="toggler search-toggler" type="button" data-target="#search" aria-controls="search"
                         aria-expanded="false" aria-label="Toggle Search">
                     <i class="la la-search"></i>
