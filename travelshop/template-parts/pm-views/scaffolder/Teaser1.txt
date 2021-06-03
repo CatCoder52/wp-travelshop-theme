@@ -39,7 +39,6 @@ if (empty($_GET['pm-du']) === false) {
 }
 
 
-/* TODO missing:
 if (empty($_GET['pm-pr']) === false) {
     $priceRange = BuildSearch::extractPriceRange($_GET['pm-pr']);
     if ($priceRange !== false) {
@@ -47,16 +46,13 @@ if (empty($_GET['pm-pr']) === false) {
         $CheapestPriceFilter->price_to = $priceRange[1];
     }
 }
-*/
+
+$CheapestPriceFilter->occupancies = [2];
 
 $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
 
-$class = empty($data['custom_data']->class) ? 'col-12 col-md-6 col-lg-3' : $data['custom_data']->class;
 
-// TODO, current sdk hotfix, initialize magic methods, to check them with empty() on later usages
-foreach(['reiseart_default', 'zielgebiet_default'] as $v){
-    is_callable($moc->{$v});
-}
+$class = empty($data['custom_data']->class) ? 'col-12 col-md-6 col-lg-3' : $data['custom_data']->class;
 
 /**
  * DON'T USE WordPress Stuff here
@@ -68,8 +64,8 @@ foreach(['reiseart_default', 'zielgebiet_default'] as $v){
     // we add some search values to deliver to customize the offers on the the detail page
     $url = SITE_URL .$mo->getPrettyUrl(TS_LANGUAGE_CODE);
 
-    // only this search params are transmitted, price range (pm-pr), date range (pm-dr)
-    $allowedParams = ['pm-pr', 'pm-dr'];
+    // only this search params are transmitted, price range (pm-pr), date range (pm-dr), duration range (pm-du), housingoption occupancy (pm-ho)
+    $allowedParams = ['pm-pr', 'pm-dr', 'pm-du', 'pm-ho'];
     $filteredParams = array_filter($_GET,
         function ($key) use ($allowedParams) {
             return in_array($key, $allowedParams);
@@ -126,7 +122,6 @@ foreach(['reiseart_default', 'zielgebiet_default'] as $v){
             <h5 class="card-title">
                 <a href="<?php echo $url; ?>"><?php echo strip_tags($moc->headline_default); ?></a>
             </h5>
-            <p class="attribute-row">
                 <?php
                     $breadcrumb = array();
 
@@ -144,12 +139,14 @@ foreach(['reiseart_default', 'zielgebiet_default'] as $v){
                         }
                     }
 
-                    if(!empty($breadcrumb)){
-                        echo '<span class="badge badge-secondary">' . implode('</span> <span class="badge badge-secondary">', $breadcrumb) . '</span>';
+                    if(!empty($breadcrumb)){?>
+                        <p class="attribute-row">
+                           <span class="badge badge-secondary"><?php echo implode('</span> <span class="badge badge-secondary">', $breadcrumb);?></span>
+                        </p>
+                    <?php
                     }
-
                 ?>
-            </p>
+
 
             <?php if(empty($moc->subline_default) === false){?>
             <p class="card-text subline">
@@ -160,8 +157,9 @@ foreach(['reiseart_default', 'zielgebiet_default'] as $v){
             <?php } ?>
 
 
-            <p class="card-text price-row">
 
+
+            <div class="bottom-aligned">
 
                 <?php
 
@@ -171,33 +169,112 @@ foreach(['reiseart_default', 'zielgebiet_default'] as $v){
                 }
 
                 // cheapest price
-                if (empty($cheapest_price->price_option) === false) { ?>
-                    <span class="small">
-                        <?php
-                        echo '<span>' . $cheapest_price->duration . ' Tage Reise</span><br>';
+                if (empty($cheapest_price->price_option) === false) {
 
-                        echo '<span><i class="circle green"></i>'.$cheapest_price->date_departure->format('d.m') . ' - ' . $cheapest_price->date_arrival->format('d.m.Y').'</span>';
+                    $month = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+                    $weekdays = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
 
-                        if($c_dates > 2){
-                            echo '<br><span>'.($c_dates - 1).' weitere Termine</span>';
-                        }
+                    ?>
 
 
-                        ?>
-                    </span><br class="d-none d-md-block" />
-                    <a href="<?php echo $url; ?>">
-                        <strong class="h5 mt-0 mb-0"><?php
-                            echo ' ab ' . number_format($cheapest_price->price_option, 0, ',', '.') . '&nbsp;€';
+                    <div class="card-text date-row">
+
+                         <span class="small">
+                            <?php
+                                echo '<span>' . $cheapest_price->duration . ' Tage Reise</span><br>';
                             ?>
-                        </strong>
-                    </a>
+                        </span>
 
+                        <div class="dropdown">
+                            <button class="btn <?php echo $c_dates == 1 ? ' disabled' : ' dropdown-toggle';?>" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <?php
+
+                                $today = new DateTime();
+                                $date_to_format = $cheapest_price->date_arrival->format('Y') == $today->format('Y')  ? 'd.m.' : 'd.m.Y';
+
+                                echo '<i class="circle green"></i>'.$weekdays[$cheapest_price->date_departure->format('w')].'. '.$cheapest_price->date_departure->format('d.m.') . ' - ' .$weekdays[$cheapest_price->date_arrival->format('w')].'. '. $cheapest_price->date_arrival->format($date_to_format);
+                                /*
+                                if($c_dates > 1){
+                                    echo '<br><span>'.($c_dates - 1).' weitere'.($c_dates - 1  ==  1? 'r' : '').' Termin'.($c_dates - 1  >  1? 'e' : '').'</span>';
+                                }
+                                */
+
+                                ?>
+                            </button>
+                            <?php if($c_dates > 1){?>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <?php
+
+                                foreach($mo->booking_packages as $booking_package){
+                                    if($booking_package->id != $cheapest_price->id_booking_package){
+                                        continue;
+                                    }
+
+                                    $current_month = null;
+                                    $c = 0;
+                                    foreach($booking_package->dates as $date){
+                                        if($current_month != $month[$date->departure->format('n')-1]){
+                                            $current_month = $month[$date->departure->format('n')-1];
+                                            $c = 0;
+                                            echo '<p class="dropdown-header">'.$current_month.'</p>';
+                                        }
+
+                                        if($c < 5){ // display only 5 dates per month ?>
+                                            <a class="dropdown-item<?php echo ($date->id == $cheapest_price->id_date) ? ' active' : '';?>" href="<?php echo $url.(!strpos($url, '?') ? '?' : '&').'idd='.$date->id.'&idbp='.$booking_package->id;?>">
+                                                <?php
+                                                echo '<i class="circle green"></i>'.$weekdays[$date->departure->format('w')].'. '. $date->departure->format('d.m.') . ' - '.$weekdays[$date->arrival->format('w')].'. '. $date->arrival->format($date_to_format);
+                                                ?>
+                                            </a>
+                                            <?php
+                                                }else{
+                                            ?>
+                                            <a class="dropdown-item" href="<?php echo $url;?>"><small>mehr Termine im <?php echo $current_month; ?></small></a>
+                                        <?php
+                                            continue;
+                                        }
+                                        $c++;
+                                    }
+                                }
+                                ?>
+                            </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <div class="card-text price-row">
+                        <?php
+                        if(!empty($cheapest_price->price_option_pseudo) && $cheapest_price->price_option_pseudo > $cheapest_price->price_total){
+                            $percent_discount = round((100 / $cheapest_price->price_option_pseudo) * ($cheapest_price->price_option_pseudo - $cheapest_price->price_total));
+                         ?>
+                            <div class="discount-wrapper">
+                                <hr>
+                                <p>
+                                    <span class="msg">Ihr Vorteil</span>
+                                    <span class="discount-label">
+                                        <span class="price"><?php echo $cheapest_price->price_option_pseudo; ?>&nbsp;€</span>
+                                        <span class="discount"> -<?php echo $percent_discount;?>%</span>
+                                    </span>
+                                </p>
+                            </div>
+                            <?php
+                        }
+                        ?>
+                        <a href="<?php echo $url; ?>" class="btn btn-primary">
+                            <?php
+                            if (empty($cheapest_price->price_total) === false) {
+                                echo '<small><span>Preis p.P.</span> <strong>ab</strong> </small><strong>' . number_format($cheapest_price->price_total, 0, ',', '.') . '&nbsp;€</strong>';
+                            }else{
+                                ?>zur Reise<?php
+                            }
+                            ?>
+                        </a>
+                    </div>
                     <?php
-                }
+                } // if cheapest price is set
                 ?>
-            </p>
+            </div>
 
-            <a href="<?php echo $url; ?>" class="btn btn-primary stretched-link">zur Reise</a>
+
         </div>
 
         </div>

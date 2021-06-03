@@ -110,7 +110,12 @@ $cheapest_price = $args['cheapest_price'];
                                             Preis p.P.
                                         </div>
                                         <div class="col-9 col-md-2">
-                                            <strong class="price"><?php echo HelperFunctions::number_format($housing_option->price); ?>
+                                            <strong class="price"><?php
+
+                                                // @TODO use Cheapest Price here
+                                                echo HelperFunctions::number_format($housing_option->price);
+
+                                                ?>
                                                 €</strong>
                                         </div>
                                         <div class="col-12 col-md-3">

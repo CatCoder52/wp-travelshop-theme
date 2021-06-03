@@ -40,7 +40,7 @@ $cheapest_price = $args['cheapest_price'];
     <div class="detail-price-box">
         <div class="price">
             <span class="h5 mb-0 mt-0">ab</span> <span
-                    class="h3 mb-0 mt-0"><?php echo number_format($cheapest_price->price_option, 0, ',', '.') . ' €'; ?></span>
+                    class="h3 mb-0 mt-0"><?php echo number_format($cheapest_price->price_total, 0, ',', '.') . ' €'; ?></span>
         </div>
         <p class="small mt-2"><?php echo $cheapest_price->option_name; ?> p.P.</p>
         <hr>
