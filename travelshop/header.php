@@ -57,7 +57,12 @@ global $PMTravelShop;
                     ?>
                     <nav class="navbar navbar-expand-lg offcanvas" id="navbar">
                         <button class="offcanvas-close">
-                            <i class="la la-times"></i> Menü schließen
+                            <span>Menü schließen</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <line x1="18" y1="6" x2="6" y2="18" />
+                                <line x1="6" y1="6" x2="18" y2="18" />
+                            </svg>
                         </button>
                         <div class="navbar-offcanvas">
                             <ul class="navbar-nav mr-auto ml-auto">
@@ -81,8 +86,8 @@ global $PMTravelShop;
                                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                                                 role="button"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <?php echo $item->title; ?> <i class="la la-angle-down"></i>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-down" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ccc" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <?php echo $item->title; ?>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-down" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ccc" fill="#ccc" stroke-linecap="round" stroke-linejoin="round">
                                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                         <path d="M18 15l-6 -6l-6 6h12" transform="rotate(180 12 12)" />
                                                     </svg>
@@ -92,7 +97,13 @@ global $PMTravelShop;
                                                     foreach ($item->wpse_children as $child_items) {
                                                         ?>
                                                         <a class="dropdown-item"
-                                                        href="<?php echo $child_items->url ?>"><?php echo $child_items->title; ?></a>
+                                                        href="<?php echo $child_items->url ?>">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-right" width="15" height="15" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ccc" fill="#ccc" stroke-linecap="round" stroke-linejoin="round">
+                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                                <path d="M18 15l-6 -6l-6 6h12" transform="rotate(90 12 12)" />
+                                                            </svg>
+                                                            <?php echo $child_items->title; ?>
+                                                        </a>
                                                         <?php
                                                     }
                                                     ?>
@@ -112,7 +123,7 @@ global $PMTravelShop;
                     </nav>
                 <?php } ?>
             </div>
-            <div class="col-auto align-self-center  d-none d-lg-block col-search" id="search">
+            <div class="col align-self-center  d-none d-lg-block col-search" id="search">
                 <form class="input-group my-2 my-lg-0" action="<?php echo site_url().'/'.$PMTravelShop->RouteProcessor->get_url_by_object_type(TS_TOUR_PRODUCTS).'/'; ?>" method="GET">
                     <input class="form-control auto-complete" type="search" data-autocomplete="true" placeholder="Suchbegriff..."
                            aria-label="Search" name="pm-t">
