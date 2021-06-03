@@ -41,6 +41,7 @@ Use as shortcode with a special view-template
 * [Date Range (pm-dr)](#pm-dr-date-range)
 * [Valid from/ Valid to (pm-vr)](#pm-vr-valid-from-valid-to)
 * [Category Tree Item/s (pm-c)](#pm-c-category-tree-items)
+* [HousingOption / occupancy / room search](#pm-ho-housingoption-occupancy--room-search)
   
 **Other**
 * [Order by (pm-o)](#pm-o-order)
@@ -348,9 +349,12 @@ foreach ($search->getResults() as $mediaObject) {
 ```
 
 ### pm-c[] (Category Tree Item/s)
-Search by one or more pressmind categorytree attributes
-pattern:<br> pm-c[{FIELDNAME_SECTIONNAME}]={ITEM_UUID}{OPERATOR}{ITEM_UUID}
-Allowed Operator , or +
+Search by one or more pressmind categorytree attributes.
+Pattern:<br> pm-c[{FIELDNAME_SECTIONNAME}]={ITEM_UUID}{OPERATOR}{ITEM_UUID}
+Allowed Operators "," or "+"<br>
+It also possible to search for categorytree items that are joined with a objectlink, 
+just set the FIELDNAME_SECTIONNAME from the linked object.
+
 ```
 // list products that contain attributes xxx OR yyy
 GET https://yoursite.de/search/?pm-c[land_default]=xxx,yyyy
@@ -376,6 +380,31 @@ foreach ($search->getResults() as $mediaObject) {
     echo $mediaObject->render('Teaser1', 'de');
 }
 ```
+
+### pm-ho (HousingOption occupancy / room search)
+Search products that contains rooms or cabins based on the given occupancies.
+The example searches a product that have a 
+room for 2 people (double room) and a room for 3 people.
+
+```
+GET https://yoursite.de/search/?pm-ho=2,3
+```
+
+```
+WORDPRESS SHORTCODE [ts-list pm-ho="2,3"]
+```
+
+```php
+$search = new Pressmind\Search(
+    [
+        \Pressmind\Search\Condition\HousingOption::create(2,3)
+    ]
+);
+foreach ($search->getResults() as $mediaObject) {
+    echo $mediaObject->render('Teaser1', 'de');
+}
+```
+
 
 
 ### pm-o (Order)

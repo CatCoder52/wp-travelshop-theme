@@ -209,25 +209,36 @@ jQuery(function ($) {
     }
 
 // ------------------------------------------
+// --- rangeslider
+// ------------------------------------------
+
+    if ($('.js-range-slider').length > 0) {
+        $(".js-range-slider").ionRangeSlider();
+    }
+
+// ------------------------------------------
 // --- autocomplete
 // ------------------------------------------
-    if ($('#search').length > 0) {
-        var suggestions = [
-            {value: 'Busreise', data: 'BUS'},
-            {value: 'Flugreise', data: 'FLUG'},
-            {value: 'Urlaubsreise', data: 'URL'},
-            {value: 'Italien', data: 'IT'},
-            {value: 'Deutschland', data: 'DE'},
-            {value: 'Schweiz', data: 'SW'},
-            {value: 'Frankreich', data: 'FR'},
-            {value: 'Familienreise', data: 'FAM'},
-            {value: 'USA', data: 'US'}
-        ]
-
-        $('#search .form-control').autocomplete({
-            lookup: suggestions,
+    if ($('.auto-complete').length > 0) {
+        $('.auto-complete').autocomplete({
+            serviceUrl: '/wp-content/themes/travelshop/pm-ajax-endpoint.php?action=autocomplete',
+            type: 'get',
+            dataType : 'json',
+            paramName : 'q',
+            deferRequestBy : 0,
+            minChars: 2,
+            width: 'flex',
+            groupBy: 'category',
+            preventBadQueries: false,
+            tabDisabled: true,
+            preserveInput:  true,
             onSelect: function (suggestion) {
-                console.log('You selected' + suggestion.value + ', ' + suggestion.data);
+                if(suggestion.data.type == 'link'){
+                    document.location.href = suggestion.data.url;
+                }else if(suggestion.data.type == 'search'){
+                    var url = $(this).parents('form').attr('action');
+                    url += '?' + suggestion.data.search_request;
+                }
             }
         })
     }
@@ -260,8 +271,8 @@ jQuery(function ($) {
         });
 
         // -- make filter span-checkboxes clickable
-        function addFilterCheckboxEventListener(form) {
-            $(form).find('.form-check span').on('click', function (e) {
+        function addFilterCheckboxEventListener() {
+            $('body').on('click','#filter .form-check span', function (e) {
                 if ($(e.target).siblings('input').is(':checked')) {
                     $(e.target).siblings('input').prop('checked', false).trigger('change');
                 } else {
@@ -270,8 +281,7 @@ jQuery(function ($) {
             });
         }
 
-        addFilterCheckboxEventListener($('#filter'));
-
+        addFilterCheckboxEventListener();
 
         // -- create label text on input change, put it into span
         $('.dropdown-menu-select').find('input').on('change', function (e) {

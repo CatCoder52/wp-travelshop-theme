@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var PMTravelShop $PMTravelShop
+ */
+global $PMTravelShop;
+?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -11,6 +17,15 @@
     <link rel="icon" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/icon_192.png" sizes="192x192" type="image/png">
     <link rel="apple-touch-icon" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/icon_180.png" sizes="180x180" type="image/png" >
     <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/favicon.ico" type="image/x-icon">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/splash_2048.png" sizes="2048x2732" rel="apple-touch-startup-image" />
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/splash_1668.png" sizes="1668x2224" rel="apple-touch-startup-image" />
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/splash_1536.png" sizes="1536x2048" rel="apple-touch-startup-image" />
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/splash_1125.png" sizes="1125x2436" rel="apple-touch-startup-image" />
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/splash_1242.png" sizes="1242x2208" rel="apple-touch-startup-image" />
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/splash_750.png" sizes="750x1334" rel="apple-touch-startup-image" />
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/splash_640.png" sizes="640x1136" rel="apple-touch-startup-image" />
+
     <meta name="robots" content="index,follow">
     <?php wp_head(); ?>
 </head>
@@ -98,9 +113,9 @@
                 <?php } ?>
             </div>
             <div class="col-auto align-self-center  d-none d-lg-block col-search" id="search">
-                <form class="input-group my-2 my-lg-0">
-                    <input class="form-control" type="search" data-autocomplete="true" placeholder="Suchbegriff..."
-                           aria-label="Search">
+                <form class="input-group my-2 my-lg-0" action="<?php echo site_url().'/'.$PMTravelShop->RouteProcessor->get_url_by_object_type(TS_TOUR_PRODUCTS).'/'; ?>" method="GET">
+                    <input class="form-control auto-complete" type="search" data-autocomplete="true" placeholder="Suchbegriff..."
+                           aria-label="Search" name="pm-t">
                     <div class="input-group-append">
                         <button class="btn btn-link" aria-label="Suchen">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">

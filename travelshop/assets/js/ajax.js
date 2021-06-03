@@ -1,81 +1,118 @@
 jQuery(function ($) {
 
-    /**
-     * Example usage:
-     * var Search = new TSAjax('/wordpress/wp-content/themes/travelshop/ajax-endpoint.php');
-     * Search.get('test_id', {action: 'get'});
-     */
-
-    // -----------------------------------------------
-    // -- Helper Functions
-    // -----------------------------------------------
-    function removeElement(array, elem) {
-        array.some(function(item) {
-            if(item['pm-id'] == elem) {
-                var index = array.indexOf(item);
-                array.splice(index, 1);
-            }
-        });
-    }
-
     TSAjax = function (endpoint_url) {
 
         var _this = this;
         this.endpoint_url = endpoint_url;
+        this.requests = new Array();
 
-        // @todo name me
-        if ($('.js-range-slider').length > 0) {
-            $(".js-range-slider").ionRangeSlider({
-                    input_values_separator: '-'
-                }
-            );
-        }
+        this.call = function (query_string, scrollto, total_result_span_id, callback) {
 
-        this.call = function (query_string, scrollto, total_result_span_id) {
+            for(var i = 0; i < this.requests.length; i++){
+                this.requests[i].abort();
+            }
 
-            var jqxhr = $.ajax({
+            this.requests.push($.ajax({
                 url: this.endpoint_url + '?' + query_string,
                 method: 'GET',
                 data: null
-            })
-                .done(function (data) {
-                    for (var key in data.html) {
-                        $('#' + key).html(data.html[key]);
-                    }
-
-                    if (total_result_span_id != null) {
-
-                        var total_count_span = $(total_result_span_id);
-
-                        if (data.count == 1) {
-                            total_count_span.html(data.count + ' ' + total_count_span.data('total-count-singular'))
-                        } else if (data.count > 1 || data.count == 0) {
-                            total_count_span.html(data.count + ' ' + total_count_span.data('total-count-plural'))
-                        } else {
-                            total_count_span.html(total_count_span.data('total-count-default'));
-                        }
-                    }
-
-                    if (scrollto) {
-                        $('html, body').animate({
-                            scrollTop: ($(scrollto).offset().top)
-                        }, 500);
-                    }
-                    if(!query_string.includes('wishlist')) {
-                        window.history.pushState(null, '', window.location.pathname + '?' + query_string);
-                    }
-                    // addFilterCheckboxEventListener($('#filter'));
-                    _this.wishlistEventListeners();
-                })
-                .fail(function () {
-                    console.log('ajax error');
-                });
+            }).done(function (data) {
+                callback(data, query_string, scrollto, total_result_span_id);
+            }));
         }
 
+
+        this.resultHandlerWishlist = function(data){
+
+            // set the wishlist
+            for (var key in data.html) {
+                $('#' + key).html(data.html[key]);
+            }
+
+            // sync results to localstorage (if object are deleted from server)
+            let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
+            if(!jQuery.isEmptyObject(wishlist)) {
+                $(wishlist).each(function(key, item){
+                    var is_valid = false;
+                    $(data.ids).each(function(key, id){
+                        if(item['pm-id'] == id){
+                            is_valid = true;
+                        }
+                    });
+                    if(!is_valid){
+                        console.log(' not valid remove' + item['pm-id']);
+                        _this.wishlistRemoveElement(wishlist, item['pm-id']);
+                    }
+                });
+                $('.wishlist-count').text(wishlist.length);
+                window.localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            }
+
+        }
+
+        this.resultHandlerSearch = function(data, query_string, scrollto, total_result_span_id){
+
+            for (var key in data.html) {
+                if(key == 'search-result'){
+                    $('#' + key).html(data.html[key]).find('.content-block-travel-cols').fadeIn()
+                        .css({top:1000,position:'relative'})
+                        .animate({top:0}, 200, 'swing')
+                }else{
+                    $('#' + key).html(data.html[key]);
+                }
+
+                if (key == 'search-filter' && $('.js-range-slider').length > 0) {
+                    $(".js-range-slider").ionRangeSlider({});
+                }
+            }
+
+            if(total_result_span_id != null) {
+                var total_count_span = $(total_result_span_id);
+                var str = '';
+                if (data.count == 1) {
+                    str = data.count + ' ' + total_count_span.data('total-count-singular');
+                } else if (data.count > 1 || data.count == 0) {
+                    str = data.count + ' ' + total_count_span.data('total-count-plural');
+                } else {
+                    str = data.count + ' ' + total_count_span.data('total-count-default');
+                }
+                total_count_span.html(str.trim());
+            }
+
+            if(scrollto != null) {
+                $('html, body').stop().animate({
+                    'scrollTop': $(scrollto).offset().top - $('header.affix').height()
+                }, 200, 'swing');
+            }
+
+            window.history.pushState(null, '', window.location.pathname + '?' + query_string);
+
+        }
+
+
+        this.resultHandlerSearchBarStandalone = function(data, query_string, scrollto, total_result_span_id){
+
+            if(total_result_span_id != null) {
+                var total_count_span = $(total_result_span_id);
+                var str = '';
+                if (data.count == 1) {
+                    str = data.count + ' ' + total_count_span.data('total-count-singular');
+                } else if (data.count > 1 || data.count == 0) {
+                    str = data.count + ' ' + total_count_span.data('total-count-plural');
+                } else {
+                    str = data.count + ' ' + total_count_span.data('total-count-default');
+                }
+                total_count_span.html(str.trim());
+            }
+
+        }
+
+
         this.renderWishlist = function() {
+
             let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
             if(wishlist !== null && wishlist.length !== 0) {
-                let query_string = 'action=wishlist&pm-ot=607&view=Teaser2&pm-id=';
+                let query_string = 'action=wishlist&view=Teaser2&pm-id=';
                 $('.wishlist-count').text(wishlist.length);
                 $('.wishlist-toggler').addClass('animate');
                 setTimeout(function() {
@@ -88,7 +125,7 @@ jQuery(function ($) {
                         query_string += item['pm-id'];
                     }
                 });
-                _this.call(query_string);
+                _this.call(query_string, null, null, _this.resultHandlerWishlist);
             } else {
                 _this.wishlistEventListeners();
                 $('.wishlist-count').text(0);
@@ -97,14 +134,19 @@ jQuery(function ($) {
         }
 
         this.wishlistEventListeners = function() {
-            $('.remove-from-wishlist').click(function(e) {
+
+            $('body').on('DOMSubtreeModified', '#search-result', function(){
+              _this.wishListInit();
+            });
+
+            $('body').on('click', '.remove-from-wishlist', function(e) {
                 let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
                 if(!jQuery.isEmptyObject(wishlist)) {
-                    if(wishlist.some( wi => wi['pm-id'] == $(e.target).data('id'))) {
-                        removeElement(wishlist, $(e.target).data('id'));
+                    if(wishlist.some( wi => wi['pm-id'] == $(e.target).data('pm-id'))) {
+                        _this.wishlistRemoveElement(wishlist, $(e.target).data('pm-id'));
                         // $('.wishlist-heart').removeClass('active');
                         $('.add-to-wishlist').each(function(key, item) {
-                            if($(item).data('id') == $(e.target).data('id')) {
+                            if($(item).data('pm-id') == $(e.target).data('pm-id')) {
                                 $(item).removeClass('active');
                             }
                         });
@@ -115,26 +157,19 @@ jQuery(function ($) {
             });
             if ($('.add-to-wishlist').length > 0) {
                 let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
-                if(!jQuery.isEmptyObject(wishlist)) {
-                    $('.add-to-wishlist').each(function(key, item) {
-                        if(wishlist.some( wi => wi['pm-id'] == $(item).data('id'))) {
-                            $(item).addClass('active');
-                        }
-                    });
-                }
-                $('.add-to-wishlist').click(function(e) {    
+                $('body').on('click', '.add-to-wishlist', function(e) {
                     if(jQuery.isEmptyObject(wishlist)) {
                         wishlist = [];
                     }
-                    if(wishlist.some( wi => wi['pm-id'] == $(e.target).data('id'))) {
-                        removeElement(wishlist, $(e.target).data('id'));
+                    if(wishlist.some( wi => wi['pm-id'] == $(e.target).data('pm-id'))) {
+                        _this.wishlistRemoveElement(wishlist, $(e.target).data('pm-id'));
                         $(e.target).removeClass('active');
                     } else {
                         wishlist.push({
-                            'pm-ot': '607', 
-                            'pm-id': $(e.target).data('id'), 
-                            'pm-dr': $(e.target).data('daterange'),
-                            'pm-du': $(e.target).data('duration')
+                            'pm-ot': $(e.target).data('pm-ot'),
+                            'pm-id': $(e.target).data('pm-id'),
+                            'pm-dr': $(e.target).data('pm-dr'),
+                            'pm-du': $(e.target).data('pm-du')
                         });
                         $(e.target).addClass('active');
                     }
@@ -144,13 +179,32 @@ jQuery(function ($) {
             }
         }
 
+        this.wishListInit = function (){
+            let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
+            if(!jQuery.isEmptyObject(wishlist)) {
+                $('.add-to-wishlist').each(function(key, item) {
+                    if(wishlist.some( wi => wi['pm-id'] == $(item).data('pm-id'))) {
+                        $(item).addClass('active');
+                    }
+                });
+            }
+        }
+
+        this.wishlistRemoveElement = function(array, elem) {
+            array.some(function(item) {
+                if(item['pm-id'] == elem) {
+                    var index = array.indexOf(item);
+                    array.splice(index, 1);
+                }
+            });
+        }
+
         this.pagination = function () {
 
-            // @todo load item list at the end of the existing list
             $("#search-result").on('click', ".page-link", function (e) {
                 var href = $(this).attr('href').split('?');
                 var query_string = href[1];
-                _this.call(query_string, '#search-result');
+                _this.call(query_string, '#search-result', null, _this.resultHandlerSearch);
                 e.preventDefault();
             });
 
@@ -159,7 +213,6 @@ jQuery(function ($) {
         this.buildSearchQuery = function (form) {
 
             var query = [];
-
             query.push('action=search');
 
             // the object type
@@ -210,8 +263,16 @@ jQuery(function ($) {
 
             // check and set price-range
             var price_range = $('input[name=pm-pr]').val();
-            if (price_range && price_range != '') {
+            var price_mm_range = $('input[name=pm-pr]').data('min') + '-' + $('input[name=pm-pr]').data('max');
+            if (price_range && price_mm_range != price_range && price_range != '') {
                 query.push('pm-pr=' + price_range);
+            }
+
+            // check and set duration-range
+            var duration_range = $('input[name=pm-du]').val();
+            var duration_mm_range = $('input[name=pm-du]').data('min') + '-' + $('input[name=pm-du]').data('max');
+            if (duration_range && duration_mm_range != duration_range && duration_range != '') {
+                query.push('pm-du=' + duration_range);
             }
 
             // check and set date-range
@@ -245,7 +306,7 @@ jQuery(function ($) {
                 $("#search-filter").on('change', ".list-filter-box input, .list-filter-box select", function (e) {
                     var form = $(this).closest('form');
                     var query_string = _this.buildSearchQuery(form);
-                    _this.call(query_string, '#search-result');
+                    _this.call(query_string, '#search-result', null, _this.resultHandlerSearch);
                     e.preventDefault();
                 });
             }
@@ -253,7 +314,7 @@ jQuery(function ($) {
             $("#search-filter").on('click', ".list-filter-box-submit", function (e) {
                 var form = $(this).closest('form');
                 var query_string = _this.buildSearchQuery(form);
-                _this.call(query_string, '#search-result');
+                _this.call(query_string, '#search-result', null, _this.resultHandlerSearch);
                 e.preventDefault();
             });
 
@@ -278,10 +339,13 @@ jQuery(function ($) {
                 var href = button.attr('href').split('?');
                 button.attr('href', href[0] + '?' + query_string);
 
-                // if we're on the same page, let fire the search
+                // if we're on the same page, let fire the search and set the search results
                 var current_location = window.location.href.split('?');
                 if (current_location[0] == href[0]) {
-                    _this.call(query_string, undefined, '.search-bar-total-count');
+                    _this.call(query_string, null, '.search-bar-total-count', _this.resultHandlerSearch);
+                }else{
+                    // in this case we have placed a search box on a site without a direct result output
+                    _this.call(query_string, null, '.search-bar-total-count', _this.resultHandlerSearchBarStandalone);
                 }
 
                 e.preventDefault();
@@ -293,6 +357,8 @@ jQuery(function ($) {
 
     var Search = new TSAjax('/wp-content/themes/travelshop/pm-ajax-endpoint.php');
     Search.renderWishlist();
+    Search.wishlistEventListeners();
+    Search.wishListInit();
     Search.pagination();
     Search.searchbox();
     Search.filter();

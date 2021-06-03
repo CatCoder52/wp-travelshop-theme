@@ -54,9 +54,10 @@ In most cases, this is the basic setup for each travelshop:
 * Search by travel date
 * Search by duration range
 * Search by price range
-* Search by text
+* Search by text (with auto-complete suggestions)
 * Display cheapest available price
 * Display bookable content, delivered by tour operator systems
+* Fav-List feature
 * Link to an external IBE like pressmind IB3
 * Image handling: Thumbnailer, optimization
 * Amazon S3 support

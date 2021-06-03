@@ -255,11 +255,8 @@
 
 <!--###PRESSMIND_IBE_FOOTER_SCRIPTS###-->
 
+<?php
+// don't load bootstrap or jquery here, it's already loaded during the <!--###PRESSMIND_IBE_FOOTER_SCRIPTS###--> tag above
+?>
 </body>
-
-<script src="<?php echo get_stylesheet_directory_uri() . '/assets/js/jquery-3.5.1.min.js'; ?>" <?php echo !empty($file['defer']) ? 'defer' : ''; ?>></script>
-<script src="<?php echo get_stylesheet_directory_uri() . '/assets/js/bootstrap.min.js'; ?>" <?php echo !empty($file['defer']) ? 'defer' : ''; ?>></script>
-<script src="<?php echo get_stylesheet_directory_uri() . '/assets/js/autocomplete.min.js'; ?>" <?php echo !empty($file['defer']) ? 'defer' : ''; ?>></script>
-<script src="<?php echo get_stylesheet_directory_uri() . '/assets/js/search.min.js'; ?>" <?php echo !empty($file['defer']) ? 'defer' : ''; ?>></script>
-
 </html>

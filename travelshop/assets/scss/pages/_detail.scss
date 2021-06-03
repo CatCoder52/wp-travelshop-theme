@@ -52,8 +52,8 @@
       button.dropdown-toggle:active,
       button.dropdown-toggle:hover:active,
       button.dropdown-toggle:hover:focus {
-        border:0;
-        padding:0;
+        border: 0;
+        padding: 0;
         background: transparent;
         outline: none;
         box-shadow: none;
@@ -88,6 +88,29 @@
         }
       }
     }
+
+    .circle {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      text-align: center;
+      display: inline-block;
+      background-color: gray;
+      margin-right: 4px;
+
+      &.green {
+        background-color: #28a745;
+      }
+
+      &.orange {
+        background-color: orange;
+      }
+
+      &.red {
+        background-color: red;
+      }
+
+    }
   }
 
   // -- booking button
@@ -102,15 +125,15 @@
   margin: $grid-gutter-width 0;
 
   ul {
-    padding:0;
-    margin:0;
+    padding: 0;
+    margin: 0;
 
     border-bottom: 1px solid $card-border-color;
 
     > li {
       display: inline-block;
-      padding:0;
-      margin:0;
+      padding: 0;
+      margin: 0;
 
       + li {
         margin: 0 0 0 1.5rem;
@@ -120,7 +143,7 @@
         display: block;
         padding-bottom: .5rem;
         color: $gray-700;
-        transition:all .3s;
+        transition: all .3s;
 
         &:active, &:focus {
           color: $gray-700;
@@ -148,11 +171,6 @@
 
 // -- detail reise content
 .detail-reise-content {
-  padding: 1rem 0 $grid-gutter-width 0;
-
-  + .detail-reise-content {
-    padding: 0 0 $grid-gutter-width 0;
-  }
 
   // -- h3
   h3 {
@@ -179,13 +197,13 @@
 
   ul.default-list {
     margin: 0 0 1rem 0;
-    padding:0;
+    padding: 0;
     list-style: none;
 
     li {
       padding: 0 0 0 0;
       position: relative;
-      margin:0;
+      margin: 0;
 
       + li {
         margin: .25rem 0 0 0;
@@ -193,22 +211,52 @@
 
       i {
         position: absolute;
-        left:0;
-        top:3px;
+        left: 0;
+        top: 3px;
 
         font-size: 1.125rem;
         color: $primary;
       }
-
-
     }
-
     li:before {
       content: "\00BB \0020";
     }
+  }
 
+  ul.checked-list {
+    margin: 0 0 1rem 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      padding: 0 0 0 0;
+      position: relative;
+      margin: 0 0 0 25px;
+
+      i {
+        position: absolute;
+        left: 0;
+        top: 3px;
+
+        font-size: 1.125rem;
+        color: $primary;
+      }
+    }
+    li:before {
+      content: '';
+      background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20class%3D%22icon%20icon-tabler%20icon-tabler-check%22%20width%3D%2220%22%20height%3D%2220%22%20viewBox%3D%220%200%2024%2024%22%20stroke-width%3D%223%22%20stroke%3D%22%2373b116%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%0A%20%20%3Cpath%20stroke%3D%22none%22%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M5%2012l5%205l10%20-10%22%20%2F%3E%0A%3C%2Fsvg%3E');
+      background-repeat: no-repeat;
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      left: -22px;
+      top: 4px;
+      display: block;
 
     }
+  }
+
+
 }
 
 @include media-breakpoint-up(lg) {
@@ -229,9 +277,9 @@
   .sticky-booking-cta {
     position: fixed;
     z-index: 50;
-    bottom:0;
-    left:0;
-    right:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 
     display: block;
 

@@ -11057,6 +11057,7 @@ hr {
     left: 0;
     opacity: 1;
     pointer-events: auto;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
   .header-main .navbar.navbar-expand-md .offcanvas-close {
     display: block;
@@ -11163,6 +11164,7 @@ hr {
     left: 0;
     opacity: 1;
     pointer-events: auto;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
   .header-main .navbar.navbar-expand-lg .offcanvas-close {
     display: block;
@@ -11269,6 +11271,7 @@ hr {
     left: 0;
     opacity: 1;
     pointer-events: auto;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
   .header-main .navbar.navbar-expand-xl .offcanvas-close {
     display: block;
@@ -11602,7 +11605,13 @@ button.select-from-control i.la {
 }
 
 .header-main {
-  border-bottom: 1px solid #e9ecef;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  z-index: 1500;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
 }
 @media (max-width: 991.98px) {
   .header-main > .container > .row {
@@ -11614,7 +11623,11 @@ button.select-from-control i.la {
     padding-right: 10px;
   }
 }
+.header-main.affix .navbar-brand {
+  height: 70px;
+}
 .header-main .navbar-brand {
+  transition: 300ms ease-in-out all;
   padding-top: 0;
   padding-bottom: 0;
   height: 70px;
@@ -11711,17 +11724,37 @@ button.select-from-control i.la {
   padding-right: 0.75rem;
   transition: all 0.3s;
 }
+@keyframes pulse {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(1.3, 1.3);
+  }
+  50% {
+    transform: scale(1, 1);
+  }
+  75% {
+    transform: scale(1.3, 1.3);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+.header-main .toggler.wishlist-toggler.animate svg {
+  animation: pulse 1.25s ease-in-out 1;
+}
 .header-main .toggler.wishlist-toggler:hover {
   color: #0066ff;
 }
 .header-main .toggler.wishlist-toggler i {
   font-size: 1.5rem;
 }
-.header-main .toggler.wishlist-toggler .count {
+.header-main .toggler.wishlist-toggler .wishlist-count {
   position: absolute;
   top: 0;
   right: 0;
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   color: #fff;
   width: 1.125rem;
   height: 1.125rem;
@@ -11732,59 +11765,59 @@ button.select-from-control i.la {
   background-color: #0066ff;
 }
 .header-main .dropdown-menu-wishlist {
-  padding: 20px;
-  min-width: 15rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  padding: 0.25rem 1rem 0.25rem 1rem;
+  width: 90vw;
+  max-width: 400px;
 }
-.header-main .dropdown-menu-wishlist .wishlist-items {
-  margin-bottom: 10px;
-  margin-top: -10px;
+.header-main .dropdown-menu-wishlist .wishlist-items p {
+  padding: 0.75rem 0 0 0;
 }
 .header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item {
-  padding-bottom: 10px;
-  padding-top: 10px;
-  position: relative;
+  display: flex;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #ccc;
 }
-.header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item button.wishlist-delete {
+.header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item:last-child {
   border: 0;
-  box-shadow: 0;
-  outline: none;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  transition: all 0.3s;
-  color: #adb5bd;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1.5rem;
-  height: 1.5rem;
-  text-align: right;
-  line-height: 1.5rem;
 }
-.header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item button.wishlist-delete:hover, .header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item button.wishlist-delete:focus, .header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item button.wishlist-delete:active {
-  box-shadow: 0;
-  outline: none;
+.header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item .wishlist-item-image {
+  flex: 1;
 }
-.header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item button.wishlist-delete:hover {
-  color: #212529;
+.header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item .wishlist-item-image img {
+  width: 100%;
+  height: auto;
 }
-.header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item span.name > a {
-  font-weight: 700;
-  color: #212529;
-  transition: all 0.3s;
+.header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item .wishlist-item-data {
+  flex: 2;
+  padding: 0 0 0 1rem;
 }
-.header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item span.name > a:active, .header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item span.name > a:focus, .header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item span.name > a:hover {
+.header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item .wishlist-item-data span {
+  display: block;
+}
+.header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item .wishlist-item-data span.price {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 0.8rem;
+  line-height: 0.8;
+  margin-top: 1rem;
+}
+.header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item .wishlist-item-data span.price .remove-from-wishlist {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item .wishlist-item-data span.name {
+  line-height: 1.2;
+  padding-bottom: 0.5rem;
+  font-weight: bold;
+}
+.header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item .wishlist-item-data span a {
   text-decoration: none;
+  color: #444;
 }
-.header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item span.name > a:active, .header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item span.name > a:focus {
-  color: #212529;
-}
-.header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item span.name > a:hover {
-  color: #0066ff;
-}
-.header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item + .wishlist-item {
-  border-top: 1px solid #e9ecef;
+.header-main .dropdown-menu-wishlist .wishlist-items .wishlist-item .wishlist-item-data span strong {
+  font-size: 1.3rem;
 }
 
 .navbar-toggler, .toggler {

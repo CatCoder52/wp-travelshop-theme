@@ -2,15 +2,12 @@
 /**
  * @todo optimize id, data tags in checkboxes
  * @var $name
- * @var $fieldname (feldname_sectioname)
+ * @var $fieldname (fieldname_sectioname)
  *
  * @var $id_tree
  */
 
 
-/**
- * @todo Pagination darf im Filter nicht verwendet werden.
- */
 
 if(empty($search) === false){
     $tree = new Pressmind\Search\Filter\Category($id_tree, $search);
