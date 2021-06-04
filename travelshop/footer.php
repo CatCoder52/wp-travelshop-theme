@@ -1,7 +1,7 @@
 <footer class="footer-main">
     <div class="container">
         <div class="row footer-boxes">
-            <div class="col-12 col-sm-6 col-lg-3">
+            <div class="col-12 col-sm-6 col-lg-3 address">
                 <div class="h5">
                     Kontakt
                 </div>
@@ -11,8 +11,15 @@
                     54321 Musterstadt
                 </p>
                 <p>
-                    <a href="tel:01234"><i class="la la-phone"></i> 01234 567889</a><br>
-                    <a href="mailto:info@example.de"><i class="la la-envelope"></i> info@example.de</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone" width="16" height="16" viewBox="0 4 25 24" stroke-width="2" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+                    </svg> <a href="tel:01234">01234 567889</a><br>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="16" height="16" viewBox="0 2 24 24" stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <rect x="3" y="5" width="18" height="14" rx="2" />
+                        <polyline points="3 7 12 13 21 7" />
+                    </svg> <a href="mailto:info@example.de">info@example.de</a>
                 </p>
             </div>
             <div class="col-12 col-sm-6 col-lg-3">
