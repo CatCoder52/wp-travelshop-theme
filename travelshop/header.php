@@ -123,8 +123,8 @@ global $PMTravelShop;
                     </nav>
                 <?php } ?>
             </div>
-            <div class="col align-self-center  d-none d-lg-block col-search" id="search">
-                <form class="input-group my-2 my-lg-0" action="<?php echo site_url().'/'.$PMTravelShop->RouteProcessor->get_url_by_object_type(TS_TOUR_PRODUCTS).'/'; ?>" method="GET">
+            <div class="col-auto align-self-center  d-none d-lg-block col-search" id="search">
+                <form class="form-string-search input-group my-2 my-lg-0" action="<?php echo site_url().'/'.$PMTravelShop->RouteProcessor->get_url_by_object_type(TS_TOUR_PRODUCTS).'/'; ?>" method="GET">
                     <input class="form-control auto-complete" type="search" data-autocomplete="true" placeholder="Suchbegriff..."
                            aria-label="Search" name="pm-t">
                     <div class="input-group-append">

@@ -12706,6 +12706,14 @@ hr {
 .input-group {
   position: relative;
 }
+.input-group.form-string-search {
+  max-width: 145px;
+}
+@media (min-width: 1200px) {
+  .input-group.form-string-search {
+    max-width: 180px;
+  }
+}
 .input-group .form-control, .input-group button.select-from-control {
   border-radius: 0.25rem !important;
 }
@@ -12802,7 +12810,7 @@ button.select-from-control span.selected-options {
   width: auto;
   overflow: hidden;
   position: relative;
-  z-indeX: 1;
+  z-index: 1;
 }
 button.select-from-control span.selected-options:after {
   content: "";
@@ -12828,7 +12836,8 @@ button.select-from-control .dropdown-clear {
   pointer-events: visible;
   display: none;
 }
-button.select-from-control .dropdown-clear path, button.select-from-control .dropdown-clear line {
+button.select-from-control .dropdown-clear path,
+button.select-from-control .dropdown-clear line {
   pointer-events: none;
 }
 button.select-from-control i.la {
@@ -13530,6 +13539,9 @@ button.select-from-control i.la {
   right: 0;
   top: 0;
 }
+.header-main .navbar-brand {
+  margin-right: 0;
+}
 @media (max-width: 991.98px) {
   .header-main > .container > .row {
     margin-left: -10px;
@@ -13578,7 +13590,7 @@ button.select-from-control i.la {
   padding-bottom: 0;
 }
 .header-main nav.navbar ul.navbar-nav > li > a {
-  font-size: 1.25rem;
+  font-size: 0.9rem;
   color: #495057;
   transition: color 0.3s;
 }
@@ -13587,6 +13599,11 @@ button.select-from-control i.la {
 }
 .header-main nav.navbar ul.navbar-nav > li > a:hover, .header-main nav.navbar ul.navbar-nav > li > a:hover:active, .header-main nav.navbar ul.navbar-nav > li > a:hover:focus {
   color: #0066ff;
+}
+@media (min-width: 1200px) {
+  .header-main nav.navbar ul.navbar-nav > li > a {
+    font-size: 1.25rem;
+  }
 }
 .header-main nav.navbar ul.navbar-nav > li.active > a {
   color: #0066ff;
