@@ -13,12 +13,20 @@ $page_size = 12;
 $search = BuildSearch::fromRequest($_GET, 'pm', true, $page_size);
 
 
+
 $mediaObjects = $search->getResults();
+
+/*
+if(!empty($_GET['debug'])){
+    echo '<pre style="width: 300px;">'.$search->getQuery().'</pre>';
+}
+*/
 
 $total_result = $search->getTotalResultCount();
 $current_page = $search->getPaginator()->getCurrentPage();
 $pages = $search->getPaginator()->getTotalPages();
 ?>
+
 
 <div class="list-filter-toggle mb-4">
     <button class="btn btn-block btn-secondary list-filter-open">
@@ -38,7 +46,6 @@ $pages = $search->getPaginator()->getTotalPages();
     </button>
 </div>
 
-<!-- CONTENT_SECTION_LIST_HEADER: START -->
 <section class="content-block content-block-list-header">
     <div class="list-header-title h2 mt-0 mb-0 float-lg-left">
         <strong>
@@ -48,11 +55,25 @@ $pages = $search->getPaginator()->getTotalPages();
         </strong> gefunden
     </div>
 </section>
-<!-- CONTENT_SECTION_LIST_HEADER: END -->
 
 
-<!-- CONTENT_SECTION_TRAVEL_COLS: START -->
 <section class="content-block content-block-travel-cols">
+
+    <div class="spinner">
+
+
+        <div class="sk-folding-cube">
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
+        </div>
+        <div class="msg" data-text="Suche Angebote...">Suche Angebote...</div>
+
+        <img class="brand" src="<?php echo SITE_URL;?>/wp-content/themes/travelshop/assets/img/travelshop-logo.svg">
+
+    </div>
+
     <div id="pm-search-result" class="row">
         <?php
 
@@ -68,8 +89,6 @@ $pages = $search->getPaginator()->getTotalPages();
 
         } ?>
 
-        <!-- Lösche Filter  um alle 149 Produkte zu sehen- -->
-
         <?php
         if($total_result == 0){
             ?>
@@ -82,7 +101,6 @@ $pages = $search->getPaginator()->getTotalPages();
         ?>
     </div>
 </section>
-<!-- CONTENT_SECTION_TRAVEL_COLS: END -->
 <?php
 // Pagination
 if ($pages > 1) {

@@ -21,6 +21,14 @@ jQuery(function ($) {
             }));
         }
 
+        this.setSpinner = function(search_result){
+            $('.spinner').show();
+            $(search_result).html('');
+        }
+        
+        this.removeSpinner = function(){
+            $('.spinner').hide();
+        }
 
         this.resultHandlerWishlist = function(data){
 
@@ -52,6 +60,8 @@ jQuery(function ($) {
 
         this.resultHandlerSearch = function(data, query_string, scrollto, total_result_span_id){
 
+            _this.removeSpinner();
+
             for (var key in data.html) {
                 if(key == 'search-result'){
                     $('#' + key).html(data.html[key]).find('.content-block-travel-cols').fadeIn()
@@ -80,13 +90,17 @@ jQuery(function ($) {
             }
 
             if(scrollto != null) {
-                $('html, body').stop().animate({
-                    'scrollTop': $(scrollto).offset().top - $('header.affix').height()
-                }, 200, 'swing');
+               _this.scrollTo(scrollto);
             }
 
             window.history.pushState(null, '', window.location.pathname + '?' + query_string);
 
+        }
+
+        this.scrollTo = function(scrollto){
+            $('html, body').stop().animate({
+                'scrollTop': $(scrollto).offset().top - $('header.affix').height()
+            }, 200, 'swing');
         }
 
 
@@ -204,7 +218,10 @@ jQuery(function ($) {
             $("#search-result").on('click', ".page-link", function (e) {
                 var href = $(this).attr('href').split('?');
                 var query_string = href[1];
-                _this.call(query_string, '#search-result', null, _this.resultHandlerSearch);
+
+                _this.scrollTo('#search-result');
+                _this.setSpinner('#pm-search-result');
+                _this.call(query_string, null, null, _this.resultHandlerSearch);
                 e.preventDefault();
             });
 
@@ -342,6 +359,7 @@ jQuery(function ($) {
                 // if we're on the same page, let fire the search and set the search results
                 var current_location = window.location.href.split('?');
                 if (current_location[0] == href[0]) {
+                    _this.setSpinner('#pm-search-result');
                     _this.call(query_string, null, '.search-bar-total-count', _this.resultHandlerSearch);
                 }else{
                     // in this case we have placed a search box on a site without a direct result output
