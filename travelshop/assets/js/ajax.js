@@ -323,6 +323,7 @@ jQuery(function ($) {
                 $("#search-filter").on('change', ".list-filter-box input, .list-filter-box select", function (e) {
                     var form = $(this).closest('form');
                     var query_string = _this.buildSearchQuery(form);
+                    _this.setSpinner('#pm-search-result');
                     _this.call(query_string, '#search-result', null, _this.resultHandlerSearch);
                     e.preventDefault();
                 });
@@ -331,6 +332,7 @@ jQuery(function ($) {
             $("#search-filter").on('click', ".list-filter-box-submit", function (e) {
                 var form = $(this).closest('form');
                 var query_string = _this.buildSearchQuery(form);
+                _this.setSpinner('#pm-search-result');
                 _this.call(query_string, '#search-result', null, _this.resultHandlerSearch);
                 e.preventDefault();
             });
