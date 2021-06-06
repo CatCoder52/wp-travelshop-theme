@@ -39,96 +39,134 @@ $cheapest_price = $args['cheapest_price'];
                     <div class="content-block-detail-booking-inner">
 
                         <!-- BOOKING_ROW_HEAD: START -->
-                        <div class="booking-row no-gutters row booking-row-head d-none d-md-flex">
-                            <div class="col-3">
-                                Termin
+                        <div class="booking-row no-gutters row booking-row-head d-none d-lg-flex">
+                            <div class="col-2">
+                                An-/Abreise
+                            </div>
+                            <div class="col-1">
+                                Dauer
                             </div>
                             <div class="col-2">
-                                Code
+                                Zimmerart
                             </div>
-                            <div class="col-2">
-                                Info
+                            <div class="col-1">
+                                Status
+                            </div>
+                            <div class="col-1">
+                                Anzahl
                             </div>
                             <div class="col-2">
                                 Preis p.P.
                             </div>
-                            <div class="col-3"></div>
+                            <div class="col-2">
+                                Gesamtpreis
+                            </div>
                         </div>
                         <!-- BOOKING_ROW_HEAD: END -->
 
                         <?php foreach ($mo->booking_packages as $booking_package) { ?>
 
-                            <!-- BOOKING_ROW_PROGRAMM: START -->
-                            <div class="booking-row no-gutters row booking-row-programm">
-                                <div class="col-12">
-                                    Reisedauer: <?php echo $booking_package->duration; ?>
-                                    Tag<?php echo($booking_package->duration > 1 ? 'e' : ''); ?>
-                                </div>
-                            </div>
-                            <!-- BOOKING_ROW_PROGRAMM: END -->
-
-
                             <?php foreach ($booking_package->dates as $date) { ?>
+                                <div class="booking-package">
                                 <?php
-                                foreach ($date->getHousingOptions() as $housing_option) {
+                                foreach ($date->getHousingOptions() as $key => $housing_option) {
                                     $housing_package = $housing_option->getHousingPackage();
                                     ?>
 
                                     <!-- BOOKING_ROW_DATE: START -->
                                     <div class="booking-row no-gutters row booking-row-date">
-                                        <div class="col-3 d-md-none">
-                                            <span>Termin</span>
-                                        </div>
-                                        <div class="col-9 col-md-3">
+                                        
+                                        <?php if($key == 0) { ?>
+                                            <div class="col-4 d-lg-none">
+                                                <span>An-/Abreise</span>
+                                            </div>
+                                            <div class="col-8 col-lg-2">
 
-                                            <span class="date">
-                                                <?php echo HelperFunctions::dayNumberToLocalDayName($date->departure->format('N'), 'short') ?> <?php echo $date->departure->format('d.m.'); ?>
-                                                -
-                                                <?php echo HelperFunctions::dayNumberToLocalDayName($date->arrival->format('N'), 'short') ?> <?php echo $date->arrival->format('d.m.Y'); ?>
-                                            </span>
+                                                <span class="date">
+                                                    <?php // echo HelperFunctions::dayNumberToLocalDayName($date->departure->format('N'), 'short') ?> 
+                                                    <?php echo $date->departure->format('d.m.'); ?>
+                                                    -
+                                                    <?php // echo HelperFunctions::dayNumberToLocalDayName($date->arrival->format('N'), 'short') ?> 
+                                                    <?php echo $date->arrival->format('d.m.Y'); ?>
+                                                </span>
 
-                                            <span class="badge badge-success">Buchbar</span>
-
+                                            </div>
+                                            <div class="col-4 d-block d-lg-none">
+                                                Dauer
+                                            </div>
+                                            <div class="col-8 col-lg-1">
+                                                <?php echo $booking_package->duration; ?>
+                                                Tag<?php echo($booking_package->duration > 1 ? 'e' : ''); ?>
+                                            </div>
+                                        <?php } else { ?>
+                                            <div class="d-none d-lg-block col-lg-2"></div>
+                                            <div class="d-none d-lg-block col-lg-1"></div>
+                                        <?php } ?>
+                                        <div class="col-4 d-block d-lg-none">
+                                            Zimmerart
                                         </div>
-                                        <div class="col-3 d-block d-md-none">
-                                            Code
-                                        </div>
-                                        <div class="col-9 col-md-2">
-                                            <?php
-                                            echo implode('/', array_filter([$date->code, $housing_option->code]));
-                                            ?>
-                                        </div>
-                                        <div class="col-3 d-block d-md-none">
-                                            Info
-                                        </div>
-                                        <div class="col-9 col-md-2">
+                                        <div class="col-8 col-lg-2">
                                             <?php
                                             echo implode(',', array_filter([$housing_package->name, $housing_option->name, $housing_option->board_type]));
                                             ?>
                                         </div>
-                                        <div class="col-3 d-block d-md-none text-nowrap">
+                                        <div class="col-4 d-block d-lg-none text-nowrap">
+                                            Status
+                                        </div>
+                                        <div class="col-8 col-lg-1">
+                                            <span class="badge badge-success">Buchbar</span>
+                                        </div>
+                                        <div class="col-4 d-block d-lg-none">
+                                            Anzahl
+                                        </div>
+                                        <div class="col-8 col-lg-1">
+                                            <select 
+                                                class="booking-housing-count"
+                                                data-price="<?php echo $housing_option->price; ?>"
+                                                data-imo="<?php echo $booking_package->id_media_object; ?>"
+                                                data-idbp="<?php echo $booking_package->id; ?>"
+                                                data-idhp="<?php echo $housing_package->id; ?>"
+                                                data-idd="<?php echo $date->id; ?>"
+                                                data-iho="<?php echo $housing_option->id; ?>"
+                                                data-occ="<?php echo $housing_option->occupancy; ?>">
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-4 d-block d-lg-none text-nowrap">
                                             Preis p.P.
                                         </div>
-                                        <div class="col-9 col-md-2">
-                                            <strong class="price"><?php
-
+                                        <div class="col-8 col-lg-2">
+                                            <span class="price"><?php
                                                 // @TODO use Cheapest Price here
                                                 echo HelperFunctions::number_format($housing_option->price);
-
                                                 ?>
-                                                €</strong>
+                                                €</span>
                                         </div>
-                                        <div class="col-12 col-md-3">
-
-                                            <a class="btn btn-outline-primary btn-block" target="_blank" rel="nofollow"
-                                               href="https://demo.pressmind-ibe.net/?imo=<?php echo $booking_package->id_media_object; ?>&idbp=<?php echo $booking_package->id; ?>&idhp=<?php echo $housing_package->id; ?>&idd=<?php echo $date->id; ?>&iho[<?php echo $housing_option->id; ?>]=1">
-                                                Jetzt Buchen
-                                            </a>
+                                        <div class="col-4 d-block d-lg-none text-nowrap">
+                                            Gesamtpreis
+                                        </div>
+                                        <div class="col-8 col-lg-2">
+                                            <span class="price-total">Anzahl wählen</span>
                                         </div>
                                     </div>
                                     <!-- BOOKING_ROW_DATE: END -->
 
                                 <?php } ?>
+                                <div class="booking-cta-area" style="display:none;">
+                                    <div class="col-12 col-lg-3">
+                                        <span class="booking-total">Anzahl wählen</span>
+                                        <a class="btn btn-primary btn-block booking-btn" target="_blank" rel="nofollow"
+                                            href="https://demo.pressmind-ibe.net/?imo=<?php echo $booking_package->id_media_object; ?>&idbp=<?php echo $booking_package->id; ?>&idhp=<?php echo $housing_package->id; ?>&idd=<?php echo $date->id; ?>&iho[<?php echo $housing_option->id; ?>]=1">
+                                            Jetzt Buchen
+                                        </a>
+                                    </div>
+                                </div>
+                                </div>
                             <?php } ?>
 
                         <?php } ?>
