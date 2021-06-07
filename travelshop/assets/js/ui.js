@@ -156,37 +156,4 @@ jQuery(function ($) {
             });
         });
     }
-// --------------------------------
-// --- Booking Offers
-// --------------------------------
-$('.booking-housing-count').on('change', function(e) {
-    const hoContainer = $(e.target).parent().parent().parent();
-    let bookingBtnHref = 'https://demo.pressmind-ibe.net/';
-    bookingBtnHref += `?imo=${$(e.target).data('imo')}&idbp=${$(e.target).data('idbp')}&idhp=${$(e.target).data('idhp')}&idd=${$(e.target).data('idd')}`;
-    let bookingPrice = 0;
-    hoContainer.find('.booking-row').each(function(key, item) {
-        const iho = $(item).find('.booking-housing-count').data('iho');
-        const housingCount = $(item).find('.booking-housing-count');
-        const priceTotalContainer = $(item).find('.price-total');
-        const quantity = housingCount.val();
-        const price = housingCount.data('price');
-        const occ = housingCount.data('occ');
-        if(quantity > 0) {
-            const priceTotal = quantity * price * occ;
-            priceTotalContainer.html(`${numberWithCommas(priceTotal.toFixed(2).replace(".", ","))} €`); 
-            bookingBtnHref += `&iho[${iho}]=${quantity}`
-        } else { 
-            priceTotalContainer.html(`Anzahl wählen`); 
-        }
-        bookingPrice += (quantity * price * occ);
-    });
-    if(bookingPrice > 0) {
-        hoContainer.find('.booking-cta-area').show();
-        hoContainer.find('.booking-total').html(`Gesamt: ${numberWithCommas(bookingPrice.toFixed(2).replace(".", ","))} €`);
-        hoContainer.find('.booking-btn').attr('href', bookingBtnHref);
-    } else {
-        hoContainer.find('.booking-cta-area').hide();
-    }
-});
-
 });
