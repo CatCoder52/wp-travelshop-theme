@@ -12518,6 +12518,9 @@ hr {
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row:nth-child(even) {
   background-color: #f8f9fa;
 }
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row:nth-child(odd) {
+  background-color: #e9ecef;
+}
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row .icon-tabler-circle-check {
   position: absolute;
   top: 0.75rem;
@@ -12594,12 +12597,15 @@ hr {
 }
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-head {
   font-size: 1rem;
-  font-weight: bold;
-  color: #495057;
+  color: #000;
   padding: 0.25rem 0;
   box-shadow: none;
   margin: 0 0 -2rem 0;
   border: 0;
+  background-color: transparent;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-head > div {
+  font-weight: bold;
 }
 @media (min-width: 992px) {
   .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-head > div {
