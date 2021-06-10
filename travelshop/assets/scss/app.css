@@ -12612,7 +12612,7 @@ hr {
   }
 }
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-head {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #000;
   padding: 0.25rem 0;
   box-shadow: none;
@@ -12624,7 +12624,7 @@ hr {
   transform: scale(1);
 }
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-head > div {
-  font-weight: bold;
+  font-weight: 500;
 }
 @media (min-width: 992px) {
   .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-head > div {
@@ -14042,6 +14042,7 @@ a {
 }
 .content-block-detail-info-grid a.btn-booking {
   margin: 0 0 30px 0;
+  font-weight: bold;
 }
 
 .detail-scroll-nav {

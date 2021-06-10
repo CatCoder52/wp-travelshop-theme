@@ -90,7 +90,7 @@ $cheapest_price = $args['cheapest_price'];
         </p>
         -->
     </div>
-    <a class="btn btn-primary btn-booking btn-block btn-lg smoothscroll"
+    <a class="btn btn-primary btn-booking btn-block smoothscroll"
        href="#content-block-detail-booking">
         Termine &amp; Preise
     </a>
@@ -98,7 +98,7 @@ $cheapest_price = $args['cheapest_price'];
     <div class="detail-price-box">
         <p class="small mt-2">Diese Reise ist zur Zeit nur auf Anfrage buchbar.</p>
     </div>
-    <a class="btn btn-primary btn-booking btn-block btn-lg smoothscroll"
+    <a class="btn btn-primary btn-booking btn-block smoothscroll"
        href="#content-block-detail-booking">
         Anfragen
     </a>
