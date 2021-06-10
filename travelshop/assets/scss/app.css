@@ -13490,7 +13490,6 @@ button.select-from-control i.la {
   line-height: 28px;
 }
 
-<<<<<<< HEAD
 .travelshop_hotline_batch {
   background: #007bff;
   color: #fff;
@@ -13500,7 +13499,46 @@ button.select-from-control i.la {
   position: relative;
   line-height: 1;
   border-radius: 5px;
-=======
+}
+.travelshop_hotline_batch small,
+.travelshop_hotline_batch br,
+.travelshop_hotline_batch a {
+  display: none;
+}
+.travelshop_hotline_batch .phone-link {
+  display: block;
+}
+.travelshop_hotline_batch .phone-link svg {
+  width: 25px;
+  height: auto;
+}
+@media only screen and (min-width: 500px) {
+  .travelshop_hotline_batch {
+    padding: 0.5rem 0.5rem 0.5rem 3rem;
+  }
+  .travelshop_hotline_batch small,
+.travelshop_hotline_batch a {
+    display: inline-block;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.8rem;
+  }
+  .travelshop_hotline_batch br {
+    display: block;
+  }
+  .travelshop_hotline_batch .phone-link {
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .travelshop_hotline_batch .phone-link svg {
+    width: 35px;
+    height: auto;
+  }
+}
+
 .spinner {
   margin: 20px auto 20px auto;
   display: none;
@@ -13618,50 +13656,6 @@ button.select-from-control i.la {
     -webkit-transform: perspective(140px) rotateY(180deg);
     transform: perspective(140px) rotateY(180deg);
     opacity: 0;
-  }
-}
-
-.footer-main {
-  padding-top: 30px;
-  background-color: #e9ecef;
->>>>>>> 4a045a3b7fbea7f70b262433ab8d5189632023e4
-}
-.travelshop_hotline_batch small,
-.travelshop_hotline_batch br,
-.travelshop_hotline_batch a {
-  display: none;
-}
-.travelshop_hotline_batch .phone-link {
-  display: block;
-}
-.travelshop_hotline_batch .phone-link svg {
-  width: 25px;
-  height: auto;
-}
-@media only screen and (min-width: 500px) {
-  .travelshop_hotline_batch {
-    padding: 0.5rem 0.5rem 0.5rem 3rem;
-  }
-  .travelshop_hotline_batch small,
-.travelshop_hotline_batch a {
-    display: inline-block;
-    font-weight: bold;
-    color: #fff;
-    text-decoration: none;
-    font-size: 0.8rem;
-  }
-  .travelshop_hotline_batch br {
-    display: block;
-  }
-  .travelshop_hotline_batch .phone-link {
-    position: absolute;
-    left: 0.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .travelshop_hotline_batch .phone-link svg {
-    width: 35px;
-    height: auto;
   }
 }
 
