@@ -1,6 +1,6 @@
 <?php
-function travelshop_menus() {
 
+add_action( 'init', function () {
     $locations = array(
         'primary'  => __( 'Desktop Horizontal Menu', 'travelshop' ),
         'expanded' => __( 'Desktop Expanded Menu', 'travelshop' ),
@@ -12,10 +12,7 @@ function travelshop_menus() {
     );
 
     register_nav_menus( $locations );
-}
-
-add_action( 'init', 'travelshop_menus' );
-
+});
 
 
 /**

@@ -95,6 +95,7 @@ video {
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -109,6 +110,7 @@ nav,
 section {
   display: block;
 }
+
 body {
   line-height: 1;
 }
@@ -127,6 +129,7 @@ q:after {
   content: "";
   content: none;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;

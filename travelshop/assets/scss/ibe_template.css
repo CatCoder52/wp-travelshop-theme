@@ -10398,7 +10398,7 @@ h3 {
   padding: 0;
 }
 .header-main .header-main-row .ibe_template_hotline {
-  background: #007bff;
+  background: #165d9c;
   color: #fff;
   text-align: left;
   padding: 0.75rem 0.75rem 0.75rem 2.8rem;
@@ -10445,8 +10445,32 @@ h3 {
   }
 }
 
-main {
-  padding: 2rem 0;
+main #app_loading_spinner {
+  opacity: 1 !important;
+}
+main #pressmind_ib3 {
+  padding-left: 0px;
+  padding-right: 0px;
+  margin: 80px auto;
+}
+@media only screen and (min-width: 900px) {
+  main #pressmind_ib3 {
+    margin: 120px auto;
+  }
+}
+main #pressmind_ib3 .pmi3-step .pmi3-step--header-wrapper {
+  top: 50px;
+}
+@media only screen and (min-width: 900px) {
+  main #pressmind_ib3 .pmi3-step .pmi3-step--header-wrapper {
+    top: 80px;
+  }
+}
+main #pressmind_ib3 .pmi3-trust-box {
+  margin: 0px;
+}
+main #pressmind_ib3 .pmi3-main-container {
+  padding-bottom: 0px;
 }
 
 footer .ibe_above_footer {
