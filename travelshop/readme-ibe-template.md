@@ -11,6 +11,11 @@ Place this url in the pressmind® IB3 config:
 https://www.your-domain.de/wp-content/themes/travelshop/ibe_template.php
 ````
 
+Overwrite CSS here:
+````
+/wp-content/themes/travelshop/assets/scss/ibe_template.scss
+````
+
 ## Menus
 The template has two menu positions, which can directly added and configured in wordpress.
 * ibe_head
