@@ -104,9 +104,16 @@ $cheapest_price = $args['cheapest_price'];
                                                 <path d="M3 7v11m0 -4h18m0 4v-8a2 2 0 0 0 -2 -2h-8v6" />
                                                 <circle cx="7" cy="10" r="1" />
                                             </svg>
-                                            <?php
-                                            echo implode(',', array_filter([$housing_package->name, $housing_option->name, $housing_option->board_type]));
-                                            ?>
+                                            <div>
+                                                <?php
+                                                echo implode(',', array_filter([$housing_package->name, $housing_option->name, $housing_option->board_type]));
+                                                ?><br />
+                                                <small>
+                                                    Belegung: <?php echo $housing_option->occupancy; echo ' Person'; if ($housing_option->occupancy > 1) { echo 'en'; } ?> 
+                                                    <br />
+                                                    inkl. Vollension
+                                                </small>
+                                            </div>
                                         </div>
                                         <div class="col-12 col-lg-2 price-container">
                                             <span class="price">ab <strong><?php
@@ -120,6 +127,14 @@ $cheapest_price = $args['cheapest_price'];
                                                 href="https://demo.pressmind-ibe.net/?imo=<?php echo $booking_package->id_media_object; ?>&idbp=<?php echo $booking_package->id; ?>&idhp=<?php echo $housing_package->id; ?>&idd=<?php echo $date->id; ?>&iho[<?php echo $housing_option->id; ?>]=1">
                                                 Zur Buchung
                                             </a>
+                                        </div>
+                                        <div class="bottom-bar">
+                                            <div class="col-12 col-lg-2">
+                                                <span>anstatt</span> <strong>649,00 €</strong>
+                                            </div>
+                                            <div class="col-12 col-lg-2">
+                                                <span>EZZ</span> <strong>100,00 €</strong>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- BOOKING_ROW_DATE: END -->

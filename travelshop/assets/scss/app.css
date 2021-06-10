@@ -12512,14 +12512,25 @@ hr {
   border-radius: 4px;
   position: relative;
   border-bottom: 3px solid #27ae60;
+  transform: scale(1);
+  transition: ease-in-out 200ms all;
   -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.11), 0 4px 5px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.11), 0 4px 5px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row:hover {
+  transform: scale(1.025);
 }
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row:nth-child(even) {
   background-color: #f8f9fa;
 }
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row:nth-child(even) .bottom-bar {
+  background-color: #e9ecef;
+}
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row:nth-child(odd) {
   background-color: #e9ecef;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row:nth-child(odd) .bottom-bar {
+  background-color: #dee2e6;
 }
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row .icon-tabler-circle-check {
   position: absolute;
@@ -12539,13 +12550,19 @@ hr {
   line-height: 1.5;
   font-weight: bold;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .btn {
   font-weight: bold;
 }
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div svg {
-  margin-right: 0.5rem;
+  margin: 0.08rem 0.5rem 0 0;
+  min-width: 20px;
+  min-height: 20px;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div small {
+  display: inline-block;
+  line-height: 1.3;
 }
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div.price-container {
   padding-top: 0.5rem;
@@ -12562,7 +12579,7 @@ hr {
 @media (min-width: 992px) {
   .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div {
     padding: 1rem 0.25rem;
-    font-weight: normal;
+    font-weight: 500;
   }
   .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div.price-container {
     padding: 1rem 0.25rem;
@@ -12573,13 +12590,12 @@ hr {
   .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div:nth-child(2) {
     padding-left: 1rem;
   }
-  .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div:last-child {
+  .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div:nth-last-child(2) {
     padding-right: 1rem;
   }
 }
 @media (min-width: 1200px) {
   .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div {
-    font-weight: bold;
     padding: 1rem;
   }
   .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div.price-container {
@@ -12604,6 +12620,9 @@ hr {
   border: 0;
   background-color: transparent;
 }
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-head:hover {
+  transform: scale(1);
+}
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.booking-row-head > div {
   font-weight: bold;
 }
@@ -12623,11 +12642,19 @@ hr {
     padding: 1rem;
   }
 }
-.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row .booking-housing-count {
-  padding: 0.25rem 0.5rem;
-  border: 1px solid #ced4da;
-  border-radius: 3px;
-  background-color: #fff;
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row .bottom-bar {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  margin: 1rem 0 -1rem 0;
+  padding: 0.5rem 0;
+  justify-content: flex-end;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row .bottom-bar > div {
+  margin: 0.25rem 0;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row .bottom-bar span {
+  font-weight: normal;
 }
 
 .content-block {
