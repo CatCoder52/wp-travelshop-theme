@@ -1,7 +1,7 @@
 // -- vendors
 @import "vendors/bootstrap/bootstrap";
 @import "vendors/ion-rangeslider/range-slider";
-@import "vendors/tiny-slider/tiny-slider"; 
+@import "vendors/tiny-slider/tiny-slider";
 @import "vendors/daterangepicker/daterangepicker";
 @import "vendors/pretty-dropdowns/prettydropdowns";
 
@@ -36,6 +36,7 @@
 @import "components/search-bar";
 @import "components/autocomplete-suggestions";
 @import "components/accordion";
+@import "components/service-hotline-batch";
 @import "components/spinner";
 
 // -- layout
@@ -52,6 +53,6 @@
 // this just an example for you're theme starting point
 // @import "pages/themes/theme-ananas";
 
-body{
+body {
   font-display: swap !important;
 }
