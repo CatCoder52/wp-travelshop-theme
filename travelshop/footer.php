@@ -1,113 +1,172 @@
 <footer class="footer-main">
-    <div class="container">
-        <div class="row footer-boxes">
-            <div class="col-12 col-sm-6 col-lg-3 address">
-                <div class="h5">
-                    Kontakt
-                </div>
-                <p>
-                    <strong>Touroperator GmbH</strong><br>
-                    Urlaubsgasse 1<br>
-                    54321 Musterstadt
-                </p>
-                <p>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone" width="16" height="16" viewBox="0 4 25 24" stroke-width="2" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <div class="travelshop_above_footer">
+        <div class="container">
+            <div class="travelshop_trust_item">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shield-lock" width="300"
+                         height="300" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6c757d" fill="none"
+                         stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
-                    </svg> <a href="tel:01234">01234 567889</a><br>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="16" height="16" viewBox="0 2 24 24" stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3"/>
+                        <circle cx="12" cy="11" r="1"/>
+                        <line x1="12" y1="12" x2="12" y2="14.5"/>
+                    </svg>
+                </div>
+                <span>SSL-Schutz</span>
+            </div>
+            <div class="travelshop_trust_item">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-discount" width="300"
+                         height="300" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6c757d" fill="none"
+                         stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <rect x="3" y="5" width="18" height="14" rx="2" />
-                        <polyline points="3 7 12 13 21 7" />
-                    </svg> <a href="mailto:info@example.de">info@example.de</a>
-                </p>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-3">
-                <?php
-                if (has_nav_menu('footer_column_1')) {
-
-                    $locations = get_nav_menu_locations(); //get all menu locations
-                    $footer_1_menu = wp_get_nav_menu_object($locations['footer_column_1']);
-
-                    ?>
-                    <div class="h5">
-                        <?php echo !empty($footer_1_menu->name) ? $footer_1_menu->name : ''; ?>
-                    </div>
-                    <nav class="nav flex-column">
-                        <ul class="">
-                            <?php
-                            wp_nav_menu(
-                                array(
-                                    'container' => '',
-                                    'depth' => 1,
-                                    'items_wrap' => '%3$s',
-                                    'theme_location' => 'footer_column_1',
-                                )
-                            );
-                            ?>
-                        </ul>
-                    </nav>
-                <?php } ?>
-            </div>
-
-            <div class="col-12 col-sm-6 col-lg-3">
-                <?php if (has_nav_menu('footer_column_2')) {
-
-                    $locations = get_nav_menu_locations(); //get all menu locations
-                    $footer_2_menu = wp_get_nav_menu_object($locations['footer_column_2']);
-
-                    ?>
-                    <div class="h5">
-                        <?php echo !empty($footer_2_menu->name) ? $footer_2_menu->name : ''; ?>
-                    </div>
-                    <nav class="nav flex-column">
-                        <ul class="">
-                            <?php
-                            wp_nav_menu(
-                                array(
-                                    'container' => '',
-                                    'depth' => 1,
-                                    'items_wrap' => '%3$s',
-                                    'theme_location' => 'footer_column_2',
-                                )
-                            );
-                            ?>
-                        </ul>
-                    </nav>
-                <?php } ?>
-
-
-                <div class="h5">
-                    Searchroutes
+                        <line x1="9" y1="15" x2="15" y2="9"/>
+                        <circle cx="9.5" cy="9.5" r=".5" fill="currentColor"/>
+                        <circle cx="14.5" cy="14.5" r=".5" fill="currentColor"/>
+                        <circle cx="12" cy="12" r="9"/>
+                    </svg>
                 </div>
-                <?php
-                // For Example purposes only, output all search routes
-                echo do_shortcode('[ts-searchroutes]');
-                ?>
+                <span>Bester Preis</span>
             </div>
-
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="h5">
-                    Newsletter
+            <div class="travelshop_trust_item">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-credit-card" width="300"
+                         height="300" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6c757d" fill="none"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <rect x="3" y="5" width="18" height="14" rx="3"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                        <line x1="7" y1="15" x2="7.01" y2="15"/>
+                        <line x1="11" y1="15" x2="13" y2="15"/>
+                    </svg>
                 </div>
-                <p>
-                    Abonniere unseren Newsletter und verpasse keine Aktion!
-                </p>
-
-                <form class="input-group mt-4" action="#" method="post">
-                    <input class="form-control" type="text" placeholder="E-Mail Adresse">
-                    <div class="input-group-append">
-                        <button class="btn btn-link" aria-label="Anmelden">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-send" width="24"
-                                 height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#607D8B" fill="none"
-                                 stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <line x1="10" y1="14" x2="21" y2="3"/>
-                                <path d="M21 3l-6.5 18a0.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a0.55 .55 0 0 1 0 -1l18 -6.5"/>
-                            </svg>
-                        </button>
+                <span>Sichere Zahlung</span>
+            </div>
+            <div class="travelshop_trust_item">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="300"
+                         height="300" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6c757d" fill="none"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <rect x="3" y="5" width="18" height="14" rx="2"/>
+                        <polyline points="3 7 12 13 21 7"/>
+                    </svg>
+                </div>
+                <span>Reise-Infos</span>
+            </div>
+        </div>
+    </div>
+    <div class="travelshop_main_footer">
+        <div class="container">
+            <div class="row footer-boxes">
+                <div class="col-12 col-sm-6 col-lg-3 address">
+                    <div class="h5">
+                        Kontakt
                     </div>
-                </form>
+                    <p>
+                        <strong>Touroperator GmbH</strong><br>
+                        Urlaubsgasse 1<br>
+                        54321 Musterstadt
+                    </p>
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone" width="16" height="16" viewBox="0 4 25 24" stroke-width="2" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+                        </svg> <a href="tel:01234">01234 567889</a><br>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="16" height="16" viewBox="0 2 24 24" stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <rect x="3" y="5" width="18" height="14" rx="2" />
+                            <polyline points="3 7 12 13 21 7" />
+                        </svg> <a href="mailto:info@example.de">info@example.de</a>
+                    </p>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <?php
+                    if (has_nav_menu('footer_column_1')) {
+
+                        $locations = get_nav_menu_locations(); //get all menu locations
+                        $footer_1_menu = wp_get_nav_menu_object($locations['footer_column_1']);
+
+                        ?>
+                        <div class="h5">
+                            <?php echo !empty($footer_1_menu->name) ? $footer_1_menu->name : ''; ?>
+                        </div>
+                        <nav class="nav flex-column">
+                            <ul class="">
+                                <?php
+                                wp_nav_menu(
+                                    array(
+                                        'container' => '',
+                                        'depth' => 1,
+                                        'items_wrap' => '%3$s',
+                                        'theme_location' => 'footer_column_1',
+                                    )
+                                );
+                                ?>
+                            </ul>
+                        </nav>
+                    <?php } ?>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <?php if (has_nav_menu('footer_column_2')) {
+
+                        $locations = get_nav_menu_locations(); //get all menu locations
+                        $footer_2_menu = wp_get_nav_menu_object($locations['footer_column_2']);
+
+                        ?>
+                        <div class="h5">
+                            <?php echo !empty($footer_2_menu->name) ? $footer_2_menu->name : ''; ?>
+                        </div>
+                        <nav class="nav flex-column">
+                            <ul class="">
+                                <?php
+                                wp_nav_menu(
+                                    array(
+                                        'container' => '',
+                                        'depth' => 1,
+                                        'items_wrap' => '%3$s',
+                                        'theme_location' => 'footer_column_2',
+                                    )
+                                );
+                                ?>
+                            </ul>
+                        </nav>
+                    <?php } ?>
+
+
+                    <div class="h5">
+                        Searchroutes
+                    </div>
+                    <?php
+                    // For Example purposes only, output all search routes
+                    echo do_shortcode('[ts-searchroutes]');
+                    ?>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="h5">
+                        Newsletter
+                    </div>
+                    <p>
+                        Abonniere unseren Newsletter und verpasse keine Aktion!
+                    </p>
+
+                    <form class="input-group mt-4" action="#" method="post">
+                        <input class="form-control" type="text" placeholder="E-Mail Adresse">
+                        <div class="input-group-append">
+                            <button class="btn btn-link" aria-label="Anmelden">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-send" width="24"
+                                    height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#607D8B" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                    <path d="M21 3l-6.5 18a0.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a0.55 .55 0 0 1 0 -1l18 -6.5"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
