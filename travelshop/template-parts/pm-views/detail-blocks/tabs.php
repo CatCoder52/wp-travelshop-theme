@@ -178,7 +178,7 @@ $mo = $args['mo'];
                                 <polyline points="10.5 4.75 9 4 3 7 3 20 9 17 15 20 21 17 21 15"/>
                                 <line x1="9" y1="4" x2="9" y2="17"/>
                                 <line x1="15" y1="15" x2="15" y2="20"/>
-                            </svg><?php echo strip_tags($moc->beschreibung_headline_default); ?>
+                            </svg><?php echo !empty(strip_tags($moc->beschreibung_headline_default)) ? strip_tags($moc->beschreibung_headline_default) : 'Beschreibung'; ?>
                         </a>
                     </h4>
                 </div>
