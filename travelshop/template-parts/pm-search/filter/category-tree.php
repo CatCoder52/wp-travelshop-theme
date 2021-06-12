@@ -3,14 +3,17 @@
  * @todo optimize id, data tags in checkboxes
  * @var $name
  * @var $fieldname (fieldname_sectioname)
- *
+ * @var string $condition_type value is cl or c, cl = category tree is a sub tree from a object link
+ * @var Pressmind\Search $search
+ * @var Pressmind\Search $filter_search
  * @var $id_tree
  */
 
+// @TODO in some cases it's possible that the filter lists items that have not a valid search result.
+// related to category tree's from object links.
 
-
-if(empty($search) === false){
-    $tree = new Pressmind\Search\Filter\Category($id_tree, $search);
+if(empty($filter_search) === false){
+    $tree = new Pressmind\Search\Filter\Category($id_tree, $filter_search);
     $treeItems = $tree->getResult();
 }
 
@@ -21,11 +24,11 @@ $treeItems = $tree->items;
 */
 
 $selected = array();
-if(empty($_GET['pm-c'][$fieldname]) === false && preg_match_all("/[a-zA-Z0-9\-]+(?=[,|\+]?)/", $_GET['pm-c'][$fieldname], $matches) > 0){
+if(empty($_GET['pm-'.$condition_type][$fieldname]) === false && preg_match_all("/[a-zA-Z0-9\-]+(?=[,|\+]?)/", $_GET['pm-'.$condition_type][$fieldname], $matches) > 0){
     $selected = empty($matches[0]) ? array() : $matches[0];
 }
 
-if(empty($_GET['pm-c']) === false && key_exists($fieldname, $_GET['pm-c']) === true){
+if(empty($_GET['pm-'.$condition_type]) === false && key_exists($fieldname, $_GET['pm-'.$condition_type]) === true){
    // return;
 }
 
@@ -37,7 +40,7 @@ if (empty($treeItems) === false) {
             <strong><?php echo $name; ?></strong>
         </div>
         <div class="list-filter-box-body">
-            <input type="hidden" data-behavior="OR" name="pm-c[<?php echo $fieldname;?>]" value="">
+            <input type="hidden" data-behavior="OR" name="pm-<?php echo $condition_type;?>[<?php echo $fieldname;?>]" value="">
 
             <?php
             foreach ($treeItems as $item) {
@@ -59,7 +62,7 @@ if (empty($treeItems) === false) {
                 <div class="form-check <?php echo $has_childs ? 'has-second-level' : ''; echo $is_open;?>">
 
                     <input id="<?php echo $uuid; ?>" class="form-check-input" type="checkbox"
-                           data-id-parent="" data-id="<?php echo $item->id; ?>" data-name="<?php echo $fieldname;?>"
+                           data-id-parent="" data-id="<?php echo $item->id; ?>" data-name="<?php echo $fieldname;?>" data-type="<?php echo $condition_type;?>"
                     <?php echo in_array($item->id, $selected) ? 'checked' : '';?>
                     ><span><i
                         ><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler-check" width="12" height="12" viewBox="0 0 24 24" stroke-width="3" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">

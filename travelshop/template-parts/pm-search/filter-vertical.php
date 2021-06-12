@@ -34,38 +34,22 @@ $search = BuildSearch::fromRequest($_GET, 'pm', false);
                 require 'filter/price-range.php';
                 require 'filter/duration-range.php';
 
-                // @todo refactor
-                $id_tree = 1207;
-                $name = 'Zielgebiete';
-                $fieldname = 'zielgebiet_default';
+                // remove the filter from the search result, to allow access to all items in the filter
+                // if you remove this lines, the filter will be collapsed to the possible items that matches
+                // to the current search
+                $filter_fieldnames = [];
+                foreach(TS_FILTERS as $filter){
+                    $filter_fieldnames[] = 'pm-'.$filter['condition_type'].'['.$filter['fieldname'].']';
+                }
 
-                require 'filter/category-tree.php';
-
-
-                $id_tree = 1206;
-                $name = 'Reiseart';
-                $fieldname = 'reiseart_default';
-                require 'filter/category-tree.php';
+                $filter_search = BuildSearch::rebuild($filter_fieldnames);
 
 
-                $id_tree = 2655;
-                $name = 'Beförderung';
-                $fieldname = 'befoerderung_default';
-                require 'filter/category-tree.php';
-
-
-                $id_tree = 1204;
-                $name = 'Saison';
-                $fieldname = 'saison_default';
-                require 'filter/category-tree.php';
-
-                // Example of a category tree from a sub object
-                /*
-                $id_tree = 1205;
-                $name = 'Hotelkategorie';
-                $fieldname = 'kategorie_default';
-                require 'filter/category-tree.php';
-                */
+                // draw filters
+                foreach(TS_FILTERS as $filter){
+                    list($id_tree, $fieldname, $name, $condition_type) = array_values($filter);
+                    require 'filter/category-tree.php';
+                }
 
                 ?>
                 <div class="list-filter-box list-filter-box-submit">

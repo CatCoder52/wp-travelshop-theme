@@ -2,15 +2,16 @@
 /**
  * @todo optimize id & data tags in checkboxes
  * @var $name
- * @var $fieldname (feldname_sectioname)
- *
+ * @var $fieldname (fieldname_sectionname)
+ * @var string $condition_type value is cl or c, cl = category tree is a sub tree from a object link
+
+ * @var $search
  * @var $id_tree
  */
 
 
 $tree = new Pressmind\Search\Filter\Category($id_tree, $search);
 $treeItems = $tree->getResult();
-
 
 /*
 This code will list all items, without a Filter
@@ -22,7 +23,7 @@ $treeItems = $tree->items;
 //$tree2 = \Pressmind\ORM\Object\CategoryTree::findForMediaObjectType("Tagesfahrt", 'reiseart_default');
 
 $selected = array();
-if(empty($_GET['pm-c'][$fieldname]) === false && preg_match_all("/[a-zA-Z0-9\-]+(?=[,|\+]?)/", $_GET['pm-c'][$fieldname], $matches) > 0){
+if(empty($_GET['pm-'.$condition_type][$fieldname]) === false && preg_match_all("/[a-zA-Z0-9\-]+(?=[,|\+]?)/", $_GET['pm-'.$condition_type][$fieldname], $matches) > 0){
     $selected = empty($matches[0]) ? array() : $matches[0];
 }
 
@@ -47,6 +48,7 @@ if (empty($treeItems) === false) {
             <div class="dropdown-menu dropdown-menu-select"
                  aria-labelledby="dropdownReiseziel">
                 <div class="multi-level-checkboxes">
+                    <input type="hidden" data-behavior="OR" name="pm-<?php echo $condition_type;?>[<?php echo $fieldname;?>]" value="">
 
                     <?php
                     foreach ($treeItems as $item) {
@@ -58,6 +60,7 @@ if (empty($treeItems) === false) {
                             <input class="form-check-input" type="checkbox"
                                    data-id-parent="" data-id="<?php echo $item->id; ?>"
                                    data-name="<?php echo $fieldname; ?>"
+                                   data-type="<?php echo $condition_type;?>"
                                    id="<?php echo $uuid; ?>"
                                     <?php echo in_array($item->id, $selected) ? 'checked' : '';?>><span><i><svg xmlns="http://www.w3.org/2000/svg"
                                                                                 class="icon icon-tabler-check"

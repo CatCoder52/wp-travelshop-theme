@@ -46,6 +46,8 @@ if (isset($_GET['pm-pr']) === true && preg_match('/^([0-9]+)\-([0-9]+)$/', $_GET
                data-grid="false"
                data-prefix="€ "
                data-step="100"
+               data-drag-interval="true"
+               data-min-interval="100"
                data-hide-min-max="1"
                data-hide-min-min="1"
                data-input-values-separator="-"
