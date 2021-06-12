@@ -12511,11 +12511,14 @@ hr {
   padding: 1rem 0;
   border-radius: 4px;
   position: relative;
-  border-bottom: 3px solid #27ae60;
+  border-bottom: 3px solid silver;
   transform: scale(1);
   transition: ease-in-out 200ms all;
   -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.11), 0 4px 5px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.11), 0 4px 5px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.checked {
+  border-bottom: 3px solid #27ae60;
 }
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row:hover {
   transform: scale(1.025);
@@ -12552,10 +12555,16 @@ hr {
   display: flex;
   align-items: flex-start;
 }
-.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .btn {
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn {
   font-weight: bold;
 }
-.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div svg {
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.green {
+  background-color: #27ae60;
+  border-color: #27ae60;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-clock,
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-calendar-event,
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-bed {
   margin: 0.08rem 0.5rem 0 0;
   min-width: 20px;
   min-height: 20px;
@@ -12601,7 +12610,9 @@ hr {
   .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div.price-container {
     padding: 1rem;
   }
-  .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div svg {
+  .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-clock,
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-calendar-event,
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-bed {
     margin-right: 1rem;
   }
 }
@@ -14163,6 +14174,10 @@ a {
 .content-block-detail-info-grid a.btn-booking {
   margin: 0 0 30px 0;
   font-weight: bold;
+}
+.content-block-detail-info-grid a.btn-booking.green {
+  background-color: #27ae60;
+  border-color: #27ae60;
 }
 
 .detail-scroll-nav {

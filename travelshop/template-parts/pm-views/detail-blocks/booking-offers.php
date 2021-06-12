@@ -60,14 +60,16 @@ $cheapest_price = $args['cheapest_price'];
                                 <?php
                                 foreach ($date->getHousingOptions() as $key => $housing_option) {
                                     $housing_package = $housing_option->getHousingPackage();
+                                    $checked = ($cheapest_price->id_option == $housing_option->id);
                                     ?>
-
-                                    <div class="booking-row no-gutters row booking-row-date">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="#27ae60" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                            <circle stroke="#27ae60" cx="12" cy="12" r="9" />
-                                            <path stroke="#ffffff" d="M9 12l2 2l4 -4" />
-                                        </svg>
+                                    <div class="booking-row no-gutters row booking-row-date<?php echo $checked ? ' checked' : '';?>">
+                                        <?php if($checked){?>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="#27ae60" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                <circle stroke="#27ae60" cx="12" cy="12" r="9" />
+                                                <path stroke="#ffffff" d="M9 12l2 2l4 -4" />
+                                            </svg>
+                                        <?php } ?>
                                         <div class="col-12 col-lg-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -119,9 +121,12 @@ $cheapest_price = $args['cheapest_price'];
                                                 ?>&nbsp;€</strong></span>
                                         </div>
                                         <div class="col-12 col-lg-2">
-                                            <a class="btn btn-primary btn-block booking-btn" target="_blank" rel="nofollow"
+                                            <a class="btn btn-primary btn-block booking-btn green" target="_blank" rel="nofollow"
                                                 href="https://demo.pressmind-ibe.net/?imo=<?php echo $booking_package->id_media_object; ?>&idbp=<?php echo $booking_package->id; ?>&idhp=<?php echo $housing_package->id; ?>&idd=<?php echo $date->id; ?>&iho[<?php echo $housing_option->id; ?>]=1">
-                                                zur Buchung
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="16" height="16" viewBox="0 0 24 24" stroke-width="3" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                    <polyline points="9 6 15 12 9 18" />
+                                                </svg>zur Buchung
                                             </a>
                                         </div>
                                         <!-- TODO: Add pseudo price

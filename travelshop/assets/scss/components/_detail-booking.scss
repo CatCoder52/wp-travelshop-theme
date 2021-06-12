@@ -18,13 +18,18 @@
 			padding: 1rem 0;
 			border-radius: 4px;
 			position: relative;
-			border-bottom: 3px solid #27ae60;
+			border-bottom: 3px solid silver;
 			transform: scale(1);
 			transition: ease-in-out 200ms all;
 			-webkit-box-shadow: 0 1px 10px rgb(0 0 0 / 11%), 0 4px 5px rgb(0 0 0 / 5%),
 				0 2px 4px rgb(0 0 0 / 10%);
 			box-shadow: 0 1px 10px rgb(0 0 0 / 11%), 0 4px 5px rgb(0 0 0 / 5%),
 				0 2px 4px rgb(0 0 0 / 10%);
+
+			&.checked{
+				border-bottom: 3px solid #27ae60;
+			}
+
 			&:hover {
 				transform: scale(1.025);
 			}
@@ -57,10 +62,20 @@
 				font-weight: bold;
 				display: flex;
 				align-items: flex-start;
-				.btn {
+				.booking-btn {
 					font-weight: bold;
+
+					&.green{
+						background-color: #27ae60;
+						border-color: #27ae60;
+					}
+
+
+
 				}
-				svg {
+				.icon-tabler-clock,
+				.icon-tabler-calendar-event,
+				.icon-tabler-bed {
 					margin: 0.08rem 0.5rem 0 0;
 					min-width: 20px;
 					min-height: 20px;
@@ -102,7 +117,9 @@
 					&.price-container {
 						padding: 1rem;
 					}
-					svg {
+					.icon-tabler-clock,
+					.icon-tabler-calendar-event,
+					.icon-tabler-bed {
 						margin-right: 1rem;
 					}
 				}

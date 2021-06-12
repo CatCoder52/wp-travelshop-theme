@@ -91,9 +91,12 @@ $cheapest_price = $args['cheapest_price'];
         </p>
         -->
     </div>
-    <a class="btn btn-primary btn-booking btn-block smoothscroll"
+    <a class="btn btn-primary btn-booking btn-block green smoothscroll"
        href="#content-block-detail-booking">
-        Termine &amp; Preise
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="16" height="16" viewBox="0 0 24 24" stroke-width="3" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <polyline points="9 6 15 12 9 18" />
+        </svg>Termine &amp; Preise
     </a>
 <?php } else { ?>
     <div class="detail-price-box">

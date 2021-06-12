@@ -118,6 +118,12 @@
 	a.btn-booking {
 		margin: 0 0 $grid-gutter-width 0;
 		font-weight: bold;
+
+		&.green{
+			background-color: #27ae60;
+			border-color: #27ae60;
+		}
+
 	}
 }
 
