@@ -94,6 +94,11 @@ define('TS_PRICE_THOUSANDS_SEPARATOR', '.');
 define('TS_PRICE_DECIMALS', 0);
 
 /**
+ * Url to the pressmind IB3 if used
+ */
+define('TS_IBE3_BASE_URL', 'https://demo.pressmind-ibe.net/');
+
+/**
  * Setup Redis,
  */
 

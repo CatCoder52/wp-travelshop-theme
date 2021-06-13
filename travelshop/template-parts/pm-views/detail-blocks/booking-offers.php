@@ -13,16 +13,6 @@ use Pressmind\Search\CheapestPrice;
 $mo = $args['media_object'];
 
 /**
- * @var Custom\MediaType\Reise $moc
- */
-$moc = $mo->getDataForLanguage();
-
-/**
- * @var Pressmind\ORM\Object\Touristic\Booking\Package[] $booking_packages
- */
-$booking_packages = $mo->booking_packages;
-
-/**
  * @var Pressmind\ORM\Object\CheapestPriceSpeed $cheapest_price
  */
 $cheapest_price = $args['cheapest_price'];
@@ -35,7 +25,11 @@ $cheapest_price = $args['cheapest_price'];
             <div class="row">
                 <div class="col-12">
                     <h2>Termine &amp; Preise</h2>
-
+                </div>
+            </div>
+           <?php require 'booking-offers-calendar.php'; ?>
+            <div class="row">
+                <div class="col-12">
                     <div class="content-block-detail-booking-inner">
 
                         <div class="booking-row no-gutters row booking-row-head d-none d-lg-flex">
@@ -122,7 +116,7 @@ $cheapest_price = $args['cheapest_price'];
                                         </div>
                                         <div class="col-12 col-lg-2">
                                             <a class="btn btn-primary btn-block booking-btn green" target="_blank" rel="nofollow"
-                                                href="https://demo.pressmind-ibe.net/?imo=<?php echo $booking_package->id_media_object; ?>&idbp=<?php echo $booking_package->id; ?>&idhp=<?php echo $housing_package->id; ?>&idd=<?php echo $date->id; ?>&iho[<?php echo $housing_option->id; ?>]=1">
+                                               href="<?php echo \Pressmind\Travelshop\IB3Tools::get_bookinglink($booking_package->id_media_object, $booking_package->id, $date->id, $housing_package->id);?>"
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="16" height="16" viewBox="0 0 24 24" stroke-width="3" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                     <polyline points="9 6 15 12 9 18" />

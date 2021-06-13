@@ -12668,6 +12668,77 @@ hr {
   font-weight: normal;
 }
 
+.content-block-detail-booking-calendar {
+  margin-bottom: 20px;
+}
+@media (max-width: 991.98px) {
+  .content-block-detail-booking-calendar {
+    display: none;
+  }
+}
+.content-block-detail-booking-calendar .calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+.content-block-detail-booking-calendar .booking-calendar-slider {
+  width: 100%;
+}
+.content-block-detail-booking-calendar .tns-controls button {
+  border: 0px;
+  background-color: #0066ff;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+.content-block-detail-booking-calendar .tns-controls button:disabled {
+  background-color: silver;
+}
+.content-block-detail-booking-calendar .calendar-wrapper {
+  width: 350px;
+  display: inline-block;
+  margin-right: 10px;
+}
+.content-block-detail-booking-calendar .calendar-wrapper.tns-item {
+  width: auto !important;
+}
+.content-block-detail-booking-calendar .calendar-wrapper .month-name {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.content-block-detail-booking-calendar .weekday {
+  background: #eee;
+  padding-top: 12px;
+}
+.content-block-detail-booking-calendar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.content-block-detail-booking-calendar ul li {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  padding-top: 5px;
+  border-top: 1px solid silver;
+  cursor: default;
+}
+.content-block-detail-booking-calendar ul li.travel-date {
+  background-color: #27ae60;
+  color: white;
+  font-weight: bold;
+}
+.content-block-detail-booking-calendar ul li.travel-date a {
+  color: white;
+  text-decoration: none;
+}
+.content-block-detail-booking-calendar ul li.travel-date div {
+  font-size: 10px;
+  font-weight: bold;
+}
+
 .content-block {
   padding: 30px 0 0 0;
 }
