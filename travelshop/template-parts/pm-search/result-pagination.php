@@ -19,14 +19,21 @@
                         </svg></a>
                 </li>
                 <?php
-
-                //prevent result from overloading
+                // prevent result from overloading
                 if($current_page > $pages){
                     $current_page = $pages;
                 }
 
-                for ($page = 1; $page <= $pages; $page++) {
+                // show max five numerated pagination buttons
+                $from = 1;
+                $to = $pages;
+                if($pages > 5) {
+                    $to = ceil($current_page / 5) * 5;
+                    $to = $to > $pages ? $pages : $to;
+                    $from = $to - 5 + 1;
+                }
 
+                for ($page = $from; $page <= $to; $page++) {
                     ?>
                     <li class="page-item<?php echo ($current_page == $page) ? ' active' : ''; ?>"><a
                             class="page-link"
