@@ -1,0 +1,85 @@
+.content-block-detail-booking-calendar {
+
+	margin-bottom: 20px;
+
+	// don't show the calendar on small devices
+	@include media-breakpoint-down(md) {
+ 		display: none;
+	}
+
+	.calendar {
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+	}
+
+	.booking-calendar-slider{
+		width: 100%;
+	}
+
+	// tns = tinyslider
+	.tns-controls{
+		button{
+			border: 0px;
+			background-color: $primary;
+			border-radius: 5px;
+			margin-left: 5px;
+			&:disabled{
+				background-color: silver;
+			}
+		}
+	}
+
+	.calendar-wrapper {
+		width: 7 * 50px;
+		display: inline-block;
+		margin-right: 10px;
+
+		// overwrite tinyslider items
+		&.tns-item{
+			width: auto !important;
+		}
+
+		.month-name{
+			display: block;
+			width: 100%;
+			text-align: center;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+
+	}
+	.weekday {
+		background: #eee;
+		padding-top: 12px;
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		text-align: center;
+
+		li{
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+			padding-top: 5px;
+			border-top: 1px solid silver;
+			cursor: default;
+
+			&.travel-date{
+				background-color: #27ae60;
+				color: white;
+				font-weight: bold;
+				a{
+					color: white;
+					text-decoration: none;
+				}
+				div{
+					font-size: 10px;
+					font-weight: bold;
+				}
+			}
+		}
+	}
+}
