@@ -1,0 +1,14 @@
+// set default hover effect
+.btn-primary {
+  background: $primary;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: lighten( $primary, 15%)!important;
+    border-color: lighten( $primary, 15%)!important;
+  }
+  &.active {
+    background-color: darken( $primary, 30%)!important;
+    border-color: lighten( $primary, 30%)!important;
+  }
+}

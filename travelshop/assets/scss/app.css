@@ -11818,10 +11818,11 @@ hr {
 }
 .card-travel-wrapper .card.card-travel .card-image-holder .add-to-wishlist svg .wishlist-heart {
   fill: #fff;
+  stroke: #0066ff;
 }
 .card-travel-wrapper .card.card-travel .card-image-holder .add-to-wishlist.active svg .wishlist-heart {
   stroke: #fff;
-  fill: #06f;
+  fill: #0066ff;
 }
 .card-travel-wrapper .card.card-travel .card-image-holder .card-badge {
   position: absolute;
@@ -12562,6 +12563,14 @@ hr {
   background-color: #27ae60;
   border-color: #27ae60;
 }
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.green:hover, .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.green:focus, .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.green:active {
+  background-color: #4bd786 !important;
+  border-color: #4bd786 !important;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.green.active {
+  background-color: #0b311b !important;
+  border-color: #89e5b0 !important;
+}
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-clock,
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-calendar-event,
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-bed {
@@ -12757,6 +12766,9 @@ hr {
 }
 .content-block.content-block-detail-info-grid {
   padding-top: 0;
+}
+.content-block.content-block-pagination {
+  padding: 15px 0px 0px;
 }
 
 .teaser {
@@ -13573,7 +13585,7 @@ button.select-from-control i.la {
 }
 
 .travelshop_hotline_batch {
-  background: #007bff;
+  background: #0066ff;
   color: #fff;
   display: inline-block;
   text-align: left;
@@ -13739,6 +13751,27 @@ button.select-from-control i.la {
     transform: perspective(140px) rotateY(180deg);
     opacity: 0;
   }
+}
+
+.pagination .page-item .page-link {
+  color: #0066ff;
+}
+.pagination .page-item.active .page-link {
+  background-color: #0066ff;
+  border-color: #0066ff;
+  color: white;
+}
+
+.btn-primary {
+  background: #0066ff;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  background-color: #4d94ff !important;
+  border-color: #4d94ff !important;
+}
+.btn-primary.active {
+  background-color: #002966 !important;
+  border-color: #99c2ff !important;
 }
 
 .footer-main {
@@ -14169,9 +14202,11 @@ a {
 }
 .content-block-detail-info-grid .detail-price-box .add-to-wishlist svg .wishlist-heart {
   fill: #fff;
+  stroke: #0066ff;
 }
 .content-block-detail-info-grid .detail-price-box .add-to-wishlist.active svg .wishlist-heart {
-  fill: #06f;
+  stroke: #0066ff;
+  fill: #0066ff;
 }
 .content-block-detail-info-grid .detail-price-box a.detail-pdf-download {
   color: #495057;
@@ -14249,6 +14284,14 @@ a {
 .content-block-detail-info-grid a.btn-booking.green {
   background-color: #27ae60;
   border-color: #27ae60;
+}
+.content-block-detail-info-grid a.btn-booking.green:hover, .content-block-detail-info-grid a.btn-booking.green:focus, .content-block-detail-info-grid a.btn-booking.green:active {
+  background-color: #4bd786 !important;
+  border-color: #4bd786 !important;
+}
+.content-block-detail-info-grid a.btn-booking.green.active {
+  background-color: #0b311b !important;
+  border-color: #89e5b0 !important;
 }
 
 .detail-scroll-nav {

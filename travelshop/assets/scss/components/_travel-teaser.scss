@@ -256,13 +256,14 @@
           pointer-events: none;
           .wishlist-heart {
             fill: #fff;
+            stroke: $primary;
           }
         }
         &.active {
           svg {
             .wishlist-heart {
               stroke: #fff;
-              fill: #06f;
+              fill: $primary;
             }
           }
         }
