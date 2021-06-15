@@ -11877,6 +11877,194 @@ hr {
   }
 }
 
+.travelshop-teaser-mega-stripe {
+  margin-bottom: 1rem;
+}
+.travelshop-teaser-mega-stripe .stripe-inner {
+  display: flex;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 0.25rem;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-image {
+  flex: 0 0 35%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-image .add-to-wishlist {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.4rem 0.5rem;
+  cursor: pointer;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-image .add-to-wishlist svg {
+  stroke: #007bff;
+  fill: #fff;
+  pointer-events: none;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-image .add-to-wishlist.active svg {
+  fill: #007bff;
+  stroke: #fff;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-image .stripe-duration {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  padding: 0.4rem 0.5rem;
+  line-height: 1;
+  color: #fff;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-image .stripe-duration small,
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-image .stripe-duration strong {
+  font-weight: 500;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content {
+  flex: 0 0 65%;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-head {
+  padding: 0.75rem;
+  border-bottom: 1px solid #ccc;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-head h2 {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-head h2 a {
+  color: #333;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-head h2 a:hover {
+  color: #333;
+  text-decoration: none;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-body {
+  display: none;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure strong {
+  display: none;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  text-align: center;
+  display: inline-block;
+  background-color: gray;
+  margin-right: 4px;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .circle.green {
+  background-color: #28a745;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .circle.orange {
+  background-color: orange;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .circle.red {
+  background-color: red;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .dropdown-toggle {
+  white-space: normal;
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 0.1rem 0.5rem;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .dropdown-toggle:after {
+  margin-left: 0.2rem;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .dropdown-toggle:hover, .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .dropdown-toggle:active, .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .dropdown-toggle:focus {
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .dropdown-menu .dropdown-header {
+  padding: 0.25rem 0.5rem;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .dropdown-menu .dropdown-item {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-cta {
+  padding: 0 0.75rem;
+  margin: 0.175rem 0 0.5rem 0;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-cta .btn {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .travelshop-teaser-mega-stripe .stripe-inner .stripe-image {
+    flex: 0 0 30%;
+  }
+  .travelshop-teaser-mega-stripe .stripe-inner .stripe-image .stripe-duration {
+    padding: 0.5rem 0.75rem;
+    line-height: 1.15;
+  }
+  .travelshop-teaser-mega-stripe .stripe-inner .stripe-image .stripe-duration strong {
+    font-size: 1.25rem;
+  }
+  .travelshop-teaser-mega-stripe .stripe-inner .stripe-content {
+    flex: 0 0 70%;
+  }
+  .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-head h2 {
+    font-size: 1.2rem;
+  }
+  .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .dropdown-toggle {
+    text-align: left;
+    padding: 0 0.75rem;
+  }
+}
+@media (min-width: 992px) {
+  .travelshop-teaser-mega-stripe {
+    margin-bottom: 1.5rem;
+  }
+  .travelshop-teaser-mega-stripe .stripe-inner .stripe-image .stripe-duration {
+    padding: 0.75rem 1.2rem;
+    line-height: 1.15;
+  }
+  .travelshop-teaser-mega-stripe .stripe-inner .stripe-image .stripe-duration strong {
+    font-size: 1.5rem;
+  }
+  .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-head {
+    padding: 1.175rem;
+  }
+  .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-head h2 {
+    font-size: 1.6rem;
+  }
+  .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-body {
+    display: block;
+    padding: 0.75rem 1.175rem;
+  }
+  .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-body p {
+    margin: 0;
+  }
+  .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-body p.attribute-row {
+    margin-top: 0.5rem;
+  }
+  .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure strong {
+    display: block;
+    text-align: right;
+    padding: 0 0.75rem;
+    font-size: 0.8rem;
+    margin: 0.5rem 0 -0.4rem 0;
+  }
+  .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-cta {
+    margin: 0.5rem 0;
+  }
+}
+
 .list-filter-toggle {
   display: none;
 }

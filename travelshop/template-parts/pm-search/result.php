@@ -77,7 +77,7 @@ $pages = $search->getPaginator()->getTotalPages();
     <div id="pm-search-result" class="row">
         <?php
 
-        $view = 'Teaser1';
+        $view = 'Teaser3';
         if(!empty($_GET['view']) && preg_match('/^[0-9A-Za-z\_]+$/', $_GET['view']) !== false){
             $view = $_GET['view'];
         }
