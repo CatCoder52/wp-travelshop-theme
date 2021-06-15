@@ -11884,6 +11884,7 @@ hr {
   display: flex;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border-radius: 0.25rem;
+  background: #fff;
 }
 .travelshop-teaser-mega-stripe .stripe-inner .stripe-image {
   flex: 0 0 35%;
@@ -11969,9 +11970,8 @@ hr {
 .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .dropdown-toggle {
   white-space: normal;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   padding: 0.1rem 0.5rem;
-  width: 100%;
   border: 0;
   outline: 0;
   box-shadow: none;
@@ -11983,6 +11983,9 @@ hr {
   border: 0;
   outline: 0;
   box-shadow: none;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .dropdown-menu {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .dropdown-menu .dropdown-header {
   padding: 0.25rem 0.5rem;
@@ -12016,6 +12019,7 @@ hr {
     font-size: 1.2rem;
   }
   .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .dropdown-toggle {
+    font-size: 0.8rem;
     text-align: left;
     padding: 0 0.75rem;
   }
@@ -12023,6 +12027,9 @@ hr {
 @media (min-width: 992px) {
   .travelshop-teaser-mega-stripe {
     margin-bottom: 1.5rem;
+  }
+  .travelshop-teaser-mega-stripe .stripe-inner {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
   }
   .travelshop-teaser-mega-stripe .stripe-inner .stripe-image .stripe-duration {
     padding: 0.75rem 1.2rem;

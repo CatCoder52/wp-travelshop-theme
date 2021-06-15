@@ -4,6 +4,7 @@
 		display: flex;
 		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 		border-radius: 0.25rem;
+		background: #fff;
 		.stripe-image {
 			flex: 0 0 35%;
 			background-size: cover;
@@ -95,9 +96,8 @@
 						.dropdown-toggle {
 							white-space: normal;
 							text-align: center;
-							font-size: 0.8rem;
+							font-size: 0.7rem;
 							padding: 0.1rem 0.5rem;
-							width: 100%;
 							border: 0;
 							outline: 0;
 							box-shadow: none;
@@ -113,6 +113,8 @@
 							}
 						}
 						.dropdown-menu {
+							box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+								0 3px 6px rgba(0, 0, 0, 0.23);
 							.dropdown-header {
 								padding: 0.25rem 0.5rem;
 							}
@@ -158,6 +160,7 @@
 						}
 						.dropdown {
 							.dropdown-toggle {
+								font-size: 0.8rem;
 								text-align: left;
 								padding: 0 0.75rem;
 							}
@@ -170,6 +173,7 @@
 	@include media-breakpoint-up(lg) {
 		margin-bottom: 1.5rem;
 		.stripe-inner {
+			box-shadow: 0 0 10px rgb(0 0 0 / 12%);
 			.stripe-image {
 				.stripe-duration {
 					padding: 0.75rem 1.2rem;
