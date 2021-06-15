@@ -99,3 +99,9 @@ class PMTravelShop{
 
 require_once 'config-routing.php';
 $PMTravelShop = new PMTravelShop($routes);
+
+// load beaver builder custom plugins if required
+if(BB_ACTIVE == true){
+    require_once 'src/BeaverBuilderModuleLoader.php';
+    BeaverBuilderModuleLoader::init();
+}
