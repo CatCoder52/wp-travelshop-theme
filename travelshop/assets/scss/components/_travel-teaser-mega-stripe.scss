@@ -93,11 +93,11 @@
 								background-color: red;
 							}
 						}
-						.dropdown-toggle {
+						.btn {
 							white-space: normal;
 							text-align: center;
 							font-size: 0.7rem;
-							padding: 0.1rem 0.5rem;
+							padding: 0.1rem 0.75rem;
 							border: 0;
 							outline: 0;
 							box-shadow: none;
@@ -128,8 +128,35 @@
 				.stripe-cta {
 					padding: 0 0.75rem;
 					margin: 0.175rem 0 0.5rem 0;
-					.btn {
-						width: 100%;
+					.discount-wrapper {
+						p {
+							margin-bottom: 0.35rem;
+							font-size: 0.8rem;
+							.discount-label {
+								.price {
+									position: relative;
+									&:before {
+										position: absolute;
+										content: "";
+										top: 0.5em;
+										background: linear-gradient(
+											to right,
+											rgba(230, 0, 0, 0.8) 50%,
+											rgba(230, 0, 0, 0) 100%
+										);
+										border-bottom-right-radius: 50%;
+										border-bottom-left-radius: 2px;
+										transform: rotate(-20deg);
+										width: 110%;
+										height: 0.15em;
+									}
+								}
+								.discount {
+									color: red;
+									font-weight: 700;
+								}
+							}
+						}
 					}
 				}
 			}
@@ -159,7 +186,7 @@
 						strong {
 						}
 						.dropdown {
-							.dropdown-toggle {
+							.btn {
 								font-size: 0.8rem;
 								text-align: left;
 								padding: 0 0.75rem;
@@ -203,9 +230,10 @@
 				.stripe-content-footer {
 					display: flex;
 					justify-content: flex-end;
-					align-items: center;
+					align-items: flex-end;
 					margin-top: 1rem;
 					.stripe-departure {
+						margin: 0.5rem 0;
 						strong {
 							display: block;
 							text-align: right;
@@ -219,7 +247,11 @@
 						}
 					}
 					.stripe-cta {
-						margin: 0.5rem 0;
+						.discount-wrapper {
+							p {
+								text-align: center;
+							}
+						}
 					}
 				}
 			}
