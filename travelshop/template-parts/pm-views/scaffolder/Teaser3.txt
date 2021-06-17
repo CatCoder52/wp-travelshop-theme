@@ -199,6 +199,21 @@ if(!empty($moc->zielgebiet_default)){
                     </div>
                 </div>
                 <div class="stripe-cta">
+                    <?php if(!empty($cheapest_price->price_option_pseudo) && $cheapest_price->price_option_pseudo > $cheapest_price->price_total) {
+                            $percent_discount = round((100 / $cheapest_price->price_option_pseudo) * ($cheapest_price->price_option_pseudo - $cheapest_price->price_total));
+                         ?>
+                            <div class="discount-wrapper">
+                                <p>
+                                    <span class="msg">Ihr Vorteil</span>
+                                    <span class="discount-label">
+                                        <span class="price"><?php echo $cheapest_price->price_option_pseudo; ?>&nbsp;€</span>
+                                        <span class="discount"> -<?php echo $percent_discount;?>%</span>
+                                    </span>
+                                </p>
+                            </div>
+                            <?php
+                        }
+                    ?>
                     <a href="<?php echo $url; ?>" class="btn btn-primary">
                         <?php
                         if (empty($cheapest_price->price_total) === false) {
