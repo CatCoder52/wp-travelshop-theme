@@ -307,6 +307,28 @@
 				color: #fff;
 				font-weight: bold;
 
+      // -- wishlist
+      .add-to-wishlist {
+        position: absolute;
+        cursor: pointer;
+        top: .5rem;
+        right: .5rem;
+        svg {
+          pointer-events: none;
+          .wishlist-heart {
+            fill: #fff;
+            stroke: $primary;
+          }
+        }
+        &.active {
+          svg {
+            .wishlist-heart {
+              stroke: #fff;
+              fill: $primary;
+            }
+          }
+        }
+      }
 				padding: 0.375rem;
 				@include border-radius($card-border-radius);
 

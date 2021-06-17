@@ -36,24 +36,19 @@ $search = new Pressmind\Search(
                     require 'search/date-picker.php';
                     ?>
                 </div>
-                <div class="col-12 col-md-3">
-                    <?php
 
-                    $id_tree = 1207;
-                    $name = 'Zielgebiete';
-                    $fieldname = 'zielgebiet_default';
-                    require 'search/category-tree-dropdown.php';
-                    ?>
-                </div>
-                <div class="col-12 col-md-3">
+                <?php
+                // draw category tree based search fields
+                foreach(TS_SEARCH as $searchItem){ ?>
+                    <div class="col-12 col-md-3">
+                        <?php
+                        list($id_tree, $fieldname, $name, $condition_type) = array_values($searchItem);
+                        require 'search/category-tree-dropdown.php';
+                        ?>
+                    </div>
                     <?php
+                } ?>
 
-                    $id_tree = 1206;
-                    $name = 'Reiseart';
-                    $fieldname = 'reiseart_default';
-                    require 'search/category-tree-dropdown.php';
-                    ?>
-                </div>
                 <div class="col-12 col-md-3 mb-md-0">
                     <div class="from-group mb-0">
                         <label class="d-none d-md-block">&nbsp;</label>

@@ -24,10 +24,12 @@ jQuery(function ($) {
         this.setSpinner = function(search_result){
             $('.spinner').show();
             $(search_result).html('');
+            $('.pagination').hide();
         }
         
         this.removeSpinner = function(){
             $('.spinner').hide();
+            $('.pagination').show();
         }
 
         this.resultHandlerWishlist = function(data){
@@ -229,53 +231,59 @@ jQuery(function ($) {
 
         this.buildSearchQuery = function (form) {
 
-            var query = [];
+            let query = [];
             query.push('action=search');
 
             // the object type
-            var id_object_type = $('input[name=pm-ot]').val();
+            let id_object_type = $(form).find('input[name=pm-ot]').val();
             if (id_object_type && id_object_type != '') {
                 query.push('pm-ot=' + id_object_type);
             }
 
             // checkboxes
-            var selected = [];
+            let tree_conditions = ['c', 'cl']; // cl = support for trees in object links
+            let i;
+            for(i in tree_conditions){
+                let selected = [];
+                $(form).find('.category-tree input[data-type="'+tree_conditions[i]+'"]:checked').each(function () {
 
-            $(form).find(".category-tree input:checked").each(function () {
+                    let id_parent = $(this).data('id-parent');
+                    let id = $(this).data('id');
+                    let name = $(this).data('name');
+                    let type = $(this).data('type');
 
-                var id_parent = $(this).data('id-parent');
-                var id = $(this).data('id');
-                var name = $(this).data('name');
 
-                if (!selected[name]) {
-                    selected[name] = [];
+                    if (!selected[name]) {
+                        selected[name] = [];
+                    }
+
+                    let i = selected[name].indexOf(id_parent);
+                    if (i > -1) {
+                        // remove if parent is set
+                        selected[name].splice(i, 1);
+                    }
+
+                    i = selected[name].indexOf(id);
+                    if (i == -1) {
+                        // has no parent, add
+                        selected[name].push(id);
+                    }
+
+                });
+
+                let delimiter = ',';
+
+                /* @todo
+                if (selected_item.data('behaivor') == 'AND'){
+                    var delimiter = '+';
+                }
+                */
+
+                let key;
+                for (key in selected) {
+                    query.push('pm-'+tree_conditions[i]+'[' + key + ']=' + selected[key].join(delimiter));
                 }
 
-                var i = selected[name].indexOf(id_parent);
-                if (i > -1) {
-                    // parent ist vorhanden entferne
-                    selected[name].splice(i, 1);
-                }
-
-                var i = selected[name].indexOf(id);
-                if (i == -1) {
-                    // ist nicht vorhanden, hinzufügen
-                    selected[name].push(id);
-                }
-
-            });
-
-            var delimiter = ',';
-
-            /* @todo
-            if (selected_item.data('behaivor') == 'AND'){
-                var delimiter = '+';
-            }
-            */
-
-            var key;
-            for (key in selected) {
-                query.push('pm-c[' + key + ']=' + selected[key].join(delimiter));
             }
 
             // check and set price-range
@@ -323,6 +331,7 @@ jQuery(function ($) {
                 $("#search-filter").on('change', ".list-filter-box input, .list-filter-box select", function (e) {
                     var form = $(this).closest('form');
                     var query_string = _this.buildSearchQuery(form);
+                    _this.setSpinner('#pm-search-result');
                     _this.call(query_string, '#search-result', null, _this.resultHandlerSearch);
                     e.preventDefault();
                 });
@@ -331,6 +340,7 @@ jQuery(function ($) {
             $("#search-filter").on('click', ".list-filter-box-submit", function (e) {
                 var form = $(this).closest('form');
                 var query_string = _this.buildSearchQuery(form);
+                _this.setSpinner('#pm-search-result');
                 _this.call(query_string, '#search-result', null, _this.resultHandlerSearch);
                 e.preventDefault();
             });

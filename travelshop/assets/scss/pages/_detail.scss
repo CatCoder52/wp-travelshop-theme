@@ -3,7 +3,7 @@
 	.detail-price-box {
 		position: relative;
 		border: 1px solid $card-border-color;
-		padding: 35px 35px $grid-gutter-width $grid-gutter-width;
+		padding: $grid-gutter-width 15px $grid-gutter-width 15px;
 		margin: 0 0 $grid-gutter-width 0;
 		@include border-radius($card-border-radius);
 
@@ -16,13 +16,14 @@
 				pointer-events: none;
 				.wishlist-heart {
 					fill: #fff;
+					stroke: $primary;
 				}
 			}
 			&.active {
 				svg {
 					.wishlist-heart {
-						// stroke: #fff;
-						fill: #06f;
+						stroke: $primary;
+						fill: $primary;
 					}
 				}
 			}
@@ -118,6 +119,25 @@
 	a.btn-booking {
 		margin: 0 0 $grid-gutter-width 0;
 		font-weight: bold;
+
+		&.green{
+			background-color: $cta-detail-page;
+			border-color: $cta-detail-page;
+
+			&:hover,
+			&:focus,
+			&:active {
+				background-color: lighten( $cta-detail-page, 15%)!important;
+				border-color: lighten( $cta-detail-page, 15%)!important;
+			}
+			&.active {
+				background-color: darken( $cta-detail-page, 30%)!important;
+				border-color: lighten( $cta-detail-page, 30%)!important;
+			}
+		}
+
+
+
 	}
 }
 

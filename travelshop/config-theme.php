@@ -57,6 +57,47 @@ define('TS_VISIBILTY', [30]);
  */
 define('TS_OBJECT_CACHE_TTL', 60);
 
+
+/**
+ * the possible category tree item search fields
+ * used in this files:
+ *  /template-parts/pm-search/search-bar.php
+ *  /template-parts/pm-search/search-bar-plain.php
+ * .. to draw the primary search bars.
+ *
+ */
+
+define('TS_SEARCH', [
+    [ 'id_tree' => 1207, 'fieldname' => 'zielgebiet_default', 'name' => 'Zielgebiet', 'condition_type' => 'c'],
+    [ 'id_tree' => 1206, 'fieldname' => 'reiseart_default', 'name' => 'Reiseart', 'condition_type' => 'c'],
+]);
+
+/**
+ * the possible category tree item filters
+ * used in /template-parts/pm-search/filter-vertical.php to draw the filter list.
+ */
+define('TS_FILTERS', [
+    [ 'id_tree' => 1207, 'fieldname' => 'zielgebiet_default', 'name' => 'Zielgebiet', 'condition_type' => 'c'],
+    [ 'id_tree' => 1206, 'fieldname' => 'reiseart_default', 'name' => 'Reiseart', 'condition_type' => 'c'],
+    [ 'id_tree' => 2655, 'fieldname' => 'befoerderung_default', 'name' => 'Beförderung', 'condition_type' => 'c'],
+    [ 'id_tree' => 1204, 'fieldname' => 'saison_default', 'name' => 'Saison', 'condition_type' => 'c'],
+    // Example of a category tree from a sub object
+    [ 'id_tree' => 1205, 'fieldname' => 'sterne_default', 'name' => 'Hotelkategorie', 'condition_type' => 'cl'],
+]);
+
+/**
+ * Price Format (number_format() is used for rendering)
+ */
+
+define('TS_PRICE_DECIMAL_SEPARATOR', ',');
+define('TS_PRICE_THOUSANDS_SEPARATOR', '.');
+define('TS_PRICE_DECIMALS', 0);
+
+/**
+ * Url to the pressmind IB3 if used
+ */
+define('TS_IBE3_BASE_URL', 'https://demo.pressmind-ibe.net/');
+
 /**
  * Setup Redis,
  */
@@ -68,4 +109,13 @@ if(!defined('PM_REDIS_HOST')){
 if(!defined('PM_REDIS_PORT')){
     define('PM_REDIS_PORT', '6379');
 }
+
+/**
+ * Beaver Builder support
+ * if BB_ACTIVE = true , the beaver builder custom modules are loaded from travelshop/pagebuilders/beaverbuilder
+ */
+define('BB_ACTIVE', true);
+define('BB_MODULE_TS_DIR', get_stylesheet_directory().'/pagebuilders/beaverbuilder/');
+define('BB_MODULE_TS_URL', get_stylesheet_directory_uri().'/pagebuilders/beaverbuilder/');
+
 

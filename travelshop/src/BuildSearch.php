@@ -7,7 +7,7 @@ class BuildSearch
      * Contains the current GET request as validated array
      * @var array
      */
-    private static $current_search_query_string;
+    private static $validated_search_parameters;
     private static $page_size = 10;
     private static $page = 1;
 
@@ -87,28 +87,48 @@ class BuildSearch
         }
 
 
-        if (isset($request[$prefix.'-c']) === true && is_array($request[$prefix.'-c']) == true) {
+        if (
+            (isset($request[$prefix.'-c']) === true && is_array($request[$prefix.'-c']) == true) ||
+            (isset($request[$prefix.'-cl']) === true && is_array($request[$prefix.'-cl']) == true)
+        ) {
 
-            foreach($request[$prefix.'-c'] as $property_name => $item_ids){
+            // handle the linked object feature
+            $search_items = [];
+            if(isset($request[$prefix.'-c']) === true && is_array($request[$prefix.'-c']) == true){
+               $search_items['c'] = $request[$prefix.'-c'];
+            }
 
-                if(preg_match('/^[0-9a-zA-Z\-\_]+$/', $property_name) > 0){ // valid property name
+            // this items are linked to the media object and requires a modified search condition
+            if(isset($request[$prefix.'-cl']) === true && is_array($request[$prefix.'-cl']) == true){
+                $search_items['cl'] = $request[$prefix.'-cl'];
+            }
 
-                    if(preg_match('/^[0-9a-zA-Z\-\,]+$/', $item_ids) > 0){ // search by OR, marked by ","
-                        $delimiter = ',';
-                        $operator = 'OR';
-                    }elseif(preg_match('/^[0-9a-zA-Z\-\+]+$/', $item_ids) > 0){ // search by AND, marked by "+"
-                        $delimiter = '+';
-                        $operator = 'AND';
-                    }else{ // not valid
-                        continue;
+            foreach($search_items as $type => $search_item){
+
+                foreach($search_item as $property_name => $item_ids){
+
+                    if(preg_match('/^[0-9a-zA-Z\-\_]+$/', $property_name) > 0){ // valid property name
+
+                        if(preg_match('/^[0-9a-zA-Z\-\,]+$/', $item_ids) > 0){ // search by OR, marked by ","
+                            $delimiter = ',';
+                            $operator = 'OR';
+                        }elseif(preg_match('/^[0-9a-zA-Z\-\+]+$/', $item_ids) > 0){ // search by AND, marked by "+"
+                            $delimiter = '+';
+                            $operator = 'AND';
+                        }else{ // not valid
+                            continue;
+                        }
+
+                        $item_ids = explode($delimiter,$item_ids);
+                        $conditions[] = Pressmind\Search\Condition\Category::create($property_name, $item_ids, $operator, ($type == 'cl'));
+                        $validated_search_parameters[$prefix.'-'.$type][$property_name] = implode($delimiter, $item_ids);
                     }
 
-                    $item_ids = explode($delimiter,$item_ids);
-                    $conditions[] = Pressmind\Search\Condition\Category::create($property_name, $item_ids, $operator, true);
-                    $validated_search_parameters[$prefix.'-c'][$property_name] = implode($delimiter, $item_ids);
                 }
 
             }
+
+
         }
 
 
@@ -218,7 +238,7 @@ class BuildSearch
             }
         }
 
-        self::$current_search_query_string = urldecode(http_build_query($validated_search_parameters));
+        self::$validated_search_parameters = $validated_search_parameters;
 
         $Search = new Pressmind\Search($conditions, [
             'start' => 0,
@@ -240,12 +260,37 @@ class BuildSearch
 
     }
 
+
+    /**
+     * rebuild the SearchConditions without a defined list of attributes
+     * @param array $removeItems
+     * @param string $prefix
+     * @param bool $paginator
+     * @param int $page_size
+     * @return \Pressmind\Search
+     */
+    public static function rebuild($removeItems = [], $prefix = 'pm', $paginator = true, $page_size = 10){
+
+        $p = self::$validated_search_parameters;
+        foreach($removeItems as $k){
+            if(preg_match('/^([a-z\-]+)\[([a-zA-Z0-9\_]+)\]$/', $k, $matches) > 0){
+                unset($p[$matches[1]][$matches[2]]);
+            }else{
+                unset($p[$k]);
+            }
+        }
+        return self::fromRequest(array_filter($p), $prefix, $paginator, $page_size);
+
+    }
+
+
+
     public static function getCurrentQueryString($page = null, $page_size = null, $prefix = 'pm'){
 
         $page = empty($page) ? self::$page : $page;
         $page_size = empty($page_size) ? self::$page_size : $page_size;
 
-        return self::$current_search_query_string.'&'.$prefix.'-l='.$page.','.$page_size;
+        return urldecode(http_build_query(self::$validated_search_parameters)).'&'.$prefix.'-l='.$page.','.$page_size;
     }
 
 

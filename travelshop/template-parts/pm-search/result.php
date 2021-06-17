@@ -16,11 +16,11 @@ $search = BuildSearch::fromRequest($_GET, 'pm', true, $page_size);
 
 $mediaObjects = $search->getResults();
 
-/*
+
 if(!empty($_GET['debug'])){
     echo '<pre style="width: 300px;">'.$search->getQuery().'</pre>';
 }
-*/
+
 
 $total_result = $search->getTotalResultCount();
 $current_page = $search->getPaginator()->getCurrentPage();

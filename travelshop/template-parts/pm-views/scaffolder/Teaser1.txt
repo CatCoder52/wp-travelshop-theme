@@ -251,7 +251,7 @@ $class = empty($data['custom_data']->class) ? 'col-12 col-md-6 col-lg-3' : $data
                                 <p>
                                     <span class="msg">Ihr Vorteil</span>
                                     <span class="discount-label">
-                                        <span class="price"><?php echo $cheapest_price->price_option_pseudo; ?>&nbsp;€</span>
+                                        <span class="price"><?php echo number_format($cheapest_price->price_option_pseudo, 0, TS_PRICE_DECIMAL_SEPARATOR, TS_PRICE_THOUSANDS_SEPARATOR) ?>&nbsp;€</span>
                                         <span class="discount"> -<?php echo $percent_discount;?>%</span>
                                     </span>
                                 </p>
@@ -262,7 +262,7 @@ $class = empty($data['custom_data']->class) ? 'col-12 col-md-6 col-lg-3' : $data
                         <a href="<?php echo $url; ?>" class="btn btn-primary">
                             <?php
                             if (empty($cheapest_price->price_total) === false) {
-                                echo '<small><span>Preis p.P.</span> <strong>ab</strong> </small><strong>' . number_format($cheapest_price->price_total, 0, ',', '.') . '&nbsp;€</strong>';
+                                echo '<small><span>Preis p.P.</span> <strong>ab</strong> </small><strong>' . number_format($cheapest_price->price_total, TS_PRICE_DECIMALS, TS_PRICE_DECIMAL_SEPARATOR, TS_PRICE_THOUSANDS_SEPARATOR) . '&nbsp;€</strong>';
                             }else{
                                 ?>zur Reise<?php
                             }

@@ -11,7 +11,8 @@ $header-height-xl:             100px !default;
 $body-color-light:            $gray-500 !default;
 
 // -- colors
-$primary:                   #0066ff;
+$primary:                   #0066ff; // the main color
+$cta-detail-page:           #27ae60; // booking button on the detail-page
 
 // -- z-index
 $zindex-offcanvas:            $zindex-tooltip !default;

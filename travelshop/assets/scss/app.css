@@ -11848,10 +11848,11 @@ hr {
 }
 .card-travel-wrapper .card.card-travel .card-image-holder .add-to-wishlist svg .wishlist-heart {
   fill: #fff;
+  stroke: #0066ff;
 }
 .card-travel-wrapper .card.card-travel .card-image-holder .add-to-wishlist.active svg .wishlist-heart {
   stroke: #fff;
-  fill: #06f;
+  fill: #0066ff;
 }
 .card-travel-wrapper .card.card-travel .card-image-holder .card-badge {
   position: absolute;
@@ -12764,11 +12765,14 @@ hr {
   padding: 1rem 0;
   border-radius: 4px;
   position: relative;
-  border-bottom: 3px solid #27ae60;
+  border-bottom: 3px solid silver;
   transform: scale(1);
   transition: ease-in-out 200ms all;
   -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.11), 0 4px 5px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.11), 0 4px 5px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row.checked {
+  border-bottom: 3px solid #27ae60;
 }
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row:hover {
   transform: scale(1.025);
@@ -12805,10 +12809,24 @@ hr {
   display: flex;
   align-items: flex-start;
 }
-.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .btn {
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn {
   font-weight: bold;
 }
-.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div svg {
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.green {
+  background-color: #27ae60;
+  border-color: #27ae60;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.green:hover, .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.green:focus, .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.green:active {
+  background-color: #4bd786 !important;
+  border-color: #4bd786 !important;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.green.active {
+  background-color: #0b311b !important;
+  border-color: #89e5b0 !important;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-clock,
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-calendar-event,
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-bed {
   margin: 0.08rem 0.5rem 0 0;
   min-width: 20px;
   min-height: 20px;
@@ -12854,7 +12872,9 @@ hr {
   .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div.price-container {
     padding: 1rem;
   }
-  .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div svg {
+  .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-clock,
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-calendar-event,
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-bed {
     margin-right: 1rem;
   }
 }
@@ -12910,6 +12930,77 @@ hr {
   font-weight: normal;
 }
 
+.content-block-detail-booking-calendar {
+  margin-bottom: 20px;
+}
+@media (max-width: 991.98px) {
+  .content-block-detail-booking-calendar {
+    display: none;
+  }
+}
+.content-block-detail-booking-calendar .calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+.content-block-detail-booking-calendar .booking-calendar-slider {
+  width: 100%;
+}
+.content-block-detail-booking-calendar .tns-controls button {
+  border: 0px;
+  background-color: #0066ff;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+.content-block-detail-booking-calendar .tns-controls button:disabled {
+  background-color: silver;
+}
+.content-block-detail-booking-calendar .calendar-wrapper {
+  width: 350px;
+  display: inline-block;
+  margin-right: 10px;
+}
+.content-block-detail-booking-calendar .calendar-wrapper.tns-item {
+  width: auto !important;
+}
+.content-block-detail-booking-calendar .calendar-wrapper .month-name {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.content-block-detail-booking-calendar .weekday {
+  background: #eee;
+  padding-top: 12px;
+}
+.content-block-detail-booking-calendar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.content-block-detail-booking-calendar ul li {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  padding-top: 5px;
+  border-top: 1px solid silver;
+  cursor: default;
+}
+.content-block-detail-booking-calendar ul li.travel-date {
+  background-color: #27ae60;
+  color: white;
+  font-weight: bold;
+}
+.content-block-detail-booking-calendar ul li.travel-date a {
+  color: white;
+  text-decoration: none;
+}
+.content-block-detail-booking-calendar ul li.travel-date div {
+  font-size: 10px;
+  font-weight: bold;
+}
+
 .content-block {
   padding: 30px 0 0 0;
 }
@@ -12928,6 +13019,9 @@ hr {
 }
 .content-block.content-block-detail-info-grid {
   padding-top: 0;
+}
+.content-block.content-block-pagination {
+  padding: 15px 0px 0px;
 }
 
 .teaser {
@@ -13744,7 +13838,7 @@ button.select-from-control i.la {
 }
 
 .travelshop_hotline_batch {
-  background: #007bff;
+  background: #0066ff;
   color: #fff;
   display: inline-block;
   text-align: left;
@@ -13910,6 +14004,27 @@ button.select-from-control i.la {
     transform: perspective(140px) rotateY(180deg);
     opacity: 0;
   }
+}
+
+.pagination .page-item .page-link {
+  color: #0066ff;
+}
+.pagination .page-item.active .page-link {
+  background-color: #0066ff;
+  border-color: #0066ff;
+  color: white;
+}
+
+.btn-primary {
+  background: #0066ff;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  background-color: #4d94ff !important;
+  border-color: #4d94ff !important;
+}
+.btn-primary.active {
+  background-color: #002966 !important;
+  border-color: #99c2ff !important;
 }
 
 .footer-main {
@@ -14398,7 +14513,7 @@ a {
 .content-block-detail-info-grid .detail-price-box {
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  padding: 35px 35px 30px 30px;
+  padding: 30px 15px 30px 15px;
   margin: 0 0 30px 0;
   border-radius: 0.25rem;
 }
@@ -14413,9 +14528,11 @@ a {
 }
 .content-block-detail-info-grid .detail-price-box .add-to-wishlist svg .wishlist-heart {
   fill: #fff;
+  stroke: #0066ff;
 }
 .content-block-detail-info-grid .detail-price-box .add-to-wishlist.active svg .wishlist-heart {
-  fill: #06f;
+  stroke: #0066ff;
+  fill: #0066ff;
 }
 .content-block-detail-info-grid .detail-price-box a.detail-pdf-download {
   color: #495057;
@@ -14489,6 +14606,18 @@ a {
 .content-block-detail-info-grid a.btn-booking {
   margin: 0 0 30px 0;
   font-weight: bold;
+}
+.content-block-detail-info-grid a.btn-booking.green {
+  background-color: #27ae60;
+  border-color: #27ae60;
+}
+.content-block-detail-info-grid a.btn-booking.green:hover, .content-block-detail-info-grid a.btn-booking.green:focus, .content-block-detail-info-grid a.btn-booking.green:active {
+  background-color: #4bd786 !important;
+  border-color: #4bd786 !important;
+}
+.content-block-detail-info-grid a.btn-booking.green.active {
+  background-color: #0b311b !important;
+  border-color: #89e5b0 !important;
 }
 
 .detail-scroll-nav {

@@ -39,8 +39,9 @@ $cheapest_price = $args['cheapest_price'];
     ?>
     <div class="detail-price-box">
         <div class="price">
-            <span class="h5 mb-0 mt-0">ab</span> <span
-                    class="h3 mb-0 mt-0"><?php echo number_format($cheapest_price->price_total, 0, ',', '.') . ' €'; ?></span>
+
+            <span class="h5 mb-0 mt-0"><?php echo $booking_package->duration; ?>&nbsp;Tag<?php echo($booking_package->duration > 1 ? 'e' : ''); ?> ab</span> <span
+                    class="h3 mb-0 mt-0"><?php echo number_format($cheapest_price->price_total, TS_PRICE_DECIMALS, TS_PRICE_DECIMAL_SEPARATOR, TS_PRICE_THOUSANDS_SEPARATOR) . '&nbsp;€'; ?></span>
         </div>
         <p class="small mt-2"><?php echo $cheapest_price->option_name; ?> p.P.</p>
         <hr>
@@ -56,7 +57,7 @@ $cheapest_price = $args['cheapest_price'];
             Reisetermine
         </div>
         <p>
-            <i class="circle green"></i><?php echo $cheapest_price->date_departure->format('d.m') . ' - ' . $cheapest_price->date_arrival->format('d.m.Y'); ?>
+            <i class="circle green"></i><?php echo HelperFunctions::dayNumberToLocalDayName($cheapest_price->date_departure->format('N'), 'short').'. '.$cheapest_price->date_departure->format('d.m') . ' - ' . HelperFunctions::dayNumberToLocalDayName($cheapest_price->date_arrival->format('N'), 'short').'. '.$cheapest_price->date_arrival->format('d.m.Y'); ?>
         </p>
         <p class="mb-0">
 
@@ -90,9 +91,12 @@ $cheapest_price = $args['cheapest_price'];
         </p>
         -->
     </div>
-    <a class="btn btn-primary btn-booking btn-block smoothscroll"
+    <a class="btn btn-primary btn-booking btn-block green smoothscroll"
        href="#content-block-detail-booking">
-        Termine &amp; Preise
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="16" height="16" viewBox="0 0 24 24" stroke-width="3" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <polyline points="9 6 15 12 9 18" />
+        </svg>Termine &amp; Preise
     </a>
 <?php } else { ?>
     <div class="detail-price-box">

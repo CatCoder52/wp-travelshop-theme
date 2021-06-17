@@ -19,8 +19,7 @@ use Pressmind\Search\CheapestPrice;
  */
 $moc = $mo->getDataForLanguage(TS_LANGUAGE_CODE);
 
-// @TODO: Dokumentieren:
-//$mo->getValueByTagName()
+
 
 
 /**

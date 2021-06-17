@@ -32,24 +32,19 @@ $search = new Pressmind\Search(
                 require 'search/date-picker.php';
                 ?>
             </div>
-            <div>
-                <?php
 
-                $id_tree = 1207;
-                $name = 'Zielgebiete';
-                $fieldname = 'zielgebiet_default';
-                require 'search/category-tree-dropdown.php';
-                ?>
-            </div>
-            <div>
+            <?php
+            // draw category tree based search fields
+            foreach(TS_SEARCH as $searchItem){ ?>
+                <div>
                 <?php
-
-                $id_tree = 1206;
-                $name = 'Reiseart';
-                $fieldname = 'reiseart_default';
-                require 'search/category-tree-dropdown.php';
+                    list($id_tree, $fieldname, $name) = array_values($searchItem);
+                    require 'search/category-tree-dropdown.php';
                 ?>
-            </div>
+                </div>
+                <?php
+            } ?>
+
             <div>
                 <div class="from-group mb-0">
                     <a class="btn btn-primary btn-block" href="<?php echo site_url().'/'.$PMTravelShop->RouteProcessor->get_url_by_object_type(TS_TOUR_PRODUCTS).'/'; ?>">

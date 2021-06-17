@@ -46,6 +46,7 @@ require_once 'src/RouteProcessor.php';
 require_once 'src/Route.php';
 require_once 'src/Router.php';
 require_once 'src/SitemapProvider.php';
+require_once 'src/IB3Tools.php';
 
 
 // Cleanup
@@ -98,3 +99,9 @@ class PMTravelShop{
 
 require_once 'config-routing.php';
 $PMTravelShop = new PMTravelShop($routes);
+
+// load beaver builder custom plugins if required
+if(BB_ACTIVE == true){
+    require_once 'src/BeaverBuilderModuleLoader.php';
+    BeaverBuilderModuleLoader::init();
+}

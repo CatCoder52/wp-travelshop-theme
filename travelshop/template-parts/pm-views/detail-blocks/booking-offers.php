@@ -13,16 +13,6 @@ use Pressmind\Search\CheapestPrice;
 $mo = $args['media_object'];
 
 /**
- * @var Custom\MediaType\Reise $moc
- */
-$moc = $mo->getDataForLanguage();
-
-/**
- * @var Pressmind\ORM\Object\Touristic\Booking\Package[] $booking_packages
- */
-$booking_packages = $mo->booking_packages;
-
-/**
  * @var Pressmind\ORM\Object\CheapestPriceSpeed $cheapest_price
  */
 $cheapest_price = $args['cheapest_price'];
@@ -35,16 +25,19 @@ $cheapest_price = $args['cheapest_price'];
             <div class="row">
                 <div class="col-12">
                     <h2>Termine &amp; Preise</h2>
-
+                </div>
+            </div>
+           <?php require 'booking-offers-calendar.php'; ?>
+            <div class="row">
+                <div class="col-12">
                     <div class="content-block-detail-booking-inner">
 
-                        <!-- BOOKING_ROW_HEAD: START -->
                         <div class="booking-row no-gutters row booking-row-head d-none d-lg-flex">
                             <div class="col-2">
-                                Reisedauer
+                                Dauer
                             </div>
                             <div class="col-3">
-                                Reisedaten
+                                Zeitraum
                             </div>
                             <div class="col-3">
                                 Unterbringung
@@ -53,7 +46,6 @@ $cheapest_price = $args['cheapest_price'];
                                 Preis pro Person
                             </div>
                         </div>
-                        <!-- BOOKING_ROW_HEAD: END -->
 
                         <?php foreach ($mo->booking_packages as $booking_package) { ?>
 
@@ -62,15 +54,16 @@ $cheapest_price = $args['cheapest_price'];
                                 <?php
                                 foreach ($date->getHousingOptions() as $key => $housing_option) {
                                     $housing_package = $housing_option->getHousingPackage();
+                                    $checked = ($cheapest_price->id_option == $housing_option->id);
                                     ?>
-
-                                    <!-- BOOKING_ROW_DATE: START -->
-                                    <div class="booking-row no-gutters row booking-row-date">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="#27ae60" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                            <circle stroke="#27ae60" cx="12" cy="12" r="9" />
-                                            <path stroke="#ffffff" d="M9 12l2 2l4 -4" />
-                                        </svg>
+                                    <div class="booking-row no-gutters row booking-row-date<?php echo $checked ? ' checked' : '';?>">
+                                        <?php if($checked){?>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="#27ae60" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                <circle stroke="#27ae60" cx="12" cy="12" r="9" />
+                                                <path stroke="#ffffff" d="M9 12l2 2l4 -4" />
+                                            </svg>
+                                        <?php } ?>
                                         <div class="col-12 col-lg-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -90,10 +83,10 @@ $cheapest_price = $args['cheapest_price'];
                                                 <rect x="8" y="15" width="2" height="2" />
                                             </svg>
                                             <span class="date">
-                                                <?php echo HelperFunctions::dayNumberToLocalDayName($date->departure->format('N'), 'short') ?> 
+                                                <?php echo HelperFunctions::dayNumberToLocalDayName($date->departure->format('N'), 'short'); ?>.
                                                 <?php echo $date->departure->format('d.m.'); ?>
                                                 -
-                                                <?php echo HelperFunctions::dayNumberToLocalDayName($date->arrival->format('N'), 'short') ?> 
+                                                <?php echo HelperFunctions::dayNumberToLocalDayName($date->arrival->format('N'), 'short'); ?>.
                                                 <?php echo $date->arrival->format('d.m.Y'); ?>
                                             </span>
 
@@ -106,28 +99,31 @@ $cheapest_price = $args['cheapest_price'];
                                             </svg>
                                             <div>
                                                 <?php
-                                                echo implode(',', array_filter([$housing_package->name, $housing_option->name, $housing_option->board_type]));
+                                                echo implode(',', array_filter([$housing_package->name, $housing_option->name]));
                                                 ?><br />
                                                 <small>
                                                     Belegung: <?php echo $housing_option->occupancy; echo ' Person'; if ($housing_option->occupancy > 1) { echo 'en'; } ?> 
-                                                    <br />
-                                                    inkl. Vollension
+
+                                                    <?php  echo empty($housing_option->board_type) ? '' : '<br />inkl. '.$housing_option->board_type; ?>
                                                 </small>
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-2 price-container">
                                             <span class="price">ab <strong><?php
                                                 // @TODO use Cheapest Price here
-                                                echo HelperFunctions::number_format($housing_option->price);
-                                                ?>
-                                                €</strong></span>
+                                                echo number_format($housing_option->price, TS_PRICE_DECIMALS, TS_PRICE_DECIMAL_SEPARATOR,TS_PRICE_THOUSANDS_SEPARATOR);
+                                                ?>&nbsp;€</strong></span>
                                         </div>
                                         <div class="col-12 col-lg-2">
-                                            <a class="btn btn-primary btn-block booking-btn" target="_blank" rel="nofollow"
-                                                href="https://demo.pressmind-ibe.net/?imo=<?php echo $booking_package->id_media_object; ?>&idbp=<?php echo $booking_package->id; ?>&idhp=<?php echo $housing_package->id; ?>&idd=<?php echo $date->id; ?>&iho[<?php echo $housing_option->id; ?>]=1">
-                                                Zur Buchung
+                                            <a class="btn btn-primary btn-block booking-btn green" target="_blank" rel="nofollow"
+                                               href="<?php echo \Pressmind\Travelshop\IB3Tools::get_bookinglink($booking_package->id_media_object, $booking_package->id, $date->id, $housing_package->id);?>"
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="16" height="16" viewBox="0 0 24 24" stroke-width="3" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                    <polyline points="9 6 15 12 9 18" />
+                                                </svg>zur Buchung
                                             </a>
                                         </div>
+                                        <!-- TODO: Add pseudo price
                                         <div class="bottom-bar">
                                             <div class="col-12 col-lg-2">
                                                 <span>anstatt</span> <strong>649,00 €</strong>
@@ -136,8 +132,8 @@ $cheapest_price = $args['cheapest_price'];
                                                 <span>EZZ</span> <strong>100,00 €</strong>
                                             </div>
                                         </div>
+                                        -->
                                     </div>
-                                    <!-- BOOKING_ROW_DATE: END -->
                                 <?php } ?>
                             <?php } ?>
 
