@@ -84,7 +84,10 @@ In most cases, this is the basic setup for each travelshop:
 
 
 #### More Information:
-* [Installation Documentation](./travelshop/installation.md)
+* [Step by step guide for installation & customization](./travelshop/readme-step-by-step-guide.md) (!recommend for onboarding)
+* [System requirements](./travelshop/readme-system-requirements.md)
+* [Installation Documentation](travelshop/readme-installation.md)
+* [Maintenance & troubleshooting](./travelshop/readme-maintenance.md)
 * [Common Theme Documentation](./travelshop/readme-theme.md)
 * [Shortcodes](./travelshop/readme-shortcodes.md)
 * [Multilanguage Support](./travelshop/readme-multilanguage.md)
