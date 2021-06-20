@@ -11848,11 +11848,10 @@ hr {
 }
 .card-travel-wrapper .card.card-travel .card-image-holder .add-to-wishlist svg .wishlist-heart {
   fill: #fff;
-  stroke: #0066ff;
 }
 .card-travel-wrapper .card.card-travel .card-image-holder .add-to-wishlist.active svg .wishlist-heart {
   stroke: #fff;
-  fill: #0066ff;
+  fill: #06f;
 }
 .card-travel-wrapper .card.card-travel .card-image-holder .card-badge {
   position: absolute;
@@ -11864,6 +11863,23 @@ hr {
   font-weight: bold;
   padding: 0.375rem;
   border-radius: 0.25rem;
+}
+.card-travel-wrapper .card.card-travel .card-image-holder .card-badge .add-to-wishlist {
+  position: absolute;
+  cursor: pointer;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+.card-travel-wrapper .card.card-travel .card-image-holder .card-badge .add-to-wishlist svg {
+  pointer-events: none;
+}
+.card-travel-wrapper .card.card-travel .card-image-holder .card-badge .add-to-wishlist svg .wishlist-heart {
+  fill: #fff;
+  stroke: #0066ff;
+}
+.card-travel-wrapper .card.card-travel .card-image-holder .card-badge .add-to-wishlist.active svg .wishlist-heart {
+  stroke: #fff;
+  fill: #0066ff;
 }
 .card-travel-wrapper .card.card-travel .card-image-holder .card-badge--new {
   background-color: #dc3545;

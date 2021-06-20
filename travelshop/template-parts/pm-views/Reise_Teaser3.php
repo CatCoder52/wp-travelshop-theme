@@ -64,14 +64,14 @@ $weekdays = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
 
 $breadcrumb = array();
 
-if(!empty($moc->reiseart_default)){
+if(is_array($moc->reiseart_default)){
     foreach ($moc->reiseart_default as $mocart_default_item) {
         $mocart = $mocart_default_item->toStdClass();
         $breadcrumb[] = $mocart->item->name;
     }
 }
 
-if(!empty($moc->zielgebiet_default)){
+if(is_array($moc->zielgebiet_default)){
     foreach ($moc->zielgebiet_default as $k => $zielgebiet_default_item) {
         $zielgebiet = $zielgebiet_default_item->toStdClass();
         $breadcrumb[] = $zielgebiet->item->name;
@@ -128,7 +128,7 @@ if(!empty($moc->zielgebiet_default)){
         <div class="stripe-content">
             <div class="stripe-content-head">
                 <h2>
-                    <a href="<?php echo $url; ?>"><?php echo strip_tags($moc->headline_default); ?></a>
+                    <a href="<?php echo $url; ?>"><?php echo strip_tags($mo->name); ?></a>
                 </h2>
             </div>
             <div class="stripe-content-body">
@@ -184,11 +184,10 @@ if(!empty($moc->zielgebiet_default)){
                                             ?>
                                         </a>
                                         <?php
-                                            }else{
+                                            }elseif($c == 5){
                                         ?>
                                         <a class="dropdown-item" href="<?php echo $url;?>"><small>mehr Termine im <?php echo $current_month; ?></small></a>
                                     <?php
-                                        continue;
                                     }
                                     $c++;
                                 }

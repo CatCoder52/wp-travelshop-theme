@@ -11,6 +11,8 @@ $pictures = $args;
         <div class="col-12 col-md-9">
             <div class="detail-image-grid-holder">
                 <div class="detail-image-grid-holder-inner">
+
+                    <?php if(is_object($pictures[0])){?>
                     <img class="w-100 h-100"
                          src="<?php echo $pictures[0]->getUri('detail'); ?>"
                          data-toggle="tooltip"
@@ -22,6 +24,15 @@ $pictures = $args;
                          $caption[] = !empty($pictures[0]->copyright) ? '<small>' . $pictures[0]->copyright . '</small>' : '';
                          echo implode('<br>', array_filter($caption));
                          ?>"/>
+                    <?php }elseif(is_string($pictures)){
+                        // @TODO the placeholder image below is only for a better theme developer onboarding, remove in production.
+                        // if the property "$moc->bilder_default" is not set in this object type, check if there is another named image property
+                    ?>
+                    <img src="<?php echo SITE_URL; ?>/wp-content/themes/travelshop/assets/img/placeholder.svg.php?wh=250x170&text=<?php echo urlencode($pictures);?>" class="card-img-top">
+
+                    <?php }?>
+
+
                 </div>
             </div>
         </div>
@@ -32,6 +43,7 @@ $pictures = $args;
                 <div class="col-6 col-md-12">
                     <div class="detail-image-grid-holder detail-image-grid-holder--small">
                         <div class="detail-image-grid-holder-inner">
+                            <?php if(is_object($pictures[1])){?>
                             <img class="w-100 h-100"
                                  src="<?php echo $pictures[1]->getUri('detail_thumb'); ?>"
                                  data-toggle="tooltip"
@@ -42,7 +54,15 @@ $pictures = $args;
                                  $caption[] = !empty($pictures[1]->caption) ? $pictures[1]->caption : '';
                                  $caption[] = !empty($pictures[1]->copyright) ? '<small>' . $pictures[1]->copyright . '</small>' : '';
                                  echo implode('<br>', array_filter($caption));
-                                 ?>"/></div>
+                                 ?>"/>
+                            <?php }elseif(is_string($pictures)){
+                                // @TODO the placeholder image below is only for a better theme developer onboarding, remove in production.
+                                // if the property "$moc->bilder_default" is not set in this object type, check if there is another named image property
+                                ?>
+                                <img src="<?php echo SITE_URL; ?>/wp-content/themes/travelshop/assets/img/placeholder.svg.php?wh=250x170&text=<?php echo urlencode($pictures);?>" class="w-100 h-100">
+                            <?php }?>
+
+                        </div>
                     </div>
                 </div>
                 <?php } ?>
@@ -51,7 +71,7 @@ $pictures = $args;
                     <div class="detail-image-grid-holder detail-image-grid-holder--small detail-image-grid-holder--more">
                           <span class="more-images">
                               <?php
-                              if (count($pictures) - 3 > 0) {
+                              if (is_array($pictures) && count($pictures) - 3 > 0) {
                                   ?>
                                   <span class="count">
                                     +<?php echo count($pictures) - 3; ?>
@@ -61,6 +81,8 @@ $pictures = $args;
                               ?>
                           </span>
                         <div class="detail-image-grid-holder-inner">
+
+                            <?php if(is_object($pictures[1])){?>
                             <img class="w-100 h-100"
                                  src="<?php echo $pictures[2]->getUri('detail_thumb'); ?>"
                                  data-toggle="tooltip"
@@ -72,6 +94,12 @@ $pictures = $args;
                                  $caption[] = !empty($pictures[2]->copyright) ? '<small>' . $pictures[2]->copyright . '</small>' : '';
                                  echo implode('<br>', array_filter($caption));
                                  ?>"/>
+                            <?php }elseif(is_string($pictures)){
+                                // @TODO the placeholder image below is only for a better theme developer onboarding, remove in production.
+                                // if the property "$moc->bilder_default" is not set in this object type, check if there is another named image property
+                                ?>
+                                <img src="<?php echo SITE_URL; ?>/wp-content/themes/travelshop/assets/img/placeholder.svg.php?wh=250x170&text=<?php echo urlencode($pictures);?>" class="w-100 h-100">
+                            <?php }?>
                         </div>
                     </div>
                 </div>
