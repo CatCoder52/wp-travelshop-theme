@@ -48,11 +48,33 @@ $pages = $search->getPaginator()->getTotalPages();
 
 <section class="content-block content-block-list-header">
     <div class="list-header-title h2 mt-0 mb-0 float-lg-left">
-        <strong>
-            <?php
-            echo $total_result . ' ' . (($total_result > 1 || $total_result == 0) ? 'Reisen' : 'Reise');
-            ?>
-        </strong> gefunden
+        <p>
+            <strong>
+                <?php
+                echo $total_result . ' ' . (($total_result > 1 || $total_result == 0) ? 'Reisen' : 'Reise');
+                ?>
+            </strong> gefunden
+        </p>
+    </div>
+    <div class="pm-switch-result-view">
+        <label class="pm-switch">  
+            <input class="pm-switch-checkbox" type="checkbox">
+            <span class="pm-switch-slider">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-layout-grid" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <rect x="4" y="4" width="6" height="6" rx="1" />
+                    <rect x="14" y="4" width="6" height="6" rx="1" />
+                    <rect x="4" y="14" width="6" height="6" rx="1" />
+                    <rect x="14" y="14" width="6" height="6" rx="1" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-layout-list" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <rect x="4" y="4" width="16" height="6" rx="2" />
+                    <rect x="4" y="14" width="16" height="6" rx="2" />
+                </svg>
+            </span>
+        </label>
+        
     </div>
 </section>
 
@@ -77,7 +99,7 @@ $pages = $search->getPaginator()->getTotalPages();
     <div id="pm-search-result" class="row">
         <?php
 
-        $view = 'Teaser1';
+        $view = 'Teaser3';
         if(!empty($_GET['view']) && preg_match('/^[0-9A-Za-z\_]+$/', $_GET['view']) !== false){
             $view = $_GET['view'];
         }

@@ -19,6 +19,7 @@
 // -- components
 @import "components/offcanvas";
 @import "components/travel-teaser";
+@import "components/travel-teaser-mega-stripe";
 @import "components/travel-slider";
 @import "components/list-filter";
 @import "components/detail-gallery";
@@ -57,5 +58,5 @@
 // @import "pages/themes/theme-ananas";
 
 body {
-  font-display: swap !important;
+	font-display: swap !important;
 }
