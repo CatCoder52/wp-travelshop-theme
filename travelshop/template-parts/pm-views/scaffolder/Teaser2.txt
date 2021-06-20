@@ -42,12 +42,20 @@ $cheapest_price = $mo->getCheapestPrice();
 ?>
 <div class="wishlist-item">
     <div class="wishlist-item-image">
+
         <a href="<?php echo $url; ?>">
+            <?php if(is_array($moc->bilder_default)){ ?>
             <img 
                 src="<?php echo $moc->bilder_default[0]->getUri('teaser'); ?>" 
                 alt="<?php echo strip_tags($moc->headline_default); ?>" 
                 title="<?php echo $moc->bilder_default[0]->copyright; ?>"    
             />
+            <?php }elseif(is_string($moc->bilder_default)){
+                // @TODO the placeholder image below is only for a better theme developer onboarding, remove in production.
+                // if the property "$moc->bilder_default" is not set in this object type, check if there is another named image property
+                ?>
+                <img src="<?php echo SITE_URL; ?>/wp-content/themes/travelshop/assets/img/placeholder.svg.php?wh=250x170&text=<?php echo urlencode($moc->bilder_default);?>" class="card-img-top" />
+            <?php } ?>
         </a>
     </div>
     <div class="wishlist-item-data">

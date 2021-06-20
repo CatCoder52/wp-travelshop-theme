@@ -52,6 +52,8 @@ if (empty($_GET['pm-pr']) === false) {
     }
 }
 
+//@todo add idd and idbp to the cheapest price
+
 $CheapestPriceFilter->occupancies = [2];
 
 $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
@@ -71,7 +73,7 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
 
 
        $breadcrumb_search_url = site_url() . '/' . $PMTravelShop->RouteProcessor->get_url_by_object_type($mo->id_object_type) . '/';
-       if( !empty($moc->reiseart_default)){
+       if(is_array($moc->reiseart_default)){
            foreach ($moc->reiseart_default as $item) {
                $reiseart = $item->toStdClass();
                $tmp = new stdClass();
@@ -80,7 +82,7 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
                $breadcrumb[] = $tmp;
            }
        }
-       if(!empty($moc->zielgebiet_default )){
+       if(is_array($moc->zielgebiet_default )){
            foreach ($moc->zielgebiet_default as $item) {
                $zielgebiet = $item->toStdClass();
                $tmp = new stdClass();
@@ -106,14 +108,14 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
                 <p>
                     <?php
                         $badges = array();
-                        if(!empty($moc->reiseart_default)){
+                        if(is_array($moc->reiseart_default)){
                             foreach ($moc->reiseart_default as $mocart_default_item) {
                                 $mocart = $mocart_default_item->toStdClass();
                                 $badges[] = $mocart->item->name;
                             }
                         }
 
-                        if(!empty($moc->zielgebiet_default)){
+                        if(is_array($moc->zielgebiet_default)){
                             foreach ($moc->zielgebiet_default as $k => $zielgebiet_default_item) {
                                 $zielgebiet = $zielgebiet_default_item->toStdClass();
                                 $badges[] = $zielgebiet->item->name;
@@ -124,7 +126,7 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
                         }
                     ?>
                 </p>
-                <h1><?php echo strip_tags($moc->headline_default); ?></h1>
+                <h1><?php echo strip_tags($mo->name); ?></h1>
                 <p class="small"><?php echo strip_tags($moc->subline_default); ?></p>
             </section>
             <!-- CONTENT_SECTION_DETAIL_HEADER: END -->
@@ -162,7 +164,6 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
 
                     </div>
                     <div class="d-none d-lg-block col-lg-3">
-                        <!-- DETAIL_PRICE_BOX: START -->
                         <!-- Price Box beside the image gallery for desktop devices-->
                         <div class="sticky-container">
                             <?php
@@ -170,13 +171,12 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
                             load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/price-box.php', false, array_merge($data, array('cheapest_price' => $cheapest_price)));
                             ?>
                         </div>
-                        <!-- DETAIL_PRICE_BOX: END -->
-
                     </div>
 
                 </div>
             </section>
         </div>
+
         <?php
         // Detail Booking
         load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/booking-offers.php', false, array_merge($data, array('cheapest_price' => $cheapest_price)));
