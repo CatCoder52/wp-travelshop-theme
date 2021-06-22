@@ -11624,6 +11624,12 @@ hr {
 .card-travel-wrapper .card.card-travel {
   height: 100%;
   border-width: 0;
+  flex-direction: row;
+}
+@media (min-width: 768px) {
+  .card-travel-wrapper .card.card-travel {
+    flex-direction: column;
+  }
 }
 .card-travel-wrapper .card.card-travel .container,
 .card-travel-wrapper .card.card-travel .row {
@@ -11643,6 +11649,7 @@ hr {
 }
 .card-travel-wrapper .card.card-travel .card-body .attribute-row {
   display: none;
+  margin-bottom: 0.5rem;
 }
 .card-travel-wrapper .card.card-travel .card-body .subline {
   height: auto;
@@ -11768,7 +11775,7 @@ hr {
 }
 @media (min-width: 768px) {
   .card-travel-wrapper .card.card-travel .card-body {
-    padding: 1.25rem 1.25rem 9rem 1.25rem;
+    padding: 1.25rem 1.25rem 7rem 1.25rem;
     flex: 1 0 auto;
   }
   .card-travel-wrapper .card.card-travel .card-body .card-title {
@@ -11836,6 +11843,9 @@ hr {
 }
 .card-travel-wrapper .card.card-travel .card-image-holder {
   position: relative;
+}
+.card-travel-wrapper .card.card-travel .card-image-holder a {
+  display: block;
 }
 .card-travel-wrapper .card.card-travel .card-image-holder .add-to-wishlist {
   position: absolute;
@@ -11984,15 +11994,15 @@ hr {
   padding: 0.75rem;
   border-bottom: 1px solid #ccc;
 }
-.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-head h2 {
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-head h1 {
   font-size: 1rem;
   font-weight: 400;
   margin: 0;
 }
-.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-head h2 a {
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-head h1 a {
   color: #333;
 }
-.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-head h2 a:hover {
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-head h1 a:hover {
   color: #333;
   text-decoration: none;
 }
@@ -12087,7 +12097,7 @@ hr {
   .travelshop-teaser-mega-stripe .stripe-inner .stripe-content {
     flex: 0 0 70%;
   }
-  .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-head h2 {
+  .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-head h1 {
     font-size: 1.2rem;
   }
   .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .btn {
@@ -12113,7 +12123,7 @@ hr {
   .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-head {
     padding: 1.175rem;
   }
-  .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-head h2 {
+  .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-head h1 {
     font-size: 1.6rem;
   }
   .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-body {
@@ -13755,7 +13765,8 @@ button.select-from-control i.la {
   position: relative;
   margin-bottom: 30px;
 }
-.nice-accordion .accordion-main a:hover, .nice-accordion .accordion-main a:focus {
+.nice-accordion .accordion-main a:hover,
+.nice-accordion .accordion-main a:focus {
   text-decoration: none;
   outline: none;
 }
@@ -13763,7 +13774,7 @@ button.select-from-control i.la {
   .nice-accordion .accordion-main:before {
     content: "";
     width: 1px;
-    background: #607D8B;
+    background: #607d8b;
     position: absolute;
     top: 24px;
     left: 9px;
@@ -13786,7 +13797,7 @@ button.select-from-control i.la {
   content: "";
   width: 2px;
   height: 100%;
-  background: linear-gradient(to bottom, #0066ff 0%, #607D8B 100%);
+  background: linear-gradient(to bottom, #0066ff 0%, #607d8b 100%);
   position: absolute;
   top: 0;
   left: -2px;
@@ -13796,7 +13807,8 @@ button.select-from-control i.la {
   background: #fff;
   position: relative;
 }
-.nice-accordion .accordion-main .panel-heading h4 {
+.nice-accordion .accordion-main .panel-heading h2 {
+  text-transform: uppercase;
   font-size: 1.1rem;
   margin: 0px;
 }
@@ -13811,7 +13823,7 @@ button.select-from-control i.la {
     height: 15px;
     border-radius: 50px;
     background: #fff;
-    border: 1.5px solid #607D8B;
+    border: 1.5px solid #607d8b;
     position: absolute;
     top: 50%;
     left: -38px;
@@ -13834,7 +13846,7 @@ button.select-from-control i.la {
   height: 25px;
   line-height: 25px;
   border-radius: 50%;
-  border: 1.5px solid #607D8B;
+  border: 1.5px solid #607d8b;
   position: absolute;
   top: 50%;
   right: 25px;
