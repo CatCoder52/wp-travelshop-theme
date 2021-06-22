@@ -103,48 +103,52 @@ if(is_array($moc->zielgebiet_default)){
     }
 ?>
 
-<div class="travelshop-teaser-mega-stripe col-12">
+<article class="travelshop-teaser-mega-stripe col-12">
     <div class="stripe-inner">
-        <div class="stripe-image" style="background-image:url(<?php echo $moc->bilder_default[0]->getUri('teaser'); ?>);">
+        <div class="stripe-image"
+            style="background-image:url(<?php echo $moc->bilder_default[0]->getUri('teaser'); ?>);">
 
-            <div data-pm-id="<?php echo $mo->id; ?>"
-                    data-pm-ot="<?php echo $mo->id_object_type; ?>"
-                    data-pm-dr="<?php echo !is_null($cheapest_price) ? $cheapest_price->date_arrival->format('Ymd').'-'.$cheapest_price->date_arrival->format('Ymd') : ''; ?>"
-                    data-pm-du="<?php echo !is_null($cheapest_price) ? $cheapest_price->duration : ''; ?>"
-                    class="add-to-wishlist">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path class="wishlist-heart" d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+            <div data-pm-id="<?php echo $mo->id; ?>" data-pm-ot="<?php echo $mo->id_object_type; ?>"
+                data-pm-dr="<?php echo !is_null($cheapest_price) ? $cheapest_price->date_arrival->format('Ymd').'-'.$cheapest_price->date_arrival->format('Ymd') : ''; ?>"
+                data-pm-du="<?php echo !is_null($cheapest_price) ? $cheapest_price->duration : ''; ?>"
+                class="add-to-wishlist">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="30"
+                    height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path class="wishlist-heart"
+                        d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
                 </svg>
             </div>
 
-            <span class='stripe-duration'>
+            <div class='stripe-duration'>
                 <strong><?php echo $cheapest_price->duration; ?></strong>
                 <br />
                 <small>Tage</small>
-            </span>
+            </div>
 
         </div>
-        <div class="stripe-content">
+        <section class="stripe-content">
             <div class="stripe-content-head">
-                <h2>
+                <h1>
                     <a href="<?php echo $url; ?>"><?php echo strip_tags($mo->name); ?></a>
-                </h2>
+                </h1>
             </div>
             <div class="stripe-content-body">
                 <p><?php echo strip_tags($moc->subline_default); ?></p>
                 <?php if(!empty($breadcrumb)){?>
-                        <p class="attribute-row">
-                           <span class="badge badge-secondary"><?php echo implode('</span> <span class="badge badge-secondary">', $breadcrumb);?></span>
-                        </p>
+                <p class="attribute-row">
+                    <span
+                        class="badge badge-secondary"><?php echo implode('</span> <span class="badge badge-secondary">', $breadcrumb);?></span>
+                </p>
                 <?php } ?>
             </div>
             <div class="stripe-content-footer">
                 <div class="stripe-departure">
                     <strong>Abreise</strong>
                     <div class="dropdown">
-                        <button class="btn <?php echo $c_dates == 1 ? ' disabled' : ' dropdown-toggle';?>" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn <?php echo $c_dates == 1 ? ' disabled' : ' dropdown-toggle';?>" type="button"
+                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <?php
 
                             $today = new DateTime();
@@ -178,16 +182,18 @@ if(is_array($moc->zielgebiet_default)){
                                     }
 
                                     if($c < 5){ // display only 5 dates per month ?>
-                                        <a class="dropdown-item<?php echo ($date->id == $cheapest_price->id_date) ? ' active' : '';?>" href="<?php echo $url.(!strpos($url, '?') ? '?' : '&').'idd='.$date->id.'&idbp='.$booking_package->id;?>">
-                                            <?php
+                            <a class="dropdown-item<?php echo ($date->id == $cheapest_price->id_date) ? ' active' : '';?>"
+                                href="<?php echo $url.(!strpos($url, '?') ? '?' : '&').'idd='.$date->id.'&idbp='.$booking_package->id;?>">
+                                <?php
                                             echo '<i class="circle green"></i>'.$weekdays[$date->departure->format('w')].'. '. $date->departure->format('d.m.') . ' - '.$weekdays[$date->arrival->format('w')].'. '. $date->arrival->format($date_to_format);
                                             ?>
-                                        </a>
-                                        <?php
+                            </a>
+                            <?php
                                             }elseif($c == 5){
                                         ?>
-                                        <a class="dropdown-item" href="<?php echo $url;?>"><small>mehr Termine im <?php echo $current_month; ?></small></a>
-                                    <?php
+                            <a class="dropdown-item" href="<?php echo $url;?>"><small>mehr Termine im
+                                    <?php echo $current_month; ?></small></a>
+                            <?php
                                     }
                                     $c++;
                                 }
@@ -201,16 +207,16 @@ if(is_array($moc->zielgebiet_default)){
                     <?php if(!empty($cheapest_price->price_option_pseudo) && $cheapest_price->price_option_pseudo > $cheapest_price->price_total) {
                             $percent_discount = round((100 / $cheapest_price->price_option_pseudo) * ($cheapest_price->price_option_pseudo - $cheapest_price->price_total));
                          ?>
-                            <div class="discount-wrapper">
-                                <p>
-                                    <span class="msg">Ihr Vorteil</span>
-                                    <span class="discount-label">
-                                        <span class="price"><?php echo $cheapest_price->price_option_pseudo; ?>&nbsp;€</span>
-                                        <span class="discount"> -<?php echo $percent_discount;?>%</span>
-                                    </span>
-                                </p>
-                            </div>
-                            <?php
+                    <div class="discount-wrapper">
+                        <p>
+                            <span class="msg">Ihr Vorteil</span>
+                            <span class="discount-label">
+                                <span class="price"><?php echo $cheapest_price->price_option_pseudo; ?>&nbsp;€</span>
+                                <span class="discount"> -<?php echo $percent_discount;?>%</span>
+                            </span>
+                        </p>
+                    </div>
+                    <?php
                         }
                     ?>
                     <a href="<?php echo $url; ?>" class="btn btn-primary">
@@ -224,6 +230,6 @@ if(is_array($moc->zielgebiet_default)){
                     </a>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
-</div>
+</article>

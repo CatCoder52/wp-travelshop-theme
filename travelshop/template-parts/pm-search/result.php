@@ -30,8 +30,10 @@ $pages = $search->getPaginator()->getTotalPages();
 
 <div class="list-filter-toggle mb-4">
     <button class="btn btn-block btn-secondary list-filter-open">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-adjustments-alt" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-adjustments-alt" width="30"
+            height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <rect x="4" y="8" width="4" height="4" />
             <line x1="6" y1="4" x2="6" y2="8" />
             <line x1="6" y1="12" x2="6" y2="20" />
@@ -57,24 +59,28 @@ $pages = $search->getPaginator()->getTotalPages();
         </p>
     </div>
     <div class="pm-switch-result-view">
-        <label class="pm-switch">  
+        <label class="pm-switch">
             <input class="pm-switch-checkbox" type="checkbox">
             <span class="pm-switch-slider">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-layout-grid" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-layout-grid" width="20"
+                    height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <rect x="4" y="4" width="6" height="6" rx="1" />
                     <rect x="14" y="4" width="6" height="6" rx="1" />
                     <rect x="4" y="14" width="6" height="6" rx="1" />
                     <rect x="14" y="14" width="6" height="6" rx="1" />
                 </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-layout-list" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-layout-list" width="20"
+                    height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <rect x="4" y="4" width="16" height="6" rx="2" />
                     <rect x="4" y="14" width="16" height="6" rx="2" />
                 </svg>
             </span>
         </label>
-        
+
     </div>
 </section>
 
@@ -114,11 +120,11 @@ $pages = $search->getPaginator()->getTotalPages();
         <?php
         if($total_result == 0){
             ?>
-            <div class="col-12">
-                <p>Zu Ihrer Suchanfrage wurden keine Ergebnisse gefunden. Bitte ändern Sie Ihre Suchanfrage.</p>
-                <a href="#" onclick="document.location.href = window.location.href.split('?')[0]">Suche zurücksetzen</a>
-            </div>
-            <?php
+        <div class="col-12">
+            <p>Zu Ihrer Suchanfrage wurden keine Ergebnisse gefunden. Bitte ändern Sie Ihre Suchanfrage.</p>
+            <a href="#" onclick="document.location.href = window.location.href.split('?')[0]">Suche zurücksetzen</a>
+        </div>
+        <?php
         }
         ?>
     </div>
