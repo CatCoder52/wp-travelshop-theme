@@ -6,6 +6,7 @@ $files = [];
 $files[] = ['Reise_Detail1.php', 'scaffolder/Detail1.txt'];
 $files[] = ['Reise_Teaser1.php', 'scaffolder/Teaser1.txt'];
 $files[] = ['Reise_Teaser2.php', 'scaffolder/Teaser2.txt'];
+$files[] = ['Reise_Teaser3.php', 'scaffolder/Teaser3.txt'];
 
 foreach($files as $file){
     $c = file_get_contents($file[0]);

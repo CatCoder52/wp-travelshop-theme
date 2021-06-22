@@ -1,17 +1,6 @@
 <?php
 
-/**
- * @todo: make the s3 plugin stateless ready
- *
- * image sizes are planned for a viewport of 1140px width
- * image ratio 1:6
- * the "thumb"-size is used for a 4 columns
- * the "medium"-size is used for a 3 columns
- * the "large"-size is used for 75% of the viewport (9/12)
- *
- * if you edit this file run: php travelshop/cli/regenerate-images.php --all` on your cli to generate new image derivated
- *
- */
+return;
 
     update_option( 'thumbnail_size_w', 255 );
     update_option( 'thumbnail_size_h', 159 );

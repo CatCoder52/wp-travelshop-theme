@@ -37,7 +37,7 @@ $mo = $args['mo'];
                     <div class="panel-body">
                         <div class="detail-reise-content">
                             <div class="row">
-                                <?php if (empty($moc->bilder_default[3]) === false) { ?>
+                                <?php if (empty($moc->bilder_default[3]) === false && is_object($moc->bilder_default[3])) { ?>
                                     <div class="col-md-6 col-lg-5">
                                         <img class="w-100 h-auto"
                                              src="<?php echo $moc->bilder_default[3]->getUri('detail'); ?>"
@@ -55,8 +55,10 @@ $mo = $args['mo'];
                                 <div class="col-md-6 col-lg-7">
                                     <ul class="checked-list">
                                         <?php
-                                        foreach ($moc->highlights_default as $highlight) {
-                                            echo '<li>' . $highlight->item->name . '</li>';
+                                        if(is_array($moc->highlights_default)){
+                                            foreach ($moc->highlights_default as $highlight) {
+                                                echo '<li>' . $highlight->item->name . '</li>';
+                                            }
                                         }
                                         ?>
                                     </ul>
@@ -103,7 +105,7 @@ $mo = $args['mo'];
         // Accommodation
         // object link example
         $uc = 0;
-        if(empty($moc->unterkunftsbeschreibungen_default) === false){
+        if(is_array($moc->unterkunftsbeschreibungen_default)){
             foreach ($moc->unterkunftsbeschreibungen_default as $unterkunft_link) {
                 $unterkunft_mo = new \Pressmind\ORM\Object\MediaObject($unterkunft_link->id_media_object_link, true);
                 // if the linked object is not available (in most cases it must be public)
@@ -209,7 +211,7 @@ $mo = $args['mo'];
         <?php
         // object link example
         $uc = 0;
-        if(empty($moc->textbaustein_default) === false){
+        if(is_array($moc->textbaustein_default)){
             foreach ($moc->textbaustein_default as $textbaustein_link) {
                 $textbaustein_mo = new \Pressmind\ORM\Object\MediaObject($textbaustein_link->id_media_object_link, true);
                 // if the linked object is not available (in most cases it must be public)

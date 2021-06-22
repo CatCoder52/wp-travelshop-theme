@@ -106,12 +106,19 @@ $class = empty($data['custom_data']->class) ? 'col-12 col-md-6 col-lg-3' : $data
                     </svg>
                 </div>
                 <a href="<?php echo $url; ?>">
-                    <img src="<?php echo $moc->bilder_default[0]->getUri('teaser'); ?>"
-                        title="<?php echo $moc->bilder_default[0]->copyright; ?>"
-                        alt="<?php echo strip_tags($moc->headline_default); ?>"
-                        class="card-img-top"
-                        loading="lazy"
-                    >
+                    <?php
+                    if(is_array($moc->bilder_default)){ ?>
+                        <img src="<?php echo $moc->bilder_default[0]->getUri('teaser'); ?>"
+                             title="<?php echo $moc->bilder_default[0]->copyright; ?>"
+                             alt="<?php echo strip_tags($moc->headline_default); ?>"
+                             class="card-img-top"
+                             loading="lazy">
+                    <?php }elseif(is_string($moc->bilder_default)){
+                        // @TODO the placeholder image below is only for a better theme developer onboarding, remove in production.
+                        // if the property "$moc->bilder_default" is not set in this object type, check if there is another named image property
+                        ?>
+                        <img src="<?php echo SITE_URL; ?>/wp-content/themes/travelshop/assets/img/placeholder.svg.php?wh=250x170&text=<?php echo urlencode($moc->bilder_default);?>" class="card-img-top">
+                    <?php } ?>
                 </a>
             </div>
 
@@ -120,19 +127,19 @@ $class = empty($data['custom_data']->class) ? 'col-12 col-md-6 col-lg-3' : $data
         <div class="card-body col-8 col-sm-7 col-md-12">
 
             <h5 class="card-title">
-                <a href="<?php echo $url; ?>"><?php echo strip_tags($moc->headline_default); ?></a>
+                <a href="<?php echo $url; ?>"><?php echo strip_tags($mo->name); ?></a>
             </h5>
                 <?php
                     $breadcrumb = array();
 
-                    if(!empty($moc->reiseart_default)){
+                    if(is_array($moc->reiseart_default)){
                         foreach ($moc->reiseart_default as $mocart_default_item) {
                             $mocart = $mocart_default_item->toStdClass();
                             $breadcrumb[] = $mocart->item->name;
                         }
                     }
 
-                    if(!empty($moc->zielgebiet_default)){
+                    if(is_array($moc->zielgebiet_default)){
                         foreach ($moc->zielgebiet_default as $k => $zielgebiet_default_item) {
                             $zielgebiet = $zielgebiet_default_item->toStdClass();
                             $breadcrumb[] = $zielgebiet->item->name;
@@ -155,8 +162,6 @@ $class = empty($data['custom_data']->class) ? 'col-12 col-md-6 col-lg-3' : $data
             </p>
 
             <?php } ?>
-
-
 
 
             <div class="bottom-aligned">
@@ -227,11 +232,10 @@ $class = empty($data['custom_data']->class) ? 'col-12 col-md-6 col-lg-3' : $data
                                                 ?>
                                             </a>
                                             <?php
-                                                }else{
+                                                }elseif($c == 5){
                                             ?>
                                             <a class="dropdown-item" href="<?php echo $url;?>"><small>mehr Termine im <?php echo $current_month; ?></small></a>
                                         <?php
-                                            continue;
                                         }
                                         $c++;
                                     }
