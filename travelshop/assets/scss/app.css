@@ -11850,8 +11850,9 @@ hr {
 .card-travel-wrapper .card.card-travel .card-image-holder .add-to-wishlist {
   position: absolute;
   cursor: pointer;
-  top: 0.5rem;
-  right: 0.5rem;
+  top: 0;
+  right: 0;
+  padding: 0.5rem;
 }
 .card-travel-wrapper .card.card-travel .card-image-holder .add-to-wishlist svg {
   pointer-events: none;
@@ -14580,8 +14581,9 @@ a {
 .content-block-detail-info-grid .detail-price-box .add-to-wishlist {
   position: absolute;
   cursor: pointer;
-  right: 0.5rem;
-  top: 0.5rem;
+  right: 0;
+  top: 0;
+  padding: 0.5rem;
 }
 .content-block-detail-info-grid .detail-price-box .add-to-wishlist svg {
   pointer-events: none;
