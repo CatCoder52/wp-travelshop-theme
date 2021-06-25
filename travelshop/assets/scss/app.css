@@ -11680,7 +11680,7 @@ hr {
   margin-bottom: 0.25rem;
 }
 .card-travel-wrapper .card.card-travel .card-body .date-row .dropdown .btn {
-  padding: 0px;
+  padding: 0.85rem 0;
   font-size: 80%;
 }
 .card-travel-wrapper .card.card-travel .card-body .date-row .dropdown .btn.disabled {
@@ -11755,7 +11755,7 @@ hr {
   font-weight: bold;
 }
 .card-travel-wrapper .card.card-travel .card-body a.btn {
-  padding: 0.1rem 0.4rem;
+  padding: 0.7rem 1.5rem;
   border-radius: 5px;
   white-space: nowrap;
 }
@@ -12034,7 +12034,7 @@ hr {
   white-space: normal;
   text-align: center;
   font-size: 0.7rem;
-  padding: 0.1rem 0.75rem;
+  padding: 1rem 0.75rem;
   border: 0;
   outline: 0;
   box-shadow: none;
@@ -12060,6 +12060,9 @@ hr {
 .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-cta {
   padding: 0 0.75rem;
   margin: 0.175rem 0 0.5rem 0;
+}
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-cta .btn {
+  padding: 0.7rem 1rem;
 }
 .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-cta .discount-wrapper p {
   margin-bottom: 0.35rem;
@@ -12104,6 +12107,9 @@ hr {
     font-size: 0.8rem;
     text-align: left;
     padding: 0 0.75rem;
+  }
+  .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-cta .btn {
+    padding: 0.5rem 1rem;
   }
 }
 @media (min-width: 992px) {
@@ -13059,7 +13065,7 @@ hr {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   border-radius: 0.25rem;
 }
 .teaser .teaser-image img {
@@ -13074,6 +13080,9 @@ hr {
 .teaser.icon-teaser {
   text-align: center;
 }
+.teaser.icon-teaser .btn {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
 .teaser .teaser-icon {
   padding-top: 1.25rem;
   line-height: 1;
@@ -13083,9 +13092,13 @@ hr {
   height: 80px;
   border-radius: 50%;
   background-color: #e9ecef;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   margin: 0 auto;
   line-height: 80px;
   font-size: 2.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .teaser .teaser-icon .icon-inner-primary {
   background-color: #0066ff;
@@ -13449,7 +13462,7 @@ button.select-from-control i.la {
   bottom: 0;
   background: white;
   border-radius: 0.25rem;
-  background: linear-gradient(270deg, white 0%, rgba(0, 0, 0, 0) 60%);
+  background: linear-gradient(270deg, white 0%, rgba(255, 255, 255, 0.001) 60%);
 }
 
 @media (max-width: 767.98px) {
@@ -14053,6 +14066,25 @@ button.select-from-control i.la {
 .btn-primary.active {
   background-color: #002966 !important;
   border-color: #99c2ff !important;
+}
+
+body {
+  margin-top: 70px;
+}
+@media (min-width: 768px) {
+  body {
+    margin-top: 80px;
+  }
+}
+@media (min-width: 992px) {
+  body {
+    margin-top: 90px;
+  }
+}
+@media (min-width: 1200px) {
+  body {
+    margin-top: 100px;
+  }
 }
 
 .footer-main {

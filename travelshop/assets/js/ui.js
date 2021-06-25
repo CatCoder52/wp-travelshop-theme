@@ -56,10 +56,6 @@ jQuery(function ($) {
 // --------------------------------
 // --- Affix Header
 // --------------------------------
-    $('body').css('margin-top', $('.header-main').height());
-    $(window).resize(function () {
-        $('body').css('margin-top', $('.header-main').height());
-    });
     $(window).scroll(function () {
         var scroll = $(window).scrollTop();
         if (scroll >= 200) {
