@@ -19,8 +19,6 @@ $mo = $data['media_object'];
  */
 $moc = $mo->getDataForLanguage(TS_LANGUAGE_CODE);
 
-// @TODO: Dokumentieren:
-//$mo->getValueByTagName()
 
 /**
  * Set the Cheapest Price, based on the current search parameters
@@ -51,6 +49,8 @@ if (empty($_GET['pm-pr']) === false) {
         $CheapestPriceFilter->price_to = $priceRange[1];
     }
 }
+
+//@todo add idd and idbp to the cheapest price
 
 $CheapestPriceFilter->occupancies = [2];
 
@@ -152,6 +152,7 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
                             // pricepox
                             load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/price-box.php', false, array_merge($data, array('cheapest_price' => $cheapest_price)));
                             ?>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -160,7 +161,7 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
         // Detail Booking
         load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/booking-offers.php', false, array_merge($data, array('cheapest_price' => $cheapest_price)));
         ?>
-</div>
+    </div>
 <?php
 // Gallery
 load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/gallery.php', false, $moc->bilder_default);

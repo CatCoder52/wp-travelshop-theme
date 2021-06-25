@@ -121,24 +121,6 @@ if (empty($filteredParams) === false) {
                     <?php } ?>
                 </a>
             </div>
-            <div data-pm-id="<?php echo $mo->id; ?>" data-pm-ot="<?php echo $mo->id_object_type; ?>"
-                data-pm-dr="<?php echo !is_null($cheapest_price) ? $cheapest_price->date_arrival->format('Ymd').'-'.$cheapest_price->date_arrival->format('Ymd') : ''; ?>"
-                data-pm-du="<?php echo !is_null($cheapest_price) ? $cheapest_price->duration : ''; ?>"
-                class="add-to-wishlist">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="30"
-                    height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path class="wishlist-heart"
-                        d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
-                </svg>
-            </div>
-            <a href="<?php echo $url; ?>">
-                <img src="<?php echo $moc->bilder_default[0]->getUri('teaser'); ?>"
-                    title="<?php echo $moc->bilder_default[0]->copyright; ?>"
-                    alt="<?php echo strip_tags($moc->headline_default); ?>" class="card-img-top" loading="lazy">
-            </a>
-        </div>
 
         <?php } ?>
 
@@ -196,7 +178,7 @@ if (empty($filteredParams) === false) {
                     ?>
 
 
-                <div class="card-text date-row">
+                    <div class="card-text date-row">
 
                     <span class="small">
                         <?php
@@ -263,7 +245,6 @@ if (empty($filteredParams) === false) {
                                 </div>
                             <?php } ?>
                         </div>
-                        <?php } ?>
                     </div>
                     <div class="card-text price-row">
                         <?php
@@ -283,17 +264,17 @@ if (empty($filteredParams) === false) {
                             <?php
                         }
                         ?>
-                    <a href="<?php echo $url; ?>" class="btn btn-primary">
-                        <?php
+                        <a href="<?php echo $url; ?>" class="btn btn-primary">
+                            <?php
                             if (empty($cheapest_price->price_total) === false) {
                                 echo '<small><span>Preis p.P.</span> <strong>ab</strong> </small><strong>' . number_format($cheapest_price->price_total, TS_PRICE_DECIMALS, TS_PRICE_DECIMAL_SEPARATOR, TS_PRICE_THOUSANDS_SEPARATOR) . '&nbsp;€</strong>';
                             } else {
                                 ?>zur Reise<?php
                             }
                             ?>
-                    </a>
-                </div>
-                <?php
+                        </a>
+                    </div>
+                    <?php
                 } // if cheapest price is set
                 ?>
             </div>
