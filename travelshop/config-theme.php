@@ -115,7 +115,5 @@ if(!defined('PM_REDIS_PORT')){
  * if BB_ACTIVE = true , the beaver builder custom modules are loaded from travelshop/pagebuilders/beaverbuilder
  */
 define('BB_ACTIVE', true);
-define('BB_MODULE_TS_DIR', get_stylesheet_directory().'/pagebuilders/beaverbuilder/');
-define('BB_MODULE_TS_URL', get_stylesheet_directory_uri().'/pagebuilders/beaverbuilder/');
-
-
+// define('BB_MODULE_TS_DIR', get_stylesheet_directory().'/pagebuilders/beaverbuilder/');
+// define('BB_MODULE_TS_URL', get_stylesheet_directory_uri().'/pagebuilders/beaverbuilder/');

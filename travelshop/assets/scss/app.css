@@ -11754,12 +11754,11 @@ hr {
   color: #e60000;
   font-weight: bold;
 }
-.card-travel-wrapper .card.card-travel .card-body a.btn {
-  padding: 0.7rem 1.5rem;
-  border-radius: 5px;
-  white-space: nowrap;
+.card-travel-wrapper .card.card-travel .card-body .travel-teaser-link {
+  padding: 0.4rem 0;
+  display: inline-block;
 }
-.card-travel-wrapper .card.card-travel .card-body a.btn small span {
+.card-travel-wrapper .card.card-travel .card-body .travel-teaser-link small span {
   display: none;
 }
 @media (min-width: 576px) {
@@ -11830,14 +11829,18 @@ hr {
     margin: 1px;
     width: 100%;
   }
-  .card-travel-wrapper .card.card-travel .card-body a.btn {
-    padding: 0.375rem 0.75rem;
+  .card-travel-wrapper .card.card-travel .card-body .travel-teaser-link {
+    padding: 0;
     display: block;
     bottom: 1.25rem;
     left: 1.25rem;
     right: 1.25rem;
   }
-  .card-travel-wrapper .card.card-travel .card-body a.btn small span {
+  .card-travel-wrapper .card.card-travel .card-body .travel-teaser-link .btn {
+    display: block;
+    padding: 0.375rem 0.75rem;
+  }
+  .card-travel-wrapper .card.card-travel .card-body .travel-teaser-link small span {
     display: inline;
   }
 }
@@ -12062,8 +12065,9 @@ hr {
   padding: 0 0.75rem;
   margin: 0.175rem 0 0.5rem 0;
 }
-.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-cta .btn {
-  padding: 0.7rem 1rem;
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-cta .travel-teaser-link {
+  padding: 0.4rem 0;
+  display: inline-block;
 }
 .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-cta .discount-wrapper p {
   margin-bottom: 0.35rem;
@@ -12109,7 +12113,7 @@ hr {
     text-align: left;
     padding: 0 0.75rem;
   }
-  .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-cta .btn {
+  .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-cta .travel-teaser-link .btn {
     padding: 0.5rem 1rem;
   }
 }
@@ -12158,6 +12162,9 @@ hr {
     padding: 0 0.75rem;
     font-size: 0.8rem;
     margin: 0.5rem 0 -0.4rem 0;
+  }
+  .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-cta .travel-teaser-link {
+    padding: 0;
   }
   .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-cta .discount-wrapper p {
     text-align: center;
@@ -13058,39 +13065,40 @@ hr {
 }
 
 .teaser {
-  margin: 0 0 30px 0;
+  margin: 0 0 1rem 0;
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   min-width: 0;
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  overflow: hidden;
   border-radius: 0.25rem;
 }
-.teaser .teaser-image img {
-  border-top-left-radius: calc( 0.25rem - 1px );
-  border-top-right-radius: calc( 0.25rem - 1px );
+.teaser.wp-teaser, .teaser.image-teaser {
+  flex-direction: column;
 }
-.teaser .teaser-body {
-  flex: 1 1 auto;
-  min-height: 1px;
-  padding: 1.25rem;
+.teaser.wp-teaser .teaser-body, .teaser.image-teaser .teaser-body {
+  text-align: left;
+  padding: 1rem;
 }
-.teaser.icon-teaser {
-  text-align: center;
+.teaser.wp-teaser .teaser-body .teaser-title, .teaser.image-teaser .teaser-body .teaser-title {
+  font-size: 1.25rem;
 }
-.teaser.icon-teaser .btn {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+.teaser.wp-teaser .teaser-body a, .teaser.image-teaser .teaser-body a {
+  position: static;
+  width: 100%;
+  height: auto;
 }
 .teaser .teaser-icon {
-  padding-top: 1.25rem;
+  padding: 1rem 0.5rem 1rem 1rem;
   line-height: 1;
 }
 .teaser .teaser-icon .icon-inner {
-  width: 80px;
-  height: 80px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background-color: #e9ecef;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -13101,6 +13109,10 @@ hr {
   align-items: center;
   justify-content: center;
 }
+.teaser .teaser-icon .icon-inner svg {
+  width: 30px;
+  height: 30px;
+}
 .teaser .teaser-icon .icon-inner-primary {
   background-color: #0066ff;
   color: #fff;
@@ -13108,6 +13120,75 @@ hr {
 .teaser .teaser-icon .icon-inner-secondary {
   background-color: #6c757d;
   color: #fff;
+}
+.teaser .teaser-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1rem 3.25rem 1rem 0.5rem;
+  text-align: left;
+  position: relative;
+}
+.teaser .teaser-body .teaser-title {
+  font-size: 1rem;
+}
+.teaser .teaser-body p {
+  font-size: 0.8rem;
+  margin: 0;
+}
+.teaser .teaser-body a {
+  position: absolute;
+  width: 48px;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+}
+.teaser .teaser-body a span {
+  display: none;
+}
+@media (min-width: 576px) {
+  .teaser {
+    flex-direction: column;
+    margin: 0 0 1.5rem 0;
+  }
+  .teaser .teaser-icon {
+    padding: 1rem 0.5rem 0 1rem;
+    line-height: 1;
+  }
+  .teaser .teaser-icon .icon-inner {
+    width: 80px;
+    height: 80px;
+  }
+  .teaser .teaser-icon .icon-inner svg {
+    width: 55px;
+    height: 55px;
+  }
+  .teaser .teaser-body {
+    text-align: center;
+    padding: 1rem;
+  }
+  .teaser .teaser-body .teaser-title {
+    font-size: 1.25rem;
+  }
+  .teaser .teaser-body p {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  .teaser .teaser-body a {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    right: auto;
+    height: auto;
+    width: 100%;
+  }
+  .teaser .teaser-body a span {
+    display: inline-block;
+  }
 }
 
 .teaser.image-teaser {

@@ -86,41 +86,38 @@ if (empty($filteredParams) === false) {
         if (empty($moc->bilder_default[0]) === false) {
             ?>
 
-            <div class="card-image-holder col-5 col-sm-5 col-md-12 p-0">
-                <div class="card-badge card-badge--new">
-                    <!--<div class="card-badge card-badge--top-offer">-->
-                    Neu
-                </div>
-                <div data-pm-id="<?php echo $mo->id; ?>" data-pm-ot="<?php echo $mo->id_object_type; ?>"
-                     data-pm-dr="<?php echo !is_null($cheapest_price) ? $cheapest_price->date_arrival->format('Ymd') . '-' . $cheapest_price->date_arrival->format('Ymd') : ''; ?>"
-                     data-pm-du="<?php echo !is_null($cheapest_price) ? $cheapest_price->duration : ''; ?>"
-                     class="add-to-wishlist">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="30"
-                         height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none"
-                         stroke-linecap="round"
-                         stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path class="wishlist-heart"
-                              d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"/>
-                    </svg>
-                </div>
-                <a href="<?php echo $url; ?>">
-                    <?php
+        <div class="card-image-holder col-5 col-sm-5 col-md-12 p-0">
+            <div class="card-badge card-badge--new">
+                <!--<div class="card-badge card-badge--top-offer">-->
+                Neu
+            </div>
+            <div data-pm-id="<?php echo $mo->id; ?>" data-pm-ot="<?php echo $mo->id_object_type; ?>"
+                data-pm-dr="<?php echo !is_null($cheapest_price) ? $cheapest_price->date_arrival->format('Ymd') . '-' . $cheapest_price->date_arrival->format('Ymd') : ''; ?>"
+                data-pm-du="<?php echo !is_null($cheapest_price) ? $cheapest_price->duration : ''; ?>"
+                class="add-to-wishlist">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="30"
+                    height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path class="wishlist-heart"
+                        d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                </svg>
+            </div>
+            <a href="<?php echo $url; ?>">
+                <?php
                     if (is_array($moc->bilder_default)) { ?>
-                        <img src="<?php echo $moc->bilder_default[0]->getUri('teaser'); ?>"
-                             title="<?php echo $moc->bilder_default[0]->copyright; ?>"
-                             alt="<?php echo strip_tags($mo->name); ?>"
-                             class="card-img-top"
-                             loading="lazy">
-                    <?php } elseif (is_string($moc->bilder_default)) {
+                <img src="<?php echo $moc->bilder_default[0]->getUri('teaser'); ?>"
+                    title="<?php echo $moc->bilder_default[0]->copyright; ?>" alt="<?php echo strip_tags($mo->name); ?>"
+                    class="card-img-top" loading="lazy">
+                <?php } elseif (is_string($moc->bilder_default)) {
                         // @TODO the placeholder image below is only for a better theme developer onboarding, remove in production.
                         // if the property "$moc->bilder_default" is not set in this object type, check if there is another named image property
                         ?>
-                        <img src="<?php echo SITE_URL; ?>/wp-content/themes/travelshop/assets/img/placeholder.svg.php?wh=250x170&text=<?php echo urlencode($moc->bilder_default); ?>"
-                             class="card-img-top">
-                    <?php } ?>
-                </a>
-            </div>
+                <img src="<?php echo SITE_URL; ?>/wp-content/themes/travelshop/assets/img/placeholder.svg.php?wh=250x170&text=<?php echo urlencode($moc->bilder_default); ?>"
+                    class="card-img-top">
+                <?php } ?>
+            </a>
+        </div>
 
         <?php } ?>
 
@@ -148,18 +145,18 @@ if (empty($filteredParams) === false) {
 
             if (!empty($breadcrumb)) {
                 ?>
-                <p class="attribute-row">
+            <p class="attribute-row">
                 <span
-                        class="badge badge-secondary"><?php echo implode('</span> <span class="badge badge-secondary">', $breadcrumb); ?></span>
-                </p>
-                <?php
+                    class="badge badge-secondary"><?php echo implode('</span> <span class="badge badge-secondary">', $breadcrumb); ?></span>
+            </p>
+            <?php
             }
             ?>
             <?php if (empty($moc->subline_default) === false) { ?>
-                <p class="card-text subline">
-                    <?php echo strip_tags($moc->subline_default); ?>
-                    <span class="fade-out"></span>
-                </p>
+            <p class="card-text subline">
+                <?php echo strip_tags($moc->subline_default); ?>
+                <span class="fade-out"></span>
+            </p>
             <?php } ?>
             <div class="bottom-aligned">
                 <?php
@@ -178,7 +175,7 @@ if (empty($filteredParams) === false) {
                     ?>
 
 
-                    <div class="card-text date-row">
+                <div class="card-text date-row">
 
                     <span class="small">
                         <?php
@@ -186,12 +183,11 @@ if (empty($filteredParams) === false) {
                         ?>
                     </span>
 
-                        <div class="dropdown">
-                            <button class="btn <?php echo $c_dates == 1 ? ' disabled' : ' dropdown-toggle'; ?>"
-                                    type="button"
-                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                <?php
+                    <div class="dropdown">
+                        <button class="btn <?php echo $c_dates == 1 ? ' disabled' : ' dropdown-toggle'; ?>"
+                            type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <?php
 
                                 $today = new DateTime();
                                 $date_to_format = $cheapest_price->date_arrival->format('Y') == $today->format('Y') ? 'd.m.' : 'd.m.Y';
@@ -204,10 +200,10 @@ if (empty($filteredParams) === false) {
                                 */
 
                                 ?>
-                            </button>
-                            <?php if ($c_dates > 1) { ?>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <?php
+                        </button>
+                        <?php if ($c_dates > 1) { ?>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <?php
 
                                     foreach ($mo->booking_packages as $booking_package) {
                                         if ($booking_package->id != $cheapest_price->id_booking_package) {
@@ -225,56 +221,58 @@ if (empty($filteredParams) === false) {
 
                                             if ($c < 5) { // display only 5 dates per month
                                                 ?>
-                                                <a class="dropdown-item<?php echo ($date->id == $cheapest_price->id_date) ? ' active' : ''; ?>"
-                                                   href="<?php echo $url . (!strpos($url, '?') ? '?' : '&') . 'idd=' . $date->id . '&idbp=' . $booking_package->id; ?>">
-                                                    <?php
+                            <a class="dropdown-item<?php echo ($date->id == $cheapest_price->id_date) ? ' active' : ''; ?>"
+                                href="<?php echo $url . (!strpos($url, '?') ? '?' : '&') . 'idd=' . $date->id . '&idbp=' . $booking_package->id; ?>">
+                                <?php
                                                     echo '<i class="circle green"></i>' . $weekdays[$date->departure->format('w')] . '. ' . $date->departure->format('d.m.') . ' - ' . $weekdays[$date->arrival->format('w')] . '. ' . $date->arrival->format($date_to_format);
                                                     ?>
-                                                </a>
-                                                <?php
+                            </a>
+                            <?php
                                             } elseif ($c == 5) {
                                                 ?>
-                                                <a class="dropdown-item" href="<?php echo $url; ?>"><small>mehr Termine
-                                                        im <?php echo $current_month; ?></small></a>
-                                                <?php
+                            <a class="dropdown-item" href="<?php echo $url; ?>"><small>mehr Termine
+                                    im <?php echo $current_month; ?></small></a>
+                            <?php
                                             }
                                             $c++;
                                         }
                                     }
                                     ?>
-                                </div>
-                            <?php } ?>
                         </div>
+                        <?php } ?>
                     </div>
-                    <div class="card-text price-row">
-                        <?php
+                </div>
+                <div class="card-text price-row">
+                    <?php
                         if (!empty($cheapest_price->price_option_pseudo) && $cheapest_price->price_option_pseudo > $cheapest_price->price_total) {
                             $percent_discount = round((100 / $cheapest_price->price_option_pseudo) * ($cheapest_price->price_option_pseudo - $cheapest_price->price_total));
                             ?>
-                            <div class="discount-wrapper">
-                                <hr>
-                                <p>
-                                    <span class="msg">Ihr Vorteil</span>
-                                    <span class="discount-label">
+                    <div class="discount-wrapper">
+                        <hr>
+                        <p>
+                            <span class="msg">Ihr Vorteil</span>
+                            <span class="discount-label">
                                 <span class="price"><?php echo $cheapest_price->price_option_pseudo; ?>&nbsp;€</span>
                                 <span class="discount"> -<?php echo $percent_discount; ?>%</span>
                             </span>
-                                </p>
-                            </div>
-                            <?php
-                        }
-                        ?>
-                        <a href="<?php echo $url; ?>" class="btn btn-primary">
-                            <?php
-                            if (empty($cheapest_price->price_total) === false) {
-                                echo '<small><span>Preis p.P.</span> <strong>ab</strong> </small><strong>' . number_format($cheapest_price->price_total, TS_PRICE_DECIMALS, TS_PRICE_DECIMAL_SEPARATOR, TS_PRICE_THOUSANDS_SEPARATOR) . '&nbsp;€</strong>';
-                            } else {
-                                ?>zur Reise<?php
-                            }
-                            ?>
-                        </a>
+                        </p>
                     </div>
                     <?php
+                        }
+                        ?>
+                    <a href="<?php echo $url; ?>" class="travel-teaser-link">
+                        <div class="btn btn-primary">
+                            <?php
+                                if (empty($cheapest_price->price_total) === false) {
+                                    echo '<small><span>Preis p.P.</span> <strong>ab</strong> </small><strong>' . number_format($cheapest_price->price_total, TS_PRICE_DECIMALS, TS_PRICE_DECIMAL_SEPARATOR, TS_PRICE_THOUSANDS_SEPARATOR) . '&nbsp;€</strong>';
+                                } else {
+                                    ?>zur Reise<?php
+                                }
+                                ?>
+                        </div>
+                    </a>
+                </div>
+                <?php
                 } // if cheapest price is set
                 ?>
             </div>

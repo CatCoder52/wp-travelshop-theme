@@ -30,13 +30,21 @@
                     </div>
                 </div>
                 <div class="teaser-body">
-                    <h1 class="teaser-title h5">
+                    <h1 class="teaser-title">
                         Das ist ein Teaser
                     </h1>
                     <p>
-                        Das ist ein dazugehöriger Text zum Teaser.
+                        Das ist ein dazu&shy;gehöriger Text zum Teaser.
                     </p>
-                    <a href="#" target="_blank" class="btn btn-primary btn-block">Mehr erfahren</a>
+                    <a href="#" target="_blank" class="btn btn-primary btn-block">
+                        <span>Mehr erfahren</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-right"
+                            width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M18 15l-6 -6l-6 6h12" transform="rotate(90 12 12)" />
+                        </svg>
+                    </a>
                 </div>
             </article>
         </div>
@@ -57,13 +65,21 @@
                     </div>
                 </div>
                 <div class="teaser-body">
-                    <h1 class="teaser-title h5">
+                    <h1 class="teaser-title">
                         Das ist ein Teaser
                     </h1>
                     <p>
-                        Das ist ein dazugehöriger Text zum Teaser.
+                        Das ist ein dazu&shy;gehöriger Text zum Teaser.
                     </p>
-                    <a href="#" target="_blank" class="btn btn-primary btn-block">Mehr erfahren</a>
+                    <a href="#" target="_blank" class="btn btn-primary btn-block">
+                        <span>Mehr erfahren</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-right"
+                            width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M18 15l-6 -6l-6 6h12" transform="rotate(90 12 12)" />
+                        </svg>
+                    </a>
                 </div>
             </article>
         </div>
@@ -82,13 +98,21 @@
                     </div>
                 </div>
                 <div class="teaser-body">
-                    <h1 class="teaser-title h5">
+                    <h1 class="teaser-title">
                         Das ist ein Teaser
                     </h1>
                     <p>
-                        Das ist ein dazugehöriger Text zum Teaser.
+                        Das ist ein dazu&shy;gehöriger Text zum Teaser.
                     </p>
-                    <a href="#" target="_blank" class="btn btn-primary btn-block">Mehr erfahren</a>
+                    <a href="#" target="_blank" class="btn btn-primary btn-block">
+                        <span>Mehr erfahren</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-right"
+                            width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M18 15l-6 -6l-6 6h12" transform="rotate(90 12 12)" />
+                        </svg>
+                    </a>
                 </div>
             </article>
         </div>
@@ -108,13 +132,21 @@
                     </div>
                 </div>
                 <div class="teaser-body">
-                    <h1 class="teaser-title h5">
+                    <h1 class="teaser-title">
                         Das ist ein Teaser
                     </h1>
                     <p>
-                        Das ist ein dazugehöriger Text zum Teaser.
+                        Das ist ein dazu&shy;gehöriger Text zum Teaser.
                     </p>
-                    <a href="#" target="_blank" class="btn btn-primary btn-block">Mehr erfahren</a>
+                    <a href="#" target="_blank" class="btn btn-primary btn-block">
+                        <span>Mehr erfahren</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-right"
+                            width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M18 15l-6 -6l-6 6h12" transform="rotate(90 12 12)" />
+                        </svg>
+                    </a>
                 </div>
             </article>
         </div>

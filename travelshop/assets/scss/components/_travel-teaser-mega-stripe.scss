@@ -128,8 +128,9 @@
 				.stripe-cta {
 					padding: 0 0.75rem;
 					margin: 0.175rem 0 0.5rem 0;
-					.btn {
-						padding: .7rem 1rem;
+					.travel-teaser-link {
+						padding: .4rem 0;
+						display: inline-block;
 					}
 					.discount-wrapper {
 						p {
@@ -197,8 +198,10 @@
 						}
 					}
 					.stripe-cta {
-						.btn {
-							padding: .5rem 1rem;
+						.travel-teaser-link {
+							.btn {
+								padding: .5rem 1rem;
+							}
 						}
 					}
 				}
@@ -255,6 +258,9 @@
 						}
 					}
 					.stripe-cta {
+						.travel-teaser-link {
+							padding: 0;
+						}
 						.discount-wrapper {
 							p {
 								text-align: center;
