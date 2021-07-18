@@ -1,4 +1,6 @@
 # System requirements
+* Linux
+* Command line accesss
 * PHP 7.*
 * MySQL or MariaDB
 * Composer
