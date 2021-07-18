@@ -4,6 +4,7 @@
 * PHP 7.*
 * MySQL or MariaDB
 * Composer
+* PHP memory limit > 1 GB recommend
 * PHP extensions:
     * ext-imagick or ext-gd (for best image quality ext-imagick is recommended)
     * ext-json
