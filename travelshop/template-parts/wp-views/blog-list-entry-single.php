@@ -6,7 +6,7 @@
 
     <?php if ( $post_thumbnail ) { ?>
         <div class="blog-list-entry--thumbnail">
-            <img src="<?= $post_thumbnail; ?>" alt="<?= get_the_title(); ?>" />
+            <img src="<?php echo $post_thumbnail; ?>" alt="<?php echo get_the_title(); ?>" />
         </div>
     <?php } ?>
 
@@ -14,7 +14,7 @@
         <div class="blog-list-entry--header">
 
             <h1 class="blog-list-entry--title">
-                <?= get_the_title(); ?>
+                <?php echo get_the_title(); ?>
             </h1>
 
             <div class="blog-list-entry--details">
@@ -39,7 +39,7 @@
 
                 <?php if ( $post_date ) { ?>
                     <div>
-                        <a href="<?= $post_date_link; ?>" title="<?= $post_date; ?>"><?= $post_date; ?></a><?php if ( $post_author_name ) { ?>&nbsp;von <a href="<?= $post_author_link; ?>" title="<?= $post_author_name; ?>"><?= $post_author_name; ?></a><?php } ?>
+                        <a href="<?php echo $post_date_link; ?>" title="<?php echo $post_date; ?>"><?php echo $post_date; ?></a><?php if ( $post_author_name ) { ?>&nbsp;von <a href="<?php echo $post_author_link; ?>" title="<?php echo $post_author_name; ?>"><?php echo $post_author_name; ?></a><?php } ?>
                     </div>
                 <?php } ?>
 
@@ -52,8 +52,8 @@
                             $post_comments_text = count($post_comments) . ' Kommentar';
                         }
                         ?>
-                        <a href="<?= get_the_permalink(); ?>#post-comments" title="<?= $post_comments_text; ?>">
-                            <?= $post_comments_text; ?>
+                        <a href="<?php echo get_the_permalink(); ?>#post-comments" title="<?php echo $post_comments_text; ?>">
+                            <?php echo $post_comments_text; ?>
                         </a>
                     </div>
                 <?php } ?>
@@ -64,7 +64,7 @@
 
 
         <div class="blog-list-entry--content">
-            <?= get_the_content(); ?>
+            <?php echo get_the_content(); ?>
         </div>
 
 
@@ -88,7 +88,7 @@
                     }
                     ?>
                     <div>
-                        Kategorien: <?= $post_categories_html; ?>
+                        Kategorien: <?php echo $post_categories_html; ?>
                     </div>
                 <?php } ?>
 
@@ -103,7 +103,7 @@
                     }
                     ?>
                     <div>
-                        Stichworte: <?= $post_tags_html; ?>
+                        Stichworte: <?php echo $post_tags_html; ?>
                     </div>
                 <?php } ?>
             </div>
@@ -128,7 +128,7 @@
                 <?php echo get_avatar( get_the_author_meta( 'ID' ), '85' ); ?>
                 <div class="author-bio-content">
                     <h4 class="author-title">
-                        <a href="<?= $post_author_link; ?>" title="<?= $post_author_name; ?>"><?= $post_author_name; ?></a>
+                        <a href="<?php echo $post_author_link; ?>" title="<?php echo $post_author_name; ?>"><?php echo $post_author_name; ?></a>
                     </h4>
 
                     <?php
@@ -167,7 +167,7 @@
                             if ( !empty($author_social) ) {
                                 foreach ( $author_social as $key => $social ) {
                                     ?>
-                                    <a href="<?= $social; ?>" target="_blank" class="author-link author-link--<?= $key; ?>">
+                                    <a href="<?php echo $social; ?>" target="_blank" class="author-link author-link--<?php echo $key; ?>">
                                         <?php
                                         switch ( $key ) {
                                             case 'facebook':
@@ -202,7 +202,7 @@
                             ?>
 
                             <?php if ( $author_website ) { ?>
-                                <a href="<?= $author_website; ?>" target="_blank" class="author-link author-link--website">
+                                <a href="<?php echo $author_website; ?>" target="_blank" class="author-link author-link--website">
                                     <svg enable-background="new 0 0 512 512" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="m488.73 0h-186.18c-12.853 0-23.273 10.42-23.273 23.273s10.42 23.273 23.273 23.273h130l-239.54 239.54c-9.087 9.087-9.087 23.823 0 32.912 4.543 4.543 10.499 6.816 16.455 6.816s11.913-2.273 16.455-6.817l239.55-239.54v130c0 12.853 10.42 23.273 23.273 23.273s23.273-10.42 23.273-23.273v-186.18c-1e-3 -12.853-10.421-23.273-23.274-23.273z"/><path d="M395.636,232.727c-12.853,0-23.273,10.42-23.273,23.273v209.455H46.545V139.636H256c12.853,0,23.273-10.42,23.273-23.273 S268.853,93.091,256,93.091H23.273C10.42,93.091,0,103.511,0,116.364v372.364C0,501.58,10.42,512,23.273,512h372.364 c12.853,0,23.273-10.42,23.273-23.273V256C418.909,243.147,408.489,232.727,395.636,232.727z"/></svg>
                                 </a>
                             <?php } ?>
@@ -243,8 +243,8 @@
                                 <?php if ( $post_thumbnail ) { ?>
                                     <div class="col-4 col-md-12">
                                         <div class="blog-list-entry--thumbnail">
-                                            <a href="<?= get_the_permalink(); ?>" title="<?= get_the_title(); ?>">
-                                                <img src="<?= $post_thumbnail; ?>" alt="<?= get_the_title(); ?>" />
+                                            <a href="<?php echo get_the_permalink(); ?>" title="<?php echo get_the_title(); ?>">
+                                                <img src="<?php echo $post_thumbnail; ?>" alt="<?php echo get_the_title(); ?>" />
                                             </a>
                                         </div>
                                     </div>
@@ -252,8 +252,8 @@
 
                                 <div class="<?php if ( $post_thumbnail ) { ?>col-8<?php } else { ?>col-12<?php } ?> col-md-12">
                                     <strong class="blog-list-entry--title">
-                                        <a href="<?= get_the_permalink(); ?>" title="<?= get_the_title(); ?>">
-                                            <?= get_the_title(); ?>
+                                        <a href="<?php echo get_the_permalink(); ?>" title="<?php echo get_the_title(); ?>">
+                                            <?php echo get_the_title(); ?>
                                         </a>
                                     </strong>
 
@@ -277,7 +277,7 @@
 
                                         <?php if ( $post_date ) { ?>
                                             <div>
-                                                <a href="<?= $post_date_link; ?>" title="<?= $post_date; ?>"><?= $post_date; ?></a><?php if ( $post_author_name ) { ?>&nbsp;von <a href="<?= $post_author_link; ?>" title="<?= $post_author_name; ?>"><?= $post_author_name; ?></a><?php } ?>
+                                                <a href="<?php echo $post_date_link; ?>" title="<?php echo $post_date; ?>"><?php echo $post_date; ?></a><?php if ( $post_author_name ) { ?>&nbsp;von <a href="<?php echo $post_author_link; ?>" title="<?php echo $post_author_name; ?>"><?php echo $post_author_name; ?></a><?php } ?>
                                             </div>
                                         <?php } ?>
 
@@ -290,7 +290,7 @@
                                         if ( $post_excerpt ) {
                                             ?>
                                             <div class="blog-list-entry--excerpt">
-                                                <?= substr($post_excerpt, 0, 120) . '...'; ?>
+                                                <?php echo substr($post_excerpt, 0, 120) . '...'; ?>
                                             </div>
                                             <?php
                                         }
@@ -355,7 +355,7 @@ if ( $post_comments ) {
 <div class="blog-list-entry blog-list-entry--comments">
     <div class="blog-list-entry--body">
         <h3>
-            <?= $post_comments_text; ?> zu "<?= get_the_title(); ?>"
+            <?php echo $post_comments_text; ?> zu "<?php echo get_the_title(); ?>"
         </h3>
 
         <div class="blog-list-entry--comments-list">

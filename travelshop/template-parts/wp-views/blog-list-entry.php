@@ -6,8 +6,8 @@
 
     <?php if ( $post_thumbnail ) { ?>
         <div class="blog-list-entry--thumbnail">
-            <a href="<?= get_the_permalink(); ?>" title="<?= get_the_title(); ?>">
-                <img src="<?= $post_thumbnail; ?>" alt="<?= get_the_title(); ?>" />
+            <a href="<?php echo get_the_permalink(); ?>" title="<?php echo get_the_title(); ?>">
+                <img src="<?php echo $post_thumbnail; ?>" alt="<?php echo get_the_title(); ?>" />
             </a>
         </div>
     <?php } ?>
@@ -16,8 +16,8 @@
         <div class="blog-list-entry--header">
 
             <h3 class="blog-list-entry--title">
-                <a href="<?= get_the_permalink(); ?>" title="<?= get_the_title(); ?>">
-                    <?= get_the_title(); ?>
+                <a href="<?php echo get_the_permalink(); ?>" title="<?php echo get_the_title(); ?>">
+                    <?php echo get_the_title(); ?>
                 </a>
             </h3>
 
@@ -43,7 +43,7 @@
 
                 <?php if ( $post_date ) { ?>
                     <div>
-                        <a href="<?= $post_date_link; ?>" title="<?= $post_date; ?>"><?= $post_date; ?></a><?php if ( $post_author_name ) { ?>&nbsp;von <a href="<?= $post_author_link; ?>" title="<?= $post_author_name; ?>"><?= $post_author_name; ?></a><?php } ?>
+                        <a href="<?php echo $post_date_link; ?>" title="<?php echo $post_date; ?>"><?php echo $post_date; ?></a><?php if ( $post_author_name ) { ?>&nbsp;von <a href="<?php echo $post_author_link; ?>" title="<?php echo $post_author_name; ?>"><?php echo $post_author_name; ?></a><?php } ?>
                     </div>
                 <?php } ?>
 
@@ -56,8 +56,8 @@
                             $post_comments_text = count($post_comments) . ' Kommentar';
                         }
                         ?>
-                        <a href="<?= get_the_permalink(); ?>#post-comments" title="<?= $post_comments_text; ?>">
-                            <?= $post_comments_text; ?>
+                        <a href="<?php echo get_the_permalink(); ?>#post-comments" title="<?php echo $post_comments_text; ?>">
+                            <?php echo $post_comments_text; ?>
                         </a>
                     </div>
                 <?php } ?>
@@ -74,14 +74,14 @@
         if ( $post_excerpt ) {
             ?>
             <div class="blog-list-entry--excerpt">
-                <?= $post_excerpt; ?>
+                <?php echo $post_excerpt; ?>
             </div>
             <?php
         }
         ?>
 
         <div class="blog-list-entry--more">
-            <a href="<?= get_the_permalink(); ?>" title="<?= get_the_title(); ?>">
+            <a href="<?php echo get_the_permalink(); ?>" title="<?php echo get_the_title(); ?>">
                 Weiterlesen
             </a>
         </div>

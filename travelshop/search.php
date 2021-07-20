@@ -18,7 +18,7 @@ global $wp_query;
                                     $found_posts = $wp_query->found_posts;
                                     ?>
 
-                                    <?= $found_posts; ?> <?php if ( $wp_query->found_posts == 1 ) { echo "Beitrag"; } else { echo "Beiträge"; }?> für <?= get_search_query(); ?> gefunden
+                                    <?php echo $found_posts; ?> <?php if ( $wp_query->found_posts == 1 ) { echo "Beitrag"; } else { echo "Beiträge"; }?> für <?php echo get_search_query(); ?> gefunden
                                 </h1>
                         </div>
                     </div>
