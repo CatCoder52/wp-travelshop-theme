@@ -10,7 +10,7 @@ get_header();
                 <div class="content-block content-block-blog--header">
                     <div class="row">
                         <div class="col-12">
-                            <h1><?php echo get_the_archive_title() ?></h1>
+                            <h1><?php echo get_the_archive_title(); ?></h1>
                         </div>
                     </div>
                 </div>
@@ -100,8 +100,7 @@ get_header();
 
                                             ?>
 
-                                            <?php if ( $wp_query->max_num_pages > 1 ) { ?>
-                                                <?php
+                                            <?php if ( $wp_query->max_num_pages > 1 ) {
                                                 $next_page = $paged + 1;
 
                                                 if ( $next_page > $wp_query->max_num_pages ) {
