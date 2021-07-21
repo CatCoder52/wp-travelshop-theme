@@ -1,6 +1,5 @@
 <?php
 namespace Pressmind;
-
 use Autoloader;
 use Exception;
 use Pressmind\DB\Adapter\Pdo;
@@ -27,19 +26,31 @@ if (php_sapi_name() != "cli") {
     }
 } else {
     define('WEBSERVER_HTTP', 'http://127.0.0.1/');
+
+    // for some cli operations, like the cli/import.php we have to set a bigger memory limit.
+    ini_set('memory_limit', '2024M');
 }
 
 /**
  * The ENV constant is used by the configuration to determine the environmet the application is running in
  * (so you can share the most common configurations from development to production or testing but overwrite the database credentials for example)
+ *
+ * for e.g. place this line in your htaccess <directory> directive (mod_env must be enabled)
+ * --
+ * SetEnv APP_ENV development
+ * --
  * possible values are:
  * development
  * testing
  * production
  * For example purposes we set the ENV to development here, for real world applications it's a good idea to set an environment variable in a .htaccess file or in the webservers configuration
  */
-define('ENV', 'development');
-//define('ENV', getenv('APP_ENV');
+
+if(getenv('APP_ENV') !== false){
+    define('ENV', getenv('APP_ENV'));
+}else{
+    define('ENV', 'development');
+}
 
 /**
  * Import the Custom Autoloader
@@ -82,6 +93,22 @@ try {
     if(strtolower($config['database']['engine']) == 'mysql') {
         $db->execute('SET SESSION sql_mode = "NO_ENGINE_SUBSTITUTION"');
     }
+
+
+
+
+        // Log all sql queries
+        $mysql_log_dir = APPLICATION_PATH.'/tmp/mysql/';
+        $mysql_log_file = $mysql_log_dir.'query.log';
+        //echo 'SQL query log enabled: '.$mysql_log_file."<hr>\n";
+        @mkdir($mysql_log_dir, 0777, true);
+
+        $db->execute('SET global general_log = 1;');
+        $db->execute('SET global log_output = "file"');
+        $db->execute('SET global general_log_file="'.$mysql_log_file.'"');
+
+
+
 } catch (Exception $e) {
 
     if (
