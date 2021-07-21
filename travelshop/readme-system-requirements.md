@@ -1,7 +1,10 @@
 # System requirements
-* PHP 7.*
+* Linux
+* Command line accesss
+* PHP >= 7.3.*
 * MySQL or MariaDB
 * Composer
+* PHP memory limit > 1 GB recommend
 * PHP extensions:
     * ext-imagick or ext-gd (for best image quality ext-imagick is recommended)
     * ext-json
