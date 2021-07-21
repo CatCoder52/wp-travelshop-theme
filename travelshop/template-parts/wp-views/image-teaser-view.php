@@ -26,7 +26,7 @@ $url_post_thumbnail = wp_get_attachment_image_url($id_post_thumbnail, 'medium');
             </h1>
             <?php if(!empty($current_post->post_excerpt)) { ?>
             <p>
-                <?php echo $current_post->post_excerpt; ?>
+                <?php echo textTurncate($current_post->post_excerpt, 76); ?>
             </p>
             <?php } ?>
             <a href="<?php echo get_permalink($current_post); ?>" class="btn btn-primary btn-block">Mehr erfahren</a>
