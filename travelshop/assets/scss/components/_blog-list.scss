@@ -1,6 +1,81 @@
+.content-block.content-block-blog {
+  padding-top: ( $grid-gutter-width / 2 );
+
+  @include media-breakpoint-up(md) {
+    padding-top: $grid-gutter-width;
+  }
+}
+
+.content-block.content-block-blog--header {
+  h1, .h1 {
+    margin-bottom: 0;
+  }
+}
+
+.content-block.content-block-blog,
+.content-block.content-block-blog--header {
+  @include media-breakpoint-down(sm) {
+    margin-left: -($grid-gutter-width / 4);
+    margin-right: -($grid-gutter-width / 4);
+  }
+}
+
+.teaser.teaser-blog-sidebar {
+  margin-bottom: ( $grid-gutter-width / 2 );
+
+  @include media-breakpoint-up(md) {
+    margin-bottom: $grid-gutter-width;
+  }
+
+  .teaser-body {
+    h4 {
+      font-size: 1.25rem;
+
+      @include media-breakpoint-up(md) {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
 .blog-list-entry {
-  background-color: $gray-100;
-  margin-bottom: $grid-gutter-width;
+  margin-bottom: ($grid-gutter-width / 2);
+  border-top: 1px solid #e9ecef;
+
+  @include media-breakpoint-up(md) {
+    margin-bottom: $grid-gutter-width;
+  }
+
+  @include media-breakpoint-down(sm) {
+    .blog-list-entry--more {
+      font-size: $font-size-sm;
+    }
+  }
+
+  &:last-child {
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: ($grid-gutter-width / 2);
+
+    @include media-breakpoint-up(md) {
+      padding-bottom: $grid-gutter-width;
+    }
+  }
+
+  &:first-child {
+    padding-top: ($grid-gutter-width / 2);
+
+    @include media-breakpoint-up(md) {
+      padding-top: $grid-gutter-width;
+    }
+  }
+
+  + .blog-list-entry {
+    padding-top: ($grid-gutter-width / 2);
+
+    @include media-breakpoint-up(md) {
+      padding-top: $grid-gutter-width;
+    }
+  }
 
   // -- thumbnail
   .blog-list-entry--thumbnail {
@@ -11,8 +86,12 @@
   }
 
   // -- body
-  .blog-list-entry--body {
-    padding: $grid-gutter-width;
+  .blog-list-entry--thumbnail + .blog-list-entry--body {
+    padding: ($grid-gutter-width / 2) 0 0 0;
+
+    @include media-breakpoint-up(md) {
+      padding: $grid-gutter-width 0 0 0;
+    }
   }
 
   // -- header
@@ -27,6 +106,22 @@
           text-decoration: none;
         }
       }
+
+      margin-bottom: .25rem;
+
+      @include media-breakpoint-up(md) {
+        margin-bottom: .5rem;
+      }
+    }
+  }
+
+  h1.h3,
+  h3,
+  .h3 {
+    font-size: 1.25rem;
+
+    @include media-breakpoint-up(md) {
+      font-size: 1.75rem;
     }
   }
 
@@ -34,8 +129,12 @@
   .blog-list-entry--details {
     @include clearfix();
 
-    font-size: $font-size-sm;
+    font-size: 12px;
     margin-bottom: -.5rem;
+
+    @include media-breakpoint-up(md) {
+      font-size: $font-size-sm;
+    }
 
     > div {
       display: inline-block;
@@ -58,7 +157,19 @@
   // -- excerpt
   .blog-list-entry--excerpt,
   .blog-list-entry--content {
-    margin: 1rem 0;
+    margin: .5rem 0;
+
+    @include media-breakpoint-up(md) {
+      margin: 1rem 0
+    }
+  }
+
+  .blog-list-entry--excerpt {
+    font-size: $font-size-sm;
+
+    @include media-breakpoint-up(md) {
+      font-size: $font-size-base;
+    }
   }
 
   // -- blog crosslinks
@@ -80,8 +191,69 @@
       }
     }
   }
+
+  .blog-list-entry--header + .blog-list-entry--more {
+    margin-top: 1rem;
+
+    @include media-breakpoint-down(sm) {
+      margin-top: .5rem;
+    }
+  }
 }
 
+// -- single
+.blog-entry-single {
+
+  .blog-list-entry:first-child {
+    margin-top:0;
+    border-top: 0;
+    padding-top:0;
+  }
+
+  .blog-list-entry:last-child {
+    border-bottom:0;
+  }
+
+  .blog-list-entry--header {
+    h1 {
+      font-size: 1.75rem;
+
+      @include media-breakpoint-up(md) {
+        font-size: 2.5rem;
+      }
+    }
+  }
+
+  h2 {
+    font-size: 1.5rem;
+
+    @include media-breakpoint-up(md) {
+      font-size: 2rem;
+    }
+  }
+
+  h3 {
+    font-size: 1.25rem;
+
+    @include media-breakpoint-up(md) {
+      font-size: 1.75rem;
+    }
+  }
+
+  h4 {
+    font-size: 1.25rem;
+
+    @include media-breakpoint-up(md) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .blog-list-entry--content {
+    h1, h2, h3, h4 {
+      margin-bottom: 1rem;
+    }
+  }
+}
 
 
 // -- author box
@@ -91,10 +263,19 @@
     padding-left: 115px;
     position: relative;
 
+    @include media-breakpoint-down(sm) {
+      padding-left: ( 40px + ( $grid-gutter-width / 2));
+    }
+
     > img {
       position: absolute;
       top:0;
       left:0;
+
+      @include media-breakpoint-down(sm) {
+        width: 40px;
+        height: 40px;
+      }
 
       border-radius: 50%;
     }
@@ -102,12 +283,20 @@
 
   p.author-description {
     margin:0;
+
+    @include media-breakpoint-down(sm) {
+      font-size: $font-size-sm;
+    }
   }
 
   // -- margins
   .author-title,
   .author-links {
     margin-bottom: 1rem;
+
+    @include media-breakpoint-down(sm) {
+      margin-bottom: .5rem;
+    }
   }
 
   .author-title a {
@@ -136,6 +325,11 @@
 
       position: relative;
 
+      @include media-breakpoint-down(sm) {
+        width: 24px;
+        height: 24px;
+      }
+
       svg {
         position: absolute;
         top: 50%;
@@ -143,6 +337,11 @@
         transform: translate(-50%, -50%);
         width: 1.25rem;
         height: 1.25rem;
+
+        @include media-breakpoint-down(sm) {
+          width: .75rem;
+          height: .75rem;
+        }
 
         * {
           fill: #fff;
@@ -204,6 +403,10 @@
 
       + .author-link {
         margin-left: .5rem;
+
+        @include media-breakpoint-down(sm) {
+          margin-left: .25rem;
+        }
       }
     }
   }
@@ -219,6 +422,10 @@
 .blog-list-entry--comments {
   h3, h4 {
     margin: 0 0 1.5rem 0;
+
+    @include media-breakpoint-down(sm) {
+      margin: 0 0 1rem 0;
+    }
   }
 }
 
@@ -235,18 +442,26 @@
       margin:0;
 
       @include media-breakpoint-down(sm) {
-        margin-left: -90px;
+        margin-left: -(40px + ( $grid-gutter-width / 2));
       }
 
 
       li.comment {
         margin-top: 1.5rem;
+
+        @include media-breakpoint-down(sm) {
+          margin-top: 1rem;
+        }
       }
     }
 
     li.comment {
       position: relative;
       padding: 0 0 0 90px;
+
+      @include media-breakpoint-down(sm) {
+        padding-left: ( 40px + ($grid-gutter-width / 2));
+      }
 
       // - comment author
       .comment-author {
@@ -266,11 +481,26 @@
         }
       }
 
+      @include media-breakpoint-down(sm) {
+        .comment-body {
+          font-size: $font-size-sm;
+
+          p {
+            margin-bottom: .5rem;
+          }
+        }
+      }
+
       // - comment meta
       .comment-meta {
         margin: 0 0 1rem 0;
         font-size: $font-size-sm;
         color: $gray-600;
+
+        @include media-breakpoint-down(sm) {
+          margin-bottom: .5rem;
+          font-size: 12px;
+        }
 
         a {
           color: inherit;
@@ -294,6 +524,11 @@
         top:0;
         left:0;
         border-radius: 50%;
+
+        @include media-breakpoint-down(sm) {
+          width: 40px;
+          height: 40px;
+        }
       }
     }
 
@@ -301,6 +536,11 @@
       border-top: 1px solid rgba(#000, .1);
       padding-top: 1.5rem !important;
       margin-top: 1.5rem;
+
+      @include media-breakpoint-down(sm) {
+        margin-top: 1rem;
+        padding-top: 1rem !important;
+      }
 
       img.avatar {
         top: 1.5rem;
@@ -313,11 +553,23 @@
     padding-top: $grid-gutter-width;
     border-top: 1px solid rgba(#000, .1);
 
+    @include media-breakpoint-down(sm) {
+      font-size: $font-size-sm;
+      margin-top: ($grid-gutter-width / 2);
+      padding-top: ($grid-gutter-width / 2);
+    }
+
     .comment-form {
       > p {
 
+        margin-bottom: 0;
+
         + p {
           margin-top: $grid-gutter-width;
+
+          @include media-breakpoint-down(sm) {
+            margin-top: 1rem;
+          }
         }
 
         label {
@@ -378,10 +630,15 @@
     margin: 0 0 1.5rem 0;
   }
 
+  h1.blog-list-entry--title.related {
+    font-size: $font-size-base;
+    margin: 0;
+  }
+
   .related-posts > .row > div {
     + div {
-      padding-top: 1.5rem;
-      margin-top: 1.5rem;
+      padding-top: ( $grid-gutter-width / 2 );
+      margin-top: ( $grid-gutter-width / 2 );
       border-top: 1px solid rgba(0,0,0,.1);
 
       @include media-breakpoint-up(md) {
@@ -392,11 +649,35 @@
     }
   }
 
+  @include media-breakpoint-down(sm) {
+    .related-posts > .row {
+      margin-left: 0;
+      margin-right:0;
+
+      > div {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+
   .post-item {
 
     @include media-breakpoint-up(md) {
       .col-4 + .col-8 {
         margin-top: 1rem;
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      > .row {
+        margin-left: -($grid-gutter-width / 4);
+        margin-right: -($grid-gutter-width / 4);
+
+        > div {
+          padding-left: $grid-gutter-width / 4;
+          padding-right: $grid-gutter-width / 4;
+        }
       }
     }
 
@@ -460,9 +741,38 @@
         max-width: 50%;
       }
 
+
+      @include media-breakpoint-down(sm) {
+        padding-top: 0;
+        padding-bottom:0;
+        margin-top: 0;
+        margin-bottom:0;
+
+        + div {
+          margin-top: .5rem;
+          margin-bottom: ( $grid-gutter-width / 2 );
+        }
+      }
+
+
       > a {
         color: $gray-500;
         font-size: $font-size-sm;
+        text-align: center;
+        display: block;
+
+        @include media-breakpoint-up(md) {
+          text-align: left;
+        }
+
+        @include media-breakpoint-down(sm) {
+          border-radius: $border-radius;
+          background-color: $gray-100;
+          padding-top: ( $grid-gutter-width / 2 );
+          padding-bottom: ( $grid-gutter-width / 2 );
+          padding-left: ( $grid-gutter-width / 2 );
+          padding-right: ( $grid-gutter-width / 2 );
+        }
 
         p {
           margin:0;
@@ -483,6 +793,12 @@
           &.meta-nav {
             position: relative;
             padding-left: 1rem;
+
+            @include media-breakpoint-down(sm) {
+              display: inline-block;
+              margin-left: auto;
+              margin-right: auto;
+            }
 
             svg {
               position: absolute;
@@ -509,7 +825,11 @@
       }
 
       &.nav-next > a {
-        text-align: right;
+        text-align: center;
+
+        @include media-breakpoint-up(md) {
+          text-align: right;
+        }
 
         p.meta-nav {
           padding-left:0;

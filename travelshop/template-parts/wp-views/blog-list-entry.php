@@ -1,4 +1,4 @@
-<div class="blog-list-entry">
+<article class="blog-list-entry">
 
     <?php
     $post_thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'large');
@@ -15,11 +15,11 @@
     <div class="blog-list-entry--body">
         <div class="blog-list-entry--header">
 
-            <h3 class="blog-list-entry--title">
+            <h1 class="blog-list-entry--title h3">
                 <a href="<?php echo get_the_permalink(); ?>" title="<?php echo get_the_title(); ?>">
                     <?php echo get_the_title(); ?>
                 </a>
-            </h3>
+            </h1>
 
             <div class="blog-list-entry--details">
 
@@ -89,4 +89,4 @@
 
 
 
-</div>
+</article>
