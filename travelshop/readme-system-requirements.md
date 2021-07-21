@@ -1,7 +1,7 @@
 # System requirements
 * Linux
 * Command line accesss
-* PHP 7.*
+* PHP >= 7.3.*
 * MySQL or MariaDB
 * Composer
 * PHP memory limit > 1 GB recommend
