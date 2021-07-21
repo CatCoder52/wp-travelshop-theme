@@ -70,6 +70,9 @@ require_once 'functions/search.php';
 // Author
 require_once 'functions/author_boxes.php';
 
+// Turncate
+require_once 'functions/turncate.php';
+
 // Rewrite Rules
 require_once 'functions/rewrite_rules.php';
 
