@@ -134,12 +134,24 @@ function ts_detail_hook($data)
         // Add meta data
         // set the page title
         $the_title = $mediaObjects[0]->name . ' | ' . get_bloginfo('name');
+        $meta_description = $mediaObjects[0]->name;
+
+        /**
+         * If you need meta data from custom fields, use this code example.
+         * Be aware:
+         * if you have multiple media object types, you have to switch this for each object type if the properties have not the same names
+         */
+        //$moc = $mediaObjects[0]->getDataForLanguage(TS_LANGUAGE_CODE);
+        //$the_title = strip_tags($moc->title_default);
+        //$meta_description = strip_tags($moc->meta_description_default);
+
+
         add_filter('pre_get_document_title', function ($title_parts) use ($the_title) {
             return $the_title;
         });
 
         // set meta description
-        $meta_desc = '<meta name="description" content="' . $mediaObjects[0]->name . '">' . "\r\n";
+        $meta_desc = '<meta name="description" content="' . $meta_description . '">' . "\r\n";
         add_action('wp_head', function () use ($meta_desc) {
             echo $meta_desc;
         });

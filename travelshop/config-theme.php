@@ -1,4 +1,13 @@
 <?php
+/**
+ * Setup PHP Environment
+ */
+
+if(getenv('APP_ENV') == 'development') {
+    error_reporting(-1);
+    ini_set('display_errors', 'On');
+    ini_set('max_execution_time', 600);
+}
 
 /**
  * the web-path to the wordpress installation, do not set wordpress function like site_url() here.
@@ -114,8 +123,8 @@ if(!defined('PM_REDIS_PORT')){
  * Beaver Builder support
  * if BB_ACTIVE = true , the beaver builder custom modules are loaded from travelshop/pagebuilders/beaverbuilder
  */
-define('BB_ACTIVE', true);
-define('BB_MODULE_TS_DIR', get_stylesheet_directory().'/pagebuilders/beaverbuilder/');
-define('BB_MODULE_TS_URL', get_stylesheet_directory_uri().'/pagebuilders/beaverbuilder/');
+define('BB_ACTIVE', false);
+//define('BB_MODULE_TS_DIR', get_stylesheet_directory().'/pagebuilders/beaverbuilder/');
+//define('BB_MODULE_TS_URL', get_stylesheet_directory_uri().'/pagebuilders/beaverbuilder/');
 
 
