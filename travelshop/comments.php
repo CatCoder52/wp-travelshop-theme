@@ -21,7 +21,6 @@ if ( post_password_required() ) {
     return;
 }
 
-$twenty_twenty_one_comment_count = get_comments_number();
 ?>
 
 <div id="post-comments" class="post-comments <?php echo get_option( 'show_avatars' ) ? 'show-avatars' : ''; ?>">
