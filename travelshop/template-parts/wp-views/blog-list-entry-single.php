@@ -65,7 +65,7 @@
 
 
             <div class="blog-list-entry--content">
-                <?php echo get_the_content(); ?>
+                <?php the_content(); ?>
             </div>
 
 
