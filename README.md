@@ -61,6 +61,7 @@ In most cases, this is the basic setup for each travelshop:
 * Link to an external IBE like pressmind IB3
 * Image handling: Thumbnailer, optimization
 * Amazon S3 support
+* Travelblog
 * ... and many more
 
 ### Device compatibility
@@ -92,6 +93,7 @@ In most cases, this is the basic setup for each travelshop:
 * [Shortcodes](./travelshop/readme-shortcodes.md)
 * [Multilanguage Support](./travelshop/readme-multilanguage.md)
 * [Build in pressmind® IB3 template](./travelshop/readme-ibe-template.md)
+* [Using the blog feature](./travelshop/readme-blog.md)
 
 #### How to generate product lists? 
 It is possible to output product listings on three different ways:
