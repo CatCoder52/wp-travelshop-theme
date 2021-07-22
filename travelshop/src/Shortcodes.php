@@ -149,6 +149,10 @@ class Shortcodes
      */
     public function layoutBlock($atts){
 
+        if(!isset($atts['f'])){
+            return;
+        }
+
         $layoutblock_filename = '/template-parts/layout-blocks/'.$atts['f'].'.php';
         if(!file_exists(get_template_directory().$layoutblock_filename)){
             return '<pre>file not found: '.$layoutblock_filename.'</pre>';
