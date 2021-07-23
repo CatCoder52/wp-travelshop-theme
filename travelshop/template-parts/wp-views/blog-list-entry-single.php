@@ -164,8 +164,7 @@
                         </h4>
 
                         <?php
-                        $author_website = get_author_posts_url(get_the_author_meta('ID'));
-
+                        $author_website = get_the_author_meta('url');
                         $author_social = [];
 
                         if ( get_the_author_meta('facebook') ) {

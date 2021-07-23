@@ -1,6 +1,10 @@
 <?php
 get_header();
 ?>
+    <!-- BREADCRUMB: START -->
+<?php the_breadcrumb(null);?>
+    <!-- BREADCRUMB: END -->
+
     <main>
 
         <div class="content-main content-main--posts">
@@ -22,8 +26,7 @@ get_header();
                                             <div class="author-bio-content">
 
                                                 <?php
-                                                $author_website = get_author_posts_url(get_the_author_meta('ID'));
-
+                                                $author_website = get_the_author_meta('url');
                                                 $author_social = [];
 
                                                 if ( get_the_author_meta('facebook') ) {

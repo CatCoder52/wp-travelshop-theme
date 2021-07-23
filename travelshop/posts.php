@@ -1,6 +1,10 @@
 <?php
 get_header();
 ?>
+    <!-- BREADCRUMB: START -->
+<?php the_breadcrumb(null);?>
+    <!-- BREADCRUMB: END -->
+
     <main>
 
         <div class="content-main content-main--posts">
