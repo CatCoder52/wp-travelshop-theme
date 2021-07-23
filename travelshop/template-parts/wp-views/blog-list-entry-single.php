@@ -18,6 +18,11 @@
                         <?php echo get_the_title(); ?>
                 </h1>
 
+                <?php
+                $post_categories = wp_get_post_categories(get_the_ID());
+                $post_tags = wp_get_post_tags(get_the_ID());
+                ?>
+
                 <div class="blog-list-entry--details">
 
                     <?php
@@ -40,9 +45,39 @@
 
                     <?php if ( $post_date ) { ?>
                         <div>
-                            <a href="<?php echo $post_date_link; ?>" title="<?php echo $post_date; ?>"><?php echo $post_date; ?></a><?php if ( $post_author_name ) { ?>&nbsp;von <a href="<?php echo $post_author_link; ?>" title="<?php echo $post_author_name; ?>"><?php echo $post_author_name; ?></a><?php } ?>
+                            <a href="<?php echo $post_date_link; ?>" title="<?php echo $post_date; ?>"><?php echo $post_date; ?></a>
+
+                            <?php
+                            if ( $post_categories ) {
+                                $post_categories_html = '';
+                                $iterate_cats = 0;
+                                foreach ( $post_categories as $category ) {
+                                    $post_category = get_category($category);
+
+                                    if ( $iterate_cats > 0 ) {
+                                        $post_categories_html .= ', ';
+                                    }
+                                    $post_categories_html .= '<a href="'.get_category_link( $post_category->term_id ).'" title="'.$post_category->name.'">'.$post_category->name.'</a>';
+
+                                    $iterate_cats++;
+
+                                }
+
+                                if ( !empty($post_categories_html) ) {
+                                    echo 'in ' . $post_categories_html;
+                                }
+                            }
+                            ?>
                         </div>
                     <?php } ?>
+
+                    <?php if ( $post_author_name ) { ?>&nbsp;
+                        <div>
+                            Autor: <a href="<?php echo $post_author_link; ?>" title="<?php echo $post_author_name; ?>"><?php echo $post_author_name; ?></a>
+                        </div>
+                    <?php } ?>
+
+
 
                     <?php if ( $post_comments ) { ?>
                         <div>
@@ -69,10 +104,6 @@
             </div>
 
 
-            <?php
-            $post_categories = wp_get_post_categories(get_the_ID());
-            $post_tags = wp_get_post_tags(get_the_ID());
-            ?>
 
             <?php if ( $post_categories || $post_tags ) { ?>
 
