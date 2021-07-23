@@ -1811,7 +1811,8 @@ pre code {
   border: 0;
 }
 
-.form-control, button.select-from-control {
+.form-control, .blog-list-entry--comments-list .comment-respond .comment-form > p input:not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p textarea, button.select-from-control {
   display: block;
   width: 100%;
   height: calc( 1.5em + 0.75rem + 2px );
@@ -1827,26 +1828,32 @@ pre code {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
-  .form-control, button.select-from-control {
+  .form-control, .blog-list-entry--comments-list .comment-respond .comment-form > p input:not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p textarea, button.select-from-control {
     transition: none;
   }
 }
-.form-control::-ms-expand, button.select-from-control::-ms-expand {
+.form-control::-ms-expand, .blog-list-entry--comments-list .comment-respond .comment-form > p input:not([type=submit]):not([type=checkbox])::-ms-expand,
+.blog-list-entry--comments-list .comment-respond .comment-form > p textarea::-ms-expand, button.select-from-control::-ms-expand {
   background-color: transparent;
   border: 0;
 }
-.form-control:focus, button.select-from-control:focus {
+.form-control:focus, .blog-list-entry--comments-list .comment-respond .comment-form > p input:focus:not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p textarea:focus, button.select-from-control:focus {
   color: #495057;
   background-color: #fff;
   border-color: #80bdff;
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
-.form-control::placeholder, button.select-from-control::placeholder {
+.form-control::placeholder, .blog-list-entry--comments-list .comment-respond .comment-form > p input:not([type=submit]):not([type=checkbox])::placeholder,
+.blog-list-entry--comments-list .comment-respond .comment-form > p textarea::placeholder, button.select-from-control::placeholder {
   color: #6c757d;
   opacity: 1;
 }
-.form-control:disabled, button.select-from-control:disabled, .form-control[readonly], button[readonly].select-from-control {
+.form-control:disabled, .blog-list-entry--comments-list .comment-respond .comment-form > p input:disabled:not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p textarea:disabled, button.select-from-control:disabled, .form-control[readonly], .blog-list-entry--comments-list .comment-respond .comment-form > p input[readonly]:not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p textarea[readonly], button[readonly].select-from-control {
   background-color: #e9ecef;
   opacity: 1;
 }
@@ -1921,7 +1928,8 @@ select.form-control[size], select.form-control[multiple] {
   height: auto;
 }
 
-textarea.form-control {
+textarea.form-control,
+.blog-list-entry--comments-list .comment-respond .comment-form > p textarea {
   height: auto;
 }
 
@@ -2001,7 +2009,10 @@ textarea.form-control {
   border-radius: 0.25rem;
 }
 
-.was-validated .form-control:valid, .was-validated button.select-from-control:valid, .form-control.is-valid, button.is-valid.select-from-control {
+.was-validated .form-control:valid, .was-validated .blog-list-entry--comments-list .comment-respond .comment-form > p input:valid:not([type=submit]):not([type=checkbox]), .blog-list-entry--comments-list .comment-respond .comment-form > p .was-validated input:valid:not([type=submit]):not([type=checkbox]),
+.was-validated .blog-list-entry--comments-list .comment-respond .comment-form > p textarea:valid,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .was-validated textarea:valid, .was-validated button.select-from-control:valid, .form-control.is-valid, .blog-list-entry--comments-list .comment-respond .comment-form > p input.is-valid:not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p textarea.is-valid, button.is-valid.select-from-control {
   border-color: #28a745;
   padding-right: calc( 1.5em + 0.75rem );
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
@@ -2009,19 +2020,34 @@ textarea.form-control {
   background-position: center right calc( 0.375em + 0.1875rem );
   background-size: calc( 0.75em + 0.375rem ) calc( 0.75em + 0.375rem );
 }
-.was-validated .form-control:valid:focus, .was-validated button.select-from-control:valid:focus, .form-control.is-valid:focus, button.is-valid.select-from-control:focus {
+.was-validated .form-control:valid:focus, .was-validated .blog-list-entry--comments-list .comment-respond .comment-form > p input:valid:focus:not([type=submit]):not([type=checkbox]), .blog-list-entry--comments-list .comment-respond .comment-form > p .was-validated input:valid:focus:not([type=submit]):not([type=checkbox]),
+.was-validated .blog-list-entry--comments-list .comment-respond .comment-form > p textarea:valid:focus,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .was-validated textarea:valid:focus, .was-validated button.select-from-control:valid:focus, .form-control.is-valid:focus, .blog-list-entry--comments-list .comment-respond .comment-form > p input.is-valid:focus:not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p textarea.is-valid:focus, button.is-valid.select-from-control:focus {
   border-color: #28a745;
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
 }
-.was-validated .form-control:valid ~ .valid-feedback, .was-validated button.select-from-control:valid ~ .valid-feedback,
+.was-validated .form-control:valid ~ .valid-feedback, .was-validated .blog-list-entry--comments-list .comment-respond .comment-form > p input:valid:not([type=submit]):not([type=checkbox]) ~ .valid-feedback, .blog-list-entry--comments-list .comment-respond .comment-form > p .was-validated input:valid:not([type=submit]):not([type=checkbox]) ~ .valid-feedback,
+.was-validated .blog-list-entry--comments-list .comment-respond .comment-form > p textarea:valid ~ .valid-feedback,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .was-validated textarea:valid ~ .valid-feedback, .was-validated button.select-from-control:valid ~ .valid-feedback,
 .was-validated .form-control:valid ~ .valid-tooltip,
-.was-validated button.select-from-control:valid ~ .valid-tooltip, .form-control.is-valid ~ .valid-feedback, button.is-valid.select-from-control ~ .valid-feedback,
+.was-validated .blog-list-entry--comments-list .comment-respond .comment-form > p input:valid:not([type=submit]):not([type=checkbox]) ~ .valid-tooltip,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .was-validated input:valid:not([type=submit]):not([type=checkbox]) ~ .valid-tooltip,
+.was-validated .blog-list-entry--comments-list .comment-respond .comment-form > p textarea:valid ~ .valid-tooltip,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .was-validated textarea:valid ~ .valid-tooltip,
+.was-validated button.select-from-control:valid ~ .valid-tooltip, .form-control.is-valid ~ .valid-feedback, .blog-list-entry--comments-list .comment-respond .comment-form > p input.is-valid:not([type=submit]):not([type=checkbox]) ~ .valid-feedback,
+.blog-list-entry--comments-list .comment-respond .comment-form > p textarea.is-valid ~ .valid-feedback, button.is-valid.select-from-control ~ .valid-feedback,
 .form-control.is-valid ~ .valid-tooltip,
+.blog-list-entry--comments-list .comment-respond .comment-form > p input.is-valid:not([type=submit]):not([type=checkbox]) ~ .valid-tooltip,
+.blog-list-entry--comments-list .comment-respond .comment-form > p textarea.is-valid ~ .valid-tooltip,
 button.is-valid.select-from-control ~ .valid-tooltip {
   display: block;
 }
 
-.was-validated textarea.form-control:valid, textarea.form-control.is-valid {
+.was-validated textarea.form-control:valid,
+.was-validated .blog-list-entry--comments-list .comment-respond .comment-form > p textarea:valid,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .was-validated textarea:valid, textarea.form-control.is-valid,
+.blog-list-entry--comments-list .comment-respond .comment-form > p textarea.is-valid {
   padding-right: calc( 1.5em + 0.75rem );
   background-position: top calc( 0.375em + 0.1875rem ) right calc( 0.375em + 0.1875rem );
 }
@@ -2114,7 +2140,10 @@ button.is-valid.select-from-control ~ .valid-tooltip {
   border-radius: 0.25rem;
 }
 
-.was-validated .form-control:invalid, .was-validated button.select-from-control:invalid, .form-control.is-invalid, button.is-invalid.select-from-control {
+.was-validated .form-control:invalid, .was-validated .blog-list-entry--comments-list .comment-respond .comment-form > p input:invalid:not([type=submit]):not([type=checkbox]), .blog-list-entry--comments-list .comment-respond .comment-form > p .was-validated input:invalid:not([type=submit]):not([type=checkbox]),
+.was-validated .blog-list-entry--comments-list .comment-respond .comment-form > p textarea:invalid,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .was-validated textarea:invalid, .was-validated button.select-from-control:invalid, .form-control.is-invalid, .blog-list-entry--comments-list .comment-respond .comment-form > p input.is-invalid:not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p textarea.is-invalid, button.is-invalid.select-from-control {
   border-color: #dc3545;
   padding-right: calc( 1.5em + 0.75rem );
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc3545' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23dc3545' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E");
@@ -2122,19 +2151,34 @@ button.is-valid.select-from-control ~ .valid-tooltip {
   background-position: center right calc( 0.375em + 0.1875rem );
   background-size: calc( 0.75em + 0.375rem ) calc( 0.75em + 0.375rem );
 }
-.was-validated .form-control:invalid:focus, .was-validated button.select-from-control:invalid:focus, .form-control.is-invalid:focus, button.is-invalid.select-from-control:focus {
+.was-validated .form-control:invalid:focus, .was-validated .blog-list-entry--comments-list .comment-respond .comment-form > p input:invalid:focus:not([type=submit]):not([type=checkbox]), .blog-list-entry--comments-list .comment-respond .comment-form > p .was-validated input:invalid:focus:not([type=submit]):not([type=checkbox]),
+.was-validated .blog-list-entry--comments-list .comment-respond .comment-form > p textarea:invalid:focus,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .was-validated textarea:invalid:focus, .was-validated button.select-from-control:invalid:focus, .form-control.is-invalid:focus, .blog-list-entry--comments-list .comment-respond .comment-form > p input.is-invalid:focus:not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p textarea.is-invalid:focus, button.is-invalid.select-from-control:focus {
   border-color: #dc3545;
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
-.was-validated .form-control:invalid ~ .invalid-feedback, .was-validated button.select-from-control:invalid ~ .invalid-feedback,
+.was-validated .form-control:invalid ~ .invalid-feedback, .was-validated .blog-list-entry--comments-list .comment-respond .comment-form > p input:invalid:not([type=submit]):not([type=checkbox]) ~ .invalid-feedback, .blog-list-entry--comments-list .comment-respond .comment-form > p .was-validated input:invalid:not([type=submit]):not([type=checkbox]) ~ .invalid-feedback,
+.was-validated .blog-list-entry--comments-list .comment-respond .comment-form > p textarea:invalid ~ .invalid-feedback,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .was-validated textarea:invalid ~ .invalid-feedback, .was-validated button.select-from-control:invalid ~ .invalid-feedback,
 .was-validated .form-control:invalid ~ .invalid-tooltip,
-.was-validated button.select-from-control:invalid ~ .invalid-tooltip, .form-control.is-invalid ~ .invalid-feedback, button.is-invalid.select-from-control ~ .invalid-feedback,
+.was-validated .blog-list-entry--comments-list .comment-respond .comment-form > p input:invalid:not([type=submit]):not([type=checkbox]) ~ .invalid-tooltip,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .was-validated input:invalid:not([type=submit]):not([type=checkbox]) ~ .invalid-tooltip,
+.was-validated .blog-list-entry--comments-list .comment-respond .comment-form > p textarea:invalid ~ .invalid-tooltip,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .was-validated textarea:invalid ~ .invalid-tooltip,
+.was-validated button.select-from-control:invalid ~ .invalid-tooltip, .form-control.is-invalid ~ .invalid-feedback, .blog-list-entry--comments-list .comment-respond .comment-form > p input.is-invalid:not([type=submit]):not([type=checkbox]) ~ .invalid-feedback,
+.blog-list-entry--comments-list .comment-respond .comment-form > p textarea.is-invalid ~ .invalid-feedback, button.is-invalid.select-from-control ~ .invalid-feedback,
 .form-control.is-invalid ~ .invalid-tooltip,
+.blog-list-entry--comments-list .comment-respond .comment-form > p input.is-invalid:not([type=submit]):not([type=checkbox]) ~ .invalid-tooltip,
+.blog-list-entry--comments-list .comment-respond .comment-form > p textarea.is-invalid ~ .invalid-tooltip,
 button.is-invalid.select-from-control ~ .invalid-tooltip {
   display: block;
 }
 
-.was-validated textarea.form-control:invalid, textarea.form-control.is-invalid {
+.was-validated textarea.form-control:invalid,
+.was-validated .blog-list-entry--comments-list .comment-respond .comment-form > p textarea:invalid,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .was-validated textarea:invalid, textarea.form-control.is-invalid,
+.blog-list-entry--comments-list .comment-respond .comment-form > p textarea.is-invalid {
   padding-right: calc( 1.5em + 0.75rem );
   background-position: top calc( 0.375em + 0.1875rem ) right calc( 0.375em + 0.1875rem );
 }
@@ -2226,7 +2270,9 @@ button.is-invalid.select-from-control ~ .invalid-tooltip {
     align-items: center;
     margin-bottom: 0;
   }
-  .form-inline .form-control, .form-inline button.select-from-control {
+  .form-inline .form-control, .form-inline .blog-list-entry--comments-list .comment-respond .comment-form > p input:not([type=submit]):not([type=checkbox]), .blog-list-entry--comments-list .comment-respond .comment-form > p .form-inline input:not([type=submit]):not([type=checkbox]),
+.form-inline .blog-list-entry--comments-list .comment-respond .comment-form > p textarea,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .form-inline textarea, .form-inline button.select-from-control {
     display: inline-block;
     width: auto;
     vertical-align: middle;
@@ -2261,7 +2307,7 @@ button.is-invalid.select-from-control ~ .invalid-tooltip {
   }
 }
 
-.btn {
+.btn, .blog-list-entry--comments-list .comment-respond input[type=submit] {
   display: inline-block;
   font-weight: 400;
   color: #212529;
@@ -2277,19 +2323,19 @@ button.is-invalid.select-from-control ~ .invalid-tooltip {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
-  .btn {
+  .btn, .blog-list-entry--comments-list .comment-respond input[type=submit] {
     transition: none;
   }
 }
-.btn:hover {
+.btn:hover, .blog-list-entry--comments-list .comment-respond input[type=submit]:hover {
   color: #212529;
   text-decoration: none;
 }
-.btn:focus, .btn.focus {
+.btn:focus, .blog-list-entry--comments-list .comment-respond input[type=submit]:focus, .btn.focus, .blog-list-entry--comments-list .comment-respond input.focus[type=submit] {
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
-.btn.disabled, .btn:disabled {
+.btn.disabled, .blog-list-entry--comments-list .comment-respond input.disabled[type=submit], .btn:disabled, .blog-list-entry--comments-list .comment-respond input[type=submit]:disabled {
   opacity: 0.65;
 }
 a.btn.disabled,
@@ -2297,30 +2343,30 @@ fieldset:disabled a.btn {
   pointer-events: none;
 }
 
-.btn-primary {
+.btn-primary, .blog-list-entry--comments-list .comment-respond input[type=submit] {
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
 }
-.btn-primary:hover {
+.btn-primary:hover, .blog-list-entry--comments-list .comment-respond input[type=submit]:hover {
   color: #fff;
   background-color: #0069d9;
   border-color: #0062cc;
 }
-.btn-primary:focus, .btn-primary.focus {
+.btn-primary:focus, .blog-list-entry--comments-list .comment-respond input[type=submit]:focus, .btn-primary.focus, .blog-list-entry--comments-list .comment-respond input.focus[type=submit] {
   box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
 }
-.btn-primary.disabled, .btn-primary:disabled {
+.btn-primary.disabled, .blog-list-entry--comments-list .comment-respond input.disabled[type=submit], .btn-primary:disabled, .blog-list-entry--comments-list .comment-respond input[type=submit]:disabled {
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
 }
-.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+.btn-primary:not(:disabled):not(.disabled):active, .blog-list-entry--comments-list .comment-respond input[type=submit]:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .blog-list-entry--comments-list .comment-respond input[type=submit]:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle, .blog-list-entry--comments-list .comment-respond .show > input.dropdown-toggle[type=submit] {
   color: #fff;
   background-color: #0062cc;
   border-color: #005cbf;
 }
-.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .show > .btn-primary.dropdown-toggle:focus {
+.btn-primary:not(:disabled):not(.disabled):active:focus, .blog-list-entry--comments-list .comment-respond input[type=submit]:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .blog-list-entry--comments-list .comment-respond input[type=submit]:not(:disabled):not(.disabled).active:focus, .show > .btn-primary.dropdown-toggle:focus, .blog-list-entry--comments-list .comment-respond .show > input.dropdown-toggle[type=submit]:focus {
   box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
 }
 
@@ -2731,14 +2777,14 @@ fieldset:disabled a.btn {
   pointer-events: none;
 }
 
-.btn-lg, .btn-group-lg > .btn {
+.btn-lg, .btn-group-lg > .btn, .blog-list-entry--comments-list .comment-respond .btn-group-lg > input[type=submit] {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
   border-radius: 0.3rem;
 }
 
-.btn-sm, .btn-group-sm > .btn {
+.btn-sm, .btn-group-sm > .btn, .blog-list-entry--comments-list .comment-respond .btn-group-sm > input[type=submit] {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
@@ -3026,19 +3072,24 @@ input[type=button].btn-block {
   display: inline-flex;
   vertical-align: middle;
 }
-.btn-group > .btn,
-.btn-group-vertical > .btn {
+.btn-group > .btn, .blog-list-entry--comments-list .comment-respond .btn-group > input[type=submit],
+.btn-group-vertical > .btn,
+.blog-list-entry--comments-list .comment-respond .btn-group-vertical > input[type=submit] {
   position: relative;
   flex: 1 1 auto;
 }
-.btn-group > .btn:hover,
-.btn-group-vertical > .btn:hover {
+.btn-group > .btn:hover, .blog-list-entry--comments-list .comment-respond .btn-group > input[type=submit]:hover,
+.btn-group-vertical > .btn:hover,
+.blog-list-entry--comments-list .comment-respond .btn-group-vertical > input[type=submit]:hover {
   z-index: 1;
 }
-.btn-group > .btn:focus, .btn-group > .btn:active, .btn-group > .btn.active,
+.btn-group > .btn:focus, .blog-list-entry--comments-list .comment-respond .btn-group > input[type=submit]:focus, .btn-group > .btn:active, .blog-list-entry--comments-list .comment-respond .btn-group > input[type=submit]:active, .btn-group > .btn.active, .blog-list-entry--comments-list .comment-respond .btn-group > input.active[type=submit],
 .btn-group-vertical > .btn:focus,
+.blog-list-entry--comments-list .comment-respond .btn-group-vertical > input[type=submit]:focus,
 .btn-group-vertical > .btn:active,
-.btn-group-vertical > .btn.active {
+.blog-list-entry--comments-list .comment-respond .btn-group-vertical > input[type=submit]:active,
+.btn-group-vertical > .btn.active,
+.blog-list-entry--comments-list .comment-respond .btn-group-vertical > input.active[type=submit] {
   z-index: 1;
 }
 
@@ -3051,17 +3102,19 @@ input[type=button].btn-block {
   width: auto;
 }
 
-.btn-group > .btn:not(:first-child),
+.btn-group > .btn:not(:first-child), .blog-list-entry--comments-list .comment-respond .btn-group > input[type=submit]:not(:first-child),
 .btn-group > .btn-group:not(:first-child) {
   margin-left: -1px;
 }
-.btn-group > .btn:not(:last-child):not(.dropdown-toggle),
-.btn-group > .btn-group:not(:last-child) > .btn {
+.btn-group > .btn:not(:last-child):not(.dropdown-toggle), .blog-list-entry--comments-list .comment-respond .btn-group > input[type=submit]:not(:last-child):not(.dropdown-toggle),
+.btn-group > .btn-group:not(:last-child) > .btn,
+.blog-list-entry--comments-list .comment-respond .btn-group > .btn-group:not(:last-child) > input[type=submit] {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.btn-group > .btn:not(:first-child),
-.btn-group > .btn-group:not(:first-child) > .btn {
+.btn-group > .btn:not(:first-child), .blog-list-entry--comments-list .comment-respond .btn-group > input[type=submit]:not(:first-child),
+.btn-group > .btn-group:not(:first-child) > .btn,
+.blog-list-entry--comments-list .comment-respond .btn-group > .btn-group:not(:first-child) > input[type=submit] {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -3077,12 +3130,12 @@ input[type=button].btn-block {
   margin-right: 0;
 }
 
-.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split {
+.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split, .blog-list-entry--comments-list .comment-respond .btn-group-sm > input[type=submit] + .dropdown-toggle-split {
   padding-right: 0.375rem;
   padding-left: 0.375rem;
 }
 
-.btn-lg + .dropdown-toggle-split, .btn-group-lg > .btn + .dropdown-toggle-split {
+.btn-lg + .dropdown-toggle-split, .btn-group-lg > .btn + .dropdown-toggle-split, .blog-list-entry--comments-list .comment-respond .btn-group-lg > input[type=submit] + .dropdown-toggle-split {
   padding-right: 0.75rem;
   padding-left: 0.75rem;
 }
@@ -3092,31 +3145,35 @@ input[type=button].btn-block {
   align-items: flex-start;
   justify-content: center;
 }
-.btn-group-vertical > .btn,
+.btn-group-vertical > .btn, .blog-list-entry--comments-list .comment-respond .btn-group-vertical > input[type=submit],
 .btn-group-vertical > .btn-group {
   width: 100%;
 }
-.btn-group-vertical > .btn:not(:first-child),
+.btn-group-vertical > .btn:not(:first-child), .blog-list-entry--comments-list .comment-respond .btn-group-vertical > input[type=submit]:not(:first-child),
 .btn-group-vertical > .btn-group:not(:first-child) {
   margin-top: -1px;
 }
-.btn-group-vertical > .btn:not(:last-child):not(.dropdown-toggle),
-.btn-group-vertical > .btn-group:not(:last-child) > .btn {
+.btn-group-vertical > .btn:not(:last-child):not(.dropdown-toggle), .blog-list-entry--comments-list .comment-respond .btn-group-vertical > input[type=submit]:not(:last-child):not(.dropdown-toggle),
+.btn-group-vertical > .btn-group:not(:last-child) > .btn,
+.blog-list-entry--comments-list .comment-respond .btn-group-vertical > .btn-group:not(:last-child) > input[type=submit] {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
-.btn-group-vertical > .btn:not(:first-child),
-.btn-group-vertical > .btn-group:not(:first-child) > .btn {
+.btn-group-vertical > .btn:not(:first-child), .blog-list-entry--comments-list .comment-respond .btn-group-vertical > input[type=submit]:not(:first-child),
+.btn-group-vertical > .btn-group:not(:first-child) > .btn,
+.blog-list-entry--comments-list .comment-respond .btn-group-vertical > .btn-group:not(:first-child) > input[type=submit] {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
-.btn-group-toggle > .btn,
-.btn-group-toggle > .btn-group > .btn {
+.btn-group-toggle > .btn, .blog-list-entry--comments-list .comment-respond .btn-group-toggle > input[type=submit],
+.btn-group-toggle > .btn-group > .btn,
+.blog-list-entry--comments-list .comment-respond .btn-group-toggle > .btn-group > input[type=submit] {
   margin-bottom: 0;
 }
-.btn-group-toggle > .btn input[type=radio],
+.btn-group-toggle > .btn input[type=radio], .blog-list-entry--comments-list .comment-respond .btn-group-toggle > input[type=submit] input[type=radio],
 .btn-group-toggle > .btn input[type=checkbox],
+.blog-list-entry--comments-list .comment-respond .btn-group-toggle > input[type=submit] input[type=checkbox],
 .btn-group-toggle > .btn-group > .btn input[type=radio],
 .btn-group-toggle > .btn-group > .btn input[type=checkbox] {
   position: absolute;
@@ -3131,7 +3188,8 @@ input[type=button].btn-block {
   align-items: stretch;
   width: 100%;
 }
-.input-group > .form-control, .input-group > button.select-from-control,
+.input-group > .form-control, .blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > input:not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > textarea, .input-group > button.select-from-control,
 .input-group > .form-control-plaintext,
 .input-group > .custom-select,
 .input-group > .custom-file {
@@ -3140,26 +3198,44 @@ input[type=button].btn-block {
   width: 1%;
   margin-bottom: 0;
 }
-.input-group > .form-control + .form-control, .input-group > button.select-from-control + .form-control, .input-group > .form-control + button.select-from-control, .input-group > button.select-from-control + button.select-from-control,
+.input-group > .form-control + .form-control, .blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > input:not([type=submit]):not([type=checkbox]) + .form-control,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > textarea + .form-control, .blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > .form-control + input:not([type=submit]):not([type=checkbox]), .blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > input:not([type=submit]):not([type=checkbox]) + input:not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > textarea + input:not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > .form-control + textarea,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > input:not([type=submit]):not([type=checkbox]) + textarea,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > textarea + textarea, .input-group > button.select-from-control + .form-control, .blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > button.select-from-control + input:not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > button.select-from-control + textarea, .input-group > .form-control + button.select-from-control, .blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > input:not([type=submit]):not([type=checkbox]) + button.select-from-control,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > textarea + button.select-from-control, .input-group > button.select-from-control + button.select-from-control,
 .input-group > .form-control + .custom-select,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > input:not([type=submit]):not([type=checkbox]) + .custom-select,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > textarea + .custom-select,
 .input-group > button.select-from-control + .custom-select,
 .input-group > .form-control + .custom-file,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > input:not([type=submit]):not([type=checkbox]) + .custom-file,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > textarea + .custom-file,
 .input-group > button.select-from-control + .custom-file,
 .input-group > .form-control-plaintext + .form-control,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > .form-control-plaintext + input:not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > .form-control-plaintext + textarea,
 .input-group > .form-control-plaintext + button.select-from-control,
 .input-group > .form-control-plaintext + .custom-select,
 .input-group > .form-control-plaintext + .custom-file,
 .input-group > .custom-select + .form-control,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > .custom-select + input:not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > .custom-select + textarea,
 .input-group > .custom-select + button.select-from-control,
 .input-group > .custom-select + .custom-select,
 .input-group > .custom-select + .custom-file,
 .input-group > .custom-file + .form-control,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > .custom-file + input:not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > .custom-file + textarea,
 .input-group > .custom-file + button.select-from-control,
 .input-group > .custom-file + .custom-select,
 .input-group > .custom-file + .custom-file {
   margin-left: -1px;
 }
-.input-group > .form-control:focus, .input-group > button.select-from-control:focus,
+.input-group > .form-control:focus, .blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > input:focus:not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > textarea:focus, .input-group > button.select-from-control:focus,
 .input-group > .custom-select:focus,
 .input-group > .custom-file .custom-file-input:focus ~ .custom-file-label {
   z-index: 3;
@@ -3167,12 +3243,14 @@ input[type=button].btn-block {
 .input-group > .custom-file .custom-file-input:focus {
   z-index: 4;
 }
-.input-group > .form-control:not(:last-child), .input-group > button.select-from-control:not(:last-child),
+.input-group > .form-control:not(:last-child), .blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > input:not(:last-child):not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > textarea:not(:last-child), .input-group > button.select-from-control:not(:last-child),
 .input-group > .custom-select:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.input-group > .form-control:not(:first-child), .input-group > button.select-from-control:not(:first-child),
+.input-group > .form-control:not(:first-child), .blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > input:not(:first-child):not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group > textarea:not(:first-child), .input-group > button.select-from-control:not(:first-child),
 .input-group > .custom-select:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -3194,23 +3272,41 @@ input[type=button].btn-block {
 .input-group-append {
   display: flex;
 }
-.input-group-prepend .btn,
-.input-group-append .btn {
+.input-group-prepend .btn, .input-group-prepend .blog-list-entry--comments-list .comment-respond input[type=submit], .blog-list-entry--comments-list .comment-respond .input-group-prepend input[type=submit],
+.input-group-append .btn,
+.input-group-append .blog-list-entry--comments-list .comment-respond input[type=submit],
+.blog-list-entry--comments-list .comment-respond .input-group-append input[type=submit] {
   position: relative;
   z-index: 2;
 }
-.input-group-prepend .btn:focus,
-.input-group-append .btn:focus {
+.input-group-prepend .btn:focus, .input-group-prepend .blog-list-entry--comments-list .comment-respond input[type=submit]:focus, .blog-list-entry--comments-list .comment-respond .input-group-prepend input[type=submit]:focus,
+.input-group-append .btn:focus,
+.input-group-append .blog-list-entry--comments-list .comment-respond input[type=submit]:focus,
+.blog-list-entry--comments-list .comment-respond .input-group-append input[type=submit]:focus {
   z-index: 3;
 }
-.input-group-prepend .btn + .btn,
+.input-group-prepend .btn + .btn, .input-group-prepend .blog-list-entry--comments-list .comment-respond input[type=submit] + .btn, .blog-list-entry--comments-list .comment-respond .input-group-prepend input[type=submit] + .btn, .input-group-prepend .blog-list-entry--comments-list .comment-respond .btn + input[type=submit], .blog-list-entry--comments-list .comment-respond .input-group-prepend .btn + input[type=submit], .input-group-prepend .blog-list-entry--comments-list .comment-respond input[type=submit] + input[type=submit], .blog-list-entry--comments-list .comment-respond .input-group-prepend input[type=submit] + input[type=submit],
 .input-group-prepend .btn + .input-group-text,
+.input-group-prepend .blog-list-entry--comments-list .comment-respond input[type=submit] + .input-group-text,
+.blog-list-entry--comments-list .comment-respond .input-group-prepend input[type=submit] + .input-group-text,
 .input-group-prepend .input-group-text + .input-group-text,
 .input-group-prepend .input-group-text + .btn,
+.input-group-prepend .blog-list-entry--comments-list .comment-respond .input-group-text + input[type=submit],
+.blog-list-entry--comments-list .comment-respond .input-group-prepend .input-group-text + input[type=submit],
 .input-group-append .btn + .btn,
+.input-group-append .blog-list-entry--comments-list .comment-respond input[type=submit] + .btn,
+.blog-list-entry--comments-list .comment-respond .input-group-append input[type=submit] + .btn,
+.input-group-append .blog-list-entry--comments-list .comment-respond .btn + input[type=submit],
+.blog-list-entry--comments-list .comment-respond .input-group-append .btn + input[type=submit],
+.input-group-append .blog-list-entry--comments-list .comment-respond input[type=submit] + input[type=submit],
+.blog-list-entry--comments-list .comment-respond .input-group-append input[type=submit] + input[type=submit],
 .input-group-append .btn + .input-group-text,
+.input-group-append .blog-list-entry--comments-list .comment-respond input[type=submit] + .input-group-text,
+.blog-list-entry--comments-list .comment-respond .input-group-append input[type=submit] + .input-group-text,
 .input-group-append .input-group-text + .input-group-text,
-.input-group-append .input-group-text + .btn {
+.input-group-append .input-group-text + .btn,
+.input-group-append .blog-list-entry--comments-list .comment-respond .input-group-text + input[type=submit],
+.blog-list-entry--comments-list .comment-respond .input-group-append .input-group-text + input[type=submit] {
   margin-left: -1px;
 }
 
@@ -3242,34 +3338,42 @@ input[type=button].btn-block {
   margin-top: 0;
 }
 
-.input-group-lg > .form-control:not(textarea), .input-group-lg > button.select-from-control:not(textarea),
+.input-group-lg > .form-control:not(textarea), .blog-list-entry--comments-list .comment-respond .comment-form > p .input-group-lg > input:not(textarea):not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group-lg > textarea:not(textarea), .input-group-lg > button.select-from-control:not(textarea),
 .input-group-lg > .custom-select {
   height: calc( 1.5em + 1rem + 2px );
 }
 
-.input-group-lg > .form-control, .input-group-lg > button.select-from-control,
+.input-group-lg > .form-control, .blog-list-entry--comments-list .comment-respond .comment-form > p .input-group-lg > input:not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group-lg > textarea, .input-group-lg > button.select-from-control,
 .input-group-lg > .custom-select,
 .input-group-lg > .input-group-prepend > .input-group-text,
 .input-group-lg > .input-group-append > .input-group-text,
 .input-group-lg > .input-group-prepend > .btn,
-.input-group-lg > .input-group-append > .btn {
+.blog-list-entry--comments-list .comment-respond .input-group-lg > .input-group-prepend > input[type=submit],
+.input-group-lg > .input-group-append > .btn,
+.blog-list-entry--comments-list .comment-respond .input-group-lg > .input-group-append > input[type=submit] {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
   border-radius: 0.3rem;
 }
 
-.input-group-sm > .form-control:not(textarea), .input-group-sm > button.select-from-control:not(textarea),
+.input-group-sm > .form-control:not(textarea), .blog-list-entry--comments-list .comment-respond .comment-form > p .input-group-sm > input:not(textarea):not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group-sm > textarea:not(textarea), .input-group-sm > button.select-from-control:not(textarea),
 .input-group-sm > .custom-select {
   height: calc( 1.5em + 0.5rem + 2px );
 }
 
-.input-group-sm > .form-control, .input-group-sm > button.select-from-control,
+.input-group-sm > .form-control, .blog-list-entry--comments-list .comment-respond .comment-form > p .input-group-sm > input:not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group-sm > textarea, .input-group-sm > button.select-from-control,
 .input-group-sm > .custom-select,
 .input-group-sm > .input-group-prepend > .input-group-text,
 .input-group-sm > .input-group-append > .input-group-text,
 .input-group-sm > .input-group-prepend > .btn,
-.input-group-sm > .input-group-append > .btn {
+.blog-list-entry--comments-list .comment-respond .input-group-sm > .input-group-prepend > input[type=submit],
+.input-group-sm > .input-group-append > .btn,
+.blog-list-entry--comments-list .comment-respond .input-group-sm > .input-group-append > input[type=submit] {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
@@ -3281,21 +3385,25 @@ input[type=button].btn-block {
   padding-right: 1.75rem;
 }
 
-.input-group > .input-group-prepend > .btn,
+.input-group > .input-group-prepend > .btn, .blog-list-entry--comments-list .comment-respond .input-group > .input-group-prepend > input[type=submit],
 .input-group > .input-group-prepend > .input-group-text,
 .input-group > .input-group-append:not(:last-child) > .btn,
+.blog-list-entry--comments-list .comment-respond .input-group > .input-group-append:not(:last-child) > input[type=submit],
 .input-group > .input-group-append:not(:last-child) > .input-group-text,
 .input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
+.blog-list-entry--comments-list .comment-respond .input-group > .input-group-append:last-child > input[type=submit]:not(:last-child):not(.dropdown-toggle),
 .input-group > .input-group-append:last-child > .input-group-text:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.input-group > .input-group-append > .btn,
+.input-group > .input-group-append > .btn, .blog-list-entry--comments-list .comment-respond .input-group > .input-group-append > input[type=submit],
 .input-group > .input-group-append > .input-group-text,
 .input-group > .input-group-prepend:not(:first-child) > .btn,
+.blog-list-entry--comments-list .comment-respond .input-group > .input-group-prepend:not(:first-child) > input[type=submit],
 .input-group > .input-group-prepend:not(:first-child) > .input-group-text,
 .input-group > .input-group-prepend:first-child > .btn:not(:first-child),
+.blog-list-entry--comments-list .comment-respond .input-group > .input-group-prepend:first-child > input[type=submit]:not(:first-child),
 .input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -4440,7 +4548,7 @@ a.badge:hover, a.badge:focus {
   display: none;
 }
 
-.btn .badge {
+.btn .badge, .blog-list-entry--comments-list .comment-respond input[type=submit] .badge {
   position: relative;
   top: -1px;
 }
@@ -10875,7 +10983,7 @@ Build date: 2018-12-12 00:07:25
   padding-right: 8px;
 }
 
-.daterangepicker .drp-buttons .btn {
+.daterangepicker .drp-buttons .btn, .daterangepicker .drp-buttons .blog-list-entry--comments-list .comment-respond input[type=submit], .blog-list-entry--comments-list .comment-respond .daterangepicker .drp-buttons input[type=submit] {
   margin-left: 8px;
   font-size: 12px;
   font-weight: bold;
@@ -11679,15 +11787,15 @@ hr {
 .card-travel-wrapper .card.card-travel .card-body .date-row .dropdown {
   margin-bottom: 0.25rem;
 }
-.card-travel-wrapper .card.card-travel .card-body .date-row .dropdown .btn {
+.card-travel-wrapper .card.card-travel .card-body .date-row .dropdown .btn, .card-travel-wrapper .card.card-travel .card-body .date-row .dropdown .blog-list-entry--comments-list .comment-respond input[type=submit], .blog-list-entry--comments-list .comment-respond .card-travel-wrapper .card.card-travel .card-body .date-row .dropdown input[type=submit] {
   padding: 0px;
   font-size: 80%;
 }
-.card-travel-wrapper .card.card-travel .card-body .date-row .dropdown .btn.disabled {
+.card-travel-wrapper .card.card-travel .card-body .date-row .dropdown .btn.disabled, .card-travel-wrapper .card.card-travel .card-body .date-row .dropdown .blog-list-entry--comments-list .comment-respond input.disabled[type=submit], .blog-list-entry--comments-list .comment-respond .card-travel-wrapper .card.card-travel .card-body .date-row .dropdown input.disabled[type=submit] {
   opacity: 1;
   cursor: default;
 }
-.card-travel-wrapper .card.card-travel .card-body .date-row .dropdown .btn.disabled:focus {
+.card-travel-wrapper .card.card-travel .card-body .date-row .dropdown .btn.disabled:focus, .card-travel-wrapper .card.card-travel .card-body .date-row .dropdown .blog-list-entry--comments-list .comment-respond input.disabled[type=submit]:focus, .blog-list-entry--comments-list .comment-respond .card-travel-wrapper .card.card-travel .card-body .date-row .dropdown input.disabled[type=submit]:focus {
   box-shadow: none;
 }
 .card-travel-wrapper .card.card-travel .card-body .date-row .dropdown .dropdown-menu {
@@ -12030,7 +12138,7 @@ hr {
 .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .circle.red {
   background-color: red;
 }
-.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .btn {
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .btn, .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .blog-list-entry--comments-list .comment-respond input[type=submit], .blog-list-entry--comments-list .comment-respond .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown input[type=submit] {
   white-space: normal;
   text-align: center;
   font-size: 0.7rem;
@@ -12039,10 +12147,10 @@ hr {
   outline: 0;
   box-shadow: none;
 }
-.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .btn:after {
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .btn:after, .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .blog-list-entry--comments-list .comment-respond input[type=submit]:after, .blog-list-entry--comments-list .comment-respond .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown input[type=submit]:after {
   margin-left: 0.2rem;
 }
-.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .btn:hover, .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .btn:active, .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .btn:focus {
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .btn:hover, .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .blog-list-entry--comments-list .comment-respond input[type=submit]:hover, .blog-list-entry--comments-list .comment-respond .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown input[type=submit]:hover, .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .btn:active, .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .blog-list-entry--comments-list .comment-respond input[type=submit]:active, .blog-list-entry--comments-list .comment-respond .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown input[type=submit]:active, .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .btn:focus, .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .blog-list-entry--comments-list .comment-respond input[type=submit]:focus, .blog-list-entry--comments-list .comment-respond .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown input[type=submit]:focus {
   border: 0;
   outline: 0;
   box-shadow: none;
@@ -12100,7 +12208,7 @@ hr {
   .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-head h1 {
     font-size: 1.2rem;
   }
-  .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .btn {
+  .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .btn, .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown .blog-list-entry--comments-list .comment-respond input[type=submit], .blog-list-entry--comments-list .comment-respond .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-departure .dropdown input[type=submit] {
     font-size: 0.8rem;
     text-align: left;
     padding: 0 0.75rem;
@@ -13180,7 +13288,9 @@ hr {
     max-width: 180px;
   }
 }
-.input-group .form-control, .input-group button.select-from-control {
+.input-group .form-control, .input-group .blog-list-entry--comments-list .comment-respond .comment-form > p input:not([type=submit]):not([type=checkbox]), .blog-list-entry--comments-list .comment-respond .comment-form > p .input-group input:not([type=submit]):not([type=checkbox]),
+.input-group .blog-list-entry--comments-list .comment-respond .comment-form > p textarea,
+.blog-list-entry--comments-list .comment-respond .comment-form > p .input-group textarea, .input-group button.select-from-control {
   border-radius: 0.25rem !important;
 }
 .input-group .input-group-append {
@@ -13224,7 +13334,8 @@ hr {
      supported by Chrome, Opera and Firefox */
 }
 
-.form-control.bootstrap-multiselect, button.bootstrap-multiselect.select-from-control {
+.form-control.bootstrap-multiselect, .blog-list-entry--comments-list .comment-respond .comment-form > p input.bootstrap-multiselect:not([type=submit]):not([type=checkbox]),
+.blog-list-entry--comments-list .comment-respond .comment-form > p textarea.bootstrap-multiselect, button.bootstrap-multiselect.select-from-control {
   display: none !important;
 }
 
@@ -13363,12 +13474,12 @@ button.select-from-control i.la {
   color: #212529;
   font-size: 1rem;
 }
-.layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper--inner .btn {
+.layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper--inner .btn, .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper--inner .blog-list-entry--comments-list .comment-respond input[type=submit], .blog-list-entry--comments-list .comment-respond .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper--inner input[type=submit] {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper--inner .btn svg {
+.layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper--inner .btn svg, .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper--inner .blog-list-entry--comments-list .comment-respond input[type=submit] svg, .blog-list-entry--comments-list .comment-respond .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper--inner input[type=submit] svg {
   margin-right: 0.25rem;
 }
 
@@ -14043,16 +14154,738 @@ button.select-from-control i.la {
   color: white;
 }
 
-.btn-primary {
+.btn-primary, .blog-list-entry--comments-list .comment-respond input[type=submit] {
   background: #0066ff;
 }
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+.btn-primary:hover, .blog-list-entry--comments-list .comment-respond input[type=submit]:hover, .btn-primary:focus, .blog-list-entry--comments-list .comment-respond input[type=submit]:focus, .btn-primary:active, .blog-list-entry--comments-list .comment-respond input[type=submit]:active {
   background-color: #4d94ff !important;
   border-color: #4d94ff !important;
 }
-.btn-primary.active {
+.btn-primary.active, .blog-list-entry--comments-list .comment-respond input.active[type=submit] {
   background-color: #002966 !important;
   border-color: #99c2ff !important;
+}
+
+.content-block.content-block-blog {
+  padding-top: 15px;
+}
+@media (min-width: 768px) {
+  .content-block.content-block-blog {
+    padding-top: 30px;
+  }
+}
+
+.content-block.content-block-blog--header h1, .content-block.content-block-blog--header .h1 {
+  margin-bottom: 0;
+  font-size: 1.75rem;
+}
+@media (min-width: 768px) {
+  .content-block.content-block-blog--header h1, .content-block.content-block-blog--header .h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .content-block.content-block-blog,
+.content-block.content-block-blog--header {
+    margin-left: -7.5px;
+    margin-right: -7.5px;
+  }
+}
+
+.teaser.teaser-blog-sidebar {
+  margin-bottom: 15px;
+}
+@media (min-width: 768px) {
+  .teaser.teaser-blog-sidebar {
+    margin-bottom: 30px;
+  }
+}
+.teaser.teaser-blog-sidebar .teaser-body h4 {
+  font-size: 1.25rem;
+}
+@media (min-width: 768px) {
+  .teaser.teaser-blog-sidebar .teaser-body h4 {
+    font-size: 1.5rem;
+  }
+}
+
+.blog-list-entry {
+  margin-bottom: 15px;
+  border-top: 1px solid #e9ecef;
+}
+@media (min-width: 768px) {
+  .blog-list-entry {
+    margin-bottom: 30px;
+  }
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry .blog-list-entry--more {
+    font-size: 0.875rem;
+  }
+}
+.blog-list-entry:last-child {
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 15px;
+}
+@media (min-width: 768px) {
+  .blog-list-entry:last-child {
+    padding-bottom: 30px;
+  }
+}
+.blog-list-entry:first-child {
+  padding-top: 15px;
+}
+@media (min-width: 768px) {
+  .blog-list-entry:first-child {
+    padding-top: 30px;
+  }
+}
+.blog-list-entry + .blog-list-entry {
+  padding-top: 15px;
+}
+@media (min-width: 768px) {
+  .blog-list-entry + .blog-list-entry {
+    padding-top: 30px;
+  }
+}
+.blog-list-entry .blog-list-entry--thumbnail img {
+  width: 100%;
+  height: auto;
+}
+.blog-list-entry .blog-list-entry--thumbnail + .blog-list-entry--body {
+  padding: 15px 0 0 0;
+}
+@media (min-width: 768px) {
+  .blog-list-entry .blog-list-entry--thumbnail + .blog-list-entry--body {
+    padding: 30px 0 0 0;
+  }
+}
+.blog-list-entry .blog-list-entry--header h3, .blog-list-entry .blog-list-entry--header h1 {
+  margin-bottom: 0.25rem;
+}
+.blog-list-entry .blog-list-entry--header h3 a, .blog-list-entry .blog-list-entry--header h1 a {
+  color: #212529;
+  transition: color 0.3s;
+}
+.blog-list-entry .blog-list-entry--header h3 a:hover, .blog-list-entry .blog-list-entry--header h3 a:focus, .blog-list-entry .blog-list-entry--header h3 a:active, .blog-list-entry .blog-list-entry--header h1 a:hover, .blog-list-entry .blog-list-entry--header h1 a:focus, .blog-list-entry .blog-list-entry--header h1 a:active {
+  color: #0066ff;
+  text-decoration: none;
+}
+@media (min-width: 768px) {
+  .blog-list-entry .blog-list-entry--header h3, .blog-list-entry .blog-list-entry--header h1 {
+    margin-bottom: 0.5rem;
+  }
+}
+.blog-list-entry h1.h3,
+.blog-list-entry h3,
+.blog-list-entry .h3 {
+  font-size: 1.25rem;
+}
+@media (min-width: 768px) {
+  .blog-list-entry h1.h3,
+.blog-list-entry h3,
+.blog-list-entry .h3 {
+    font-size: 1.75rem;
+  }
+}
+.blog-list-entry .blog-list-entry--details {
+  font-size: 12px;
+  margin-bottom: -0.5rem;
+}
+.blog-list-entry .blog-list-entry--details::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+@media (min-width: 768px) {
+  .blog-list-entry .blog-list-entry--details {
+    font-size: 0.875rem;
+  }
+}
+.blog-list-entry .blog-list-entry--details > div {
+  display: inline-block;
+  float: left;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.blog-list-entry .blog-list-entry--details > div + div:before {
+  content: " /";
+  margin-right: 0.5rem;
+  opacity: 0.5;
+  white-space: pre;
+}
+.blog-list-entry .blog-list-entry--excerpt,
+.blog-list-entry .blog-list-entry--content {
+  margin: 0.5rem 0;
+}
+@media (min-width: 768px) {
+  .blog-list-entry .blog-list-entry--excerpt,
+.blog-list-entry .blog-list-entry--content {
+    margin: 1rem 0;
+  }
+}
+.blog-list-entry .blog-list-entry--excerpt {
+  font-size: 0.875rem;
+}
+@media (min-width: 768px) {
+  .blog-list-entry .blog-list-entry--excerpt {
+    font-size: 1rem;
+  }
+}
+.blog-list-entry .blog-list-entry--crosslinks {
+  margin-top: 30px;
+}
+.blog-list-entry .blog-list-entry--crosslinks > div .badge {
+  margin-left: 0.5rem;
+  margin-right: 0.125rem;
+}
+.blog-list-entry .blog-list-entry--crosslinks > div .badge + .badge {
+  margin-left: 0;
+}
+.blog-list-entry .blog-list-entry--crosslinks > div + div {
+  margin-top: 0.5rem;
+}
+.blog-list-entry .blog-list-entry--header + .blog-list-entry--more {
+  margin-top: 1rem;
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry .blog-list-entry--header + .blog-list-entry--more {
+    margin-top: 0.5rem;
+  }
+}
+
+.blog-entry-single .blog-list-entry:first-child {
+  margin-top: 0;
+  border-top: 0;
+  padding-top: 0;
+}
+.blog-entry-single .blog-list-entry:last-child {
+  border-bottom: 0;
+}
+.blog-entry-single .blog-list-entry--header h1 {
+  font-size: 1.75rem;
+}
+@media (min-width: 768px) {
+  .blog-entry-single .blog-list-entry--header h1 {
+    font-size: 2.5rem;
+  }
+}
+.blog-entry-single h2 {
+  font-size: 1.5rem;
+}
+@media (min-width: 768px) {
+  .blog-entry-single h2 {
+    font-size: 2rem;
+  }
+}
+.blog-entry-single h3 {
+  font-size: 1.25rem;
+}
+@media (min-width: 768px) {
+  .blog-entry-single h3 {
+    font-size: 1.75rem;
+  }
+}
+.blog-entry-single h4 {
+  font-size: 1.25rem;
+}
+@media (min-width: 768px) {
+  .blog-entry-single h4 {
+    font-size: 1.5rem;
+  }
+}
+.blog-entry-single .blog-list-entry--content h1, .blog-entry-single .blog-list-entry--content h2, .blog-entry-single .blog-list-entry--content h3, .blog-entry-single .blog-list-entry--content h4 {
+  margin-bottom: 1rem;
+}
+
+.blog-list-entry--author .author-bio.show-avatars {
+  padding-left: 115px;
+  position: relative;
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry--author .author-bio.show-avatars {
+    padding-left: 55px;
+  }
+}
+.blog-list-entry--author .author-bio.show-avatars > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry--author .author-bio.show-avatars > img {
+    width: 40px;
+    height: 40px;
+  }
+}
+.blog-list-entry--author p.author-description {
+  margin: 0;
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry--author p.author-description {
+    font-size: 0.875rem;
+  }
+}
+.blog-list-entry--author .author-title,
+.blog-list-entry--author .author-links {
+  margin-bottom: 1rem;
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry--author .author-title,
+.blog-list-entry--author .author-links {
+    margin-bottom: 0.5rem;
+  }
+}
+.blog-list-entry--author .author-title a {
+  color: inherit;
+  transition: color 0.3s;
+}
+.blog-list-entry--author .author-title a:hover, .blog-list-entry--author .author-title a:focus, .blog-list-entry--author .author-title a:active {
+  color: #0066ff;
+  text-decoration: none;
+}
+.blog-list-entry--author .author-links::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+.blog-list-entry--author .author-links .author-link {
+  display: inline-block;
+  float: left;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ced4da;
+  transition: background-color 0.3s;
+  position: relative;
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry--author .author-links .author-link {
+    width: 24px;
+    height: 24px;
+  }
+}
+.blog-list-entry--author .author-links .author-link svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1.25rem;
+  height: 1.25rem;
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry--author .author-links .author-link svg {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+}
+.blog-list-entry--author .author-links .author-link svg * {
+  fill: #fff;
+}
+.blog-list-entry--author .author-links .author-link:hover, .blog-list-entry--author .author-links .author-link:focus, .blog-list-entry--author .author-links .author-link:active {
+  text-decoration: none;
+  background-color: #adb5bd;
+}
+.blog-list-entry--author .author-links .author-link.author-link--facebook {
+  background-color: #1877f2;
+}
+.blog-list-entry--author .author-links .author-link.author-link--facebook:hover, .blog-list-entry--author .author-links .author-link.author-link--facebook:focus, .blog-list-entry--author .author-links .author-link.author-link--facebook:active {
+  background-color: #0b5fcc;
+}
+.blog-list-entry--author .author-links .author-link.author-link--twitter {
+  background-color: #1da1f2;
+}
+.blog-list-entry--author .author-links .author-link.author-link--twitter:hover, .blog-list-entry--author .author-links .author-link.author-link--twitter:focus, .blog-list-entry--author .author-links .author-link.author-link--twitter:active {
+  background-color: #0c85d0;
+}
+.blog-list-entry--author .author-links .author-link.author-link--instagram {
+  background-color: #e1306c;
+}
+.blog-list-entry--author .author-links .author-link.author-link--instagram:hover, .blog-list-entry--author .author-links .author-link.author-link--instagram:focus, .blog-list-entry--author .author-links .author-link.author-link--instagram:active {
+  background-color: #c21c54;
+}
+.blog-list-entry--author .author-links .author-link.author-link--youtube {
+  background-color: #ff0000;
+}
+.blog-list-entry--author .author-links .author-link.author-link--youtube:hover, .blog-list-entry--author .author-links .author-link.author-link--youtube:focus, .blog-list-entry--author .author-links .author-link.author-link--youtube:active {
+  background-color: #cc0000;
+}
+.blog-list-entry--author .author-links .author-link.author-link--linkedin {
+  background-color: #0077b5;
+}
+.blog-list-entry--author .author-links .author-link.author-link--linkedin:hover, .blog-list-entry--author .author-links .author-link.author-link--linkedin:focus, .blog-list-entry--author .author-links .author-link.author-link--linkedin:active {
+  background-color: #005582;
+}
+.blog-list-entry--author .author-links .author-link.author-link--pinterest {
+  background-color: #e60023;
+}
+.blog-list-entry--author .author-links .author-link.author-link--pinterest:hover, .blog-list-entry--author .author-links .author-link.author-link--pinterest:focus, .blog-list-entry--author .author-links .author-link.author-link--pinterest:active {
+  background-color: #b3001b;
+}
+.blog-list-entry--author .author-links .author-link + .author-link {
+  margin-left: 0.5rem;
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry--author .author-links .author-link + .author-link {
+    margin-left: 0.25rem;
+  }
+}
+
+.form-string-search.mw-100 {
+  max-width: 100% !important;
+}
+
+.blog-list-entry--comments h3, .blog-list-entry--comments h4 {
+  margin: 0 0 1.5rem 0;
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry--comments h3, .blog-list-entry--comments h4 {
+    margin: 0 0 1rem 0;
+  }
+}
+
+.blog-list-entry--comments-list ol.comment-list {
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+}
+.blog-list-entry--comments-list ol.comment-list ol.children {
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry--comments-list ol.comment-list ol.children {
+    margin-left: -55px;
+  }
+}
+.blog-list-entry--comments-list ol.comment-list ol.children li.comment {
+  margin-top: 1.5rem;
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry--comments-list ol.comment-list ol.children li.comment {
+    margin-top: 1rem;
+  }
+}
+.blog-list-entry--comments-list ol.comment-list li.comment {
+  position: relative;
+  padding: 0 0 0 90px;
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry--comments-list ol.comment-list li.comment {
+    padding-left: 55px;
+  }
+}
+.blog-list-entry--comments-list ol.comment-list li.comment .comment-author cite.fn {
+  font-weight: bold;
+  color: #212529;
+}
+.blog-list-entry--comments-list ol.comment-list li.comment .comment-author cite.fn > a {
+  color: inherit;
+  transition: color 0.3s;
+}
+.blog-list-entry--comments-list ol.comment-list li.comment .comment-author cite.fn > a:hover, .blog-list-entry--comments-list ol.comment-list li.comment .comment-author cite.fn > a:focus, .blog-list-entry--comments-list ol.comment-list li.comment .comment-author cite.fn > a:active {
+  color: #0066ff;
+  text-decoration: none;
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry--comments-list ol.comment-list li.comment .comment-body {
+    font-size: 0.875rem;
+  }
+  .blog-list-entry--comments-list ol.comment-list li.comment .comment-body p {
+    margin-bottom: 0.5rem;
+  }
+}
+.blog-list-entry--comments-list ol.comment-list li.comment .comment-meta {
+  margin: 0 0 1rem 0;
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry--comments-list ol.comment-list li.comment .comment-meta {
+    margin-bottom: 0.5rem;
+    font-size: 12px;
+  }
+}
+.blog-list-entry--comments-list ol.comment-list li.comment .comment-meta a {
+  color: inherit;
+  transition: color 0.3s;
+}
+.blog-list-entry--comments-list ol.comment-list li.comment .comment-meta a:hover, .blog-list-entry--comments-list ol.comment-list li.comment .comment-meta a:focus, .blog-list-entry--comments-list ol.comment-list li.comment .comment-meta a:active {
+  color: #212529;
+  text-decoration: none;
+}
+.blog-list-entry--comments-list ol.comment-list li.comment .comment-meta a.comment-edit-link:hover, .blog-list-entry--comments-list ol.comment-list li.comment .comment-meta a.comment-edit-link:focus, .blog-list-entry--comments-list ol.comment-list li.comment .comment-meta a.comment-edit-link:active {
+  color: #0066ff;
+}
+.blog-list-entry--comments-list ol.comment-list li.comment img.avatar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry--comments-list ol.comment-list li.comment img.avatar {
+    width: 40px;
+    height: 40px;
+  }
+}
+.blog-list-entry--comments-list ol.comment-list > li.comment + li.comment {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 1.5rem !important;
+  margin-top: 1.5rem;
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry--comments-list ol.comment-list > li.comment + li.comment {
+    margin-top: 1rem;
+    padding-top: 1rem !important;
+  }
+}
+.blog-list-entry--comments-list ol.comment-list > li.comment + li.comment img.avatar {
+  top: 1.5rem;
+}
+.blog-list-entry--comments-list .comment-respond {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry--comments-list .comment-respond {
+    font-size: 0.875rem;
+    margin-top: 15px;
+    padding-top: 15px;
+  }
+}
+.blog-list-entry--comments-list .comment-respond .comment-form > p {
+  margin-bottom: 0;
+}
+.blog-list-entry--comments-list .comment-respond .comment-form > p + p {
+  margin-top: 30px;
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry--comments-list .comment-respond .comment-form > p + p {
+    margin-top: 1rem;
+  }
+}
+.blog-list-entry--comments-list .comment-respond .comment-form > p label {
+  display: block;
+  clear: both;
+  margin: 0 0 0.5rem 0;
+}
+.blog-list-entry--comments-list .comment-respond p.comment-form-cookies-consent {
+  padding-left: 1.5rem;
+  position: relative;
+}
+.blog-list-entry--comments-list .comment-respond p.comment-form-cookies-consent input[type=checkbox] {
+  position: absolute;
+  top: 6px;
+  left: 0;
+}
+.blog-list-entry--content blockquote.wp-block-quote {
+  padding: 0.75rem 1rem;
+  font-style: italic;
+  border-left: 2px solid #0066ff;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+@media (min-width: 768px) {
+  .blog-list-entry--content blockquote.wp-block-quote {
+    padding: 1rem 1.5rem;
+    font-size: 1.25rem;
+  }
+}
+.blog-list-entry--content blockquote.wp-block-quote cite {
+  font-size: 0.875rem;
+  font-style: normal;
+}
+
+.blog-list-entry--related h3 {
+  margin: 0 0 1.5rem 0;
+}
+.blog-list-entry--related h1.blog-list-entry--title.related {
+  font-size: 1rem;
+  margin: 0;
+}
+.blog-list-entry--related .related-posts > .row > div + div {
+  padding-top: 15px;
+  margin-top: 15px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+@media (min-width: 768px) {
+  .blog-list-entry--related .related-posts > .row > div + div {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry--related .related-posts > .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .blog-list-entry--related .related-posts > .row > div {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media (min-width: 768px) {
+  .blog-list-entry--related .post-item .col-4 + .col-8 {
+    margin-top: 1rem;
+  }
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry--related .post-item > .row {
+    margin-left: -7.5px;
+    margin-right: -7.5px;
+  }
+  .blog-list-entry--related .post-item > .row > div {
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+  }
+}
+.blog-list-entry--related .post-item .blog-list-entry--title a {
+  color: #212529;
+  transition: color 0.3s;
+}
+.blog-list-entry--related .post-item .blog-list-entry--title a:hover, .blog-list-entry--related .post-item .blog-list-entry--title a:focus, .blog-list-entry--related .post-item .blog-list-entry--title a:active {
+  text-decoration: none;
+  color: #0066ff;
+}
+.blog-list-entry--related .post-item .blog-list-entry--excerpt {
+  margin: 0.5rem 0 0 0;
+  font-size: 0.875rem;
+}
+.blog-list-entry--related .post-item .blog-list-entry--details {
+  font-size: 0.875rem;
+  color: #adb5bd;
+}
+.blog-list-entry--related .post-item .blog-list-entry--details a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.blog-list-entry--related .post-item .blog-list-entry--details a:hover, .blog-list-entry--related .post-item .blog-list-entry--details a:focus, .blog-list-entry--related .post-item .blog-list-entry--details a:active {
+  color: #212529;
+  text-decoration: none;
+}
+
+.blog-list-entry--postnav .nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: -15px;
+}
+.blog-list-entry--postnav .nav-links > div {
+  flex: 0 0 100%;
+  width: 100%;
+  max-width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 15px;
+}
+@media (min-width: 768px) {
+  .blog-list-entry--postnav .nav-links > div {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry--postnav .nav-links > div {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .blog-list-entry--postnav .nav-links > div + div {
+    margin-top: 0.5rem;
+    margin-bottom: 15px;
+  }
+}
+.blog-list-entry--postnav .nav-links > div > a {
+  color: #adb5bd;
+  font-size: 0.875rem;
+  text-align: center;
+  display: block;
+}
+@media (min-width: 768px) {
+  .blog-list-entry--postnav .nav-links > div > a {
+    text-align: left;
+  }
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry--postnav .nav-links > div > a {
+    border-radius: 0.25rem;
+    background-color: #f8f9fa;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+.blog-list-entry--postnav .nav-links > div > a p {
+  margin: 0;
+  color: inherit;
+}
+.blog-list-entry--postnav .nav-links > div > a p.post-title {
+  white-space: nowrap;
+  /*keep text on one line */
+  overflow: hidden;
+  /*prevent text from being shown outside the border */
+  text-overflow: ellipsis;
+  height: 24px;
+  line-height: 24px;
+  font-size: 1rem;
+  color: #212529;
+  transition: color 0.3s;
+  font-weight: bold;
+}
+.blog-list-entry--postnav .nav-links > div > a p.meta-nav {
+  position: relative;
+  padding-left: 1rem;
+}
+@media (max-width: 767.98px) {
+  .blog-list-entry--postnav .nav-links > div > a p.meta-nav {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.blog-list-entry--postnav .nav-links > div > a p.meta-nav svg {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-top: -0.25rem;
+}
+.blog-list-entry--postnav .nav-links > div > a p.meta-nav svg * {
+  fill: #adb5bd;
+}
+.blog-list-entry--postnav .nav-links > div > a:hover, .blog-list-entry--postnav .nav-links > div > a:focus, .blog-list-entry--postnav .nav-links > div > a:active {
+  text-decoration: none;
+}
+.blog-list-entry--postnav .nav-links > div > a:hover p.post-title, .blog-list-entry--postnav .nav-links > div > a:focus p.post-title, .blog-list-entry--postnav .nav-links > div > a:active p.post-title {
+  color: #0066ff;
+}
+.blog-list-entry--postnav .nav-links > div.nav-next > a {
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .blog-list-entry--postnav .nav-links > div.nav-next > a {
+    text-align: right;
+  }
+}
+.blog-list-entry--postnav .nav-links > div.nav-next > a p.meta-nav {
+  padding-left: 0;
+  padding-right: 1rem;
+}
+.blog-list-entry--postnav .nav-links > div.nav-next > a p.meta-nav svg {
+  right: 0;
+  left: auto;
+  transform: rotate(180deg);
 }
 
 .footer-main {
@@ -14456,7 +15289,7 @@ button.select-from-control i.la {
     transform: translateY(0%);
   }
 }
-.btn-primary {
+.btn-primary, .blog-list-entry--comments-list .comment-respond input[type=submit] {
   background-color: #0066ff;
   border-color: #0066ff;
 }
