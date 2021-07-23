@@ -1,5 +1,12 @@
 <?php
 get_header();
+?>
+
+    <!-- BREADCRUMB: START -->
+<?php the_breadcrumb(null);?>
+    <!-- BREADCRUMB: END -->
+
+<?php
 
 global $wp_query;
 
