@@ -1,7 +1,10 @@
 <?php
-/* Template Name: Blog */
 get_header();
 ?>
+    <!-- BREADCRUMB: START -->
+<?php the_breadcrumb(null);?>
+    <!-- BREADCRUMB: END -->
+
     <main>
 
         <div class="content-main content-main--posts">
@@ -12,8 +15,12 @@ get_header();
                     <div class="row">
                         <div class="col-12">
                             <h1 >
-                                Blog
+                                <?php the_title(); ?>
                             </h1>
+
+                            <div class="content">
+                                <?php the_content(); ?>
+                            </div>
                         </div>
                     </div>
                 </div>

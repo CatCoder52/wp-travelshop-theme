@@ -1,3 +1,6 @@
+<!-- BREADCRUMB: START -->
+<?php the_breadcrumb(null);?>
+<!-- BREADCRUMB: END -->
 
 <main>
 

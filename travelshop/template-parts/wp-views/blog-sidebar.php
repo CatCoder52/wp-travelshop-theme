@@ -17,8 +17,12 @@
 
                 foreach ( $categories as $category ) {
                     $category_link = get_category_link( $category );
+                    $category_id = $category->term_id;
+
+
+                    if ( $category->category_parent == 0 ) {
                     ?>
-                    <div class="post-tag">
+                    <div class="post-category">
                         <a href="<?php echo $category_link; ?>" title='<?php echo $category->name; ?>' class='<?php echo $category->slug; ?>'>
 
                             <?php if ( $current_cat_ID === $category->term_id ) { ?><strong><?php } ?>
@@ -26,8 +30,27 @@
                             <?php if ( $current_cat_ID === $category->term_id ) { ?></strong><?php } ?>
 
                         </a>
+
+                        <?php
+                        foreach ( $categories as $category ) {
+                            $category_link = get_category_link( $category );
+                            if ( $category->category_parent == $category_id ) {
+                            ?>
+
+                                <a href="<?php echo $category_link; ?>" title='<?php echo $category->name; ?>' class='<?php echo $category->slug; ?> sub-cat'>
+
+                                    <?php if ( $current_cat_ID === $category->term_id ) { ?><strong><?php } ?>
+                                        <?php echo $category->name; ?> (<?php echo $category->count; ?>)
+                                        <?php if ( $current_cat_ID === $category->term_id ) { ?></strong><?php } ?>
+
+                                </a>
+                            <?php
+                            }
+                        }
+                        ?>
                     </div>
                     <?php
+                    }
                 }
                 ?>
             </div>
