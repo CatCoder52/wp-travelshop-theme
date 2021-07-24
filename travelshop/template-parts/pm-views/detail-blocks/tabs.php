@@ -273,3 +273,5 @@ $mo = $args['mo'];
         <?php } ?>
     </div>
 </div>
+
+<div class="small mb-2">ID/Code: <?php echo $mo->id. ' '.$mo->code; ?> | Programmänderungen vorbehalten. </div>
