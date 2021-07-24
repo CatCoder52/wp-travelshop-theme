@@ -68,10 +68,9 @@ global $PMTravelShop;
                             <ul class="navbar-nav mr-auto ml-auto">
 
                                 <?php
-                                $menu_items = wpse_nav_menu_2_tree('primary');
+                                $menu_items = nav_menu_2_tree('primary');
                                 if(isset($menu_items)) {
                                     foreach ($menu_items as $item) {
-
                                         // Top Level
                                         if (empty($item->wpse_children) === true) { // Level 1
                                             ?>

@@ -52,7 +52,7 @@
                             <ul class="navbar-nav mr-auto ml-auto">
 
                                 <?php
-                                $menu_items = wpse_nav_menu_2_tree('ibe_head');
+                                $menu_items = nav_menu_2_tree('ibe_head');
                                 if (isset($menu_items)) {
                                     foreach ($menu_items as $item) {
 

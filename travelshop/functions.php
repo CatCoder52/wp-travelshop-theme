@@ -48,7 +48,6 @@ require_once 'src/Router.php';
 require_once 'src/SitemapProvider.php';
 require_once 'src/IB3Tools.php';
 
-
 // Cleanup
 require_once 'functions/cleanup_meta_includes.php';
 require_once 'functions/disable_emojis.php';
@@ -56,6 +55,8 @@ require_once 'functions/disable_pagetypes.php';
 
 // Menus
 require_once 'functions/menus.php';
+require_once 'functions/add_menu_meta.php';
+
 require_once 'functions/the_breadcrumb.php';
 require_once 'functions/theme_support.php';
 require_once 'functions/image-sizes.php';
