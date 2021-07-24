@@ -39,8 +39,10 @@ use Pressmind\Search\CheapestPrice;
                     if (!empty($date_to_cheapest_price[$date->departure->format('Y-m-j')]) &&
                         $cp->price_total < $date_to_cheapest_price[$date->departure->format('Y-m-j')]->price_total
                     ) {
+                        // set the cheapier price
                         $date_to_cheapest_price[$date->departure->format('Y-m-j')] = $cp;
-                    } else {
+                    } elseif (empty($date_to_cheapest_price[$date->departure->format('Y-m-j')])
+                    ){
                         $date_to_cheapest_price[$date->departure->format('Y-m-j')] = $cp;
                     }
                 }

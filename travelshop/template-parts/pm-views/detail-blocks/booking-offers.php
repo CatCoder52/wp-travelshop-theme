@@ -110,8 +110,12 @@ $cheapest_price = $args['cheapest_price'];
                                         </div>
                                         <div class="col-12 col-lg-2 price-container">
                                             <span class="price">ab <strong><?php
-                                                // @TODO use Cheapest Price here
-                                                echo number_format($housing_option->price, TS_PRICE_DECIMALS, TS_PRICE_DECIMAL_SEPARATOR,TS_PRICE_THOUSANDS_SEPARATOR);
+                                                    $cheapest_price_filter = new CheapestPrice();
+                                                    $cheapest_price_filter->id_option = $housing_option->id;
+                                                    $cheapest_price_filter->id_booking_package = $housing_option->id_booking_package;
+                                                    $cheapest_price_filter->id_date = $date->id;
+                                                    $housing_options_cheapest_price = $mo->getCheapestPrice($cheapest_price_filter);
+                                                echo number_format($housing_options_cheapest_price->price_total, TS_PRICE_DECIMALS, TS_PRICE_DECIMAL_SEPARATOR,TS_PRICE_THOUSANDS_SEPARATOR);
                                                 ?>&nbsp;€</strong></span>
                                         </div>
                                         <div class="col-12 col-lg-2">
