@@ -1,16 +1,16 @@
 <?php
 //Exclude pages from WordPress Search
 if (!is_admin()) {
-    function ts_search_filter($query) {
+    add_filter('pre_get_posts', function($query) {
         if ($query->is_search) {
             $query->set('post_type', 'post');
         }
         return $query;
-    }
-    add_filter('pre_get_posts','ts_search_filter');
+    });
 }
 
-function ts_filter_search_form( $form ) {
+
+add_filter('get_search_form', function($form) {
     return '
 	<form role="search" method="get" class="form-string-search input-group mw-100" action="'. esc_url( home_url( '/' ) ) . '">
 			<input type="search" class="form-control search-field mw-100" placeholder="Suchbegriff..." value="" name="s">
@@ -24,5 +24,4 @@ function ts_filter_search_form( $form ) {
                 </button>
             </div>
 	</form> ';
-}
-add_filter('get_search_form', 'ts_filter_search_form');
+});

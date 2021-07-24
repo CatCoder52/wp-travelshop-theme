@@ -64,14 +64,9 @@ require_once 'functions/image-sizes.php';
 require_once 'functions/http_header.php';
 require_once 'functions/add_meta.php';
 
-// Search
-require_once 'functions/search.php';
-
-// Author
-require_once 'functions/author_boxes.php';
-
-// Turncate
-require_once 'functions/turncate.php';
+// Blog Features
+require_once 'functions/blog_search.php';
+require_once 'functions/user_meta.php';
 
 // Rewrite Rules
 require_once 'functions/rewrite_rules.php';
