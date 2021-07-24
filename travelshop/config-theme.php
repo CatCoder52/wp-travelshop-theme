@@ -53,6 +53,13 @@ define('TS_DAYTRIPS_PRODUCTS', null);
 define('TS_DESTINATIONS', null);
 
 /**
+ * If your using the blogfeature it's recommend to enable this two auto generated pagetypes
+ * if you dont use the blog feature set this pages to false, to avoid unvalid pages in the search engine indexes
+ */
+define('BLOG_ENABLE_AUTHORPAGE', true);
+define('BLOG_ENABLE_CATEGORYPAGE', true);
+
+/**
  * Default visibility level
  * 30 = public
  * 10 = nobody
