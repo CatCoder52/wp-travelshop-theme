@@ -49,7 +49,7 @@ if (php_sapi_name() != "cli") {
 if(getenv('APP_ENV') !== false){
     define('ENV', getenv('APP_ENV'));
 }else{
-    define('ENV', 'development');
+    define('ENV', 'production');
 }
 
 /**
@@ -94,20 +94,11 @@ try {
         $db->execute('SET SESSION sql_mode = "NO_ENGINE_SUBSTITUTION"');
     }
 
-
-
-
-        // Log all sql queries
-        $mysql_log_dir = APPLICATION_PATH.'/tmp/mysql/';
-        $mysql_log_file = $mysql_log_dir.'query.log';
-        //echo 'SQL query log enabled: '.$mysql_log_file."<hr>\n";
-        @mkdir($mysql_log_dir, 0777, true);
-
-        $db->execute('SET global general_log = 1;');
-        $db->execute('SET global log_output = "file"');
-        $db->execute('SET global general_log_file="'.$mysql_log_file.'"');
-
-
+    /* for debugging, log all mysql queries
+    $db->execute('SET global general_log = 1;');
+    $db->execute('SET global log_output = "file"');
+    $db->execute('SET global general_log_file="'.APPLICATION_PATH.'/logs/mysql/query.log"');
+    */
 
 } catch (Exception $e) {
 
