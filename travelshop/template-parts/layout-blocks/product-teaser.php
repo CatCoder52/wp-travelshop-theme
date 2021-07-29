@@ -1,19 +1,47 @@
+<?php
+/**
+ * <code>
+ *  $args = (
+ *          [headline] => Reise-Empfehlungen
+ *          [text] => Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.
+ *          [search] => Array
+ *                  (
+ *                       [pm-ot] => 607
+ *                       [pm-view] => Teaser1
+ *                       [pm-vi] => 10
+ *                       [pm-l] => 0,4
+ *                       [pm-o] => price-desc
+ *                  )
+ *      )
+ * </code>
+ * @var array $args
+ */
+
+$search = BuildSearch::fromRequest(isset($args['search']) ? $args['search'] : [], 'pm', true, 4);
+$products = $search->getResults();
+// if no items where found, we avoid output like headline or intro text...
+if(count($products) == 0){
+    return;
+}
+?>
 <section class="content-block content-block-travel-cols">
     <div class="row">
-
+        <?php if(!empty($args['headline']) || !empty($args['intro'])){ ?>
         <div class="col-12">
+            <?php if(!empty($args['headline'])){ ?>
             <h2 class="mt-0">
-                Reise-Empfehlungen
+                <?php echo $args['headline'];?>
             </h2>
+            <?php } ?>
+            <?php if(!empty($args['text'])){ ?>
             <p>
-                Diese Teaser werden durch das pressmind® web-core sdk bereitgestellt.
-                Man kann diese auf jeder beliebigen Seite mit einem Shortcode ausgeben.
-                <br>
-                <span class="small">Template: wp-content/themes/travelshop/template-parts/layout-blocks/product-teaser.php</span>
+                <?php echo $args['text'];?>
             </p>
+            <?php } ?>
         </div>
+        <?php } ?>
 
-       <?php
+        <?php
 
        // Example 1: Using the the shortcode ts-list for displaying the product teasers
        //echo do_shortcode( '[ts-list view="Teaser1" pm-ot="607" pm-l="1,4" pm-o="RAND"]');
@@ -21,15 +49,20 @@
 
 
        // Example 2: Using the pressmind® web-core SDK
-       $conditions = array();
-       $conditions[] = Pressmind\Search\Condition\ObjectType::create(TS_TOUR_PRODUCTS);
-       $search = new Pressmind\Search($conditions, ['start' => 0, 'length' => 4], ['' => 'RAND()']);
-       $products = $search->getResults();
-       foreach ($products as $product) {
-           echo  $product->render('Teaser1', TS_LANGUAGE_CODE);
-       }
+       //$conditions = array();
+       //$conditions[] = Pressmind\Search\Condition\ObjectType::create(TS_TOUR_PRODUCTS);
+       //$search = new Pressmind\Search($conditions, ['start' => 0, 'length' => 4], ['' => 'RAND()']);
+       //$products = $search->getResults();
+       //foreach ($products as $product) {
+       //    echo  $product->render('Teaser1', TS_LANGUAGE_CODE);
+       //}
 
-
+       // Example 3: Use a $args['search] list (or $_GET)
+       // $search = BuildSearch::fromRequest(isset($args['search']) ? $args['search'] : [], 'pm', true, 4);
+       // $products = $search->getResults();
+        foreach ($products as $product) {
+            echo  $product->render('Teaser1', TS_LANGUAGE_CODE);
+        }
 
        ?>
     </div>

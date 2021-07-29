@@ -17,20 +17,39 @@ class BeaverBuilderModuleLoader{
 
         // Load custom modules.
         add_action( 'init', __CLASS__ . '::load_modules' );
+        add_action( 'init', __CLASS__ . '::ajax_handler' );
 
         // Register custom fields.
-        add_filter( 'fl_builder_custom_fields', __CLASS__ . '::register_fields' );
+        //add_filter( 'fl_builder_custom_fields', __CLASS__ . '::register_fields' );
 
         // Enqueue custom field assets.
-        add_action( 'init', __CLASS__ . '::enqueue_field_assets' );
+        //add_action( 'init', __CLASS__ . '::enqueue_field_assets' );
+    }
+
+
+    static public function ajax_handler(){
+
+        // at this moment we can not extend the beaver builder autosuggest fields.
+        // this simple hack captures the ajax request from the beaver builder suggest field
+        if( isset($_GET['fl_builder']) && (!empty($_POST['fl_builder_data']['action']) || isset($_GET['fl_action']))){
+            require_once BB_MODULE_TS_DIR . '/includes/TravelShop_BeaverBuilderAutoSuggest.php';
+            TravelShop_BeaverBuilderAutoSuggest::handle();
+        }
     }
 
     /**
      * Loads our custom modules.
      */
     static public function load_modules() {
-        require_once BB_MODULE_TS_DIR . 'modules/basic-example/basic-example.php';
-        require_once BB_MODULE_TS_DIR . 'modules/example/example.php';
+        //require_once BB_MODULE_TS_DIR . 'modules/basic-example/basic-example.php';
+        //require_once BB_MODULE_TS_DIR . 'modules/example/example.php';
+        require_once BB_MODULE_TS_DIR . 'modules/wp-image-teaser/wp-image-teaser.php';
+        require_once BB_MODULE_TS_DIR . 'modules/wp-info-teaser/wp-info-teaser.php';
+        require_once BB_MODULE_TS_DIR . 'modules/jumbotron/jumbotron.php';
+        require_once BB_MODULE_TS_DIR . 'modules/pm-search-bar/pm-search-bar.php';
+        require_once BB_MODULE_TS_DIR . 'modules/pm-search-header/pm-search-header.php';
+        require_once BB_MODULE_TS_DIR . 'modules/icon-teaser/icon-teaser.php';
+        require_once BB_MODULE_TS_DIR . 'modules/pm-product-teaser/pm-product-teaser.php';
     }
 
     /**
@@ -48,7 +67,6 @@ class BeaverBuilderModuleLoader{
         if ( ! FLBuilderModel::is_builder_active() ) {
             return;
         }
-
         wp_enqueue_style( 'my-custom-fields', BB_MODULE_TS_URL . 'assets/css/fields.css', array(), '' );
         wp_enqueue_script( 'my-custom-fields', BB_MODULE_TS_URL . 'assets/js/fields.js', array(), '', true );
     }

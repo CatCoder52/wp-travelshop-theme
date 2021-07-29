@@ -47,6 +47,7 @@ require_once 'src/Route.php';
 require_once 'src/Router.php';
 require_once 'src/SitemapProvider.php';
 require_once 'src/IB3Tools.php';
+require_once 'src/CategoryTreeTools.php';
 
 // Cleanup
 require_once 'functions/cleanup_meta_includes.php';

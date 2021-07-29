@@ -1,23 +1,39 @@
-<!-- CONTENT_SECTION_IMAGE_TEASER: START -->
+<?php
+/**
+ * <code>
+ *  $args['query'] // get_posts() arg list
+ *  $args['headline'] // headline
+ *  $args['text'] // introtext
+ * </code>
+ * @var array $args
+ */
+
+if(empty($args['query'])){
+    $args['query'] = array('numberposts' => 6, 'order' => 'asc');
+}
+$posts = get_posts($args['query']);
+
+if(count($posts) == 0){
+    '<!-- module image-teaser: no posts found for this query -->';
+    return;
+}
+?>
 <section class="content-block content-block-teaser-group">
     <div class="row">
-        <div class="col-12">
-            <h2 class="mt-0">
-                Beliebte Reiseziele
-            </h2>
-            <p>
-                Diese Teaser basieren auf dem WordPress PostType "Beiträge".
-                <br>
-                <span class="small">Template: wp-content/themes/travelshop/template-parts/layout-blocks/image-teaser.php</span>
-            </p>
-        </div>
+        <?php if(!empty($args['headline']) || !empty($args['intro'])){?>
+            <div class="col-12">
+                <?php if(!empty($args['headline'])){?>
+                    <h2 class="mt-0"><?php echo $args['headline']; ?></h2>
+                <?php } ?>
+                <?php if(!empty($args['text'])){?>
+                    <p><?php echo $args['text']; ?></p>
+                <?php } ?>
+            </div>
+        <?php } ?>
         <?php
-        $posts = get_posts(array('numberposts' => 6, 'order' => 'asc'));
         foreach($posts as $p){
             load_template(get_template_directory().'/template-parts/wp-views/image-teaser-view.php', false, $p);
         }
         ?>
-
-
     </div>
 </section>

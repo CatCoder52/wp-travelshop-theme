@@ -1,3 +1,12 @@
+<?php
+/**
+ *  <code>
+ *  $args['headline']
+ * </code>
+ * @var array $args
+ */
+?>
+
 <section class="layout-block layout-block-search-header">
     <div class="layout-block-search-header--search">
         <div class="container">

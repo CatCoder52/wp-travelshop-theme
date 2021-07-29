@@ -1,8 +1,10 @@
 <?php
 /**
- @var array $args
+ *  <code>
+ *  $args['class'] // main-color, silver, transparent
+ * </code>
+ * @var array $args
  */
-
 ?>
 <section class="layout-block layout-block-search-bar">
     <div class="layout-block-search-bar--search <?php echo empty($args['class']) ? '' : $args['class']; ?>">

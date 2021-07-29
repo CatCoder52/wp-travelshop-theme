@@ -1,5 +1,13 @@
 <?php
 
+/**
+ *  <code>
+ *  $args['class'] // main-color, silver, transparent
+ * </code>
+ * @var array $args
+ */
+
+
 global $PMTravelShop;
 use Pressmind\Travelshop\RouteProcessor;
 
@@ -18,10 +26,11 @@ $search = new Pressmind\Search(
 <form method="GET" action="<?php echo site_url().'/'.$PMTravelShop->RouteProcessor->get_url_by_object_type(TS_TOUR_PRODUCTS).'/' ?>">
     <input type="hidden" name="pm-ot" value="<?php echo $id_object_type;?>">
     <div class="search-wrapper">
+        <?php if(!empty($args['headline'])){?>
         <div class="h1 text-md-center mt-0 mb-2 mb-4">
-            Finde deine Traumreise.
+            <?php echo $args['headline'];?>
         </div>
-
+        <?php } ?>
         <div class="search-wrapper--inner search-box">
             <div class="row">
 

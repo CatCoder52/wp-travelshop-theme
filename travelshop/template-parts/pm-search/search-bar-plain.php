@@ -38,7 +38,7 @@ $search = new Pressmind\Search(
             foreach(TS_SEARCH as $searchItem){ ?>
                 <div>
                 <?php
-                    list($id_tree, $fieldname, $name) = array_values($searchItem);
+                list($id_tree, $fieldname, $name, $condition_type) = array_values($searchItem);
                     require 'search/category-tree-dropdown.php';
                 ?>
                 </div>
