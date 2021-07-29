@@ -195,22 +195,13 @@ foreach ($r as $category){
                     'default' => '',
                 ), $settings);
 
-                ?>
-            </table>
-        </div>
-    </div>
-    <div id="fl-builder-settings-section-states" class="fl-builder-settings-section fl-builder-settings-section-collapsed">
-        <div class="fl-builder-settings-section-header">
-            <button class="fl-builder-settings-title">
-                <svg class="fl-symbol">
-                    <use xlink:href="#fl-down-caret"></use>
-                </svg>
-                Visibility &amp; State
-            </button>
-        </div>
-        <div class="fl-builder-settings-section-content">
-            <table class="fl-form-table">
-                <?php
+                FLBuilder::render_settings_field('pm-id', array(
+                    'type' => 'text',
+                    'label' => 'ID media object',
+                    'placeholder' => '12345,12346',
+                    'default' => '',
+                ), $settings);
+
                 FLBuilder::render_settings_field('pm-vi', array(
                     'type' => 'select',
                     'label' => 'Visibility',
@@ -226,6 +217,49 @@ foreach ($r as $category){
                     ),
                 ), $settings);
 
+                ?>
+            </table>
+        </div>
+    </div>
+    <div id="fl-builder-settings-section-states" class="fl-builder-settings-section fl-builder-settings-section-collapsed">
+        <div class="fl-builder-settings-section-header">
+            <button class="fl-builder-settings-title">
+                <svg class="fl-symbol">
+                    <use xlink:href="#fl-down-caret"></use>
+                </svg>
+                Dates, Durations & Prices
+            </button>
+        </div>
+        <div class="fl-builder-settings-section-content">
+            <table class="fl-form-table">
+                <?php
+                FLBuilder::render_settings_field('pm-du', array(
+                    'type' => 'text',
+                    'label' => 'Duration range',
+                    'placeholder' => '3-5',
+                    'default' => '',
+                ), $settings);
+
+                FLBuilder::render_settings_field('pm-dr', array(
+                    'type' => 'text',
+                    'label' => 'Date range',
+                    'placeholder' => 'YYYYMMDD-YYYYMMDD',
+                    'default' => '',
+                ), $settings);
+
+                FLBuilder::render_settings_field('pm-pr', array(
+                    'type' => 'text',
+                    'label' => 'Price range',
+                    'placeholder' => '100-400',
+                    'default' => '',
+                ), $settings);
+
+                FLBuilder::render_settings_field('pm-vr', array(
+                    'type' => 'text',
+                    'label' => 'Valid from/to range',
+                    'placeholder' => 'YYYYMMDD-YYYYMMDD',
+                    'default' => '',
+                ), $settings);
                 ?>
             </table>
         </div>

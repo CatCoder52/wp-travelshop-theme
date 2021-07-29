@@ -127,9 +127,9 @@ if(!defined('PM_REDIS_PORT')){
 }
 
 /**
- * Beaver Builder support
- * if BB_ACTIVE = true , the beaver builder custom modules are loaded from travelshop/pagebuilders/beaverbuilder
+ * Pagebuilder support
+ * set to 'beaverbuilder' to load theme specific bb-modules
+ * leave empty if no pagebuilder is not used.
+ * at this moment we support only beaverbuilder
  */
-define('BB_ACTIVE', false);
-define('BB_MODULE_TS_DIR', __DIR__.'/pagebuilders/beaverbuilder/');
-define('BB_MODULE_TS_URL', SITE_URL.'/wp-content/themes/travelshop/pagebuilders/beaverbuilder/');
+define('PAGEBUILDER', 'beaverbuilder');

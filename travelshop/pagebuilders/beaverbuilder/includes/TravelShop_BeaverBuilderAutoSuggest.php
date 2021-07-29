@@ -20,12 +20,10 @@ final class TravelShop_BeaverBuilderAutoSuggest {
 	 */
 	static public function suggest() {
 	    if ( isset( $_REQUEST['fl_as_action'] ) && isset( $_REQUEST['fl_as_query'] ) ) {
-
 	        // category_1234_123-zielgebiet_default
 	        if(preg_match('/^category_([0-9]+)_([0-9]+)\-([a-z0-9\_]+)$/', $_REQUEST['fl_as_action'], $matches) > 0){
 	            return self::get_categories($matches[1], $matches[2]);
             }
-
 		}
 	}
 

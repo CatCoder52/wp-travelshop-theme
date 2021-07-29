@@ -4,6 +4,7 @@
  *  $args = (
  *          [headline] => Reise-Empfehlungen
  *          [text] => Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.
+ *          [view] => Teaser1
  *          [search] => Array
  *                  (
  *                       [pm-ot] => 607
@@ -60,8 +61,13 @@ if(count($products) == 0){
        // Example 3: Use a $args['search] list (or $_GET)
        // $search = BuildSearch::fromRequest(isset($args['search']) ? $args['search'] : [], 'pm', true, 4);
        // $products = $search->getResults();
+
+        $view = 'Teaser1';
+        if(!empty($args['view']) && preg_match('/^[0-9A-Za-z\_]+$/', $args['view']) !== false){
+            $view = $args['view'];
+        }
         foreach ($products as $product) {
-            echo  $product->render('Teaser1', TS_LANGUAGE_CODE);
+            echo  $product->render($view, TS_LANGUAGE_CODE);
         }
 
        ?>
