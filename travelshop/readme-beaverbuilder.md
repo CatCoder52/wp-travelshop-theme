@@ -1,6 +1,6 @@
 # Using BeaverBuilder
 This theme has several beaver builder modules included.
-The most important module is the ```pm-product-teaser```, this module allows fielto 
+The most important module is the ```pm-product-teaser```, this module allows to 
 place pressmind based media objects (like products) on every page you like (without a shortcode).
 
 Current tested and compatible beaverbuilder version: **2.4.2.5** (older and new version might work, test it)
@@ -16,7 +16,7 @@ Current tested and compatible beaverbuilder version: **2.4.2.5** (older and new 
 ## Demo
 ![beaverbuilder demo](assets/img/beaverbuilder-demo.gif)
 
-## What can i do with BeaverBuilder in this theme?
+## What can I do with BeaverBuilder in this theme?
 In short: Build awesome landingpages. 
 Our focus on developing is that you can build beaverbuilder pages with the post type "page".
 Currently we don't support the post type 'post' in the theme.
@@ -61,3 +61,8 @@ do with the module use the querystring api instead or solve it programmatically.
 * Search by travel date range
 * Search by travel duration range
 * Search by travel price range
+
+## Entry point for developers
+```wp-content/travelshop/config-bb.php```<br>
+```wp-content/travelshop/src/BeaverBuilderModuleLoader.php```<br>
+```wp-content/travelshop/pagebuilders/beaverbuilder/*```
