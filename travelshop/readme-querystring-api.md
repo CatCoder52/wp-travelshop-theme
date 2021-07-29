@@ -122,6 +122,7 @@ visibilitiy enumeration
 | 30    |Public     |
 | 40    |Extranet   |
 | 50    |Intranet   |
+| 60    |Hidden     |
 
 ```
 GET https://yoursite.de/search/?pm-vi=30,40
