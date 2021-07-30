@@ -142,7 +142,7 @@ class BuildSearch
 
 
         $order = array();
-        $allowed_orders = array('rand', 'price-desc', 'price-asc', 'name-asc', 'name-desc', 'code-asc', 'code-desc');
+        $allowed_orders = array('rand', 'price-desc', 'price-asc', 'date_departure-asc', 'date_departure-desc', 'name-asc', 'name-desc', 'code-asc', 'code-desc');
 
         if (empty($request[$prefix.'-o']) === false && in_array($request[$prefix.'-o'], $allowed_orders) === true) {
 
@@ -156,11 +156,7 @@ class BuildSearch
                 if($property == 'price' && empty($price_range_from) && empty($price_range_to)){
                     $conditions[] = Pressmind\Search\Condition\PriceRange::create(1, 9999);
                     $validated_search_parameters[$prefix.'-pr'] = '1-9999';
-                    // reset the paginator, because we have modified the search
-                    unset($request[$prefix.'-l']);
                 }
-
-
             }
 
             $validated_search_parameters[$prefix.'-o'] = $request[$prefix.'-o'];
@@ -295,6 +291,12 @@ class BuildSearch
 
 
     /**
+     * Accepts the following formats
+     * YYYYMMDD-YYYYMMDD
+     * or
+     * {relative offset from today}-{relative offset from today} eg. "+90-+120" or "90-120"
+     * or
+     * {relative offset from today} e.g. "+90" means today-{today+offset}
      * @param $str
      * @return DateTime[]|bool
      * @throws Exception
@@ -302,6 +304,16 @@ class BuildSearch
     public static function extractDaterange($str){
         if(preg_match('/^([0-9]{4}[0-9]{2}[0-9]{2})\-([0-9]{4}[0-9]{2}[0-9 ]{2})$/', $str, $m) > 0){
             return array(new DateTime($m[1]), new DateTime($m[2]));
+        }elseif(preg_match('/^([\+\-]?[0-9]+)$/', $str, $m) > 0) {
+            $to = new DateTime('now');
+            $to->modify($m[1].' day');
+            return array(new DateTime('now'), $to);
+        }elseif(preg_match('/^([\+\-]?[0-9]+)\-([\+\-]?[0-9]+)$/', $str, $m) > 0) {
+            $from = new DateTime('now');
+            $from->modify($m[1].' day');
+            $to = new DateTime('now');
+            $to->modify($m[2].' day');
+            return array($from, $to);
         }
         return false;
     }
