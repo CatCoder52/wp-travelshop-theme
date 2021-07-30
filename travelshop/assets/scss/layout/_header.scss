@@ -301,6 +301,11 @@ body {
 	top: 32px;
 }
 
+// fix the beaver builder admin bar issue on sticky headers
+.fl-builder .header-main {
+	top: 45px;
+}
+
 .navbar-toggler {
 	padding-left: 0;
 	padding-right: 0;

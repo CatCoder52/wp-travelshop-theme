@@ -15249,6 +15249,10 @@ body {
   top: 32px;
 }
 
+.fl-builder .header-main {
+  top: 45px;
+}
+
 .navbar-toggler, .toggler {
   padding-left: 0;
   padding-right: 0;
