@@ -159,6 +159,7 @@ foreach ($r as $category){
                     'options' => array(
                         '' => '-',
                         'price' => 'price',
+                        'date_departure' => 'date_departure',
                         'name' => 'name',
                         'code' => 'code',
                         'rand' => 'random',
@@ -243,7 +244,8 @@ foreach ($r as $category){
                 FLBuilder::render_settings_field('pm-dr', array(
                     'type' => 'text',
                     'label' => 'Date range',
-                    'placeholder' => 'YYYYMMDD-YYYYMMDD',
+                    'placeholder' => 'YYYYMMDD-YYYYMMDD or OFFSET-OFFSET',
+                    'help' => 'Example 1 fixed range: "20221224-20221231" | Example 2 relative range: "30-90" (means show departures in 30 days for the next 60 days)',
                     'default' => '',
                 ), $settings);
 
