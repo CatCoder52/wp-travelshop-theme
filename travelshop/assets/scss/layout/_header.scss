@@ -296,6 +296,11 @@ body {
 	}
 }
 
+// fix the wp admin bar issue on sticky headers
+.admin-bar .header-main {
+	top: 32px;
+}
+
 .navbar-toggler {
 	padding-left: 0;
 	padding-right: 0;

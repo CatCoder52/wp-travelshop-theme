@@ -29,7 +29,7 @@ global $PMTravelShop;
     <meta name="robots" content="index,follow">
     <?php wp_head(); ?>
 </head>
-<body>
+<body <?php body_class(); ?>>
 <header class="header-main">
     <div class="container">
         <div class="row header-main-row">

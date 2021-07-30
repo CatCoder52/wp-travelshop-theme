@@ -15245,6 +15245,10 @@ body {
   font-size: 1.3rem;
 }
 
+.admin-bar .header-main {
+  top: 32px;
+}
+
 .navbar-toggler, .toggler {
   padding-left: 0;
   padding-right: 0;
