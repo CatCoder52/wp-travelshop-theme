@@ -310,7 +310,14 @@ foreach ($search->getResults() as $mediaObject) {
 ```
 
 ### pm-dr (Date Range)
-Search by date range. Allowed pattern: YYYYMMDD-YYYYMMDD
+Search by departure in defined date range. <br>
+Allowed pattern:
+<br>YYYYMMDD-YYYYMMDD (fixed range)
+<br>or
+<br>OFFSET-OFFSET means {relative range-offset based on today}-{relative offset from today} eg. "+90-+120" or "90-120"
+<br>or
+<br>OFFSET {relative range from today from today} e.g. "+90" same as "0-90"
+
 ```
 GET https://yoursite.de/search/?pm-dr=20201231-20213101
 ```
@@ -411,7 +418,7 @@ foreach ($search->getResults() as $mediaObject) {
 ### pm-o (Order)
 Order the result list.
 Allowed values:
-rand, price-desc, price-asc, name-asc, name-desc, code-asc, code-desc
+rand, date_departure-desc, date_departure-asc, price-desc, price-asc, name-asc, name-desc, code-asc, code-desc
 
 ```
 // Order the result by price, lowest price first
