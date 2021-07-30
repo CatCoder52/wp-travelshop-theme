@@ -89,9 +89,9 @@ FLBuilder::register_settings_form('icon-teaser-form', array(
                             'default'       => 'We make it! '
                         ),
 
-                        'intro'       => array(
+                        'text'       => array(
                             'type'          => 'text',
-                            'label'         => __('Intro', 'fl-builder'),
+                            'label'         => __('Text', 'fl-builder'),
                             'default'       => 'Some example text'
                         ),
 

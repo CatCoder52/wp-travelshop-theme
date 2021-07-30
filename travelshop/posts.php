@@ -1,5 +1,8 @@
 <?php
-/* Template Name: Blog */
+/**
+ * Template Name: Blog
+ * Template Post Type: post
+ */
 get_header();
 the_breadcrumb(null);
 ?>

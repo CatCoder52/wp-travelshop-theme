@@ -108,7 +108,7 @@ $PMTravelShop = new PMTravelShop($routes);
 
 
 // load theme specific pagebuilder modules
-if(PAGEBUILDER == 'beaverbuilder'){
+if(PAGEBUILDER == 'beaverbuilder' && class_exists( 'FLBuilder' )){
     require_once 'config-bb.php';
     require_once 'src/BeaverBuilderModuleLoader.php';
     BeaverBuilderModuleLoader::init();

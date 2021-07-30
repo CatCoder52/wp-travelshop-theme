@@ -2,7 +2,7 @@
 /**
  * <code>
  *  $args['headline']
- *  $args['intro']
+ *  $args['text']
  *  $args['teasers'][][ // list of teasers
                         [headline] => We make it!
                         [text] => Some example text
@@ -30,8 +30,8 @@
                 <?php echo $args['headline'];?>
             </h2>
             <?php } ?>
-            <?php if(!empty($args['intro'])){ ?>
-                <p><?php echo $args['intro'];?></p>
+            <?php if(!empty($args['text'])){ ?>
+                <p><?php echo $args['text'];?></p>
             <?php } ?>
         </div>
         <?php } ?>
