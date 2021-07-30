@@ -6,6 +6,8 @@
     <div class="list-filter-box-body">
         <select class="form-control mb-0" name="pm-o">
             <option value="">Sortieren nach</option>
+            <option value="date_departure-asc"<?php echo (!empty($_GET['pm-o']) && $_GET['pm-o'] == 'date_departure-asc') ? ' selected' : '';?>>Datum aufsteigend</option>
+            <option value="date_departure-desc"<?php echo (!empty($_GET['pm-o']) && $_GET['pm-o'] == 'date_departure-desc') ? ' selected' : '';?>>Datum absteigend</option>
             <option value="price-asc"<?php echo (!empty($_GET['pm-o']) && $_GET['pm-o'] == 'price-asc') ? ' selected' : '';?>>Preis aufsteigend</option>
             <option value="price-desc"<?php echo (!empty($_GET['pm-o']) && $_GET['pm-o'] == 'price-desc') ? ' selected' : '';?>>Preis absteigend</option>
             <option value="name-asc"<?php echo (!empty($_GET['pm-o']) && $_GET['pm-o'] == 'name-asc') ? ' selected' : '';?>>Name aufsteigend</option>
