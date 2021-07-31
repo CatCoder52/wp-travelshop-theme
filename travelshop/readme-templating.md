@@ -1,3 +1,5 @@
+Document state: DRAFT
+
 # How to edit the templates
 
 
@@ -19,6 +21,7 @@ Both type are included in a different way.
 ```
 $mo->getValueByTagName()
 ```
+
 
 
 
