@@ -103,6 +103,7 @@ In most cases, this is the basic setup for each travelshop:
 * [System requirements](./travelshop/readme-system-requirements.md)
 * [Step by step guide for installation & customization](./travelshop/readme-step-by-step-guide.md) (!recommend for onboarding)
 * [Installation Documentation](travelshop/readme-installation.md)
+* [Track changes in your own project/github repo](travelshop/readme-track-changes-in-new-projects.md)
   
 ### Main developing topics
 * [Common Theme Documentation](./travelshop/readme-theme.md)
