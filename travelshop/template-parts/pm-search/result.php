@@ -9,18 +9,19 @@ if(empty($_GET['pm-ot']) === true){ // if the id_object_type is not defined by s
     $_GET['pm-ot'] = $id_object_type;
 }
 
-$page_size = 12;
-$search = BuildSearch::fromRequest($_GET, 'pm', true, $page_size);
-
-
-
-$mediaObjects = $search->getResults();
-
-
-if(!empty($_GET['debug'])){
-    echo '<pre style="width: 300px;">'.$search->getQuery().'</pre>';
+if(empty($_GET['pm-ho']) === true){ // if the price duration slider is active, we have to set the housing occupancy search (to display the correct search result with the correct cheapeast price inside)
+    $_GET['pm-ho'] = 2;
 }
 
+$page_size = 12;
+$search = BuildSearch::fromRequest($_GET, 'pm', true, $page_size);
+$mediaObjects = $search->getResults();
+
+/*
+if(!empty($_GET['debug'])){
+    echo '<textarea style="width: 600px;">'.$search->getQuery().'</textarea>';
+}
+*/
 
 $total_result = $search->getTotalResultCount();
 $current_page = $search->getPaginator()->getCurrentPage();
@@ -80,16 +81,10 @@ $pages = $search->getPaginator()->getTotalPages();
                 </svg>
             </span>
         </label>
-
     </div>
 </section>
-
-
 <section class="content-block content-block-travel-cols">
-
     <div class="spinner">
-
-
         <div class="sk-folding-cube">
             <div class="sk-cube1 sk-cube"></div>
             <div class="sk-cube2 sk-cube"></div>
@@ -97,14 +92,10 @@ $pages = $search->getPaginator()->getTotalPages();
             <div class="sk-cube3 sk-cube"></div>
         </div>
         <div class="msg" data-text="Suche Angebote...">Suche Angebote...</div>
-
         <img class="brand" src="<?php echo SITE_URL;?>/wp-content/themes/travelshop/assets/img/travelshop-logo.svg">
-
     </div>
-
     <div id="pm-search-result" class="row">
         <?php
-
         $view = 'Teaser1';
         if(!empty($_GET['view']) && preg_match('/^[0-9A-Za-z\_]+$/', $_GET['view']) !== false){
             $view = $_GET['view'];
@@ -114,10 +105,8 @@ $pages = $search->getPaginator()->getTotalPages();
             $data = new stdClass();
             $data->class = 'col-12 col-md-6 col-lg-4';
             echo $mediaObject->render($view, TS_LANGUAGE_CODE, $data);
+        }
 
-        } ?>
-
-        <?php
         if($total_result == 0){
             ?>
         <div class="col-12">
