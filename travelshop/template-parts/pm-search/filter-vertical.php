@@ -37,13 +37,13 @@ $search = BuildSearch::fromRequest($_GET, 'pm', false);
                 // remove the filter from the search result, to allow access to all items in the filter
                 // if you remove this lines, the filter will be collapsed to the possible items that matches
                 // to the current search
-                $filter_fieldnames = [];
+                $remove_items = [];
                 foreach(TS_FILTERS as $filter){
-                    $filter_fieldnames[] = 'pm-'.$filter['condition_type'].'['.$filter['fieldname'].']';
+                    $remove_items[] = 'pm-'.$filter['condition_type'].'['.$filter['fieldname'].']';
                 }
+                //$filter_fieldnames[] = 'pm-ho';
 
-                $filter_search = BuildSearch::rebuild($filter_fieldnames);
-
+                $filter_search = BuildSearch::rebuild($remove_items);
 
                 // draw filters
                 foreach(TS_FILTERS as $filter){
