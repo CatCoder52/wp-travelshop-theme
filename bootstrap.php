@@ -46,11 +46,15 @@ if (php_sapi_name() != "cli") {
  * For example purposes we set the ENV to development here, for real world applications it's a good idea to set an environment variable in a .htaccess file or in the webservers configuration
  */
 
+/*
 if(getenv('APP_ENV') !== false){
     define('ENV', getenv('APP_ENV'));
 }else{
     define('ENV', 'production');
 }
+*/
+
+define('ENV', 'development');
 
 /**
  * Import the Custom Autoloader
