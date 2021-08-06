@@ -8,6 +8,7 @@ get_header();
 $mediaObjects = [];
 $id_media_objects = $wp_query->get('id_media_objects');
 
+// @TODO improve caching
 foreach ($id_media_objects as $id_media_object) {
     $key = 'pm-ts-oc-' . $id_media_object;
     if (empty($_GET['no_cache'])) {
@@ -15,7 +16,7 @@ foreach ($id_media_objects as $id_media_object) {
     }
 
     if (empty($buffer) === true) {
-        $buffer = new Pressmind\ORM\Object\MediaObject($id_media_object);
+        $buffer = new Pressmind\ORM\Object\MediaObject($id_media_object, false, false);
         if (empty($_GET['no_cache'])) {
             wp_cache_set($key, $buffer, 'media-object', 60);
         }
@@ -48,7 +49,6 @@ if(count($id_media_objects) > 1 && !empty($_GET['preview'])){ ?>
         // @see template-parts/pm-views/
         echo $mediaObjects[0]->render('Detail1');
         ?>
-
         <div class="small" style="margin: 0;">Template: wp-content/themes/travelshop/pm-detail.php</div>
     </main>
 <?php
