@@ -14,7 +14,7 @@ Current tested and compatible beaverbuilder version: **2.4.2.5** (older and new 
 * [Demo](#demo)
 
 ## Demo
-![beaverbuilder demo](assets/img/beaverbuilder-demo.gif)
+![beaverbuilder demo](assets/beaverbuilder-demo.gif)
 
 ## What can I do with BeaverBuilder in this theme?
 In short: Build awesome landingpages. 

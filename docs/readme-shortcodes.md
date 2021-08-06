@@ -12,7 +12,7 @@ There are **many parameters available**, look at the [QueryString API](readme-qu
 This Shortcode shows all products that contain the term "italy" and uses the view "Teaser1" for display.
 (All viewfiles are stored in /travelshop/template-parts/pm-views)
 
-![shortcode example](assets/img/ts-list.jpg)
+![shortcode example](assets/ts-list.jpg)
 
 
 ## 2. Display layoutblocks [ts-layoutblock]
@@ -30,7 +30,7 @@ Parameter:<br>
 [ts-layoutblock f="search-header"]
 ````
 
-![shortcode example](assets/img/ts-layoutblock.jpg)
+![shortcode example](assets/ts-layoutblock.jpg)
 
 **Shortcode example "search-bar":**<br>
 (Display the layoutblock /travelshop/template-parts/pm-views/search-bar.php)

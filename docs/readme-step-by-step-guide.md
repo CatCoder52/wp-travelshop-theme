@@ -91,13 +91,13 @@ generated media object type interface. So now it's your job the check and set th
 
 #### First startpage impression after setup and after mapping
 
-![first impression after setuo](assets/img/readme-fst-impression-teaser1.jpg)
+![first impression after setuo](assets/readme-fst-impression-teaser1.jpg)
 
 #### The media object interface
 The installation routine creates a php interface for each media object type (located in `Custom/MediaType/*`)<br>
 So you can easy navigating to each object type by your ide's autocomplete feature. 
 
-![autocomplete feature](assets/img/readme-autocomplete-ide.jpg)
+![autocomplete feature](assets/readme-autocomplete-ide.jpg)
 
 ### Edit the view files
 Now you know how to access the media object specific properties.

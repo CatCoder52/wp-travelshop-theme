@@ -29,30 +29,30 @@ Install MAMP and setup the local developing host ```wordpress.local```, see deta
 * It's recommend to setup the document root folder into your PhpStorm working directory
 * Make the host reachable during your hosts file
 
-![](assets/readme-files/mamp-1.jpg)
+![](assets/mamp-1.jpg)
 
 ### Configure Apache
 * Setup the environent variable APP_ENV to enable the theme developing mode <br> ```Set ENV Variable APP_ENV development```
 
-![](assets/readme-files/mamp-2.jpg)
+![](assets/mamp-2.jpg)
 
 ### Enable SSL 
 * for better local testing experience create a ssl certificate for this host (it's easy during mamp's wizard)
 
-![](assets/readme-files/mamp-3.jpg)
+![](assets/mamp-3.jpg)
 
 ### Configure MySQL
 * create the database ```wordpress``` for the later installation of wordpress
 * create the database ```wp-pm-web-core``` for the later installation of the travelshop theme
 * map both databases to the host using the checkbox
 
-![](assets/readme-files/mamp-4.jpg)
+![](assets/mamp-4.jpg)
 
 ### Check Ports
-![](assets/readme-files/mamp-5.jpg)
+![](assets/mamp-5.jpg)
 
 ### Check PHP Version and settings
-![](assets/readme-files/mamp-6.jpg)
+![](assets/mamp-6.jpg)
 
 ### Edit php.ini, http.conf 
 Check the button "templates" in the main window for accessing the all config files. 
@@ -61,8 +61,8 @@ Check the button "templates" in the main window for accessing the all config fil
     * imagick
     * pdo @TODO
     
-![](assets/readme-files/mamp-7.jpg)
-![](assets/readme-files/mamp-8.jpg)
+![](assets/mamp-7.jpg)
+![](assets/mamp-8.jpg)
 
 
 ## 2. Install WordPress

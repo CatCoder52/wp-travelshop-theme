@@ -5,7 +5,7 @@ please follow these steps:
 ## Step 1: Basic blog setup
 1. Create a page and for example name it ```www.yourpage.com/blog/```
 2. Select the page-template "Blog"
-![screenshot](./assets/img/blog-page-template.jpg)
+![screenshot](./assets/blog-page-template.jpg)
 3. Place your page in the menu
 4. Create your first blog posts and add tags and categories to this post
 7. Ready!
