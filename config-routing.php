@@ -99,28 +99,17 @@ function ts_detail_hook($data)
          * so the meta/header below will make usage only from the first...
          */
         $id_media_objects = [];
+        $mediaObjects = [];
+        $mediaObjectCachedKeys = [];
         foreach ($r as $i) {
             $id_media_objects[] = $i->id;
+            $mediaObject = new Pressmind\ORM\Object\MediaObject($i->id, false, !empty($_GET['no_cache']));
+            if($mediaObject->isCached()){
+                $mediaObjectCachedKeys[] = $mediaObject->getCacheInfo();
+            }
+            $mediaObjects[] = $mediaObject ;
         }
 
-        $mediaObjects = [];
-        foreach($id_media_objects as $id_media_object){
-
-            $key = 'pm-ts-oc-' . $id_media_object;
-            if (empty($_GET['no_cache'])) {
-                $buffer = wp_cache_get($key, 'media-object');
-            }
-
-            if (empty($buffer) === true) {
-                $buffer = new Pressmind\ORM\Object\MediaObject($id_media_object);
-                if (empty($_GET['no_cache'])) {
-                    wp_cache_set($key, $buffer, 'media-object', 60);
-                }
-            }
-
-            $mediaObjects[] = $buffer;
-
-        }
 
         // 404
         if (empty($_GET['preview']) === false && $mediaObjects[0]->visibility != 30) {
@@ -129,7 +118,18 @@ function ts_detail_hook($data)
 
 
         // Add custom headers, for better debugging
-        header('id-pressmind: ' . implode(',', $id_media_objects));
+        header('X-TS-id-pressmind: ' . implode(',', $id_media_objects));
+
+        // set cache headers  (remove in strong production env)
+        if(count($mediaObjectCachedKeys) > 0){
+            $cached_dates = [];
+            $cached_keys = [];
+            foreach ($mediaObjectCachedKeys as $mediaObjectCachedKey){
+                $cached_dates[] = $mediaObjectCachedKey['date'];
+                $cached_keys[] = $mediaObjectCachedKey['key'];
+            }
+            header('X-TS-Object-Cache: ' . implode(',', $cached_keys).' ; '.implode(',', $cached_dates));
+        }
 
         // Add meta data
         // set the page title
@@ -171,7 +171,7 @@ function ts_detail_hook($data)
             });
         }
 
-        $wp_query->set('id_media_objects', $id_media_objects);
+        $wp_query->set('media_objects', $mediaObjects);
         return;
 
     } catch (\Exception $e) {

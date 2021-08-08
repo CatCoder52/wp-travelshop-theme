@@ -5,29 +5,14 @@
 
 get_header();
 
-$mediaObjects = [];
-$id_media_objects = $wp_query->get('id_media_objects');
+/**
+ * get the currently requested media objects (previosly set in config-routing.php:ts_detail_hook() )
+ * @var \Pressmind\ORM\Object\MediaObject[] $mediaObjects
+ */
+$mediaObjects = $wp_query->get('media_objects');
 
-// @TODO improve caching
-foreach ($id_media_objects as $id_media_object) {
-    $key = 'pm-ts-oc-' . $id_media_object;
-    if (empty($_GET['no_cache'])) {
-        $buffer = wp_cache_get($key, 'media-object');
-    }
-
-    if (empty($buffer) === true) {
-        $buffer = new Pressmind\ORM\Object\MediaObject($id_media_object, false, false);
-        if (empty($_GET['no_cache'])) {
-            wp_cache_set($key, $buffer, 'media-object', 60);
-        }
-    }
-    $mediaObjects[] = $buffer;
-}
-
-?>
-<?php
 // this code is for better onboarding and understanding, remove  in production or replace with a multi media object layout
-if(count($id_media_objects) > 1 && !empty($_GET['preview'])){ ?>
+if(count($mediaObjects) > 1 && !empty($_GET['preview'])){ ?>
     <div class="alert alert-warning" role="alert">
         <b>! Warning</b> the requested url <b><?php echo $mediaObjects[0]->getPrettyUrl(TS_LANGUAGE_CODE); ?></b> has registered more than one media objects:<br>
         this detail page is showing the <b>first object</b> listed below.<br>
