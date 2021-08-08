@@ -264,7 +264,8 @@ if (empty($filteredParams) === false) {
                             <?php
                         }
                         ?>
-                        <a href="<?php echo $url; ?>" class="btn btn-primary">
+                        <a href="<?php echo $url; ?>" class="travel-teaser-link">
+                            <div class="btn btn-primary">
                             <?php
                             if (empty($cheapest_price->price_total) === false) {
                                 echo '<small><span>Preis p.P.</span> <strong>ab</strong> </small><strong>' . number_format($cheapest_price->price_total, TS_PRICE_DECIMALS, TS_PRICE_DECIMAL_SEPARATOR, TS_PRICE_THOUSANDS_SEPARATOR) . '&nbsp;€</strong>';
@@ -272,6 +273,7 @@ if (empty($filteredParams) === false) {
                                 ?>zur Reise<?php
                             }
                             ?>
+                            </div>
                         </a>
                     </div>
                     <?php

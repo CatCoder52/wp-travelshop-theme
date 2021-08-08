@@ -106,6 +106,7 @@ if (empty($filteredParams) === false) {
 <article class="travelshop-teaser-mega-stripe col-12">
     <div class="stripe-inner">
         <div class="stripe-image"
+             role="img" aria-label="<?php echo strip_tags($mo->name); ?>"
              style="background-image:url(<?php echo $moc->bilder_default[0]->getUri('teaser'); ?>);">
 
             <div data-pm-id="<?php echo $mo->id; ?>" data-pm-ot="<?php echo $mo->id_object_type; ?>"
@@ -223,14 +224,16 @@ if (empty($filteredParams) === false) {
                         <?php
                     }
                     ?>
-                    <a href="<?php echo $url; ?>" class="btn btn-primary">
-                        <?php
-                        if (empty($cheapest_price->price_total) === false) {
-                            echo '<small><span>Preis p.P.</span> <strong>ab</strong> </small><strong>' . number_format($cheapest_price->price_total, 0, ',', '.') . '&nbsp;€</strong>';
-                        } else {
-                            ?>zur Reise<?php
-                        }
-                        ?>
+                    <a href="<?php echo $url; ?>" class="travel-teaser-link">
+                        <div class="btn btn-primary">
+                            <?php
+                            if (empty($cheapest_price->price_total) === false) {
+                                echo '<small><span>Preis p.P.</span> <strong>ab</strong> </small><strong>' . number_format($cheapest_price->price_total, 0, ',', '.') . '&nbsp;€</strong>';
+                            } else {
+                                ?>zur Reise<?php
+                            }
+                            ?>
+                        </div>
                     </a>
                 </div>
             </div>
