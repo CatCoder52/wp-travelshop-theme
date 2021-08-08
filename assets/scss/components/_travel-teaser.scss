@@ -85,7 +85,7 @@
 					margin-bottom: 0.25rem;
 
 					.btn {
-						padding: 0px;
+						padding: .85rem 0;
 						font-size: 80%;
 
 						&.disabled {
@@ -182,10 +182,9 @@
 				}
 			}
 
-			a.btn {
-				padding: 0.1rem 0.4rem;
-				border-radius: 5px;
-				white-space: nowrap;
+			.travel-teaser-link {
+				padding: 0.4rem 0;
+				display: inline-block;
 
 				small span {
 					display: none;
@@ -274,12 +273,17 @@
 					}
 				}
 
-				a.btn {
-					padding: 0.375rem 0.75rem;
+				.travel-teaser-link {
+					padding: 0;
 					display: block;
 					bottom: 1.25rem;
 					left: 1.25rem;
 					right: 1.25rem;
+
+					.btn {
+						display: block;
+						padding: 0.375rem 0.75rem;
+					}
 
 					small span {
 						display: inline;
@@ -299,8 +303,9 @@
 			.add-to-wishlist {
 				position: absolute;
 				cursor: pointer;
-				top: 0.5rem;
-				right: 0.5rem;
+				top: 0;
+				right: 0;
+				padding: .5rem;
 
 				svg {
 					pointer-events: none;

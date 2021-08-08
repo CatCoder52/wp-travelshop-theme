@@ -19,7 +19,7 @@ get_header();
                 <?php
                 $args = [
                     'headline' => 'Beliebte Reiseziele',
-                    'intro' => 'Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.'
+                    'text' => 'Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.'
                 ];
                 load_template(get_template_directory().'/template-parts/layout-blocks/image-teaser.php', false, $args);
                 ?>
@@ -27,7 +27,7 @@ get_header();
                 <?php
                 $args = [
                     'headline' => 'Reise-Empfehlungen',
-                    'intro' => 'Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.',
+                    'text' => 'Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.',
                     'search' => [
                             'pm-li' => '0,4',
                             'pm-o' => 'rand',
@@ -40,14 +40,14 @@ get_header();
                 <?php
                 $args = [
                     'headline' => 'Info Teaser',
-                    'intro' => 'Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.'
+                    'text' => 'Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.'
                 ];
                 load_template(get_template_directory().'/template-parts/layout-blocks/info-teaser.php', false, $args);?>
                 <hr class="mt-0 mb-0">
                 <?php
                     $args = [
                             'headline' => 'Icon-Teaser',
-                            'intro' => 'Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.',
+                            'text' => 'Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.',
                             'teasers' => [
                                             [
                                                 'headline' => 'Das ist ein USP',

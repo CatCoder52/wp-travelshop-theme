@@ -10,8 +10,9 @@
 		.add-to-wishlist {
 			position: absolute;
 			cursor: pointer;
-			right: 0.5rem;
-			top: 0.5rem;
+			right: 0;
+			top: 0;
+			padding: .5rem;
 			svg {
 				pointer-events: none;
 				.wishlist-heart {

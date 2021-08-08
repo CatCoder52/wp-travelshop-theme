@@ -14,8 +14,30 @@ if(empty($_GET['pm-ho']) === true){ // if the price duration slider is active, w
 }
 
 $page_size = 12;
+
+
+//@todo is das hier sauber?
+// Suche 2x initialisieren...notwendig, da sich sonst das ergebnis durch results[] = result multipiziert
+// total result count wird wahrscheinlich nicht gecached.. bzw.. ist unabhängig davon...
+// man sollte die count query auch das result set speichern.. das würde dazu führen das man search queries
+// on media object update löschen könnte
+if(!empty($_GET['update_cache'])){
+    $search = BuildSearch::fromRequest($_GET, 'pm', true, $page_size);
+    $mediaObjects = $search->getResults();
+    $cacheinfo = $search->getCacheInfo();
+    if(!empty($cacheinfo)){
+        echo 'update_cache';
+        echo '<pre>'.print_r($cacheinfo, true).'</pre>';
+        $search->updateCache($cacheinfo['info']->parameters);
+    }
+}
+
 $search = BuildSearch::fromRequest($_GET, 'pm', true, $page_size);
+if(!empty($_GET['no_cache'])){
+    $search->disableCache();
+}
 $mediaObjects = $search->getResults();
+
 
 /*
 if(!empty($_GET['debug'])){
@@ -122,4 +144,14 @@ $pages = $search->getPaginator()->getTotalPages();
 // Pagination
 if ($pages > 1) {
     require 'result-pagination.php';
+}
+
+/**
+ * if the search is cached, we display a short information about the content age
+ */
+if($search->isCached()){
+    $cacheinfo = $search->getCacheInfo();
+    $cachetime = new DateTime($cacheinfo['date']);
+    $cachetime->setTimezone(new DateTimeZone('Europe/Berlin'));
+    echo '<section><div class="small mb-2">Stand: '.$cachetime->format('d.m.Y H:i:s').'</div></section>';
 }

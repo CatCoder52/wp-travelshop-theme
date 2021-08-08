@@ -15,16 +15,16 @@
  * @var array $args
  */
 ?>
-<div class="jumbotron jumbotron-fluid mb-0">
-    <div class="jumbotron-background">
+<article class="jumbotron jumbotron-fluid mb-0">
+    <section class="jumbotron-background">
         <?php
         if(empty($args['bg_image_src'])){ // Fallback image
             $args['bg_image_src'] = get_stylesheet_directory_uri().'/assets/img/slide-1.webp';
         }
         ?>
         <img src="<?php echo $args['bg_image_src']; ?>" alt="<?php echo empty($args['bg_image_alt_text']) ? $args['bg_image_alt_text'] : '';?>" loading="lazy"/>
-    </div>
-    <div class="container text-center">
+    </section>
+    <section class="container text-center">
         <?php if(!empty($args['headline'])){?>
             <h1 class="display-4"><?php echo $args['headline'];?></h1>
         <?php } ?>
@@ -43,5 +43,5 @@
                 echo (!empty($args['btn_link_nofollow']) && $args['btn_link_nofollow'] == 'yes') ? ' rel="nofollow"' : '';
             ?>><?php echo !empty($args['btn_label']) ? $args['btn_label'] : 'Button';?></a>
         <?php } ?>
-    </div>
-</div>
+    </section>
+</article>

@@ -42,7 +42,7 @@
                 $teaser = (array)$teaser;
         ?>
         <div class="col-12 col-sm-6 col-lg-3">
-            <div class="teaser icon-teaser">
+            <article class="teaser icon-teaser">
                 <div class="teaser-icon">
                 <?php if(!empty($teaser['svg_icon'])){?>
                     <div class="icon-inner <?php echo !empty($teaser['priority']) ? $teaser['priority'] : '';?>">
@@ -52,21 +52,29 @@
                 </div>
                 <div class="teaser-body">
                     <?php if(!empty($teaser['headline'])){?>
-                    <div class="teaser-title h5">
+                    <h1 class="teaser-title">
                         <?php echo $teaser['headline'];?>
-                    </div>
+                    </h1>
                 <?php } ?>
-                <?php if(!empty($teaser['headline'])){?>
+                <?php if(!empty($teaser['text'])){?>
                     <p>
                         <?php echo $teaser['text'];?>
                     </p>
                 <?php } ?>
                 <?php if(!empty($teaser['btn_link'])){?>
                     <a href="<?php echo $teaser['btn_link'];?>" target="<?php echo !empty($teaser['btn_link_target']) ? $teaser['btn_link_target'] : '_self';?>"
-                       class="btn btn-primary btn-block"><?php echo !empty($teaser['btn_label']) ? $teaser['btn_label'] : 'Button';?></a>
+                       class="btn btn-primary btn-block">
+                        <span><?php echo !empty($teaser['btn_label']) ? $teaser['btn_label'] : 'Button';?></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-right"
+                             width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
+                             stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M18 15l-6 -6l-6 6h12" transform="rotate(90 12 12)" />
+                        </svg>
+                    </a>
                 <?php } ?>
                 </div>
-            </div>
+            </article>
         </div>
         <?php
             }

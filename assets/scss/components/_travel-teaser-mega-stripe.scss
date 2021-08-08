@@ -97,7 +97,7 @@
 							white-space: normal;
 							text-align: center;
 							font-size: 0.7rem;
-							padding: 0.1rem 0.75rem;
+							padding: 1rem 0.75rem;
 							border: 0;
 							outline: 0;
 							box-shadow: none;
@@ -128,6 +128,10 @@
 				.stripe-cta {
 					padding: 0 0.75rem;
 					margin: 0.175rem 0 0.5rem 0;
+					.travel-teaser-link {
+						padding: .4rem 0;
+						display: inline-block;
+					}
 					.discount-wrapper {
 						p {
 							margin-bottom: 0.35rem;
@@ -193,6 +197,13 @@
 							}
 						}
 					}
+					.stripe-cta {
+						.travel-teaser-link {
+							.btn {
+								padding: .5rem 1rem;
+							}
+						}
+					}
 				}
 			}
 		}
@@ -247,6 +258,9 @@
 						}
 					}
 					.stripe-cta {
+						.travel-teaser-link {
+							padding: 0;
+						}
 						.discount-wrapper {
 							p {
 								text-align: center;
