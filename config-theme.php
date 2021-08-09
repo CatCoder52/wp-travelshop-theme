@@ -133,3 +133,9 @@ if(!defined('PM_REDIS_PORT')){
  * at this moment we support only beaverbuilder
  */
 define('PAGEBUILDER', 'beaverbuilder');
+
+
+/**
+ * Google MAPS API Key
+ */
+define('TS_GOOGLEMAPS_API', '');
