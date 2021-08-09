@@ -16,11 +16,7 @@ if(empty($_GET['pm-ho']) === true){ // if the price duration slider is active, w
 $page_size = 12;
 
 
-//@todo is das hier sauber?
-// Suche 2x initialisieren...notwendig, da sich sonst das ergebnis durch results[] = result multipiziert
-// total result count wird wahrscheinlich nicht gecached.. bzw.. ist unabhängig davon...
-// man sollte die count query auch das result set speichern.. das würde dazu führen das man search queries
-// on media object update löschen könnte
+// @TODO change request pressmind SDK #160268 "simplify cache behavior"
 if(!empty($_GET['update_cache'])){
     $search = BuildSearch::fromRequest($_GET, 'pm', true, $page_size);
     $mediaObjects = $search->getResults();

@@ -103,7 +103,10 @@ function ts_detail_hook($data)
         $mediaObjectCachedKeys = [];
         foreach ($r as $i) {
             $id_media_objects[] = $i->id;
-            $mediaObject = new Pressmind\ORM\Object\MediaObject($i->id, false, !empty($_GET['no_cache']));
+            $mediaObject = new Pressmind\ORM\Object\MediaObject($i->id, false, (!empty($_GET['no_cache']) || !empty($_GET['update_cache'])));
+            if(!empty($_GET['update_cache'])){
+                $mediaObject->updateCache($i->id);
+            }
             if($mediaObject->isCached()){
                 $mediaObjectCachedKeys[] = $mediaObject->getCacheInfo();
             }
