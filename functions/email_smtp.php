@@ -3,16 +3,16 @@
  * Enable SMTP auth support,
  * constants are defined in config-theme.php
  */
-if (SMTP_ACTIVE === true) {
+if (TS_SMTP_ACTIVE === true) {
     add_action('phpmailer_init', function ($phpmailer) {
         $phpmailer->isSMTP();
-        $phpmailer->Host = SMTP_HOST;
-        $phpmailer->SMTPAuth = SMTP_AUTH;
-        $phpmailer->Port = SMTP_PORT;
-        $phpmailer->Username = SMTP_USER;
-        $phpmailer->Password = SMTP_PASS;
-        $phpmailer->SMTPSecure = SMTP_SECURE;
-        $phpmailer->From = SMTP_FROM_EMAIL;
-        $phpmailer->FromName = SMTP_FROM_NAME;
+        $phpmailer->Host = TS_SMTP_HOST;
+        $phpmailer->SMTPAuth = TS_SMTP_AUTH;
+        $phpmailer->Port = TS_SMTP_PORT;
+        $phpmailer->Username = TS_SMTP_USER;
+        $phpmailer->Password = TS_SMTP_PASS;
+        $phpmailer->SMTPSecure = TS_SMTP_SECURE;
+        $phpmailer->From = TS_SMTP_FROM_EMAIL;
+        $phpmailer->FromName = TS_SMTP_FROM_NAME;
     });
 }

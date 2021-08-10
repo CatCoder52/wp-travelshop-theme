@@ -143,13 +143,13 @@ define('TS_GOOGLEMAPS_API', '');
 /**
  * Send E-Mails via SMTP AUTH
  */
-define( 'SMTP_ACTIVE', false);
-define( 'SMTP_USER', '');
-define( 'SMTP_PASS', '');
-define( 'SMTP_HOST', '');
-define( 'SMTP_FROM_EMAIL', '');
-define( 'SMTP_FROM_NAME', '');
-define( 'SMTP_PORT', 25);
-define( 'SMTP_SECURE', 'tls'); // ssl | tls
-define( 'SMTP_AUTH', true);
-define( 'SMTP_DEBUG',0 );
+define( 'TS_SMTP_ACTIVE', false);
+define( 'TS_SMTP_USER', '');
+define( 'TS_SMTP_PASS', '');
+define( 'TS_SMTP_HOST', '');
+define( 'TS_SMTP_FROM_EMAIL', '');
+define( 'TS_SMTP_FROM_NAME', '');
+define( 'TS_SMTP_PORT', 25);
+define( 'TS_SMTP_SECURE', 'tls'); // ssl | tls
+define( 'TS_SMTP_AUTH', true);
+define( 'TS_SMTP_DEBUG',0 );
