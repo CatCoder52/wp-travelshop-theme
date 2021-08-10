@@ -11879,8 +11879,7 @@ figure.wp-block-image figcaption {
     left: 0;
     right: 0;
     bottom: 0;
-    max-width: 100%;
-    overflow: auto; }
+    max-width: 100%; }
     .modal-wrapper .modal-inner .modal-close {
       border: 0;
       outline: none;
@@ -11888,7 +11887,7 @@ figure.wp-block-image figcaption {
       padding: 0;
       height: 3rem;
       width: 3rem;
-      position: absolute;
+      position: fixed;
       top: 0;
       right: 0;
       background-color: transparent;
@@ -11929,6 +11928,11 @@ figure.wp-block-image figcaption {
       margin: 0; }
       .modal-wrapper .modal-inner .modal-body .modal-title {
         margin: 0 0 1rem 0; }
+    .modal-wrapper .modal-inner .modal-body-outer {
+      margin: 1rem -2rem -2rem -2rem;
+      overflow-y: auto;
+      padding: 0 2rem 2rem 2rem;
+      max-height: 85vh; }
     @media (min-width: 768px) {
       .modal-wrapper .modal-inner {
         top: 50%;
@@ -11937,8 +11941,9 @@ figure.wp-block-image figcaption {
         bottom: auto;
         width: 100%;
         max-width: 1140px;
-        transform: translate(-50%, -50%);
-        max-height: 90vh; } }
+        transform: translate(-50%, -50%); }
+        .modal-wrapper .modal-inner .modal-body-outer {
+          max-height: 90vh; } }
 
 .footer-main {
   background-color: #e9ecef; }

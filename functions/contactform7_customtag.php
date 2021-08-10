@@ -40,12 +40,14 @@ function custom_modal_form_tag_handler( $tag ) {
 
         $modalHtml .= '<button type="button" class="modal-close"><span></span></button>';
 
+        $modalHtml .= '<div class="modal-body-outer">';
         $modalHtml .= '<div class="modal-body">';
 
         $modalHtml .= '<div class="h2 modal-title">'.$modalTitle.'</div>';
 
         $modalHtml .= $modalContent;
 
+        $modalHtml .= '</div>';
         $modalHtml .= '</div>';
 
         $modalHtml .= '</div>';
