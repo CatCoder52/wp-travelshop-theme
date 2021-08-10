@@ -2,7 +2,7 @@
 /**
  * This file builds scaffolder templates for the pressmind web-core sdk installer. it's for theme-development only
  */
-$prefix = 'Angebote';
+$prefix = 'Reise';
 $files = [];
 $files[] = [$prefix.'_Detail1.php', 'scaffolder/Detail1.txt'];
 $files[] = [$prefix.'_Teaser1.php', 'scaffolder/Teaser1.txt'];
