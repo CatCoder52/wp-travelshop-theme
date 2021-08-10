@@ -265,12 +265,14 @@ jQuery(function ($) {
 
         }
 
-        // -- check on load
-        isValid = checkSelected(catalougeCheck, minSelect);
-        catalougeErorHandler(isValid, catalougeWrapper, errorMessageClass, errorMessage);
+        // -- check on submit
+        catalougeForm.on('submit', function(e) {
+            isValid = checkSelected(catalougeCheck, minSelect);
+            catalougeErorHandler(isValid, catalougeWrapper, errorMessageClass, errorMessage);
+        });
 
         // -- check on submit if catalouge selecter, cancel submit
-        catalougeForm.find('input').on('change', function (e) {
+        catalougeCheck.on('change', function (e) {
             e.preventDefault();
 
             isValid = checkSelected(catalougeCheck, minSelect);
