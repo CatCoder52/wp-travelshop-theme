@@ -77,6 +77,9 @@ require_once 'functions/rewrite_rules.php';
 require_once  'functions/enqueue_js.php';
 require_once  'functions/enqueue_css.php';
 
+// Contactform 7
+require_once 'functions/contactform7_customtag.php';
+
 // Sitemaps
 require_once 'functions/sitemaps.php';
 

@@ -1,0 +1,121 @@
+
+// -- Modal
+.modal-wrapper {
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+
+  background-color: rgba($body-color, .7);
+  z-index: 1600;
+
+  transition: opacity .3s;
+  opacity:0;
+  pointer-events: none;
+
+  &.is--open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .modal-inner {
+    padding: 2rem;
+    background-color: #fff;
+    box-shadow: $box-shadow-lg;
+    border-radius: $border-radius;
+
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    max-width: 100%;
+
+    overflow: auto;
+
+    .modal-close {
+      border:0;
+      outline: none;
+      box-shadow: none;
+      padding:0;
+
+      height: 3rem;
+      width: 3rem;
+
+      position: absolute;
+      top: 0;
+      right:0;
+      background-color: transparent;
+
+      span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        width: 1rem;
+        height: 1rem;
+
+        transform: translate(-50%, -50%);
+
+        &:after, &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+
+          height: 2px;
+          width: 1.5rem;
+
+          background-color: $body-color;
+          transition: background-color;
+
+          transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        &:after {
+
+          transform: translate(-50%, -50%) rotate(45deg);
+        }
+      }
+
+      cursor: pointer;
+
+      &:hover, &:focus, &:active {
+        cursor: pointer;
+        outline: none;
+        background-color: transparent;
+        border: 0;
+        box-shadow: none;
+
+        span:after,
+        span:before {
+          background-color: $primary;
+        }
+      }
+    }
+
+    .modal-body {
+      padding:0;
+      margin:0;
+
+      .modal-title {
+        margin: 0 0 1rem 0;
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      top: 50%;
+      left: 50%;
+      right: auto;
+      bottom: auto;
+
+      width: 100%;
+
+      max-width: 1140px;
+      transform: translate(-50%, -50%);
+      max-height:90vh;
+    }
+  }
+}

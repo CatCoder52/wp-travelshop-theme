@@ -175,4 +175,108 @@ jQuery(function ($) {
             });
         });
     }
+
+
+    // ------------------------------
+    // -- content modal
+    // ------------------------------
+
+    if ( $('.modal-wrapper').length > 0 ) {
+        $('a[data-modal="true"]').on('click', function(e) {
+            e.preventDefault();
+
+            var modalId = $(this).data('modal-id');
+
+            // -- show modal
+            $('body').find('#'+modalId).addClass('is--open');
+
+            e.stopPropagation();
+        })
+
+        $('.modal-close').on('click', function(e) {
+            e.preventDefault();
+
+            $('.modal-wrapper.is--open').removeClass('is--open');
+
+            e.stopPropagation();
+        })
+    }
+
+
+// ----------------------------------
+// --- Catalouge order
+// ----------------------------------
+
+    if ($('.wpcf7-submit').length > 0) {
+        $('.wpcf7-submit').removeAttr('disabled');
+    }
+
+    if ($('.wpcf7-form-control-wrap').length > 0 ) {
+        $('.wpcf7-form-control-wrap input, .wpcf7-form-control-wrap select').on('change', function(e) {
+            $('.wpcf7-submit').removeAttr('disabled');
+
+            setTimeout(function(){
+                $('.wpcf7-submit').removeAttr('disabled');
+            }, 100);
+        })
+    }
+
+    if ($('.wpcf7-form-control-wrap.catalog .catalouge-item').length > 0) {
+
+        var minSelect = 1,
+            catalougeCheck = $('.catalouge-item input[type="checkbox"]'),
+            catalougeWrapper = $('.wpcf7-form-control-wrap.catalog'),
+            catalougeForm = $('.wpcf7-form-control-wrap.catalog').parents('form'),
+            catalougeFormSubmit = catalougeForm.find('.wpcf7-submit'),
+            errorMessageClass = 'catalouge-error--msg',
+            errorMessage = 'Bitte mindestens einen Katalog auswählen',
+            isValid = false;
+
+        // -- check if valid
+        function checkSelected(catalougeCheck, minSelect) {
+
+            // -- get checked catalouges
+            var selectedCatalouges = 0;
+
+            catalougeCheck.each(function() {
+                if ( $(this).is(':checked') ) {
+                    selectedCatalouges++;
+                }
+            })
+
+            // -- return validation value true/false
+            if ( selectedCatalouges >= minSelect ) {
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+
+        // -- create, delete, show error message
+        function catalougeErorHandler(isValid, catalougeWrapper, errorMessageClass, errorMessage) {
+
+            $('body').find('.' + errorMessageClass).remove();
+
+            if (!isValid) {
+                // -- create error message
+                catalougeWrapper.append('<div class="' + errorMessageClass + '">' + errorMessage + '</div>');
+            }
+
+        }
+
+        // -- check on load
+        isValid = checkSelected(catalougeCheck, minSelect);
+        catalougeErorHandler(isValid, catalougeWrapper, errorMessageClass, errorMessage);
+
+        // -- check on submit if catalouge selecter, cancel submit
+        catalougeForm.find('input').on('change', function (e) {
+            e.preventDefault();
+
+            isValid = checkSelected(catalougeCheck, minSelect);
+            catalougeErorHandler(isValid, catalougeWrapper, errorMessageClass, errorMessage);
+
+            e.stopPropagation();
+        });
+    }
 });
