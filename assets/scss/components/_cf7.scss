@@ -17,7 +17,7 @@
   }
 
   @include media-breakpoint-down(sm) {
-      font-size: $font-size-sm;
+    font-size: $font-size-sm;
   }
 
   input[aria-invalid='true'],
@@ -110,8 +110,9 @@
     margin: 0 0 1rem 0;
   }
 
- // -- catalouges
-  .catalouges {
+  // -- catalouges
+  .catalouges,
+  .motive {
 
     > span {
       display: block;
@@ -125,7 +126,8 @@
       cursor: pointer;
     }
 
-    .catalouge-wrapper {
+    .catalouge-wrapper,
+    .motiv-wrapper {
       margin-bottom: 0;
       margin-left: -.5rem;
       margin-right: -.5rem;
@@ -133,7 +135,8 @@
       display: flex;
       flex-wrap: wrap;
 
-      .catalouge-item {
+      .catalouge-item,
+      .motiv-item {
         margin: 0 0  1rem 0;
         flex: 0 0 50%;
         max-width: 50%;
@@ -211,20 +214,23 @@
             }
           }
 
-          input[type='checkbox']:checked + .wpcf7-list-item-label:before {
+          input[type='checkbox']:checked + .wpcf7-list-item-label:before,
+          input[type='radio']:checked + .wpcf7-list-item-label:before{
             border: 1px solid $primary;
             background-color: $primary;
           }
         }
 
         /// -- checkbox
-        input[type='checkbox'] {
+        input[type='checkbox'],
+        input[type='radio']{
           display: none;
         }
 
 
         /// -- image
-        .catalouge-item--image {
+        .catalouge-item--image,
+        .motiv-item--image {
           line-height: 1;
           position: relative;
           margin: -.5rem -1rem .5rem -1rem;
@@ -277,4 +283,3 @@
     }
   }
 }
-
