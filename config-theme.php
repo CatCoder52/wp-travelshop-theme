@@ -3,7 +3,7 @@
  * Setup PHP Environment
  */
 
-if(getenv('APP_ENV') == 'development') {
+if(defined('WP_DEBUG_DISPLAY') && WP_DEBUG_DISPLAY === true) {
     error_reporting(-1);
     ini_set('display_errors', 'On');
     ini_set('max_execution_time', 600);
