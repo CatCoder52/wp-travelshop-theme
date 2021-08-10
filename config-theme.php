@@ -139,3 +139,17 @@ define('PAGEBUILDER', 'beaverbuilder');
  * Google MAPS API Key
  */
 define('TS_GOOGLEMAPS_API', '');
+
+/**
+ * Send E-Mails via SMTP AUTH
+ */
+define( 'SMTP_ACTIVE', false);
+define( 'SMTP_USER', '');
+define( 'SMTP_PASS', '');
+define( 'SMTP_HOST', '');
+define( 'SMTP_FROM_EMAIL', '');
+define( 'SMTP_FROM_NAME', '');
+define( 'SMTP_PORT', 25);
+define( 'SMTP_SECURE', 'tls'); // ssl | tls
+define( 'SMTP_AUTH', true);
+define( 'SMTP_DEBUG',0 );
