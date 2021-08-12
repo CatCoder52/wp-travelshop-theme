@@ -1,3 +1,4 @@
+/* TODO ?? */
 .content-block.content-block-detail-header {
   h1, .h1 {
     margin-bottom: 1rem;
@@ -8,6 +9,8 @@
     }
   }
 }
+
+
 
 .wpcf7 {
   label {
@@ -105,14 +108,13 @@
     }
   }
 
-  .catalouge-error--msg {
+  .imgbtn-error--msg {
     color: #dc3232;
     margin: 0 0 1rem 0;
   }
 
-  // -- catalouges
-  .catalouges,
-  .motive {
+  // -- imgbtns
+  .imgbtns{
 
     > span {
       display: block;
@@ -126,8 +128,7 @@
       cursor: pointer;
     }
 
-    .catalouge-wrapper,
-    .motiv-wrapper {
+    .imgbtn-wrapper {
       margin-bottom: 0;
       margin-left: -.5rem;
       margin-right: -.5rem;
@@ -135,8 +136,7 @@
       display: flex;
       flex-wrap: wrap;
 
-      .catalouge-item,
-      .motiv-item {
+      .imgbtn-item {
         margin: 0 0  1rem 0;
         flex: 0 0 50%;
         max-width: 50%;
@@ -227,10 +227,8 @@
           display: none;
         }
 
-
         /// -- image
-        .catalouge-item--image,
-        .motiv-item--image {
+        .imgbtn-item--image{
           line-height: 1;
           position: relative;
           margin: -.5rem -1rem .5rem -1rem;
@@ -240,7 +238,7 @@
             height: auto;
           }
 
-          a.catalouge-item--link {
+          a.imgbtn-item--link {
             display: block;
             width: 2rem;
             height: 2rem;

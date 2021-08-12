@@ -80,8 +80,10 @@ require_once 'functions/rewrite_rules.php';
 require_once  'functions/enqueue_js.php';
 require_once  'functions/enqueue_css.php';
 
-// Contactform 7
-require_once 'functions/contactform7_customtag.php';
+// Contactform 7 support, if installed, we will load some custom formfield-tags here.
+if(class_exists('WPCF7')){
+    require_once 'functions/contactform7_imgbtn_tag.php';
+}
 
 // Sitemaps
 require_once 'functions/sitemaps.php';
