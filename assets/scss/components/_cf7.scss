@@ -280,4 +280,25 @@
       }
     }
   }
+
+  // -- form-check
+  .form-check.form-check--single {
+    margin: 0 0 1rem 0;
+    position: relative;
+    cursor: pointer;
+
+    .wpcf7-list-item {
+      margin-left: 0;
+    }
+
+    .wpcf7-form-control-wrap {
+      position: absolute;
+      top:0;
+      left:0;
+
+      .wpcf7-list-item-label {
+        display:none;
+      }
+    }
+  }
 }
