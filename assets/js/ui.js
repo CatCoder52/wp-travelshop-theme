@@ -176,6 +176,21 @@ jQuery(function ($) {
         });
     }
 
+    // ------------------------------
+    // -- form check single
+    // ------------------------------
+    if ( $('.form-check.form-check--single').length > 0 ) {
+        $('.form-check.form-check--single').on('click', function() {
+            var thisCheckbox = $(this).find('input');
+
+            if ( thisCheckbox.is(':checked') ) {
+                thisCheckbox.prop('checked', false);
+            } else {
+                thisCheckbox.prop('checked', true);
+            }
+        })
+    }
+
 
     // ------------------------------
     // -- content modal
