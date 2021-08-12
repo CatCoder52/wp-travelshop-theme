@@ -11551,12 +11551,12 @@ figure.wp-block-image figcaption {
   cursor: pointer; }
   .wpcf7 .form-check.form-check--single .wpcf7-list-item {
     margin-left: 0; }
-  .wpcf7 .form-check.form-check--single .wpcf7-form-control-wrap {
+  .wpcf7 .form-check.form-check--single .wpcf7-form-control-wrap .wpcf7-form-control.wpcf7-checkbox {
     position: absolute;
     top: 0;
-    left: 0; }
-    .wpcf7 .form-check.form-check--single .wpcf7-form-control-wrap .wpcf7-list-item-label {
-      display: none; }
+    left: -1.15rem; }
+  .wpcf7 .form-check.form-check--single .wpcf7-form-control-wrap .wpcf7-list-item-label {
+    display: none; }
 
 .modal-wrapper {
   position: fixed;
