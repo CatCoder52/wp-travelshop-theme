@@ -184,9 +184,7 @@ jQuery(function ($) {
     if ( $('.modal-wrapper').length > 0 ) {
         $('a[data-modal="true"]').on('click', function(e) {
             e.preventDefault();
-
             var modalId = $(this).data('modal-id');
-
             // -- show modal
             $('body').find('#'+modalId).addClass('is--open');
 
@@ -195,11 +193,13 @@ jQuery(function ($) {
 
         $('.modal-close').on('click', function(e) {
             e.preventDefault();
-
             $('.modal-wrapper.is--open').removeClass('is--open');
-
             e.stopPropagation();
         })
+
+        $(document).on('keyup', function(e){
+            if (e.which == 27) $('.modal-close').click();   // esc
+        });
     }
 
 });
