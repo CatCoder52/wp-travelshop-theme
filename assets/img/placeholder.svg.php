@@ -1,5 +1,5 @@
 <?php
-// Usage: <img src="placeholder-svg.php?wh=400x400&fill=bada55&color=000000&font=Georgia&size=20&text=missing%20picture" />
+// Usage: <img src="placeholder.svg.php?wh=400x400&fill=bada55&color=000000&font=Georgia&size=20&text=missing%20picture" />
 $wh = explode('x', $_GET['wh']);
 $wh[0] = (int)$wh[0];
 $wh[1] = (int)$wh[1];
