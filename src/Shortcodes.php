@@ -12,6 +12,7 @@ class Shortcodes
         add_shortcode('ts-searchroutes', [$this, 'searchRoutes']);
         add_shortcode('ts-searchpage', [$this, 'searchPage']);
         add_shortcode('ts-layoutblock', [$this, 'layoutBlock']);
+        add_shortcode('ts-modal', [$this, 'modal']);
         // TODO
         // add_shortcode('ts-ct-items', [$this, 'categoryTreeItems']);
     }
@@ -163,6 +164,41 @@ class Shortcodes
         $contents = ob_get_contents();
         ob_end_clean();
         return $contents;
+    }
+
+    /**
+     * Example:
+     * [ts-modal id_post="124" name="foo foo"]
+     * @param $atts
+     * @return false|string
+     */
+    public function modal($atts){
+
+        $id_post = (int)$atts['id_post'];
+        if (empty($id_post) || empty($atts['name'])) {
+            return 'error: shortcode [ts-modal...] not valid, post-id or name is missing example [ts-modal id_post=123 "the link name"]';
+        }
+
+
+        $post = get_post($id_post);
+
+        if(empty($post)){
+            return 'error: post for id ('.$id_post.') for not found (cf7-shortcode [modal... ])';
+        }
+
+        $args = [
+            'name' => $atts['name'],
+            'title' => $post->post_title,
+            'link' => get_permalink($id_post),
+            'content' =>  apply_filters('the_content', $post->post_content)
+        ];
+
+        ob_start();
+        require get_template_directory().'/template-parts/layout-blocks/modalscreen.php';
+        $output = ob_get_contents();
+        ob_end_clean();
+        return $output;
+
     }
 
 
