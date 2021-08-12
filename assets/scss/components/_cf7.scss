@@ -292,9 +292,11 @@
     }
 
     .wpcf7-form-control-wrap {
-      position: absolute;
-      top:0;
-      left:0;
+      .wpcf7-form-control.wpcf7-checkbox {
+        position: absolute;
+        top:0;
+        left: -1.15rem;
+      }
 
       .wpcf7-list-item-label {
         display:none;
