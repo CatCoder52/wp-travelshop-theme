@@ -19,7 +19,7 @@ add_action('wpcf7_init', function () {
 
         $id_post = $tag->get_option('id_post', '', true);
 
-        if (empty($id_post) || empty($tag->name) || empty($tag->values[0])) {
+        if (empty($id_post) || empty($tag->name)) {
             return 'error: shortcode [modal...] not valid, post-id or name is missing example [modal my-name id_post:123 "the link name"]';
         }
 
@@ -30,7 +30,7 @@ add_action('wpcf7_init', function () {
         }
 
         $args = [
-            'name' => $tag->values[0],
+            'name' => '',
             'title' => $post->post_title,
             'id_post' => $id_post,
             'div_only' => true,
