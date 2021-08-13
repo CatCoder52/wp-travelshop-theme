@@ -28,7 +28,7 @@ $pictures = $args;
                         // @TODO the placeholder image below is only for a better theme developer onboarding, remove in production.
                         // if the property "$moc->bilder_default" is not set in this object type, check if there is another named image property
                     ?>
-                    <img src="<?php echo SITE_URL; ?>/wp-content/themes/travelshop/assets/img/placeholder.svg.php?wh=250x170&text=<?php echo urlencode($pictures);?>" class="card-img-top">
+                    <img src="/placeholder.svg?wh=250x170&text=<?php echo urlencode($pictures);?>" class="card-img-top">
 
                     <?php }?>
 
@@ -59,7 +59,7 @@ $pictures = $args;
                                 // @TODO the placeholder image below is only for a better theme developer onboarding, remove in production.
                                 // if the property "$moc->bilder_default" is not set in this object type, check if there is another named image property
                                 ?>
-                                <img src="<?php echo SITE_URL; ?>/wp-content/themes/travelshop/assets/img/placeholder.svg.php?wh=250x170&text=<?php echo urlencode($pictures);?>" class="w-100 h-100">
+                                <img src="/placeholder.svg?wh=250x170&text=<?php echo urlencode($pictures);?>" class="w-100 h-100">
                             <?php }?>
 
                         </div>
@@ -98,7 +98,7 @@ $pictures = $args;
                                 // @TODO the placeholder image below is only for a better theme developer onboarding, remove in production.
                                 // if the property "$moc->bilder_default" is not set in this object type, check if there is another named image property
                                 ?>
-                                <img src="<?php echo SITE_URL; ?>/wp-content/themes/travelshop/assets/img/placeholder.svg.php?wh=250x170&text=<?php echo urlencode($pictures);?>" class="w-100 h-100">
+                                <img src="/placeholder.svg?wh=250x170&text=<?php echo urlencode($pictures);?>" class="w-100 h-100">
                             <?php }?>
                         </div>
                     </div>

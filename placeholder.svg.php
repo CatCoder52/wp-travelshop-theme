@@ -1,6 +1,6 @@
 <?php
 // Usage: <img src="placeholder.svg.php?wh=400x400&fill=bada55&color=000000&font=Georgia&size=20&text=missing%20picture" />
-$wh = explode('x', $_GET['wh']);
+$wh = explode('x', !empty($_GET['wh']) ? $_GET['wh'] : '100x100');
 $wh[0] = (int)$wh[0];
 $wh[1] = (int)$wh[1];
 $fill = isset($_GET['fill']) ? $_GET['fill']: '666666';
