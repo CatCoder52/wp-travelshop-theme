@@ -1,4 +1,4 @@
-<?php
+    <?php
 /**
  * @todo optimize id & data tags in checkboxes
  * @var $name
@@ -10,7 +10,7 @@
  */
 
 
-$tree = new Pressmind\Search\Filter\Category($id_tree, $search);
+$tree = new Pressmind\Search\Filter\Category($id_tree, $search, $fieldname, ($condition_type == 'cl'));
 $treeItems = $tree->getResult();
 
 /*

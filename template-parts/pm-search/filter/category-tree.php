@@ -9,11 +9,8 @@
  * @var $id_tree
  */
 
-// @TODO in some cases it's possible that the filter lists items that have not a valid search result.
-// related to category tree's from object links.
-
 if(empty($filter_search) === false){
-    $tree = new Pressmind\Search\Filter\Category($id_tree, $filter_search);
+    $tree = new Pressmind\Search\Filter\Category($id_tree, $filter_search, $fieldname, ($condition_type == 'cl'));
     $treeItems = $tree->getResult();
 }
 
