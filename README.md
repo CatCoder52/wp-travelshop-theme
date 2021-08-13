@@ -89,7 +89,8 @@ In most cases, this is the basic setup for each travelshop:
 ### Plugin compatibility (tested)
 * Revolution Slider
 * Elementor
-* BeaverBuilder (the travelshop has several beaverbuilder modules included), see [here](./docs/readme-beaverbuilder.md)
+* BeaverBuilder (several beaverbuilder modules are included), see [here](./docs/readme-beaverbuilder.md)
+* Contact Form 7 (several features and examples added, see [here](./docs/readme-forms.md))
 * ... all other (but make a deep test before use in production)
 
 ### System overview
@@ -114,6 +115,7 @@ In most cases, this is the basic setup for each travelshop:
 * [Using the blog feature](./docs/readme-blog.md)
 * [BeaverBuilder support](./docs/readme-beaverbuilder.md)
 * [Modal screens and windows support](./docs/readme-modals.md)
+* [Contact Form 7 support](./docs/readme-forms.md)
 * Take a look at the [pressmind web-core project](https://github.com/pressmind/web-core-skeleton-basic/#quickstart),
   most of the pressmind sdk implementation in this theme is based on those examples.
 * [Maintenance & troubleshooting](./docs/readme-maintenance.md)
