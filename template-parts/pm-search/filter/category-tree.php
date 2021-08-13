@@ -11,7 +11,7 @@
 
 if(empty($filter_search) === false){
     $tree = new Pressmind\Search\Filter\Category($id_tree, $filter_search, $fieldname, ($condition_type == 'cl'));
-    $treeItems = $tree->getResult();
+    $treeItems = $tree->getResult('name');
 }
 
 /*

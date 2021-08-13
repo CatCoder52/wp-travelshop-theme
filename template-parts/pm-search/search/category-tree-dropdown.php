@@ -11,7 +11,7 @@
 
 
 $tree = new Pressmind\Search\Filter\Category($id_tree, $search, $fieldname, ($condition_type == 'cl'));
-$treeItems = $tree->getResult();
+$treeItems = $tree->getResult('name');
 
 /*
 This code will list all items, without a Filter
