@@ -8,7 +8,7 @@ In some cases like showing disclaimers and so on, its required to display a moda
 * can also used in CF7-forms
 
 # Screenshot
-![Screenshot](assets/modals_1.jpg)
+![Screenshot](assets/modals-1.jpg)
 
 ## Overview
  * [Create modal content](#create-the-modal-content-page)
@@ -31,7 +31,7 @@ This Shortcode creates a modal link, named as "Datenschutz" and also created the
 ###Method 2 "modal div only":
 This Shortcode renders only the modal-div with it's content from the given post id, and you have to place to place the link manually.
 ```html
-<a href="#" data-modal="true" data-modal-id="modal-post-id-124">Click here</a>
+<a href="#" data-modal="true" data-modal-id="modal-id-post-124">Click here</a>
 [ts-modal id_post="124" create_div_only]
 ```
 
@@ -43,11 +43,11 @@ Example usage in a CF7-Form acceptance-Checkbox:
 <!-- draw the acceptance checkbox based on the cf7-syntax -->
 [acceptance privacy]<b>Datenschutz &amp; Transparenz ist uns sehr wichtig!</b><br> 
 Mit Absenden des Formulars, erklären Sie, dass Sie die 
-<a href="#" data-modal="true" data-modal-id="modal-post-id-12">Hinweise zum Datenschutz</a> 
+<a href="#" data-modal="true" data-modal-id="modal-id-post-12">Hinweise zum Datenschutz</a> 
 der Travelshop GmbH zur Kenntnis genommen und akzeptiert haben.[/acceptance]
 
 <!-- render the modal content div -->
-[modal privacy post-id:12]
+[modal privacy id_post:12]
 ````
 
 
