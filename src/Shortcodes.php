@@ -189,7 +189,8 @@ class Shortcodes
         $args = [
             'name' => $atts['name'],
             'title' => $post->post_title,
-            'link' => get_permalink($id_post),
+            'id_post' => $id_post,
+            'div_only' => (!empty($atts[0]) && $atts[0] == 'create_div_only'),
             'content' =>  apply_filters('the_content', $post->post_content)
         ];
 

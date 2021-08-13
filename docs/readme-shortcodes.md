@@ -68,3 +68,23 @@ Returns:
 </ul>
 ````
 
+## 5. Display modal screens
+This shortcode generates a link to a modal screen. See [readme-modals.md](readme-modals.md) for detailed informations.
+````
+[ts-modal id_post="124" name="Privacy"]
+
+--
+Returns:
+<a href="https://wordpress.local/privacy/" data-modal="true" data-modal-id="modal-post-id-542">Privacy</a>
+<div class="modal-forms modal-wrapper" id="modal-post-id-542">
+    <div class="modal-inner">
+        <button type="button" class="modal-close"><span></span></button>
+        <div class="modal-body-outer">
+            <div class="modal-body">
+                <div class="h2 modal-title">Lorem Ipsum</div>
+                <p>the content</p>
+            </div>
+        </div>
+    </div>
+</div>
+````

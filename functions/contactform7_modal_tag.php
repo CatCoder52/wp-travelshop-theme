@@ -32,7 +32,8 @@ add_action('wpcf7_init', function () {
         $args = [
             'name' => $tag->values[0],
             'title' => $post->post_title,
-            'link' => get_permalink($id_post),
+            'id_post' => $id_post,
+            'div_only' => true,
             'content' =>  apply_filters('the_content', $post->post_content)
         ];
 

@@ -10,12 +10,16 @@
  *      @example [modal privacy post-id:542 "Datenschutz"]
  *      @see /functions/contactform7_modal_tag.php
  *
- * @var array $args{name:string,title:string,content:string, link:string};
+ * @var array $args{name:string,title:string,content:string,id_post:int,div_only:boolean};
  */
-$id = md5(rand());
+
+if(isset($args['div_only']) && $args['div_only'] === false){
+    ?>
+    <a href="<?php echo get_permalink($args['id_post']);?>" data-modal="true" data-modal-id="modal-post-id-<?php echo $args['id_post'];?>"><?php echo $args['name'];?></a>
+    <?php
+}
 ?>
-<a href="<?php echo empty($args['link']) ? '#' : $args['link'];?>" data-modal="true" data-modal-id="modal-<?php echo $id;?>"><?php echo $args['name'];?></a>
-<div class="modal-forms modal-wrapper" id="modal-<?php echo $id; ?>">
+<div class="modal-forms modal-wrapper" id="modal-post-id-<?php echo $args['id_post'];?>">
     <div class="modal-inner">
         <button type="button" class="modal-close"><span></span></button>
         <div class="modal-body-outer">
