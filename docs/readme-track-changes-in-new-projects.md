@@ -5,10 +5,10 @@ If you plan to use the travelshop theme, use this way (to track changes and have
 ## 1. Create a new repo based on the travelshop-theme
 
 Go to github.com and click the "use template"-button:
-![](assets/readme-files/github-template-1.jpg)
+![](assets/github-template-1.jpg)
 
 Follow the instructions to create the repo (!make it private):
-![](assets/readme-files/github-template-2.jpg)
+![](assets/github-template-2.jpg)
 
 Or use the shell:
 ```shell
@@ -23,8 +23,8 @@ To still get updates we have created a github workflow that automatically
 creates nightly pull requests to your repo.
 ```.github/workflows/sync-from-template.yml```
 This workflow is automatically enabled, look at your actions panel:
-![](assets/readme-files/github-action-sync-1.jpg)
+![](assets/github-action-sync-1.jpg)
 
 The workflow generates a pull request for the master-branch if the pressmind/wp-travelshop-theme master will change.
 So you can merge all changes in a easy way to your code... 
-![](assets/readme-files/github-action-sync-2.jpg)
+![](assets/github-action-sync-2.jpg)
