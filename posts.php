@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: Blog
- * Template Post Type: post
+ * Template Post Type: page
  */
 get_header();
 the_breadcrumb(null);
