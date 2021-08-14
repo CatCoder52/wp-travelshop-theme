@@ -1,0 +1,66 @@
+// -- vendors
+@import "vendors/bootstrap/bootstrap";
+@import "vendors/ion-rangeslider/range-slider";
+@import "vendors/tiny-slider/tiny-slider";
+@import "vendors/daterangepicker/daterangepicker";
+@import "vendors/pretty-dropdowns/prettydropdowns";
+
+// -- abstracts
+@import "abstracts/variables";
+
+// -- utls
+@import "utils/variables";
+@import "utils/mixins";
+
+// -- base
+@import "base/typography";
+@import "base/container";
+
+// -- components
+@import "components/offcanvas";
+@import "components/travel-teaser";
+@import "components/travel-teaser-mega-stripe";
+@import "components/travel-slider";
+@import "components/list-filter";
+@import "components/detail-gallery";
+@import "components/detail-booking";
+@import "components/detail-booking-calendar";
+@import "components/content-blocks";
+@import "components/teaser";
+@import "components/image-teaser";
+@import "components/breadcrumb";
+@import "components/badges";
+@import "components/forms";
+@import "components/search-header";
+@import "components/jumbotron";
+@import "components/daterangepicker";
+@import "components/search-bar";
+@import "components/search-bar";
+@import "components/autocomplete-suggestions";
+@import "components/accordion";
+@import "components/service-hotline-batch";
+@import "components/spinner";
+@import "components/pagination";
+@import "components/button";
+@import "components/blog-list";
+@import "components/cf7";
+@import "components/modals";
+
+// -- layout
+@import "layout/base";
+@import "layout/footer";
+@import "layout/header";
+@import "layout/navigation";
+
+// -- pages
+@import "pages/home";
+@import "pages/list";
+@import "pages/detail";
+
+// -- themes
+// this just an example for you're theme starting point
+// @import "pages/themes/theme-ananas";
+
+body {
+	font-display: swap !important;
+}

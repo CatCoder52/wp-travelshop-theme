@@ -1,0 +1,99 @@
+<div class="row">
+    <div class="col-12 col-md-6">
+        <div class="form-group">
+            <label>Anrede* [select* anrede class:form-control include_blank "Herr " "Frau"]</label>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div class="form-group">
+            <label>Vorname*
+                [text* surname class:form-control] </label>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+            <label>Nachname*
+                [text* lastname class:form-control] </label>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-8 col-md-4">
+        <div class="form-group">
+            <label>Straße
+                [text strasse class:form-control]</label>
+        </div>
+    </div>
+    <div class="col-4 col-md-2">
+        <div class="form-group">
+            <label>Haus-Nr.
+                [text nr class:form-control]</label>
+        </div>
+    </div>
+    <div class="col-4 col-md-2">
+        <div class="form-group">
+            <label>PLZ
+                [number plz class:form-control]</label>
+        </div>
+    </div>
+    <div class="col-8 col-md-4">
+        <div class="form-group">
+            <label>Ort
+                [text ort class:form-control]</label>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-12 col-md-6">
+        <div class="form-group">
+            <label> E-Mail*
+                [email* mail class:form-control] </label>
+        </div>
+    </div>
+    <div class="col-12 col-md-6">
+        <div class="form-group">
+            <label> Telefon
+                [text phone class:form-control] </label>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="form-group">
+            <label>Mein Anliegen*[textarea* anmerkungen class:form-control placeholder "Meine Nachricht"]</label>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        [acceptance printmailings optional]<strong>Besondere Angebote, Kataloge und Reisepost</strong><br>Ich möchte auch zukünftig (jederzeit widerruflich) die aktuellen Reisekataloge erhalten. [/acceptance]
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        [acceptance newsletter optional]<strong>Newsletter-Anmeldung</strong><br>Gerne möchte ich auch per E-Mail (jederzeit widerruflich) Angebote erhalten. [/acceptance]
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        [acceptance privacy class:form-checkbox]<span><b>Datenschutz &amp; Transparenz ist uns sehr wichtig!</b><br>Die Anfrage wird via SSL verschlüsselt an unseren Server geschickt. Mit Absenden des Formulars, erklären Sie, dass Sie die <a href="#" data-modal="true" data-modal-id="modal-id-post-1">Datenschutzerklärung</a> und <a href="#" data-modal="true" data-modal-id="modal-id-post-2">Widerrufhinweise</a> zur Kenntnis genommen und akzeptiert haben.</span>[/acceptance]
+    </div>
+</div>
+[submit class:btn class:btn-primary "Absenden"]
+
+<div class="row">
+    <div class="col-12">
+        <small>* Mit Sternchen gekennzeichnete Felder müssen ausgefüllt werden.</small>
+    </div>
+</div>
+
+[modal privacy1 id_post:542]
+[modal privacy2 id_post:542]
