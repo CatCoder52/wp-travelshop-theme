@@ -8,6 +8,7 @@
  */
 
 use Pressmind\Search\CheapestPrice;
+use Pressmind\Travelshop\PriceHandler;
 
 $mo = $data['media_object'];
 
@@ -248,30 +249,27 @@ if (empty($filteredParams) === false) {
                     </div>
                     <div class="card-text price-row">
                         <?php
-                        if (!empty($cheapest_price->price_option_pseudo) && $cheapest_price->price_option_pseudo > $cheapest_price->price_total) {
-                            $percent_discount = round((100 / $cheapest_price->price_option_pseudo) * ($cheapest_price->price_option_pseudo - $cheapest_price->price_total));
+
+                        if (($discount = PriceHandler::getDiscount($cheapest_price)) !== false) {
                             ?>
                             <div class="discount-wrapper">
                                 <hr>
                                 <p>
-                                    <span class="msg">Ihr Vorteil</span>
+                                    <span class="msg"><?php echo $discount['name']; ?></span>
                                     <span class="discount-label">
-                                <span class="price"><?php echo $cheapest_price->price_option_pseudo; ?>&nbsp;€</span>
-                                <span class="discount"> -<?php echo $percent_discount; ?>%</span>
+                                <span class="price"><?php echo $discount['price_before_discount']; ?></span>
+                                <span class="discount"><?php echo $discount['price_delta']; ?></span>
                             </span>
                                 </p>
                             </div>
                             <?php
                         }
+
                         ?>
                         <a href="<?php echo $url; ?>" class="travel-teaser-link">
                             <div class="btn btn-primary">
                             <?php
-                            if (empty($cheapest_price->price_total) === false) {
-                                echo '<small><span>Preis p.P.</span> <strong>ab</strong> </small><strong>' . number_format($cheapest_price->price_total, TS_PRICE_DECIMALS, TS_PRICE_DECIMAL_SEPARATOR, TS_PRICE_THOUSANDS_SEPARATOR) . '&nbsp;€</strong>';
-                            } else {
-                                ?>zur Reise<?php
-                            }
+                            echo '<small><span>Preis p.P.</span> <strong>ab</strong> </small><strong>' .PriceHandler::format($cheapest_price->price_total).'</strong>';
                             ?>
                             </div>
                         </a>

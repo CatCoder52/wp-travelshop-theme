@@ -109,6 +109,13 @@ define('TS_PRICE_DECIMAL_SEPARATOR', ',');
 define('TS_PRICE_THOUSANDS_SEPARATOR', '.');
 define('TS_PRICE_DECIMALS', 0);
 
+define('TS_PRICE_CURRENCY', '€');
+
+/**
+ * enum (RIGHT, LEFT)
+ */
+define('TS_PRICE_CURRENCY_POSITION', 'RIGHT');
+
 /**
  * Url to the pressmind IB3 if used
  */

@@ -2,8 +2,8 @@
 
 global $PMTravelShop;
 
-use Pressmind\HelperFunctions;
 use Pressmind\Search\CheapestPrice;
+use Pressmind\Travelshop\PriceHandler;
 
 /**
  * @var array $data
@@ -148,7 +148,7 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
                         // info line
                         load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/info-line.php', false, array('moc' => $moc, 'mo' => $mo));
 
-                        // load itinerary example
+                        // load itinerary
                         //load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/itinerary.php', false, array('moc' => $moc, 'mo' => $mo, 'cheapest_price' => $cheapest_price));
 
                         ?>

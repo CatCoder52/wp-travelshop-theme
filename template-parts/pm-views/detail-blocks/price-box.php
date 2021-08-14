@@ -2,6 +2,7 @@
 
 use Pressmind\HelperFunctions;
 use Pressmind\Search\CheapestPrice;
+use Pressmind\Travelshop\PriceHandler;
 
 /**
  * @var array $args
@@ -38,10 +39,28 @@ $cheapest_price = $args['cheapest_price'];
 
     ?>
     <div class="detail-price-box">
+
+        <?php
+        if (($discount = PriceHandler::getDiscount($cheapest_price)) !== false) {
+            ?>
+            <div class="discount-wrapper">
+                <hr>
+                <p>
+                    <span class="msg"><?php echo $discount['name']; ?> bis 24.12</span>
+                    <span class="discount-label">
+                                <span class="price"><?php echo $discount['price_before_discount']; ?></span>
+                                <span class="discount"><?php echo $discount['price_delta']; ?></span>
+                            </span>
+                </p>
+            </div>
+            <?php
+        }
+
+        ?>
         <div class="price">
 
             <span class="h5 mb-0 mt-0"><?php echo $booking_package->duration; ?>&nbsp;Tag<?php echo($booking_package->duration > 1 ? 'e' : ''); ?> ab</span> <span
-                    class="h3 mb-0 mt-0"><?php echo number_format($cheapest_price->price_total, TS_PRICE_DECIMALS, TS_PRICE_DECIMAL_SEPARATOR, TS_PRICE_THOUSANDS_SEPARATOR) . '&nbsp;€'; ?></span>
+                    class="h3 mb-0 mt-0"><?php echo PriceHandler::format($cheapest_price->price_total); ?></span>
         </div>
         <p class="small mt-2"><?php echo $cheapest_price->option_name; ?> p.P.</p>
         <hr>

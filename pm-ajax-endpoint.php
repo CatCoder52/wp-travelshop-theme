@@ -10,6 +10,7 @@ require_once 'config-theme.php';
 require_once 'bootstrap.php';
 require_once 'src/BuildSearch.php';
 require_once 'src/RouteProcessor.php';
+require_once 'src/PriceHandler.php';
 
 header('Content-type: application/json');
 header('Cache-Control: no-cache, no-store, must-revalidate');
