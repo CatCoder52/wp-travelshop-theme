@@ -17,24 +17,32 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress/5.7.1" created="2021-04-23 11:24" -->
+<!-- generator="WordPress/5.8" created="2021-07-23 07:34" -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
-<title>travelshop example</title>
-<link>https://travelshop-theme.pressmind.de</link>
-<description>basierend auf pressmind®</description>
-<pubDate>Fri, 23 Apr 2021 11:24:00 +0000</pubDate>
+<title>WordPress Build</title>
+<link>https://wordpress-build.local</link>
+<description>Eine weitere WordPress-Website</description>
+<pubDate>Fri, 23 Jul 2021 07:34:24 +0000</pubDate>
 <language>de-DE</language>
 <wp:wxr_version>1.2</wp:wxr_version>
-<wp:base_site_url>https://travelshop-theme.pressmind.de</wp:base_site_url>
-<wp:base_blog_url>https://travelshop-theme.pressmind.de</wp:base_blog_url>
+<wp:base_site_url>https://wordpress-build.local</wp:base_site_url>
+<wp:base_blog_url>https://wordpress-build.local</wp:base_blog_url>
 <wp:author>
   <wp:author_id>1</wp:author_id>
   <wp:author_login>admin</wp:author_login>
-  <wp:author_email>support@pressmind.de</wp:author_email>
+  <wp:author_email>webmaster@pressmind.de</wp:author_email>
   <wp:author_display_name><![CDATA[admin]]></wp:author_display_name>
   <wp:author_first_name><![CDATA[]]></wp:author_first_name>
   <wp:author_last_name><![CDATA[]]></wp:author_last_name>
+</wp:author>
+<wp:author>
+  <wp:author_id>2</wp:author_id>
+  <wp:author_login>peter-bartl</wp:author_login>
+  <wp:author_email>p.bartl@pressmind.de</wp:author_email>
+  <wp:author_display_name><![CDATA[Peter Bartl]]></wp:author_display_name>
+  <wp:author_first_name><![CDATA[Peter]]></wp:author_first_name>
+  <wp:author_last_name><![CDATA[Bartl]]></wp:author_last_name>
 </wp:author>
 <wp:category>
   <wp:term_id>1</wp:term_id>
@@ -42,6 +50,56 @@
   <wp:category_parent/>
   <wp:cat_name><![CDATA[Allgemein]]></wp:cat_name>
 </wp:category>
+<wp:category>
+  <wp:term_id>9</wp:term_id>
+  <wp:category_nicename>ganz-weit-weg</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[ganz weit weg]]></wp:cat_name>
+</wp:category>
+<wp:category>
+  <wp:term_id>11</wp:term_id>
+  <wp:category_nicename>relax-chill</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Relax &amp; Chill]]></wp:cat_name>
+</wp:category>
+<wp:category>
+  <wp:term_id>4</wp:term_id>
+  <wp:category_nicename>sportlich-unterwegs</wp:category_nicename>
+  <wp:category_parent>allgemein</wp:category_parent>
+  <wp:cat_name><![CDATA[Sportlich unterwegs]]></wp:cat_name>
+</wp:category>
+<wp:category>
+  <wp:term_id>8</wp:term_id>
+  <wp:category_nicename>staedtetrips</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Städtetrips]]></wp:cat_name>
+</wp:category>
+<wp:category>
+  <wp:term_id>5</wp:term_id>
+  <wp:category_nicename>wildlife</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Wildlife]]></wp:cat_name>
+</wp:category>
+<wp:tag>
+  <wp:term_id>6</wp:term_id>
+  <wp:tag_slug>loewen</wp:tag_slug>
+  <wp:tag_name><![CDATA[Löwen]]></wp:tag_name>
+</wp:tag>
+<wp:tag>
+  <wp:term_id>7</wp:term_id>
+  <wp:tag_slug>paddeln</wp:tag_slug>
+  <wp:tag_name><![CDATA[Paddeln]]></wp:tag_name>
+</wp:tag>
+<wp:tag>
+  <wp:term_id>10</wp:term_id>
+  <wp:tag_slug>sightseeing</wp:tag_slug>
+  <wp:tag_name><![CDATA[Sightseeing]]></wp:tag_name>
+</wp:tag>
+<wp:tag>
+  <wp:term_id>3</wp:term_id>
+  <wp:tag_slug>stand-up-paddling</wp:tag_slug>
+  <wp:tag_name><![CDATA[Stand Up Paddling]]></wp:tag_name>
+</wp:tag>
 <wp:term>
   <wp:term_id>2</wp:term_id>
   <wp:term_taxonomy>nav_menu</wp:term_taxonomy>
@@ -56,17 +114,150 @@
   <wp:term_name><![CDATA[Allgemein]]></wp:term_name>
 </wp:term>
 <wp:term>
+  <wp:term_id>9</wp:term_id>
+  <wp:term_taxonomy>category</wp:term_taxonomy>
+  <wp:term_slug>ganz-weit-weg</wp:term_slug>
+  <wp:term_parent/>
+  <wp:term_name><![CDATA[ganz weit weg]]></wp:term_name>
+</wp:term>
+<wp:term>
+  <wp:term_id>6</wp:term_id>
+  <wp:term_taxonomy>post_tag</wp:term_taxonomy>
+  <wp:term_slug>loewen</wp:term_slug>
+  <wp:term_parent/>
+  <wp:term_name><![CDATA[Löwen]]></wp:term_name>
+</wp:term>
+<wp:term>
   <wp:term_id>2</wp:term_id>
   <wp:term_taxonomy>nav_menu</wp:term_taxonomy>
   <wp:term_slug>main</wp:term_slug>
   <wp:term_name><![CDATA[Main]]></wp:term_name>
 </wp:term>
-<generator>https://wordpress.org/?v=5.7.1</generator>
+<wp:term>
+  <wp:term_id>7</wp:term_id>
+  <wp:term_taxonomy>post_tag</wp:term_taxonomy>
+  <wp:term_slug>paddeln</wp:term_slug>
+  <wp:term_parent/>
+  <wp:term_name><![CDATA[Paddeln]]></wp:term_name>
+</wp:term>
+<wp:term>
+  <wp:term_id>11</wp:term_id>
+  <wp:term_taxonomy>category</wp:term_taxonomy>
+  <wp:term_slug>relax-chill</wp:term_slug>
+  <wp:term_parent/>
+  <wp:term_name><![CDATA[Relax &amp; Chill]]></wp:term_name>
+</wp:term>
+<wp:term>
+  <wp:term_id>10</wp:term_id>
+  <wp:term_taxonomy>post_tag</wp:term_taxonomy>
+  <wp:term_slug>sightseeing</wp:term_slug>
+  <wp:term_parent/>
+  <wp:term_name><![CDATA[Sightseeing]]></wp:term_name>
+</wp:term>
+<wp:term>
+  <wp:term_id>4</wp:term_id>
+  <wp:term_taxonomy>category</wp:term_taxonomy>
+  <wp:term_slug>sportlich-unterwegs</wp:term_slug>
+  <wp:term_parent>allgemein</wp:term_parent>
+  <wp:term_name><![CDATA[Sportlich unterwegs]]></wp:term_name>
+</wp:term>
+<wp:term>
+  <wp:term_id>8</wp:term_id>
+  <wp:term_taxonomy>category</wp:term_taxonomy>
+  <wp:term_slug>staedtetrips</wp:term_slug>
+  <wp:term_parent/>
+  <wp:term_name><![CDATA[Städtetrips]]></wp:term_name>
+</wp:term>
+<wp:term>
+  <wp:term_id>3</wp:term_id>
+  <wp:term_taxonomy>post_tag</wp:term_taxonomy>
+  <wp:term_slug>stand-up-paddling</wp:term_slug>
+  <wp:term_parent/>
+  <wp:term_name><![CDATA[Stand Up Paddling]]></wp:term_name>
+</wp:term>
+<wp:term>
+  <wp:term_id>5</wp:term_id>
+  <wp:term_taxonomy>category</wp:term_taxonomy>
+  <wp:term_slug>wildlife</wp:term_slug>
+  <wp:term_parent/>
+  <wp:term_name><![CDATA[Wildlife]]></wp:term_name>
+</wp:term>
+<generator>https://wordpress.org/?v=5.8</generator>
 <item>
   <title>Beispiel-Seite</title>
-  <link>https://travelshop-theme.pressmind.de/beispiel-seite/</link>
-  <pubDate>Tue, 08 Sep 2020 10:47:17 +0000</pubDate>
+  <link>https://wordpress-build.local/beispiel-seite/</link>
+  <pubDate>Thu, 22 Jul 2021 09:45:47 +0000</pubDate>
   <dc:creator>admin</dc:creator>
+  <guid isPermaLink="false">https://wordpress-build.local/?page_id=2</guid>
+  <description/>
+  <content:encoded><![CDATA[<!-- wp:paragraph -->
+<p>Dies ist eine Beispiel-Seite. Sie unterscheidet sich von Beiträgen, da sie stets an derselben Stelle bleibt und (bei den meisten Themes) in der Website-Navigation angezeigt wird. Die meisten starten mit einem Impressum, der Datenschutzerklärung oder einer „Über&nbsp;uns“-Seite, um sich potenziellen Besuchern der Website vorzustellen. Dort könnte zum Beispiel stehen:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote"><p>Hallo! Tagsüber arbeite ich als Fahrradkurier, nachts bin ich ein aufstrebender Schauspieler und dies hier ist meine Website. Ich lebe in Berlin, habe einen großen Hund namens Jack, mag Pi&#241;a Coladas, jedoch weniger (ohne Schirm) im Regen stehen gelassen zu werden.</p></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>...oder so etwas wie das hier:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote"><p>Das Unternehmen XYZ wurde 1971 gegründet und versorgt die Öffentlichkeit seither mit qualitativ hochwertigen Produkten. An seinem Standort in einer kleinen Großstadt beschäftigt der Betrieb über 2.000 Menschen und unterstützt die Stadtbewohner in vielfacher Hinsicht.</p></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Als neuer WordPress-Benutzer solltest du <a href="https://wordpress-build.local/wp-admin/">dein Dashboard</a> aufrufen, um diese Seite zu löschen und neue Seiten und Beiträge für deine Website erstellen. Viel Spaß!</p>
+<!-- /wp:paragraph -->]]></content:encoded>
+  <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+  <wp:post_id>2</wp:post_id>
+  <wp:post_date>2021-07-22 11:45:47</wp:post_date>
+  <wp:post_date_gmt>2021-07-22 09:45:47</wp:post_date_gmt>
+  <wp:comment_status>closed</wp:comment_status>
+  <wp:ping_status>open</wp:ping_status>
+  <wp:post_name>beispiel-seite</wp:post_name>
+  <wp:status>publish</wp:status>
+  <wp:post_parent>0</wp:post_parent>
+  <wp:menu_order>0</wp:menu_order>
+  <wp:post_type>page</wp:post_type>
+  <wp:post_password/>
+  <wp:is_sticky>0</wp:is_sticky>
+  <wp:postmeta>
+    <wp:meta_key>_wp_page_template</wp:meta_key>
+    <wp:meta_value><![CDATA[default]]></wp:meta_value>
+  </wp:postmeta>
+</item>
+<item>
+  <title>Datenschutzerklärung</title>
+  <link>https://wordpress-build.local/?page_id=3</link>
+  <pubDate>Thu, 22 Jul 2021 09:45:47 +0000</pubDate>
+  <dc:creator>admin</dc:creator>
+  <guid isPermaLink="false">https://wordpress-build.local/?page_id=3</guid>
+  <description/>
+  <content:encoded><![CDATA[<!-- wp:heading --><h2>Wer wir sind</h2><!-- /wp:heading --><!-- wp:paragraph --><p><strong class="privacy-policy-tutorial">Textvorschlag: </strong>Die Adresse unserer Website ist: https://wordpress-build.local.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Kommentare</h2><!-- /wp:heading --><!-- wp:paragraph --><p><strong class="privacy-policy-tutorial">Textvorschlag: </strong>Wenn Besucher Kommentare auf der Website schreiben, sammeln wir die Daten, die im Kommentar-Formular angezeigt werden, außerdem die IP-Adresse des Besuchers und den User-Agent-String (damit wird der Browser identifiziert), um die Erkennung von Spam zu unterstützen.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Aus deiner E-Mail-Adresse kann eine anonymisierte Zeichenfolge erstellt (auch Hash genannt) und dem Gravatar-Dienst übergeben werden, um zu prüfen, ob du diesen benutzt. Die Datenschutzerklärung des Gravatar-Dienstes findest du hier: https://automattic.com/privacy/. Nachdem dein Kommentar freigegeben wurde, ist dein Profilbild öffentlich im Kontext deines Kommentars sichtbar.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Medien</h2><!-- /wp:heading --><!-- wp:paragraph --><p><strong class="privacy-policy-tutorial">Textvorschlag: </strong>Wenn du ein registrierter Benutzer bist und Fotos auf diese Website lädst, solltest du vermeiden, Fotos mit einem EXIF-GPS-Standort hochzuladen. Besucher dieser Website könnten Fotos, die auf dieser Website gespeichert sind, herunterladen und deren Standort-Informationen extrahieren.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Cookies</h2><!-- /wp:heading --><!-- wp:paragraph --><p><strong class="privacy-policy-tutorial">Textvorschlag: </strong>Wenn du einen Kommentar auf unserer Website schreibst, kann das eine Einwilligung sein, deinen Namen, E-Mail-Adresse und Website in Cookies zu speichern. Dies ist eine Komfortfunktion, damit du nicht, wenn du einen weiteren Kommentar schreibst, all diese Daten erneut eingeben musst. Diese Cookies werden ein Jahr lang gespeichert.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Falls du ein Konto hast und dich auf dieser Website anmeldest, werden wir ein temporäres Cookie setzen, um festzustellen, ob dein Browser Cookies akzeptiert. Dieses Cookie enthält keine personenbezogenen Daten und wird verworfen, wenn du deinen Browser schließt.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Wenn du dich anmeldest, werden wir einige Cookies einrichten, um deine Anmeldeinformationen und Anzeigeoptionen zu speichern. Anmelde-Cookies verfallen nach zwei Tagen und Cookies für die Anzeigeoptionen nach einem Jahr. Falls du bei der Anmeldung „Angemeldet bleiben“ auswählst, wird deine Anmeldung zwei Wochen lang aufrechterhalten. Mit der Abmeldung aus deinem Konto werden die Anmelde-Cookies gelöscht.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Wenn du einen Artikel bearbeitest oder veröffentlichst, wird ein zusätzlicher Cookie in deinem Browser gespeichert. Dieser Cookie enthält keine personenbezogenen Daten und verweist nur auf die Beitrags-ID des Artikels, den du gerade bearbeitet hast. Der Cookie verfällt nach einem Tag.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Eingebettete Inhalte von anderen Websites</h2><!-- /wp:heading --><!-- wp:paragraph --><p><strong class="privacy-policy-tutorial">Textvorschlag: </strong>Beiträge auf dieser Website können eingebettete Inhalte beinhalten (z.&nbsp;B. Videos, Bilder, Beiträge etc.). Eingebettete Inhalte von anderen Websites verhalten sich exakt so, als ob der Besucher die andere Website besucht hätte.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Diese Websites können Daten über dich sammeln, Cookies benutzen, zusätzliche Tracking-Dienste von Dritten einbetten und deine Interaktion mit diesem eingebetteten Inhalt aufzeichnen, inklusive deiner Interaktion mit dem eingebetteten Inhalt, falls du ein Konto hast und auf dieser Website angemeldet bist.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Mit wem wir deine Daten teilen</h2><!-- /wp:heading --><!-- wp:paragraph --><p><strong class="privacy-policy-tutorial">Textvorschlag: </strong>Wenn du eine Zurücksetzung des Passworts beantragst, wird deine IP-Adresse in der E-Mail zur Zurücksetzung enthalten sein.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Wie lange wir deine Daten speichern</h2><!-- /wp:heading --><!-- wp:paragraph --><p><strong class="privacy-policy-tutorial">Textvorschlag: </strong>Wenn du einen Kommentar schreibst, wird dieser inklusive Metadaten zeitlich unbegrenzt gespeichert. Auf diese Art können wir Folgekommentare automatisch erkennen und freigeben, anstatt sie in einer Moderations-Warteschlange festzuhalten.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Für Benutzer, die sich auf unserer Website registrieren, speichern wir zusätzlich die persönlichen Informationen, die sie in ihren Benutzerprofilen angeben. Alle Benutzer können jederzeit ihre persönlichen Informationen einsehen, verändern oder löschen (der Benutzername kann nicht verändert werden). Administratoren der Website können diese Informationen ebenfalls einsehen und verändern.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Welche Rechte du an deinen Daten hast</h2><!-- /wp:heading --><!-- wp:paragraph --><p><strong class="privacy-policy-tutorial">Textvorschlag: </strong>Wenn du ein Konto auf dieser Website besitzt oder Kommentare geschrieben hast, kannst du einen Export deiner personenbezogenen Daten bei uns anfordern, inklusive aller Daten, die du uns mitgeteilt hast. Darüber hinaus kannst du die Löschung aller personenbezogenen Daten, die wir von dir gespeichert haben, anfordern. Dies umfasst nicht die Daten, die wir aufgrund administrativer, rechtlicher oder sicherheitsrelevanter Notwendigkeiten aufbewahren müssen.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Wohin wir deine Daten senden</h2><!-- /wp:heading --><!-- wp:paragraph --><p><strong class="privacy-policy-tutorial">Textvorschlag: </strong>Besucher-Kommentare könnten von einem automatisierten Dienst zur Spam-Erkennung untersucht werden.</p><!-- /wp:paragraph -->]]></content:encoded>
+  <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+  <wp:post_id>3</wp:post_id>
+  <wp:post_date>2021-07-22 11:45:47</wp:post_date>
+  <wp:post_date_gmt>2021-07-22 09:45:47</wp:post_date_gmt>
+  <wp:comment_status>closed</wp:comment_status>
+  <wp:ping_status>open</wp:ping_status>
+  <wp:post_name>datenschutzerklaerung</wp:post_name>
+  <wp:status>draft</wp:status>
+  <wp:post_parent>0</wp:post_parent>
+  <wp:menu_order>0</wp:menu_order>
+  <wp:post_type>page</wp:post_type>
+  <wp:post_password/>
+  <wp:is_sticky>0</wp:is_sticky>
+  <wp:postmeta>
+    <wp:meta_key>_wp_page_template</wp:meta_key>
+    <wp:meta_value><![CDATA[default]]></wp:meta_value>
+  </wp:postmeta>
+</item>
+<item>
+  <title>Beispiel-Seite</title>
+  <link>https://wordpress-build.local/?page_id=4</link>
+  <pubDate>Tue, 08 Sep 2020 10:47:17 +0000</pubDate>
+  <dc:creator/>
   <guid isPermaLink="false">https://travelshop-theme.pressmind.de/?page_id=2</guid>
   <description/>
   <content:encoded><![CDATA[<!-- wp:paragraph -->
@@ -89,13 +280,13 @@
 <p>Als neuer WordPress-Benutzer solltest du <a href="https://travelshop-theme.pressmind.de/wp-admin/">dein Dashboard</a> aufrufen, um diese Seite zu löschen und neue Seiten und Beiträge für deine Website erstellen. Viel Spaß!</p>
 <!-- /wp:paragraph -->]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-  <wp:post_id>2</wp:post_id>
+  <wp:post_id>4</wp:post_id>
   <wp:post_date>2020-09-08 12:47:17</wp:post_date>
   <wp:post_date_gmt>2020-09-08 10:47:17</wp:post_date_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>open</wp:ping_status>
-  <wp:post_name>beispiel-seite</wp:post_name>
-  <wp:status>publish</wp:status>
+  <wp:post_name>beispiel-seite-2__trashed</wp:post_name>
+  <wp:status>trash</wp:status>
   <wp:post_parent>0</wp:post_parent>
   <wp:menu_order>0</wp:menu_order>
   <wp:post_type>page</wp:post_type>
@@ -105,17 +296,29 @@
     <wp:meta_key>_wp_page_template</wp:meta_key>
     <wp:meta_value><![CDATA[default]]></wp:meta_value>
   </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_wp_trash_meta_status</wp:meta_key>
+    <wp:meta_value><![CDATA[publish]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_wp_trash_meta_time</wp:meta_key>
+    <wp:meta_value><![CDATA[1626949447]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_wp_desired_post_slug</wp:meta_key>
+    <wp:meta_value><![CDATA[beispiel-seite-2]]></wp:meta_value>
+  </wp:postmeta>
 </item>
 <item>
   <title>Datenschutzerklärung</title>
-  <link>https://travelshop-theme.pressmind.de/?page_id=3</link>
+  <link>https://wordpress-build.local/?page_id=5</link>
   <pubDate>Tue, 08 Sep 2020 10:47:17 +0000</pubDate>
-  <dc:creator>admin</dc:creator>
+  <dc:creator/>
   <guid isPermaLink="false">https://travelshop-theme.pressmind.de/?page_id=3</guid>
   <description/>
   <content:encoded><![CDATA[<!-- wp:heading --><h2>Wer wir sind</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Die Adresse unserer Website ist: https://travelshop-theme.pressmind.de.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Welche personenbezogenen Daten wir sammeln und warum wir sie sammeln</h2><!-- /wp:heading --><!-- wp:heading {"level":3} --><h3>Kommentare</h3><!-- /wp:heading --><!-- wp:paragraph --><p>Wenn Besucher Kommentare auf der Website schreiben, sammeln wir die Daten, die im Kommentar-Formular angezeigt werden, außerdem die IP-Adresse des Besuchers und den User-Agent-String (damit wird der Browser identifiziert), um die Erkennung von Spam zu unterstützen.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Aus deiner E-Mail-Adresse kann eine anonymisierte Zeichenfolge erstellt (auch Hash genannt) und dem Gravatar-Dienst übergeben werden, um zu prüfen, ob du diesen benutzt. Die Datenschutzerklärung des Gravatar-Dienstes findest du hier: https://automattic.com/privacy/. Nachdem dein Kommentar freigegeben wurde, ist dein Profilbild öffentlich im Kontext deines Kommentars sichtbar.</p><!-- /wp:paragraph --><!-- wp:heading {"level":3} --><h3>Medien</h3><!-- /wp:heading --><!-- wp:paragraph --><p>Wenn du ein registrierter Benutzer bist und Fotos auf diese Website lädst, solltest du vermeiden, Fotos mit einem EXIF-GPS-Standort hochzuladen. Besucher dieser Website könnten Fotos, die auf dieser Website gespeichert sind, herunterladen und deren Standort-Informationen extrahieren.</p><!-- /wp:paragraph --><!-- wp:heading {"level":3} --><h3>Kontaktformulare</h3><!-- /wp:heading --><!-- wp:heading {"level":3} --><h3>Cookies</h3><!-- /wp:heading --><!-- wp:paragraph --><p>Wenn du einen Kommentar auf unserer Website schreibst, kann das eine Einwilligung sein, deinen Namen, E-Mail-Adresse und Website in Cookies zu speichern. Dies ist eine Komfortfunktion, damit du nicht, wenn du einen weiteren Kommentar schreibst, all diese Daten erneut eingeben musst. Diese Cookies werden ein Jahr lang gespeichert.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Falls du ein Konto hast und dich auf dieser Website anmeldest, werden wir ein temporäres Cookie setzen, um festzustellen, ob dein Browser Cookies akzeptiert. Dieses Cookie enthält keine personenbezogenen Daten und wird verworfen, wenn du deinen Browser schließt.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Wenn du dich anmeldest, werden wir einige Cookies einrichten, um deine Anmeldeinformationen und Anzeigeoptionen zu speichern. Anmelde-Cookies verfallen nach zwei Tagen und Cookies für die Anzeigeoptionen nach einem Jahr. Falls du bei der Anmeldung „Angemeldet bleiben“ auswählst, wird deine Anmeldung zwei Wochen lang aufrechterhalten. Mit der Abmeldung aus deinem Konto werden die Anmelde-Cookies gelöscht.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Wenn du einen Artikel bearbeitest oder veröffentlichst, wird ein zusätzlicher Cookie in deinem Browser gespeichert. Dieser Cookie enthält keine personenbezogenen Daten und verweist nur auf die Beitrags-ID des Artikels, den du gerade bearbeitet hast. Der Cookie verfällt nach einem Tag.</p><!-- /wp:paragraph --><!-- wp:heading {"level":3} --><h3>Eingebettete Inhalte von anderen Websites</h3><!-- /wp:heading --><!-- wp:paragraph --><p>Beiträge auf dieser Website können eingebettete Inhalte beinhalten (z.&nbsp;B. Videos, Bilder, Beiträge etc.). Eingebettete Inhalte von anderen Websites verhalten sich exakt so, als ob der Besucher die andere Website besucht hätte.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Diese Websites können Daten über dich sammeln, Cookies benutzen, zusätzliche Tracking-Dienste von Dritten einbetten und deine Interaktion mit diesem eingebetteten Inhalt aufzeichnen, inklusive deiner Interaktion mit dem eingebetteten Inhalt, falls du ein Konto hast und auf dieser Website angemeldet bist.</p><!-- /wp:paragraph --><!-- wp:heading {"level":3} --><h3>Analysedienste</h3><!-- /wp:heading --><!-- wp:heading --><h2>Mit wem wir deine Daten teilen</h2><!-- /wp:heading --><!-- wp:heading --><h2>Wie lange wir deine Daten speichern</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Wenn du einen Kommentar schreibst, wird dieser inklusive Metadaten zeitlich unbegrenzt gespeichert. Auf diese Art können wir Folgekommentare automatisch erkennen und freigeben, anstatt sie in einer Moderations-Warteschlange festzuhalten.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Für Benutzer, die sich auf unserer Website registrieren, speichern wir zusätzlich die persönlichen Informationen, die sie in ihren Benutzerprofilen angeben. Alle Benutzer können jederzeit ihre persönlichen Informationen einsehen, verändern oder löschen (der Benutzername kann nicht verändert werden). Administratoren der Website können diese Informationen ebenfalls einsehen und verändern.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Welche Rechte du an deinen Daten hast</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Wenn du ein Konto auf dieser Website besitzt oder Kommentare geschrieben hast, kannst du einen Export deiner personenbezogenen Daten bei uns anfordern, inklusive aller Daten, die du uns mitgeteilt hast. Darüber hinaus kannst du die Löschung aller personenbezogenen Daten, die wir von dir gespeichert haben, anfordern. Dies umfasst nicht die Daten, die wir aufgrund administrativer, rechtlicher oder sicherheitsrelevanter Notwendigkeiten aufbewahren müssen.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Wohin wir deine Daten senden</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Besucher-Kommentare könnten von einem automatisierten Dienst zur Spam-Erkennung untersucht werden.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Deine Kontakt-Informationen</h2><!-- /wp:heading --><!-- wp:heading --><h2>Weitere Informationen</h2><!-- /wp:heading --><!-- wp:heading {"level":3} --><h3>Wie wir deine Daten schützen</h3><!-- /wp:heading --><!-- wp:heading {"level":3} --><h3>Welche Maßnahmen wir bei Datenschutzverletzungen anbieten</h3><!-- /wp:heading --><!-- wp:heading {"level":3} --><h3>Von welchen Drittanbietern wir Daten erhalten</h3><!-- /wp:heading --><!-- wp:heading {"level":3} --><h3>Welche automatisierte Entscheidungsfindung und/oder Profilerstellung wir mit Benutzerdaten durchführen</h3><!-- /wp:heading --><!-- wp:heading {"level":3} --><h3>Vorausgesetzte Offenlegungspflichten der Industrie</h3><!-- /wp:heading -->]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-  <wp:post_id>3</wp:post_id>
+  <wp:post_id>5</wp:post_id>
   <wp:post_date>2020-09-08 12:47:17</wp:post_date>
   <wp:post_date_gmt>2020-09-08 10:47:17</wp:post_date_gmt>
   <wp:comment_status>closed</wp:comment_status>
@@ -134,14 +337,14 @@
 </item>
 <item>
   <title>adventure-1836601</title>
-  <link>https://travelshop-theme.pressmind.de/adventure-1836601/</link>
+  <link>https://wordpress-build.local/adventure-1836601/</link>
   <pubDate>Sun, 25 Oct 2020 11:56:37 +0000</pubDate>
-  <dc:creator>admin</dc:creator>
+  <dc:creator/>
   <guid isPermaLink="false">{ATTACHMENT_URL}/adventure.jpg</guid>
   <description/>
   <content:encoded><![CDATA[]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-  <wp:post_id>5</wp:post_id>
+  <wp:post_id>6</wp:post_id>
   <wp:post_date>2020-10-25 12:56:37</wp:post_date>
   <wp:post_date_gmt>2020-10-25 11:56:37</wp:post_date_gmt>
   <wp:comment_status>open</wp:comment_status>
@@ -157,14 +360,14 @@
 </item>
 <item>
   <title>great-wall-of-china-5483516</title>
-  <link>https://travelshop-theme.pressmind.de/great-wall-of-china-5483516/</link>
+  <link>https://wordpress-build.local/great-wall-of-china-5483516/</link>
   <pubDate>Sun, 25 Oct 2020 11:56:44 +0000</pubDate>
-  <dc:creator>admin</dc:creator>
+  <dc:creator/>
   <guid isPermaLink="false">{ATTACHMENT_URL}/great-wall-of-china.jpg</guid>
   <description/>
   <content:encoded><![CDATA[]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-  <wp:post_id>6</wp:post_id>
+  <wp:post_id>7</wp:post_id>
   <wp:post_date>2020-10-25 12:56:44</wp:post_date>
   <wp:post_date_gmt>2020-10-25 11:56:44</wp:post_date_gmt>
   <wp:comment_status>open</wp:comment_status>
@@ -180,14 +383,14 @@
 </item>
 <item>
   <title>london-140785</title>
-  <link>https://travelshop-theme.pressmind.de/london-140785/</link>
+  <link>https://wordpress-build.local/london-140785/</link>
   <pubDate>Sun, 25 Oct 2020 11:56:50 +0000</pubDate>
-  <dc:creator>admin</dc:creator>
+  <dc:creator/>
   <guid isPermaLink="false">{ATTACHMENT_URL}/london.jpg</guid>
   <description/>
   <content:encoded><![CDATA[]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-  <wp:post_id>7</wp:post_id>
+  <wp:post_id>8</wp:post_id>
   <wp:post_date>2020-10-25 12:56:50</wp:post_date>
   <wp:post_date_gmt>2020-10-25 11:56:50</wp:post_date_gmt>
   <wp:comment_status>open</wp:comment_status>
@@ -203,14 +406,14 @@
 </item>
 <item>
   <title>maldives-666122</title>
-  <link>https://travelshop-theme.pressmind.de/maldives-666122/</link>
+  <link>https://wordpress-build.local/maldives-666122/</link>
   <pubDate>Sun, 25 Oct 2020 11:56:54 +0000</pubDate>
-  <dc:creator>admin</dc:creator>
+  <dc:creator/>
   <guid isPermaLink="false">{ATTACHMENT_URL}/maldives.jpg</guid>
   <description/>
   <content:encoded><![CDATA[]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-  <wp:post_id>8</wp:post_id>
+  <wp:post_id>9</wp:post_id>
   <wp:post_date>2020-10-25 12:56:54</wp:post_date>
   <wp:post_date_gmt>2020-10-25 11:56:54</wp:post_date_gmt>
   <wp:comment_status>open</wp:comment_status>
@@ -226,14 +429,14 @@
 </item>
 <item>
   <title>mountains-3959204</title>
-  <link>https://travelshop-theme.pressmind.de/mountains-3959204/</link>
+  <link>https://wordpress-build.local/mountains-3959204/</link>
   <pubDate>Sun, 25 Oct 2020 11:56:57 +0000</pubDate>
-  <dc:creator>admin</dc:creator>
+  <dc:creator/>
   <guid isPermaLink="false">{ATTACHMENT_URL}/mountains.jpg</guid>
   <description/>
   <content:encoded><![CDATA[]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-  <wp:post_id>9</wp:post_id>
+  <wp:post_id>10</wp:post_id>
   <wp:post_date>2020-10-25 12:56:57</wp:post_date>
   <wp:post_date_gmt>2020-10-25 11:56:57</wp:post_date_gmt>
   <wp:comment_status>open</wp:comment_status>
@@ -249,14 +452,14 @@
 </item>
 <item>
   <title>standup-paddle-boarding-2404330</title>
-  <link>https://travelshop-theme.pressmind.de/standup-paddle-boarding-2404330/</link>
+  <link>https://wordpress-build.local/standup-paddle-boarding-2404330/</link>
   <pubDate>Sun, 25 Oct 2020 11:57:02 +0000</pubDate>
-  <dc:creator>admin</dc:creator>
+  <dc:creator/>
   <guid isPermaLink="false">{ATTACHMENT_URL}/standup-paddle-boarding.jpg</guid>
   <description/>
   <content:encoded><![CDATA[]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-  <wp:post_id>10</wp:post_id>
+  <wp:post_id>11</wp:post_id>
   <wp:post_date>2020-10-25 12:57:02</wp:post_date>
   <wp:post_date_gmt>2020-10-25 11:57:02</wp:post_date_gmt>
   <wp:comment_status>open</wp:comment_status>
@@ -272,14 +475,14 @@
 </item>
 <item>
   <title>columbus-1936633</title>
-  <link>https://travelshop-theme.pressmind.de/columbus-1936633/</link>
+  <link>https://wordpress-build.local/columbus-1936633/</link>
   <pubDate>Sun, 25 Oct 2020 11:59:01 +0000</pubDate>
-  <dc:creator>admin</dc:creator>
+  <dc:creator/>
   <guid isPermaLink="false">{ATTACHMENT_URL}/columbus.jpg</guid>
   <description/>
   <content:encoded><![CDATA[]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-  <wp:post_id>11</wp:post_id>
+  <wp:post_id>12</wp:post_id>
   <wp:post_date>2020-10-25 12:59:01</wp:post_date>
   <wp:post_date_gmt>2020-10-25 11:59:01</wp:post_date_gmt>
   <wp:comment_status>open</wp:comment_status>
@@ -295,14 +498,14 @@
 </item>
 <item>
   <title>lions-577104</title>
-  <link>https://travelshop-theme.pressmind.de/lions-577104/</link>
+  <link>https://wordpress-build.local/lions-577104/</link>
   <pubDate>Sun, 25 Oct 2020 11:59:26 +0000</pubDate>
-  <dc:creator>admin</dc:creator>
+  <dc:creator/>
   <guid isPermaLink="false">{ATTACHMENT_URL}/lions.jpg</guid>
   <description/>
   <content:encoded><![CDATA[]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-  <wp:post_id>12</wp:post_id>
+  <wp:post_id>13</wp:post_id>
   <wp:post_date>2020-10-25 12:59:26</wp:post_date>
   <wp:post_date_gmt>2020-10-25 11:59:26</wp:post_date_gmt>
   <wp:comment_status>open</wp:comment_status>
@@ -318,13 +521,45 @@
 </item>
 <item>
   <title>Großes Kino</title>
-  <link>https://travelshop-theme.pressmind.de/2020/10/25/grosses-kino/</link>
+  <link>https://wordpress-build.local/grosses-kino/</link>
   <pubDate>Sun, 25 Oct 2020 12:02:43 +0000</pubDate>
-  <dc:creator>admin</dc:creator>
+  <dc:creator>peter-bartl</dc:creator>
   <guid isPermaLink="false">https://travelshop-theme.pressmind.de/?p=15</guid>
   <description/>
   <content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>Just a sample page!</p>
+<p><strong>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote"><p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans.&nbsp;</p><cite>Das ist die Zitatquelle</cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Ein kleines Bächlein namens Duden fließt durch ihren Ort und versorgt sie mit den nötigen Regelialien. Es ist ein paradiesmatisches Land, in dem einem gebratene Satzteile in den Mund fliegen. Nicht einmal von der allmächtigen Interpunktion werden die <a href="http://Blog" data-type="URL" data-id="Blog">Blindtexte </a>beherrscht – ein geradezu unorthographisches Leben. Eines Tages aber beschloß eine kleine Zeile Blindtext, ihr Name war Lorem Ipsum, hinaus zu gehen in die weite Grammatik. Der große Oxmox riet ihr davon ab, da es dort wimmele von bösen Kommata, wilden Fragezeichen und hinterhältigen Semikoli, doch das Blindtextchen ließ sich nicht beirren. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>H2 Headline</h2>
+<!-- /wp:heading -->
+
+<!-- wp:image {"id":13,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="{ATTACHMENT_URL}/lions-825x515.jpg" alt="" class="wp-image-13"/><figcaption>Wer hat den König der Löwen schon einmal im Kino gesehen?</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Es packte seine sieben Versalien, schob sich sein Initial in den Gürtel und machte sich auf den Weg. Als es die ersten Hügel des Kursivgebirges erklommen hatte, warf es einen letzten Blick zurück auf die Skyline seiner Heimatstadt Buchstabhausen, die Headline von Alphabetdorf und die Subline seiner eigenen Straße, der Zeilengasse. Wehmütig lief ihm eine rhetorische Frage über die Wange, dann setzte es seinen Weg fort. Unterwegs traf es eine Copy. Die Copy warnte das Blindtextchen, da, wo sie herkäme wäre sie</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Vorteile</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li>Vorteil Numero Uno</li><li>Noch ein Vorteil</li><li>Und noch einer!</li><li>Test test 123!</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p></p>
 <!-- /wp:paragraph -->]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
   <wp:post_id>15</wp:post_id>
@@ -339,21 +574,96 @@
   <wp:post_type>post</wp:post_type>
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
-  <category domain="category" nicename="allgemein"><![CDATA[Allgemein]]></category>
+  <category domain="category" nicename="relax-chill"><![CDATA[Relax &amp; Chill]]></category>
+  <category domain="category" nicename="staedtetrips"><![CDATA[Städtetrips]]></category>
   <wp:postmeta>
     <wp:meta_key>_thumbnail_id</wp:meta_key>
-    <wp:meta_value><![CDATA[11]]></wp:meta_value>
+    <wp:meta_value><![CDATA[12]]></wp:meta_value>
   </wp:postmeta>
+  <wp:comment>
+    <wp:comment_id>1</wp:comment_id>
+    <wp:comment_author><![CDATA[admin]]></wp:comment_author>
+    <wp:comment_author_email>webmaster@pressmind.de</wp:comment_author_email>
+    <wp:comment_author_url>https://wordpress-build.local</wp:comment_author_url>
+    <wp:comment_author_IP>::1</wp:comment_author_IP>
+    <wp:comment_date>2021-07-22 14:08:14</wp:comment_date>
+    <wp:comment_date_gmt>2021-07-22 12:08:14</wp:comment_date_gmt>
+    <wp:comment_content><![CDATA[Es packte seine sieben Versalien, schob sich sein Initial in den Gürtel und machte sich auf den Weg. Als es die ersten Hügel des Kursivgebirges erklommen hatte, warf es einen letzten Blick zurück auf die Skyline seiner Heimatstadt Buchstabhausen, die Headline von Alphabetdorf und die Subline seiner eigenen Straße, der Zeilengasse.]]></wp:comment_content>
+    <wp:comment_approved>1</wp:comment_approved>
+    <wp:comment_type>comment</wp:comment_type>
+    <wp:comment_parent>0</wp:comment_parent>
+    <wp:comment_user_id>1</wp:comment_user_id>
+  </wp:comment>
+  <wp:comment>
+    <wp:comment_id>2</wp:comment_id>
+    <wp:comment_author><![CDATA[admin]]></wp:comment_author>
+    <wp:comment_author_email>webmaster@pressmind.de</wp:comment_author_email>
+    <wp:comment_author_url>https://wordpress-build.local</wp:comment_author_url>
+    <wp:comment_author_IP>::1</wp:comment_author_IP>
+    <wp:comment_date>2021-07-22 14:08:43</wp:comment_date>
+    <wp:comment_date_gmt>2021-07-22 12:08:43</wp:comment_date_gmt>
+    <wp:comment_content><![CDATA[Es packte seine sieben Versalien, schob sich sein Initial in den Gürtel und machte sich auf den Weg. Als es die ersten Hügel sah.]]></wp:comment_content>
+    <wp:comment_approved>1</wp:comment_approved>
+    <wp:comment_type>comment</wp:comment_type>
+    <wp:comment_parent>1</wp:comment_parent>
+    <wp:comment_user_id>1</wp:comment_user_id>
+  </wp:comment>
+  <wp:comment>
+    <wp:comment_id>3</wp:comment_id>
+    <wp:comment_author><![CDATA[Franz Meier]]></wp:comment_author>
+    <wp:comment_author_email>trash@pressmind.de</wp:comment_author_email>
+    <wp:comment_author_url/>
+    <wp:comment_author_IP>::1</wp:comment_author_IP>
+    <wp:comment_date>2021-07-22 14:09:45</wp:comment_date>
+    <wp:comment_date_gmt>2021-07-22 12:09:45</wp:comment_date_gmt>
+    <wp:comment_content><![CDATA[Die Skyline seiner Heimatstadt Buchstabhausen, die Headline von Alphabetdorf und die Subline seiner eigenen Straße, der Zeilengasse. Wehmütig lief ihm eine rhetorische Frage über die Wange, dann setzte es seinen Weg fort. Unterwegs traf es eine Copy. Die Copy warnte das Blindtextchen, da, wo sie herkäme wäre sie]]></wp:comment_content>
+    <wp:comment_approved>1</wp:comment_approved>
+    <wp:comment_type>comment</wp:comment_type>
+    <wp:comment_parent>0</wp:comment_parent>
+    <wp:comment_user_id>0</wp:comment_user_id>
+  </wp:comment>
 </item>
 <item>
   <title>Best of Malediven</title>
-  <link>https://travelshop-theme.pressmind.de/2020/10/25/best-of-malediven/</link>
+  <link>https://wordpress-build.local/best-of-malediven/</link>
   <pubDate>Sun, 25 Oct 2020 12:03:45 +0000</pubDate>
-  <dc:creator>admin</dc:creator>
+  <dc:creator>peter-bartl</dc:creator>
   <guid isPermaLink="false">https://travelshop-theme.pressmind.de/?p=18</guid>
   <description/>
   <content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>Just a sample page!</p>
+<p><strong>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote"><p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans.&nbsp;</p><cite>Das ist die Zitatquelle</cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Ein kleines Bächlein namens Duden fließt durch ihren Ort und versorgt sie mit den nötigen Regelialien. Es ist ein paradiesmatisches Land, in dem einem gebratene Satzteile in den Mund fliegen. Nicht einmal von der allmächtigen Interpunktion werden die <a href="http://Blog" data-type="URL" data-id="Blog">Blindtexte </a>beherrscht – ein geradezu unorthographisches Leben. Eines Tages aber beschloß eine kleine Zeile Blindtext, ihr Name war Lorem Ipsum, hinaus zu gehen in die weite Grammatik. Der große Oxmox riet ihr davon ab, da es dort wimmele von bösen Kommata, wilden Fragezeichen und hinterhältigen Semikoli, doch das Blindtextchen ließ sich nicht beirren. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>H2 Headline</h2>
+<!-- /wp:heading -->
+
+<!-- wp:image {"id":11,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="{ATTACHMENT_URL}/standup-paddle-boarding-825x515.jpg" alt="" class="wp-image-11"/><figcaption>Man sollte die Küsten unbedingt auf eigene Faust erkunden.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Es packte seine sieben Versalien, schob sich sein Initial in den Gürtel und machte sich auf den Weg. Als es die ersten Hügel des Kursivgebirges erklommen hatte, warf es einen letzten Blick zurück auf die Skyline seiner Heimatstadt Buchstabhausen, die Headline von Alphabetdorf und die Subline seiner eigenen Straße, der Zeilengasse. Wehmütig lief ihm eine rhetorische Frage über die Wange, dann setzte es seinen Weg fort. Unterwegs traf es eine Copy. Die Copy warnte das Blindtextchen, da, wo sie herkäme wäre sie</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Vorteile</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li>Vorteil Numero Uno</li><li>Noch ein Vorteil</li><li>Und noch einer!</li><li>Test test 123!</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p></p>
 <!-- /wp:paragraph -->]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
   <wp:post_id>18</wp:post_id>
@@ -368,21 +678,69 @@
   <wp:post_type>post</wp:post_type>
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
-  <category domain="category" nicename="allgemein"><![CDATA[Allgemein]]></category>
+  <category domain="category" nicename="ganz-weit-weg"><![CDATA[ganz weit weg]]></category>
+  <category domain="category" nicename="relax-chill"><![CDATA[Relax &amp; Chill]]></category>
+  <category domain="post_tag" nicename="stand-up-paddling"><![CDATA[Stand Up Paddling]]></category>
   <wp:postmeta>
     <wp:meta_key>_thumbnail_id</wp:meta_key>
-    <wp:meta_value><![CDATA[8]]></wp:meta_value>
+    <wp:meta_value><![CDATA[9]]></wp:meta_value>
   </wp:postmeta>
+  <wp:comment>
+    <wp:comment_id>4</wp:comment_id>
+    <wp:comment_author><![CDATA[Franz Meier]]></wp:comment_author>
+    <wp:comment_author_email>trash@pressmind.de</wp:comment_author_email>
+    <wp:comment_author_url/>
+    <wp:comment_author_IP>::1</wp:comment_author_IP>
+    <wp:comment_date>2021-07-22 14:10:08</wp:comment_date>
+    <wp:comment_date_gmt>2021-07-22 12:10:08</wp:comment_date_gmt>
+    <wp:comment_content><![CDATA[Die Skyline seiner Heimatstadt Buchstabhausen, die Headline von Alphabetdorf und die Subline seiner eigenen Straße, der Zeilengasse. Wehmütig lief ihm eine rhetorische Frage über die Wange, dann setzte es seinen Weg fort. Unterwegs traf es eine Copy. Die Copy warnte das Blindtextchen, da, wo sie herkäme wäre sie]]></wp:comment_content>
+    <wp:comment_approved>1</wp:comment_approved>
+    <wp:comment_type>comment</wp:comment_type>
+    <wp:comment_parent>0</wp:comment_parent>
+    <wp:comment_user_id>0</wp:comment_user_id>
+  </wp:comment>
 </item>
 <item>
   <title>Chinesische Mauer</title>
-  <link>https://travelshop-theme.pressmind.de/2020/10/25/chinesische-mauer/</link>
+  <link>https://wordpress-build.local/chinesische-mauer/</link>
   <pubDate>Sun, 25 Oct 2020 12:04:04 +0000</pubDate>
-  <dc:creator>admin</dc:creator>
+  <dc:creator>peter-bartl</dc:creator>
   <guid isPermaLink="false">https://travelshop-theme.pressmind.de/?p=20</guid>
   <description/>
   <content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>Just a sample page!</p>
+<p><strong>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote"><p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans.&nbsp;</p><cite>Das ist die Zitatquelle</cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Ein kleines Bächlein namens Duden fließt durch ihren Ort und versorgt sie mit den nötigen Regelialien. Es ist ein paradiesmatisches Land, in dem einem gebratene Satzteile in den Mund fliegen. Nicht einmal von der allmächtigen Interpunktion werden die <a href="http://Blog" data-type="URL" data-id="Blog">Blindtexte </a>beherrscht – ein geradezu unorthographisches Leben. Eines Tages aber beschloß eine kleine Zeile Blindtext, ihr Name war Lorem Ipsum, hinaus zu gehen in die weite Grammatik. Der große Oxmox riet ihr davon ab, da es dort wimmele von bösen Kommata, wilden Fragezeichen und hinterhältigen Semikoli, doch das Blindtextchen ließ sich nicht beirren. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>H2 Headline</h2>
+<!-- /wp:heading -->
+
+<!-- wp:image {"id":10,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="{ATTACHMENT_URL}/mountains-825x515.jpg" alt="" class="wp-image-10"/><figcaption>Gibt es auch Alpen in China? Wir haben uns das ganz genau angeschaut.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Es packte seine sieben Versalien, schob sich sein Initial in den Gürtel und machte sich auf den Weg. Als es die ersten Hügel des Kursivgebirges erklommen hatte, warf es einen letzten Blick zurück auf die Skyline seiner Heimatstadt Buchstabhausen, die Headline von Alphabetdorf und die Subline seiner eigenen Straße, der Zeilengasse. Wehmütig lief ihm eine rhetorische Frage über die Wange, dann setzte es seinen Weg fort. Unterwegs traf es eine Copy. Die Copy warnte das Blindtextchen, da, wo sie herkäme wäre sie</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Vorteile</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li>Vorteil Numero Uno</li><li>Noch ein Vorteil</li><li>Und noch einer!</li><li>Test test 123!</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p></p>
 <!-- /wp:paragraph -->]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
   <wp:post_id>20</wp:post_id>
@@ -398,20 +756,68 @@
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
   <category domain="category" nicename="allgemein"><![CDATA[Allgemein]]></category>
+  <category domain="category" nicename="ganz-weit-weg"><![CDATA[ganz weit weg]]></category>
+  <category domain="post_tag" nicename="sightseeing"><![CDATA[Sightseeing]]></category>
   <wp:postmeta>
     <wp:meta_key>_thumbnail_id</wp:meta_key>
-    <wp:meta_value><![CDATA[6]]></wp:meta_value>
+    <wp:meta_value><![CDATA[7]]></wp:meta_value>
   </wp:postmeta>
+  <wp:comment>
+    <wp:comment_id>6</wp:comment_id>
+    <wp:comment_author><![CDATA[Franz Meier]]></wp:comment_author>
+    <wp:comment_author_email>trash@pressmind.de</wp:comment_author_email>
+    <wp:comment_author_url/>
+    <wp:comment_author_IP>::1</wp:comment_author_IP>
+    <wp:comment_date>2021-07-22 14:10:43</wp:comment_date>
+    <wp:comment_date_gmt>2021-07-22 12:10:43</wp:comment_date_gmt>
+    <wp:comment_content><![CDATA[Die Skyline seiner Heimatstadt Buchstabhausen, die Headline von Alphabetdorf und die Subline seiner eigenen Straße.]]></wp:comment_content>
+    <wp:comment_approved>1</wp:comment_approved>
+    <wp:comment_type>comment</wp:comment_type>
+    <wp:comment_parent>0</wp:comment_parent>
+    <wp:comment_user_id>0</wp:comment_user_id>
+  </wp:comment>
 </item>
 <item>
   <title>Städtetrips</title>
-  <link>https://travelshop-theme.pressmind.de/2020/10/25/staedtetrips/</link>
+  <link>https://wordpress-build.local/staedtetrips/</link>
   <pubDate>Sun, 25 Oct 2020 12:04:25 +0000</pubDate>
-  <dc:creator>admin</dc:creator>
+  <dc:creator>peter-bartl</dc:creator>
   <guid isPermaLink="false">https://travelshop-theme.pressmind.de/?p=22</guid>
   <description/>
   <content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>Just a sample page!</p>
+<p><strong>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote"><p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans.&nbsp;</p><cite>Das ist die Zitatquelle</cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Ein kleines Bächlein namens Duden fließt durch ihren Ort und versorgt sie mit den nötigen Regelialien. Es ist ein paradiesmatisches Land, in dem einem gebratene Satzteile in den Mund fliegen. Nicht einmal von der allmächtigen Interpunktion werden die <a href="http://Blog" data-type="URL" data-id="Blog">Blindtexte </a>beherrscht – ein geradezu unorthographisches Leben. Eines Tages aber beschloß eine kleine Zeile Blindtext, ihr Name war Lorem Ipsum, hinaus zu gehen in die weite Grammatik. Der große Oxmox riet ihr davon ab, da es dort wimmele von bösen Kommata, wilden Fragezeichen und hinterhältigen Semikoli, doch das Blindtextchen ließ sich nicht beirren. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>H2 Headline</h2>
+<!-- /wp:heading -->
+
+<!-- wp:image {"id":12,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="{ATTACHMENT_URL}/columbus-825x515.jpg" alt="" class="wp-image-12"/><figcaption>Ein Kino sagt viel über die Stadt und dessen Geschichte aus, oder?</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Es packte seine sieben Versalien, schob sich sein Initial in den Gürtel und machte sich auf den Weg. Als es die ersten Hügel des Kursivgebirges erklommen hatte, warf es einen letzten Blick zurück auf die Skyline seiner Heimatstadt Buchstabhausen, die Headline von Alphabetdorf und die Subline seiner eigenen Straße, der Zeilengasse. Wehmütig lief ihm eine rhetorische Frage über die Wange, dann setzte es seinen Weg fort. Unterwegs traf es eine Copy. Die Copy warnte das Blindtextchen, da, wo sie herkäme wäre sie</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Vorteile</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li>Vorteil Numero Uno</li><li>Noch ein Vorteil</li><li>Und noch einer!</li><li>Test test 123!</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p></p>
 <!-- /wp:paragraph -->]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
   <wp:post_id>22</wp:post_id>
@@ -426,21 +832,67 @@
   <wp:post_type>post</wp:post_type>
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
-  <category domain="category" nicename="allgemein"><![CDATA[Allgemein]]></category>
+  <category domain="category" nicename="staedtetrips"><![CDATA[Städtetrips]]></category>
   <wp:postmeta>
     <wp:meta_key>_thumbnail_id</wp:meta_key>
-    <wp:meta_value><![CDATA[7]]></wp:meta_value>
+    <wp:meta_value><![CDATA[8]]></wp:meta_value>
   </wp:postmeta>
+  <wp:comment>
+    <wp:comment_id>7</wp:comment_id>
+    <wp:comment_author><![CDATA[Franz Meier]]></wp:comment_author>
+    <wp:comment_author_email>trash@pressmind.de</wp:comment_author_email>
+    <wp:comment_author_url/>
+    <wp:comment_author_IP>::1</wp:comment_author_IP>
+    <wp:comment_date>2021-07-22 14:11:10</wp:comment_date>
+    <wp:comment_date_gmt>2021-07-22 12:11:10</wp:comment_date_gmt>
+    <wp:comment_content><![CDATA[Wehmütig lief ihm eine rhetorische Frage über die Wange, dann setzte es seinen Weg fort. Unterwegs traf es eine Copy. Die Copy warnte das Blindtextchen, da, wo sie herkäme wäre sie, die Skyline seiner Heimatstadt Buchstabhausen, die Headline von Alphabetdorf und die Subline seiner eigenen Straße, der Zeilengasse.]]></wp:comment_content>
+    <wp:comment_approved>1</wp:comment_approved>
+    <wp:comment_type>comment</wp:comment_type>
+    <wp:comment_parent>0</wp:comment_parent>
+    <wp:comment_user_id>0</wp:comment_user_id>
+  </wp:comment>
 </item>
 <item>
   <title>Wassersport Reisen</title>
-  <link>https://travelshop-theme.pressmind.de/2020/10/25/wassersport-reisen/</link>
+  <link>https://wordpress-build.local/wassersport-reisen/</link>
   <pubDate>Sun, 25 Oct 2020 12:05:00 +0000</pubDate>
-  <dc:creator>admin</dc:creator>
+  <dc:creator>peter-bartl</dc:creator>
   <guid isPermaLink="false">https://travelshop-theme.pressmind.de/?p=24</guid>
   <description/>
   <content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>Just a sample page!</p>
+<p><strong>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote"><p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans.&nbsp;</p><cite>Das ist die Zitatquelle</cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Ein kleines Bächlein namens Duden fließt durch ihren Ort und versorgt sie mit den nötigen Regelialien. Es ist ein paradiesmatisches Land, in dem einem gebratene Satzteile in den Mund fliegen. Nicht einmal von der allmächtigen Interpunktion werden die <a href="http://Blog" data-type="URL" data-id="Blog">Blindtexte </a>beherrscht – ein geradezu unorthographisches Leben. Eines Tages aber beschloß eine kleine Zeile Blindtext, ihr Name war Lorem Ipsum, hinaus zu gehen in die weite Grammatik. Der große Oxmox riet ihr davon ab, da es dort wimmele von bösen Kommata, wilden Fragezeichen und hinterhältigen Semikoli, doch das Blindtextchen ließ sich nicht beirren. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>H2 Headline</h2>
+<!-- /wp:heading -->
+
+<!-- wp:image {"id":11,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="{ATTACHMENT_URL}/standup-paddle-boarding-825x515.jpg" alt="" class="wp-image-11"/><figcaption>Stand Up Paddling ist auf dem Meer deutlich schwerer als auf einem Bergsee</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Es packte seine sieben Versalien, schob sich sein Initial in den Gürtel und machte sich auf den Weg. Als es die ersten Hügel des Kursivgebirges erklommen hatte, warf es einen letzten Blick zurück auf die Skyline seiner Heimatstadt Buchstabhausen, die Headline von Alphabetdorf und die Subline seiner eigenen Straße, der Zeilengasse. Wehmütig lief ihm eine rhetorische Frage über die Wange, dann setzte es seinen Weg fort. Unterwegs traf es eine Copy. Die Copy warnte das Blindtextchen, da, wo sie herkäme wäre sie</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Vorteile</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li>Vorteil Numero Uno</li><li>Noch ein Vorteil</li><li>Und noch einer!</li><li>Test test 123!</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p></p>
 <!-- /wp:paragraph -->]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
   <wp:post_id>24</wp:post_id>
@@ -456,20 +908,68 @@
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
   <category domain="category" nicename="allgemein"><![CDATA[Allgemein]]></category>
+  <category domain="post_tag" nicename="paddeln"><![CDATA[Paddeln]]></category>
+  <category domain="category" nicename="sportlich-unterwegs"><![CDATA[Sportlich unterwegs]]></category>
   <wp:postmeta>
     <wp:meta_key>_thumbnail_id</wp:meta_key>
-    <wp:meta_value><![CDATA[5]]></wp:meta_value>
+    <wp:meta_value><![CDATA[6]]></wp:meta_value>
   </wp:postmeta>
+  <wp:comment>
+    <wp:comment_id>8</wp:comment_id>
+    <wp:comment_author><![CDATA[Franz Meier]]></wp:comment_author>
+    <wp:comment_author_email>trash@pressmind.de</wp:comment_author_email>
+    <wp:comment_author_url/>
+    <wp:comment_author_IP>::1</wp:comment_author_IP>
+    <wp:comment_date>2021-07-22 14:11:28</wp:comment_date>
+    <wp:comment_date_gmt>2021-07-22 12:11:28</wp:comment_date_gmt>
+    <wp:comment_content><![CDATA[Die Skyline seiner Heimatstadt Buchstabhausen, die Headline von Alphabetdorf und die Subline seiner eigenen Straße, der Zeilengasse.]]></wp:comment_content>
+    <wp:comment_approved>1</wp:comment_approved>
+    <wp:comment_type>comment</wp:comment_type>
+    <wp:comment_parent>0</wp:comment_parent>
+    <wp:comment_user_id>0</wp:comment_user_id>
+  </wp:comment>
 </item>
 <item>
   <title>Safari</title>
-  <link>https://travelshop-theme.pressmind.de/2020/10/25/safari/</link>
+  <link>https://wordpress-build.local/safari/</link>
   <pubDate>Sun, 25 Oct 2020 12:05:23 +0000</pubDate>
-  <dc:creator>admin</dc:creator>
+  <dc:creator>peter-bartl</dc:creator>
   <guid isPermaLink="false">https://travelshop-theme.pressmind.de/?p=26</guid>
   <description/>
   <content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>Just a sample page!</p>
+<p><strong>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote"><p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans.&nbsp;</p><cite>Das ist die Zitatquelle</cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Ein kleines Bächlein namens Duden fließt durch ihren Ort und versorgt sie mit den nötigen Regelialien. Es ist ein paradiesmatisches Land, in dem einem gebratene Satzteile in den Mund fliegen. Nicht einmal von der allmächtigen Interpunktion werden die <a href="http://Blog" data-type="URL" data-id="Blog">Blindtexte </a>beherrscht – ein geradezu unorthographisches Leben. Eines Tages aber beschloß eine kleine Zeile Blindtext, ihr Name war Lorem Ipsum, hinaus zu gehen in die weite Grammatik. Der große Oxmox riet ihr davon ab, da es dort wimmele von bösen Kommata, wilden Fragezeichen und hinterhältigen Semikoli, doch das Blindtextchen ließ sich nicht beirren. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>H2 Headline</h2>
+<!-- /wp:heading -->
+
+<!-- wp:image {"id":9,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="{ATTACHMENT_URL}/maldives-825x515.jpg" alt="" class="wp-image-9"/><figcaption>Nach der Safari sollte man sich eine Auszeit gönnen. Wir haben es getan....</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Es packte seine sieben Versalien, schob sich sein Initial in den Gürtel und machte sich auf den Weg. Als es die ersten Hügel des Kursivgebirges erklommen hatte, warf es einen letzten Blick zurück auf die Skyline seiner Heimatstadt Buchstabhausen, die Headline von Alphabetdorf und die Subline seiner eigenen Straße, der Zeilengasse. Wehmütig lief ihm eine rhetorische Frage über die Wange, dann setzte es seinen Weg fort. Unterwegs traf es eine Copy. Die Copy warnte das Blindtextchen, da, wo sie herkäme wäre sie</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Vorteile</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li>Vorteil Numero Uno</li><li>Noch ein Vorteil</li><li>Und noch einer!</li><li>Test test 123!</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p></p>
 <!-- /wp:paragraph -->]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
   <wp:post_id>26</wp:post_id>
@@ -484,21 +984,68 @@
   <wp:post_type>post</wp:post_type>
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
-  <category domain="category" nicename="allgemein"><![CDATA[Allgemein]]></category>
+  <category domain="post_tag" nicename="loewen"><![CDATA[Löwen]]></category>
+  <category domain="category" nicename="wildlife"><![CDATA[Wildlife]]></category>
   <wp:postmeta>
     <wp:meta_key>_thumbnail_id</wp:meta_key>
-    <wp:meta_value><![CDATA[12]]></wp:meta_value>
+    <wp:meta_value><![CDATA[13]]></wp:meta_value>
   </wp:postmeta>
+  <wp:comment>
+    <wp:comment_id>9</wp:comment_id>
+    <wp:comment_author><![CDATA[Franz Meier]]></wp:comment_author>
+    <wp:comment_author_email>trash@pressmind.de</wp:comment_author_email>
+    <wp:comment_author_url/>
+    <wp:comment_author_IP>::1</wp:comment_author_IP>
+    <wp:comment_date>2021-07-22 14:11:44</wp:comment_date>
+    <wp:comment_date_gmt>2021-07-22 12:11:44</wp:comment_date_gmt>
+    <wp:comment_content><![CDATA[Die Skyline seiner Heimatstadt Buchstabhausen, die Headline von Alphabetdorf und die Subline seiner eigenen Straße, der Zeilengasse.]]></wp:comment_content>
+    <wp:comment_approved>1</wp:comment_approved>
+    <wp:comment_type>comment</wp:comment_type>
+    <wp:comment_parent>0</wp:comment_parent>
+    <wp:comment_user_id>0</wp:comment_user_id>
+  </wp:comment>
 </item>
 <item>
   <title>Stand Up Paddling</title>
-  <link>https://travelshop-theme.pressmind.de/2020/10/25/stand-up-paddling/</link>
+  <link>https://wordpress-build.local/stand-up-paddling/</link>
   <pubDate>Sun, 25 Oct 2020 12:05:45 +0000</pubDate>
-  <dc:creator>admin</dc:creator>
+  <dc:creator>peter-bartl</dc:creator>
   <guid isPermaLink="false">https://travelshop-theme.pressmind.de/?p=28</guid>
   <description/>
   <content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>Just a sample page!</p>
+<p><strong>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote"><p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans.&nbsp;</p><cite>Das ist die Zitatquelle</cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Ein kleines Bächlein namens Duden fließt durch ihren Ort und versorgt sie mit den nötigen Regelialien. Es ist ein paradiesmatisches Land, in dem einem gebratene Satzteile in den Mund fliegen. Nicht einmal von der allmächtigen Interpunktion werden die <a href="http://Blog" data-type="URL" data-id="Blog">Blindtexte </a>beherrscht – ein geradezu unorthographisches Leben. Eines Tages aber beschloß eine kleine Zeile Blindtext, ihr Name war Lorem Ipsum, hinaus zu gehen in die weite Grammatik. Der große Oxmox riet ihr davon ab, da es dort wimmele von bösen Kommata, wilden Fragezeichen und hinterhältigen Semikoli, doch das Blindtextchen ließ sich nicht beirren. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>H2 Headline</h2>
+<!-- /wp:heading -->
+
+<!-- wp:image {"id":10,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="{ATTACHMENT_URL}/mountains-825x515.jpg" alt="" class="wp-image-10"/><figcaption>Stand Up Paddling auf einem Bergsee bringt auch die Bergfreunde in Stimmung.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Es packte seine sieben Versalien, schob sich sein Initial in den Gürtel und machte sich auf den Weg. Als es die ersten Hügel des Kursivgebirges erklommen hatte, warf es einen letzten Blick zurück auf die Skyline seiner Heimatstadt Buchstabhausen, die Headline von Alphabetdorf und die Subline seiner eigenen Straße, der Zeilengasse. Wehmütig lief ihm eine rhetorische Frage über die Wange, dann setzte es seinen Weg fort. Unterwegs traf es eine Copy. Die Copy warnte das Blindtextchen, da, wo sie herkäme wäre sie</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Vorteile</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li>Vorteil Numero Uno</li><li>Noch ein Vorteil</li><li>Und noch einer!</li><li>Test test 123!</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p></p>
 <!-- /wp:paragraph -->]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
   <wp:post_id>28</wp:post_id>
@@ -514,16 +1061,32 @@
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
   <category domain="category" nicename="allgemein"><![CDATA[Allgemein]]></category>
+  <category domain="category" nicename="sportlich-unterwegs"><![CDATA[Sportlich unterwegs]]></category>
+  <category domain="post_tag" nicename="stand-up-paddling"><![CDATA[Stand Up Paddling]]></category>
   <wp:postmeta>
     <wp:meta_key>_thumbnail_id</wp:meta_key>
-    <wp:meta_value><![CDATA[10]]></wp:meta_value>
+    <wp:meta_value><![CDATA[11]]></wp:meta_value>
   </wp:postmeta>
+  <wp:comment>
+    <wp:comment_id>5</wp:comment_id>
+    <wp:comment_author><![CDATA[Franz Meier]]></wp:comment_author>
+    <wp:comment_author_email>trash@pressmind.de</wp:comment_author_email>
+    <wp:comment_author_url/>
+    <wp:comment_author_IP>::1</wp:comment_author_IP>
+    <wp:comment_date>2021-07-22 14:10:25</wp:comment_date>
+    <wp:comment_date_gmt>2021-07-22 12:10:25</wp:comment_date_gmt>
+    <wp:comment_content><![CDATA[Die Skyline seiner Heimatstadt Buchstabhausen, die Headline von Alphabetdorf und die Subline seiner eigenen Straße, der Zeilengasse. Wehmütig lief ihm eine rhetorische Frage über die Wange, dann setzte es seinen Weg fort. Unterwegs traf es eine Copy. Die Copy warnte das Blindtextchen, da, wo sie herkäme wäre sie]]></wp:comment_content>
+    <wp:comment_approved>1</wp:comment_approved>
+    <wp:comment_type>comment</wp:comment_type>
+    <wp:comment_parent>0</wp:comment_parent>
+    <wp:comment_user_id>0</wp:comment_user_id>
+  </wp:comment>
 </item>
 <item>
   <title>Die 10. besten Reisen</title>
-  <link>https://travelshop-theme.pressmind.de/2020/10/25/die-10-besten-reisen/</link>
+  <link>https://wordpress-build.local/die-10-besten-reisen/</link>
   <pubDate>Sun, 25 Oct 2020 12:06:10 +0000</pubDate>
-  <dc:creator>admin</dc:creator>
+  <dc:creator>peter-bartl</dc:creator>
   <guid isPermaLink="false">https://travelshop-theme.pressmind.de/?p=30</guid>
   <description/>
   <content:encoded><![CDATA[<!-- wp:paragraph -->
@@ -531,11 +1094,15 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:code -->
-<pre class="wp-block-code"><code>&#91;ts-list pm-ot="607" pm-l=0,10]</code></pre>
+<pre class="wp-block-code"><code><meta charset="utf-8">&#91;ts-list view="Teaser3" pm-ot="607" pm-l="0,10"]</code></pre>
 <!-- /wp:code -->
 
+<!-- wp:heading -->
+<h2>Unsere Auswahl:</h2>
+<!-- /wp:heading -->
+
 <!-- wp:paragraph -->
-<p>[ts-list pm-ot="607" pm-l="0,10"]</p>
+<p>[ts-list view="Teaser3" pm-ot="607" pm-l="0,10"]</p>
 <!-- /wp:paragraph -->]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
   <wp:post_id>30</wp:post_id>
@@ -553,21 +1120,21 @@
   <category domain="category" nicename="allgemein"><![CDATA[Allgemein]]></category>
   <wp:postmeta>
     <wp:meta_key>_thumbnail_id</wp:meta_key>
-    <wp:meta_value><![CDATA[9]]></wp:meta_value>
+    <wp:meta_value><![CDATA[10]]></wp:meta_value>
   </wp:postmeta>
 </item>
 <item>
   <title>Home</title>
-  <link>https://travelshop-theme.pressmind.de/2021/04/17/home/</link>
-  <pubDate>Sat, 17 Apr 2021 10:49:29 +0000</pubDate>
-  <dc:creator>admin</dc:creator>
-  <guid isPermaLink="false">https://travelshop-theme.pressmind.de/?p=39</guid>
+  <link>https://wordpress-build.local/home/</link>
+  <pubDate>Thu, 22 Jul 2021 09:46:27 +0000</pubDate>
+  <dc:creator/>
+  <guid isPermaLink="false">https://wordpress-build.local/home/</guid>
   <description/>
   <content:encoded><![CDATA[]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-  <wp:post_id>39</wp:post_id>
-  <wp:post_date>2021-04-17 12:49:29</wp:post_date>
-  <wp:post_date_gmt>2021-04-17 10:49:29</wp:post_date_gmt>
+  <wp:post_id>31</wp:post_id>
+  <wp:post_date>2021-07-23 09:33:47</wp:post_date>
+  <wp:post_date_gmt>2021-07-22 09:46:27</wp:post_date_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>home</wp:post_name>
@@ -588,7 +1155,7 @@
   </wp:postmeta>
   <wp:postmeta>
     <wp:meta_key>_menu_item_object_id</wp:meta_key>
-    <wp:meta_value><![CDATA[39]]></wp:meta_value>
+    <wp:meta_value><![CDATA[31]]></wp:meta_value>
   </wp:postmeta>
   <wp:postmeta>
     <wp:meta_key>_menu_item_object</wp:meta_key>
@@ -610,19 +1177,23 @@
     <wp:meta_key>_menu_item_url</wp:meta_key>
     <wp:meta_value><![CDATA[/]]></wp:meta_value>
   </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_wp_old_date</wp:meta_key>
+    <wp:meta_value><![CDATA[2021-07-22]]></wp:meta_value>
+  </wp:postmeta>
 </item>
 <item>
   <title>Suche</title>
-  <link>https://travelshop-theme.pressmind.de/2021/04/17/suche/</link>
-  <pubDate>Sat, 17 Apr 2021 10:49:29 +0000</pubDate>
-  <dc:creator>admin</dc:creator>
-  <guid isPermaLink="false">https://travelshop-theme.pressmind.de/?p=40</guid>
+  <link>https://wordpress-build.local/suche/</link>
+  <pubDate>Thu, 22 Jul 2021 09:46:27 +0000</pubDate>
+  <dc:creator/>
+  <guid isPermaLink="false">https://wordpress-build.local/suche/</guid>
   <description/>
   <content:encoded><![CDATA[]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-  <wp:post_id>40</wp:post_id>
-  <wp:post_date>2021-04-17 12:49:29</wp:post_date>
-  <wp:post_date_gmt>2021-04-17 10:49:29</wp:post_date_gmt>
+  <wp:post_id>32</wp:post_id>
+  <wp:post_date>2021-07-23 09:33:47</wp:post_date>
+  <wp:post_date_gmt>2021-07-22 09:46:27</wp:post_date_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>suche</wp:post_name>
@@ -643,7 +1214,7 @@
   </wp:postmeta>
   <wp:postmeta>
     <wp:meta_key>_menu_item_object_id</wp:meta_key>
-    <wp:meta_value><![CDATA[40]]></wp:meta_value>
+    <wp:meta_value><![CDATA[32]]></wp:meta_value>
   </wp:postmeta>
   <wp:postmeta>
     <wp:meta_key>_menu_item_object</wp:meta_key>
@@ -665,19 +1236,23 @@
     <wp:meta_key>_menu_item_url</wp:meta_key>
     <wp:meta_value><![CDATA[/reise-suche/]]></wp:meta_value>
   </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_wp_old_date</wp:meta_key>
+    <wp:meta_value><![CDATA[2021-07-22]]></wp:meta_value>
+  </wp:postmeta>
 </item>
 <item>
   <title>Seiten</title>
-  <link>https://travelshop-theme.pressmind.de/2021/04/17/seiten/</link>
-  <pubDate>Sat, 17 Apr 2021 10:49:29 +0000</pubDate>
-  <dc:creator>admin</dc:creator>
-  <guid isPermaLink="false">https://travelshop-theme.pressmind.de/?p=41</guid>
+  <link>https://wordpress-build.local/seiten/</link>
+  <pubDate>Thu, 22 Jul 2021 09:46:27 +0000</pubDate>
+  <dc:creator/>
+  <guid isPermaLink="false">https://wordpress-build.local/seiten/</guid>
   <description/>
   <content:encoded><![CDATA[]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-  <wp:post_id>41</wp:post_id>
-  <wp:post_date>2021-04-17 12:49:29</wp:post_date>
-  <wp:post_date_gmt>2021-04-17 10:49:29</wp:post_date_gmt>
+  <wp:post_id>33</wp:post_id>
+  <wp:post_date>2021-07-23 09:33:47</wp:post_date>
+  <wp:post_date_gmt>2021-07-22 09:46:27</wp:post_date_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>seiten</wp:post_name>
@@ -698,7 +1273,7 @@
   </wp:postmeta>
   <wp:postmeta>
     <wp:meta_key>_menu_item_object_id</wp:meta_key>
-    <wp:meta_value><![CDATA[41]]></wp:meta_value>
+    <wp:meta_value><![CDATA[33]]></wp:meta_value>
   </wp:postmeta>
   <wp:postmeta>
     <wp:meta_key>_menu_item_object</wp:meta_key>
@@ -720,25 +1295,29 @@
     <wp:meta_key>_menu_item_url</wp:meta_key>
     <wp:meta_value><![CDATA[#]]></wp:meta_value>
   </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_wp_old_date</wp:meta_key>
+    <wp:meta_value><![CDATA[2021-07-22]]></wp:meta_value>
+  </wp:postmeta>
 </item>
 <item>
   <title/>
-  <link>https://travelshop-theme.pressmind.de/2021/04/17/42/</link>
-  <pubDate>Sat, 17 Apr 2021 10:49:29 +0000</pubDate>
-  <dc:creator>admin</dc:creator>
-  <guid isPermaLink="false">https://travelshop-theme.pressmind.de/?p=42</guid>
+  <link>https://wordpress-build.local/34/</link>
+  <pubDate>Thu, 22 Jul 2021 09:46:27 +0000</pubDate>
+  <dc:creator/>
+  <guid isPermaLink="false">https://wordpress-build.local/</guid>
   <description/>
   <content:encoded><![CDATA[ ]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-  <wp:post_id>42</wp:post_id>
-  <wp:post_date>2021-04-17 12:49:29</wp:post_date>
-  <wp:post_date_gmt>2021-04-17 10:49:29</wp:post_date_gmt>
+  <wp:post_id>34</wp:post_id>
+  <wp:post_date>2021-07-23 09:33:47</wp:post_date>
+  <wp:post_date_gmt>2021-07-22 09:46:27</wp:post_date_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
-  <wp:post_name>42</wp:post_name>
+  <wp:post_name>34</wp:post_name>
   <wp:status>publish</wp:status>
   <wp:post_parent>0</wp:post_parent>
-  <wp:menu_order>4</wp:menu_order>
+  <wp:menu_order>5</wp:menu_order>
   <wp:post_type>nav_menu_item</wp:post_type>
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
@@ -749,7 +1328,7 @@
   </wp:postmeta>
   <wp:postmeta>
     <wp:meta_key>_menu_item_menu_item_parent</wp:meta_key>
-    <wp:meta_value><![CDATA[41]]></wp:meta_value>
+    <wp:meta_value><![CDATA[33]]></wp:meta_value>
   </wp:postmeta>
   <wp:postmeta>
     <wp:meta_key>_menu_item_object_id</wp:meta_key>
@@ -774,6 +1353,160 @@
   <wp:postmeta>
     <wp:meta_key>_menu_item_url</wp:meta_key>
     <wp:meta_value><![CDATA[]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_wp_old_date</wp:meta_key>
+    <wp:meta_value><![CDATA[2021-07-22]]></wp:meta_value>
+  </wp:postmeta>
+</item>
+<item>
+  <title>Travelblog</title>
+  <link>https://wordpress-build.local/blog/</link>
+  <pubDate>Thu, 22 Jul 2021 10:21:45 +0000</pubDate>
+  <dc:creator>admin</dc:creator>
+  <guid isPermaLink="false">https://wordpress-build.local/?page_id=65</guid>
+  <description/>
+  <content:encoded><![CDATA[<!-- wp:heading -->
+<h2>Alles über Reisen und Urlaub!</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->]]></content:encoded>
+  <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+  <wp:post_id>65</wp:post_id>
+  <wp:post_date>2021-07-22 12:21:45</wp:post_date>
+  <wp:post_date_gmt>2021-07-22 10:21:45</wp:post_date_gmt>
+  <wp:comment_status>closed</wp:comment_status>
+  <wp:ping_status>closed</wp:ping_status>
+  <wp:post_name>blog</wp:post_name>
+  <wp:status>publish</wp:status>
+  <wp:post_parent>0</wp:post_parent>
+  <wp:menu_order>0</wp:menu_order>
+  <wp:post_type>page</wp:post_type>
+  <wp:post_password/>
+  <wp:is_sticky>0</wp:is_sticky>
+  <wp:postmeta>
+    <wp:meta_key>_wp_page_template</wp:meta_key>
+    <wp:meta_value><![CDATA[posts.php]]></wp:meta_value>
+  </wp:postmeta>
+</item>
+<item>
+  <title>Blog</title>
+  <link>https://wordpress-build.local/69/</link>
+  <pubDate>Thu, 22 Jul 2021 10:23:47 +0000</pubDate>
+  <dc:creator>admin</dc:creator>
+  <guid isPermaLink="false">https://wordpress-build.local/?p=69</guid>
+  <description/>
+  <content:encoded><![CDATA[]]></content:encoded>
+  <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+  <wp:post_id>69</wp:post_id>
+  <wp:post_date>2021-07-23 09:33:47</wp:post_date>
+  <wp:post_date_gmt>2021-07-22 10:23:47</wp:post_date_gmt>
+  <wp:comment_status>closed</wp:comment_status>
+  <wp:ping_status>closed</wp:ping_status>
+  <wp:post_name>69</wp:post_name>
+  <wp:status>publish</wp:status>
+  <wp:post_parent>0</wp:post_parent>
+  <wp:menu_order>6</wp:menu_order>
+  <wp:post_type>nav_menu_item</wp:post_type>
+  <wp:post_password/>
+  <wp:is_sticky>0</wp:is_sticky>
+  <category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+  <wp:postmeta>
+    <wp:meta_key>_menu_item_type</wp:meta_key>
+    <wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_menu_item_menu_item_parent</wp:meta_key>
+    <wp:meta_value><![CDATA[0]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_menu_item_object_id</wp:meta_key>
+    <wp:meta_value><![CDATA[65]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_menu_item_object</wp:meta_key>
+    <wp:meta_value><![CDATA[page]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_menu_item_target</wp:meta_key>
+    <wp:meta_value><![CDATA[]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_menu_item_classes</wp:meta_key>
+    <wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_menu_item_xfn</wp:meta_key>
+    <wp:meta_value><![CDATA[]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_menu_item_url</wp:meta_key>
+    <wp:meta_value><![CDATA[]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_wp_old_date</wp:meta_key>
+    <wp:meta_value><![CDATA[2021-07-22]]></wp:meta_value>
+  </wp:postmeta>
+</item>
+<item>
+  <title/>
+  <link>https://wordpress-build.local/74/</link>
+  <pubDate>Thu, 22 Jul 2021 10:39:09 +0000</pubDate>
+  <dc:creator>admin</dc:creator>
+  <guid isPermaLink="false">https://wordpress-build.local/?p=74</guid>
+  <description/>
+  <content:encoded><![CDATA[ ]]></content:encoded>
+  <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+  <wp:post_id>74</wp:post_id>
+  <wp:post_date>2021-07-23 09:33:47</wp:post_date>
+  <wp:post_date_gmt>2021-07-22 10:39:09</wp:post_date_gmt>
+  <wp:comment_status>closed</wp:comment_status>
+  <wp:ping_status>closed</wp:ping_status>
+  <wp:post_name>74</wp:post_name>
+  <wp:status>publish</wp:status>
+  <wp:post_parent>0</wp:post_parent>
+  <wp:menu_order>4</wp:menu_order>
+  <wp:post_type>nav_menu_item</wp:post_type>
+  <wp:post_password/>
+  <wp:is_sticky>0</wp:is_sticky>
+  <category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+  <wp:postmeta>
+    <wp:meta_key>_menu_item_type</wp:meta_key>
+    <wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_menu_item_menu_item_parent</wp:meta_key>
+    <wp:meta_value><![CDATA[33]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_menu_item_object_id</wp:meta_key>
+    <wp:meta_value><![CDATA[2]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_menu_item_object</wp:meta_key>
+    <wp:meta_value><![CDATA[page]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_menu_item_target</wp:meta_key>
+    <wp:meta_value><![CDATA[]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_menu_item_classes</wp:meta_key>
+    <wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_menu_item_xfn</wp:meta_key>
+    <wp:meta_value><![CDATA[]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_menu_item_url</wp:meta_key>
+    <wp:meta_value><![CDATA[]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_wp_old_date</wp:meta_key>
+    <wp:meta_value><![CDATA[2021-07-22]]></wp:meta_value>
   </wp:postmeta>
 </item>
   </channel>

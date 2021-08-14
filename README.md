@@ -4,23 +4,35 @@ The frontend is based on pure bootstrap components and a few common web librarie
 The backend is based on the pressmind® PIM system and the [pressmind® SDK](https://github.com/pressmind/sdk).
 This theme is the perfect starting point in order to build professional travelshops.
 
-![Device Overview](./travelshop/assets/img/mockup.jpg)
+![Device Overview](./docs/assets/mockup.jpg)
 
 #### Demo page
 [https://travelshop-theme.pressmind.de](https://travelshop-theme.pressmind.de)
 
 #### Screenshot
-![Overview Image Demo-Page](./travelshop/assets/img/overview.jpg)
+![Overview Image Demo-Page](./docs/assets/overview.jpg)
+
+## Overview
+* [Lighthouse Performance](#lighthouse-performance)
+* [Mobile experience](#mobile-experience)
+* [Progressive Web App](#progressive-web-app)
+* [Additional information (What is it, what not?)](#additional-information)
+* [Features](#features)
+* [Device compatibility](#device-compatibility)
+* [Browser compatibility](#browser)
+* [Plugin compatibility (tested)](#plugin-compatibility-tested)
+* [System overview](#system-overview)
+* [Developer informations](#developer-informations)
 
 ### Lighthouse Performance
 Current lighthouse performance at revision 3de848c (10.05.2021)
 (tested on demo page, without redis caching). 
 
-![Lighthouse](./travelshop/assets/img/lighthouse.jpg)
+![Lighthouse](./docs/assets/lighthouse.jpg)
 
 ### Mobile experience
 
-![Lighthouse](./travelshop/assets/img/mobile.jpg)
+![Lighthouse](./docs/assets/mobile.jpg)
 
 ### Progressive Web App  
 Basic PWA support is enabled. Page can be used as PWA in online mode. 
@@ -61,6 +73,7 @@ In most cases, this is the basic setup for each travelshop:
 * Link to an external IBE like pressmind IB3
 * Image handling: Thumbnailer, optimization
 * Amazon S3 support
+* Travelblog
 * ... and many more
 
 ### Device compatibility
@@ -76,33 +89,42 @@ In most cases, this is the basic setup for each travelshop:
 ### Plugin compatibility (tested)
 * Revolution Slider
 * Elementor
-* ... all other (but test make a deep test before use in production)
+* BeaverBuilder (several beaverbuilder modules are included), see [here](./docs/readme-beaverbuilder.md)
+* Contact Form 7 (several features and examples added, see [here](./docs/readme-forms.md))
+* ... all other (but make a deep test before use in production)
 
-#### System overview
+### System overview
 
-![system overview](./travelshop/assets/img/pressmind_travelshop.png)
+![system overview](./docs/assets/pressmind_travelshop.png)
 
 
-#### More Information:
-* [Step by step guide for installation & customization](./travelshop/readme-step-by-step-guide.md) (!recommend for onboarding)
-* [System requirements](./travelshop/readme-system-requirements.md)
-* [Installation Documentation](travelshop/readme-installation.md)
-* [Maintenance & troubleshooting](./travelshop/readme-maintenance.md)
-* [Common Theme Documentation](./travelshop/readme-theme.md)
-* [Shortcodes](./travelshop/readme-shortcodes.md)
-* [Multilanguage Support](./travelshop/readme-multilanguage.md)
-* [Build in pressmind® IB3 template](./travelshop/readme-ibe-template.md)
+### Developer informations:
 
-#### How to generate product lists? 
-It is possible to output product listings on three different ways:
+#### Installation
+* [System requirements](./docs/readme-system-requirements.md)
+* [Step by step guide for installation & customization](./docs/readme-step-by-step-guide.md) (!recommend for onboarding)
+* [Installation Documentation](./docs/readme-installation.md)
+* [Track changes in your own project/github repo](./docs/readme-track-changes-in-new-projects.md)
+  
+### Main developing topics
+* [Common Theme Documentation](./docs/readme-theme.md)
+* [Shortcodes](./docs/readme-shortcodes.md)
+* !MUST KNOW:  [QueryString API](./docs/readme-querystring-api.md)
+* [Multilanguage Support](./docs/readme-multilanguage.md)
+* [Build in pressmind® IB3 template](./docs/readme-ibe-template.md)
+* [Using the blog feature](./docs/readme-blog.md)
+* [BeaverBuilder support](./docs/readme-beaverbuilder.md)
+* [Modal screens and windows support](./docs/readme-modals.md)
+* [Contact Form 7 support](./docs/readme-forms.md)
+* Take a look at the [pressmind web-core project](https://github.com/pressmind/web-core-skeleton-basic/#quickstart),
+  most of the pressmind sdk implementation in this theme is based on those examples.
+* [Maintenance & troubleshooting](./docs/readme-maintenance.md)
 
-* list by the media object default list route by GET params
-* list by shortcodes
-* list by the default pressmind SDK framework
+#### Quick dev question:<br> How to generate product lists (based on pressmind® PIM)? 
+It is possible to output product listings on four different ways:
 
-For examples and more information see the 
-theme specific [QueryString API](./travelshop/readme-querystring-api.md)
+* list by the media object list route using ($_GET)
+* list by [shortcodes](./docs/readme-shortcodes.md)
+* list programmatically with the pressmind SDK framework, take a look here: [QueryString API](./docs/readme-querystring-api.md)
+* list with a beaverbuilder module (if enabled) (see [beaverbuilder integration](./docs/readme-beaverbuilder.md))
 
-#### Theme developer documentation
-Take a look at the [pressmind web-core project](https://github.com/pressmind/web-core-skeleton-basic/#quickstart), 
-most of the pressmind sdk implementation in this theme is based on those examples.

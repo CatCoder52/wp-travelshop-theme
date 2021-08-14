@@ -1,0 +1,153 @@
+<?php
+/**
+ * Don't use WordPress functions in this template (for better performance it's called by ajax without the wp bootstrap)
+ *
+ * @var int $id_object_type is defined in pm-search.php
+ */
+
+if(empty($_GET['pm-ot']) === true){ // if the id_object_type is not defined by search, we use the information from the route
+    $_GET['pm-ot'] = $id_object_type;
+}
+
+if(empty($_GET['pm-ho']) === true){ // if the price duration slider is active, we have to set the housing occupancy search (to display the correct search result with the correct cheapeast price inside)
+    $_GET['pm-ho'] = 2;
+}
+
+$page_size = 12;
+
+
+// @TODO change request pressmind SDK #160268 "simplify cache behavior"
+if(!empty($_GET['update_cache'])){
+    $search = BuildSearch::fromRequest($_GET, 'pm', true, $page_size);
+    $mediaObjects = $search->getResults();
+    $cacheinfo = $search->getCacheInfo();
+    if(!empty($cacheinfo)){
+        echo 'update_cache';
+        echo '<pre>'.print_r($cacheinfo, true).'</pre>';
+        $search->updateCache($cacheinfo['info']->parameters);
+    }
+}
+
+$search = BuildSearch::fromRequest($_GET, 'pm', true, $page_size);
+if(!empty($_GET['no_cache'])){
+    $search->disableCache();
+}
+$mediaObjects = $search->getResults();
+
+
+/*
+if(!empty($_GET['debug'])){
+    echo '<textarea style="width: 600px;">'.$search->getQuery().'</textarea>';
+}
+*/
+
+$total_result = $search->getTotalResultCount();
+$current_page = $search->getPaginator()->getCurrentPage();
+$pages = $search->getPaginator()->getTotalPages();
+?>
+
+
+<div class="list-filter-toggle mb-4">
+    <button class="btn btn-block btn-secondary list-filter-open">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-adjustments-alt" width="30"
+            height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <rect x="4" y="8" width="4" height="4" />
+            <line x1="6" y1="4" x2="6" y2="8" />
+            <line x1="6" y1="12" x2="6" y2="20" />
+            <rect x="10" y="14" width="4" height="4" />
+            <line x1="12" y1="4" x2="12" y2="14" />
+            <line x1="12" y1="18" x2="12" y2="20" />
+            <rect x="16" y="5" width="4" height="4" />
+            <line x1="18" y1="4" x2="18" y2="5" />
+            <line x1="18" y1="9" x2="18" y2="20" />
+        </svg>
+        <span>Reisen filtern</span>
+    </button>
+</div>
+
+<section class="content-block content-block-list-header">
+    <div class="list-header-title h2 mt-0 mb-0 float-lg-left">
+        <p>
+            <strong>
+                <?php
+                echo $total_result . ' ' . (($total_result > 1 || $total_result == 0) ? 'Reisen' : 'Reise');
+                ?>
+            </strong> gefunden
+        </p>
+    </div>
+    <div class="pm-switch-result-view">
+        <label class="pm-switch">
+            <input class="pm-switch-checkbox" type="checkbox">
+            <span class="pm-switch-slider">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-layout-grid" width="20"
+                    height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <rect x="4" y="4" width="6" height="6" rx="1" />
+                    <rect x="14" y="4" width="6" height="6" rx="1" />
+                    <rect x="4" y="14" width="6" height="6" rx="1" />
+                    <rect x="14" y="14" width="6" height="6" rx="1" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-layout-list" width="20"
+                    height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <rect x="4" y="4" width="16" height="6" rx="2" />
+                    <rect x="4" y="14" width="16" height="6" rx="2" />
+                </svg>
+            </span>
+        </label>
+    </div>
+</section>
+<section class="content-block content-block-travel-cols">
+    <div class="spinner">
+        <div class="sk-folding-cube">
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
+        </div>
+        <div class="msg" data-text="Suche Angebote...">Suche Angebote...</div>
+        <img class="brand" src="<?php echo SITE_URL;?>/wp-content/themes/travelshop/assets/img/travelshop-logo.svg">
+    </div>
+    <div id="pm-search-result" class="row">
+        <?php
+        $view = 'Teaser1';
+        if(!empty($_GET['view']) && preg_match('/^[0-9A-Za-z\_]+$/', $_GET['view']) !== false){
+            $view = $_GET['view'];
+        }
+
+        foreach ($mediaObjects as $mediaObject) {
+            $data = new stdClass();
+            $data->class = 'col-12 col-md-6 col-lg-4';
+            echo $mediaObject->render($view, TS_LANGUAGE_CODE, $data);
+        }
+
+        if($total_result == 0){
+            ?>
+        <div class="col-12">
+            <p>Zu Ihrer Suchanfrage wurden keine Ergebnisse gefunden. Bitte ändern Sie Ihre Suchanfrage.</p>
+            <a href="#" onclick="document.location.href = window.location.href.split('?')[0]">Suche zurücksetzen</a>
+        </div>
+        <?php
+        }
+        ?>
+    </div>
+</section>
+<?php
+// Pagination
+if ($pages > 1) {
+    require 'result-pagination.php';
+}
+
+/**
+ * if the search is cached, we display a short information about the content age
+ */
+if($search->isCached()){
+    $cacheinfo = $search->getCacheInfo();
+    $cachetime = new DateTime($cacheinfo['date']);
+    $cachetime->setTimezone(new DateTimeZone('Europe/Berlin'));
+    echo '<section><div class="small mb-2">Stand: '.$cachetime->format('d.m.Y H:i:s').'</div></section>';
+}
