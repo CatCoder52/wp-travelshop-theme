@@ -238,6 +238,7 @@ jQuery(function ($) {
                 }else if(suggestion.data.type == 'search'){
                     var url = $(this).parents('form').attr('action');
                     url += '?' + suggestion.data.search_request;
+                    document.location.href = url;
                 }
             }
         })

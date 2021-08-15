@@ -287,38 +287,39 @@ jQuery(function ($) {
             }
 
             // check and set price-range
-            var price_range = $('input[name=pm-pr]').val();
-            var price_mm_range = $('input[name=pm-pr]').data('min') + '-' + $('input[name=pm-pr]').data('max');
+
+            let price_range = $(form).find('input[name=pm-pr]').val();
+            let price_mm_range = $(form).find('input[name=pm-pr]').data('min') + '-' + $(form).find('input[name=pm-pr]').data('max');
             if (price_range && price_mm_range != price_range && price_range != '') {
                 query.push('pm-pr=' + price_range);
             }
 
             // check and set duration-range
-            var duration_range = $('input[name=pm-du]').val();
-            var duration_mm_range = $('input[name=pm-du]').data('min') + '-' + $('input[name=pm-du]').data('max');
+            let duration_range = $(form).find('input[name=pm-du]').val();
+            let duration_mm_range = $(form).find('input[name=pm-du]').data('min') + '-' + $(form).find('input[name=pm-du]').data('max');
             if (duration_range && duration_mm_range != duration_range && duration_range != '') {
                 query.push('pm-du=' + duration_range);
             }
 
             // check and set date-range
-            var date_range = $('input[name=pm-dr]').data('value');
+            let date_range = $(form).find('input[name=pm-dr]').data('value');
             if (date_range && date_range != '') {
                 query.push('pm-dr=' + date_range);
             }
 
             // check and set search term
-            var search_term = $('input[name=pm-t]').val();
+            let search_term = $(form).find('input[name=pm-t]').val();
             if (search_term && search_term != '') {
                 query.push('pm-t=' + search_term);
             }
 
-            var order = $('select[name=pm-o]').val();
+            let order = $(form).find('select[name=pm-o]').val();
             if (order && order != '') {
                 query.push('pm-o=' + order);
             }
 
             // Build the Query
-            var query_string;
+            let query_string;
             query_string = query.join('&');
 
             return query_string;
@@ -357,17 +358,17 @@ jQuery(function ($) {
              */
             $(".search-box input, .search-box  select").on('change', function (e) {
 
-                var form = $(this).closest('form');
+                let form = $(this).closest('form');
 
                 // build the query string and set him on the search button
-                var query_string = _this.buildSearchQuery(form);
+                let query_string = _this.buildSearchQuery(form);
 
-                var button = $(form).find('a.btn');
-                var href = button.attr('href').split('?');
+                let button = $(form).find('a.btn');
+                let href = button.attr('href').split('?');
                 button.attr('href', href[0] + '?' + query_string);
 
                 // if we're on the same page, let fire the search and set the search results
-                var current_location = window.location.href.split('?');
+                let current_location = window.location.href.split('?');
                 if (current_location[0] == href[0]) {
                     _this.setSpinner('#pm-search-result');
                     _this.call(query_string, null, '.search-bar-total-count', _this.resultHandlerSearch);
