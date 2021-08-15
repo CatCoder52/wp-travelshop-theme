@@ -55,7 +55,7 @@ $cheapest_price = $args['cheapest_price'];
                                 <?php
                                 foreach ($date->getHousingOptions() as $key => $housing_option) {
                                     $housing_package = $housing_option->getHousingPackage();
-                                    $checked = ($cheapest_price->id_option == $housing_option->id);
+                                    $checked = ($cheapest_price->id_option == $housing_option->id && $cheapest_price->id_date == $date->id);
                                     ?>
                                     <div class="booking-row no-gutters row booking-row-date<?php echo $checked ? ' checked' : '';?>">
                                         <?php if($checked){?>
