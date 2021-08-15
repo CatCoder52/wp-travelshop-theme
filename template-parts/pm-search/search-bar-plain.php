@@ -9,14 +9,22 @@ if(empty($id_object_type) === true){
 
 $search = new Pressmind\Search(
     [
-        //Pressmind\Search\Condition\Category::create('zielgebiet_default', ['304E15ED-302F-CD33-9153-14B8C6F955BD', '4C5833CB-F29A-A0F4-5A10-14B762FB4019', '78321653-CF81-2EF1-ED02-9D07E01651C1']),
-        //Pressmind\Search\Condition\PriceRange::create(100, 3000),
-        //Pressmind\Search\Condition\DurationRange::create(0, 30),
         Pressmind\Search\Condition\Visibility::create(TS_VISIBILTY),
         Pressmind\Search\Condition\ObjectType::create($id_object_type),
     ]
 );
 
+/**
+ * perform a search to display the item count on the search button,
+ * we se a transient to cache the result for about 60 seconds
+ */
+
+$transient = 'ts_total_count_'.md5(serialize($search->getConditions()));
+if (($total_result = get_transient( $transient)) === false) {
+    $mediaObjects = $search->getResults();
+    $total_result = $search->getTotalResultCount();
+    set_transient($transient, $total_result, 60);
+}
 ?>
 <form method="GET">
     <div class="search-wrapper">
@@ -53,7 +61,7 @@ $search = new Pressmind\Search(
                         <circle cx="10" cy="10" r="7" />
                         <line x1="21" y1="21" x2="15" y2="15" />
                     </svg> 
-                    <span class="search-bar-total-count" data-default="Suchen" data-total-count-singular="Reise" data-total-count-plural="Reisen">Suchen</span>
+                    <span class="search-bar-total-count" data-default="Suchen" data-total-count-singular="Reise" data-total-count-plural="Reisen"><?php echo empty($total_result) ? 'Suchen' : $total_result. ' Reisen'; ?></span>
                     </a>
                 </div>
             </div>
