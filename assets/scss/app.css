@@ -11347,6 +11347,13 @@ Build date: 2018-12-12 00:07:25
 /**
  *  Reset button style
  **/
+/**
+Creates a strike trough price
+<span class="discount-label">
+  <span class="price">701&nbsp;€</span>
+  <span class="discount">-4%</span>
+  </span>
+*/
 hr {
   border-top: rgba(0, 0, 0, 0.125) 1px solid;
 }
@@ -12181,7 +12188,18 @@ hr {
   margin-bottom: 0.35rem;
   font-size: 0.8rem;
 }
+.travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-cta .discount-wrapper p .discount-label {
+  background-color: lightgray;
+  color: black;
+  border-radius: 10px;
+  width: auto;
+  position: relative;
+  font-size: 0.8rem;
+  padding: 2px 10px;
+  white-space: nowrap;
+}
 .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-cta .discount-wrapper p .discount-label .price {
+  width: 30px;
   position: relative;
 }
 .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-cta .discount-wrapper p .discount-label .price:before {
@@ -12196,8 +12214,8 @@ hr {
   height: 0.15em;
 }
 .travelshop-teaser-mega-stripe .stripe-inner .stripe-content .stripe-content-footer .stripe-cta .discount-wrapper p .discount-label .discount {
-  color: red;
-  font-weight: 700;
+  color: #e60000;
+  font-weight: bold;
 }
 @media (min-width: 768px) {
   .travelshop-teaser-mega-stripe .stripe-inner .stripe-image {
@@ -12950,6 +12968,54 @@ hr {
     transform: translate(50%, -50%);
   }
 }
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row .discount-wrapper {
+  position: relative;
+  margin: 0.25rem 0 0.5rem 0;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row .discount-wrapper p {
+  font-size: 0.8rem;
+  text-align: left;
+  margin: 0;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row .discount-wrapper p .msg {
+  position: relative;
+  padding: 0px 2px;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row .discount-wrapper .discount-label {
+  background-color: lightgray;
+  color: black;
+  border-radius: 10px;
+  width: auto;
+  position: relative;
+  font-size: 0.8rem;
+  padding: 2px 10px;
+  white-space: nowrap;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row .discount-wrapper .discount-label .price {
+  width: 30px;
+  position: relative;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row .discount-wrapper .discount-label .price:before {
+  position: absolute;
+  content: "";
+  top: 0.5em;
+  background: linear-gradient(to right, rgba(230, 0, 0, 0.8) 50%, rgba(230, 0, 0, 0) 100%);
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 2px;
+  transform: rotate(-20deg);
+  width: 110%;
+  height: 0.15em;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row .discount-wrapper .discount-label .discount {
+  color: #e60000;
+  font-weight: bold;
+}
+@media (min-width: 992px) {
+  .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row .discount-wrapper .discount-label {
+    padding: 5px 10px;
+    top: 8px;
+  }
+}
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div {
   padding: 0.25rem 1rem;
   line-height: 1.3;
@@ -12989,11 +13055,17 @@ hr {
   border-top: 1px solid #ccc;
   justify-content: flex-end;
 }
-.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div.price-container .price {
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div.price-container .price-total {
+  display: inline;
   font-weight: normal;
 }
-.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div.price-container .price strong {
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div.price-container .price-total strong {
   font-size: 1.3rem;
+}
+@media (min-width: 992px) {
+  .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div.price-container .price-total {
+    display: block;
+  }
 }
 @media (min-width: 992px) {
   .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div {
@@ -13076,6 +13148,10 @@ hr {
 }
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row .bottom-bar span {
   font-weight: normal;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row .bottom-bar p {
+  text-align: right;
+  margin: 0;
 }
 
 .content-block-detail-booking-calendar {
@@ -15948,6 +16024,9 @@ a {
 .content-block-detail-info-grid .detail-price-box .discount-wrapper .discount-label .discount {
   color: #e60000;
   font-weight: bold;
+}
+.content-block-detail-info-grid .detail-price-box .discount-wrapper .discount-label {
+  padding: 5px 10px;
 }
 .content-block-detail-info-grid .detail-price-box a.detail-pdf-download {
   color: #495057;
