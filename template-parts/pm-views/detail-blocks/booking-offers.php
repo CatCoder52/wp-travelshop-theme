@@ -2,6 +2,7 @@
 
 use Pressmind\HelperFunctions;
 use Pressmind\Search\CheapestPrice;
+use Pressmind\Travelshop\PriceHandler;
 
 /**
  * @var array $args
@@ -115,8 +116,8 @@ $cheapest_price = $args['cheapest_price'];
                                                     $cheapest_price_filter->id_booking_package = $housing_option->id_booking_package;
                                                     $cheapest_price_filter->id_date = $date->id;
                                                     $housing_options_cheapest_price = $mo->getCheapestPrice($cheapest_price_filter);
-                                                echo number_format($housing_options_cheapest_price->price_total, TS_PRICE_DECIMALS, TS_PRICE_DECIMAL_SEPARATOR,TS_PRICE_THOUSANDS_SEPARATOR);
-                                                ?>&nbsp;€</strong></span>
+                                                echo PriceHandler::format($housing_options_cheapest_price->price_total);
+                                                ?></strong></span>
                                         </div>
                                         <div class="col-12 col-lg-2">
                                             <a class="btn btn-primary btn-block booking-btn green" target="_blank" rel="nofollow"
@@ -127,7 +128,7 @@ $cheapest_price = $args['cheapest_price'];
                                                 </svg>zur Buchung
                                             </a>
                                         </div>
-                                        <!-- TODO: Add pseudo price
+
                                         <div class="bottom-bar">
                                             <div class="col-12 col-lg-2">
                                                 <span>anstatt</span> <strong>649,00 €</strong>
@@ -136,7 +137,7 @@ $cheapest_price = $args['cheapest_price'];
                                                 <span>EZZ</span> <strong>100,00 €</strong>
                                             </div>
                                         </div>
-                                        -->
+
                                     </div>
                                 <?php } ?>
                             <?php } ?>
