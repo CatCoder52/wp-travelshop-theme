@@ -318,6 +318,12 @@ jQuery(function ($) {
                 query.push('pm-o=' + order);
             }
 
+            // the view
+            let view = $('.pm-switch-result-view .pm-switch-checkbox').prop('checked');
+            if(view){
+                query.push('view='+$('.pm-switch-result-view .pm-switch-checkbox').val());
+            }
+
             // Build the Query
             let query_string;
             query_string = query.join('&');
@@ -393,3 +399,4 @@ jQuery(function ($) {
     Search.filter();
 
 });
+

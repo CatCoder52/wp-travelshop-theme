@@ -177,9 +177,9 @@ jQuery(function ($) {
     }
 
 
-    // ------------------------------
-    // -- content modal
-    // ------------------------------
+// ------------------------------
+// -- content modal
+// ------------------------------
 
     if ( $('.modal-wrapper').length > 0 ) {
         $('a[data-modal="true"]').on('click', function(e) {
@@ -202,4 +202,35 @@ jQuery(function ($) {
         });
     }
 
+// ------------------------------
+// -- view switch on result page
+// ------------------------------
+    if ( $('.pm-switch-result-view').length > 0 ) {
+
+        if(window.localStorage.getItem('pm-switch-checkbox') == '1') {
+            $('.pm-switch-result-view .pm-switch-checkbox').prop('checked', true);
+        }
+
+        $('#search-result').on('click', '.pm-switch-result-view .pm-switch-checkbox', function(e) {
+
+            let query_string = window.location.search.replace(/(\?|&)(view=).*?(&|$)/,'');
+
+            if($(this).prop('checked') == true){
+                window.localStorage.setItem('pm-switch-checkbox', '1');
+                if(query_string == ''){
+                    query_string += '?'
+                }else{
+                    query_string += '&'
+                }
+                query_string +='view='+$(this).val();
+
+            }else{
+                window.localStorage.removeItem('pm-switch-checkbox');
+            }
+
+            window.history.pushState(null, '', window.location.pathname + query_string);
+            location.reload();
+
+        })
+    }
 });
