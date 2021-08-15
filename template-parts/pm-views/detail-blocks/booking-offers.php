@@ -23,12 +23,12 @@ $cheapest_price = $args['cheapest_price'];
 
     <section class="content-block content-block-detail-booking" id="content-block-detail-booking">
         <div class="container">
+           <?php require 'booking-offers-calendar.php'; ?>
             <div class="row">
                 <div class="col-12">
                     <h2>Termine &amp; Preise</h2>
                 </div>
             </div>
-           <?php require 'booking-offers-calendar.php'; ?>
             <div class="row">
                 <div class="col-12">
                     <div class="content-block-detail-booking-inner">
@@ -110,7 +110,7 @@ $cheapest_price = $args['cheapest_price'];
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-2 price-container">
-                                            <span class="price">ab <strong><?php
+                                            <span class="price-total">ab <strong><?php
                                                     $cheapest_price_filter = new CheapestPrice();
                                                     $cheapest_price_filter->id_option = $housing_option->id;
                                                     $cheapest_price_filter->id_booking_package = $housing_option->id_booking_package;
@@ -129,6 +129,7 @@ $cheapest_price = $args['cheapest_price'];
                                             </a>
                                         </div>
 
+                                        <!--
                                         <div class="bottom-bar">
                                             <div class="col-12 col-lg-2">
                                                 <span>anstatt</span> <strong>649,00 €</strong>
@@ -137,7 +138,7 @@ $cheapest_price = $args['cheapest_price'];
                                                 <span>EZZ</span> <strong>100,00 €</strong>
                                             </div>
                                         </div>
-
+                                    -->
                                     </div>
                                 <?php } ?>
                             <?php } ?>

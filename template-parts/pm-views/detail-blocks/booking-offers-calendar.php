@@ -17,6 +17,9 @@ use Pressmind\Search\CheapestPrice;
 ?>
 <div class="row content-block-detail-booking-calendar">
     <div class="col-12">
+            <h2>Buchungskalender</h2>
+    </div>
+    <div class="col-12">
         <div class="booking-calendar-slider">
             <?php
 
