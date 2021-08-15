@@ -110,14 +110,44 @@ $cheapest_price = $args['cheapest_price'];
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-2 price-container">
-                                            <span class="price-total">ab <strong><?php
-                                                    $cheapest_price_filter = new CheapestPrice();
-                                                    $cheapest_price_filter->id_option = $housing_option->id;
-                                                    $cheapest_price_filter->id_booking_package = $housing_option->id_booking_package;
-                                                    $cheapest_price_filter->id_date = $date->id;
-                                                    $housing_options_cheapest_price = $mo->getCheapestPrice($cheapest_price_filter);
-                                                echo PriceHandler::format($housing_options_cheapest_price->price_total);
-                                                ?></strong></span>
+                                          <?php
+
+                                            $cheapest_price_filter = new CheapestPrice();
+                                            $cheapest_price_filter->id_option = $housing_option->id;
+                                            $cheapest_price_filter->id_booking_package = $housing_option->id_booking_package;
+                                            $cheapest_price_filter->id_date = $date->id;
+                                            $housing_options_cheapest_price = $mo->getCheapestPrice($cheapest_price_filter);
+
+                                            if (($discount = PriceHandler::getDiscount($housing_options_cheapest_price)) !== false) {
+                                                ?>
+                                                <div class="discount-wrapper">
+                                                    <p>
+                                                        <span class="price-total">ab <strong><?php
+                                                                echo PriceHandler::format($housing_options_cheapest_price->price_total);
+                                                                ?></strong>
+                                                        </span>
+                                                        <span class="msg"><?php echo $discount['name']; ?>
+                                                            <?php if(!empty($discount['valid_to'])){
+                                                                echo ' bis '.$discount['valid_to']->format('d.m.');
+                                                            }?>
+                                                        </span>
+                                                        <span class="discount-label">
+                                                            <span class="price"><?php echo $discount['price_before_discount']; ?></span>
+                                                            <span class="discount"><?php echo $discount['price_delta']; ?></span>
+                                                        </span>
+
+                                                    </p>
+                                                </div>
+                                                <?php
+                                            }else{
+                                                ?>
+                                                <span class="price-total">ab <strong><?php
+                                                        echo PriceHandler::format($housing_options_cheapest_price->price_total);
+                                                        ?></strong>
+                                                </span>
+                                                <?php
+                                            } ?>
+
                                         </div>
                                         <div class="col-12 col-lg-2">
                                             <a class="btn btn-primary btn-block booking-btn green" target="_blank" rel="nofollow"
