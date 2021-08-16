@@ -8760,8 +8760,8 @@ hr {
               margin-right: 0.5rem; } }
 
 .card-travel-wrapper {
-  padding: 0 0 1rem 0;
-  margin: 0 0 1rem 0;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125); }
   .card-travel-wrapper:first-child {
     padding-top: 1rem;
@@ -9005,11 +9005,11 @@ hr {
           left: 1.25rem; } }
   @media (min-width: 768px) {
     .card-travel-wrapper {
-      padding: 0 15px 30px 15px;
+      padding-bottom: 30px;
       margin-bottom: 0;
       border: 0; }
       .card-travel-wrapper:first-child {
-        padding: 0 15px 30px 15px;
+        padding-bottom: 30px;
         border: 0; }
       .card-travel-wrapper .row {
         margin: 0 -15px;
@@ -11751,6 +11751,143 @@ figure.wp-block-image figcaption {
         .modal-wrapper .modal-inner .modal-body-outer {
           max-height: 90vh; } }
 
+.teaser.category-teaser {
+  display: block; }
+  .teaser.category-teaser .teaser-category-image {
+    position: relative; }
+    .teaser.category-teaser .teaser-category-image .teaser-image {
+      border-radius: 0.25rem;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      background-color: lightgray;
+      background-position: center;
+      background-size: cover;
+      height: 218px; }
+      .teaser.category-teaser .teaser-category-image .teaser-image:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 0.25rem;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0; }
+    .teaser.category-teaser .teaser-category-image .teaser-body {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      text-align: left; }
+      .teaser.category-teaser .teaser-category-image .teaser-body h1 {
+        margin-bottom: 0; }
+  .teaser.category-teaser .teaser-body {
+    text-align: left;
+    padding: 1rem; }
+    .teaser.category-teaser .teaser-body a {
+      width: auto;
+      position: static; }
+    .teaser.category-teaser .teaser-body .teaser-products .card-category-travel-wrapper {
+      border-bottom: 1px solid #e9ecef;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+      position: relative; }
+      .teaser.category-teaser .teaser-body .teaser-products .card-category-travel-wrapper:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+        margin-bottom: 0; }
+      .teaser.category-teaser .teaser-body .teaser-products .card-category-travel-wrapper .add-to-wishlist {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        right: 1rem;
+        padding: 0;
+        line-height: 1; }
+        .teaser.category-teaser .teaser-body .teaser-products .card-category-travel-wrapper .add-to-wishlist svg {
+          pointer-events: none;
+          width: 1.5rem;
+          height: 1.5rem; }
+          .teaser.category-teaser .teaser-body .teaser-products .card-category-travel-wrapper .add-to-wishlist svg .wishlist-heart {
+            fill: #fff; }
+        .teaser.category-teaser .teaser-body .teaser-products .card-category-travel-wrapper .add-to-wishlist.active svg .wishlist-heart {
+          stroke: #fff;
+          fill: #06f; }
+      .teaser.category-teaser .teaser-body .teaser-products .card-category-travel-wrapper .card-body {
+        padding: 0;
+        text-align: left; }
+        .teaser.category-teaser .teaser-body .teaser-products .card-category-travel-wrapper .card-body .card-title {
+          font-size: 1rem;
+          margin-bottom: 0.25rem;
+          padding-right: 2rem;
+          text-align: left; }
+          .teaser.category-teaser .teaser-body .teaser-products .card-category-travel-wrapper .card-body .card-title a {
+            color: #212529;
+            display: block; }
+      .teaser.category-teaser .teaser-body .teaser-products .card-category-travel-wrapper .discount-wrapper {
+        position: relative;
+        margin: 0.5rem 0 0.5rem 0; }
+        .teaser.category-teaser .teaser-body .teaser-products .card-category-travel-wrapper .discount-wrapper p {
+          font-size: 0.8rem;
+          text-align: left;
+          margin: 0; }
+          .teaser.category-teaser .teaser-body .teaser-products .card-category-travel-wrapper .discount-wrapper p .msg {
+            background-color: white;
+            position: relative;
+            padding: 0 0 0 2px; }
+        .teaser.category-teaser .teaser-body .teaser-products .card-category-travel-wrapper .discount-wrapper hr {
+          display: none; }
+        .teaser.category-teaser .teaser-body .teaser-products .card-category-travel-wrapper .discount-wrapper .discount-label {
+          background-color: lightgray;
+          color: black;
+          border-radius: 10px;
+          width: auto;
+          position: relative;
+          font-size: 0.8rem;
+          padding: 2px 10px;
+          white-space: nowrap; }
+          .teaser.category-teaser .teaser-body .teaser-products .card-category-travel-wrapper .discount-wrapper .discount-label .price {
+            width: 30px;
+            position: relative; }
+          .teaser.category-teaser .teaser-body .teaser-products .card-category-travel-wrapper .discount-wrapper .discount-label .price:before {
+            position: absolute;
+            content: "";
+            top: 0.5em;
+            background: linear-gradient(to right, rgba(230, 0, 0, 0.8) 50%, rgba(230, 0, 0, 0) 100%);
+            border-bottom-right-radius: 50%;
+            border-bottom-left-radius: 2px;
+            transform: rotate(-20deg);
+            width: 110%;
+            height: 0.15em; }
+          .teaser.category-teaser .teaser-body .teaser-products .card-category-travel-wrapper .discount-wrapper .discount-label .discount {
+            color: #e60000;
+            font-weight: bold; }
+      .teaser.category-teaser .teaser-body .teaser-products .card-category-travel-wrapper .price-row {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        align-content: baseline;
+        align-items: baseline; }
+        .teaser.category-teaser .teaser-body .teaser-products .card-category-travel-wrapper .price-row > a.product-price {
+          margin-left: auto;
+          margin-right: 0;
+          color: #212529;
+          text-decoration: none;
+          align-content: baseline;
+          align-items: baseline;
+          width: auto; }
+          .teaser.category-teaser .teaser-body .teaser-products .card-category-travel-wrapper .price-row > a.product-price small strong {
+            margin-right: 4px; }
+          .teaser.category-teaser .teaser-body .teaser-products .card-category-travel-wrapper .price-row > a.product-price small + strong {
+            font-size: 1.2rem; }
+        .teaser.category-teaser .teaser-body .teaser-products .card-category-travel-wrapper .price-row > span.small {
+          margin-left: 0;
+          margin-right: auto;
+          white-space: nowrap; }
+
 .footer-main {
   background-color: #e9ecef; }
   .footer-main .footer-boxes > div {
@@ -12083,6 +12220,12 @@ body {
 
 a {
   color: #0066ff; }
+
+@media (max-width: 767.98px) {
+  .content-main > .container,
+  .content-main > .container-fluid {
+    padding-left: 15px;
+    padding-right: 15px; } }
 
 .content-block-list-header {
   display: flex;

@@ -39,6 +39,38 @@ get_header();
                 <hr class="mt-0 mb-0">
                 <?php
                 $args = [
+                    'headline' => 'Category-Teaser',
+                    'text' => 'Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.',
+                    'teasers' => [
+                        [
+                            'headline' => 'Fernreise',
+                            'image' => 'http://wordpress.p594234.webspaceconfig.de/wp-content/themes/travelshop/assets/img/slide-1-mobile.jpg',
+                            'link' => '#',
+                            'link_target' => '_self',
+                            'search' => [
+                                'pm-li' => '0,4',
+                                'pm-o' => 'rand',
+                                'pm-ot' => TS_TOUR_PRODUCTS
+                            ]
+                        ],
+                        [
+                            'headline' => 'Kurzreise',
+                            'image' => 'http://wordpress.p594234.webspaceconfig.de/wp-content/uploads/2021/07/arbeit-ferienwohnung-naehe-winterberg-350x218.jpg',
+                            'link' => '#',
+                            'link_target' => '_self',
+                            'search' => [
+                                'pm-li' => '0,4',
+                                'pm-o' => 'rand',
+                                'pm-ot' => TS_TOUR_PRODUCTS
+                            ]
+                        ]
+                    ]
+                ];
+                load_template(get_template_directory().'/template-parts/layout-blocks/product-category-teaser.php', false, $args);
+                ?>
+                <hr class="mt-0 mb-0">
+                <?php
+                $args = [
                     'headline' => 'Info Teaser',
                     'text' => 'Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.'
                 ];
