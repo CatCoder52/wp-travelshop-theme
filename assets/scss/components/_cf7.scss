@@ -70,6 +70,10 @@
     border-radius: $border-radius;
   }
 
+  form.sent .wpcf7-response-output {
+    background-color: $success;
+  }
+
   // -- acceptance
   .wpcf7-acceptance {
     .wpcf7-list-item {
