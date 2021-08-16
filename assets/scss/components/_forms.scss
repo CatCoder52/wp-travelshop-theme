@@ -167,3 +167,21 @@ button.select-from-control {
 		transform: rotate(180deg);
 	}
 }
+
+.form-group.category-tree {
+	.dropdown-menu.dropdown-menu-select {
+		top: 100% !important;
+		transform: translate(0,0) !important;
+
+		.multi-level-checkboxes {
+
+			padding-left: 1rem;
+			padding-right: 1rem;
+			margin-left: -1rem;
+			margin-right: -1rem;
+
+			overflow-y: auto;
+			max-height: ( ( ( 1rem * 1.5 ) + 0.25rem ) * 12);
+		}
+	}
+}
