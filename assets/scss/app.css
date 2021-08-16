@@ -10261,6 +10261,17 @@ button.select-from-control {
 .dropdown.show button.select-from-control i.la {
   transform: rotate(180deg); }
 
+.form-group.category-tree .dropdown-menu.dropdown-menu-select {
+  top: 100% !important;
+  transform: translate(0, 0) !important; }
+  .form-group.category-tree .dropdown-menu.dropdown-menu-select .multi-level-checkboxes {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    overflow-y: auto;
+    max-height: 21rem; }
+
 .layout-block.layout-block-search-header {
   position: relative;
   background-image: url(../img/slide-1-mobile.jpg);
