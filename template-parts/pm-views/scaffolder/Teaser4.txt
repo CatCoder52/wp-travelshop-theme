@@ -1,5 +1,10 @@
 <?php
 /**
+ * This Teaser is used in the following modules:
+ *  - template-parts/layout-blocks/product-category-teaser.php
+ */
+
+/**
  * @var array $data
  */
 
@@ -101,7 +106,6 @@ if (empty($filteredParams) === false) {
                 <a href="<?php echo $url; ?>"><?php echo strip_tags($mo->name); ?></a>
             </h1>
 
-
             <div class="bottom-aligned">
                 <?php
 
@@ -111,7 +115,7 @@ if (empty($filteredParams) === false) {
                 }
 
                 // cheapest price
-                if (empty($cheapest_price->price_option) === false) {
+                if (empty($cheapest_price->price_total) === false) {
 
                     $month = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
                     $weekdays = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
@@ -120,18 +124,16 @@ if (empty($filteredParams) === false) {
 
 
                     <div class="card-text discount-row">
-
                         <?php
-                        if (!empty($cheapest_price->price_option_pseudo) && $cheapest_price->price_option_pseudo > $cheapest_price->price_total) {
-                            $percent_discount = round((100 / $cheapest_price->price_option_pseudo) * ($cheapest_price->price_option_pseudo - $cheapest_price->price_total));
+                        if (($discount = \Pressmind\Travelshop\PriceHandler::getDiscount($cheapest_price)) !== false) {
                             ?>
                             <div class="discount-wrapper">
-
+                                <hr>
                                 <p>
-                                    <span class="msg">Ihr Vorteil</span>
+                                    <span class="msg"><?php echo $discount['name']; ?></span>
                                     <span class="discount-label">
-                                <span class="price"><?php echo $cheapest_price->price_option_pseudo; ?>&nbsp;€</span>
-                                <span class="discount"> -<?php echo $percent_discount; ?>%</span>
+                                <span class="price"><?php echo $discount['price_before_discount']; ?></span>
+                                <span class="discount"><?php echo $discount['price_delta']; ?></span>
                             </span>
                                 </p>
                             </div>
@@ -150,7 +152,7 @@ if (empty($filteredParams) === false) {
                         <a href="<?php echo $url; ?>" class="product-price">
                             <?php
                             if (empty($cheapest_price->price_total) === false) {
-                                echo '<small><span>Preis p.P.</span> <strong>ab</strong> </small><strong>' . number_format($cheapest_price->price_total, TS_PRICE_DECIMALS, TS_PRICE_DECIMAL_SEPARATOR, TS_PRICE_THOUSANDS_SEPARATOR) . '&nbsp;€</strong>';
+                                echo '<small><span>Preis p.P.</span> <strong>ab</strong> </small><strong>' . \Pressmind\Travelshop\PriceHandler::format($cheapest_price->price_total).'</strong>';
                             } else {
                                 ?>zur Reise<?php
                             }
