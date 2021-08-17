@@ -52,7 +52,7 @@ FLBuilder::register_module('TSPMProductTeaser', array(
 
         ),
     ),
-	'content'    => array(
+	'content2'    => array(
 		'title' => __( 'Content', 'fl-builder' ),
 		'file'  => get_stylesheet_directory() . '/pagebuilders/beaverbuilder/includes/ui_media_object_settings.php',
 	),

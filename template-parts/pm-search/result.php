@@ -124,7 +124,11 @@ if(!empty($_GET['view']) && preg_match('/^[0-9A-Za-z\_]+$/', $_GET['view']) !== 
         foreach ($mediaObjects as $mediaObject) {
             $data = new stdClass();
             $data->class = 'col-12 col-md-6 col-lg-4';
-            echo $mediaObject->render($view, TS_LANGUAGE_CODE, $data);
+            try{
+                echo $mediaObject->render($view, TS_LANGUAGE_CODE, $data);
+            }catch (Exception $e){
+                echo $e->getMessage();
+            }
         }
 
         if($total_result == 0){

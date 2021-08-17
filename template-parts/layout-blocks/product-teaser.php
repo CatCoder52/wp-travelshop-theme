@@ -12,12 +12,14 @@
  *                       [pm-vi] => 10
  *                       [pm-l] => 0,4
  *                       [pm-o] => price-desc
+ *                       [...] => @link ../../docs/readme-querystring-api.md for all parameters
  *                  )
  *      )
  * </code>
  * @var array $args
  */
 
+//@TODO add cache -update/no_cache logic here
 $search = BuildSearch::fromRequest(isset($args['search']) ? $args['search'] : [], 'pm', true, 4);
 $products = $search->getResults();
 // if no items where found, we avoid output like headline or intro text...

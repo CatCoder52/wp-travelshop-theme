@@ -1,18 +1,11 @@
 <?php
-// webcore config, webcore db, beaverbuilder settings
-global $config, $db, $settings;
+// webcore config, webcore db
+global $config, $db;
 
-/*
-// Default Settings
-$defaults = array(
-    'pm-ot' => array_key_first($config['data']['primary_media_type_ids']),
-
-);
-
-$tab_defaults = isset($tab['defaults']) ? $tab['defaults'] : array();
-$settings = (object)array_merge($defaults, $tab_defaults, (array)$settings);
-*/
-
+/**
+ * beaverbuilder settings
+ * @var $settings
+ */
 
 // get all categories group by id objec type for later purposes
 $r = $db->fetchAll('select distinct var_name, ti.id_tree as id, ct.name, id_object_type from pmt2core_media_object_tree_items ti
@@ -27,7 +20,6 @@ foreach ($r as $category){
 
 ?>
 
-<div class="fl-custom-query fl-loop-data-source" data-source="filter">
 
     <div id="fl-builder-settings-section-general" class="fl-builder-settings-section">
         <div class="fl-builder-settings-section-header">
@@ -66,7 +58,7 @@ foreach ($r as $category){
                 FLBuilder::render_settings_field('pm-ot', array(
                     'type' => 'select',
                     'label' => 'Object Type',
-                    'default' => array_key_first($config['data']['primary_media_type_ids']),
+                    'default' => !empty($config['data']['primary_media_type_ids'][0]) ? $config['data']['primary_media_type_ids'][0] : array_key_first($config['data']['media_types']) ,
                     'options' => $config['data']['media_types'],
                     'toggle' => $toggle
                 ), $settings);
@@ -267,7 +259,7 @@ foreach ($r as $category){
         </div>
     </div>
     <!-- this id is used to identify the section for toggling fl-builder-settings-section-SECTIONID -->
-    <div id="fl-builder-settings-section-categories" class="fl-builder-settings-section fl-builder-settings-section-collapsed">
+    <div id="fl-builder-settings-section-categories" class="fl-builder-settings-section fl-builder-settings-section-collapsed____">
         <div class="fl-builder-settings-section-header">
             <button class="fl-builder-settings-title">
                 <svg class="fl-symbol">
@@ -279,7 +271,7 @@ foreach ($r as $category){
         <div class="fl-builder-settings-section-content">
             <table class="fl-form-table">
                 <?php
-                foreach($categories as $category){
+                foreach ($categories as $category) {
                     FLBuilder::render_settings_field($category->fieldname, array(
                         'type' => 'suggest',
                         'action' => $category->fieldname,
@@ -287,11 +279,10 @@ foreach ($r as $category){
                         'label' => $category->var_name,
                         'help' => '',
                         'matching' => false,
+                        'limit' => 10
                     ), $settings);
                 }
                 ?>
             </table>
         </div>
     </div>
-</div>
-

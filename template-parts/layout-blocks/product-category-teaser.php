@@ -3,16 +3,23 @@
  * <code>
  *  $args['headline']
  *  $args['text']
+ *  $args['view']
+ *  $args['teaser_count_desktop'] = 3
  *  $args['teasers'][][ // list of teasers
-            [headline] => We make it!
-            [image] => Image path
-            [link] =>
-            [link_target] => _self
-            [link_nofollow] => no
-            [search] => search parameters for list products
-
- *                  ]
- *
+ *          [headline] => We make it!
+ *          [image] => Image path
+ *          [link] =>
+ *          [link_target] => _self
+ *          [link_nofollow] => no
+ *          [search]=> Array
+ *                  (
+ *                       [pm-ot] => 607
+ *                       [pm-view] => Teaser1
+ *                       [pm-vi] => 10
+ *                       [pm-l] => 0,4
+ *                       [pm-o] => price-desc
+ *                       [...] => @link ../../docs/readme-querystring-api.md for all parameters
+ *                  )
 
  * </code>
  * @var array $args
@@ -36,32 +43,51 @@
 
         <?php
         if(!empty($args['teasers'])){
+
+            // if is empty or is not divide trough 12, set default
+            if(empty($args['teaser_count_desktop']) || 12 % $args['teaser_count_desktop'] != 0){
+                $args['teaser_count_desktop'] = 3;
+            }
+
             foreach($args['teasers'] as $teaser){
-                $teaser = (array)$teaser;
+
+                $image = !empty($teaser['image']) ? $teaser['image'] : get_stylesheet_directory_uri() . '/assets/img/slide-1-mobile.jpg';
                 ?>
-                <div class="col-12 col-sm-6 col-lg-3">
+                <div class="col-12 col-sm-6 <?php echo 'col-lg-'.(12/$args['teaser_count_desktop']); ?>">
                     <article class="teaser category-teaser">
 
-                        <?php
-                            load_template(get_template_directory().'/template-parts/wp-views/category-image-teaser-view.php', false, $teaser);
-                        ?>
+                        <div class="teaser-category-image">
+                            <a href="<?php echo $teaser['link'];?>" target="<?php echo !empty($teaser['link_target']) ? $teaser['link_target'] : '_self';?>">
+                                <div class="teaser-image" style="background-image: url('<?php echo $image; ?>');">
+                                </div>
+                                <div class="teaser-body">
+                                    <?php if(!empty($teaser['headline'])){ ?>
+                                        <h1 class="teaser-title h5">
+                                            <?php echo $teaser['headline'];?>
+                                        </h1>
+                                    <?php } ?>
+                                </div>
+                            </a>
+                        </div>
 
                         <div class="teaser-body">
                             <div class="row teaser-products">
                                 <?php
-                                $search = BuildSearch::fromRequest(isset($teaser['search']) ? $teaser['search'] : [], 'pm', true, 4);
+                                $search = BuildSearch::fromRequest($teaser['search'] ?? [], 'pm', true, 4);
                                 $products = $search->getResults();
                                 // if no items where found, we avoid output like headline or intro text...
                                 if(count($products) == 0){
                                     return;
                                 }
-                                $view = 'Teaser4';
-                                if(!empty($args['view']) && preg_match('/^[0-9A-Za-z\_]+$/', $args['view']) !== false){
-                                    $view = $args['view'];
+
+                                try{
+                                    foreach ($products as $product) {
+                                        echo  $product->render($args['view'] ?? 'Teaser4', TS_LANGUAGE_CODE);
+                                    }
+                                }catch (Exception $e){
+                                    echo $e->getMessage();
                                 }
-                                foreach ($products as $product) {
-                                    echo  $product->render($view, TS_LANGUAGE_CODE);
-                                }
+
                                 ?>
                             </div>
                         </div>
