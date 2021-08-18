@@ -70,16 +70,14 @@
                             </a>
                         </div>
 
+                    <?php
+                        $search = BuildSearch::fromRequest($teaser['search'] ?? [], 'pm', true, 4);
+                        $products = $search->getResults();
+                        if(count($products) > 0){
+                    ?>
                         <div class="teaser-body">
                             <div class="row teaser-products">
                                 <?php
-                                $search = BuildSearch::fromRequest($teaser['search'] ?? [], 'pm', true, 4);
-                                $products = $search->getResults();
-                                // if no items where found, we avoid output like headline or intro text...
-                                if(count($products) == 0){
-                                    return;
-                                }
-
                                 try{
                                     foreach ($products as $product) {
                                         echo  $product->render($args['view'] ?? 'Teaser4', TS_LANGUAGE_CODE);
@@ -91,6 +89,7 @@
                                 ?>
                             </div>
                         </div>
+                    <?php } ?>
                     </article>
                 </div>
                 <?php
