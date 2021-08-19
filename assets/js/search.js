@@ -1,15 +1,16 @@
 jQuery(function ($) {
 
 // -----------------------------------------------
-// --- toggle second level filter
+// --- Filter
 // -----------------------------------------------
+
+    // Filter toggle second level filter (open second level tree item)
     $('#search-filter').on('click', '.toggle-second-level', function (e) {
         $(this).parent().toggleClass('is--open');
     });
 
-// ------------------------------------------------
-// --- Filter toggle
-// ------------------------------------------------
+
+    // Filter toggle
     $('.list-filter-close').on('click', function (e) {
         e.preventDefault();
         $('.content-block-list-filter').removeClass('is--open');
@@ -19,6 +20,20 @@ jQuery(function ($) {
         e.preventDefault();
         $('.content-block-list-filter').addClass('is--open');
     });
+
+    // -- make filter span-checkboxes clickable
+    function addFilterCheckboxEventListener() {
+        $('#search-filter').on('click','#filter .form-check span', function (e) {
+            if ($(e.target).siblings('input').is(':checked')) {
+                $(e.target).siblings('input').prop('checked', false).trigger('change');
+            } else {
+                $(e.target).siblings('input').prop('checked', true).trigger('change');
+            }
+        });
+    }
+
+    addFilterCheckboxEventListener();
+
 
 // -------------------------------------------------
 // --- Daterangepicker
@@ -245,7 +260,7 @@ jQuery(function ($) {
     }
 
 // -------------------------------------------
-// --- Multiselect
+// --- Multiselect category tree drop down in searchbox
 // --------------------------------------------
     if ($('.dropdown-menu-select').length > 0) {
 
@@ -270,19 +285,7 @@ jQuery(function ($) {
                 $(e.target).parent().find('input').prop('checked', true).trigger('change');
             }
         });
-
-        // -- make filter span-checkboxes clickable
-        function addFilterCheckboxEventListener() {
-            $('body').on('click','#filter .form-check span', function (e) {
-                if ($(e.target).siblings('input').is(':checked')) {
-                    $(e.target).siblings('input').prop('checked', false).trigger('change');
-                } else {
-                    $(e.target).siblings('input').prop('checked', true).trigger('change');
-                }
-            });
-        }
-
-        addFilterCheckboxEventListener();
+        
 
         // -- create label text on input change, put it into span
         $('.dropdown-menu-select').find('input').on('change', function (e) {
