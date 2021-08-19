@@ -65,6 +65,7 @@ if (empty($treeItems) === false) {
                            data-name="<?php echo $fieldname;?>"
                            data-type="<?php echo $condition_type;?>"
                     <?php echo in_array($item->id, $selected) ? 'checked' : '';?>
+                            <?php echo !empty($is_open) ? 'disabled' : '';?>
                     ><span><i
                         ><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler-check" width="12" height="12" viewBox="0 0 24 24" stroke-width="3" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
