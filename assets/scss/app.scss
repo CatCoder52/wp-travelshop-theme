@@ -45,12 +45,13 @@
 @import "components/blog-list";
 @import "components/cf7";
 @import "components/modals";
+@import "components/product-category-teaser";
 
 // -- layout
-@import "layout/base";
 @import "layout/footer";
 @import "layout/header";
 @import "layout/navigation";
+@import "layout/content";
 
 // -- pages
 @import "pages/home";

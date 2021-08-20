@@ -39,6 +39,50 @@ get_header();
                 <hr class="mt-0 mb-0">
                 <?php
                 $args = [
+                    'headline' => 'Reise-Themen',
+                    'text' => 'Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.',
+                    'teaser_count_desktop' => 3,
+                    'teasers' => [
+                        [
+                            'headline' => 'Fernreise',
+                            'image' => get_stylesheet_directory_uri().'/assets/img/slide-1-mobile.jpg',
+                            'link' => '#',
+                            'link_target' => '_self',
+                            'search' => [
+                                'pm-li' => '0,4',
+                                'pm-o' => 'rand',
+                                'pm-ot' => TS_TOUR_PRODUCTS
+                            ]
+                        ],
+                        [
+                            'headline' => 'Kurzreise',
+                            'image' => get_stylesheet_directory_uri().'/assets/img/slide-1-mobile.jpg',
+                            'link' => '#',
+                            'link_target' => '_self',
+                            'search' => [
+                                'pm-li' => '0,4',
+                                'pm-o' => 'rand',
+                                'pm-ot' => TS_TOUR_PRODUCTS
+                            ]
+                        ],
+                        [
+                        'headline' => 'Abenteuer',
+                        'image' => get_stylesheet_directory_uri().'/assets/img/slide-1-mobile.jpg',
+                        'link' => '#',
+                        'link_target' => '_self',
+                        'search' => [
+                            'pm-li' => '0,4',
+                            'pm-o' => 'rand',
+                            'pm-ot' => TS_TOUR_PRODUCTS
+                        ]
+                    ]
+                    ]
+                ];
+                load_template(get_template_directory().'/template-parts/layout-blocks/product-category-teaser.php', false, $args);
+                ?>
+                <hr class="mt-0 mb-0">
+                <?php
+                $args = [
                     'headline' => 'Info Teaser',
                     'text' => 'Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.'
                 ];

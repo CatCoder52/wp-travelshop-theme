@@ -70,6 +70,10 @@
     border-radius: $border-radius;
   }
 
+  form.sent .wpcf7-response-output {
+    background-color: $success;
+  }
+
   // -- acceptance
   .wpcf7-acceptance {
     .wpcf7-list-item {
@@ -302,5 +306,45 @@
         display:none;
       }
     }
+  }
+}
+
+
+// -- inquiry steps
+.inquiry-step {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e9ecef;
+
+
+  &.first-step {
+    border-top: 1px solid #e9ecef;
+  }
+
+  &.last-step {
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    padding-left: 2.5rem;
+    position: relative;
+  }
+
+  .step-number {
+    width: 2rem;
+    height: 2rem;
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+
+    background-color: #f2f4f7;
+    border-radius: 50%;
+    line-height: 2rem;
+
+    position: absolute;
+    top:50%;
+    left:0;
+    margin-top: -1rem;
   }
 }

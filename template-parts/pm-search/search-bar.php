@@ -22,6 +22,19 @@ $search = new Pressmind\Search(
     ]
 );
 
+
+/**
+ * perform a search to display the item count on the search button,
+ * we se a transient to cache the result for about 60 seconds
+ */
+
+$transient = 'ts_total_count_'.md5(serialize($search->getConditions()));
+if (($total_result = get_transient( $transient)) === false) {
+    $mediaObjects = $search->getResults();
+    $total_result = $search->getTotalResultCount();
+    set_transient($transient, $total_result, 60);
+}
+
 ?>
 <form method="GET" action="<?php echo site_url().'/'.$PMTravelShop->RouteProcessor->get_url_by_object_type(TS_TOUR_PRODUCTS).'/' ?>">
     <input type="hidden" name="pm-ot" value="<?php echo $id_object_type;?>">
@@ -67,7 +80,7 @@ $search = new Pressmind\Search(
                             <circle cx="10" cy="10" r="7" />
                             <line x1="21" y1="21" x2="15" y2="15" />
                         </svg> 
-                        <span class="search-bar-total-count" data-default="Suchen" data-total-count-singular="Reise" data-total-count-plural="Reisen">Suchen</span>
+                        <span class="search-bar-total-count" data-default="Suchen" data-total-count-singular="Reise" data-total-count-plural="Reisen"><?php echo empty($total_result) ? 'Suchen' : $total_result. ' Reisen'; ?></span>
                         </a>
                     </div>
                 </div>

@@ -27,6 +27,7 @@ if (MULTILANGUAGE_SITE) {
 
 foreach ($languages as $language) {
 
+    // Setup the search- and the detail-page route per object type
     foreach ($config['data']['media_types_pretty_url'] as $id_object_type => $pretty_url) {
 
         //Build only routes for primary media object types
@@ -36,7 +37,7 @@ foreach ($languages as $language) {
 
         $language_prefix = '';
         if (MULTILANGUAGE_SITE) {
-            $language_prefix = 'de/';
+            $language_prefix = 'de/'; // @TODO this is not ready here..
         }
 
         // Build a route for each media object type > detailpage <
@@ -68,6 +69,24 @@ foreach ($languages as $language) {
         $routes[$routename] = new Route('^' . $route_prefix . '/?', 'ts_search_hook', 'pm-search', $data);
 
     }
+
+    // Setup the route for the calendar page
+    $language_prefix = '';
+    if (MULTILANGUAGE_SITE) {
+        $language_prefix = 'de/'; // @TODO this is not ready here..
+    }
+    $route_prefix = $language_prefix .  'calendar';
+
+    $routename = 'ts_default_' . $route_prefix . '_route';
+    $data = [];
+    $data['type'] = 'search';
+    $data['language'] = $language;
+    $data['base_url'] = $route_prefix;
+    $data['title'] = 'Reisekalendar | ' . get_bloginfo('name');
+    $data['meta_description'] = '';
+    $routes[$routename] = new Route('^' . $route_prefix . '/?', 'ts_calendar_hook', 'pm-calendar', $data);
+
+
 }
 
 /**
@@ -236,3 +255,71 @@ function ts_search_hook($data)
 }
 
 add_action('ts_search_hook', 'ts_search_hook');
+
+function ts_calendar_hook($data)
+{
+    global $wp, $wp_query;
+
+    try {
+
+        if (MULTILANGUAGE_SITE) {
+            $route = preg_replace('(^' . $data['language'] . '\/)', '', $wp->request);
+        } else {
+            $route = $wp->request;
+        }
+
+
+        // Add meta data
+        // set the page title
+        $the_title = 'Reisekalender';
+        $meta_description = '';
+
+        /**
+         * If you need meta data from custom fields, use this code example.
+         * Be aware:
+         * if you have multiple media object types, you have to switch this for each object type if the properties have not the same names
+         */
+        //$moc = $mediaObjects[0]->getDataForLanguage(TS_LANGUAGE_CODE);
+        //$the_title = strip_tags($moc->title_default);
+        //$meta_description = strip_tags($moc->meta_description_default);
+
+
+        add_filter('pre_get_document_title', function ($title_parts) use ($the_title) {
+            return $the_title;
+        });
+
+        // set meta description
+        $meta_desc = '<meta name="description" content="' . $meta_description . '">' . "\r\n";
+        add_action('wp_head', function () use ($meta_desc) {
+            echo $meta_desc;
+        });
+
+        /*
+        // set canonical url
+        $canonical = '<link rel="canonical" href="' . site_url() . $mediaObjects[0]->getPrettyUrl() . '">' . "\r\n";
+        add_action('wp_head', function () use ($canonical) {
+            echo $canonical;
+        });
+        */
+
+        /*
+        // set alternate languages
+        if(MULTILANGUAGE_SITE){
+            add_action('wp_head', function () use ($mediaObjects) {
+                foreach($mediaObjects[0]->getPrettyUrls() as $url){
+                    echo '<link rel="alternate" hreflang="'.$url->language.'" href="'.SITE_URL.$url->route.'" />'."\r\n";
+                }
+            });
+        }
+        */
+
+        //$wp_query->set('media_objects', $mediaObjects);
+        return;
+
+    } catch (\Exception $e) {
+        echo $e->getMessage();
+    }
+
+}
+
+add_action('ts_calendar_hook', 'ts_calendar_hook');
