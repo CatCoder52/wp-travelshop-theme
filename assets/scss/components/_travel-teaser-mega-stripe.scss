@@ -136,30 +136,7 @@
 						p {
 							margin-bottom: 0.35rem;
 							font-size: 0.8rem;
-							.discount-label {
-								.price {
-									position: relative;
-									&:before {
-										position: absolute;
-										content: "";
-										top: 0.5em;
-										background: linear-gradient(
-											to right,
-											rgba(230, 0, 0, 0.8) 50%,
-											rgba(230, 0, 0, 0) 100%
-										);
-										border-bottom-right-radius: 50%;
-										border-bottom-left-radius: 2px;
-										transform: rotate(-20deg);
-										width: 110%;
-										height: 0.15em;
-									}
-								}
-								.discount {
-									color: red;
-									font-weight: 700;
-								}
-							}
+							@include discount_label;
 						}
 					}
 				}

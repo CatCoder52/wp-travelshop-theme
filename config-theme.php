@@ -144,6 +144,14 @@ define('PAGEBUILDER', 'beaverbuilder');
 
 /**
  * Google MAPS API Key
+ * The following templates/modules are using this kex, with the following registered google services:
+ *
+ * template-parts/pm-views/*_Detail1.php
+ *  - Maps JavaScript API
+ *  - Maps Static API
+ *
+ * Create your api key here: https://console.cloud.google.com/apis/credentials
+ *
  */
 define('TS_GOOGLEMAPS_API', '');
 

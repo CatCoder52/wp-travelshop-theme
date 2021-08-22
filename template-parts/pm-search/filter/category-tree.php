@@ -58,9 +58,14 @@ if (empty($treeItems) === false) {
                 ?>
                 <div class="form-check <?php echo $has_childs ? 'has-second-level' : ''; echo $is_open;?>">
 
-                    <input id="<?php echo $uuid; ?>" class="form-check-input" type="checkbox"
-                           data-id-parent="" data-id="<?php echo $item->id; ?>" data-name="<?php echo $fieldname;?>" data-type="<?php echo $condition_type;?>"
+                    <input class="form-check-input" type="checkbox"
+                           id="<?php echo $uuid; ?>"
+                           data-id-parent=""
+                           data-id="<?php echo $item->id; ?>"
+                           data-name="<?php echo $fieldname;?>"
+                           data-type="<?php echo $condition_type;?>"
                     <?php echo in_array($item->id, $selected) ? 'checked' : '';?>
+                            <?php echo !empty($is_open) ? 'disabled' : '';?>
                     ><span><i
                         ><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler-check" width="12" height="12" viewBox="0 0 24 24" stroke-width="3" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -93,6 +98,7 @@ if (empty($treeItems) === false) {
                                            data-id-parent="<?php echo $item->id; ?>"
                                            data-id="<?php echo $child_item->id; ?>"
                                            data-name="<?php echo $fieldname;?>"
+                                           data-type="<?php echo $condition_type;?>"
                                         <?php echo in_array($child_item->id, $selected) ? 'checked' : '';?>
                                            ><span><i><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler-check" width="12" height="12" viewBox="0 0 24 24" stroke-width="3" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>

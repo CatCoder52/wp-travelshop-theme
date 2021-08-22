@@ -33,6 +33,7 @@ $cheapest_price = $args['cheapest_price'];
                 <div class="col-12">
                     <div class="content-block-detail-booking-inner">
 
+                        <!--
                         <div class="booking-row no-gutters row booking-row-head d-none d-lg-flex">
                             <div class="col-2">
                                 Dauer
@@ -46,16 +47,115 @@ $cheapest_price = $args['cheapest_price'];
                             <div class="col-2">
                                 Preis pro Person
                             </div>
-                        </div>
+                        </div>-->
+                    <?php
 
-                        <?php foreach ($mo->booking_packages as $booking_package) { ?>
+                    // group result by date and cheapest occupancy
+                    $date_group = [];
 
-                            <?php foreach ($booking_package->dates as $date) { ?>
+                    foreach ($mo->booking_packages as $booking_package) {
+                            foreach ($booking_package->dates as $date) {
 
-                                <?php
+                                $tmp = [
+                                        'date' => $date,
+                                        'booking_package' => $booking_package,
+                                        'occupancies' => []
+                                ];
+
+
                                 foreach ($date->getHousingOptions() as $key => $housing_option) {
-                                    $housing_package = $housing_option->getHousingPackage();
-                                    $checked = ($cheapest_price->id_option == $housing_option->id && $cheapest_price->id_date == $date->id);
+
+                                    $cheapest_price_filter = new CheapestPrice();
+                                    $cheapest_price_filter->id_option = $housing_option->id;
+                                    $cheapest_price_filter->id_booking_package = $housing_option->id_booking_package;
+                                    $cheapest_price_filter->id_date = $date->id;
+                                    $housing_options_cheapest_price = $mo->getCheapestPrice($cheapest_price_filter);
+                                    if(empty($occupancies[$housing_option->occupancy])){ // if is not set
+                                        $tmp['occupancies'][$housing_option->occupancy]['option'] = $housing_option;
+                                        $tmp['occupancies'][$housing_option->occupancy]['cheapest_price'] = $housing_options_cheapest_price;
+                                    }elseif($occupancies[$housing_option->occupancy]['cheapest_price']->price_total >
+                                        $housing_options_cheapest_price->price_total){ // if the option is cheaper as the previos
+                                        $tmp['occupancies'][$housing_option->occupancy]['option'] = $housing_option;
+                                        $tmp['occupancies'][$housing_option->occupancy]['cheapest_price'] = $housing_options_cheapest_price;
+                                    }
+
+                                }
+
+                                $date_group[] = $tmp;
+                            }
+                    }
+
+
+                            ?>
+
+                        <?php
+
+
+                                $current_month = null;
+                                $current_year = new DateTime();
+                                foreach ($date_group as $key => $row) {
+
+                                    /**
+                                     * @var $date Pressmind\ORM\Object\Touristic\Date
+                                     */
+                                    $date = $row['date'];
+
+                                    /**
+                                     * @var $housing_option_primary Pressmind\ORM\Object\Touristic\Option
+                                     */
+                                    $housing_option_primary = $row['occupancies'][2]['option'];
+
+                                    /**
+                                     * @var $housing_option_secondary Pressmind\ORM\Object\Touristic\Option
+                                     */
+                                    $housing_option_secondary = $row['occupancies'][1]['option'];
+
+                                    /**
+                                     * @var $housing_options_cheapest_price_primary Pressmind\ORM\Object\CheapestPriceSpeed
+                                     */
+                                    $housing_options_cheapest_price_primary = $row['occupancies'][2]['cheapest_price'];
+
+                                    /**
+                                     * @var $housing_options_cheapest_price_secondary Pressmind\ORM\Object\CheapestPriceSpeed
+                                     */
+                                    $housing_options_cheapest_price_secondary = $row['occupancies'][1]['cheapest_price'];
+
+                                        /**
+                                     * @var $booking_package \Pressmind\ORM\Object\Touristic\Booking\Package
+                                     */
+                                    $booking_package = $row['booking_package'];
+
+
+
+                                    $housing_package = $housing_option_primary->getHousingPackage();
+                                    $checked = ($cheapest_price->id_option == $housing_option_primary->id && $cheapest_price->id_date == $date->id);
+
+?>
+
+                                    <?php
+                                    // Output the month name
+                                    if($current_month != $date->departure->format('m-Y')){
+                                        $current_month = $date->departure->format('m-Y');
+                                    ?>
+
+                                        <div class="booking-row no-gutters row booking-row-head d-none d-lg-flex">
+                                            <div class="col-12">
+                                                <h3><?php
+                                                    echo HelperFunctions::monthNumberToLocalMonthName($date->departure->format('n'));
+
+                                                    if($date->departure->format('Y') != $current_year->format('Y')){
+                                                        echo ' '.$date->departure->format('Y');
+                                                    }
+
+
+                                                    ?>
+
+                                                </h3>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    }
+
                                     ?>
                                     <div class="booking-row no-gutters row booking-row-date<?php echo $checked ? ' checked' : '';?>">
                                         <?php if($checked){?>
@@ -100,30 +200,24 @@ $cheapest_price = $args['cheapest_price'];
                                             </svg>
                                             <div>
                                                 <?php
-                                                echo implode(',', array_filter([$housing_package->name, $housing_option->name]));
+                                                echo implode(',', array_filter([$housing_package->name, $housing_option_primary->name]));
                                                 ?><br />
                                                 <small>
-                                                    Belegung: <?php echo $housing_option->occupancy; echo ' Person'; if ($housing_option->occupancy > 1) { echo 'en'; } ?> 
+                                                    Belegung: <?php echo $housing_option_primary->occupancy; echo ' Person'; if ($housing_option_primary->occupancy > 1) { echo 'en'; } ?>
 
-                                                    <?php  echo empty($housing_option->board_type) ? '' : '<br />inkl. '.$housing_option->board_type; ?>
+                                                    <?php  echo empty($housing_option_primary->board_type) ? '' : '<br />inkl. '.$housing_option_primary->board_type; ?>
                                                 </small>
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-2 price-container">
-                                          <?php
 
-                                            $cheapest_price_filter = new CheapestPrice();
-                                            $cheapest_price_filter->id_option = $housing_option->id;
-                                            $cheapest_price_filter->id_booking_package = $housing_option->id_booking_package;
-                                            $cheapest_price_filter->id_date = $date->id;
-                                            $housing_options_cheapest_price = $mo->getCheapestPrice($cheapest_price_filter);
-
-                                            if (($discount = PriceHandler::getDiscount($housing_options_cheapest_price)) !== false) {
+                                            <?php
+                                            if (($discount = PriceHandler::getDiscount($housing_options_cheapest_price_primary)) !== false) {
                                                 ?>
                                                 <div class="discount-wrapper">
                                                     <p>
                                                         <span class="price-total">ab <strong><?php
-                                                                echo PriceHandler::format($housing_options_cheapest_price->price_total);
+                                                                echo PriceHandler::format($housing_options_cheapest_price_primary->price_total);
                                                                 ?></strong>
                                                         </span>
                                                         <span class="msg"><?php echo $discount['name']; ?>
@@ -142,12 +236,11 @@ $cheapest_price = $args['cheapest_price'];
                                             }else{
                                                 ?>
                                                 <span class="price-total">ab <strong><?php
-                                                        echo PriceHandler::format($housing_options_cheapest_price->price_total);
+                                                            echo PriceHandler::format($housing_options_cheapest_price_primary->price_total);
                                                         ?></strong>
                                                 </span>
                                                 <?php
                                             } ?>
-
                                         </div>
                                         <div class="col-12 col-lg-2">
                                             <a class="btn btn-primary btn-block booking-btn green" target="_blank" rel="nofollow"
@@ -159,22 +252,21 @@ $cheapest_price = $args['cheapest_price'];
                                             </a>
                                         </div>
 
-                                        <!--
                                         <div class="bottom-bar">
-                                            <div class="col-12 col-lg-2">
-                                                <span>anstatt</span> <strong>649,00 €</strong>
-                                            </div>
-                                            <div class="col-12 col-lg-2">
-                                                <span>EZZ</span> <strong>100,00 €</strong>
+                                            <div class="col-12">
+                                                <p><small>
+                                                <?php
+                                                echo $housing_option_secondary->name. ' Zuschlag: ';
+                                                $diff =  $housing_options_cheapest_price_secondary->price_total - $housing_options_cheapest_price_primary->price_total;
+                                                echo PriceHandler::format($diff);
+                                                // bis zu X% Kinderrabatt
+                                                ?>
+                                                </small>
+                                                </p>
                                             </div>
                                         </div>
-                                    -->
                                     </div>
                                 <?php } ?>
-                            <?php } ?>
-
-                        <?php } ?>
-
                     </div>
                 </div>
             </div>

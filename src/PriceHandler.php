@@ -51,6 +51,7 @@ final class PriceHandler
             return $output;
         }
 
+
         return false;
 
     }
@@ -68,6 +69,76 @@ final class PriceHandler
         }
 
         return $price.'&nbsp;'.TS_PRICE_CURRENCY;
+    }
+
+
+    /**
+     * Returns a compressed information string about the maximum discount
+     * Example return value: "Kinderrabatt: 0‑2 Jahre: bis zu 100%; 2‑13 Jahre: bis zu 8%"
+     *
+     * @TODO
+     * - this example can not handle fixed vs. percent discounts at this moment
+     *  (can not find out the bigger discount if the scale table has both
+     *  - for use in production check thi customer data-enviroment
+     *
+     * @param \Pressmind\ORM\Object\Touristic\Option\Discount\Scale[] $OptionDiscountScales
+     * @return string
+     */
+    public static function getCheapestOptionDiscount($OptionDiscountScales){
+
+
+            $today = new \DateTime();
+
+            $group = [];
+            foreach($OptionDiscountScales as $Scale){
+
+                // is valid
+                if($today < $Scale->valid_from || $today > $Scale->valid_to){
+                    continue;
+                }
+
+                if(empty($group[$Scale->age_from.'-'.$Scale->age_to])){ // if is not set
+                    $group[$Scale->age_from.'-'.$Scale->age_to] = $Scale;
+                }elseif($group[$Scale->age_from.'-'.$Scale->age_to]->value < $Scale->value){ // if is bigger discount
+                    $group[$Scale->age_from.'-'.$Scale->age_to] = $Scale;
+                }
+
+            }
+
+            ksort($group);
+
+        $age_group = [];
+        foreach($group as $Scale){
+
+            $str = $Scale->age_from.'&#8209;'.$Scale->age_to. '&nbsp;Jahre: bis zu ';
+
+            if($Scale->type == 'P'){
+                $str .= str_replace('.', ',', $Scale->value).'%';
+            }elseif($Scale->type  == 'F'){
+                $str .= self::format($Scale->value);
+            }else{ // not known, continue
+                continue;
+            }
+
+            if($Scale->age_to <= 17){
+                $age_group['childs'][] = $str;
+            }else{
+                $age_group['others'][] = $str;
+            }
+
+        }
+
+        $output = '';
+        if(!empty($age_group['childs'])){
+            $output .= 'Kinderrabatt: '.implode('; ',$age_group['childs']);
+        }
+
+        if(!empty($age_group['others'])){
+            $output .= 'Weitere altersbezogene Rabatte: '.implode('; ',$age_group['others']);
+        }
+
+        return $output;
+
     }
 
 }

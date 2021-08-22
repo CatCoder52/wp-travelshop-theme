@@ -14,8 +14,9 @@ if(empty($search) === false){
     }
 
     // set the price range to the closest 100, 1000 and so on...
-    $pRange->min = str_pad(substr($pRange->min, 0,1), strlen($pRange->min), 0);
-    $pRange->max = str_pad(substr($pRange->max , 0,1)+1, strlen($pRange->max ) + strlen(substr($pRange->max, 0,1)+1)-1, 0);
+    $pRange->min = str_pad(substr(round($pRange->min), 0,1), strlen(round($pRange->min)), 0);
+    $pRange->max = str_pad(substr(round($pRange->max) , 0,1)+1, strlen(round($pRange->max)) + strlen(substr(round($pRange->max), 0,1)+1)-1, 0);
+
 }
 
 if (isset($_GET['pm-pr']) === true && preg_match('/^([0-9]+)\-([0-9]+)$/', $_GET['pm-pr'], $m) > 0) {

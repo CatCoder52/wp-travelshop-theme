@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -7164,6 +7165,13 @@ a.text-dark:hover, a.text-dark:focus {
 /**
  *  Reset button style
  **/
+/**
+Creates a strike trough price
+<span class="discount-label">
+  <span class="price">701&nbsp;€</span>
+  <span class="discount">-4%</span>
+  </span>
+*/
 /**
  *  Global offcanvas mixin wich is used in breakpoints by variant elements.
  */
