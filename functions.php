@@ -64,7 +64,6 @@ require_once 'functions/add_menu_meta.php';
 
 require_once 'functions/the_breadcrumb.php';
 require_once 'functions/theme_support.php';
-require_once 'functions/image-sizes.php';
 
 // Header
 require_once 'functions/http_header.php';
