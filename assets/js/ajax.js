@@ -337,6 +337,12 @@ jQuery(function ($) {
             if ($(window).width() > 768) {
                 $("#search-filter").on('change', ".list-filter-box input, .list-filter-box select", function (e) {
                     var form = $(this).closest('form');
+
+                    // if the second level has no more selected items, we fall back to the parents value
+                    if($(this).closest('.form-check.has-second-level').find('input:checked').length == 0){
+                        $(this).closest('.form-check.has-second-level').find('input:disabled:first').attr("disabled", false).prop('checked', true);
+                    }
+
                     var query_string = _this.buildSearchQuery(form);
                     _this.setSpinner('#pm-search-result');
                     _this.call(query_string, '#search-result', null, _this.resultHandlerSearch);
@@ -346,6 +352,12 @@ jQuery(function ($) {
 
             $("#search-filter").on('click', ".list-filter-box-submit", function (e) {
                 var form = $(this).closest('form');
+
+                // if the second level has no more selected items, we fall back to the parents value
+                if($(this).closest('.form-check.has-second-level').find('input:checked').length == 0){
+                    $(this).closest('.form-check.has-second-level').find('input:disabled:first').attr("disabled", false).prop('checked', true);
+                }
+
                 var query_string = _this.buildSearchQuery(form);
                 _this.setSpinner('#pm-search-result');
                 _this.call(query_string, '#search-result', null, _this.resultHandlerSearch);
