@@ -135,6 +135,14 @@
                 background-color: #fff;
               }
             }
+            .form-check-input:disabled ~ .form-check-label {
+              color: $body-color;
+            }
+
+            .form-check-input:disabled ~ .form-check-label,
+            .form-check-input:disabled {
+              cursor: default;
+            }
 
             + .form-check {
               margin-top: .25rem;
