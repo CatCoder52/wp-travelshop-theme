@@ -1,5 +1,7 @@
 <?php
 
+use Pressmind\Travelshop\ThemeActivation;
+
 ini_set('display_errors', 'On');
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
@@ -70,6 +72,12 @@ class RegenerateImages{
          * @var PM_Stateless $PM_Stateless
          */
         global $PM_Stateless;
+
+        /**
+         * update or create new images sizes if some changes are here
+         */
+        $ThemeActivation = new ThemeActivation();
+        $ThemeActivation->setThumbnailsizes();
 
         if (empty($post_id) === true) {
             $attachments = self::get_all_uploads();

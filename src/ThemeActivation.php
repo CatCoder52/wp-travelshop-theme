@@ -30,34 +30,20 @@ class ThemeActivation
 
     public function setThumbnailsizes(){
 
-        /**
-         * @todo: make the s3 plugin stateless ready
-         *
-         * image sizes are planned for a viewport of 1140px width
-         * image ratio 1:6
-         * the "thumb"-size is used for a 4 columns
-         * the "medium"-size is used for a 3 columns
-         * the "large"-size is used for 75% of the viewport (9/12)
-         *
-         * if you edit this file run: php travelshop/cli/regenerate-images.php --all` on your cli to generate new image derivated
-         *
-         */
+        foreach(TS_WP_IMAGES as $imagetype => $prop){
 
-        update_option( 'thumbnail_size_w', 255 );
-        update_option( 'thumbnail_size_h', 159 );
-        update_option( 'thumbnail_crop', 1 );
+            // overwrite the default image sizes
+            if(in_array($imagetype, ['thumbnail', 'medium', 'large']) === true){
+                update_option( $imagetype.'_size_w', $prop['w']);
+                update_option( $imagetype.'_size_h', $prop['h']);
+                update_option( $imagetype.'_crop', $prop['crop']);
+            }
 
-        // do not forgot the post_thumb  :-|
-        set_post_thumbnail_size( 255, 159, true );
+            // set custom sizes
+            add_image_size( $imagetype, $prop['w'], $prop['h'], $prop['crop'] );
 
-        update_option( 'medium_size_w', 350 );
-        update_option( 'medium_size_h', 218 );
-        update_option( 'medium_crop', 1 );
+        }
 
-        //medium_large
-        update_option( 'large_size_w', 825 );
-        update_option( 'large_size_h', 515 );
-        update_option( 'large_crop', 1);
     }
 
     /**

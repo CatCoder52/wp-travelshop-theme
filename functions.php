@@ -89,6 +89,10 @@ if(class_exists('WPCF7')){
 // Sitemaps
 require_once 'functions/sitemaps.php';
 
+// Images
+require_once 'functions/images.php';
+
+
 class PMTravelShop{
 
     public $Shortcodes;

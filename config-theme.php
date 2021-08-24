@@ -168,3 +168,78 @@ define( 'TS_SMTP_PORT', 25);
 define( 'TS_SMTP_SECURE', 'tls'); // ssl | tls
 define( 'TS_SMTP_AUTH', true);
 define( 'TS_SMTP_DEBUG',0 );
+
+
+
+/**
+ * Define WordPress Images here
+ *
+ * You can add ore remove image sizes, but you can not remove the default
+ * types like (post_thumbnail, thumbnail, medium, large)
+ *
+ * if you edit the values, you have to recreate the images:
+ *  run: php travelshop/cli/regenerate-images.php --all` on your cli
+ *      to set the images sizes in the wp-options table
+ *      and than renew the image derivates
+
+ *
+ * image sizes are planned for a viewport of 1140px width
+ * image ratio 1.6
+ * the "thumb"-size is used for a 4 columns
+ * the "medium"-size is used for a 3 columns
+ * the "large"-size is used for 75% of the viewport (9/12)
+ * the ungropped original version are also present in each format
+ */
+
+define('TS_WP_IMAGES', [
+
+    'post_thumbnail' => [ // default type, do not remove
+        'w' => 255,
+        'h' => 159,
+        'crop' => 1,
+        'name' => '',
+    ],
+
+    'thumbnail' => [  // default type, do not remove
+        'w' => 255,
+        'h' => 159,
+        'crop' => 1,
+        'name' => ''
+    ],
+
+    'medium' => [  // default type, do not remove
+        'w' => 350,
+        'h' => 218,
+        'crop' => 1,
+        'name' => ''
+    ],
+
+    'large' => [  // default type, do not remove
+        'w' => 825,
+        'h' => 515,
+        'crop' => 1,
+        'name' => 'Large'
+    ],
+
+    'thumbnail_original' => [
+        'w' => 255,
+        'h' => null,
+        'crop' => 0,
+        'name' => 'Thumbnail (uncropped)'
+    ],
+
+    'medium_original' => [
+        'w' => 350,
+        'h' => null,
+        'crop' => 0,
+        'name' => 'Medium (uncropped)'
+    ],
+
+    'large_original' => [
+        'w' => 825,
+        'h' => null,
+        'crop' => 0,
+        'name' => 'Large (uncropped)'
+    ],
+
+]);
