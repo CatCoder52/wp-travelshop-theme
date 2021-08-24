@@ -24,6 +24,9 @@ jQuery(function ($) {
     // -- make filter span-checkboxes clickable
     function addFilterCheckboxEventListener() {
         $('#search-filter').on('click','#filter .form-check span', function (e) {
+            if ($(e.target).siblings('input').is(':disabled')) {
+                return;
+            }
             if ($(e.target).siblings('input').is(':checked')) {
                 $(e.target).siblings('input').prop('checked', false).trigger('change');
             } else {
