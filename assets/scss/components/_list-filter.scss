@@ -120,6 +120,7 @@
             > .form-check-input:disabled + span {
               border-color: $primary;
               background-color: $primary;
+              cursor:default;
 
               &:after {
                 content: '';
