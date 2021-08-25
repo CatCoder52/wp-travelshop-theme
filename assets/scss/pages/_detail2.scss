@@ -1,12 +1,16 @@
 .travelshop-detail-container {
+    .breadcrumb-wrapper {
+        display: none;
+    }
+
     .travelshop-detail-details {
         padding: 1rem 0;
 
         .travelshop-detail-additional {
             background: #06f;
             color: #fff;
-            margin: -1rem -15px 1rem -15px;
-            padding: .4rem 15px;
+            margin: -1rem -30px 1rem -30px;
+            padding: .4rem 30px;
             display: flex;
             justify-content: space-between;
         }
@@ -23,6 +27,13 @@
 
             .add-to-wishlist {
                 cursor: pointer;
+                margin-top: -.1rem;
+
+                &.active {
+                    svg {
+                        fill: #06f;
+                    }
+                }
 
                 svg {
                     &.active {
@@ -66,7 +77,12 @@
     }
 
     @include media-breakpoint-up(lg) {
-        padding: 2rem 0;
+
+        padding: .5rem 0 1rem 0;
+
+        .breadcrumb-wrapper {
+            display: block;
+        }
 
         .travelshop-detail-head {
             position: relative;
@@ -78,8 +94,8 @@
                 z-index: 400;
                 width: auto;
                 bottom: 0;
-                left: 0;
-                right: 0;
+                left: 15px;
+                right: 15px;
 
                 .travelshop-detail-additional {
                     background: transparent;

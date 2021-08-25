@@ -1,5 +1,6 @@
 .travelshop-image-slider-wrapper {
     position: relative;
+    margin: 0 -30px;
 
     .tns-controls {
         width: 100%;
@@ -7,6 +8,7 @@
         flex-direction: row;
         justify-content: space-between;
         position: absolute;
+        pointer-events: none;
         z-index: 500;
         top: 50%;
         left: 0;
@@ -28,7 +30,7 @@
         position: absolute;
         width: 15px;
         height: 100%;
-        background: rgba(255, 255, 255, .5);
+        background: rgba(255, 255, 255, .4);
         top: 0;
         bottom: 0;
         z-index: 250;
@@ -49,5 +51,9 @@
                 height: auto;
             }
         }
+    }
+
+    @include media-breakpoint-up(lg) {
+        margin: 0;
     }
 }
