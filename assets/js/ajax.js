@@ -8,7 +8,7 @@ jQuery(function ($) {
 
         this.call = function (query_string, scrollto, total_result_span_id, callback) {
 
-            for(var i = 0; i < this.requests.length; i++){
+            for (var i = 0; i < this.requests.length; i++) {
                 this.requests[i].abort();
             }
 
@@ -21,18 +21,18 @@ jQuery(function ($) {
             }));
         }
 
-        this.setSpinner = function(search_result){
+        this.setSpinner = function (search_result) {
             $('.spinner').show();
             $(search_result).html('');
             $('.pagination').hide();
         }
-        
-        this.removeSpinner = function(){
+
+        this.removeSpinner = function () {
             $('.spinner').hide();
             $('.pagination').show();
         }
 
-        this.resultHandlerWishlist = function(data){
+        this.resultHandlerWishlist = function (data) {
 
             // set the wishlist
             for (var key in data.html) {
@@ -41,15 +41,15 @@ jQuery(function ($) {
 
             // sync results to localstorage (if object are deleted from server)
             let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
-            if(!jQuery.isEmptyObject(wishlist)) {
-                $(wishlist).each(function(key, item){
+            if (!jQuery.isEmptyObject(wishlist)) {
+                $(wishlist).each(function (key, item) {
                     var is_valid = false;
-                    $(data.ids).each(function(key, id){
-                        if(item['pm-id'] == id){
+                    $(data.ids).each(function (key, id) {
+                        if (item['pm-id'] == id) {
                             is_valid = true;
                         }
                     });
-                    if(!is_valid){
+                    if (!is_valid) {
                         console.log(' not valid remove' + item['pm-id']);
                         _this.wishlistRemoveElement(wishlist, item['pm-id']);
                     }
@@ -60,16 +60,21 @@ jQuery(function ($) {
 
         }
 
-        this.resultHandlerSearch = function(data, query_string, scrollto, total_result_span_id){
+        this.resultHandlerSearch = function (data, query_string, scrollto, total_result_span_id) {
 
             _this.removeSpinner();
 
             for (var key in data.html) {
-                if(key == 'search-result'){
+                if (key == 'search-result') {
                     $('#' + key).html(data.html[key]).find('.content-block-travel-cols').fadeIn()
-                        .css({top:1000,position:'relative'})
-                        .animate({top:0}, 200, 'swing')
-                }else{
+                        .css({
+                            top: 1000,
+                            position: 'relative'
+                        })
+                        .animate({
+                            top: 0
+                        }, 200, 'swing')
+                } else {
                     $('#' + key).html(data.html[key]);
                 }
 
@@ -78,7 +83,7 @@ jQuery(function ($) {
                 }
             }
 
-            if(total_result_span_id != null) {
+            if (total_result_span_id != null) {
                 var total_count_span = $(total_result_span_id);
                 var str = '';
                 if (data.count == 1) {
@@ -91,24 +96,24 @@ jQuery(function ($) {
                 total_count_span.html(str.trim());
             }
 
-            if(scrollto != null) {
-               _this.scrollTo(scrollto);
+            if (scrollto != null) {
+                _this.scrollTo(scrollto);
             }
 
             window.history.pushState(null, '', window.location.pathname + '?' + query_string);
 
         }
 
-        this.scrollTo = function(scrollto){
+        this.scrollTo = function (scrollto) {
             $('html, body').stop().animate({
                 'scrollTop': $(scrollto).offset().top - $('header.affix').height()
             }, 200, 'swing');
         }
 
 
-        this.resultHandlerSearchBarStandalone = function(data, query_string, scrollto, total_result_span_id){
+        this.resultHandlerSearchBarStandalone = function (data, query_string, scrollto, total_result_span_id) {
 
-            if(total_result_span_id != null) {
+            if (total_result_span_id != null) {
                 var total_count_span = $(total_result_span_id);
                 var str = '';
                 if (data.count == 1) {
@@ -124,18 +129,18 @@ jQuery(function ($) {
         }
 
 
-        this.renderWishlist = function() {
+        this.renderWishlist = function () {
 
             let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
-            if(wishlist !== null && wishlist.length !== 0) {
+            if (wishlist !== null && wishlist.length !== 0) {
                 let query_string = 'action=wishlist&view=Teaser2&pm-id=';
                 $('.wishlist-count').text(wishlist.length);
                 $('.wishlist-toggler').addClass('animate');
-                setTimeout(function() {
+                setTimeout(function () {
                     $('.wishlist-toggler').removeClass('animate');
                 }, 1250);
-                wishlist.forEach(function(item, key) {
-                    if(key !== wishlist.length - 1) {
+                wishlist.forEach(function (item, key) {
+                    if (key !== wishlist.length - 1) {
                         query_string += item['pm-id'] + ',';
                     } else {
                         query_string += item['pm-id'];
@@ -149,20 +154,20 @@ jQuery(function ($) {
             }
         }
 
-        this.wishlistEventListeners = function() {
+        this.wishlistEventListeners = function () {
 
-            $('body').on('DOMSubtreeModified', '#search-result', function(){
-              _this.wishListInit();
+            $('body').on('DOMSubtreeModified', '#search-result', function () {
+                _this.wishListInit();
             });
 
-            $('body').on('click', '.remove-from-wishlist', function(e) {
+            $('body').on('click', '.remove-from-wishlist', function (e) {
                 let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
-                if(!jQuery.isEmptyObject(wishlist)) {
-                    if(wishlist.some( wi => wi['pm-id'] == $(e.target).data('pm-id'))) {
+                if (!jQuery.isEmptyObject(wishlist)) {
+                    if (wishlist.some(wi => wi['pm-id'] == $(e.target).data('pm-id'))) {
                         _this.wishlistRemoveElement(wishlist, $(e.target).data('pm-id'));
                         // $('.wishlist-heart').removeClass('active');
-                        $('.add-to-wishlist').each(function(key, item) {
-                            if($(item).data('pm-id') == $(e.target).data('pm-id')) {
+                        $('.add-to-wishlist').each(function (key, item) {
+                            if ($(item).data('pm-id') == $(e.target).data('pm-id')) {
                                 $(item).removeClass('active');
                             }
                         });
@@ -173,11 +178,11 @@ jQuery(function ($) {
             });
             if ($('.add-to-wishlist').length > 0) {
                 let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
-                $('body').on('click', '.add-to-wishlist', function(e) {
-                    if(jQuery.isEmptyObject(wishlist)) {
+                $('body').on('click', '.add-to-wishlist', function (e) {
+                    if (jQuery.isEmptyObject(wishlist)) {
                         wishlist = [];
                     }
-                    if(wishlist.some( wi => wi['pm-id'] == $(e.target).data('pm-id'))) {
+                    if (wishlist.some(wi => wi['pm-id'] == $(e.target).data('pm-id'))) {
                         _this.wishlistRemoveElement(wishlist, $(e.target).data('pm-id'));
                         $(e.target).removeClass('active');
                     } else {
@@ -195,20 +200,20 @@ jQuery(function ($) {
             }
         }
 
-        this.wishListInit = function (){
+        this.wishListInit = function () {
             let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
-            if(!jQuery.isEmptyObject(wishlist)) {
-                $('.add-to-wishlist').each(function(key, item) {
-                    if(wishlist.some( wi => wi['pm-id'] == $(item).data('pm-id'))) {
+            if (!jQuery.isEmptyObject(wishlist)) {
+                $('.add-to-wishlist').each(function (key, item) {
+                    if (wishlist.some(wi => wi['pm-id'] == $(item).data('pm-id'))) {
                         $(item).addClass('active');
                     }
                 });
             }
         }
 
-        this.wishlistRemoveElement = function(array, elem) {
-            array.some(function(item) {
-                if(item['pm-id'] == elem) {
+        this.wishlistRemoveElement = function (array, elem) {
+            array.some(function (item) {
+                if (item['pm-id'] == elem) {
                     var index = array.indexOf(item);
                     array.splice(index, 1);
                 }
@@ -243,9 +248,9 @@ jQuery(function ($) {
             // checkboxes
             let tree_conditions = ['c', 'cl']; // cl = support for trees in object links
             let i;
-            for(i in tree_conditions){
+            for (i in tree_conditions) {
                 let selected = [];
-                $(form).find('.category-tree input[data-type="'+tree_conditions[i]+'"]:checked').each(function () {
+                $(form).find('.category-tree input[data-type="' + tree_conditions[i] + '"]:checked').each(function () {
 
                     let id_parent = $(this).data('id-parent');
                     let id = $(this).data('id');
@@ -281,7 +286,7 @@ jQuery(function ($) {
 
                 let key;
                 for (key in selected) {
-                    query.push('pm-'+tree_conditions[i]+'[' + key + ']=' + selected[key].join(delimiter));
+                    query.push('pm-' + tree_conditions[i] + '[' + key + ']=' + selected[key].join(delimiter));
                 }
 
             }
@@ -320,8 +325,8 @@ jQuery(function ($) {
 
             // the view
             let view = $('.pm-switch-result-view .pm-switch-checkbox').prop('checked');
-            if(view){
-                query.push('view='+$('.pm-switch-result-view .pm-switch-checkbox').val());
+            if (view) {
+                query.push('view=' + $('.pm-switch-result-view .pm-switch-checkbox').val());
             }
 
             // Build the Query
@@ -378,7 +383,7 @@ jQuery(function ($) {
                 if (current_location[0] == href[0]) {
                     _this.setSpinner('#pm-search-result');
                     _this.call(query_string, null, '.search-bar-total-count', _this.resultHandlerSearch);
-                }else{
+                } else {
                     // in this case we have placed a search box on a site without a direct result output
                     _this.call(query_string, null, '.search-bar-total-count', _this.resultHandlerSearchBarStandalone);
                 }
@@ -390,7 +395,7 @@ jQuery(function ($) {
 
     };
 
-    var Search = new TSAjax('/wp-content/themes/travelshop/pm-ajax-endpoint.php');
+    var Search = new TSAjax('/wp-content/themes/wp-travelshop-theme/pm-ajax-endpoint.php');
     Search.renderWishlist();
     Search.wishlistEventListeners();
     Search.wishListInit();
@@ -399,4 +404,3 @@ jQuery(function ($) {
     Search.filter();
 
 });
-

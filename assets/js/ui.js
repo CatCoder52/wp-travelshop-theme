@@ -1,8 +1,8 @@
 jQuery(function ($) {
 
-// ------------------------------------------------
-// -- smooth scroll
-// ------------------------------------------------
+    // ------------------------------------------------
+    // -- smooth scroll
+    // ------------------------------------------------
 
     $('.smoothscroll').on('click', function (e) {
         e.preventDefault();
@@ -15,9 +15,9 @@ jQuery(function ($) {
         });
     });
 
-// ------------------------------------------------
-// -- pull to refresh feature
-// ------------------------------------------------
+    // ------------------------------------------------
+    // -- pull to refresh feature
+    // ------------------------------------------------
 
     PullToRefresh.init({
         mainElement: 'body',
@@ -27,10 +27,10 @@ jQuery(function ($) {
         }
     });
 
-// ------------------------------------------------
-// -- sticky / hide handling sticky booking cta
-// -- using content-main
-// ------------------------------------------------
+    // ------------------------------------------------
+    // -- sticky / hide handling sticky booking cta
+    // -- using content-main
+    // ------------------------------------------------
     if ($('.sticky-booking-cta').length > 0) {
         var scrollPos = $(window).scrollTop(),
             hideTrigger = ($('.content-main').offset().top + $('.content-main').height()) - ($(window).height() * 1.75);
@@ -53,9 +53,9 @@ jQuery(function ($) {
             }
         });
     }
-// --------------------------------
-// --- Affix Header
-// --------------------------------
+    // --------------------------------
+    // --- Affix Header
+    // --------------------------------
     /*
     $('body').css('margin-top', $('.header-main').height());
     $(window).resize(function () {
@@ -71,17 +71,17 @@ jQuery(function ($) {
         }
     });
 
-// -----------------------------------------------
-// -- Tooltips for images
-// -----------------------------------------------
+    // -----------------------------------------------
+    // -- Tooltips for images
+    // -----------------------------------------------
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     });
 
 
-// --------------------------------
-// --- Gallery
-// --------------------------------
+    // --------------------------------
+    // --- Gallery
+    // --------------------------------
     if ($('.detail-gallery-overlay-inner').length > 0) {
         var slider = tns({
             container: '.detail-gallery-overlay-inner',
@@ -90,12 +90,13 @@ jQuery(function ($) {
             navContainer: '#detail-gallery-thumbnails',
             navAsThumbnails: true,
             controlsText: ['<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
-            '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
-            '  <polyline points="15 6 9 12 15 18" />\n' +
-            '</svg>', '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
-            '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
-            '  <polyline points="9 6 15 12 9 18" />\n' +
-            '</svg>']
+                '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
+                '  <polyline points="15 6 9 12 15 18" />\n' +
+                '</svg>', '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
+                '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
+                '  <polyline points="9 6 15 12 9 18" />\n' +
+                '</svg>'
+            ]
         })
     }
 
@@ -119,20 +120,21 @@ jQuery(function ($) {
             mouseDrag: true,
             navContainer: '.travelshop-image-slider',
             navAsThumbnails: true,
-            edgePadding: 20,
+            edgePadding: 15,
             controlsText: ['<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
-            '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
-            '  <polyline points="15 6 9 12 15 18" />\n' +
-            '</svg>', '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
-            '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
-            '  <polyline points="9 6 15 12 9 18" />\n' +
-            '</svg>']
+                '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
+                '  <polyline points="15 6 9 12 15 18" />\n' +
+                '</svg>', '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
+                '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
+                '  <polyline points="9 6 15 12 9 18" />\n' +
+                '</svg>'
+            ]
         })
     }
 
-// --------------------------------
-// --- Breadcrumb
-// --------------------------------
+    // --------------------------------
+    // --- Breadcrumb
+    // --------------------------------
     if ($('.breadcrumb').length > 0) {
         function renderBreadCrumb(bc) {
             let itemsWidth = 0;
@@ -159,9 +161,9 @@ jQuery(function ($) {
         })
     }
 
-// --------------------------------
-// --- Booking Calendar
-// --------------------------------
+    // --------------------------------
+    // --- Booking Calendar
+    // --------------------------------
 
     if ($('.booking-calendar-slider').length > 0) {
         var booking_calendar_slider = tns({
@@ -171,18 +173,19 @@ jQuery(function ($) {
             loop: false,
             nav: false,
             controlsText: ['<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
-            '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
-            '  <polyline points="15 6 9 12 15 18" />\n' +
-            '</svg>', '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
-            '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
-            '  <polyline points="9 6 15 12 9 18" />\n' +
-            '</svg>']
+                '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
+                '  <polyline points="15 6 9 12 15 18" />\n' +
+                '</svg>', '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
+                '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
+                '  <polyline points="9 6 15 12 9 18" />\n' +
+                '</svg>'
+            ]
         })
     }
 
-// --------------------------------
-// --- Register PWA ServiceWorker
-// --------------------------------
+    // --------------------------------
+    // --- Register PWA ServiceWorker
+    // --------------------------------
 
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
@@ -197,54 +200,54 @@ jQuery(function ($) {
     }
 
 
-// ------------------------------
-// -- content modal
-// ------------------------------
+    // ------------------------------
+    // -- content modal
+    // ------------------------------
 
-    if ( $('.modal-wrapper').length > 0 ) {
-        $('a[data-modal="true"]').on('click', function(e) {
+    if ($('.modal-wrapper').length > 0) {
+        $('a[data-modal="true"]').on('click', function (e) {
             e.preventDefault();
             var modalId = $(this).data('modal-id');
             // -- show modal
-            $('body').find('#'+modalId).addClass('is--open');
+            $('body').find('#' + modalId).addClass('is--open');
 
             e.stopPropagation();
         })
 
-        $('.modal-close').on('click', function(e) {
+        $('.modal-close').on('click', function (e) {
             e.preventDefault();
             $('.modal-wrapper.is--open').removeClass('is--open');
             e.stopPropagation();
         })
 
-        $(document).on('keyup', function(e){
-            if (e.which == 27) $('.modal-close').click();   // esc
+        $(document).on('keyup', function (e) {
+            if (e.which == 27) $('.modal-close').click(); // esc
         });
     }
 
-// ------------------------------
-// -- view switch on result page
-// ------------------------------
-    if ( $('.pm-switch-result-view').length > 0 ) {
+    // ------------------------------
+    // -- view switch on result page
+    // ------------------------------
+    if ($('.pm-switch-result-view').length > 0) {
 
-        if(window.localStorage.getItem('pm-switch-checkbox') == '1') {
+        if (window.localStorage.getItem('pm-switch-checkbox') == '1') {
             $('.pm-switch-result-view .pm-switch-checkbox').prop('checked', true);
         }
 
-        $('#search-result').on('click', '.pm-switch-result-view .pm-switch-checkbox', function(e) {
+        $('#search-result').on('click', '.pm-switch-result-view .pm-switch-checkbox', function (e) {
 
-            let query_string = window.location.search.replace(/(\?|&)(view=).*?(&|$)/,'');
+            let query_string = window.location.search.replace(/(\?|&)(view=).*?(&|$)/, '');
 
-            if($(this).prop('checked') == true){
+            if ($(this).prop('checked') == true) {
                 window.localStorage.setItem('pm-switch-checkbox', '1');
-                if(query_string == ''){
+                if (query_string == '') {
                     query_string += '?'
-                }else{
+                } else {
                     query_string += '&'
                 }
-                query_string +='view='+$(this).val();
+                query_string += 'view=' + $(this).val();
 
-            }else{
+            } else {
                 window.localStorage.removeItem('pm-switch-checkbox');
             }
 
