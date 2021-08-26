@@ -855,6 +855,14 @@
 
             this.container.find('.drp-calendar.' + side + ' .calendar-table').html(html);
 
+            /**
+             * https://github.com/dangrossman/daterangepicker/pull/2101
+             * Added a calendarRendered event to do some custom stuff if needed after the calendar is rendered.
+             * Differs from the showcalendar event because the show calendar event only fires once,
+             * this event is fired every time the user changes the 'page' for example by using the previous or next button.
+             * This way a developer can hook into this rendering and do some custom magic (adding markers for specific dates for example)
+             */
+            this.element.trigger("calendarRendered.daterangepicker", [this, this.container.find('.drp-calendar.' + side + ' .calendar-table')]);
         },
 
         renderTimePicker: function(side) {

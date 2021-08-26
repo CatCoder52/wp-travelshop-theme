@@ -41,24 +41,32 @@ jQuery(function ($) {
 // -------------------------------------------------
 // --- Daterangepicker
 // -------------------------------------------------
+// @TODO ranges are disabled at this moment
 
     if ($('[data-type="daterange"]').length > 0) {
+
+       let minYear =  $('[data-type="daterange"]').data('minyear');
+       let maxYear =  $('[data-type="daterange"]').data('maxyear');
+       let minDate =  $('[data-type="daterange"]').data('mindate');
+       let maxDate =  $('[data-type="daterange"]').data('maxdate');
+
         let picker = $('[data-type="daterange"]').daterangepicker({
-            "ranges": {
+            "ranges_": {
                 'Heute': [moment(), moment()],
                 'Abreise in 30 Tagen': [moment().add(30, 'days'), moment().add(1, 'year')],
                 'Abreise in 60 Tagen': [moment().add(60, 'days'), moment().add(1, 'year')],
                 'in diesem Monat': [moment().startOf('month'), moment().endOf('month')],
                 'im nächsten Monat': [moment().add(1, 'month').startOf('month'), moment().add(1, 'month').endOf('month')],
             },
+
             "showWeekNumbers": false,
             "autoUpdateInput": false,
             "alwaysShowCalendars": true,
             "showDropdowns": true,
-            "minYear": moment().format('YYYY'),
-            "maxYear": moment().add(1, 'years').format('YYYY'),
-            "minDate": moment().format('DD/MM/YYYY'),
-            "maxDate": moment().add(1, 'years').format('DD/MM/YYYY'),
+            "minYear": minYear,
+            "maxYear": maxYear,
+            "minDate": minDate,
+            "maxDate": maxDate,
             "showCustomRangeLabel": false,
             // "autoApply": true,
             "locale": {

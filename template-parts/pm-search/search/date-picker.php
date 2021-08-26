@@ -1,3 +1,31 @@
+<?php
+/**
+ * @var \Pressmind\Search $search
+ *
+ * @var int $id_object_type
+ */
+
+/**
+ * Get the current min/max daterange for this object type and .
+ * Use the wp transient cache for a better performance
+ */
+$transient = 'ts_min_max_date_range_'.md5(serialize($search->getConditions()));
+if (($dRange = get_transient( $transient)) === false) {
+    $dRangeFilter = new Pressmind\Search\Filter\DepartureDate($search);
+    $dRange = $dRangeFilter->getResult();
+    set_transient($transient, $dRange, 60);
+}
+
+$minDate = $maxDate = $minYear = $maxYear = '';
+if(!empty($dRange->from) && !empty($dRange->to)){
+    $minDate = $dRange->from->format('d/m/Y');
+    $minYear = $dRange->from->format('Y');
+    $maxDate = $dRange->to->format('d/m/Y');
+    $maxYear = $dRange->to->format('Y');
+}
+
+?>
+
 <div class="form-group mb-md-0">
     <label for="">Reisezeitraum</label>
     <div>
@@ -7,6 +35,10 @@
             name="pm-dr"
             autocomplete="off"
             readonly
+            data-mindate="<?php echo $minDate;?>"
+            data-maxdate="<?php echo $maxDate;?>"
+            data-minyear="<?php echo $minYear;?>"
+            data-maxyear="<?php echo $maxYear;?>"
             placeholder="egal" value="<?php
         if (empty($_GET['pm-dr']) === false) {
             $dr = BuildSearch::extractDaterange($_GET['pm-dr']);
