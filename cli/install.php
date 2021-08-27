@@ -33,6 +33,7 @@ if($first_install) {
 
     $config = json_decode(file_get_contents($default_config_file), true);
 
+    $webserver_http = readline("Enter Webserver HTTP e.g. 'https://domain.de' [http://127.0.0.1]: ");
     $db_host = readline("Enter Database Host [127.0.0.1]: ");
     $db_port = readline("Enter Database Port [3306]: ");
     $db_name = readline("Enter Database Name: ");
@@ -44,6 +45,7 @@ if($first_install) {
 
     if(empty($db_host)) $db_host = '127.0.0.1';
     if(empty($db_port)) $db_port = '3306';
+    if(empty($webserver_http)) $webserver_http = 'http://127.0.0.1';
 
     $config['development']['database']['username'] = $db_user;
     $config['development']['database']['password'] = $db_password;
@@ -55,8 +57,10 @@ if($first_install) {
     $config['development']['rest']['client']['api_user'] = $pressmind_api_user;
     $config['development']['rest']['client']['api_password'] = $pressmind_api_password;
 
-    //Setting some default values in config
+    // Setup the webserver site url
+    $config['development']['server']['webserver_http'] = $webserver_http;
 
+    //Setting some default values in config
     $config['development']['server']['document_root'] = 'BASE_PATH';
     $config['development']['docs_dir'] = 'APPLICATION_PATH/docs';
 
