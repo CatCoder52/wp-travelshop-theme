@@ -16,13 +16,20 @@ if (($dRange = get_transient( $transient)) === false) {
     set_transient($transient, $dRange, 60);
 }
 
-$minDate = $maxDate = $minYear = $maxYear = '';
+$minDate = $maxDate = '';
 if(!empty($dRange->from) && !empty($dRange->to)){
-    $minDate = $dRange->from->format('d/m/Y');
-    $minYear = $dRange->from->format('Y');
-    $maxDate = $dRange->to->format('d/m/Y');
-    $maxYear = $dRange->to->format('Y');
+    $minDate = $dRange->from->format('d.m.Y');
+    $maxDate = $dRange->to->format('d.m.Y');
 }
+
+$human_readable_str = '';
+$value = '';
+if (empty($_GET['pm-dr']) === false) {
+    $dr = BuildSearch::extractDaterange($_GET['pm-dr']);
+    $human_readable_str = $dr[0]->format('d.m.') . ' - ' . $dr[1]->format('d.m.Y');
+    $value = $dr[0]->format('Ymd') . '-' . $dr[1]->format('Ymd');
+}
+
 
 ?>
 
@@ -37,14 +44,9 @@ if(!empty($dRange->from) && !empty($dRange->to)){
             readonly
             data-mindate="<?php echo $minDate;?>"
             data-maxdate="<?php echo $maxDate;?>"
-            data-minyear="<?php echo $minYear;?>"
-            data-maxyear="<?php echo $maxYear;?>"
-            placeholder="egal" value="<?php
-        if (empty($_GET['pm-dr']) === false) {
-            $dr = BuildSearch::extractDaterange($_GET['pm-dr']);
-            echo $dr[0]->format('d.m.') . ' - ' . $dr[1]->format('d.m.Y');
-        }
-        ?>"/>
+            data-value="<?php echo $value; ?>"
+            placeholder="egal"
+            value="<?php echo $human_readable_str; ?>"/>
     </div>
     <svg xmlns="http://www.w3.org/2000/svg" 
         <?php if (!empty($_GET['pm-dr'])) { echo 'style="display: block;"'; } ?>
