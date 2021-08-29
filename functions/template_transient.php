@@ -11,7 +11,7 @@
 function load_template_transient( $_template_file, $require_once = true, $args = array(), $expiration = 60) {
 
     $transient = 'ts_template_transient_'.md5(serialize( [$_template_file, $args]));
-    if (($output = get_transient( $transient)) === false) {
+    if (($output = get_transient( $transient)) === false || is_admin_bar_showing() === true || is_user_logged_in() === true) {
         ob_start();
         load_template($_template_file, $require_once, $args);
         $output = ob_get_contents();
