@@ -29,4 +29,4 @@ $args['view'] = !empty($settings->{'pm-ot'}) ? $settings->{'view_'. $settings->{
 // delete empty keys
 $args['search'] = array_filter($args['search']);
 
-load_template(get_template_directory() . '/template-parts/layout-blocks/product-teaser.php', false,  $args);
+load_template_transient(get_template_directory() . '/template-parts/layout-blocks/product-teaser.php', false,  $args);
