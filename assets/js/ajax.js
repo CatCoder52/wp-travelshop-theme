@@ -151,9 +151,14 @@ jQuery(function ($) {
 
         this.wishlistEventListeners = function() {
 
-            $('body').on('DOMSubtreeModified', '#search-result', function(){
-              _this.wishListInit();
-            });
+            if ($('#search-result').length > 0) {
+                // Create an observer instance linked to the callback function
+                var observer = new MutationObserver(function () {
+                    _this.wishListInit();
+                });
+
+                observer.observe(document.getElementById('search-result'), {attributes: true, childList: true});
+            }
 
             $('body').on('click', '.remove-from-wishlist', function(e) {
                 let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
