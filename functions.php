@@ -54,6 +54,7 @@ require_once 'src/PriceHandler.php';
 require_once 'functions/email_smtp.php';
 
 // Cleanup
+require_once 'functions/heartbeat.php';
 require_once 'functions/cleanup_meta_includes.php';
 require_once 'functions/disable_emojis.php';
 require_once 'functions/disable_pagetypes.php';
@@ -79,6 +80,8 @@ require_once 'functions/rewrite_rules.php';
 // JS & CSS
 require_once  'functions/enqueue_js.php';
 require_once  'functions/enqueue_css.php';
+
+require_once  'functions/template_transient.php';
 
 // Contactform 7 support, if installed, we will load some custom formfield-tags here.
 if(class_exists('WPCF7')){
@@ -108,10 +111,7 @@ class PMTravelShop{
         $this->Shortcodes = new Shortcodes();
         $this->AdminPage = new AdminPage();
         $this->ThemeActivation = new ThemeActivation();
-        if(defined(PM_REDIS_HOST) === true){
-            $this->Redis = new Redis();
-            $this->Redis->connect(PM_REDIS_HOST, PM_REDIS_PORT);
-        }
+
     }
 
 }
