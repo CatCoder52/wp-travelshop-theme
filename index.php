@@ -12,7 +12,7 @@ get_header();
         $args = [
                 'headline' => 'Finde deine Traumreise!',
         ];
-        load_template(get_template_directory().'/template-parts/layout-blocks/search-header.php', false, $args);
+        load_template_transient(get_template_directory().'/template-parts/layout-blocks/search-header.php', false, $args);
         ?>
         <div class="content-main">
             <div class="container">
@@ -21,7 +21,7 @@ get_header();
                     'headline' => 'Beliebte Reiseziele',
                     'text' => 'Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.'
                 ];
-                load_template(get_template_directory().'/template-parts/layout-blocks/image-teaser.php', false, $args);
+                load_template_transient(get_template_directory().'/template-parts/layout-blocks/image-teaser.php', false, $args);
                 ?>
                 <hr class="mt-0 mb-0">
                 <?php
@@ -34,7 +34,7 @@ get_header();
                             'pm-ot' => TS_TOUR_PRODUCTS
                     ]
                 ];
-                load_template(get_template_directory().'/template-parts/layout-blocks/product-teaser.php', false, $args);
+                load_template_transient(get_template_directory().'/template-parts/layout-blocks/product-teaser.php', false, $args);
                 ?>
                 <hr class="mt-0 mb-0">
                 <?php
@@ -78,7 +78,7 @@ get_header();
                     ]
                     ]
                 ];
-                load_template(get_template_directory().'/template-parts/layout-blocks/product-category-teaser.php', false, $args);
+                load_template_transient(get_template_directory().'/template-parts/layout-blocks/product-category-teaser.php', false, $args);
                 ?>
                 <hr class="mt-0 mb-0">
                 <?php
@@ -86,7 +86,7 @@ get_header();
                     'headline' => 'Info Teaser',
                     'text' => 'Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.'
                 ];
-                load_template(get_template_directory().'/template-parts/layout-blocks/info-teaser.php', false, $args);?>
+                load_template_transient(get_template_directory().'/template-parts/layout-blocks/info-teaser.php', false, $args);?>
                 <hr class="mt-0 mb-0">
                 <?php
                     $args = [
@@ -132,7 +132,7 @@ get_header();
                                         ]
                             ];
 
-                    load_template(get_template_directory().'/template-parts/layout-blocks/icon-teaser.php', false, $args);
+                load_template_transient(get_template_directory().'/template-parts/layout-blocks/icon-teaser.php', false, $args);
                 ?>
             </div>
         </div>
@@ -147,7 +147,7 @@ get_header();
                 'bg_image_src' => get_stylesheet_directory_uri().'/assets/img/slide-1.webp',
                 'bg_image_alt_text' => '',
         ];
-        load_template(get_template_directory().'/template-parts/layout-blocks/jumbotron.php', false, $args);
+        load_template_transient(get_template_directory().'/template-parts/layout-blocks/jumbotron.php', false, $args);
         ?>
     </main>
 <?php

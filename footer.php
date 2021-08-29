@@ -82,59 +82,20 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-3">
                     <?php
-                    if (has_nav_menu('footer_column_1')) {
-
-                        $locations = get_nav_menu_locations(); //get all menu locations
-                        $footer_1_menu = wp_get_nav_menu_object($locations['footer_column_1']);
-
-                        ?>
-                        <div class="h5">
-                            <?php echo !empty($footer_1_menu->name) ? $footer_1_menu->name : ''; ?>
-                        </div>
-                        <nav class="nav flex-column">
-                            <ul class="">
-                                <?php
-                                wp_nav_menu(
-                                    array(
-                                        'container' => '',
-                                        'depth' => 1,
-                                        'items_wrap' => '%3$s',
-                                        'theme_location' => 'footer_column_1',
-                                    )
-                                );
-                                ?>
-                            </ul>
-                        </nav>
-                    <?php } ?>
+                    $args = [
+                        'menu_location' => 'footer_column_1'
+                    ];
+                    load_template_transient(get_template_directory().'/template-parts/footer/menu.php', false, $args);
+                    ?>
                 </div>
 
                 <div class="col-12 col-sm-6 col-lg-3">
-                    <?php if (has_nav_menu('footer_column_2')) {
-
-                        $locations = get_nav_menu_locations(); //get all menu locations
-                        $footer_2_menu = wp_get_nav_menu_object($locations['footer_column_2']);
-
-                        ?>
-                        <div class="h5">
-                            <?php echo !empty($footer_2_menu->name) ? $footer_2_menu->name : ''; ?>
-                        </div>
-                        <nav class="nav flex-column">
-                            <ul class="">
-                                <?php
-                                wp_nav_menu(
-                                    array(
-                                        'container' => '',
-                                        'depth' => 1,
-                                        'items_wrap' => '%3$s',
-                                        'theme_location' => 'footer_column_2',
-                                    )
-                                );
-                                ?>
-                            </ul>
-                        </nav>
-                    <?php } ?>
-
-
+                    <?php
+                    $args = [
+                      'menu_location' => 'footer_column_2'
+                    ];
+                    load_template_transient(get_template_directory().'/template-parts/footer/menu.php', false, $args);
+                    ?>
                     <div class="h5">
                         Searchroutes
                     </div>
