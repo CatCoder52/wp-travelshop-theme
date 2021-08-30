@@ -250,4 +250,29 @@ jQuery(function ($) {
         }
     };
 
+    // --------------------------
+    // -- travel calendar
+    // --------------------------
+    if ( $('.product-calendar-group-item').length > 0 ) {
+        $('body').on('click', '.product-calendar-group-item', function(e) {
+            e.preventDefault();
+
+            var getId = $(this).data('product-item');
+            var isActive = $(this).hasClass('is--active');
+
+            if ( isActive ) {
+                $(this).removeClass('is--active');
+                $('.product-calendar-group-item--product[data-product-item="'+getId+'"]').removeClass('is--open');
+            } else {
+                $('.product-calendar-group-item').removeClass('is--active');
+                $('.product-calendar-group-item--product').removeClass('is--open');
+
+                $(this).addClass('is--active');
+                $('.product-calendar-group-item--product[data-product-item="'+getId+'"]').addClass('is--open');
+            }
+
+            e.stopPropagation();
+        })
+    }
+
 });
