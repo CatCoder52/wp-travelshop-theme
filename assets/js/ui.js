@@ -100,19 +100,32 @@ jQuery(function ($) {
         })
     }
 
-    if ($('.detail-image-grid-holder').length > 0) {
-        $('.detail-image-grid-holder img').on('click', function () {
+    if ($('.detail-image-grid-holder').length > 0 || $('.travelshop-detail-gallerythumb').length > 0) {
+        function addGalleryClasses() {
             console.log('open');
             $('#detail-gallery-overlay').addClass('is--show');
             $('body').addClass('modal-open');
-        })
-        $('.detail-gallery-overlay-close').on('click', function () {
+        }
+
+        function removeGalleryClasses() {
+            console.log('close');
             $('#detail-gallery-overlay').removeClass('is--show');
             $('body').removeClass('modal-open');
+        }
+        $('.detail-image-grid-holder img').on('click', function () {
+            addGalleryClasses();
+        })
+        $('.detail-gallery-overlay-close').on('click', function () {
+            removeGalleryClasses();
+        })
+        $('.travelshop-detail-gallerythumb').on('click', function () {
+            addGalleryClasses();
         })
     }
 
-    // Travelshop Image Slider
+    // --------------------------------
+    // --- Travelshop Detail Image Slider
+    // --------------------------------
     if ($('.travelshop-image-slider').length > 0) {
         var slider = tns({
             container: '.travelshop-image-slider',
@@ -121,6 +134,11 @@ jQuery(function ($) {
             navContainer: '.travelshop-image-slider',
             navAsThumbnails: true,
             edgePadding: 15,
+            responsive: {
+                992: {
+                    disable: true
+                }
+            },
             controlsText: ['<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
                 '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
                 '  <polyline points="15 6 9 12 15 18" />\n' +
@@ -133,6 +151,17 @@ jQuery(function ($) {
     }
 
     // --------------------------------
+    // --- Travelshop Detail Image Gallery Thumb
+    // --------------------------------
+    if ($('.travelshop-detail-gallerythumb').length > 0) {
+        $('.travelshop-detail-gallerythumb').width($('.travelshop-detail-gallerythumb').height());
+        $(window).resize(function () {
+            $('.travelshop-detail-gallerythumb').width($('.travelshop-detail-gallerythumb').height());
+        })
+    }
+
+
+    // --------------------------------
     // --- Breadcrumb
     // --------------------------------
     if ($('.breadcrumb').length > 0) {
@@ -140,13 +169,14 @@ jQuery(function ($) {
             let itemsWidth = 0;
             bc.children().each(function (key, item) {
                 itemsWidth += $(item).outerWidth();
+                console.log(bc.children().first());
             });
             if ($(window).width() <= itemsWidth + 60) {
                 console.log(true);
                 bc.children().hide();
                 $('.bc-separator').css('display', 'flex');
-                bc.children().first().show();
-                bc.children().last().show();
+                // bc.children().first().show();
+                // bc.children().last().show();
             } else {
                 // console.log(false);
                 bc.children().show();

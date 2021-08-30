@@ -46,6 +46,19 @@
 
     .travelshop-image-slider {
         div {
+            position: relative;
+
+            .travelshop-image-slider-copyright {
+                font-size: .8rem;
+                position: absolute;
+                z-index: 450;
+                bottom: 15px;
+                left: 15px;
+                color: #fff;
+                padding: .05rem .4rem;
+                background: rgba(0, 0, 0, .5);
+            }
+
             img {
                 width: 100%;
                 height: auto;
@@ -55,5 +68,32 @@
 
     @include media-breakpoint-up(lg) {
         margin: 0;
+        pointer-events: none;
+
+        &:before,
+        &:after {
+            display: none;
+        }
+
+        .travelshop-image-slider {
+            display: block !important;
+
+            div {
+                .travelshop-image-slider-copyright {
+                    left: auto;
+                    bottom: auto;
+                    right: 15px;
+                    top: 15px;
+                }
+            }
+
+            .tns-item {
+                display: none;
+
+                &#tns1-item0 {
+                    display: block;
+                }
+            }
+        }
     }
 }

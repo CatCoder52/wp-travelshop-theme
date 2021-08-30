@@ -10,6 +10,11 @@
      flex-wrap: nowrap;
 
      .breadcrumb-item {
+       .breadcrumb-name {
+         display: flex;
+         align-items: center;
+       }
+
        &:before {
          display: none;
        }
@@ -19,10 +24,14 @@
        display: flex;
        align-items: center;
        line-height: 1;
-       padding: .3rem .75rem;
-       border-left: 1px solid #ccc;
-       border-top: 1px solid #ccc;
-       border-bottom: 1px solid #ccc;
+       padding: .3rem 0;
+       // border-left: 1px solid #ccc;
+       // border-top: 1px solid #ccc;
+       // border-bottom: 1px solid #ccc;
+
+       .breadcrumb-sep {
+         margin: 0 .3rem;
+       }
 
        &.bc-separator {
          display: none;
@@ -36,7 +45,7 @@
        &:last-child {
          border-top-right-radius: 5px;
          border-bottom-right-radius: 5px;
-         border-right: 1px solid #ccc;
+         // border-right: 1px solid #ccc;
        }
      }
    }
