@@ -8764,7 +8764,6 @@ hr {
   margin-bottom: 1rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125); }
   .card-travel-wrapper:first-child {
-    padding-top: 1rem;
     border-top: 1px solid rgba(0, 0, 0, 0.125); }
   .card-travel-wrapper:last-child {
     border-bottom: 0; }
@@ -11908,7 +11907,8 @@ figure.wp-block-image figcaption {
           white-space: nowrap; }
 
 .product-calendar-wrap {
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1), 0 0 0.25rem rgba(0, 0, 0, 0.05); }
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1), 0 0 0.25rem rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem; }
   .product-calendar-wrap .product-calendar-group .product-calendar-group--title h3 {
     margin: 0;
     padding: 1rem 1rem .5rem 1rem;
