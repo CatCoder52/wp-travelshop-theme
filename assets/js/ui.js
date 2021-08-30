@@ -169,10 +169,8 @@ jQuery(function ($) {
             let itemsWidth = 0;
             bc.children().each(function (key, item) {
                 itemsWidth += $(item).outerWidth();
-                console.log(bc.children().first());
             });
             if ($(window).width() <= itemsWidth + 60) {
-                console.log(true);
                 bc.children().hide();
                 $('.bc-separator').css('display', 'flex');
                 // bc.children().first().show();
