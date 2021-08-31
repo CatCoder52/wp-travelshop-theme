@@ -36,7 +36,6 @@ if (($total_result = get_transient( $transient)) === false) {
 }
 
 ?>
-<input type="hidden" name="pm-ot" value="<?php echo $id_object_type;?>">
 <div class="search-wrapper">
     <?php if(!empty($args['headline'])){?>
         <div class="h1 text-md-center mt-0 mb-2 mb-4">
@@ -49,6 +48,7 @@ if (($total_result = get_transient( $transient)) === false) {
 
     ?>
     <form method="GET" action="<?php echo site_url().'/'.$PMTravelShop->RouteProcessor->get_url_by_object_type(TS_TOUR_PRODUCTS).'/' ?>">
+        <input type="hidden" name="pm-ot" value="<?php echo $id_object_type;?>">
 
         <div class="search-wrapper--inner search-box">
 

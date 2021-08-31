@@ -33,6 +33,7 @@ if (($total_result = get_transient( $transient)) === false) {
 
     ?>
     <form method="GET">
+        <input type="hidden" name="pm-ot" value="<?php echo $id_object_type;?>">
         <div class="search-wrapper--inner search-box">
             <div>
                 <?php
