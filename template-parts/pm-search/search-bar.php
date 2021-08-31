@@ -72,10 +72,10 @@ if (($total_result = get_transient( $transient)) === false) {
                 } ?>
 
                 <div class="col-12 col-md-3 mb-md-0">
-                    <div class="from-group mb-0">
+                    <div class="form-group">
                         <label class="d-none d-md-block">&nbsp;</label>
-                        <a class="btn btn-secondary btn-block" href="<?php echo site_url().'/calendar/'; ?>">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-event" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <a class="btn btn-text btn-block" href="<?php echo site_url().'/calendar/'; ?>">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-event" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#212529" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <rect x="4" y="5" width="16" height="16" rx="2"></rect>
                                 <line x1="16" y1="3" x2="16" y2="7"></line>
@@ -89,7 +89,7 @@ if (($total_result = get_transient( $transient)) === false) {
                 </div>
 
                 <div class="col-12 col-md-3 mb-md-0">
-                    <div class="from-group mb-0">
+                    <div class="form-group mb-0">
                         <label class="d-none d-md-block">&nbsp;</label>
                         <a class="btn btn-primary btn-block" href="<?php echo site_url().'/'.$PMTravelShop->RouteProcessor->get_url_by_object_type(TS_TOUR_PRODUCTS).'/'; ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
