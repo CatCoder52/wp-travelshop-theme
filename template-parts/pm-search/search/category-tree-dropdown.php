@@ -53,7 +53,6 @@ if (empty($treeItems) === false) {
                     <?php
                     foreach ($treeItems as $item) {
                         $uuid = 'ti-'.uniqid();
-                        $item->toStdClass();
                         $has_childs = !empty($item->children);
                         ?>
                         <div class="form-check <?php echo $has_childs ? 'has-second-level' : ''; ?>">
