@@ -53,6 +53,7 @@ if (($total_result = get_transient( $transient)) === false) {
                 <?php
             } ?>
 
+            <!--
             <div>
                 <div class="form-group ">
                     <a class="btn btn-text btn-block" href="<?php echo site_url().'/calendar/'; ?>">
@@ -68,6 +69,7 @@ if (($total_result = get_transient( $transient)) === false) {
                     </a>
                 </div>
             </div>
+            -->
 
             <div>
                 <div class="form-group mb-0">

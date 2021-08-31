@@ -71,6 +71,7 @@ if (($total_result = get_transient( $transient)) === false) {
                     <?php
                 } ?>
 
+                <!--
                 <div class="col-12 col-md-3 mb-md-0">
                     <div class="form-group">
                         <label class="d-none d-md-block">&nbsp;</label>
@@ -87,7 +88,8 @@ if (($total_result = get_transient( $transient)) === false) {
                         </a>
                     </div>
                 </div>
-
+                -->
+                
                 <div class="col-12 col-md-3 mb-md-0">
                     <div class="form-group mb-0">
                         <label class="d-none d-md-block">&nbsp;</label>
