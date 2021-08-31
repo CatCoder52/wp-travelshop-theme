@@ -12137,7 +12137,8 @@ body {
         height: 100px; } }
     @media (max-width: 767.98px) {
       .header-main .navbar-brand img {
-        height: 14px !important; } }
+        height: 14px !important;
+        width: auto; } }
   .header-main nav.navbar {
     padding-top: 0;
     padding-bottom: 0; }
@@ -12184,6 +12185,13 @@ body {
       color: #0066ff; }
     .header-main .toggler.search-toggler i {
       font-size: 1.5rem; }
+  .header-main .calendar.calendar-link {
+    position: relative;
+    transition: all 0.3s; }
+    .header-main .calendar.calendar-link svg {
+      stroke: #607d8b !important; }
+  .header-main .p-r-0 {
+    padding-right: 0 !important; }
   .header-main .toggler.wishlist-toggler {
     position: relative;
     padding-right: 0.75rem;
