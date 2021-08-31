@@ -31,7 +31,7 @@ get_header();
                             'headline' => 'Reisekalender',
                             'text' => 'Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.',
                         ];
-                        load_template(get_stylesheet_directory() . '/template-parts/layout-blocks/product-calendar.php', false, $args);
+                        load_template_transient(get_stylesheet_directory() . '/template-parts/layout-blocks/product-calendar.php', false, $args);
                         ?>
                     </div>
                 </div>
