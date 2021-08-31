@@ -10564,6 +10564,134 @@ button.select-from-control {
 .layout-block-search-bar .layout-block-search-bar--search.silver .search-box {
   background: #bdc3c7; }
 
+.layout-block-search-bar .layout-block-search-bar--search .search-wrapper--tabs + form > .search-wrapper--inner,
+.layout-block-search-bar .layout-block-search-header--search .search-wrapper--tabs + form > .search-wrapper--inner,
+.layout-block-search-header .layout-block-search-bar--search .search-wrapper--tabs + form > .search-wrapper--inner,
+.layout-block-search-header .layout-block-search-header--search .search-wrapper--tabs + form > .search-wrapper--inner {
+  margin-top: 0;
+  border-top-left-radius: 0 !important; }
+
+.layout-block-search-bar .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-bar .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-header .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-header .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn {
+  border: 0;
+  outline: none;
+  box-shadow: none;
+  height: 3rem;
+  padding: 0 30px;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #434b53;
+  transition: background-color .3s, color .3s; }
+  .layout-block-search-bar .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn:hover, .layout-block-search-bar .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn:focus, .layout-block-search-bar .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn:active, .layout-block-search-bar .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-bar .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-bar .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-bar .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-bar .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-header .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-header .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-header .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-header .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-header .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-header .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active {
+    color: #212529;
+    background-color: rgba(255, 255, 255, 0.5); }
+  .layout-block-search-bar .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-bar .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active {
+    font-weight: 700; }
+
+.layout-block-search-bar .layout-block-search-bar--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-bar .layout-block-search-header--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-header .layout-block-search-bar--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-header .layout-block-search-header--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn {
+  background-color: rgba(108, 117, 125, 0.15); }
+  .layout-block-search-bar .layout-block-search-bar--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:hover, .layout-block-search-bar .layout-block-search-bar--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:focus, .layout-block-search-bar .layout-block-search-bar--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:active, .layout-block-search-bar .layout-block-search-bar--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-bar .layout-block-search-header--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-bar .layout-block-search-header--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-bar .layout-block-search-header--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-bar .layout-block-search-header--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-bar--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-header .layout-block-search-bar--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-header .layout-block-search-bar--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-header .layout-block-search-bar--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-header--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-header .layout-block-search-header--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-header .layout-block-search-header--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-header .layout-block-search-header--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active {
+    color: #fff;
+    background-color: #007bff; }
+
+.layout-block-search-bar .layout-block-search-bar--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-bar .layout-block-search-header--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-header .layout-block-search-bar--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-header .layout-block-search-header--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn {
+  background-color: rgba(108, 117, 125, 0.15); }
+  .layout-block-search-bar .layout-block-search-bar--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:hover, .layout-block-search-bar .layout-block-search-bar--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:focus, .layout-block-search-bar .layout-block-search-bar--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:active, .layout-block-search-bar .layout-block-search-bar--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-bar .layout-block-search-header--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-bar .layout-block-search-header--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-bar .layout-block-search-header--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-bar .layout-block-search-header--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-bar--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-header .layout-block-search-bar--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-header .layout-block-search-bar--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-header .layout-block-search-bar--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-header--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-header .layout-block-search-header--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-header .layout-block-search-header--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-header .layout-block-search-header--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active {
+    background-color: #bdc3c7; }
+
+.layout-block-search-bar .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-bar .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-header .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-header .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn {
+  background-color: #fff;
+  color: rgba(33, 37, 41, 0.5);
+  border-top: 1px solid rgba(33, 37, 41, 0.05);
+  border-left: 1px solid rgba(33, 37, 41, 0.05);
+  border-right: 1px solid rgba(33, 37, 41, 0.05); }
+  .layout-block-search-bar .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:hover, .layout-block-search-bar .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:focus, .layout-block-search-bar .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:active, .layout-block-search-bar .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-bar .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-bar .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-bar .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-bar .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-header .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-header .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-header .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-header .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-header .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-header .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active {
+    background-color: #fff;
+    color: #212529; }
+  .layout-block-search-bar .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-bar .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active {
+    height: calc(3rem + 1px);
+    bottom: -1px;
+    position: relative;
+    z-indeX: 2; }
+
+.layout-block-search-bar .layout-block-search-bar--search.transparent .search-wrapper--tabs + form > .search-wrapper--inner,
+.layout-block-search-bar .layout-block-search-header--search.transparent .search-wrapper--tabs + form > .search-wrapper--inner,
+.layout-block-search-header .layout-block-search-bar--search.transparent .search-wrapper--tabs + form > .search-wrapper--inner,
+.layout-block-search-header .layout-block-search-header--search.transparent .search-wrapper--tabs + form > .search-wrapper--inner {
+  margin-top: 0;
+  border-top-left-radius: 0 !important;
+  box-shadow: none;
+  border-top: 1px solid rgba(33, 37, 41, 0.05);
+  border-bottom: 1px solid rgba(33, 37, 41, 0.05);
+  border-left: 1px solid rgba(33, 37, 41, 0.05);
+  border-right: 1px solid rgba(33, 37, 41, 0.05); }
+
 .layout-block-search-bar .layout-block-search-bar--search .search-box {
   padding: 2rem;
   display: flex;
@@ -10603,6 +10731,134 @@ button.select-from-control {
 
 .layout-block-search-bar .layout-block-search-bar--search.silver .search-box {
   background: #bdc3c7; }
+
+.layout-block-search-bar .layout-block-search-bar--search .search-wrapper--tabs + form > .search-wrapper--inner,
+.layout-block-search-bar .layout-block-search-header--search .search-wrapper--tabs + form > .search-wrapper--inner,
+.layout-block-search-header .layout-block-search-bar--search .search-wrapper--tabs + form > .search-wrapper--inner,
+.layout-block-search-header .layout-block-search-header--search .search-wrapper--tabs + form > .search-wrapper--inner {
+  margin-top: 0;
+  border-top-left-radius: 0 !important; }
+
+.layout-block-search-bar .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-bar .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-header .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-header .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn {
+  border: 0;
+  outline: none;
+  box-shadow: none;
+  height: 3rem;
+  padding: 0 30px;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #434b53;
+  transition: background-color .3s, color .3s; }
+  .layout-block-search-bar .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn:hover, .layout-block-search-bar .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn:focus, .layout-block-search-bar .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn:active, .layout-block-search-bar .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-bar .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-bar .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-bar .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-bar .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-header .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-header .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-header .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-header .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-header .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-header .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active {
+    color: #212529;
+    background-color: rgba(255, 255, 255, 0.5); }
+  .layout-block-search-bar .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-bar .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-bar--search .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-header--search .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active {
+    font-weight: 700; }
+
+.layout-block-search-bar .layout-block-search-bar--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-bar .layout-block-search-header--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-header .layout-block-search-bar--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-header .layout-block-search-header--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn {
+  background-color: rgba(108, 117, 125, 0.15); }
+  .layout-block-search-bar .layout-block-search-bar--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:hover, .layout-block-search-bar .layout-block-search-bar--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:focus, .layout-block-search-bar .layout-block-search-bar--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:active, .layout-block-search-bar .layout-block-search-bar--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-bar .layout-block-search-header--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-bar .layout-block-search-header--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-bar .layout-block-search-header--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-bar .layout-block-search-header--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-bar--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-header .layout-block-search-bar--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-header .layout-block-search-bar--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-header .layout-block-search-bar--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-header--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-header .layout-block-search-header--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-header .layout-block-search-header--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-header .layout-block-search-header--search.main-color .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active {
+    color: #fff;
+    background-color: #007bff; }
+
+.layout-block-search-bar .layout-block-search-bar--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-bar .layout-block-search-header--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-header .layout-block-search-bar--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-header .layout-block-search-header--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn {
+  background-color: rgba(108, 117, 125, 0.15); }
+  .layout-block-search-bar .layout-block-search-bar--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:hover, .layout-block-search-bar .layout-block-search-bar--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:focus, .layout-block-search-bar .layout-block-search-bar--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:active, .layout-block-search-bar .layout-block-search-bar--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-bar .layout-block-search-header--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-bar .layout-block-search-header--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-bar .layout-block-search-header--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-bar .layout-block-search-header--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-bar--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-header .layout-block-search-bar--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-header .layout-block-search-bar--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-header .layout-block-search-bar--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-header--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-header .layout-block-search-header--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-header .layout-block-search-header--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-header .layout-block-search-header--search.silver .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active {
+    background-color: #bdc3c7; }
+
+.layout-block-search-bar .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-bar .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-header .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn,
+.layout-block-search-header .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn {
+  background-color: #fff;
+  color: rgba(33, 37, 41, 0.5);
+  border-top: 1px solid rgba(33, 37, 41, 0.05);
+  border-left: 1px solid rgba(33, 37, 41, 0.05);
+  border-right: 1px solid rgba(33, 37, 41, 0.05); }
+  .layout-block-search-bar .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:hover, .layout-block-search-bar .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:focus, .layout-block-search-bar .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:active, .layout-block-search-bar .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-bar .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-bar .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-bar .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-bar .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-header .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-header .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-header .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:hover,
+  .layout-block-search-header .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:focus,
+  .layout-block-search-header .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn:active,
+  .layout-block-search-header .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active {
+    background-color: #fff;
+    color: #212529; }
+  .layout-block-search-bar .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-bar .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-bar--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active,
+  .layout-block-search-header .layout-block-search-header--search.transparent .search-wrapper--tabs button.search-wrapper--tabs_btn.is--active {
+    height: calc(3rem + 1px);
+    bottom: -1px;
+    position: relative;
+    z-indeX: 2; }
+
+.layout-block-search-bar .layout-block-search-bar--search.transparent .search-wrapper--tabs + form > .search-wrapper--inner,
+.layout-block-search-bar .layout-block-search-header--search.transparent .search-wrapper--tabs + form > .search-wrapper--inner,
+.layout-block-search-header .layout-block-search-bar--search.transparent .search-wrapper--tabs + form > .search-wrapper--inner,
+.layout-block-search-header .layout-block-search-header--search.transparent .search-wrapper--tabs + form > .search-wrapper--inner {
+  margin-top: 0;
+  border-top-left-radius: 0 !important;
+  box-shadow: none;
+  border-top: 1px solid rgba(33, 37, 41, 0.05);
+  border-bottom: 1px solid rgba(33, 37, 41, 0.05);
+  border-left: 1px solid rgba(33, 37, 41, 0.05);
+  border-right: 1px solid rgba(33, 37, 41, 0.05); }
 
 .autocomplete-suggestions {
   border: 1px solid #999;

@@ -36,15 +36,22 @@ if (($total_result = get_transient( $transient)) === false) {
 }
 
 ?>
-<form method="GET" action="<?php echo site_url().'/'.$PMTravelShop->RouteProcessor->get_url_by_object_type(TS_TOUR_PRODUCTS).'/' ?>">
-    <input type="hidden" name="pm-ot" value="<?php echo $id_object_type;?>">
-    <div class="search-wrapper">
-        <?php if(!empty($args['headline'])){?>
-            <div class="h1 text-md-center mt-0 mb-2 mb-4">
-                <?php echo $args['headline'];?>
-            </div>
-        <?php } ?>
+<input type="hidden" name="pm-ot" value="<?php echo $id_object_type;?>">
+<div class="search-wrapper">
+    <?php if(!empty($args['headline'])){?>
+        <div class="h1 text-md-center mt-0 mb-2 mb-4">
+            <?php echo $args['headline'];?>
+        </div>
+    <?php } ?>
+    <?php
+
+    require 'search/searchbar-tabs.php';
+
+    ?>
+    <form method="GET" action="<?php echo site_url().'/'.$PMTravelShop->RouteProcessor->get_url_by_object_type(TS_TOUR_PRODUCTS).'/' ?>">
+
         <div class="search-wrapper--inner search-box">
+
             <div class="row">
 
                 <div class="col-12 col-md-3">
@@ -104,6 +111,8 @@ if (($total_result = get_transient( $transient)) === false) {
                     </div>
                 </div>
             </div>
+
         </div>
-    </div>
-</form>
+    </form>
+
+</div>

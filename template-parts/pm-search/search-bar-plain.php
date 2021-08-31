@@ -26,8 +26,13 @@ if (($total_result = get_transient( $transient)) === false) {
     set_transient($transient, $total_result, 60);
 }
 ?>
-<form method="GET">
-    <div class="search-wrapper">
+<div class="search-wrapper">
+    <?php
+
+    require 'search/searchbar-tabs.php';
+
+    ?>
+    <form method="GET">
         <div class="search-wrapper--inner search-box">
             <div>
                 <?php
@@ -84,5 +89,5 @@ if (($total_result = get_transient( $transient)) === false) {
                 </div>
             </div>
         </div>
-    </div>
-</form>
+    </form>
+</div>
