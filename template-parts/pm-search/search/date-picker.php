@@ -10,10 +10,12 @@
  * Use the wp transient cache for a better performance
  */
 $transient = 'ts_min_max_date_range_'.md5(serialize($search->getConditions()));
-if (($dRange = get_transient( $transient)) === false) {
+if (function_exists('get_transient') === false || $dRange = get_transient( $transient) === false) {
     $dRangeFilter = new Pressmind\Search\Filter\DepartureDate($search);
     $dRange = $dRangeFilter->getResult();
-    set_transient($transient, $dRange, 60);
+    if(function_exists('set_transient')){
+        set_transient($transient, $dRange, 60);
+    }
 }
 
 $minDate = $maxDate = '';

@@ -12,7 +12,11 @@ $id_object_type = (int)$wp_query->get('id_object_type');
 
 ?>
 <main>
-    <?php load_template(get_template_directory() . '/template-parts/layout-blocks/search-header.php'); ?>
+    <?php
+    $args = [];
+    $args['headline'] = 'Finde deine Traumreise!';
+    load_template_transient(get_template_directory() . '/template-parts/layout-blocks/search-header.php', false, $args, );
+    ?>
     <?php the_breadcrumb(null); ?>
     <div class="content-main">
         <div class="container">

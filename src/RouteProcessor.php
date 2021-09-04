@@ -152,17 +152,5 @@ class RouteProcessor
         }
     }
 
-    /**
-     * @param $id_object_type
-     * @return string | false
-     */
-    public function get_url_by_object_type($id_object_type){
-        foreach ($this->routes as $route) {
-            $data = $route->get_data();
-            if($data['type'] == 'search' && empty($data['id_object_type']) === false && $data['id_object_type'] == $id_object_type){
-                return $data['base_url'];
-            }
-        }
-        return false;
-    }
+
 }

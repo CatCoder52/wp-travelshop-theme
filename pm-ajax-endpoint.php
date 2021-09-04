@@ -9,7 +9,7 @@
 require_once 'config-theme.php';
 require_once 'bootstrap.php';
 require_once 'src/BuildSearch.php';
-require_once 'src/RouteProcessor.php';
+require_once 'src/RouteHelper.php';
 require_once 'src/PriceHandler.php';
 
 header('Content-type: application/json');
@@ -17,12 +17,6 @@ header('Cache-Control: no-cache, no-store, must-revalidate');
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 header("Pragma: no-cache");
 
-$Redis = false;
-if(defined(PM_REDIS_HOST) === true){
-    $Redis = new Redis();
-    $Redis->connect(PM_REDIS_HOST, PM_REDIS_PORT);
-    $redis_key = 'ts-ajax-rq-' . md5(serialize($_GET));
-}
 
 $Output = new stdClass();
 $Output->error = true;
@@ -40,15 +34,6 @@ if (empty($_GET['action'])) {
     exit;
 }  else if ($_GET['action'] == 'search') {
 
-    if ($Redis !== false) {
-        $cache = $Redis->get($redis_key);
-        if (empty($cache) === false) {
-            header('X-CACHED-KEY: ' . $redis_key);
-            echo $cache;
-            exit;
-        }
-    }
-
     /**
      * @var int $total_result
      */
@@ -65,9 +50,6 @@ if (empty($_GET['action'])) {
 
     $Output->error = false;
     $result = json_encode($Output);
-    if ($Redis !== false) {
-        $Redis->set($redis_key, $result, TS_OBJECT_CACHE_TTL);
-    }
     echo $result;
     exit;
 
@@ -82,6 +64,21 @@ if (empty($_GET['action'])) {
     $Output->count = (int)$total_result;
     $Output->ids = $ids;
     $Output->html['wishlist-result'] = ob_get_contents();
+    ob_end_clean();
+
+    $Output->error = false;
+    $result = json_encode($Output);
+    echo $result;
+    exit;
+
+} else if ($_GET['action'] == 'searchbar'){
+
+    $id_object_type = (int)$_GET['pm-ot'];
+
+    ob_start();
+    require 'template-parts/pm-search/search/searchbar-form.php';
+
+    $Output->html['main-search'] = ob_get_contents();
     ob_end_clean();
 
     $Output->error = false;

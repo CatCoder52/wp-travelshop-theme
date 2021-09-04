@@ -88,7 +88,7 @@ class Shortcodes
                 continue;
             }
 
-            $page = $PMTravelShop->RouteProcessor->get_url_by_object_type($id_object_type);
+            $page = RouteHelper::get_url_by_object_type($id_object_type);
             $output .= '<li><a href="' . site_url() . '/' . $page . '/' . '">' . $page . '</a></li>';
         }
         $output .= '</ul>';
@@ -104,7 +104,7 @@ class Shortcodes
     public function searchPage($atts)
     {
         global $PMTravelShop;
-        $page = $PMTravelShop->RouteProcessor->get_url_by_object_type(constant($atts['page']));
+        $page = RouteHelper::get_url_by_object_type(constant($atts['page']));
         if ($page == false) {
             return null;
         }
