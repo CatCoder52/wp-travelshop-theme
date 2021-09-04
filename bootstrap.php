@@ -106,10 +106,12 @@ try {
         $db->execute('SET SESSION sql_mode = "NO_ENGINE_SUBSTITUTION"');
     }
 
-    /* for debugging, log all mysql queries
+    /* for debugging, log all mysql queries */
+
+    /*
     $db->execute('SET global general_log = 1;');
     $db->execute('SET global log_output = "file"');
-    $db->execute('SET global general_log_file="'.APPLICATION_PATH.'/logs/mysql/query.log"');
+    $db->execute('SET global general_log_file="'.APPLICATION_PATH.'/logs/query.log"');
     */
 
 } catch (Exception $e) {
