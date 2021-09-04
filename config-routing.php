@@ -40,6 +40,7 @@ foreach ($languages as $language) {
             $language_prefix = 'de/'; // @TODO this is not ready here..
         }
 
+        // - DETAIL PAGE ROUTE -
         // Build a route for each media object type > detailpage <
         // e.g. www.xxx.de/reise/reisename/
         $route_prefix = $language_prefix . trim($pretty_url['prefix'], '/');
@@ -53,10 +54,16 @@ foreach ($languages as $language) {
 
         $routes[$routename] = new Route('^' . $route_prefix . '/(.+?)', 'ts_detail_hook', 'pm-detail', $data);
 
-
+        // - SEARCH ROUTE -
         // Build a route for each media object type > searchpage <
-        // e.g. www.xxx.de/reise/reisename/
-        $route_prefix = $language_prefix . trim($pretty_url['prefix'], '/') . '-suche';
+        // e.g. www.xxx.de/de/reise-suche/
+        // if route is not configured continue
+        if(empty(TS_SEARCH_ROUTES[$id_object_type][($language_prefix) == '' ? 'default' : $language_prefix]) === true){
+            continue;
+        }
+
+        $route_ot_config = TS_SEARCH_ROUTES[$id_object_type][($language_prefix) == '' ? 'default' : $language_prefix];
+        $route_prefix = $language_prefix.trim($route_ot_config['route'],'/');
 
         $routename = 'ts_default_' . $route_prefix . '_route';
         $data = [];
@@ -64,8 +71,8 @@ foreach ($languages as $language) {
         $data['type'] = 'search';
         $data['language'] = $language;
         $data['base_url'] = $route_prefix;
-        $data['title'] = $config['data']['media_types'][$id_object_type] . ' - Suche | ' . get_bloginfo('name');
-        $data['meta_description'] = '';
+        $data['title'] = $route_ot_config['title'];
+        $data['meta_description'] = $route_ot_config['meta_description'];
         $routes[$routename] = new Route('^' . $route_prefix . '/?', 'ts_search_hook', 'pm-search', $data);
 
     }

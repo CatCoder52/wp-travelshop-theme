@@ -49,8 +49,45 @@ if(MULTILANGUAGE_SITE === true){
 define('TS_TOUR_PRODUCTS', 607);
 define('TS_HOTEL_PRODUCTS', null);
 define('TS_HOLIDAYHOMES_PRODUCTS', null);
-define('TS_DAYTRIPS_PRODUCTS', null);
+define('TS_DAYTRIPS_PRODUCTS', 609);
 define('TS_DESTINATIONS', null);
+
+/**
+ * Setup the search routes for each media object type by language
+ * <code>
+ * define('TS_SEARCH_ROUTES', [
+ *  TS_TOUR_PRODUCTS => [
+ *      '{LANGUAGE_CODE|default}' => [
+ *          'route' => 'reise-suche',
+ *          'title' => 'Reise Suche - Travelshop',
+ *          'meta_description' => ''
+ *      ],
+ *  ],
+ *  TS_DAYTRIPS_PRODUCTS => [
+ *      ...
+ *  ],
+ * ]);
+ * </code>
+ *
+ */
+define('TS_SEARCH_ROUTES', [
+    TS_TOUR_PRODUCTS => [
+        'default' => [
+            'route' => 'reise-suche',
+            'title' => 'Reise Suche - Travelshop',
+            'meta_description' => ''
+        ],
+    ],
+    TS_DAYTRIPS_PRODUCTS => [
+        'default' => [
+            'route' => 'tagesfahrten-suche',
+            'title' => 'Tagesfahrten Suche - Travelshop',
+            'meta_description' => ''
+        ],
+    ]
+]);
+
+
 
 /**
  * If your using the blogfeature it's recommend to enable this two auto generated pagetypes
@@ -69,12 +106,6 @@ define('TS_VISIBILTY', [30]);
 
 
 /**
- * TTL of the Object Caching
- */
-define('TS_OBJECT_CACHE_TTL', 60);
-
-
-/**
  * the possible category tree item search fields
  * used in this files:
  *  /template-parts/pm-search/search-bar.php
@@ -84,8 +115,14 @@ define('TS_OBJECT_CACHE_TTL', 60);
  */
 
 define('TS_SEARCH', [
-    [ 'id_tree' => 1207, 'fieldname' => 'zielgebiet_default', 'name' => 'Zielgebiet', 'condition_type' => 'c'],
-    [ 'id_tree' => 1206, 'fieldname' => 'reiseart_default', 'name' => 'Reiseart', 'condition_type' => 'c'],
+    TS_TOUR_PRODUCTS => [
+        [ 'id_tree' => 1207, 'fieldname' => 'zielgebiet_default', 'name' => 'Zielgebiet', 'condition_type' => 'c'],
+        [ 'id_tree' => 1206, 'fieldname' => 'reiseart_default', 'name' => 'Reiseart', 'condition_type' => 'c'],
+    ],
+    TS_DAYTRIPS_PRODUCTS => [
+        [ 'id_tree' => 1207, 'fieldname' => 'zielgebiet_default', 'name' => 'Zielgebiet', 'condition_type' => 'c'],
+        [ 'id_tree' => 1206, 'fieldname' => 'reiseart_default', 'name' => 'Reiseart', 'condition_type' => 'c'],
+    ]
 ]);
 
 /**
@@ -121,17 +158,6 @@ define('TS_PRICE_CURRENCY_POSITION', 'RIGHT');
  */
 define('TS_IBE3_BASE_URL', 'https://demo.pressmind-ibe.net/');
 
-/**
- * Setup Redis,
- */
-
-if(!defined('PM_REDIS_HOST')){
-    define('PM_REDIS_HOST', '127.0.0.1');
-}
-
-if(!defined('PM_REDIS_PORT')){
-    define('PM_REDIS_PORT', '6379');
-}
 
 /**
  * Pagebuilder support
