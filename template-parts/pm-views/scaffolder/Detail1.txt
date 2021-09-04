@@ -4,6 +4,7 @@ global $PMTravelShop;
 
 use Pressmind\Search\CheapestPrice;
 use Pressmind\Travelshop\PriceHandler;
+use Pressmind\Travelshop\RouteHelper;
 
 /**
  * @var array $data
@@ -68,7 +69,7 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
         $breadcrumb[] = $tmp;
 
 
-        $breadcrumb_search_url = site_url() . '/' . $PMTravelShop->RouteProcessor->get_url_by_object_type($mo->id_object_type) . '/';
+        $breadcrumb_search_url = site_url() . '/' . RouteHelper::get_url_by_object_type($mo->id_object_type) . '/';
         if (is_array($moc->reiseart_default)) {
             foreach ($moc->reiseart_default as $item) {
                 $reiseart = $item->toStdClass();

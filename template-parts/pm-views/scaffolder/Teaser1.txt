@@ -111,6 +111,7 @@ if (empty($filteredParams) === false) {
                         <img src="<?php echo $moc->bilder_default[0]->getUri('teaser'); ?>"
                              title="<?php echo $moc->bilder_default[0]->copyright; ?>"
                              alt="<?php echo strip_tags($mo->name); ?>"
+                             <?php echo $moc->bilder_default[0]->getSizes('teaser'); ?>
                              class="card-img-top"
                              loading="lazy">
                     <?php } elseif (is_string($moc->bilder_default)) {
