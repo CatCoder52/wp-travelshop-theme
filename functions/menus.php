@@ -55,7 +55,7 @@ function buildTree(array &$elements, $parentId = 0)
                     $element->wpse_children = [];
                     foreach($treeItems as $item){
                         $tmp = new stdClass();
-                        $tmp->url =  site_url() . '/' . $PMTravelShop->RouteProcessor->get_url_by_object_type($id_object_type) . '/?pm-c['.$var_name.']='.$item->id;
+                        $tmp->url =  site_url() . '/' . Pressmind\Travelshop\RouteHelper::get_url_by_object_type($id_object_type) . '/?pm-c['.$var_name.']='.$item->id;
                         $tmp->title = $item->name;
                         $element->wpse_children[] = $tmp;
                     }
