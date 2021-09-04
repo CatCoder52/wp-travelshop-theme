@@ -48,6 +48,8 @@ require_once 'src/SitemapProvider.php';
 require_once 'src/IB3Tools.php';
 require_once 'src/CategoryTreeTools.php';
 require_once 'src/PriceHandler.php';
+require_once 'src/Timer.php';
+require_once 'src/Calendar.php';
 
 // enable SMTP auth support
 require_once 'functions/email_smtp.php';

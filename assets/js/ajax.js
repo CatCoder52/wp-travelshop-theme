@@ -6,7 +6,7 @@ jQuery(function ($) {
         this.endpoint_url = endpoint_url;
         this.requests = new Array();
 
-        this.call = function (query_string, scrollto, total_result_span_id, callback) {
+        this.call = function (query_string, scrollto, total_result_span_id, callback, target) {
 
             for(var i = 0; i < this.requests.length; i++){
                 this.requests[i].abort();
@@ -17,7 +17,7 @@ jQuery(function ($) {
                 method: 'GET',
                 data: null
             }).done(function (data) {
-                callback(data, query_string, scrollto, total_result_span_id);
+                callback(data, query_string, scrollto, total_result_span_id, target);
             }));
         }
 
@@ -732,6 +732,37 @@ jQuery(function ($) {
 
         }
 
+        this.initCalendarRowClick = function(){
+            if ( $('.product-calendar-group--items').length > 0 ) {
+                $('.product-calendar-group--items').on('click', '.product-calendar-group-item', function(e) {
+                    e.preventDefault();
+                    let row_id = $(this).data('row-id');
+
+                    if ( $(this).hasClass('is--active') ) { // close
+                        $(this).removeClass('is--active');
+                        $('.product-calendar-group-item--product[data-row-id="'+row_id+'"]').removeClass('is--open');
+
+                    } else { // open & load product
+                        let pm_id = $(this).data('pm-id');
+                        let pm_dr = $(this).data('pm-dr');
+                        $('.product-calendar-group-item').removeClass('is--active');
+                        $('.product-calendar-group-item--product').removeClass('is--open');
+                        $(this).addClass('is--active');
+                        let query_string = 'action=pm-view&view=Teaser5&pm-id='+pm_id+'&pm-dr='+pm_dr;
+                        _this.call(query_string, null, null, _this.calendarRowClickResultHandler, '.product-calendar-group-item--product[data-row-id="'+row_id+'"]');
+                        $('.product-calendar-group-item--product[data-row-id="'+row_id+'"]').addClass('is--open');
+                    }
+                    e.stopPropagation();
+                })
+            }
+        }
+
+        this.calendarRowClickResultHandler = function (data, query_string, scrollto, total_result_span_id, target){
+            $(target).html(data.html);
+            _this.wishlistEventListeners();
+            _this.wishListInit();
+        }
+
         this.init = function(){
             _this.renderWishlist();
             _this.wishlistEventListeners();
@@ -743,6 +774,7 @@ jQuery(function ($) {
             _this.autoCompleteInit();
             _this.dateRangePickerInit();
             _this.initCategoryTreeSearchBarFields();
+            _this.initCalendarRowClick();
         }
 
     };

@@ -95,7 +95,26 @@ if (empty($_GET['action'])) {
     echo $output;
     exit;
 
-}else {
+} else if ($_GET['action'] == 'pm-view') {
+
+    $id_media_object = (int)$_GET['pm-id'];
+    if(empty($id_media_object)){
+        exit;
+    }
+
+    $view = 'Teaser1';
+    if(!empty($_GET['view']) && preg_match('/^[0-9A-Za-z\_]+$/', $_GET['view']) !== false){
+        $view = $_GET['view'];
+    }
+
+    $mediaObject = new Pressmind\ORM\Object\MediaObject($id_media_object);
+
+    $Output->error = false;
+    $Output->html = $mediaObject->render($view,TS_LANGUAGE_CODE);
+    $result = json_encode($Output);
+    echo $result;
+    exit;
+}else{
 
     header("HTTP/1.0 400 Bad Request");
     $Output->msg = 'error: action not known';
