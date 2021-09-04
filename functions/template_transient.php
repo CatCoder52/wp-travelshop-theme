@@ -10,8 +10,11 @@
  */
 function load_template_transient( $_template_file, $require_once = true, $args = array(), $expiration = 60) {
 
-    $transient = 'ts_template_transient_'.md5(serialize( [$_template_file, $args]));
-    if (($output = get_transient( $transient)) === false || is_admin_bar_showing() === true || is_user_logged_in() === true) {
+    global $id_object_type, $posts, $post, $wp_did_header, $wp_query, $wp_rewrite, $wpdb, $wp_version, $wp, $id, $comment, $user_ID;
+
+    $transient = 'ts_template_transient_'.md5(serialize( [$_template_file, $args, $id_object_type, $posts, $post, $wp_did_header, $wp_query, $wp_rewrite, $wpdb, $wp_version, $wp, $id, $comment, $user_ID]));
+    if (($output = get_transient( $transient)) === false || is_admin_bar_showing() === true
+        || is_user_logged_in() === true || !empty($_GET['debug'])) {
         ob_start();
         load_template($_template_file, $require_once, $args);
         $output = ob_get_contents();
