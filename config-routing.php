@@ -28,10 +28,10 @@ if (MULTILANGUAGE_SITE) {
 foreach ($languages as $language) {
 
     // Setup the search- and the detail-page route per object type
-    foreach ($config['data']['media_types_pretty_url'] as $id_object_type => $pretty_url) {
+    foreach ($config['data']['media_types_pretty_url'] as $object_type => $pretty_url) {
 
         //Build only routes for primary media object types
-        if (!empty($config['data']['primary_media_type_ids']) && !in_array($id_object_type, $config['data']['primary_media_type_ids'])) {
+        if (!empty($config['data']['primary_media_type_ids']) && !in_array($object_type, $config['data']['primary_media_type_ids'])) {
             continue;
         }
 
@@ -47,7 +47,7 @@ foreach ($languages as $language) {
         $routename = 'ts_default_' . $route_prefix . '_route';
 
         $data = [];
-        $data['id_object_type'] = $id_object_type;
+        $data['id_object_type'] = $object_type;
         $data['type'] = 'detail';
         $data['language'] = $language;
         $data['base_url'] = $route_prefix;
@@ -58,16 +58,16 @@ foreach ($languages as $language) {
         // Build a route for each media object type > searchpage <
         // e.g. www.xxx.de/de/reise-suche/
         // if route is not configured continue
-        if(empty(TS_SEARCH_ROUTES[$id_object_type][($language_prefix) == '' ? 'default' : $language_prefix]) === true){
+        if(empty(TS_SEARCH_ROUTES[$object_type][($language_prefix) == '' ? 'default' : $language_prefix]) === true){
             continue;
         }
 
-        $route_ot_config = TS_SEARCH_ROUTES[$id_object_type][($language_prefix) == '' ? 'default' : $language_prefix];
+        $route_ot_config = TS_SEARCH_ROUTES[$object_type][($language_prefix) == '' ? 'default' : $language_prefix];
         $route_prefix = $language_prefix.trim($route_ot_config['route'],'/');
 
         $routename = 'ts_default_' . $route_prefix . '_route';
         $data = [];
-        $data['id_object_type'] = $id_object_type;
+        $data['id_object_type'] = $object_type;
         $data['type'] = 'search';
         $data['language'] = $language;
         $data['base_url'] = $route_prefix;
