@@ -22,7 +22,7 @@ add_action('wp_enqueue_scripts', function () {
     $js_files[] = array('handle' => 'daterangepicker', 'dependencies' => ['jquery'], 'src' => '/assets/js/daterangepicker.min.js', 'defer' => true, 'version' => filemtime(get_template_directory() . '/assets/js/daterangepicker.min.js'));
     $js_files[] = array('handle' => 'autocomplete', 'dependencies' => ['jquery'], 'src' => '/assets/js/autocomplete.min.js', 'defer' => true, 'version' => '1.4.10');
     $js_files[] = array('handle' => 'rangeslider', 'dependencies' => ['jquery'], 'src' => '/assets/js/ion.rangeSlider.min.js', 'defer' => true, 'version' => '2.3.1');
-    $js_files[] = array('handle' => 'tiny-slider', 'dependencies' => ['jquery'], 'src' => '/assets/js/tiny-slider.min.js', 'defer' => true, 'version' => null);
+    $js_files[] = array('handle' => 'tiny-slider', 'dependencies' => ['jquery'], 'src' => '/assets/js/tiny-slider.min.js', 'defer' => true, 'version' => '2.9.3');
     $js_files[] = array('handle' => 'travelshop-ui', 'dependencies' => ['jquery'], 'src' => '/assets/js/ui.min.js', 'defer' => true, 'version' => filemtime(get_template_directory() . '/assets/js/ui.min.js'));
     $js_files[] = array('handle' => 'travelshop-search', 'dependencies' => ['jquery'], 'src' => '/assets/js/search.min.js', 'defer' => true, 'version' => filemtime(get_template_directory() . '/assets/js/search.min.js'));
     $js_files[] = array('handle' => 'travelshop-ajax', 'dependencies' => ['jquery'], 'src' => '/assets/js/ajax.min.js', 'defer' => true, 'version' => filemtime(get_template_directory() . '/assets/js/ajax.min.js'));
