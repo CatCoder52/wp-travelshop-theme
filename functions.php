@@ -1,10 +1,8 @@
 <?php
 
-// Config
 use Pressmind\Travelshop\AdminPage;
 use Pressmind\Travelshop\ThemeActivation;
 use Pressmind\Travelshop\Shortcodes;
-use Pressmind\Travelshop\WPFunctions;
 use Pressmind\Travelshop\RouteProcessor;
 use Pressmind\Travelshop\Router;
 use Pressmind\Travelshop\Route;
@@ -45,10 +43,13 @@ require_once 'src/BuildSearch.php';
 require_once 'src/RouteProcessor.php';
 require_once 'src/Route.php';
 require_once 'src/Router.php';
+require_once 'src/RouteHelper.php';
 require_once 'src/SitemapProvider.php';
 require_once 'src/IB3Tools.php';
 require_once 'src/CategoryTreeTools.php';
 require_once 'src/PriceHandler.php';
+require_once 'src/Timer.php';
+require_once 'src/Calendar.php';
 
 // enable SMTP auth support
 require_once 'functions/email_smtp.php';

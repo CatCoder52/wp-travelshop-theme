@@ -191,14 +191,6 @@ class Migrate{
 
     private static function flushCaches(){
 
-        $Redis = false;
-        if(defined(PM_REDIS_HOST) === true){
-            $Redis = new Redis();
-            $Redis->connect(PM_REDIS_HOST, PM_REDIS_PORT);
-            $Redis->flushAll();
-            echo "Redis flushed\r\n";
-        }
-
     }
 
 

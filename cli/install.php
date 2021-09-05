@@ -30,18 +30,32 @@ if($first_install) {
     echo "Please enter some initial configuration data.\n";
 
     $default_config_file = $sdk_directory . DIRECTORY_SEPARATOR . 'config.default.json';
-
     $config = json_decode(file_get_contents($default_config_file), true);
 
-    $webserver_http = readline("Enter Webserver HTTP e.g. 'https://domain.de' [http://127.0.0.1]: ");
-    $db_host = readline("Enter Database Host [127.0.0.1]: ");
-    $db_port = readline("Enter Database Port [3306]: ");
-    $db_name = readline("Enter Database Name: ");
-    $db_user = readline("Enter Database Username: ");
-    $db_password = readline("Enter Database User Password: ");
-    $pressmind_api_key = readline("Enter Pressmind API Key: ");
-    $pressmind_api_user = readline("Enter Pressmind API User: ");
-    $pressmind_api_password = readline("Enter Pressmind API Password: ");
+    // add command line support
+    $options = getopt('',[
+        'db_host::',
+        'db_port::',
+        'db_name::',
+        'db_user::',
+        'db_password::',
+        'pressmind_api_key::',
+        'pressmind_api_user::',
+        'pressmind_api_password::',
+        'webserver_http::'
+    ]);
+
+    // if no values are set by parameter, we ask...
+    $webserver_http = !empty($options['webserver_http']) ? $options['webserver_http'] : readline("Enter Webserver HTTP e.g. 'https://domain.de' [http://127.0.0.1]: ");
+    $db_host =  !empty($options['db_host']) ? $options['db_host'] : readline("Enter Database Host [127.0.0.1]: ");
+    $db_port = !empty($options['db_port']) ? $options['db_port'] : readline("Enter Database Port [3306]: ");
+    $db_name = !empty($options['db_name']) ? $options['db_name'] : readline("Enter Database Name: ");
+    $db_user = !empty($options['db_user']) ? $options['db_user'] : readline("Enter Database Username: ");
+    $db_password = !empty($options['db_password']) ? $options['db_password'] : readline("Enter Database User Password: ");
+    $pressmind_api_key = !empty($options['pressmind_api_key']) ? $options['pressmind_api_key'] : readline("Enter Pressmind API Key: ");
+    $pressmind_api_user = !empty($options['pressmind_api_user']) ? $options['pressmind_api_user'] : readline("Enter Pressmind API User: ");
+    $pressmind_api_password = !empty($options['pressmind_api_password']) ? $options['pressmind_api_password'] : readline("Enter Pressmind API Password: ");
+
 
     if(empty($db_host)) $db_host = '127.0.0.1';
     if(empty($db_port)) $db_port = '3306';
