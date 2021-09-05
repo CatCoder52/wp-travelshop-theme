@@ -251,4 +251,25 @@ jQuery(function ($) {
     };
 
 
+
+
+    // -----------------------
+    // --- Content slider
+    // -----------------------
+
+    if ( $('.content-block-content-slider .content-slider--inner').length > 0 && $('.content-block-content-slider .content-slider--inner .content-slider--item').length > 1 ) {
+        var contentSlider = tns({
+            container: '.content-slider--inner',
+            items: 1,
+            slideBy: 'page',
+            autoplay: true,
+            autoplayTimeout: 7500,
+            autoplayButton: false,
+            prevButton: '.prev-button',
+            nextButton: '.next-button',
+            nav: false,
+            autoHeight: true
+        });
+    }
+
 });

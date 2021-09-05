@@ -115,7 +115,7 @@
         &.silver {
             .search-wrapper--tabs {
                 button.search-wrapper--tabs_btn {
-                    background-color: rgba($secondary, .15);
+                    background-color: rgba(#bdc3c7, .6);
 
                     &:hover, &:focus, &:active, &.is--active {
                         background-color: #bdc3c7;
@@ -130,7 +130,7 @@
 
                 button.search-wrapper--tabs_btn {
                     background-color: #fff;
-                    color: rgba($body-color, .5);
+                    background-color: rgba(#bdc3c7, .6);
 
                     border-top: 1px solid rgba($body-color, .05);
 
@@ -165,6 +165,20 @@
             }
 
 
+        }
+    }
+}
+
+.layout-block-search-bar--search {
+    &.mt-2rem {
+        margin-top: 2rem;
+    }
+
+    @include media-breakpoint-up(md) {
+        &.mt-mb-offset {
+            margin-top: -6rem;
+            position: relative;
+            z-index: 5;
         }
     }
 }
