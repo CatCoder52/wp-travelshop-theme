@@ -3,6 +3,8 @@
  * @var int $id_object_type
  */
 
+use Pressmind\Travelshop\RouteHelper;
+
 global $id_object_type;
 
 if(empty($id_object_type) === true){

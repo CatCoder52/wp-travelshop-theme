@@ -5,7 +5,8 @@ use Pressmind\Travelshop\ThemeActivation;
 use Pressmind\Travelshop\Shortcodes;
 use Pressmind\Travelshop\RouteProcessor;
 use Pressmind\Travelshop\Router;
-use Pressmind\Travelshop\Route;
+use Pressmind\Travelshop\Timer;
+
 
 // this code is only for a better onboarding, remove in production
     if(file_exists(get_template_directory().'/pm-config.php') === false ){
@@ -59,6 +60,7 @@ require_once 'functions/heartbeat.php';
 require_once 'functions/cleanup_meta_includes.php';
 require_once 'functions/disable_emojis.php';
 require_once 'functions/disable_pagetypes.php';
+//require_once 'functions/disable_main_query.php';
 
 // Menus
 require_once 'functions/menus.php';
@@ -117,13 +119,19 @@ class PMTravelShop{
 
 }
 
+Timer::startTimer('routing');
 require_once 'config-routing.php';
+Timer::endTimer('routing');
 $PMTravelShop = new PMTravelShop($routes);
+
 
 
 // load theme specific pagebuilder modules
 if(PAGEBUILDER == 'beaverbuilder' && class_exists( 'FLBuilder' )){
+
+    Timer::startTimer('beaverinit');
     require_once 'config-bb.php';
     require_once 'src/BeaverBuilderModuleLoader.php';
     BeaverBuilderModuleLoader::init();
+    Timer::endTimer('beaverinit');
 }

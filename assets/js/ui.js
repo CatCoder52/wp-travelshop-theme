@@ -258,6 +258,7 @@ jQuery(function ($) {
     // -----------------------
 
     if ( $('.content-block-content-slider .content-slider--inner').length > 0 && $('.content-block-content-slider .content-slider--inner .content-slider--item').length > 1 ) {
+
         var contentSlider = tns({
             container: '.content-slider--inner',
             items: 1,
@@ -265,11 +266,13 @@ jQuery(function ($) {
             autoplay: true,
             autoplayTimeout: 7500,
             autoplayButton: false,
+            autoplayHoverPause: true,
             prevButton: '.prev-button',
             nextButton: '.next-button',
             nav: false,
-            autoHeight: true
+            autoHeight: false, // if this is set to true, we have a white space on load effect... perhaps a bug in the tiny-slider
         });
+
     }
 
 });

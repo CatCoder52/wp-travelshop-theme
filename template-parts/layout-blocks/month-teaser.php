@@ -76,7 +76,7 @@ if (empty($travel_months)) {
                                 }
 
                                 if($retries_count >= 3){
-                                    $image_url = SITE_URL.'/wp-content/themes/travelshop/assets/img/placeholder.svg.php?wh=250x170&text='.HelperFunctions::monthNumberToLocalMonthName($item['from']->format('n'));
+                                    $image_url = '/placeholder.svg.php?wh=250x170&text='.HelperFunctions::monthNumberToLocalMonthName($item['from']->format('n'));
                                     break;
                                 }
 
