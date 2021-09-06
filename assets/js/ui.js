@@ -237,7 +237,7 @@ jQuery(function ($) {
             e.preventDefault();
             var modalId = $(this).data('modal-id');
             // -- show modal
-            $('body').find('#' + modalId).addClass('is--open');
+            $('body').find('#modal-id-post-' + modalId).addClass('is--open');
 
             e.stopPropagation();
         })

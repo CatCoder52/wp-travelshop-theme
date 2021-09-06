@@ -24,7 +24,7 @@ if(isset($args['div_only']) && $args['div_only'] === false){
         <button type="button" class="modal-close"><span></span></button>
         <div class="modal-body-outer">
             <div class="modal-body">
-                <div class="h2 modal-title"><?php echo $args['title'];?></div>
+                <div class="modal-title container"><?php echo $args['title'];?></div>
                 <?php echo $args['content']; ?>
             </div>
         </div>

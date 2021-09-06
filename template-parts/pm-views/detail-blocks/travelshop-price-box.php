@@ -62,11 +62,13 @@ $housing_package = $housing_option[0]->getHousingPackage();
             <rect x="8" y="15" width="2" height="2" />
         </svg>
         <span class="date">
-            <?php echo HelperFunctions::dayNumberToLocalDayName($date->departure->format('N'), 'short'); ?>.
-            <?php echo $date->departure->format('d.m.'); ?>
-            -
-            <?php echo HelperFunctions::dayNumberToLocalDayName($date->arrival->format('N'), 'short'); ?>.
-            <?php echo $date->arrival->format('d.m.Y'); ?>
+            <a class="show-dates" data-modal="true" data-modal-id="50">
+                <?php echo HelperFunctions::dayNumberToLocalDayName($date->departure->format('N'), 'short'); ?>.
+                <?php echo $date->departure->format('d.m.'); ?>
+                -
+                <?php echo HelperFunctions::dayNumberToLocalDayName($date->arrival->format('N'), 'short'); ?>.
+                <?php echo $date->arrival->format('d.m.Y'); ?>
+            </a>
         </span>
 
     </div>
