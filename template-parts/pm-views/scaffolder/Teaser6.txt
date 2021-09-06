@@ -12,7 +12,7 @@ use Pressmind\Search\CheapestPrice;
 $mo = $data['media_object'];
 
 /**
- * @var Custom\MediaType\Reise $moc
+ * @var Custom\MediaType\###CLASSNAME### $moc
  */
 $moc = $mo->getDataForLanguage(TS_LANGUAGE_CODE);
 

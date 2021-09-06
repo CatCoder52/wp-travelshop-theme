@@ -10,6 +10,7 @@
 use Pressmind\Search\CheapestPrice;
 use Pressmind\Travelshop\PriceHandler;
 
+
 $mo = $data['media_object'];
 
 /**
@@ -55,6 +56,9 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
 
 $class = empty($data['custom_data']->class) ? 'col-12 col-md-6 col-lg-3' : $data['custom_data']->class;
 
+
+
+
 /**
  * DON'T USE WordPress Stuff here
  */
@@ -64,6 +68,7 @@ $class = empty($data['custom_data']->class) ? 'col-12 col-md-6 col-lg-3' : $data
 // Build the detail-page link,
 // we add some search values to deliver to customize the offers on the the detail page
 $url = SITE_URL . $mo->getPrettyUrl(TS_LANGUAGE_CODE);
+
 
 // only this search params are transmitted, price range (pm-pr), date range (pm-dr), duration range (pm-du), housingoption occupancy (pm-ho)
 $allowedParams = ['pm-pr', 'pm-dr', 'pm-du', 'pm-ho'];
@@ -82,6 +87,7 @@ if (empty($filteredParams) === false) {
 
 <article class="<?php echo $class; ?> card-travel-wrapper">
     <div class="card card-travel">
+
 
         <?php
         if (empty($moc->bilder_default[0]) === false) {

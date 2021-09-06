@@ -12,7 +12,7 @@ use Pressmind\Search\CheapestPrice;
 $mo = $data['media_object'];
 
 /**
- * @var Custom\MediaType\Reise $moc
+ * @var Custom\MediaType\###CLASSNAME### $moc
  */
 $moc = $mo->getDataForLanguage(TS_LANGUAGE_CODE);
 
@@ -49,7 +49,7 @@ if (empty($_GET['pm-pr']) === false) {
 
 $CheapestPriceFilter->occupancies = [2];
 
-$cheapest_price = $data['custom_data']->cheapest_price;
+$cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
 
 
 $class = empty($data['custom_data']->class) ? 'col-12 col-md-6 col-lg-3' : $data['custom_data']->class;
