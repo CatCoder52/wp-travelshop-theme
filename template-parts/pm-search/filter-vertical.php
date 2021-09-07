@@ -38,7 +38,7 @@ $search = BuildSearch::fromRequest($_GET, 'pm', false);
                 // if you remove this lines, the filter will be collapsed to the possible items that matches
                 // to the current search
                 $remove_items = [];
-                foreach(TS_FILTERS as $filter){
+                foreach(TS_FILTERS[$id_object_type] as $filter){
                     $remove_items[] = 'pm-'.$filter['condition_type'].'['.$filter['fieldname'].']';
                 }
                 //$filter_fieldnames[] = 'pm-ho';
@@ -46,7 +46,7 @@ $search = BuildSearch::fromRequest($_GET, 'pm', false);
                 $filter_search = BuildSearch::rebuild($remove_items);
 
                 // draw filters
-                foreach(TS_FILTERS as $filter){
+                foreach(TS_FILTERS[$id_object_type] as $filter){
                     list($id_tree, $fieldname, $name, $condition_type) = array_values($filter);
                     require 'filter/category-tree.php';
                 }

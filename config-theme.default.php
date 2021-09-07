@@ -120,12 +120,13 @@ define('TS_SEARCH', []);
  * used in /template-parts/pm-search/filter-vertical.php to draw the filter list.
  * <code>
  * define('TS_FILTERS', [
- *          [ 'id_tree' => 1207, 'fieldname' => 'zielgebiet_default', 'name' => 'Zielgebiet', 'condition_type' => 'c'],
- *          [ 'id_tree' => 1206, 'fieldname' => 'reiseart_default', 'name' => 'Reiseart', 'condition_type' => 'c'],
- *
- *          // Example of a category tree from a sub object
- *          [ 'id_tree' => 1205, 'fieldname' => 'sterne_default', 'name' => 'Hotelkategorie', 'condition_type' => 'cl'],
- *  ]);
+[ 'id_tree' => 1207, 'fieldname' => 'zielgebiet_default', 'name' => 'Zielgebiet', 'condition_type' => 'c'],
+[ 'id_tree' => 1206, 'fieldname' => 'reiseart_default', 'name' => 'Reiseart', 'condition_type' => 'c'],
+[ 'id_tree' => 2655, 'fieldname' => 'befoerderung_default', 'name' => 'Beförderung', 'condition_type' => 'c'],
+[ 'id_tree' => 1204, 'fieldname' => 'saison_default', 'name' => 'Saison', 'condition_type' => 'c'],
+// Example of a category tree from a sub object
+[ 'id_tree' => 1205, 'fieldname' => 'sterne_default', 'name' => 'Hotelkategorie', 'condition_type' => 'cl'],
+]);
  * </code>
  */
 define('TS_FILTERS', []);

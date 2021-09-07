@@ -132,7 +132,7 @@ if($first_install) {
     $config['development']['image_handling']['processor']['derivatives']['detail']['webp_quality'] = 80;
 
     $config_file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'pm-config.php';
-    $config_text = "<?php\n\$config = " . _var_export($config, true) . ';';
+    $config_text = "<?php\n\$config = " . _var_export($config) . ';';
     echo 'Writing config to ' . $config_file . "\n";
     file_put_contents($config_file, $config_text);
 }
@@ -234,6 +234,16 @@ if($args[1] != 'only_static') {
         $media_types = [];
         $media_types_pretty_url = [];
         $media_types_allowed_visibilities = [];
+
+        $searchroutes = [];
+        $theme_config = [];
+        $type_map = [
+            'TOUR' => 'TS_TOUR_PRODUCTS',
+            'HOTEL' => 'TS_HOTEL_PRODUCTS',
+            'HOLIDAYHOME' => 'TS_HOLIDAYHOMES_PRODUCTS',
+            'DAYTRIP' => 'TS_DAYTRIPS_PRODUCTS',
+            'DESTINATION' => 'TS_DESTINATIONS'
+        ];
         foreach ($response->result as $item) {
             Writer::write('Parsing media object type ' . $item->type_name, Writer::OUTPUT_SCREEN, 'install', Writer::TYPE_INFO);
             $media_types[$item->id_type] = ucfirst(HelperFunctions::human_to_machine($item->type_name));
@@ -246,12 +256,56 @@ if($args[1] != 'only_static') {
             ];
             $media_types_pretty_url[$item->id_type] = $pretty_url;
             $media_types_allowed_visibilities[$item->id_type] = [30];
+
+            if(isset($type_map[$item->gtxf_product_type])){
+                Writer::write('GTXF product type found for ID '.$item->id_type.' : ' . $item->gtxf_product_type, Writer::OUTPUT_SCREEN, 'install', Writer::TYPE_INFO);
+                $theme_config[$type_map[$item->gtxf_product_type]] = $item->id_type;
+            }
+
+            if(in_array($item->gtxf_product_type, ['TOUR', 'DAYTRIP', 'HOLIDAYHOME'])){
+                $config['data']['primary_media_type_ids'][] = $item->id_type;
+                $searchroutes[$type_map[$item->gtxf_product_type]]['default'] = [
+                            'route' => HelperFunctions::human_to_machine($item->type_name).'-suche',
+                            'title' => $item->type_name.' Suche - Travelshop',
+                            'meta_description' => ''
+                        ];
+            }
         }
+
+        $theme_config['TS_SEARCH_ROUTES'] = _var_export($searchroutes);
+        $config['data']['primary_media_type_ids'] = array_unique($config['data']['primary_media_type_ids']);
+
+        $response = $client->sendRequest('ObjectType', 'getById', ['ids' => implode(',',$config['data']['primary_media_type_ids'])]);
+        $ts_search = [];
+        foreach ($response->result as $item) {
+            foreach($item->fields as $field){
+                if($field->type != 'categorytree'){
+                    continue;
+                }
+                foreach($field->sections as $section){
+                    if(empty($item->gtxf_product_type)){
+                        continue;
+                    }
+                    $ts_search[$type_map[$item->gtxf_product_type]][] = [
+                        'id_tree' => $field->id_tree,
+                        'fieldname' => strtolower($field->var_name.'_'.$section->name),
+                        'name' => $field->name,
+                        'condition_type' => 'c'
+                    ];
+                }
+            }
+        }
+
+
+        $theme_config['TS_FILTERS'] = $theme_config['TS_SEARCH'] = _var_export($ts_search);
+        \Custom\InstallHelper::writeConfig($theme_config);
+
         $config['data']['media_types'] = $media_types;
         $config['data']['media_types_pretty_url'] = $media_types_pretty_url;
         $config['data']['media_types_allowed_visibilities'] = $media_types_allowed_visibilities;
         Registry::getInstance()->get('config_adapter')->write($config);
         Registry::getInstance()->add('config', $config);
+
         $importer->importMediaObjectTypes($ids);
     } catch (Exception $e) {
         Writer::write($e->getMessage(), Writer::OUTPUT_SCREEN, 'install', Writer::TYPE_ERROR);
@@ -289,17 +343,13 @@ if($args[1] == 'with_static' || $args[1] == 'only_static') {
  * @param bool $return
  * @return mixed|string|string[]|null
  */
-function _var_export($expression, $return = false) {
+function _var_export($expression) {
     $export = var_export($expression, true);
     $export = preg_replace("/^([ ]*)(.*)/m", '$1$1$2', $export);
     $array = preg_split("/\r\n|\n|\r/", $export);
     $array = preg_replace(["/\s*array\s\($/", "/\)(,)?$/", "/\s=>\s$/"], [NULL, ']$1', ' => ['], $array);
+    //$array = preg_replace("/[0-9]+\s*\=\>\s*\[\$/", "[", $array);
     $export = join(PHP_EOL, array_filter(["["] + $array));
-    if ($return) {
-        return $export;
-    } else  {
-        echo $export;
-    }
-    return null;
+    return $export;
 }
 // echo '!!!ATTENTION: Please have a look at the CHANGES.md file, there might be important information on breaking changes!!!!' . "\n";
