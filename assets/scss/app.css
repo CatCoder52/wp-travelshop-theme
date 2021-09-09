@@ -8987,8 +8987,8 @@ hr {
         .card-travel-wrapper .card.card-travel .card-image-holder .card-badge--top-offer {
           background-color: #28a745; }
       .card-travel-wrapper .card.card-travel .card-image-holder img {
-        border-bottom-left-radius: calc($card-border-radius - 1px);
-        border-bottom-right-radius: calc($card-border-radius - 1px); }
+        border-bottom-left-radius: calc(0.25rem - 1px);
+        border-bottom-right-radius: calc(0.25rem - 1px); }
       @media (min-width: 768px) {
         .card-travel-wrapper .card.card-travel .card-image-holder {
           height: fit-content;
