@@ -29,13 +29,13 @@
         }
 
         &:first-child {
-          border-top-left-radius: 5px;
-          border-bottom-left-radius: 5px;
+          border-top-left-radius: $border-radius;
+          border-bottom-left-radius: $border-radius;
         }
 
         &:last-child {
-          border-top-right-radius: 5px;
-          border-bottom-right-radius: 5px;
+          border-top-right-radius: $border-radius;
+          border-bottom-right-radius: $border-radius;
           border-right: 1px solid #ccc;
         }
       }
