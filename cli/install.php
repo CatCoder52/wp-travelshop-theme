@@ -74,6 +74,9 @@ if($first_install) {
     // Setup the webserver site url
     $config['development']['server']['webserver_http'] = $webserver_http;
 
+    // Set the fixed command line binary
+    $config['server']['php_cli_binary'] = PHP_BINARY;
+
     //Setting some default values in config
     $config['development']['server']['document_root'] = 'BASE_PATH';
     $config['development']['docs_dir'] = 'APPLICATION_PATH/docs';
@@ -244,6 +247,10 @@ if($args[1] != 'only_static') {
             'DAYTRIP' => 'TS_DAYTRIPS_PRODUCTS',
             'DESTINATION' => 'TS_DESTINATIONS'
         ];
+
+        if(!isset($config['data']['primary_media_type_ids']) || !is_array($config['data']['primary_media_type_ids'])){
+            $config['data']['primary_media_type_ids'] = [];
+        }
         foreach ($response->result as $item) {
             Writer::write('Parsing media object type ' . $item->type_name, Writer::OUTPUT_SCREEN, 'install', Writer::TYPE_INFO);
             $media_types[$item->id_type] = ucfirst(HelperFunctions::human_to_machine($item->type_name));
