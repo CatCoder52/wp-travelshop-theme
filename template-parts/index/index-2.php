@@ -6,19 +6,22 @@ get_header();
         $args = [
             'items' => [
                 [
-                    'type' => 'content',
-                    'content' => [
-                        'image' => get_stylesheet_directory_uri().'/assets/img/slide-1.jpg',
-                        'title' => 'Weihnachtsmarkt auf der Fraueninsel mit Gut Aiderbichl',
-                        'text' => 'Ein romantisches Wintermärchen, das jedes Jahr Besucher von Nah und Fern aufs Neue begeistert, ist der Christkindlmarkt auf der Frauninsel. Festliche Beleuchtung, feinstes kunstwerk ...',
-                        'link' => '/blog/',
-                        'linktext' => 'Weiterlesen'
-                    ]
-
+                    'type' => 'content', // enum (content | product)
+                    'image' => get_stylesheet_directory_uri().'/assets/img/slide-1.jpg',
+                    'image_alt_tag' => '',
+                    'title' => 'Weihnachtsmarkt auf der Fraueninsel mit Gut Aiderbichl',
+                    'text' => 'Ein romantisches Wintermärchen, das jedes Jahr Besucher von Nah und Fern aufs Neue begeistert, ist der Christkindlmarkt auf der Frauninsel. Festliche Beleuchtung, feinstes kunstwerk ...',
+                    'btn_link' => '/blog/',
+                    'btn_link_target' => '_self', // enum(_blank, _self)
+                    'btn_label' => 'Weiterlesen'
                 ],
                 [
                     'type' => 'product',
-                    'id' => '869696'
+                    'pm-id' => '1193003',
+                    'image_type' => '', // enum (from_product | custom)
+                    'image' => '', // img src if image_type is 'custom'
+                    'image_alt_tag' => '',
+                    'image_number' => 0 // image number from product image list if type is 'from_product'
                 ]
             ]
         ];
