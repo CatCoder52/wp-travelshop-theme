@@ -65,9 +65,9 @@ function the_breadcrumb($sep = ' › ', $home_title = 'Startseite', $custom_path
                         $c++;
                         if($c == 2) {
                             echo '<li class="bc-separator">'; ?>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-left" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="#2c3e50" stroke-linecap="round" stroke-linejoin="round">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="#777" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                    <path d="M18 15l-6 -6l-6 6h12" transform="rotate(270 12 12)" />
+                                    <polyline points="15 6 9 12 15 18" />
                                 </svg>
                             <?php
                             echo '<a itemprop="item" href="' . $item->url . '">' . $item->name . ' anzeigen</a>';
@@ -81,9 +81,9 @@ function the_breadcrumb($sep = ' › ', $home_title = 'Startseite', $custom_path
                                 <span class="breadcrumb-name" itemprop="name"><?php echo ($c == 1 ? 'Travelshop' : $item->name); ?>
                                     <span class="breadcrumb-sep">
                                         <?php if(count($path) != $c) { ?>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-right" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="#2c3e50" stroke-linecap="round" stroke-linejoin="round">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="#777" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                                <path d="M18 15l-6 -6l-6 6h12" transform="rotate(90 12 12)" />
+                                                <polyline points="9 6 15 12 9 18" />
                                             </svg>
                                         <?php } ?>
                                     </span>

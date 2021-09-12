@@ -395,7 +395,7 @@ jQuery(function ($) {
 
     };
 
-    var Search = new TSAjax('/wp-content/themes/wp-travelshop-theme/pm-ajax-endpoint.php');
+    var Search = new TSAjax('/wp-content/themes/travelshop/pm-ajax-endpoint.php');
     Search.renderWishlist();
     Search.wishlistEventListeners();
     Search.wishListInit();

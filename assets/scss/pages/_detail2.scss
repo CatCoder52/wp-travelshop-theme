@@ -44,14 +44,15 @@
                     justify-content: space-between;
 
                     h1 {
-                        font-size: 1.5rem;
+                        font-size: 2rem;
                         margin-bottom: .25rem;
                         padding-right: .5rem;
                     }
 
                     .add-to-wishlist {
                         cursor: pointer;
-                        margin-top: -.1rem;
+                        display: flex;
+                        align-items: center;
 
                         &.active {
                             svg {
@@ -103,7 +104,8 @@
         }
     }
 
-    .travelshop-detail-services-desktop {
+    .travelshop-detail-services-desktop,
+    .travelshop-detail-info-head {
         display: none;
     }
 
@@ -232,16 +234,30 @@
             }
         }
 
-        .travelshop-detail-services-desktop {
-            display: block;
+        .travelshop-detail-info-head {
+            padding: 1rem 1rem 1rem 1rem;
             background-color: #e9ecef;
-            padding: .2rem 1rem .2rem 1rem;
-            border-top: 1px solid #bbb;
+            display: block;
+            border-bottom: 1px solid #bbb;
+
+            h2,
+            p {
+                margin-bottom: 0;
+            }
+
+            p {
+                font-size: .9rem;
+            }
+        }
+
+        .travelshop-detail-services-desktop {
+            display: flex;
+            align-items: center;
+            padding: .5rem 0 0 0;
             font-size: .8rem;
 
             @include media-breakpoint-up(xl) {
-                font-size: 1rem;
-                padding: 1rem;
+                font-size: .9rem;
             }
 
             ul {
@@ -260,10 +276,10 @@
                     margin: .5rem 0;
 
                     &:before {
-                        content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-check' width='25' height='25' viewBox='0 0 24 24' stroke-width='2.2' stroke='%2306f' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M5 12l5 5l10 -10' /%3E%3C/svg%3E");
+                        content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-check' width='25' height='25' viewBox='0 0 24 24' stroke-width='2.2' stroke='%2327ae60' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M5 12l5 5l10 -10' /%3E%3C/svg%3E");
                         position: absolute;
                         left: 0;
-                        top: 0;
+                        top: -.2rem;
                     }
                 }
             }
