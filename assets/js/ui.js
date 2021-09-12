@@ -237,8 +237,6 @@ jQuery(function ($) {
             e.preventDefault();
             var modalId = $(this).data('modal-id');
             // -- show modal
-            document.body.style.position = 'fixed';
-            document.body.style.top = `-${window.scrollY}px`;
             $('body').find('#modal-id-post-' + modalId).addClass('is--open');
 
             e.stopPropagation();
@@ -246,10 +244,6 @@ jQuery(function ($) {
 
         $('.modal-close').on('click', function (e) {
             e.preventDefault();
-            const scrollY = document.body.style.top;
-            document.body.style.position = '';
-            document.body.style.top = '';
-            window.scrollTo(0, parseInt(scrollY || '0') * -1);
             $('.modal-wrapper.is--open').removeClass('is--open');
             e.stopPropagation();
         })
