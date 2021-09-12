@@ -238,6 +238,7 @@ jQuery(function ($) {
             var modalId = $(this).data('modal-id');
             // -- show modal
             $('body').find('#modal-id-post-' + modalId).addClass('is--open');
+            bodyScrollLock.disableBodyScroll($('#modal-id-post-' + modalId));
 
             e.stopPropagation();
         })
@@ -245,6 +246,7 @@ jQuery(function ($) {
         $('.modal-close').on('click', function (e) {
             e.preventDefault();
             $('.modal-wrapper.is--open').removeClass('is--open');
+            bodyScrollLock.enableBodyScroll($('.modal-wrapper'));
             e.stopPropagation();
         })
 

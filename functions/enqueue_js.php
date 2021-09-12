@@ -24,6 +24,7 @@ add_action('wp_enqueue_scripts', function () {
     $js_files[] = array('handle' => 'autocomplete', 'src' => '/assets/js/autocomplete.min.js', 'defer' => true, 'version' => null);
     $js_files[] = array('handle' => 'rangeslider', 'src' => '/assets/js/ion.rangeSlider.min.js', 'defer' => true, 'version' => null);
     $js_files[] = array('handle' => 'tiny-slider', 'src' => '/assets/js/tiny-slider.min.js', 'defer' => true, 'version' => null);
+    $js_files[] = array('handle' => 'bodyScrollLock', 'src' => '/assets/js/bodyScrollLock.js', 'defer' => true, 'version' => null);
     $js_files[] = array('handle' => 'travelshop-ui', 'src' => '/assets/js/ui.min.js?v=' . filemtime(get_template_directory() . '/assets/js/ui.min.js'), 'defer' => true, 'version' => null);
     $js_files[] = array('handle' => 'travelshop-search', 'src' => '/assets/js/search.min.js?v=' . filemtime(get_template_directory() . '/assets/js/search.min.js'), 'defer' => true, 'version' => null);
     $js_files[] = array('handle' => 'travelshop-ajax', 'src' => '/assets/js/ajax.min.js?v=' . filemtime(get_template_directory() . '/assets/js/ajax.min.js'), 'defer' => true, 'version' => null);
