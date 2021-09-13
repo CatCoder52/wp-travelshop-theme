@@ -3,15 +3,15 @@
 	.stripe-inner {
 		display: flex;
 		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-		border-radius: 0.25rem;
+		border-radius: $border-radius;
 		background: #fff;
 		.stripe-image {
 			flex: 0 0 35%;
 			background-size: cover;
 			background-position: center;
 			position: relative;
-			border-top-left-radius: 0.25rem;
-			border-bottom-left-radius: 0.25rem;
+			border-top-left-radius: $card-border-radius;
+			border-bottom-left-radius: $card-border-radius;
 			.add-to-wishlist {
 				position: absolute;
 				top: 0;

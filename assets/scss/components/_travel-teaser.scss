@@ -339,8 +339,8 @@
 			}
 
 			img {
-				border-bottom-left-radius: calc(0.25rem - 1px);
-				border-bottom-right-radius: calc(0.25rem - 1px);
+				border-bottom-left-radius: calc(#{$card-border-radius} - 1px);
+				border-bottom-right-radius: calc(#{$card-border-radius} - 1px);
 			}
 
 			@include media-breakpoint-up(md) {

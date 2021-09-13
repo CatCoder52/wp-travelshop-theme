@@ -29,7 +29,7 @@
                 right: 0;
                 bottom: 0;
                 background: rgb(255,255,255);
-                border-radius: .25rem;
+                border-radius: $border-radius;
                 background: linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.001) 60%);
             }
         }
