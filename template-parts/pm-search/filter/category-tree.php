@@ -42,7 +42,7 @@ if (empty($treeItems) === false) {
             <?php
             foreach ($treeItems as $item) {
                 $uuid = 'ti-'.uniqid();
-                $item->toStdClass();
+                // $item->toStdClass();
                 $has_childs = !empty($item->children);
 
                 // open the second level if neccessary
