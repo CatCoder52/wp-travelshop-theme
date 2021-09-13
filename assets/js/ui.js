@@ -245,8 +245,8 @@ jQuery(function ($) {
 
         $('.modal-close').on('click', function (e) {
             e.preventDefault();
+            bodyScrollLock.enableBodyScroll($('.modal-wrapper.is--open'));
             $('.modal-wrapper.is--open').removeClass('is--open');
-            bodyScrollLock.enableBodyScroll($('.modal-wrapper'));
             e.stopPropagation();
         })
 
