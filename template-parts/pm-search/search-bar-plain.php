@@ -47,12 +47,10 @@ $total_result = $search->getTotalResultCount();
             <?php
             // draw category tree based search fields
             foreach(TS_SEARCH[$id_object_type] as $searchItem){ ?>
-                <div>
                     <?php
                     list($id_tree, $fieldname, $name, $condition_type) = array_values($searchItem);
                     require 'search/category-tree-dropdown.php';
                     ?>
-                </div>
                 <?php
             } ?>
 

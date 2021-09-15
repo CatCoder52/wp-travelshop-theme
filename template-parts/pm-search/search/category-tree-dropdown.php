@@ -29,7 +29,7 @@ if(empty($_GET['pm-'.$condition_type][$fieldname]) === false && preg_match_all("
 
 if (empty($treeItems) === false) {
     ?>
-
+<div>
     <div class="form-group mb-md-0 category-tree">
         <label for=""><?php echo $name; ?></label>
         <div class="dropdown">
@@ -123,5 +123,5 @@ if (empty($treeItems) === false) {
         </div>
 
     </div>
-
+</div>
 <?php } ?>
