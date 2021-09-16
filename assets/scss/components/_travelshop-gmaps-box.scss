@@ -1,6 +1,9 @@
 .travelshop-gmaps-box {
     border: 1px solid #ccc;
-    margin: 2rem 0;
+
+    @include media-breakpoint-down(md) {
+        margin: 2rem 0;
+    }
 
     .travelshop-gmaps-box-image {
         width: 100%;
