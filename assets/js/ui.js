@@ -238,15 +238,15 @@ jQuery(function ($) {
             var modalId = $(this).data('modal-id');
             // -- show modal
             $('body').find('#modal-id-post-' + modalId).addClass('is--open');
-            bodyScrollLock.disableBodyScroll($('#modal-id-post-' + modalId));
+            bodyScrollLock.disableBodyScroll(document.querySelector('.modal-body-outer'));
 
             e.stopPropagation();
         })
 
         $('.modal-close').on('click', function (e) {
             e.preventDefault();
-            bodyScrollLock.enableBodyScroll($('.modal-wrapper.is--open'));
             $('.modal-wrapper.is--open').removeClass('is--open');
+            bodyScrollLock.enableBodyScroll(document.querySelector('.modal-body-outer'));
             e.stopPropagation();
         })
 

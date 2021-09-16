@@ -1,10 +1,16 @@
 .content-block-detail-booking-calendar {
 
 	margin-bottom: 20px;
+	padding: 2rem 0;
+
+	h2 {
+		padding-bottom: .5rem;
+		border-bottom: 1px solid #ccc;
+	}
 
 	// don't show the calendar on small devices
 	@include media-breakpoint-down(md) {
- 		display: none;
+		display: none;
 	}
 
 	.calendar {
@@ -12,18 +18,19 @@
 		grid-template-columns: repeat(7, 1fr);
 	}
 
-	.booking-calendar-slider{
+	.booking-calendar-slider {
 		width: 100%;
 	}
 
 	// tns = tinyslider
-	.tns-controls{
-		button{
+	.tns-controls {
+		button {
 			border: 0px;
 			background-color: $primary;
 			border-radius: 5px;
 			margin-left: 5px;
-			&:disabled{
+
+			&:disabled {
 				background-color: silver;
 			}
 		}
@@ -35,11 +42,11 @@
 		margin-right: 10px;
 
 		// overwrite tinyslider items
-		&.tns-item{
+		&.tns-item {
 			width: auto !important;
 		}
 
-		.month-name{
+		.month-name {
 			display: block;
 			width: 100%;
 			text-align: center;
@@ -48,6 +55,7 @@
 		}
 
 	}
+
 	.weekday {
 		background: #eee;
 		padding-top: 12px;
@@ -59,7 +67,7 @@
 		padding: 0;
 		text-align: center;
 
-		li{
+		li {
 			display: inline-block;
 			width: 50px;
 			height: 50px;
@@ -67,15 +75,17 @@
 			border-top: 1px solid silver;
 			cursor: default;
 
-			&.travel-date{
+			&.travel-date {
 				background-color: #27ae60;
 				color: white;
 				font-weight: bold;
-				a{
+
+				a {
 					color: white;
 					text-decoration: none;
 				}
-				div{
+
+				div {
 					font-size: 10px;
 					font-weight: bold;
 				}

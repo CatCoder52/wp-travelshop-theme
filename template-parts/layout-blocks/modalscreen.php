@@ -21,10 +21,10 @@ if(isset($args['div_only']) && $args['div_only'] === false){
 ?>
 <div class="modal-forms modal-wrapper" id="modal-id-post-<?php echo $args['id_post'];?>">
     <div class="modal-inner">
+        <div class="modal-title"><?php echo $args['title'];?></div>
         <button type="button" class="modal-close"><span></span></button>
         <div class="modal-body-outer">
             <div class="modal-body">
-                <div class="modal-title container"><?php echo $args['title'];?></div>
                 <?php echo $args['content']; ?>
             </div>
         </div>

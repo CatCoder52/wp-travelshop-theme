@@ -70,7 +70,7 @@ use Pressmind\Search\CheapestPrice;
                 // fill the calendar grid
                 $days = array_merge(
                     array_fill(1, $dt->format('N') - 1, ' '),
-                    range(1, $dt->format('t')),
+                    range(1, $dt->format('t'))
                 );
 
                 if (count($days) < 35) {

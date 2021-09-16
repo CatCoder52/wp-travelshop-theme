@@ -31,6 +31,14 @@
     bottom: 0;
     max-width: 100%;
 
+    .modal-title {
+      font-size: 1.8rem;
+      line-height: 1.3;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
     .modal-close {
       border: 0;
       outline: none;
@@ -103,18 +111,12 @@
       .container {
         margin: 0 auto;
       }
-
-      .modal-title {
-        font-size: 1.8rem;
-        line-height: 1.3;
-        font-weight: 700;
-        margin-bottom: 1rem;
-      }
     }
 
     .modal-body-outer {
       margin: 1rem -2rem -2rem -2rem;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
 
       padding: 0 1rem 2rem 1rem;
       max-height: 85vh;
@@ -132,7 +134,7 @@
       transform: translate(-50%, -50%);
 
       .modal-body-outer {
-        max-height: 90vh;
+        max-height: 80vh;
         padding: 1rem 2rem;
       }
     }
