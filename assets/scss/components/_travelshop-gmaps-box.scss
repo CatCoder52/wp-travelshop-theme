@@ -5,6 +5,10 @@
         margin: 2rem 0;
     }
 
+    .show-map {
+        cursor: pointer;
+    }
+
     .travelshop-gmaps-box-image {
         width: 100%;
         height: auto;
@@ -31,4 +35,9 @@
             }
         }
     }
+}
+
+#map {
+    width: 100%;
+    min-height: 65vh;
 }

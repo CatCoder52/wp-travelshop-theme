@@ -61,27 +61,29 @@ foreach ($mo->getItinerarySteps() as $step) {
 }
 ?>
 <div class="travelshop-gmaps-box">
-<?php
-    $map_style = '&markers=color:blue|';
-    if (count($markers) > 0) {
+    <a class="show-map" data-modal="true" data-modal-id="100">
+        <?php
+            $map_style = '&markers=color:blue|';
+            if (count($markers) > 0) {
 
-        $map = new stdClass();
-        $map->zoom = 6;
+                $map = new stdClass();
+                $map->zoom = 6;
 
-        foreach ($markers as $k => $marker) {
-            $map_url .= $map_style . 'label:' . ($k + 1) . '|' . $marker;
-        }
+                foreach ($markers as $k => $marker) {
+                    $map_url .= $map_style . 'label:' . ($k + 1) . '|' . $marker;
+                }
 
-        if (count($markers) == 1) {
-            $map_url .= '&zoom=7';
-        } else {
-            // $map_url .= '&zoom=' . $map->zoom;
-        }
+                if (count($markers) == 1) {
+                    $map_url .= '&zoom=7';
+                } else {
+                    // $map_url .= '&zoom=' . $map->zoom;
+                }
 
-        // echo $map_url;
-        echo '<img class="travelshop-gmaps-box-image" src="' . $map_url . '" >';
-    }
-?>
+                // echo $map_url;
+                echo '<img class="travelshop-gmaps-box-image" src="' . $map_url . '" >';
+            }
+        ?>
+    </a>
     <div class="travelshop-gmaps-box-contact">
         <div class="travelshop-gmaps-box-contact-phone">
             <strong>Persönliche Beratung</strong><br />
@@ -106,3 +108,15 @@ foreach ($mo->getItinerarySteps() as $step) {
         </div>
     </div>
 </div>
+
+<?php 
+    // Booking Date Modal
+    $args = [];
+    $args['id_post'] = 100;
+    $args['title'] = 'Reise-Etappen';
+    ob_start();
+    include(get_template_directory() . '/template-parts/pm-views/detail-blocks/travelshop-gmaps-map.php');
+    $args['content'] = ob_get_contents();
+    ob_end_clean();
+    include(get_template_directory() . '/template-parts/layout-blocks/modalscreen.php' ); 
+?>

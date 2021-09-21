@@ -17,7 +17,16 @@ use Pressmind\Search\CheapestPrice;
 ?>
 <div class="row content-block-detail-booking-calendar">
     <div class="col-12">
+        <div class="booking-calendar-title">
             <h2>Buchungskalender</h2>
+            <div>
+                <select>
+                    <option value="val1">Reisezeitraum wählen...</option>
+                    <option value="val2">7 Tage</option>
+                    <option value="val3">14 Tage</option>
+                </select>
+            </div>
+        </div>
     </div>
     <div class="col-12">
         <div class="booking-calendar-slider">

@@ -1,9 +1,17 @@
 .content-block-detail-booking-calendar {
 	padding: 2rem 0;
 
-	h2 {
+	.booking-calendar-title {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 		padding-bottom: .5rem;
+		margin-bottom: .5rem;
 		border-bottom: 1px solid #ccc;
+
+		select {
+			padding: .5rem;
+		}
 	}
 
 	// don't show the calendar on small devices
