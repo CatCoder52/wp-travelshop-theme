@@ -238,7 +238,7 @@ jQuery(function ($) {
             var modalId = $(this).data('modal-id');
             // -- show modal
             $('body').find('#modal-id-post-' + modalId).addClass('is--open');
-            bodyScrollLock.disableBodyScroll(document.querySelector('.modal-body-outer'));
+            bodyScrollLock.disableBodyScroll(document.querySelector('#modal-id-post-50 .modal-body-outer'));
 
             e.stopPropagation();
         })
@@ -246,7 +246,7 @@ jQuery(function ($) {
         $('.modal-close').on('click', function (e) {
             e.preventDefault();
             $('.modal-wrapper.is--open').removeClass('is--open');
-            bodyScrollLock.enableBodyScroll(document.querySelector('.modal-body-outer'));
+            bodyScrollLock.enableBodyScroll(document.querySelector('#modal-id-post-50 .modal-body-outer'));
             e.stopPropagation();
         })
 
