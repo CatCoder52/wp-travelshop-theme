@@ -4,6 +4,7 @@
 @import "vendors/tiny-slider/tiny-slider";
 @import "vendors/daterangepicker/daterangepicker";
 @import "vendors/pretty-dropdowns/prettydropdowns";
+@import "vendors/lightbox2/lightbox.min.css";
 
 // -- abstracts
 @import "abstracts/variables";
@@ -49,6 +50,8 @@
 @import "components/travelshop-image-slider";
 @import "components/travelshop-price-box";
 @import "components/travelshop-gmaps-box";
+@import "components/travelshop-itinerary";
+
 
 // -- layout
 @import "layout/footer";

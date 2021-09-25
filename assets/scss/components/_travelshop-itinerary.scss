@@ -1,0 +1,119 @@
+.travelshop-itinerary {
+    .travelshop-itinerary-step {
+        border: 2px solid #ddd;
+        border-left: 3px solid #06f;
+        padding: 1rem;
+        margin: 1rem 0;
+
+        h3 {
+            font-size: 1.4rem;
+            padding-right: 40px;
+            position: relative;
+
+            svg {
+                position: absolute;
+                right: 0;
+                top: -.25rem;
+                cursor: pointer;
+                transition: 200ms ease-in-out all;
+
+                * {
+                    pointer-events: none;
+                }
+            }
+        }
+
+        &.step-open {
+            h3 {
+                svg {
+                    transform: rotate(-45deg);
+                }
+            }
+
+            .travelshop-itinerary-step-more {
+                height: auto;
+            }
+        }
+
+        .travelshop-itinerary-step-more {
+            display: flex;
+            flex-direction: column-reverse;
+            overflow: hidden;
+            height: 0;
+
+            .travelshop-itinerary-step-gallery {
+                margin: 0 0 1rem 0;
+                display: flex;
+                overflow-x: auto;
+
+                a {
+                    display: block;
+                    margin-right: 1rem;
+                    position: relative;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+
+                &-image {
+
+                    &-copyright {
+                        text-align: left;
+                        position: absolute;
+                        bottom: .5rem;
+                        left: .5rem;
+                        color: #fff;
+                        font-size: .8rem;
+                        text-shadow: 0px 0px 3px #000000;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .travelshop-itinerary {
+        .travelshop-itinerary-step {
+            h3 {
+                font-size: 1.4rem;
+            }
+
+            .travelshop-itinerary-step-more {
+                flex-direction: column;
+
+                .travelshop-itinerary-step-gallery {
+                    margin: 0;
+
+                    a {
+                        display: block;
+                        margin-right: 1rem;
+                        position: relative;
+
+                        &:last-child {
+                            margin-right: 0;
+                        }
+
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+
+                    &-image {
+
+                        &-copyright {
+                            position: static;
+                            margin-top: .25rem;
+                            text-align: center;
+                            color: #000;
+                            text-shadow: none;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}

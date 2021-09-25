@@ -72,6 +72,16 @@ jQuery(function ($) {
     });
 
     // -----------------------------------------------
+    // -- Itinerary Steps Gallery
+    // -----------------------------------------------
+    if ($('.travelshop-itinerary').length > 0) {
+        $('.travelshop-itinerary-step-open').click(function (e) {
+            var targetSection = $(e.target).parent().parent();
+            targetSection.toggleClass('step-open');
+        });
+    }
+
+    // -----------------------------------------------
     // -- Tooltips for images
     // -----------------------------------------------
     $(function () {
@@ -238,15 +248,16 @@ jQuery(function ($) {
             var modalId = $(this).data('modal-id');
             // -- show modal
             $('body').find('#modal-id-post-' + modalId).addClass('is--open');
-            bodyScrollLock.disableBodyScroll(document.querySelector('#modal-id-post-50 .modal-body-outer'));
-
+            var target = document.querySelector('.is--open .modal-body-outer');
+            bodyScrollLock.disableBodyScroll(target);
             e.stopPropagation();
         })
 
         $('.modal-close').on('click', function (e) {
             e.preventDefault();
+            var target = document.querySelector('.is--open .modal-body-outer');
             $('.modal-wrapper.is--open').removeClass('is--open');
-            bodyScrollLock.enableBodyScroll(document.querySelector('#modal-id-post-50 .modal-body-outer'));
+            bodyScrollLock.enableBodyScroll(target);
             e.stopPropagation();
         })
 
