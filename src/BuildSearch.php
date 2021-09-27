@@ -11,25 +11,27 @@ class BuildSearch
     private static $page_size = 10;
     private static $page = 1;
 
-    /*
+    /**
      *
-     * Building a pressmind Search Query based on GET or POST Request
+     * Building a pressmind MYSQL search query
+     * based on GET or POST request
+     *
      *
      * Possible Parameters
-     * $_GET['pm-id'] media object id/s  separated by comma
-     * $_GET['pm-ot'] object Type ID
-     * $_GET['pm-t'] term
-     * $_GET['pm-c'] category id's separated by comma (search with "or") or plus (search with "and")   e.g. pm-c[land_default]=xxx,yyyy = or Suche, + and Suche
-     * $_GET['pm-pr'] price range 123-1234
-     * $_GET['pm-dr'] date range 20200101-20200202
-     * $_GET['pm-vi'] visibiltiy
-     * $_GET['pm-st'] state
-     * $_GET['pm-bs'] booking state (date)
-     * $_GET['pm-po'] pool
-     * $_GET['pm-br'] brand
-     * $_GET['pm-vr'] valid from, valid to range
-     * $_GET['pm-l'] limit 0,10
-     * $_GET['pm-o'] order
+     * $request['pm-id'] media object id/s  separated by comma
+     * $request['pm-ot'] object Type ID
+     * $request['pm-t'] term
+     * $request['pm-c'] category id's separated by comma (search with "or") or plus (search with "and")   e.g. pm-c[land_default]=xxx,yyyy = or Suche, + and Suche
+     * $request['pm-pr'] price range 123-1234
+     * $request['pm-dr'] date range 20200101-20200202
+     * $request['pm-vi'] visibiltiy
+     * $request['pm-st'] state
+     * $request['pm-bs'] booking state (date)
+     * $request['pm-po'] pool
+     * $request['pm-br'] brand
+     * $request['pm-vr'] valid from, valid to range
+     * $request['pm-l'] limit 0,10
+     * $request['pm-o'] order
      * @param $request
      * @return \Pressmind\Search
      */
@@ -230,7 +232,7 @@ class BuildSearch
             if($dateRange !== false){
                 list($from, $to) = $dateRange;
                 $conditions[] = Pressmind\Search\Condition\Validity::create($from, $to);
-                $validated_search_parameters[$prefix.'-dr'] = $from->format('Y-m-d').'-'.$to->format('Y-m-d');
+                $validated_search_parameters[$prefix.'-dr'] = $from->format('Ymd').'-'.$to->format('Ymd');
             }
         }
 
@@ -250,6 +252,190 @@ class BuildSearch
                 $page_size = intval($m[2]);
             }
 
+            $Search->setPaginator(Pressmind\Search\Paginator::create($page_size, $page));
+        }
+        return $Search;
+
+    }
+
+    /**
+     *
+     * Building a pressmind search query based
+     * on GET or POST request based on
+     *
+     * Remember: the mongodb does not contain the same search paramentes like the mysql search!
+     *
+     * Possible Parameters
+     * $request['pm-id'] media object id/s  separated by comma
+     * $request['pm-ot'] object Type ID
+     * $request['pm-t'] term
+     * $request['pm-co'] code/s separated by comma
+     * $request['pm-c'] category id's separated by comma (search with "or") or plus (search with "and")   e.g. pm-c[land_default]=xxx,yyyy = or Suche, + and Suche
+     * $request['pm-pr'] price range 123-1234
+     * $request['pm-dr'] date range 20200101-20200202
+     * $request['pm-l'] limit 0,10
+     * $request['pm-o'] order
+     * @param $request
+     * @return \Pressmind\Search\MongoDB
+     */
+    public static function fromRequestMongoDB($request, $prefix = 'pm', $paginator = true, $page_size = 10, $ignore_conditions = [])
+    {
+
+        array_walk_recursive($request, function($key, &$item){
+            $item = urldecode($item);
+        });
+
+        $validated_search_parameters = [];
+        $conditions = array();
+
+
+        if (isset($request[$prefix.'-ot']) && empty($id_object_type = intval($request[$prefix.'-ot'])) === false) {
+            $conditions[] = new \Pressmind\Search\Condition\MongoDB\ObjectType($id_object_type);
+            $validated_search_parameters[$prefix.'-ot'] = $id_object_type;
+        }
+
+
+        if (empty($request[$prefix.'-t']) === false){
+            $term = $request[$prefix.'-t'];
+            $conditions[] = new \Pressmind\Search\Condition\MongoDB\Fulltext($term);
+            $validated_search_parameters[$prefix.'-t'] = $request[$prefix.'-t'];
+        }
+
+        if (empty($request[$prefix.'-co']) === false && preg_match('/^([0-9\-_A-Za-z\,]+)$/', $request[$prefix.'-du']) > 0){
+            $codes = explode(',', $request[$prefix.'-co']);
+            $conditions[] = new \Pressmind\Search\Condition\MongoDB\Code($codes);
+            $validated_search_parameters[$prefix.'-t'] = $request[$prefix.'-t'];
+        }
+
+        if (isset($request[$prefix.'-pr']) === true && preg_match('/^([0-9]+)\-([0-9]+)$/', $request[$prefix.'-pr']) > 0) {
+            list($price_range_from, $price_range_to) = explode('-', $request[$prefix.'-pr']);
+            $price_range_from = empty(intval($price_range_from)) ? 1 : intval($price_range_from);
+            $price_range_to = empty(intval($price_range_to)) ? 99999 : intval($price_range_to);
+            $conditions[] = new \Pressmind\Search\Condition\MongoDB\PriceRange($price_range_from, $price_range_to);
+            $validated_search_parameters[$prefix.'-pr'] = $price_range_from.'-'.$price_range_to;
+
+        }
+
+        if (isset($request[$prefix.'-du']) === true && preg_match('/^([0-9]+)\-([0-9]+)$/', $request[$prefix.'-du']) > 0) {
+            list($duration_range_from, $duration_range_to) = explode('-', $request[$prefix.'-du']);
+            $duration_range_from = empty(intval($duration_range_from)) ? 1 : intval($duration_range_from);
+            $duration_range_to = empty(intval($duration_range_to)) ? 99999 : intval($duration_range_to);
+            $conditions[] = new \Pressmind\Search\Condition\MongoDB\DurationRange($duration_range_from,$duration_range_to);
+            $validated_search_parameters[$prefix.'-du'] = $duration_range_from.'-'.$duration_range_to;
+        }
+
+
+        if (isset($request[$prefix.'-dr']) === true) {
+            $dateRange = self::extractDaterange($request[$prefix.'-dr']);
+            if($dateRange !== false){
+                list($from, $to) = $dateRange;
+                $conditions[] = new \Pressmind\Search\Condition\MongoDB\DateRange($from, $to);
+                $validated_search_parameters[$prefix.'-dr'] = $from->format('Ymd').'-'.$to->format('Ymd');
+            }
+        }
+
+
+        // @TODO remove "ignore"
+        if (
+            in_array($prefix.'-c', $ignore_conditions ) === false &&
+            (
+                (isset($request[$prefix.'-c']) === true && is_array($request[$prefix.'-c']) == true) ||
+                (isset($request[$prefix.'-cl']) === true && is_array($request[$prefix.'-cl']) == true)
+            )
+        ) {
+            // handle the linked object feature
+            $search_items = [];
+            if(isset($request[$prefix.'-c']) === true && is_array($request[$prefix.'-c']) == true){
+                $search_items['c'] = $request[$prefix.'-c'];
+            }
+
+            // this items are linked to the media object and requires a modified search condition
+            if(isset($request[$prefix.'-cl']) === true && is_array($request[$prefix.'-cl']) == true){
+                $search_items['cl'] = $request[$prefix.'-cl'];
+            }
+
+            foreach($search_items as $type => $search_item){
+
+                foreach($search_item as $property_name => $item_ids){
+
+                    if(preg_match('/^[0-9a-zA-Z\-\_]+$/', $property_name) > 0){ // valid property name
+
+                        if(preg_match('/^[0-9a-zA-Z\-\,]+$/', $item_ids) > 0){ // search by OR, marked by ","
+                            $delimiter = ',';
+                            $operator = 'OR';
+                        }elseif(preg_match('/^[0-9a-zA-Z\-\+]+$/', $item_ids) > 0){ // search by AND, marked by "+"
+                            $delimiter = '+';
+                            $operator = 'AND';
+                        }else{ // not valid
+                            continue;
+                        }
+
+                        $item_ids = explode($delimiter,$item_ids);
+                        $conditions[] = new \Pressmind\Search\Condition\MongoDB\Category($property_name, $item_ids, $operator);
+                        $validated_search_parameters[$prefix.'-'.$type][$property_name] = implode($delimiter, $item_ids);
+                    }
+
+                }
+
+            }
+
+
+        }
+
+
+        if (empty($request[$prefix.'-ho']) === false){
+            if(preg_match('/^[0-9\,]+$/', $request[$prefix.'-ho']) > 0){
+                $occupancies = array_map('intval', explode(',', $request[$prefix.'-ho']));
+                $conditions[] = new \Pressmind\Search\Condition\MongoDB\Occupancy($occupancies);
+                $validated_search_parameters[$prefix.'-ho'] = implode(',', $occupancies);
+            }
+        }
+
+        if (empty($request[$prefix.'-id']) === false){
+            if(preg_match('/^[0-9\,]+$/', $request[$prefix.'-id']) > 0){
+                $ids = array_map('intval', explode(',', $request[$prefix.'-id']));
+                $conditions[] = new \Pressmind\Search\Condition\MongoDB\MediaObject($ids);
+                $validated_search_parameters[$prefix.'-id'] = implode(',', $ids);
+
+            }
+        }
+
+        $order = array('price_total' => 'asc');
+        $allowed_orders = array('rand', 'price-desc', 'price-asc', 'date_departure-asc', 'date_departure-desc', 'name-asc', 'name-desc', 'code-asc', 'code-desc');
+
+        if (empty($request[$prefix.'-o']) === false && in_array($request[$prefix.'-o'], $allowed_orders) === true) {
+
+            if($request[$prefix.'-o'] == 'rand'){
+                $order = array('rand' => '');
+            }else{
+                list($property, $direction) =  explode('-', $request[$prefix.'-o']);
+                $order = array($property => $direction);
+
+                // we need a price range to order by price, so we have to change the search
+                /*
+                 * if($property == 'price' && empty($price_range_from) && empty($price_range_to)){
+                    $conditions[] = Pressmind\Search\Condition\PriceRange::create(1, 9999);
+                    $validated_search_parameters[$prefix.'-pr'] = '1-9999';
+                }
+                */
+            }
+
+            $validated_search_parameters[$prefix.'-o'] = $request[$prefix.'-o'];
+        }
+
+        $Search = new Pressmind\Search\MongoDB($conditions, $order, TS_LANGUAGE_CODE);
+
+        self::$validated_search_parameters = $validated_search_parameters;
+
+        if($paginator){
+            $page = 0;
+            //$page_size = 10;
+            if (isset($request[$prefix.'-l']) === true && preg_match('/^([0-9]+)\,([0-9]+)$/', $request[$prefix.'-l'], $m) > 0) {
+                $page = intval($m[1]);
+                $page_size = intval($m[2]);
+            }
+
+            // @TODO create syntax in alle klasssen packen, damit jede klasse auch statisch aufrufbar ist.
             $Search->setPaginator(Pressmind\Search\Paginator::create($page_size, $page));
         }
         return $Search;
