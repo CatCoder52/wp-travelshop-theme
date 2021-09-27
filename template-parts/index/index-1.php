@@ -1,4 +1,5 @@
 <?php
+use \Pressmind\Travelshop\Search;
 get_header();
 ?>
     <main>
@@ -9,9 +10,8 @@ get_header();
          * @see readme-shortcodes.md
          */
 
-        $args = [
-                'headline' => 'Finde deine Traumreise!',
-        ];
+        $args = Search::getResult(['pm-ot' => TS_TOUR_PRODUCTS],2, 12, true, false);
+        $args['headline'] = 'Finde deine Traumreise!';
         load_template_transient(get_template_directory().'/template-parts/layout-blocks/search-header.php', false, $args);
         ?>
         <div class="content-main">

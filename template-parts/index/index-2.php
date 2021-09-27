@@ -1,4 +1,5 @@
 <?php
+use Pressmind\Travelshop\Search;
 get_header();
 ?>
     <main>
@@ -34,9 +35,8 @@ get_header();
          * @see readme-shortcodes.md
          */
 
-        $args = [
-                'class' => 'silver mt-mb-offset mt-2rem',
-        ];
+        $args = Search::getResult(['pm-ot' => TS_TOUR_PRODUCTS],2, 12, true, false);
+        $args['class'] = 'silver mt-mb-offset mt-2rem';
         load_template_transient(get_template_directory().'/template-parts/layout-blocks/search-bar.php', false, $args);
         ?>
         <div class="content-main">
@@ -57,7 +57,7 @@ get_header();
                             'pm-li' => '0,4',
                             'pm-o' => 'rand',
                             'pm-ot' => TS_TOUR_PRODUCTS
-                    ]
+                    ],
                 ];
                 load_template_transient(get_template_directory().'/template-parts/layout-blocks/product-teaser.php', false, $args);
                 ?>
