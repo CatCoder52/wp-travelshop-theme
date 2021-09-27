@@ -68,7 +68,7 @@ jQuery(function ($) {
                 if(key == 'search-result'){
                     $('#' + key).html(data.html[key]).find('.content-block-travel-cols').fadeIn()
                         .css({top:1000,position:'relative'})
-                        .animate({top:0}, 200, 'swing')
+                        .animate({top:0}, 80, 'swing')
                 }else{
                     $('#' + key).html(data.html[key]);
                 }
@@ -102,7 +102,7 @@ jQuery(function ($) {
         this.scrollTo = function(scrollto){
             $('html, body').stop().animate({
                 'scrollTop': $(scrollto).offset().top - $('header.affix').height()
-            }, 200, 'swing');
+            }, 150, 'swing');
         }
 
         this.resultHandlerSearchBarStandalone = function(data, query_string, scrollto, total_result_span_id){
@@ -298,9 +298,8 @@ jQuery(function ($) {
             }
 
             // check and set duration-range
-            let duration_range = $(form).find('input[name=pm-du]').val();
-            let duration_mm_range = $(form).find('input[name=pm-du]').data('min') + '-' + $(form).find('input[name=pm-du]').data('max');
-            if (duration_range && duration_mm_range != duration_range && duration_range != '') {
+            let duration_range = $(form).find('select[name=pm-du]').val();
+            if (duration_range && duration_range != '') {
                 query.push('pm-du=' + duration_range);
             }
 
