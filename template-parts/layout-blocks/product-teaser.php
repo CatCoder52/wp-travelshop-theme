@@ -1,4 +1,7 @@
 <?php
+use Pressmind\Travelshop\Search;
+use Pressmind\Travelshop\Template;
+
 /**
  * <code>
  *  $args = (
@@ -19,11 +22,9 @@
  * @var array $args
  */
 
-//@TODO add cache -update/no_cache logic here
-$search = BuildSearch::fromRequest(isset($args['search']) ? $args['search'] : [], 'pm', true, 4);
-$products = $search->getResults();
-// if no items where found, we avoid output like headline or intro text...
-if(count($products) == 0){
+
+$result = Search::getResult(isset($args['search']) ? $args['search'] : [], 2, 4, true, false);
+if(count($result['items']) == 0){
     return;
 }
 ?>
@@ -43,7 +44,6 @@ if(count($products) == 0){
             <?php } ?>
         </div>
         <?php } ?>
-
         <?php
 
        // Example 1: Using the the shortcode ts-list for displaying the product teasers
@@ -68,10 +68,10 @@ if(count($products) == 0){
         if(!empty($args['view']) && preg_match('/^[0-9A-Za-z\_]+$/', $args['view']) !== false){
             $view = $args['view'];
         }
-        foreach ($products as $product) {
-            echo  $product->render($view, TS_LANGUAGE_CODE);
-        }
 
+        foreach ($result['items'] as $item) {
+            echo Template::render(get_stylesheet_directory().'/template-parts/pm-views/'.$view.'.php', $item);
+        }
        ?>
     </div>
 </section>
