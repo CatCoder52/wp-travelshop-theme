@@ -92,6 +92,7 @@ switch ($args[1]) {
                     $media_object = new MediaObject($id);
                     $media_object->visibility = 10;
                     $media_object->update();
+                    $media_object->createMongoDBIndex();
                     Writer::write('Mediaobject ' . $id . ' successfully depublished (visibility set to 10/nobody)', Writer::OUTPUT_BOTH, 'import', Writer::TYPE_INFO);
                 } catch (Exception $e) {
                     Writer::write($e->getMessage(), Writer::OUTPUT_BOTH, 'import', Writer::TYPE_ERROR);
@@ -107,7 +108,7 @@ switch ($args[1]) {
             foreach ($ids as $id) {
                 try {
                     $media_object = new MediaObject($id);
-                    $media_object->delete();
+                    $media_object->delete(true);
                     Writer::write('Mediaobject ' . $id . ' successfully destroyed', Writer::OUTPUT_BOTH, 'import', Writer::TYPE_INFO);
                 } catch (Exception $e) {
                     Writer::write($e->getMessage(), Writer::OUTPUT_BOTH, 'import', Writer::TYPE_ERROR);
