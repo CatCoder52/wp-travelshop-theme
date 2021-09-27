@@ -1,57 +1,31 @@
 <?php
+use Pressmind\Travelshop\Template;
 /**
  * Don't use WordPress functions in this template (for better performance it's called by ajax without the wp bootstrap)
  *
- * @var int $id_object_type is defined in pm-search.php
+ * <code>
+ * $args = ['total_result' => 100,
+ *            'current_page' => 1,
+ *            'pages' => 10,
+ *            'page_size' => 10,
+ *            'cache' => [
+ *              'is_cached' => false,
+ *              'info' => []
+ *            ],
+ *            'items' => [],
+ *            'mongodb' => [
+ *              'aggregation_pipeline' => ''
+ *            ]
+ *           ];
+ * </code>
+ * @var array $args
  */
-
-if(empty($_GET['pm-ot']) === true){ // if the id_object_type is not defined by search, we use the information from the route
-    $_GET['pm-ot'] = $id_object_type;
-}
-
-if(empty($_GET['pm-ho']) === true){ // if the price duration slider is active, we have to set the housing occupancy search (to display the correct search result with the correct cheapeast price inside)
-    $_GET['pm-ho'] = 2;
-}
-
-$page_size = 12;
-
-
-// @TODO change request pressmind SDK #160268 "simplify cache behavior"
-if(!empty($_GET['update_cache'])){
-    $search = BuildSearch::fromRequest($_GET, 'pm', true, $page_size);
-    $mediaObjects = $search->getResults();
-    $cacheinfo = $search->getCacheInfo();
-    if(!empty($cacheinfo)){
-        echo 'update_cache';
-        echo '<pre>'.print_r($cacheinfo, true).'</pre>';
-        $search->updateCache($cacheinfo['info']->parameters);
-    }
-}
-
-$search = BuildSearch::fromRequest($_GET, 'pm', true, $page_size);
-if(!empty($_GET['no_cache'])){
-    $search->disableCache();
-}
-$mediaObjects = $search->getResults();
-
-
-/*
-if(!empty($_GET['debug'])){
-    echo '<textarea style="width: 600px;">'.$search->getQuery().'</textarea>';
-}
-*/
-
-$total_result = $search->getTotalResultCount();
-$current_page = $search->getPaginator()->getCurrentPage();
-$pages = $search->getPaginator()->getTotalPages();
 
 $view = 'Teaser1';
 if(!empty($_GET['view']) && preg_match('/^[0-9A-Za-z\_]+$/', $_GET['view']) !== false){
     $view = $_GET['view'];
 }
 ?>
-
-
 <div class="list-filter-toggle mb-4">
     <button class="btn btn-block btn-secondary list-filter-open">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-adjustments-alt" width="30"
@@ -71,13 +45,12 @@ if(!empty($_GET['view']) && preg_match('/^[0-9A-Za-z\_]+$/', $_GET['view']) !== 
         <span>Reisen filtern</span>
     </button>
 </div>
-
 <section class="content-block content-block-list-header">
     <div class="list-header-title h2 mt-0 mb-0 float-lg-left">
         <p>
             <strong>
                 <?php
-                echo $total_result . ' ' . (($total_result > 1 || $total_result == 0) ? 'Reisen' : 'Reise');
+                echo $args['total_result'] . ' ' . (($args['total_result'] > 1 || $args['total_result'] == 0) ? 'Reisen' : 'Reise');
                 ?>
             </strong> gefunden
         </p>
@@ -120,18 +93,11 @@ if(!empty($_GET['view']) && preg_match('/^[0-9A-Za-z\_]+$/', $_GET['view']) !== 
     </div>
     <div id="pm-search-result" class="row">
         <?php
-
-        foreach ($mediaObjects as $mediaObject) {
-            $data = new stdClass();
-            $data->class = 'col-12 col-md-6 col-lg-4';
-            try{
-                echo $mediaObject->render($view, TS_LANGUAGE_CODE, $data);
-            }catch (Exception $e){
-                echo $e->getMessage();
-            }
+        foreach ($args['items'] as $item) {
+            $item['class'] = 'col-12 col-md-6 col-lg-4';
+            echo Template::render(__DIR__.'/../pm-views/'.$view.'.php', $item);
         }
-
-        if($total_result == 0){
+        if($args['total_result'] == 0){
             ?>
         <div class="col-12">
             <p>Zu Ihrer Suchanfrage wurden keine Ergebnisse gefunden. Bitte ändern Sie Ihre Suchanfrage.</p>
@@ -144,16 +110,15 @@ if(!empty($_GET['view']) && preg_match('/^[0-9A-Za-z\_]+$/', $_GET['view']) !== 
 </section>
 <?php
 // Pagination
-if ($pages > 1) {
+if ($args['pages'] > 1) {
     require 'result-pagination.php';
 }
 
 /**
  * if the search is cached, we display a short information about the content age
  */
-if($search->isCached()){
-    $cacheinfo = $search->getCacheInfo();
-    $cachetime = new DateTime($cacheinfo['date']);
+if($args['cache']['is_cached']){
+    $cachetime = new DateTime($args['cache']['info']);
     $cachetime->setTimezone(new DateTimeZone('Europe/Berlin'));
     echo '<section><div class="small mb-2">Stand: '.$cachetime->format('d.m.Y H:i:s').'</div></section>';
 }
