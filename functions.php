@@ -40,6 +40,7 @@ require_once 'src/ThemeActivation.php';
 require_once 'src/AdminPage.php';
 require_once 'src/Shortcodes.php';
 require_once 'src/WPFunctions.php';
+require_once 'src/Search.php';
 require_once 'src/BuildSearch.php';
 require_once 'src/RouteProcessor.php';
 require_once 'src/Route.php';
@@ -51,6 +52,7 @@ require_once 'src/CategoryTreeTools.php';
 require_once 'src/PriceHandler.php';
 require_once 'src/Timer.php';
 require_once 'src/Calendar.php';
+require_once 'src/Template.php';
 
 // enable SMTP auth support
 require_once 'functions/email_smtp.php';
