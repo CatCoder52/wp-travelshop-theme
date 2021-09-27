@@ -1,29 +1,14 @@
 <?php
 /**
- * @var \Pressmind\Search $search
- *
- * @var int $id_object_type
+ * @var $args['departure_min']
+ * @var $args['departure_max']
  */
-
-/**
- * Get the current min/max daterange for this object type and .
- * Use the wp transient cache for a better performance
- */
-$transient = 'ts_min_max_date_range_'.md5(serialize($search->getConditions()));
-if (function_exists('get_transient') === false || $dRange = get_transient( $transient) === false) {
-    $dRangeFilter = new Pressmind\Search\Filter\DepartureDate($search);
-    $dRange = $dRangeFilter->getResult();
-    if(function_exists('set_transient')){
-        set_transient($transient, $dRange, 60);
-    }
-}
 
 $minDate = $maxDate = '';
-if(!empty($dRange->from) && !empty($dRange->to)){
-    $minDate = $dRange->from->format('d.m.Y');
-    $maxDate = $dRange->to->format('d.m.Y');
+if(!empty($args['departure_min']) && !empty($args['departure_max'])){
+    $minDate = $args['departure_min']->format('d.m.Y');
+    $maxDate = $args['departure_max']->format('d.m.Y');
 }
-
 $human_readable_str = '';
 $value = '';
 if (empty($_GET['pm-dr']) === false) {
@@ -31,10 +16,7 @@ if (empty($_GET['pm-dr']) === false) {
     $human_readable_str = $dr[0]->format('d.m.') . ' - ' . $dr[1]->format('d.m.Y');
     $value = $dr[0]->format('Ymd') . '-' . $dr[1]->format('Ymd');
 }
-
-
 ?>
-
 <div class="form-group mb-md-0">
     <label for="">Reisezeitraum</label>
     <div>
