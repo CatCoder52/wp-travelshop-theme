@@ -44,28 +44,17 @@ class Shortcodes
             }
         }
 
-
-        $search = \BuildSearch::fromRequest($atts);
-        $mediaObjects = $search->getResults();
-
-        /*
-        $total_result = $search->getTotalResultCount();
-        $current_page = $search->getPaginator()->getCurrentPage();
-        $pages = ceil($total_result / $search->getPaginator()->getPageSize());
-        */
-
+        $result = Search::getResult($atts);
         $view = 'Teaser1';
         if (empty($atts['view']) === false) {
             $view = $atts['view'];
         }
-
-        $output = '<div class="container">
-                <div class="row">';
-        foreach ($mediaObjects as $mediaObject) {
-            $output .= $mediaObject->render($view, 'de');
+        $output = '<div class="container"><div class="row">';
+        foreach ($result['items'] as $item) {
+            $item['class'] = 'col-12 col-md-6 col-lg-4';
+            $output .= Template::render(get_stylesheet_directory().'/template-parts/pm-views/'.$view.'.php', $item);
         }
-        $output .= '</div>
-                </div>';
+        $output .= '</div></div>';
         return $output;
 
     }
