@@ -10,9 +10,6 @@
             <option value="date_departure-desc"<?php echo (!empty($_GET['pm-o']) && $_GET['pm-o'] == 'date_departure-desc') ? ' selected' : '';?>>Datum absteigend</option>
             <option value="price-asc"<?php echo (!empty($_GET['pm-o']) && $_GET['pm-o'] == 'price-asc') ? ' selected' : '';?>>Preis aufsteigend</option>
             <option value="price-desc"<?php echo (!empty($_GET['pm-o']) && $_GET['pm-o'] == 'price-desc') ? ' selected' : '';?>>Preis absteigend</option>
-            <option value="name-asc"<?php echo (!empty($_GET['pm-o']) && $_GET['pm-o'] == 'name-asc') ? ' selected' : '';?>>Name aufsteigend</option>
-            <option value="name-desc"<?php echo (!empty($_GET['pm-o']) && $_GET['pm-o'] == 'name-desc') ? ' selected' : '';?>>Name absteigend</option>
-
         </select>
     </div>
 
