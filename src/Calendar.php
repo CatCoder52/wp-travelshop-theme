@@ -48,7 +48,7 @@ class Calendar
         $items = $db->fetchAll('select distinct  mo.id, ps.date_departure,
                             id_object_type, ' . $title . '
                         from pmt2core_cheapest_price_speed ps
-                            left join pmt2core_media_objects mo on (mo.id = ps.id_media_object)
+                            inner join pmt2core_media_objects mo on (mo.id = ps.id_media_object)
                             ' . implode('', $joins) . '
                         where 
                             date_departure > now() 
