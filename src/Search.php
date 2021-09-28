@@ -169,11 +169,14 @@ class Search
             $item['id_media_object'] = $document['id_media_object'];
             $item['id_object_type'] = $document['id_object_type'];
             $item['url'] = $document['url'];
-            $item['dates_per_month'] = $document['dates_per_month'];
-            foreach($item['dates_per_month'] as $k => $month){
-                foreach($month['five_dates_in_month'] as $k1 => $date){
-                    $item['dates_per_month'][$k]['five_dates_in_month'][$k1]['date_departure'] = new \DateTime($date['date_departure']);
-                    $item['dates_per_month'][$k]['five_dates_in_month'][$k1]['date_arrival'] = new \DateTime($date['date_arrival']);
+            $item['dates_per_month'] = [];
+            if(!empty($document['dates_per_month'])){
+                $item['dates_per_month'] = $document['dates_per_month'];
+                foreach($document['dates_per_month'] as $k => $month){
+                    foreach($month['five_dates_in_month'] as $k1 => $date){
+                        $item['dates_per_month'][$k]['five_dates_in_month'][$k1]['date_departure'] = new \DateTime($date['date_departure']);
+                        $item['dates_per_month'][$k]['five_dates_in_month'][$k1]['date_arrival'] = new \DateTime($date['date_arrival']);
+                    }
                 }
             }
             $item['possible_durations'] = !empty($document['possible_durations']) ? $document['possible_durations'] : [];
@@ -194,7 +197,7 @@ class Search
                 $document['prices'] = null;
             }
             $item['departure_date_count'] = $document['departure_date_count'];
-            $item['possible_durations'] = $document['possible_durations'];
+            $item['possible_durations'] = !empty($document['possible_durations']) ? $document['possible_durations'] : [];
             //$item['best_price_meta'] = $document['best_price_meta'];
             $items[] = $item;
         }
@@ -223,7 +226,8 @@ class Search
             'price_max' => !empty($result_filter->maxPrice) ? $result_filter->maxPrice : null,
             'items' => $items,
             'mongodb' => [
-                'aggregation_pipeline' => json_encode($search->buildQuery())
+                'aggregation_pipeline_filter' => !empty($filter) ? $filter->buildQueryAsJson($getFilters) : null,
+                'aggregation_pipeline_search' => !empty($filter) ? $search->buildQueryAsJson($getFilters) : null
             ]
         ];
     }
