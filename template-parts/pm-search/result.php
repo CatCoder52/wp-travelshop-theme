@@ -122,3 +122,12 @@ if($args['cache']['is_cached']){
     $cachetime->setTimezone(new DateTimeZone('Europe/Berlin'));
     echo '<section><div class="small mb-2">Stand: '.$cachetime->format('d.m.Y H:i:s').'</div></section>';
 }
+if(!empty($_GET['debug'])) {
+    echo '<pre>';
+    echo "Filter:\n";
+    print_r($args['mongodb']['aggregation_pipeline_filter']);
+    echo "\n";
+    echo "Search:\n";
+    print_r($args['mongodb']['aggregation_pipeline_search']);
+    echo '</pre>';
+}
