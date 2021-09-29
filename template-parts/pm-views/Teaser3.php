@@ -85,7 +85,7 @@ if (empty($filteredParams) === false) {
                 <div class="stripe-departure">
                     <strong>Abreise</strong>
                     <div class="dropdown">
-                        <button class="btn <?php echo $args['departure_date_count'] == 1 ? ' disabled' : ' dropdown-toggle'; ?>"
+                        <button class="btn <?php echo $args['departure_date_count'] == 1 || empty($args['dates_per_month']) ? ' disabled' : ' dropdown-toggle'; ?>"
                                 type="button"
                                 id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
@@ -105,7 +105,7 @@ if (empty($filteredParams) === false) {
                             */
                             ?>
                         </button>
-                        <?php if ($args['departure_date_count'] > 1) { ?>
+                        <?php if ($args['departure_date_count'] > 1 && !empty($args['dates_per_month'])) { ?>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <?php
                                 foreach ($args['dates_per_month'] as $month) {

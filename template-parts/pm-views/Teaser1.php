@@ -82,7 +82,7 @@ if (empty($filteredParams) === false) {
                 <a href="<?php echo $args['url']; ?>"><?php echo $args['headline']; ?></a>
             </h1>
             <?php
-            $breadcrumb = array_filter([$args['travel_type'], $args['destination']]);
+            $breadcrumb = array_filter([$args['travel_type'], $args['destination'] ?? []]);
             if (!empty($breadcrumb)) { ?>
                 <p class="attribute-row">
                     <span class="badge badge-secondary"><?php echo implode('</span> <span class="badge badge-secondary">', $breadcrumb); ?></span>
@@ -107,7 +107,7 @@ if (empty($filteredParams) === false) {
                         ?>
                     </span>
                         <div class="dropdown">
-                            <button class="btn <?php echo $args['departure_date_count'] == 1 ? ' disabled' : ' dropdown-toggle'; ?>"
+                            <button class="btn <?php echo $args['departure_date_count'] == 1  || empty($args['dates_per_month']) ? ' disabled' : ' dropdown-toggle'; ?>"
                                     type="button"
                                     id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false">
@@ -126,7 +126,7 @@ if (empty($filteredParams) === false) {
                                 */
                                 ?>
                             </button>
-                            <?php if ($args['departure_date_count'] > 1) { ?>
+                            <?php if ($args['departure_date_count'] > 1 && !empty($args['dates_per_month'])) { ?>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <?php
                                     foreach ($args['dates_per_month'] as $month) {
