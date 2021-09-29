@@ -141,7 +141,7 @@ function ts_detail_hook($data)
 
 
         // 404
-        if (empty($_GET['preview']) === false && $mediaObjects[0]->visibility != 30) {
+        if (empty($_GET['preview']) === true && $mediaObjects[0]->visibility != 30) {
             WPFunctions::throw404();
         }
 
