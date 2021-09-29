@@ -24,14 +24,29 @@ switch ($args[1]) {
         $Indexer = new Indexer();
         $Indexer->deleteMediaObject(array_map('intval', explode(',', $args[2])));
         break;
+    case 'indexes':
+        $Indexer = new Indexer();
+        $Indexer->createCollectionIndexes();
+        break;
+    case 'flush':
+        $Indexer = new Indexer();
+        $Indexer->flushCollections();
+        break;
+    case 'create_collections':
+        $Indexer = new Indexer();
+        $Indexer->createCollectionsIfNotExists();
+        break;
     case 'help':
     case '--help':
     case '-h':
     default:
-        $helptext = "usage: index_mongo.php [all | mediaobject | destroy] [<single id or commaseparated list of ids>]\n";
+        $helptext = "usage: index_mongo.php [all | mediaobject | destroy | indexes | create_collections] [<single id or commaseparated list of ids>]\n";
         $helptext .= "Example usages:\n";
         $helptext .= "php index_mongo.php all\n";
         $helptext .= "php index_mongo.php mediaobject 12345,12346  <single/multiple ids allowed  / imports one or more media objects>\n";
         $helptext .= "php index_mongo.php destroy 12345,12346  <single/multiple ids allowed  / removes this objects from the mongodb best price cache>\n";
+        $helptext .= "php index_mongo.php indexes  <sets the required indexes for each collection>\n";
+        $helptext .= "php index_mongo.php flush  <flushes all collections>\n";
+        $helptext .= "php index_mongo.php create_collections  <creates collections for each index definition configured in pm-config>\n";
         echo $helptext;
 }
