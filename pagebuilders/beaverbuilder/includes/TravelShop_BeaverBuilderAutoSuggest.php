@@ -104,8 +104,7 @@ final class TravelShop_BeaverBuilderAutoSuggest {
         );
 
         $tree = new Pressmind\Search\Filter\Category($id_tree, $search);
-        $treeItems = $tree->getResult();
-
+        $treeItems = $tree->getResult('name');
         $output = \Pressmind\Travelshop\CategoryTreeTools::flatten($treeItems);
 
 		echo json_encode($output);

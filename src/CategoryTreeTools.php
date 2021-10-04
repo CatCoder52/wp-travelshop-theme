@@ -43,7 +43,7 @@ class CategoryTreeTools
         }
         //loop through the tree array
         foreach($tree as $k => $Item) {
-            if(is_array($Item->children)) {
+            if(!empty($Item->children) && is_array($Item->children)) {
                 $currentPath = $parent.$Item->name;
                 $output[] = [
                     'name' => $currentPath,
@@ -51,7 +51,7 @@ class CategoryTreeTools
                 ];
                 $output = array_merge($output, self::flatten($Item->children, $currentPath));
             } else {
-                $output[] =  $output[] = [
+               $output[] = [
                     'name' => $Item->name,
                     'value' => $Item->id,
                 ];

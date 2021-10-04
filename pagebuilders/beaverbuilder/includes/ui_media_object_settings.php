@@ -1,6 +1,7 @@
 <?php
-// webcore config, webcore db
-global $config, $db;
+
+$db = \Pressmind\Registry::getInstance()->get('db');
+$config = \Pressmind\Registry::getInstance()->get('config');
 
 /**
  * beaverbuilder settings
@@ -12,15 +13,26 @@ $r = $db->fetchAll('select distinct var_name, ti.id_tree as id, ct.name, id_obje
                             left join pmt2core_media_objects mo on(mo.id = ti.id_media_object)
                             left join pmt2core_category_trees ct on (ct.id = ti.id_tree)
                             order by ct.name asc');
-$categories = [];
+
+$category_map = [];
 foreach ($r as $category){
-    $category->fieldname = 'category_'.$category->id_object_type.'_'.$category->id.'-'.$category->var_name;
-    $categories[] = $category;
+    $category_map[$category->var_name] = $category;
 }
-
+$categories = [];
+foreach($config['data']['search_mongodb']['search']['categories'] as $id_ot => $item){
+    foreach($item as $var_name => $category){
+        if(empty($category_map[$var_name]->id)){
+            continue;
+        }
+        $id_tree = $category_map[$var_name]->id;
+        $fieldname = 'category_'.$id_ot.'_'.$id_tree.'-'.$var_name;
+        $categories[$id_ot][] = [
+            'fieldname' => $fieldname,
+            'var_name' => $var_name
+        ];
+    }
+}
 ?>
-
-
     <div id="fl-builder-settings-section-general" class="fl-builder-settings-section">
         <div class="fl-builder-settings-section-header">
             <button class="fl-builder-settings-title">
@@ -37,22 +49,19 @@ foreach ($r as $category){
                 $view_options =  [];
                 $script_path = str_replace('APPLICATION_PATH', APPLICATION_PATH, $config['view_scripts']['base_path']);
                 foreach(glob($script_path.'/*.php') as $file){
-                    $file = basename($file, '.php');
-                    list($object_name, $view_name) = explode('_', $file);
-                    $id_object_type = array_search($object_name, $config['data']['media_types']);
-                    $view_options[$id_object_type][$view_name] = $view_name;
+                    $basename = basename($file, '.php');
+                    if($r = preg_match('/^Teaser([0-9]+)$/', $basename, $matches) !== 1 ){
+                        continue;
+                    }
+                    $view_options[$basename] = $basename;
                 }
-
 
                 $toggle = [];
-                // toggle media object type specific views
-                foreach($config['data']['media_types'] as $id => $type){
-                    $toggle[$id]['fields'][] = 'view_'.$id;
-                }
-
                 // toggle media object type specific category fields
-                foreach($categories as $id => $category){
-                        $toggle[$category->id_object_type]['fields'][] = $category->fieldname;
+                foreach($categories as $id_ot => $item){
+                    foreach($item as $category){
+                        $toggle[$id_ot]['fields'][] = $category['fieldname'];
+                    }
                 }
 
                 FLBuilder::render_settings_field('pm-ot', array(
@@ -63,17 +72,12 @@ foreach ($r as $category){
                     'toggle' => $toggle
                 ), $settings);
 
-                // View by object type
-                foreach($config['data']['media_types'] as $id => $type){
-
-                    FLBuilder::render_settings_field('view_'.$id, array(
-                        'type' => 'select',
-                        'label' => 'View for '.$id,
-                        'default' => 'Teaser1',
-                        'options' => $view_options[$id],
-                    ), $settings);
-
-                }
+                FLBuilder::render_settings_field('view', array(
+                    'type' => 'select',
+                    'label' => 'View',
+                    'default' => 'Teaser1',
+                    'options' => $view_options,
+                ), $settings);
                 ?>
             </table>
         </div>
@@ -152,7 +156,6 @@ foreach ($r as $category){
                         '' => '-',
                         'price' => 'price',
                         'date_departure' => 'date_departure',
-                        'name' => 'name',
                         'code' => 'code',
                         'rand' => 'random',
                     ),
@@ -174,13 +177,6 @@ foreach ($r as $category){
             <table class="fl-form-table">
                 <?php
 
-                FLBuilder::render_settings_field('pm-po', array(
-                    'type' => 'text',
-                    'label' => 'Pool',
-                    'default' => '',
-                    'placeholder' => '123,124'
-
-                ), $settings);
 
                 FLBuilder::render_settings_field('pm-t', array(
                     'type' => 'text',
@@ -195,20 +191,6 @@ foreach ($r as $category){
                     'default' => '',
                 ), $settings);
 
-                FLBuilder::render_settings_field('pm-vi', array(
-                    'type' => 'select',
-                    'label' => 'Visibility',
-                    'default' => '30',
-                    'multiple' => true,
-                    'options' => array(
-                        '-' => '-',
-                        '10' => 'Nobody',
-                        '30' => 'Public',
-                        '40' => 'Extranet',
-                        '50' => 'Intranet',
-                        '60' => 'Hidden',
-                    ),
-                ), $settings);
 
                 ?>
             </table>
@@ -271,16 +253,18 @@ foreach ($r as $category){
         <div class="fl-builder-settings-section-content">
             <table class="fl-form-table">
                 <?php
-                foreach ($categories as $category) {
-                    FLBuilder::render_settings_field($category->fieldname, array(
-                        'type' => 'suggest',
-                        'action' => $category->fieldname,
-                        'data' => 'categorytree',
-                        'label' => $category->var_name,
-                        'help' => '',
-                        'matching' => false,
-                        'limit' => 10
-                    ), $settings);
+                foreach($categories as $id_ot => $item){
+                    foreach($item as $category){
+                        FLBuilder::render_settings_field($category['fieldname'], array(
+                            'type' => 'suggest',
+                            'action' => $category['fieldname'],
+                            'data' => 'categorytree',
+                            'label' => $category['var_name'],
+                            'help' => '',
+                            'matching' => false,
+                            'limit' => 10
+                        ), $settings);
+                    }
                 }
                 ?>
             </table>
