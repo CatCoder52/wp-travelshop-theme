@@ -12,7 +12,7 @@ class BuildSearch
     private static $page = 1;
 
     /**
-     *
+     * @deprecated
      * Building a pressmind MYSQL search query
      * based on GET or POST request
      *
@@ -400,8 +400,8 @@ class BuildSearch
             }
         }
 
-        $order = array('price_total' => 'asc');
-        $allowed_orders = array('rand', 'price-desc', 'price-asc', 'date_departure-asc', 'date_departure-desc', 'name-asc', 'name-desc', 'code-asc', 'code-desc');
+        $order = array('price' => 'asc');
+        $allowed_orders = array('rand', 'price-desc', 'price-asc', 'date_departure-asc', 'date_departure-desc');
 
         if (empty($request[$prefix.'-o']) === false && in_array($request[$prefix.'-o'], $allowed_orders) === true) {
 
@@ -409,15 +409,8 @@ class BuildSearch
                 $order = array('rand' => '');
             }else{
                 list($property, $direction) =  explode('-', $request[$prefix.'-o']);
+                $property = $property == 'price' ? 'price_total' : $property;
                 $order = array($property => $direction);
-
-                // we need a price range to order by price, so we have to change the search
-                /*
-                 * if($property == 'price' && empty($price_range_from) && empty($price_range_to)){
-                    $conditions[] = Pressmind\Search\Condition\PriceRange::create(1, 9999);
-                    $validated_search_parameters[$prefix.'-pr'] = '1-9999';
-                }
-                */
             }
 
             $validated_search_parameters[$prefix.'-o'] = $request[$prefix.'-o'];

@@ -5,20 +5,8 @@ namespace Pressmind\Travelshop;
 class Search
 {
     /**
-     * @var string
-     */
-    private static $engine = 'mongodb';
-
-    public static function setEngine($engine)
-    {
-        self::$engine = $engine;
-    }
-
-    /**
      * @param $request
-     * @param $id_object_type_default
-     * @param int $occupancy_default
-     * @param int $page_size
+     * @param $page_size
      * <code>
      * return ['total_result' => 100,
      *            'current_page' => 1,
@@ -34,123 +22,18 @@ class Search
      *            ]
      *           ];
      * </code>
-     * @return array|void
+     * @return array
+     * @throws \Exception
      */
-    public static function getResult($request, $occupancy_default = 2, $page_size = 12, $getFilters = false, $returnFiltersOnly = false)
+    public static function getResult($request, $occupancy = 2, $page_size = 12, $getFilters = false, $returnFiltersOnly = false)
     {
+
         if (empty($request['pm-ho']) === true) {
             // if the price duration slider is active, we have to set the housing occupancy search
             // (to display the correct search result with the correct cheapeast price inside)
-            $request['pm-ho'] = $occupancy_default;
-        }
-        if (self::$engine == 'mysql') {
-            return self::searchMySql($request, $page_size, $getFilters, $returnFiltersOnly);
-        }
-        if (self::$engine == 'mongodb') {
-            return self::searchMongoDB($request, $occupancy_default, $page_size, $getFilters, $returnFiltersOnly);
-        }
-    }
-
-    /**
-     * @param $request
-     * @param $page_size
-     * @return array
-     * @throws \Exception
-     */
-    private static function searchMySql($request, $page_size, $getFilters = false, $returnFiltersOnly = false)
-    {
-        // @TODO rebuild! this code is a pasteboard
-        return;
-        $search = \BuildSearch::fromRequest($request, 'pm', true, $page_size);
-        if (!empty($request['update_cache'])) {
-            $mediaObjects = $search->getResults();
-            $cacheinfo = $search->getCacheInfo();
-            if (!empty($cacheinfo)) {
-                echo 'update_cache';
-                echo '<pre>' . print_r($cacheinfo, true) . '</pre>';
-                $search->updateCache($cacheinfo['info']->parameters);
-            }
-        }
-        if (!empty($request['no_cache'])) {
-            $search->disableCache();
-        }
-        $mediaObjects = $search->getResults();
-        $items = [];
-        foreach ($mediaObjects as $mediaObject) {
-            $items[] = $mediaObject;
+            $request['pm-ho'] = $occupancy;
         }
 
-        /**
-         * @var \Pressmind\Search $search
-         */
-        if(empty($search) === false){
-
-            // get the min and max price, based on the current search
-            $pRangeFilter = new Pressmind\Search\Filter\PriceRange($search);
-            $pRange = $pRangeFilter->getResult();
-
-            if(empty($pRange->min) || empty($pRange->max)){
-                return;
-            }
-
-            // set the price range to the closest 100, 1000 and so on...
-            $pRange->min = str_pad(substr(round($pRange->min), 0,1), strlen(round($pRange->min)), 0);
-            $pRange->max = str_pad(substr(round($pRange->max) , 0,1)+1, strlen(round($pRange->max)) + strlen(substr(round($pRange->max), 0,1)+1)-1, 0);
-
-        }
-
-        if(empty($filter_search) === false){
-            $tree = new Pressmind\Search\Filter\Category($id_tree, $filter_search, $fieldname, ($condition_type == 'cl'));
-            $treeItems = $tree->getResult('name');
-        }
-
-        /*
-        This code will list all items, without a Filter
-        $tree = new \Pressmind\ORM\Object\CategoryTree($id_tree);
-        $treeItems = $tree->items;
-        */
-
-        /**
-         * Get the current min/max daterange for this object type and .
-         * Use the wp transient cache for a better performance
-         */
-        $transient = 'ts_min_max_date_range_'.md5(serialize($search->getConditions()));
-        if (function_exists('get_transient') === false || $dRange = get_transient( $transient) === false) {
-            $dRangeFilter = new Pressmind\Search\Filter\DepartureDate($search);
-            $dRange = $dRangeFilter->getResult();
-            if(function_exists('set_transient')){
-                set_transient($transient, $dRange, 60);
-            }
-        }
-
-        $minDate = $maxDate = '';
-        if(!empty($dRange->from) && !empty($dRange->to)){
-            $minDate = $dRange->from->format('d.m.Y');
-            $maxDate = $dRange->to->format('d.m.Y');
-        }
-
-        return [
-            'total_result' => $search->getTotalResultCount(),
-            'current_page' => $search->getPaginator()->getCurrentPage(),
-            'pages' => $search->getPaginator()->getTotalPages(),
-            'page_size' => $page_size,
-            'cache' => [
-                'is_cached' => $search->isCached(),
-                'info' => $search->getCacheInfo()
-            ],
-            'items' => $items
-        ];
-
-    }
-
-    /**
-     * @param $request
-     * @param $page_size
-     * @return array
-     * @throws \Exception
-     */
-    private static function searchMongoDB($request, $occupancy, $page_size, $getFilters = false, $returnFiltersOnly = false)
-    {
         if($getFilters){
             $FilterCondition = [];
             if(!empty((int)$request['pm-ot'])){
