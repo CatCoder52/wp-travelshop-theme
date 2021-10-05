@@ -36,7 +36,7 @@ class Search
 
         if($getFilters){
             $FilterCondition = [];
-            if(!empty((int)$request['pm-ot'])){
+            if(!empty($request['pm-ot'])){
                 $FilterCondition[] =  new \Pressmind\Search\Condition\MongoDB\ObjectType((int)$request['pm-ot']);
             }
             $FilterCondition[] = new \Pressmind\Search\Condition\MongoDB\Occupancy($occupancy);
