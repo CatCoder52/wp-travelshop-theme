@@ -25,7 +25,8 @@ foreach($config['data']['search_mongodb']['search']['categories'] as $id_ot => $
             continue;
         }
         $id_tree = $category_map[$var_name]->id;
-        $fieldname = 'category_'.$id_ot.'_'.$id_tree.'-'.$var_name;
+        $id_object_type = $category_map[$var_name]->id_object_type;
+        $fieldname = 'category_'.$id_object_type.'_'.$id_tree.'-'.$var_name;
         $categories[$id_ot][] = [
             'fieldname' => $fieldname,
             'var_name' => $var_name
