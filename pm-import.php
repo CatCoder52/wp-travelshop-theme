@@ -32,15 +32,15 @@ if($request->isGet()) {
             $importer = new Import('mediaobject');
             $importer->importMediaObject($request->getParameter('id_media_object'));
             $importer->postImport();
+            $media_object = new ORM\Object\MediaObject($request->getParameter('id_media_object'));
+            $url = WEBSERVER_HTTP.$media_object->getPrettyUrl().'?preview=1&no_cache='.uniqid();
             if($request->getParameter('preview') == "1") {
-                $media_object = new ORM\Object\MediaObject($request->getParameter('id_media_object'));
                 $config = Registry::getInstance()->get('config');
-                $preview_url = WEBSERVER_HTTP . str_replace(['{{id_media_object}}', '{{preview}}'], [$media_object->getId(), '1'], $config['data']['preview_url']);
                 $response->setContentType('text/html');
-                $response->setBody('You will be redirected to Preview Page: ' . $preview_url);
-                $response->addHeader('Location', $preview_url);
+                $response->setBody('You will be redirected to Preview Page: ' . $url);
+                $response->addHeader('Location', $url);
             } else {
-                $response->setBody(['status' => 'Code 200: Import erfolgreich', 'url' => null, 'msg' => implode("\n", $importer->getLog())]);
+                $response->setBody(['status' => 'Code 200: Import erfolgreich', 'url' => $url, 'msg' => implode("\n", $importer->getLog())]);
             }
         } catch (Exception $e) {
             $response->setCode(500);
