@@ -305,7 +305,9 @@ if($args[1] != 'only_static') {
 
 
         $theme_config['TS_FILTERS'] = $theme_config['TS_SEARCH'] = _var_export($ts_search);
-        \Custom\InstallHelper::writeConfig($theme_config);
+        if($first_install){
+            \Custom\InstallHelper::writeConfig($theme_config);
+        }
 
         $config['data']['media_types'] = $media_types;
         $config['data']['media_types_pretty_url'] = $media_types_pretty_url;
