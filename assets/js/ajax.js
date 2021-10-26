@@ -375,7 +375,7 @@ jQuery(function ($) {
              * The query string is added to the form > a.btn > href
              * If the search box is on the same site as the search result, than the ajax search query is fired
              */
-            $(".search-box input, .search-box  select").on('change', function (e) {
+            $('#main-search').on('change', '.search-box input, .search-box, select', function (e) {
 
                 let form = $(this).closest('form');
 
