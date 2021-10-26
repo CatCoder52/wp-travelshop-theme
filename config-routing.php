@@ -102,7 +102,9 @@ foreach ($languages as $language) {
  */
 function ts_detail_hook($data)
 {
-    global $wp, $wp_query;
+    global $wp, $wp_query, $post;
+
+    $post = null;
 
     try {
 
@@ -216,7 +218,6 @@ function ts_search_hook($data)
 {
     global $wp, $wp_query, $post;
 
-    // reset post!
     $post = null;
 
     // TODO
@@ -265,7 +266,9 @@ add_action('ts_search_hook', 'ts_search_hook');
 
 function ts_calendar_hook($data)
 {
-    global $wp, $wp_query;
+    global $wp, $wp_query, $post;
+
+    $post = null;
 
     try {
 
@@ -278,8 +281,8 @@ function ts_calendar_hook($data)
 
         // Add meta data
         // set the page title
-        $the_title = 'Reisekalender';
-        $meta_description = '';
+        $the_title = $data['title'];
+        $meta_description = $data['meta_description'];
 
         /**
          * If you need meta data from custom fields, use this code example.
