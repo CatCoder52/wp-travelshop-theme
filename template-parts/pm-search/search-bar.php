@@ -1,19 +1,13 @@
 <?php
 
-/**
- *  @var int $id_object_type
- *
+/***
  *  <code>
  *  $args['class'] // main-color, silver, transparent
  *  $args['headline']
+ *  $args['id_object_type']
  * </code>
  * @var array $args
  */
-
-if(empty($id_object_type) === true){
-    $id_object_type = TS_TOUR_PRODUCTS;
-}
-
 
 ?>
 <div class="search-wrapper">
