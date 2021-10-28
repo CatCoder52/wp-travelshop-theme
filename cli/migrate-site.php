@@ -68,7 +68,9 @@ class Migrate{
 
         self::migratePostmeta();
         self::migratePosts();
-        self::migrateConfigFiles();
+
+        // TODO not used if .env file exist.. can make some trouble if active
+        //self::migrateConfigFiles();
         self::migrateOptions();
         self::generateModRewrite();
         self::flushCaches();
@@ -124,7 +126,7 @@ class Migrate{
                 $new_value = self::replacer($post->{$field});
                 if($new_value != $post->{$field}){
                     $wpdb->update($wpdb->posts, array($field => $new_value), array('ID' => $post->ID));
-                    echo "post ".$post->{$field}." updated \r\n";
+                    echo "post ".$field." updated \r\n";
                 }
             }
         }
