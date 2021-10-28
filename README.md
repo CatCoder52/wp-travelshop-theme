@@ -7,7 +7,7 @@ This theme is the perfect starting point in order to build professional travelsh
 ![Device Overview](./docs/assets/mockup.jpg)
 
 #### Demo page
-[https://travelshop-theme.pressmind.de](https://travelshop-theme.pressmind.de)
+[https://development-travelshop-theme-de.pressmind.dev/](https://development-travelshop-theme-de.pressmind.dev/)
 
 #### Screenshot
 ![Overview Image Demo-Page](./docs/assets/overview.jpg)
