@@ -36,15 +36,16 @@ require_once($wp_path . 'wp-admin/includes/admin.php');
 global $wp, $wp_query, $wp_the_query, $wp_rewrite, $wp_did_header;
 
 
-$param = getopt("", array('new-site:'));
+$param = getopt("", array('new-site:','old-site::'));
 
 if (isset($param['new-site']) === true) {
-    Migrate::toSite($param['new-site']);
+    Migrate::toSite($param['new-site'], !empty($param['old-site']) ? $param['old-site'] : null);
     exit;
 } else if (isset($param['all']) === true) {
 } else {
     echo 'usage:' . "\r\n";
-    echo '--new-site    example: php migrate-site.php --new-site=http://wordpress.local ' . "\r\n";
+    echo '--new-site    example: php migrate-site.php --new-site=http://wordpress.local (the old site will read from installation)' . "\r\n";
+    echo '--old-site    example: php migrate-site.php --new-site=https://wordpress.de --old-site=http://wordpress.local ' . "\r\n";
     exit;
 }
 
@@ -55,12 +56,12 @@ class Migrate{
     private static $oldHome;
 
 
-    public static function toSite($newSite)
+    public static function toSite($newSite, $oldsite = null)
     {
         global $wpdb;
 
         self::$newSite = trim($newSite,'/');
-        self::$oldSite = trim(get_option('siteurl'),'/');
+        self::$oldSite = trim(empty($oldsite) ? get_option('siteurl') : $oldsite,'/');
         self::$oldHome = trim(get_option('home'), '/');
 
         echo "starting migration from: \r\n";
@@ -100,7 +101,7 @@ class Migrate{
         foreach ($r as $meta){
             $new_value = self::replacer($meta->meta_value);
             if($new_value != $meta->meta_value){
-                $wpdb->update($wpdb->postmeta, array('meta_value' => $new_value), array('option_id' => $meta->meta_id));
+                $wpdb->update($wpdb->postmeta, array('meta_value' => $new_value), array('meta_id' => $meta->meta_id));
                 echo "postmeta ".$meta->meta_key." updated \r\n";
             }
         }
