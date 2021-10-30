@@ -36,6 +36,8 @@ FLBuilder::register_module('TSPMProductTeaser', array(
                         'type'    => 'text',
                         'label'   => __( 'Headline', 'fl-builder' ),
                         'default' => 'Reise-Empfehlungen',
+                        'help' => 'Tip: use the shortcode [TOTAL_RESULT] in this field to display the amount of found products'
+
                     ),
 
                     'text' => array(
@@ -43,6 +45,7 @@ FLBuilder::register_module('TSPMProductTeaser', array(
                         'media_buttons' => false,
                         'wpautop'       => false,
                         'label'   => __( 'Text', 'fl-builder' ),
+                        'help' => 'Tip: use the shortcode [TOTAL_RESULT] in this field to display the amount of found products',
                         'default' => 'Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip. ',
                     ),
 

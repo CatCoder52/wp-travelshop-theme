@@ -5,8 +5,8 @@ use Pressmind\Travelshop\Template;
 /**
  * <code>
  *  $args = (
- *          [headline] => Reise-Empfehlungen
- *          [text] => Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.
+ *          [headline] => [TOTAL_RESULT] Reise-Empfehlungen
+ *          [text] => [TOTAL_RESULT] products found. Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.
  *          [view] => Teaser1
  *          [search] => Array
  *                  (
@@ -34,12 +34,12 @@ if(count($result['items']) == 0){
         <div class="col-12">
             <?php if(!empty($args['headline'])){ ?>
             <h2 class="mt-0">
-                <?php echo $args['headline'];?>
+                <?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['headline']);?>
             </h2>
             <?php } ?>
             <?php if(!empty($args['text'])){ ?>
             <p>
-                <?php echo $args['text'];?>
+                <?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['text']);?>
             </p>
             <?php } ?>
         </div>
@@ -51,7 +51,7 @@ if(count($result['items']) == 0){
        // Note: the View-Template "Teaser1" can be found in travelshop/template-parts/pm-views/{OBJECT_TYPE_NAME}_{VIEWNAME}.php
 
 
-       // Example 2: Using the pressmind® web-core SDK
+       // Example 2: Using the pressmind® web-core SDK (MySQL)
        //$conditions = array();
        //$conditions[] = Pressmind\Search\Condition\ObjectType::create(TS_TOUR_PRODUCTS);
        //$search = new Pressmind\Search($conditions, ['start' => 0, 'length' => 4], ['' => 'RAND()']);

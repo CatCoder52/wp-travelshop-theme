@@ -17,14 +17,25 @@ $args['search']['pm-id'] = !empty($settings->{'pm-id'}) ? $settings->{'pm-id'} :
 $args['search']['pm-du'] = !empty($settings->{'pm-du'}) ? $settings->{'pm-du'} : ''; // duration range
 $args['search']['pm-pr'] = !empty($settings->{'pm-pr'}) ? $settings->{'pm-pr'} : ''; // price range
 $args['search']['pm-dr'] = !empty($settings->{'pm-dr'}) ? $settings->{'pm-dr'} : ''; // travel date range
+
 foreach($settings as $k => $v){ // categories
-    if(!empty($v) && preg_match('/^category_'.$args['search']['pm-ot'] .'_([0-9]+)\-([a-z0-9\_]+)$/', $k, $matches) > 0){
-        $args['search']['pm-c'][$matches[2]] = $v;
+    if(!empty($v) && preg_match('/^category_[0-9]+_([0-9]+)\-([a-z0-9\_]+)$/', $k, $matches) > 0){
+        $items = explode(',',$v);
+        $delimeter = ',';
+        if(in_array('search-behavior-AND', $items)){
+            $delimeter = '+';
+        }
+        if (($key = array_search('search-behavior-AND', $items)) !== false) {
+            unset($items[$key]);
+        }
+        if (($key = array_search('search-behavior-OR', $items)) !== false) {
+            unset($items[$key]);
+        }
+        $args['search']['pm-c'][$matches[2]] = implode($delimeter, $items);
     }
 }
 $args['view'] = !empty($settings->{'view'}) ? $settings->{'view'} : 'Teaser1';
 
 // delete empty keys
 $args['search'] = array_filter($args['search']);
-
 load_template_transient(get_template_directory() . '/template-parts/layout-blocks/product-teaser.php', false,  $args);

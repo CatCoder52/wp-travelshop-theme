@@ -261,7 +261,7 @@ foreach($config['data']['search_mongodb']['search']['categories'] as $id_ot => $
                             'action' => $category['fieldname'],
                             'data' => 'categorytree',
                             'label' => $category['var_name'],
-                            'help' => '',
+                            'help' => 'Type "search_behavior-AND" or "search_behavior-OR" to decide between AND- or OR-Search (all items are chained with OR or AND). If  not set, "search_behavior-OR" is used as default',
                             'matching' => false,
                             'limit' => 10
                         ), $settings);

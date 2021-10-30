@@ -3,13 +3,12 @@
  * @todo optimize id & data tags in checkboxes
  * @var $name
  * @var $fieldname (fieldname_sectionname)
- * @var string $condition_type value is cl or c, cl = category tree is a sub tree from a object link
+ * @var $behavior
  * @var $search
- * @var $id_tree
  */
 
 $selected = array();
-if (empty($_GET['pm-' . $condition_type][$fieldname]) === false && preg_match_all("/[a-zA-Z0-9\-]+(?=[,|\+]?)/", $_GET['pm-' . $condition_type][$fieldname], $matches) > 0) {
+if (empty($_GET['pm-c'][$fieldname]) === false && preg_match_all("/[a-zA-Z0-9\-]+(?=[,|\+]?)/", $_GET['pm-c'][$fieldname], $matches) > 0) {
     $selected = empty($matches[0]) ? array() : $matches[0];
 }
 if (empty($args['categories'][$fieldname][0]) === false) {
@@ -35,9 +34,8 @@ if (empty($args['categories'][$fieldname][0]) === false) {
 
                     <div class="dropdown-menu dropdown-menu-select"
                          aria-labelledby="dropdownReiseziel">
-                        <div class="multi-level-checkboxes">
-                            <input type="hidden" data-behavior="OR"
-                                   name="pm-<?php echo $condition_type; ?>[<?php echo $fieldname; ?>]" value="">
+                        <div class="category-tree-field-items multi-level-checkboxes">
+                            <input type="hidden" name="<?php echo $fieldname;?>-behavior" value="<?php echo empty($behavior) ? 'OR' : $behavior; ?>">
                             <?php
                             $childs = [];
                             if (!empty($args['categories'][$fieldname][1])) {
@@ -53,7 +51,6 @@ if (empty($args['categories'][$fieldname][0]) === false) {
                                     <input class="form-check-input" type="checkbox"
                                            data-id-parent="" data-id="<?php echo $item->id_item; ?>"
                                            data-name="<?php echo $fieldname; ?>"
-                                           data-type="<?php echo $condition_type; ?>"
                                            id="<?php echo $uuid; ?>"
                                         <?php echo in_array($item->id_item, $selected) ? 'checked' : ''; ?>><span><i><svg
                                                     xmlns="http://www.w3.org/2000/svg"

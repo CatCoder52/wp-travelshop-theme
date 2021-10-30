@@ -46,7 +46,7 @@
                 require 'filter/price-range.php';
                 require 'filter/duration-range.php';
                 foreach(TS_FILTERS[$args['id_object_type']] as $filter){
-                    list($id_tree, $fieldname, $name, $condition_type) = array_values($filter);
+                    list($fieldname, $name, $behavior) = array_values($filter);
                     require 'filter/category-tree.php';
                 }
                 ?>

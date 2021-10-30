@@ -278,7 +278,7 @@ class BuildSearch
      * @param $request
      * @return \Pressmind\Search\MongoDB
      */
-    public static function fromRequestMongoDB($request, $prefix = 'pm', $paginator = true, $page_size = 10, $ignore_conditions = [])
+    public static function fromRequestMongoDB($request, $prefix = 'pm', $paginator = true, $page_size = 10)
     {
 
         array_walk_recursive($request, function($key, &$item){
@@ -335,51 +335,25 @@ class BuildSearch
         }
 
 
-        // @TODO remove "ignore"
-        if (
-            in_array($prefix.'-c', $ignore_conditions ) === false &&
-            (
-                (isset($request[$prefix.'-c']) === true && is_array($request[$prefix.'-c']) == true) ||
-                (isset($request[$prefix.'-cl']) === true && is_array($request[$prefix.'-cl']) == true)
-            )
-        ) {
-            // handle the linked object feature
-            $search_items = [];
-            if(isset($request[$prefix.'-c']) === true && is_array($request[$prefix.'-c']) == true){
-                $search_items['c'] = $request[$prefix.'-c'];
-            }
-
-            // this items are linked to the media object and requires a modified search condition
-            if(isset($request[$prefix.'-cl']) === true && is_array($request[$prefix.'-cl']) == true){
-                $search_items['cl'] = $request[$prefix.'-cl'];
-            }
-
-            foreach($search_items as $type => $search_item){
-
-                foreach($search_item as $property_name => $item_ids){
-
-                    if(preg_match('/^[0-9a-zA-Z\-\_]+$/', $property_name) > 0){ // valid property name
-
-                        if(preg_match('/^[0-9a-zA-Z\-\,]+$/', $item_ids) > 0){ // search by OR, marked by ","
-                            $delimiter = ',';
-                            $operator = 'OR';
-                        }elseif(preg_match('/^[0-9a-zA-Z\-\+]+$/', $item_ids) > 0){ // search by AND, marked by "+"
-                            $delimiter = '+';
-                            $operator = 'AND';
-                        }else{ // not valid
-                            continue;
-                        }
-
-                        $item_ids = explode($delimiter,$item_ids);
-                        $conditions[] = new \Pressmind\Search\Condition\MongoDB\Category($property_name, $item_ids, $operator);
-                        $validated_search_parameters[$prefix.'-'.$type][$property_name] = implode($delimiter, $item_ids);
+        if (isset($request[$prefix.'-c']) === true && is_array($request[$prefix.'-c']) === true) {
+            $search_item = $request[$prefix.'-c'];
+            foreach($search_item as $property_name => $item_ids){
+                if(preg_match('/^[0-9a-zA-Z\-\_]+$/', $property_name) > 0){ // valid property name
+                    if(preg_match('/^[0-9a-zA-Z\-\,]+$/', $item_ids) > 0){ // search by OR, marked by ","
+                        $delimiter = ',';
+                        $operator = 'OR';
+                    }elseif(preg_match('/^[0-9a-zA-Z\-\+]+$/', $item_ids) > 0){ // search by AND, marked by "+"
+                        $delimiter = '+'; // be ware, this sign is reserverd by php. urls must use the escaped sign %2B
+                        $operator = 'AND';
+                    }else{ // not valid
+                        echo 'operator not valid';
+                        continue;
                     }
-
+                    $item_ids = explode($delimiter,$item_ids);
+                    $conditions[] = new \Pressmind\Search\Condition\MongoDB\Category($property_name, $item_ids, $operator);
+                    $validated_search_parameters[$prefix.'-c'][$property_name] = implode($delimiter, $item_ids);
                 }
-
             }
-
-
         }
 
 
@@ -428,7 +402,6 @@ class BuildSearch
                 $page_size = intval($m[2]);
             }
 
-            // @TODO create syntax in alle klasssen packen, damit jede klasse auch statisch aufrufbar ist.
             $Search->setPaginator(Pressmind\Search\Paginator::create($page_size, $page));
         }
         return $Search;

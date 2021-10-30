@@ -4,13 +4,13 @@
  * @todo condition_type is deprecated, remove
  * @var string $name
  * @var string $fieldname (fieldname_sectioname)
- * @var string $condition_type value is cl or c, cl = category tree is a sub tree from a object link
+ * @var string $behavior (fieldname_sectioname)
  * @var int $id_tree
  * @var $args['categories']
  */
 
  $selected = array();
- if(empty($_GET['pm-'.$condition_type][$fieldname]) === false && preg_match_all("/[a-zA-Z0-9\-]+(?=[,|\+]?)/", $_GET['pm-'.$condition_type][$fieldname], $matches) > 0){
+ if(empty($_GET['pm-c'][$fieldname]) === false && preg_match_all("/[a-zA-Z0-9\-]+(?=[,|\+]?)/", $_GET['pm-c'][$fieldname], $matches) > 0){
      $selected = empty($matches[0]) ? array() : $matches[0];
  }
 
@@ -20,8 +20,8 @@ if (empty($args['categories'][$fieldname][0]) === false) {
         <div class="list-filter-box-title">
             <strong><?php echo $name; ?></strong>
         </div>
-        <div class="list-filter-box-body">
-            <input type="hidden" data-behavior="OR" name="pm-<?php echo $condition_type;?>[<?php echo $fieldname;?>]" value="">
+        <div class="category-tree-field-items list-filter-box-body">
+            <input type="hidden" name="<?php echo $fieldname;?>-behavior" value="<?php echo empty($behavior) ? 'OR' : $behavior; ?>">
             <?php
             $childs = [];
             if(!empty($args['categories'][$fieldname][1])){
@@ -50,7 +50,6 @@ if (empty($args['categories'][$fieldname][0]) === false) {
                            data-id-parent=""
                            data-id="<?php echo $item->id_item; ?>"
                            data-name="<?php echo $fieldname;?>"
-                           data-type="<?php echo $condition_type;?>"
                     <?php echo in_array($item->id_item, $selected) ? 'checked' : '';?>
                             <?php echo !empty($is_open) ? 'disabled' : '';?>
                     ><span><i
@@ -81,7 +80,6 @@ if (empty($args['categories'][$fieldname][0]) === false) {
                                            data-id-parent="<?php echo $item->id_item; ?>"
                                            data-id="<?php echo $child_item->id_item; ?>"
                                            data-name="<?php echo $fieldname;?>"
-                                           data-type="<?php echo $condition_type;?>"
                                         <?php echo in_array($child_item->id_item, $selected) ? 'checked' : '';?>
                                            ><span><i><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler-check" width="12" height="12" viewBox="0 0 24 24" stroke-width="3" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
