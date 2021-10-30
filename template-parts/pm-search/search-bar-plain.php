@@ -4,12 +4,16 @@ use Pressmind\Travelshop\RouteHelper;
 
 /**
  * @var int $id_object_type
+ * <code>
+ *  $args[total_result] => 112
+ *  $args[current_page] => 1
+ *  $args[pages] => 10
+ *  $args[page_size] => 12
+ *  $args[id_object_type] => 2277
+ *  $args[... some more values search result ...]
+ * </code>
  * @var array $args
  */
-
-if(empty($id_object_type) === true){
-    $id_object_type = TS_TOUR_PRODUCTS;
-}
 
 ?>
 <div class="search-wrapper">

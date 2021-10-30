@@ -2,7 +2,12 @@
 /**
  *  @var int $id_object_type
  * <code>
- * $args['id_object_type']
+ *  $args[total_result] => 112
+ *  $args[current_page] => 1
+ *  $args[pages] => 10
+ *  $args[page_size] => 12
+ *  $args[id_object_type] => 2277
+ *  $args[... some more values search result ...]
  * </code>
  * @var array $args
  */
