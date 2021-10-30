@@ -244,53 +244,43 @@ jQuery(function ($) {
             }
 
             // checkboxes
-            let tree_conditions = ['c', 'cl']; // cl = support for trees in object links
-            let i;
-            for(i in tree_conditions){
-                let selected = [];
-                $(form).find('.category-tree input[data-type="'+tree_conditions[i]+'"]:checked').each(function () {
+            let selected = [];
+            $(form).find('.category-tree input:checked').each(function () {
 
-                    let id_parent = $(this).data('id-parent');
-                    let id = $(this).data('id');
-                    let name = $(this).data('name');
-                    let type = $(this).data('type');
+                let id_parent = $(this).data('id-parent');
+                let id = $(this).data('id');
+                let name = $(this).data('name');
 
-
-                    if (!selected[name]) {
-                        selected[name] = [];
-                    }
-
-                    let i = selected[name].indexOf(id_parent);
-                    if (i > -1) {
-                        // remove if parent is set
-                        selected[name].splice(i, 1);
-                    }
-
-                    i = selected[name].indexOf(id);
-                    if (i == -1) {
-                        // has no parent, add
-                        selected[name].push(id);
-                    }
-
-                });
-
-                let delimiter = ',';
-
-                /* @todo
-                if (selected_item.data('behaivor') == 'AND'){
-                    var delimiter = '+';
-                }
-                */
-
-                let key;
-                for (key in selected) {
-                    query.push('pm-'+tree_conditions[i]+'[' + key + ']=' + selected[key].join(delimiter));
+                if (!selected[name]) {
+                    selected[name] = [];
                 }
 
+                let i = selected[name].indexOf(id_parent);
+                if (i > -1) {
+                    // remove if parent is set
+                    selected[name].splice(i, 1);
+                }
+
+                i = selected[name].indexOf(id);
+                if (i == -1) {
+                    // has no parent, add
+                    selected[name].push(id);
+                }
+
+            });
+
+            let key;
+            let delimiter = ',';
+            for (key in selected) {
+                if ($('input[name='+key+'-behavior]').val() == 'AND'){
+                    delimiter = '%2B';
+                }else{
+                    delimiter = ',';
+                }
+                query.push('pm-c[' + key + ']=' + selected[key].join(delimiter));
             }
 
             // check and set price-range
-
             let price_range = $(form).find('input[name=pm-pr]').val();
             let price_mm_range = $(form).find('input[name=pm-pr]').data('min') + '-' + $(form).find('input[name=pm-pr]').data('max');
             if (price_range && price_mm_range != price_range && price_range != '') {
