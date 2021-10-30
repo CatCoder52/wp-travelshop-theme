@@ -10,8 +10,18 @@ get_header();
                     'type' => 'content', // enum (content | product)
                     'image' => get_stylesheet_directory_uri().'/assets/img/slide-1.jpg',
                     'image_alt_tag' => '',
-                    'title' => 'Weihnachtsmarkt auf der Fraueninsel mit Gut Aiderbichl',
-                    'text' => 'Ein romantisches Wintermärchen, das jedes Jahr Besucher von Nah und Fern aufs Neue begeistert, ist der Christkindlmarkt auf der Frauninsel. Festliche Beleuchtung, feinstes kunstwerk ...',
+                    'title' => 'Travel is the movement Slide 1',
+                    'text' => 'Travel is the movement of people between relatively distant geographical locations...',
+                    'btn_link' => '/blog/',
+                    'btn_link_target' => '_self', // enum(_blank, _self)
+                    'btn_label' => 'Weiterlesen'
+                ],
+                [
+                    'type' => 'content', // enum (content | product)
+                    'image' => get_stylesheet_directory_uri().'/assets/img/slide-1.jpg',
+                    'image_alt_tag' => '',
+                    'title' => 'Travel is the movement Slide 2',
+                    'text' => 'Travel is the movement of people between relatively distant geographical locations...',
                     'btn_link' => '/blog/',
                     'btn_link_target' => '_self', // enum(_blank, _self)
                     'btn_label' => 'Weiterlesen'

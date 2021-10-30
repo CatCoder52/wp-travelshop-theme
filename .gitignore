@@ -4,9 +4,6 @@ composer.lock
 pm-config.php
 config-theme.php
 template-parts/pm-views/*_Detail1.php
-template-parts/pm-views/*_Teaser1.php
-template-parts/pm-views/*_Teaser2.php
-template-parts/pm-views/*_Teaser3.php
 Custom/MediaType/*.php
 docs/objecttypes/*.html
 assets/scss/*.map
