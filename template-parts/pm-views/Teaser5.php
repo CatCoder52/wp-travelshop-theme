@@ -1,4 +1,9 @@
 <?php
+/**
+ * This Teaser is used in the following modules:
+ *  - template-parts/layout-blocks/product-calendar.php (it's called by ajax from this page)
+ */
+
 use Pressmind\Travelshop\PriceHandler;
 
 /**
@@ -40,6 +45,7 @@ if (empty($filteredParams) === false) {
     $args['url'] .= '?' . $query_string;
 }
 ?>
+
 <article class="travelshop-teaser-mega-stripe col-12">
     <div class="stripe-inner">
         <div class="stripe-image"
@@ -63,6 +69,7 @@ if (empty($filteredParams) === false) {
                 <br/>
                 <small>Tage</small>
             </div>
+
         </div>
         <section class="stripe-content">
             <div class="stripe-content-head">
@@ -136,7 +143,6 @@ if (empty($filteredParams) === false) {
                                 ?>
                             </div>
                         <?php } ?>
-
                     </div>
                 </div>
                 <div class="stripe-cta">
@@ -147,15 +153,15 @@ if (empty($filteredParams) === false) {
                             <p>
                                 <span class="msg"><?php echo $discount['name']; ?></span>
                                 <span class="discount-label">
-                                    <span class="price"><?php echo $discount['price_before_discount']; ?></span>
-                                    <span class="discount"><?php echo $discount['price_delta']; ?></span>
-                                </span>
+                                <span class="price"><?php echo $discount['price_before_discount']; ?></span>
+                                <span class="discount"><?php echo $discount['price_delta']; ?></span>
+                            </span>
                             </p>
                         </div>
                         <?php
                     }
                     ?>
-                    <a href="<?php echo $args['url']; ?>" class="travel-teaser-link">
+                    <a href="<?php echo $args['url']; ?>" class="btn btn-primary">
                         <div class="btn btn-primary">
                             <?php
                             if (empty($args['cheapest_price']->price_total) === false) {
