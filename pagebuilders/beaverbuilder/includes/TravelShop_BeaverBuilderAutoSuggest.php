@@ -71,7 +71,14 @@ final class TravelShop_BeaverBuilderAutoSuggest {
         $treeItems = $tree->getResult();
 
         $categories = \Pressmind\Travelshop\CategoryTreeTools::flatten($treeItems);
-
+        $categories[] = [
+            'name' => 'search_behavior-AND',
+            'value' => 'search-behavior-AND',
+        ];
+        $categories[] = [
+            'name' => 'search-behavior-OR',
+            'value' => 'search-behavior-OR',
+        ];
 	    $output = [];
 	    foreach($id_items as $id_item){
             foreach($categories as $category){
@@ -106,7 +113,14 @@ final class TravelShop_BeaverBuilderAutoSuggest {
         $tree = new Pressmind\Search\Filter\Category($id_tree, $search);
         $treeItems = $tree->getResult('name');
         $output = \Pressmind\Travelshop\CategoryTreeTools::flatten($treeItems);
-
+        $output[] = [
+            'name' => 'search_behavior-AND',
+            'value' => 'search-behavior-AND',
+        ];
+        $output[] = [
+            'name' => 'search-behavior-OR',
+            'value' => 'search-behavior-OR',
+        ];
 		echo json_encode($output);
 		exit;
 	}
