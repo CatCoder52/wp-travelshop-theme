@@ -57,10 +57,8 @@ if (empty($travel_months)) {
                     <div class='col-12 col-sm-6 col-lg-4'>
                         <div class='teaser month-teaser'>
                             <?php
-
                             $month_title = HelperFunctions::monthNumberToLocalMonthName($item['from']->format('n'));
                             $month_title .= $item['from']->format('Y') != date('Y') ? ' ' . $item['from']->format('Y') : '';
-
                             // select a random media object for displaying the image in the teaser (loop trough if the're is a media object without images
                             $image_url = '';
                             $image_copyright = '';
@@ -74,15 +72,14 @@ if (empty($travel_months)) {
                                     $image_copyright = $moc->bilder_default[$rand_image]->copyright;
                                     break;
                                 }
-
                                 if($retries_count >= 3){
-                                    $image_url = '/placeholder.svg.php?wh=250x170&text='.HelperFunctions::monthNumberToLocalMonthName($item['from']->format('n'));
                                     break;
                                 }
-
                                 $retries_count++;
                             }
-
+                            if(empty($image_url)){
+                                $image_url = '/placeholder.svg?wh=80x80&text='.HelperFunctions::monthNumberToLocalMonthName($item['from']->format('n'));
+                            }
                             ?>
                             <a href='<?php echo RouteHelper::get_url_by_object_type($id_object_type) . '/?pm-o=date_departure-asc&pm-dr='.$item['from']->format('Ymd').'-'.$item['to']->format('Ymd'); ?>' title="<?php echo $month_title; ?>">
                                 <div class="month-teaser-image">
