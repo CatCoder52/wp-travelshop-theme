@@ -56,8 +56,11 @@ require_once APPLICATION_PATH . DIRECTORY_SEPARATOR . 'Custom' . DIRECTORY_SEPAR
 /**
  * Import the composer autoloader
  */
-require_once APPLICATION_PATH . '/vendor/autoload.php';
 
+require_once APPLICATION_PATH . '/vendor/autoload.php';
+// load .env environment, if .env file exists
+$dotenv = \Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
+$dotenv->safeLoad();
 
 /**
  * Loading the configuration
@@ -67,7 +70,7 @@ require_once APPLICATION_PATH . '/vendor/autoload.php';
  * @See the generated pm-config.php file (which is created during the install process) for the required structure and options
  * @See the different config adapters for further information on YAML, XML and INI files (Pressmind\Config\Adapter)
  */
-$config_adapter = new Config('php', HelperFunctions::buildPathString([APPLICATION_PATH, 'pm-config.php']), ENV);
+$config_adapter = new Config('php', HelperFunctions::buildPathString([APPLICATION_PATH, 'pm-config.php']), getenv('APP_ENV')  === false ? 'development' : getenv('APP_ENV'));
 $config = $config_adapter->read();
 
 if (php_sapi_name() != "cli") {

@@ -28,6 +28,11 @@ use Pressmind\Travelshop\Timer;
             exit();
     }
 
+require_once 'vendor/autoload.php';
+
+// load .env environment, if .env file exists
+$dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
+$dotenv->safeLoad();
 
 // load the theme-config
 require_once 'config-theme.php';

@@ -9,6 +9,7 @@
     "ext-mbstring": "*",
     "ext-mongodb": "*",
     "mongodb/mongodb": "^1.9",
-    "ext-imagick": "*"
+    "ext-imagick": "*",
+    "vlucas/phpdotenv" : "*"
   }
 }
