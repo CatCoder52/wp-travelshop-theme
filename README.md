@@ -41,7 +41,6 @@ Use workbox if you plan a offline mode or a advanced local caching strategy.
 
 ### Additional information
 #### What is it not?
-* It is not the pressmind's truetravel source, it is just a WordPress integration example for the [pressmind® SDK](https://github.com/pressmind/sdk).
 * A full featured, plug & play travelshop.
 * It is not a booking engine, but you can integrate your own booking engine or you can use the pressmind® IB3 booking engine.
 
