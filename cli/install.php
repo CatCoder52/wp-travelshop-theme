@@ -294,10 +294,9 @@ if($args[1] != 'only_static') {
                         continue;
                     }
                     $ts_search[$type_map[$item->gtxf_product_type]][] = [
-                        'id_tree' => $field->id_tree,
                         'fieldname' => strtolower($field->var_name.'_'.$section->name),
                         'name' => $field->name,
-                        'condition_type' => 'c'
+                        'behavior' => 'OR'
                     ];
                 }
             }
