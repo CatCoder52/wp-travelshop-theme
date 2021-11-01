@@ -70,7 +70,7 @@ $dotenv->safeLoad();
  * @See the generated pm-config.php file (which is created during the install process) for the required structure and options
  * @See the different config adapters for further information on YAML, XML and INI files (Pressmind\Config\Adapter)
  */
-$config_adapter = new Config('php', HelperFunctions::buildPathString([APPLICATION_PATH, 'pm-config.php']), getenv('APP_ENV')  === false ? 'development' : getenv('APP_ENV'));
+$config_adapter = new Config('php', HelperFunctions::buildPathString([APPLICATION_PATH, getenv('PM_CONFIG')]), getenv('APP_ENV')  === false ? 'development' : getenv('APP_ENV'));
 $config = $config_adapter->read();
 
 if (php_sapi_name() != "cli") {
