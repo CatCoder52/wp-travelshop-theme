@@ -83,6 +83,7 @@ if($first_install) {
 
     $config['development']['data']['search_mongodb']['database']['uri'] = $mongodb_uri;
     $config['development']['data']['search_mongodb']['database']['db'] = $mongodb_db;
+    $config['development']['data']['search_mongodb']['enabled'] = true;
 
     $config['development']['server']['webserver_http'] = $webserver_http;
     $config['development']['server']['php_cli_binary'] = PHP_BINARY;
@@ -309,6 +310,13 @@ if($args[1] != 'only_static') {
         $mongodb_search_build_for= [];
 
         foreach ($response->result as $item) {
+            if(empty($item->gtxf_product_type)){
+                continue;
+            }
+            $mongodb_search_build_for[$item->id][] = [
+                'language' => NULL,
+                'origin' => 0,
+            ];
             foreach($item->fields as $field){
                 if(empty($field->sections)){
                     continue;
