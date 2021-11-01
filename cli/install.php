@@ -13,6 +13,11 @@ if (php_sapi_name() !== 'cli') {
 $first_install = !file_exists(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'pm-config.php');
 
 if($first_install) {
+
+    if(!file_exists('../.env')){
+        copy('../.env.default', '../.env');
+    }
+
     $sdk_directory = dirname(__DIR__)
         . DIRECTORY_SEPARATOR
         . 'vendor'
@@ -39,6 +44,8 @@ if($first_install) {
         'db_name::',
         'db_user::',
         'db_password::',
+        'mongodb_uri::',
+        'mongodb_db::',
         'pressmind_api_key::',
         'pressmind_api_user::',
         'pressmind_api_password::',
@@ -47,11 +54,13 @@ if($first_install) {
 
     // if no values are set by parameter, we ask...
     $webserver_http = !empty($options['webserver_http']) ? $options['webserver_http'] : readline("Enter Webserver HTTP e.g. 'https://domain.de' [http://127.0.0.1]: ");
-    $db_host =  !empty($options['db_host']) ? $options['db_host'] : readline("Enter Database Host [127.0.0.1]: ");
-    $db_port = !empty($options['db_port']) ? $options['db_port'] : readline("Enter Database Port [3306]: ");
-    $db_name = !empty($options['db_name']) ? $options['db_name'] : readline("Enter Database Name: ");
-    $db_user = !empty($options['db_user']) ? $options['db_user'] : readline("Enter Database Username: ");
-    $db_password = !empty($options['db_password']) ? $options['db_password'] : readline("Enter Database User Password: ");
+    $db_host =  !empty($options['db_host']) ? $options['db_host'] : readline("Enter MySQL Database Host [127.0.0.1]: ");
+    $db_port = !empty($options['db_port']) ? $options['db_port'] : readline("Enter MySQL Database Port [3306]: ");
+    $db_name = !empty($options['db_name']) ? $options['db_name'] : readline("Enter MySQL Database Name: ");
+    $db_user = !empty($options['db_user']) ? $options['db_user'] : readline("Enter MySQL Database Username: ");
+    $db_password = !empty($options['db_password']) ? $options['db_password'] : readline("Enter MySQL Database Password: ");
+    $mongodb_uri = !empty($options['mongodb_uri']) ? $options['mongodb_uri'] : readline("Enter MongoDB Connection String e.g 'mongodb+srv://...': ");
+    $mongodb_db = !empty($options['mongodb_db']) ? $options['mongodb_db'] : readline("Enter MongoDB Database Name: ");
     $pressmind_api_key = !empty($options['pressmind_api_key']) ? $options['pressmind_api_key'] : readline("Enter Pressmind API Key: ");
     $pressmind_api_user = !empty($options['pressmind_api_user']) ? $options['pressmind_api_user'] : readline("Enter Pressmind API User: ");
     $pressmind_api_password = !empty($options['pressmind_api_password']) ? $options['pressmind_api_password'] : readline("Enter Pressmind API Password: ");
@@ -66,16 +75,17 @@ if($first_install) {
     $config['development']['database']['host'] = $db_host;
     $config['development']['database']['port']= $db_port;
     $config['development']['database']['dbname'] = $db_name;
+    $config['development']['database']['engine'] = 'MySQL';
 
     $config['development']['rest']['client']['api_key'] = $pressmind_api_key;
     $config['development']['rest']['client']['api_user'] = $pressmind_api_user;
     $config['development']['rest']['client']['api_password'] = $pressmind_api_password;
 
-    // Setup the webserver site url
-    $config['development']['server']['webserver_http'] = $webserver_http;
+    $config['development']['data']['search_mongodb']['database']['uri'] = $mongodb_uri;
+    $config['development']['data']['search_mongodb']['database']['db'] = $mongodb_db;
 
-    // Set the fixed command line binary
-    $config['server']['php_cli_binary'] = PHP_BINARY;
+    $config['development']['server']['webserver_http'] = $webserver_http;
+    $config['development']['server']['php_cli_binary'] = PHP_BINARY;
 
     //Setting some default values in config
     $config['development']['server']['document_root'] = 'BASE_PATH';
@@ -133,6 +143,16 @@ if($first_install) {
     $config['development']['image_handling']['processor']['derivatives']['detail']['vertical_crop'] = "center";
     $config['development']['image_handling']['processor']['derivatives']['detail']['webp_create'] = true;
     $config['development']['image_handling']['processor']['derivatives']['detail']['webp_quality'] = 80;
+
+    $config['development']['image_handling']['processor']['derivatives']['bigslide'] = [];
+    $config['development']['image_handling']['processor']['derivatives']['bigslide']['max_width'] = 1980;
+    $config['development']['image_handling']['processor']['derivatives']['bigslide']['max_height'] = 600;
+    $config['development']['image_handling']['processor']['derivatives']['bigslide']['preserve_aspect_ratio'] = true;
+    $config['development']['image_handling']['processor']['derivatives']['bigslide']['crop'] = true;
+    $config['development']['image_handling']['processor']['derivatives']['bigslide']['horizontal_crop'] = "center";
+    $config['development']['image_handling']['processor']['derivatives']['bigslide']['vertical_crop'] = "center";
+    $config['development']['image_handling']['processor']['derivatives']['bigslide']['webp_create'] = true;
+    $config['development']['image_handling']['processor']['derivatives']['bigslide']['webp_quality'] = 80;
 
     $config_file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'pm-config.php';
     $config_text = "<?php\n\$config = " . _var_export($config) . ';';
@@ -284,30 +304,104 @@ if($args[1] != 'only_static') {
 
         $response = $client->sendRequest('ObjectType', 'getById', ['ids' => implode(',',$config['data']['primary_media_type_ids'])]);
         $ts_search = [];
+        $mongodb_search_categories = [];
+        $mongodb_search_descriptions = [];
+        $mongodb_search_build_for= [];
+
         foreach ($response->result as $item) {
             foreach($item->fields as $field){
-                if($field->type != 'categorytree'){
+                if(empty($field->sections)){
                     continue;
                 }
-                foreach($field->sections as $section){
-                    if(empty($item->gtxf_product_type)){
-                        continue;
-                    }
-                    $ts_search[$type_map[$item->gtxf_product_type]][] = [
-                        'fieldname' => strtolower($field->var_name.'_'.$section->name),
-                        'name' => $field->name,
-                        'behavior' => 'OR'
+                if(empty($mongodb_search_descriptions[$item->id]['headline']) ){
+                    $mongodb_search_descriptions[$item->id]['headline'] = [
+                        'field' => 'name',
+                        'from' => null,
+                        'filter' => null,
                     ];
+                }
+                foreach($field->sections as $section){
+                    if($field->type == 'categorytree'){
+                        $ts_search[$type_map[$item->gtxf_product_type]][] = [
+                            'fieldname' => strtolower($field->var_name.'_'.$section->name),
+                            'name' => $field->name,
+                            'behavior' => 'OR'
+                        ];
+                        $mongodb_search_categories[$item->id][strtolower($field->var_name.'_'.$section->name)] = null;
+                    }
+                    if(in_array($field->type, ['text', 'plaintext']) &&
+                        preg_match('/subline/', $field->var_name) > 0 &&
+                        empty($mongodb_search_descriptions[$item->id]['subline']) ){
+                        $mongodb_search_descriptions[$item->id]['subline'] = [
+                            'field' => strtolower($field->var_name.'_'.$section->name),
+                            'from' => null,
+                            'filter' => '\\Custom\\Filter::strip',
+                        ];
+                    }
+                    if(in_array($field->type, ['text', 'plaintext']) &&
+                        preg_match('/intro|einleitung/', $field->var_name) > 0 &&
+                        empty($mongodb_search_descriptions[$item->id]['intro']) ){
+                        $mongodb_search_descriptions[$item->id]['intro'] = [
+                            'field' => strtolower($field->var_name.'_'.$section->name),
+                            'from' => null,
+                            'filter' => '\\Custom\\Filter::strip',
+                        ];
+                    }
+                    if(in_array($field->type, ['picture']) &&
+                        preg_match('/bilder|picture|image/', $field->var_name) > 0 &&
+                        empty($mongodb_search_descriptions[$item->id]['image']) ){
+                        $mongodb_search_descriptions[$item->id]['image'] = [
+                            'field' => strtolower($field->var_name.'_'.$section->name),
+                            'from' => null,
+                            'filter' => '\\Custom\\Filter::firstPicture',
+                            'params' => [
+                                'derivative' => 'teaser',
+                            ],
+                        ];
+                    }
+                    if(in_array($field->type, ['picture']) &&
+                        preg_match('/bilder|picture|image/', $field->var_name) > 0 &&
+                        empty($mongodb_search_descriptions[$item->id]['bigslide']) ){
+                        $mongodb_search_descriptions[$item->id]['bigslide'] = [
+                            'field' => strtolower($field->var_name.'_'.$section->name),
+                            'from' => null,
+                            'filter' => '\\Custom\\Filter::firstPicture',
+                            'params' => [
+                                'derivative' => 'bigslide',
+                            ],
+                        ];
+                    }
+                    if(in_array($field->type, ['categorytree']) &&
+                        preg_match('/^zielgebiet|^destination/', $field->var_name) > 0 &&
+                        empty($mongodb_search_descriptions[$item->id]['destination']) ){
+                        $mongodb_search_descriptions[$item->id]['destination'] = [
+                            'field' => strtolower($field->var_name.'_'.$section->name),
+                            'from' => null,
+                            'filter' => '\\Custom\\Filter::lastTreeItemAsString',
+                        ];
+                    }
+                    if(in_array($field->type, ['categorytree']) &&
+                        preg_match('/^reiseart/', $field->var_name) > 0 &&
+                        empty($mongodb_search_descriptions[$item->id]['travel_type']) ){
+                        $mongodb_search_descriptions[$item->id]['travel_type'] = [
+                            'field' => strtolower($field->var_name.'_'.$section->name),
+                            'from' => null,
+                            'filter' => '\\Custom\\Filter::lastTreeItemAsString',
+                        ];
+                    }
                 }
             }
         }
 
-
-        $theme_config['TS_FILTERS'] = $theme_config['TS_SEARCH'] = _var_export($ts_search);
         if($first_install){
+            $theme_config['TS_FILTERS'] = $theme_config['TS_SEARCH'] = _var_export($ts_search);
             \Custom\InstallHelper::writeConfig($theme_config);
-        }
+            $config['data']['search_mongodb']['search']['descriptions'] = $mongodb_search_descriptions;
+            $config['data']['search_mongodb']['search']['categories'] = $mongodb_search_categories;
+            $config['data']['search_mongodb']['search']['categories'] = $mongodb_search_categories;
+            $config['data']['search_mongodb']['search']['build_for'] = $mongodb_search_build_for;
 
+        }
         $config['data']['media_types'] = $media_types;
         $config['data']['media_types_pretty_url'] = $media_types_pretty_url;
         $config['data']['media_types_allowed_visibilities'] = $media_types_allowed_visibilities;
