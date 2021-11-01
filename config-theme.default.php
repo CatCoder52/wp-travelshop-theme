@@ -15,7 +15,7 @@ if(defined('WP_DEBUG_DISPLAY') && WP_DEBUG_DISPLAY === true) {
  * during installation (install.php) this value will be set to wordpress's site_url()
  */
 
-define('SITE_URL', !empty(getenv('SITE_URL')) ? getenv('SITE_URL') : '');
+define('SITE_URL', getenv('SITE_URL'));
 
 // Activate multilanguage support
 // one big change is the routing, if multilanguage, all routes have the language code as prefix:
