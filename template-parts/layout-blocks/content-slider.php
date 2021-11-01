@@ -1,4 +1,5 @@
 <?php
+
 /**
  * <code>
  *  $args = [
@@ -15,11 +16,10 @@
  *          ],
  *          [
  *              'type' => 'product',
- *              'pm-id' => '869696'
+ *              'pm-id' => '545926'
  *              'image_type' => '', // enum(from_product, custom)
  *              'image' => get_stylesheet_directory_uri().'/assets/img/slide-1.jpg', // img src if image_type is 'custom'
  *              'image_alt_tag' => '',
- *              'image_number' => 0, // image number from product image list if type is 'from_product'
  *          ]
  *      ]
  *  ];
@@ -27,43 +27,35 @@
  * @var array $args
  */
 
+use \Pressmind\Travelshop\Search;
+use Pressmind\Travelshop\Template;
+
 if (empty($args)) {
     return;
 }
 
 $slide_items = [];
 foreach ($args['items'] as $item) {
-
-    $image_url = '/placeholder.svg?wh=800x800&text=image not set';
-    $image_alt_tag = '';
     if ($item['type'] == 'product') {
-        if(empty((int)$item['pm-id'])){
+        if(empty($item['pm-id'])){
             continue;
         }
-
-        $item['mo'] = new \Pressmind\ORM\Object\MediaObject((int)$item['pm-id']);
-        if(empty($item['mo']->id) === true){
+        $product = Search::getResult(['pm-id' => (int)$item['pm-id']],2, 1, false, false);
+        if(empty($product['items']) === true){
             continue;
         }
-        $item['moc'] = $item['mo']->getDataForLanguage(TS_LANGUAGE_CODE);
+        $item = array_merge($item, $product['items'][0]);
         if($item['image_type'] == 'from_product' || empty($item['image_type'])){
-            if (is_array($item['moc']->bilder_default)) {
-                if(!isset($item['moc']->bilder_default[$item['image_number']])){
-                    $item['image_number'] = 0;
-                }
-                $item['image'] = $item['moc']->bilder_default[$item['image_number']]->getUri('detail');
-                $item['image_alt_tag'] = $item['moc']->bilder_default[$item['image_number']]->copyright();
-            } elseif (is_string($item['moc']->bilder_default)) {
-                $item['image'] = SITE_URL . "/wp-content/themes/travelshop/assets/img/placeholder.svg.php?wh=250x170&text=" . urlencode($item['moc']->bilder_default);
+            if(!empty($product['items'][0]['bigslide']['url'])) {
+                $item['image'] = $product['items'][0]['bigslide']['url'];
+                $item['image_alt_tag'] = $product['items'][0]['bigslide']['copyright'];
+            }else{
+                $item['image'] = SITE_URL . "/wp-content/themes/travelshop/assets/img/placeholder.svg.php?wh=250x170&text=image is not set";
             }
         }
     }
-
     $slide_items[] = $item;
 }
-
-
-
 ?>
 <section class="content-block content-block-content-slider">
     <?php
@@ -116,7 +108,7 @@ foreach ($args['items'] as $item) {
                             </div>
                             <?php
                         } elseif ($item['type'] == 'product') {
-                            echo $item['mo']->render('Teaser6', TS_LANGUAGE_CODE);
+                            echo Template::render(get_stylesheet_directory().'/template-parts/pm-views/Teaser6.php', $item);
                         }
                         ?>
                     </div>

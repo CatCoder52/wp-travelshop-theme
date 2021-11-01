@@ -28,7 +28,7 @@ get_header();
                 ],
                 [
                     'type' => 'product',
-                    'pm-id' => '1193003',
+                    'pm-id' => '545926',
                     'image_type' => '', // enum (from_product | custom)
                     'image' => '', // img src if image_type is 'custom'
                     'image_alt_tag' => '',
