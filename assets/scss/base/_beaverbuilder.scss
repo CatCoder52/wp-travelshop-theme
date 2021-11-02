@@ -1,0 +1,64 @@
+// -- override containers
+.fl-row.fl-row-full-width {
+  .fl-row-content-wrap {
+    padding-left:0 !important;
+    padding-right:0 !important;
+
+    .fl-row-fixed-width {
+      @extend .container;
+    }
+  }
+}
+
+// -- absolute fixes
+.fl-module-pm-product-teaser,
+.fl-module-pm-product-category-teaser {
+  > .fl-module-content {
+    @extend .container;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+.content-block.content-page {
+  .fl-module>.fl-module-content {
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+
+  .fl-row.fl-row-full-width {
+    .fl-row-content-wrap {
+      padding-left:0 !important;
+      padding-right:0 !important;
+
+      .fl-row-fixed-width {
+        @extend .container;
+      }
+    }
+  }
+
+  .fl-row.fl-row-fixed-width {
+    .fl-row-content-wrap {
+      padding-left:0 !important;
+      padding-right:0 !important;
+
+      .fl-row-fixed-width {
+        @extend .container;
+      }
+    }
+  }
+
+  .fl-row.fl-row-full-width {
+    .fl-row-content-wrap {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+
+      .fl-row-full-width {
+        @extend .container-fluid;
+      }
+    }
+  }
+}
