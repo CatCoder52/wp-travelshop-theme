@@ -261,3 +261,18 @@ define('TS_WP_IMAGES', [
     ],
 
 ]);
+
+
+/**
+ * Prevent the user from uploading images in the worppress image gallery that breaking the rules of a performant website.
+ * The value defines the max size in kilobyte of one image upload
+ */
+define('WP_IMAGE_MAX_UPLOAD_SIZE', 500);
+
+/**
+ * All images are reduced to this size if a image is bigger than the defined value
+ * The value defines the max size in pixel an image can have in this installation
+ * If the image is bigger than defined, we reduce the image size to this value
+ * You have to set this value to the max image image format, as defined in TS_WP_IMAGES
+ */
+define('WP_IMAGE_ORIGINAL_RESIZE_TO', 825);
