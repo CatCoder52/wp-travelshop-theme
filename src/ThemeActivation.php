@@ -34,9 +34,6 @@ class ThemeActivation
                 update_option( $imagetype.'_crop', $prop['crop']);
             }
 
-            // set custom sizes
-            add_image_size( $imagetype, $prop['w'], $prop['h'], $prop['crop'] );
-
         }
 
     }

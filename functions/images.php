@@ -22,3 +22,10 @@ add_filter('image_size_names_choose', function ( $sizes ) {
 
    return $sizes;
 });
+
+foreach(TS_WP_IMAGES as $imagetype => $prop){
+    if(in_array($imagetype, ['post_thumbnail', 'thumbnail', 'medium', 'large'])){
+        continue;
+    }
+    add_image_size( $imagetype, $prop['w'], $prop['h'], $prop['crop']);
+}

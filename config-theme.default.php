@@ -260,6 +260,13 @@ define('TS_WP_IMAGES', [
         'name' => 'Large (uncropped)'
     ],
 
+    'bigslide' => [
+        'w' => 1980,
+        'h' => null,
+        'crop' => 0,
+        'name' => 'Bigslide (uncropped)'
+    ],
+
 ]);
 
 
@@ -275,4 +282,11 @@ define('WP_IMAGE_MAX_UPLOAD_SIZE', 500);
  * If the image is bigger than defined, we reduce the image size to this value
  * You have to set this value to the max image image format, as defined in TS_WP_IMAGES
  */
-define('WP_IMAGE_ORIGINAL_RESIZE_TO', 825);
+define('WP_IMAGE_ORIGINAL_RESIZE_TO', 1980);
+
+/**
+ * Enables WEBP support. jpeg images will be generated with the internal php function imagewebp()
+ */
+define('TS_WP_IMAGE_WEBP_ENABLED', TRUE);
+define('TS_WP_IMAGE_WEBP_QUALITY', 80);
+
