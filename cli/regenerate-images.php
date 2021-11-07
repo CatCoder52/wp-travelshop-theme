@@ -28,6 +28,34 @@ define('WP_USE_THEMES', false);
 
 require_once($wp_path . 'wp-load.php');
 
+function _get_all_image_sizes() {
+    global $_wp_additional_image_sizes;
+
+    $default_image_sizes = get_intermediate_image_sizes();
+
+    foreach ( $default_image_sizes as $size ) {
+        $image_sizes[ $size ][ 'width' ] = intval( get_option( "{$size}_size_w" ) );
+        $image_sizes[ $size ][ 'height' ] = intval( get_option( "{$size}_size_h" ) );
+        $image_sizes[ $size ][ 'crop' ] = get_option( "{$size}_crop" ) ? get_option( "{$size}_crop" ) : false;
+    }
+
+    if ( isset( $_wp_additional_image_sizes ) && count( $_wp_additional_image_sizes ) ) {
+        $image_sizes = array_merge( $image_sizes, $_wp_additional_image_sizes );
+    }
+
+    return $image_sizes;
+}
+
+echo "This script regenerates this image formats:\n";
+foreach(_get_all_image_sizes() as $name => $size){
+    echo " - ".$name." ".$size['width']."x".$size['height']."\n";
+}
+
+if(readline('Type <yes> if you want to regenerate this images sizes:') !== 'yes'){
+    exit;
+}
+
+
 global $wp, $wp_query, $wp_the_query, $wp_rewrite, $wp_did_header;
 
 if ( ! function_exists( 'wp_crop_image' ) ) {
