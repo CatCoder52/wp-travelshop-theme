@@ -66,7 +66,7 @@ if (empty($filteredParams) === false) {
                         <img src="<?php echo $args['image']['url']; ?>"
                              title="<?php echo $args['image']['copyright']; ?>"
                              alt="<?php echo $args['headline']; ?>"
-                             width="<?php echo $args['image']['size']['with']; ?>"
+                             width="<?php echo $args['image']['size']['width']; ?>"
                              height="<?php echo $args['image']['size']['height']; ?>"
                              class="card-img-top"
                              loading="lazy">
