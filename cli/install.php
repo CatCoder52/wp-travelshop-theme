@@ -115,6 +115,17 @@ if($first_install) {
     $config['development']['image_handling']['processor']['webp_support'] = true;
 
     // Setup Image Derivatives
+
+    $config['development']['image_handling']['processor']['derivatives']['thumbnail'] = [];
+    $config['development']['image_handling']['processor']['derivatives']['thumbnail']['max_width'] = 125;
+    $config['development']['image_handling']['processor']['derivatives']['thumbnail']['max_height'] = 83;
+    $config['development']['image_handling']['processor']['derivatives']['thumbnail']['preserve_aspect_ratio'] = true;
+    $config['development']['image_handling']['processor']['derivatives']['thumbnail']['crop'] = true;
+    $config['development']['image_handling']['processor']['derivatives']['thumbnail']['horizontal_crop'] = "center";
+    $config['development']['image_handling']['processor']['derivatives']['thumbnail']['vertical_crop'] = "center";
+    $config['development']['image_handling']['processor']['derivatives']['thumbnail']['webp_create'] = true;
+    $config['development']['image_handling']['processor']['derivatives']['thumbnail']['webp_quality'] = 80;
+
     $config['development']['image_handling']['processor']['derivatives']['teaser'] = [];
     $config['development']['image_handling']['processor']['derivatives']['teaser']['max_width'] = 250;
     $config['development']['image_handling']['processor']['derivatives']['teaser']['max_height'] = 170;
