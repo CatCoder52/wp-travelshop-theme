@@ -3,8 +3,6 @@
  * @var object $settings defined by beaver builder module
  */
 
-
-
 $args = [];
 foreach($settings->slides as $slide){
 
@@ -13,6 +11,7 @@ foreach($settings->slides as $slide){
             'type' => $slide->type,
             'title' => $slide->headline,
             'text' => $slide->text,
+            'image_post_id' => $slide->image,
             'image' => $slide->image_src,
             'image_alt_tag' => $slide->image_alt_text,
             'btn_link' => $slide->btn_link,

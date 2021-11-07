@@ -8,6 +8,7 @@
  *             'type' => 'content', // enum(content, product)
  *             'title' => 'Weihnachtsmarkt auf der Fraueninsel mit Gut Aiderbichl',
  *             'text' => 'Ein romantisches Wintermärchen, das jedes Jahr Besucher von Nah und Fern aufs Neue begeistert, ist der Christkindlmarkt auf der Frauninsel. Festliche Beleuchtung, feinstes kunstwerk ...',
+ *             'image_post_id' => 12,
  *             'image' => get_stylesheet_directory_uri().'/assets/img/slide-1.jpg',
  *             'image_alt_tag' => '',
  *             'btn_link' => '/blog/',
@@ -53,6 +54,8 @@ foreach ($args['items'] as $item) {
                 $item['image'] = SITE_URL . "/wp-content/themes/travelshop/assets/img/placeholder.svg.php?wh=250x170&text=image is not set";
             }
         }
+    }elseif($item['type'] == 'content' && !empty($item['image_post_id'])){
+        $item['image'] = wp_get_attachment_image_url( $item['image_post_id'], 'bigslide');
     }
     $slide_items[] = $item;
 }
