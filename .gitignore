@@ -10,3 +10,4 @@ assets/scss/*.map
 assets/scss/.sass-cache/
 assets/scss/vendors/bootstrap/.sass-cache/
 .env
+cli/nohup.out
