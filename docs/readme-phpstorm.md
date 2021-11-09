@@ -7,10 +7,14 @@ This guide describes the initial and basic PHPStorm configuration.
 ![](assets/phpstorm-1.jpg)
 
 ### 2. Clone Project
-Select "Clone" from git menu
+Select "Clone" from git menu (this menu is only available if any project is open)...
 ![](assets/phpstorm-2.jpg)
 
-Select your git account and select your travelshop repo
+... or if no project is open, select "Get from VCS"  
+![](assets/phpstorm-11.jpg)
+
+
+After that, select your git account and select your travelshop repo
 ![](assets/phpstorm-3.jpg)
 
 
