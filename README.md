@@ -103,6 +103,7 @@ In most cases, this is the basic setup for each travelshop:
 * [System requirements](./docs/readme-system-requirements.md)
 * [Step by step guide for installation & customization](./docs/readme-step-by-step-guide.md) (!recommend for onboarding)
 * [Installation Documentation](./docs/readme-installation.md)
+* [PHPStorm Setup](./docs/readme-phpstorm.md)
 * [Track changes in your own project/github repo](./docs/readme-track-changes-in-new-projects.md)
   
 ### Main developing topics
