@@ -44,6 +44,7 @@ Check if everything is working:
 * Change a *.scss file, the scss watcher creates automatically the *.css file. After the css file is created, the csso filewatcher automatically creates the *.min.css file.
 
 ![](assets/phpstorm-8.jpg)
+
 Change code, build your site and commit your stuff using commit 
 
 ### 5. Run composer install
@@ -57,9 +58,11 @@ This is only required for a better code completion.
 Download wordpress source, extract it to a folder of your choice and set this as external library. 
 
 Right click on "External Libraries" > "Configure PHP Include Paths"
+
 ![](assets/phpstorm-9.jpg)
 
 Add the path to your wordpress source
+
 ![](assets/phpstorm-10.jpg)
 
 ### 6. Ready
