@@ -25,7 +25,6 @@ foreach($settings->slides as $slide){
             'image_type' => $slide->product_image_type,
             'image' => $slide->product_custom_image_src,
             'image_alt_tag' => $slide->product_custom_image_alt_text,
-            'image_number' => $slide->product_custom_image_number
         ];
     }
 }
