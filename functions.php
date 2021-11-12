@@ -39,6 +39,9 @@ require_once getenv('CONFIG_THEME');
 // pressmind web-core sdk
 require_once 'bootstrap.php';
 
+// register admin setting page (wpsf based)
+require_once 'admin-settings/register-settings-page.php';
+
 // admin/system related functions
 require_once 'src/ThemeActivation.php';
 require_once 'src/AdminPage.php';

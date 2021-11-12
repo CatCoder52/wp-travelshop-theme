@@ -71,8 +71,8 @@ global $PMTravelShop;
             <div class="col-auto align-self-center">
                 <div class="travelshop_hotline_batch">
                     <small>Service-Hotline</small><br/>
-                    <a href="#">+49 180 654 321</a>
-                    <a class="phone-link" href="#">
+                    <a href="tel:<?php echo do_shortcode('[ts-company-hotline]');?>"><?php echo do_shortcode('[ts-company-hotline]');?></a>
+                    <a class="phone-link" href="tel:<?php echo do_shortcode('[ts-company-hotline]');?>">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone" width="35"
                              height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" fill="none"
                              stroke-linecap="round" stroke-linejoin="round">
