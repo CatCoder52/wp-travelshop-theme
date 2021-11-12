@@ -64,20 +64,21 @@
                         Kontakt
                     </div>
                     <p>
-                        <strong>Touroperator GmbH</strong><br>
-                        Urlaubsgasse 1<br>
-                        54321 Musterstadt
+                        <strong><?php echo do_shortcode('[ts-company-name]');?></strong><br>
+                        <?php echo do_shortcode('[ts-company-street]');?><br>
+                        <?php echo do_shortcode('[ts-company-zip]');?>
+                        <?php echo do_shortcode('[ts-company-city]');?>
                     </p>
                     <p>
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone" width="16" height="16" viewBox="0 4 25 24" stroke-width="2" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
-                        </svg> <a href="tel:01234">01234 567889</a><br>
+                        </svg> <a href="tel:<?php echo do_shortcode('[ts-company-hotline]');?>"><?php echo do_shortcode('[ts-company-hotline]');?></a><br>
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="16" height="16" viewBox="0 2 24 24" stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <rect x="3" y="5" width="18" height="14" rx="2" />
                             <polyline points="3 7 12 13 21 7" />
-                        </svg> <a href="mailto:info@example.de">info@example.de</a>
+                        </svg> <a href="mailto:<?php echo do_shortcode('[ts-company-mail]');?>"><?php echo do_shortcode('[ts-company-email]');?></a>
                     </p>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-3">
@@ -104,7 +105,6 @@
                     echo do_shortcode('[ts-searchroutes]');
                     ?>
                 </div>
-
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="h5">
                         Newsletter
@@ -112,7 +112,6 @@
                     <p>
                         Abonniere unseren Newsletter und verpasse keine Aktion!
                     </p>
-
                     <form class="input-group mt-4" action="#" method="post">
                         <input class="form-control" type="text" placeholder="E-Mail Adresse">
                         <div class="input-group-append">
@@ -131,8 +130,19 @@
             </div>
         </div>
     </div>
+    <div class="travelshop_meta_footer">
+        <div class="container">
+            <?php
+            $args = [
+                'menu_location' => 'footer_meta_menu'
+            ];
+            load_template_transient(get_template_directory().'/template-parts/footer/meta_menu.php', false, $args);
+            ?>
+        </div>
+    </div>
 </footer>
 <?php
+load_template_transient(get_template_directory().'/template-parts/layout-blocks/cookie-consent.php', false);
 wp_footer();
 ?>
 </body>

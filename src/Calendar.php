@@ -59,6 +59,11 @@ class Calendar
 
     }
 
+    /**
+     * @deprecated
+     * @return array
+     * @throws \Exception
+     */
     public static function getTravelMonthRanges(){
         $db = \Pressmind\Registry::getInstance()->get('db');
         $config = \Pressmind\Registry::getInstance()->get('config');

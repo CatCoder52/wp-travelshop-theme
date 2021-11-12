@@ -9,6 +9,7 @@ add_action('init', function () {
         'mobile' => __('Mobile Menu', 'travelshop'),
         'footer_column_1' => __('Footer Column 1', 'travelshop'),
         'footer_column_2' => __('Footer Column 2', 'travelshop'),
+        'footer_meta_menu' => __('Footer Meta Menu', 'travelshop')
     );
 
     register_nav_menus($locations);

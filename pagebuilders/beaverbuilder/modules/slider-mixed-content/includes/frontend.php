@@ -6,9 +6,9 @@
 $args = [];
 foreach($settings->slides as $slide){
 
-    if($slide->type == 'content'){
+    if($slide->slide_type == 'content'){
         $args['items'][] = [
-            'type' => $slide->type,
+            'type' => $slide->slide_type,
             'title' => $slide->headline,
             'text' => $slide->text,
             'image_post_id' => $slide->image,
@@ -18,13 +18,14 @@ foreach($settings->slides as $slide){
             'btn_link_target' => $slide->btn_link_target,
             'btn_label' => $slide->btn_label,
         ];
-    }else if($slide->type == 'product'){
+    }else if($slide->slide_type == 'product'){
         $args['items'][] = [
-            'type' => $slide->type,
+            'type' => $slide->slide_type,
             'pm-id' => trim($slide->{'pm-id'}),
             'image_type' => $slide->product_image_type,
             'image' => $slide->product_custom_image_src,
             'image_alt_tag' => $slide->product_custom_image_alt_text,
+            'image_number' => $slide->product_custom_image_number
         ];
     }
 }

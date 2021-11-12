@@ -63,9 +63,9 @@ FLBuilder::register_settings_form('mixed-slide-form', array(
                             'default'       => ''
                         ),
 
-                        'type'     => array(
+                        'slide_type'     => array(
                             'type'          => 'select',
-                            'label'         => 'Slide-Type',
+                            'label'         => __('Slide-Type', 'fl-builder'),
                             'help' => '',
                             'default' => 'content',
                             'options'       => array(
@@ -89,7 +89,7 @@ FLBuilder::register_settings_form('mixed-slide-form', array(
                     'fields'        => array( // Section Fields
                         'image'    => array(
                             'type'          => 'photo',
-                            'label'         => 'Slide Image'
+                            'label'         => __('Slide-Image', 'fl-builder'),
                         ),
 
                         'image_alt_text'     => array(

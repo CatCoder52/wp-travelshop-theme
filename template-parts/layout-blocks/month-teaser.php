@@ -5,7 +5,8 @@
  *  $args = (
  *          [headline] => Reise-Empfehlungen
  *          [text] => Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.
- *      )
+ *         [id_object_type] => 123
+ * )
  * </code>
  * @var array $args
  */
@@ -14,15 +15,6 @@ use Pressmind\HelperFunctions;
 use Pressmind\Travelshop\Calendar;
 use Pressmind\Travelshop\RouteHelper;
 
-/**
- * @var int $id_object_type
- */
-
-global $id_object_type;
-
-if (empty($id_object_type) === true) {
-    $id_object_type = TS_TOUR_PRODUCTS;
-}
 
 $travel_months = Calendar::getTravelMonthRanges();
 
@@ -81,7 +73,7 @@ if (empty($travel_months)) {
                                 $image_url = '/placeholder.svg?wh=80x80&text='.HelperFunctions::monthNumberToLocalMonthName($item['from']->format('n'));
                             }
                             ?>
-                            <a href='<?php echo RouteHelper::get_url_by_object_type($id_object_type) . '/?pm-o=date_departure-asc&pm-dr='.$item['from']->format('Ymd').'-'.$item['to']->format('Ymd'); ?>' title="<?php echo $month_title; ?>">
+                            <a href='<?php echo RouteHelper::get_url_by_object_type($args['id_object_type']) . '/?pm-o=date_departure-asc&pm-dr='.$item['from']->format('Ymd').'-'.$item['to']->format('Ymd'); ?>' title="<?php echo $month_title; ?>">
                                 <div class="month-teaser-image">
                                     <div>
                                         <img src="<?php echo $image_url; ?>"

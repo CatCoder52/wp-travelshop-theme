@@ -291,3 +291,9 @@ define('TS_WP_IMAGE_WEBP_ENABLED', TRUE);
 define('TS_WP_IMAGE_WEBP_QUALITY', 80);
 
 
+/**
+ * Enables Cookie Consent
+ * Set UA ID for Google Tag Manager
+ */
+define('TS_COOKIE_CONSENT', TRUE);
+define('TS_GOOGLETAGMANAGER_UA_ID', 'UA-1234-1');

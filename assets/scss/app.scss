@@ -4,6 +4,7 @@
 @import "vendors/tiny-slider/tiny-slider";
 @import "vendors/daterangepicker/daterangepicker";
 @import "vendors/pretty-dropdowns/prettydropdowns";
+@import "vendors/cookieconsent/cookieconsent";
 
 // -- abstracts
 @import "abstracts/variables";
@@ -50,6 +51,8 @@
 @import "components/product-calendar";
 @import "components/month-teaser";
 @import "components/content-slider";
+@import "components/history";
+@import "components/team";
 
 // -- layout
 @import "layout/footer";
