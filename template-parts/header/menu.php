@@ -49,7 +49,7 @@ if (has_nav_menu('primary') === true) {
                                     <?php
                                     foreach ($item->wpse_children as $child_items) {
                                         ?>
-                                        <a class="dropdown-item <?php if ( !empty($menu_items['active_ids']) && in_array( $item->ID, $menu_items['active_ids']) ) { echo "active"; } ?>"
+                                        <a class="dropdown-item <?php if ( !empty($menu_items['active_ids']) && in_array( $child_items->ID, $menu_items['active_ids']) ) { echo "active"; } ?>"
                                            href="<?php echo $child_items->url ?>">
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                  class="icon icon-tabler icon-tabler-caret-right" width="15" height="15"
