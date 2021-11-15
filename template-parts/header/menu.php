@@ -30,8 +30,8 @@ if (has_nav_menu('primary') === true) {
                             <?php
                         } else { // Level 2
                             ?>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle <?php if ( !empty($menu_items['active_ids']) && in_array( $item->ID, $menu_items['active_ids']) ) { echo "active"; } ?>" href="#" id="navbarDropdown"
+                            <li class="nav-item dropdown <?php if ( !empty($menu_items['active_ids']) && in_array( $item->ID, $menu_items['active_ids']) ) { echo "active"; } ?>">
+                                <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown"
                                    role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <?php echo $item->title; ?>

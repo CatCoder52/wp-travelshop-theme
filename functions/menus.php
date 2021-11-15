@@ -113,8 +113,6 @@ function activeIds(array &$elements, $currentId)
             $parentId = $element->menu_item_parent;
 
 
-
-
             if ( !in_array($element->ID, $breadcrumb) ) {
                 array_push($breadcrumb, $element->ID);
             }
