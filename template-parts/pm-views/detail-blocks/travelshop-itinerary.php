@@ -45,7 +45,7 @@ if (empty($mo->getItinerarySteps())) {
 <section class="travelshop-itinerary">
 
     <?php 
-    foreach ($mo->getItinerarySteps() as $step) { 
+    foreach ($mo->getItinerarySteps() as $key => $step) { 
         foreach ($step->sections as $section) { ?>
 
             <div class="travelshop-itinerary-step">
@@ -59,27 +59,15 @@ if (empty($mo->getItinerarySteps())) {
                     </svg>
                 </h3>
 
-                <?php echo $section->content->description; ?>
-
                 <div class="travelshop-itinerary-step-more">
 
                     <div class="travelshop-itinerary-step-desc">
-                        <p>
-                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
-                            sed diam nonumy eirmod tempor invidunt ut labore et dolore 
-                            magna aliquyam erat, sed diam voluptua. At vero eos et 
-                            accusam et justo duo dolores et ea rebum. Stet clita kasd 
-                            gubergren, no sea takimata sanctus est Lorem ipsum dolor 
-                            sit amet. Lorem ipsum dolor sit amet, consetetur 
-                            sadipscing elitr, sed diam nonumy eirmod tempor invidunt 
-                            ut labore et dolore magna aliquyam erat, sed diam voluptua. 
-                            At vero eos et accusam et justo duo dolores et ea rebum. 
-                            Stet clita kasd gubergren, no sea takimata sanctus est 
-                            Lorem ipsum dolor sit amet.
-                        </p>
-                    </div>
 
-                    <div class="travelshop-itinerary-step-gallery">
+                        <?php echo $section->content->description; ?>
+
+                    </div>
+                    
+                    <div class="travelshop-itinerary-step-gallery it-gallery-<?php echo $key; ?>">
                         <?php foreach($step->document_media_objects as $picture) { ?>
                             <a href="<?php echo $picture->getUri('detail'); ?>" data-lightbox="itinerary-step-<?php echo $step->id; ?>">
                               <img src="<?php echo $picture->getUri('teaser'); ?>" alt="<?php echo $picture->alt; ?>" />
@@ -89,6 +77,12 @@ if (empty($mo->getItinerarySteps())) {
                             </a>
                         <?php }
                         ?>
+                    </div>
+
+                    <div class="travelshop-itinerary-step-catering">
+
+                        Hier kommt die Verpflegung hin
+
                     </div>
 
                 </div>

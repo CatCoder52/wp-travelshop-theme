@@ -71,14 +71,82 @@ jQuery(function ($) {
         }
     });
 
+    // --------------------------------
+    // --- Travelshop Detail Image Slider
+    // --------------------------------
+    if ($('.travelshop-image-slider').length > 0) {
+        var slider = tns({
+            container: '.travelshop-image-slider',
+            items: 1,
+            mouseDrag: true,
+            navContainer: '.travelshop-image-slider',
+            navAsThumbnails: true,
+            edgePadding: 15,
+            responsive: {
+                992: {
+                    disable: true
+                }
+            },
+            controlsText: ['<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
+                '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
+                '  <polyline points="15 6 9 12 15 18" />\n' +
+                '</svg>', '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
+                '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
+                '  <polyline points="9 6 15 12 9 18" />\n' +
+                '</svg>'
+            ]
+        })
+    }
+
     // -----------------------------------------------
     // -- Itinerary Steps Gallery
     // -----------------------------------------------
     if ($('.travelshop-itinerary').length > 0) {
-        $('.travelshop-itinerary-step-open').click(function (e) {
+        $('.travelshop-itinerary-step-open').on('click', function (e) {
             var targetSection = $(e.target).parent().parent();
             targetSection.toggleClass('step-open');
         });
+        $('.travelshop-itinerary-toggleall .it-open').on('click', function () {
+            $('.travelshop-itinerary-step').addClass('step-open');
+            $('.it-close').css('display', 'inline-block');
+            $('.it-open').css('display', 'none');
+        });
+        $('.travelshop-itinerary-toggleall .it-close').on('click', function () {
+            $('.travelshop-itinerary-step').removeClass('step-open');
+            $('.it-open').css('display', 'inline-block');
+            $('.it-close').css('display', 'none');
+        });
+    }
+
+    // --------------------------------
+    // --- Itinerary Steps Image Slider
+    // --------------------------------
+    if ($('.travelshop-itinerary-step-gallery').length > 0) {
+
+        $('.travelshop-itinerary-step-gallery').each(function (key) {
+            let slider = tns({
+                container: '.it-gallery-' + key,
+                items: 1,
+                mouseDrag: true,
+                navContainer: '.it-gallery-' + key,
+                navAsThumbnails: true,
+                edgePadding: 15,
+                responsive: {
+                    992: {
+                        disable: true
+                    }
+                },
+                controlsText: ['<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
+                    '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
+                    '  <polyline points="15 6 9 12 15 18" />\n' +
+                    '</svg>', '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
+                    '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
+                    '  <polyline points="9 6 15 12 9 18" />\n' +
+                    '</svg>'
+                ]
+            })
+        });
+
     }
 
     // -----------------------------------------------
@@ -130,33 +198,6 @@ jQuery(function ($) {
         })
         $('.travelshop-detail-gallerythumb').on('click', function () {
             addGalleryClasses();
-        })
-    }
-
-    // --------------------------------
-    // --- Travelshop Detail Image Slider
-    // --------------------------------
-    if ($('.travelshop-image-slider').length > 0) {
-        var slider = tns({
-            container: '.travelshop-image-slider',
-            items: 1,
-            mouseDrag: true,
-            navContainer: '.travelshop-image-slider',
-            navAsThumbnails: true,
-            edgePadding: 15,
-            responsive: {
-                992: {
-                    disable: true
-                }
-            },
-            controlsText: ['<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
-                '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
-                '  <polyline points="15 6 9 12 15 18" />\n' +
-                '</svg>', '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
-                '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
-                '  <polyline points="9 6 15 12 9 18" />\n' +
-                '</svg>'
-            ]
         })
     }
 
@@ -307,9 +348,13 @@ jQuery(function ($) {
     $.event.special.touchstart = {
         setup: function (_, ns, handle) {
             if ((ns.indexOf('noPreventDefault') > -1)) {
-                this.addEventListener("touchstart", handle, {passive: false});
+                this.addEventListener("touchstart", handle, {
+                    passive: false
+                });
             } else {
-                this.addEventListener("touchstart", handle, {passive: true});
+                this.addEventListener("touchstart", handle, {
+                    passive: true
+                });
             }
         }
     };
@@ -321,7 +366,7 @@ jQuery(function ($) {
     // --- Content slider
     // -----------------------
 
-    if ( $('.content-block-content-slider .content-slider--inner').length > 0 && $('.content-block-content-slider .content-slider--inner .content-slider--item').length > 1 ) {
+    if ($('.content-block-content-slider .content-slider--inner').length > 0 && $('.content-block-content-slider .content-slider--inner .content-slider--item').length > 1) {
 
         var contentSlider = tns({
             container: '.content-slider--inner',

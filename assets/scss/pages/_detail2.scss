@@ -1,5 +1,32 @@
 .travelshop-detail-container {
 
+    .modal-wrapper {
+        .modal-inner {
+            display: flex;
+            flex-direction: column;
+
+            .modal-body-outer {
+                max-height: 100vh;
+
+                @include media-breakpoint-up(md) {
+                    max-height: 80vh;
+                }
+
+                .modal-body {
+                    .content-block-detail-booking-inner {
+                        margin-bottom: 0;
+
+                        .booking-row {
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     .container {
         .row {
             >.breadcrumb-wrapper {
@@ -47,6 +74,7 @@
                         font-size: 2rem;
                         margin-bottom: .25rem;
                         padding-right: .5rem;
+                        line-height: 1;
                     }
 
                     .add-to-wishlist {
@@ -102,6 +130,64 @@
 
             }
         }
+    }
+
+    .travelshop-itinerary-wrapper {
+        .travelshop-itinerary-toggleall {
+            text-align: right;
+
+            .btn {
+                display: inline-block;
+                font-size: .8rem;
+                cursor: pointer;
+
+                &.it-close {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .travelshop-detail-services-desktop,
+    .travelshop-detail-usps {
+        display: flex;
+        align-items: center;
+        padding: .5rem 0 0 0;
+        font-size: .8rem;
+
+        @include media-breakpoint-up(xl) {
+            font-size: .9rem;
+        }
+
+        ul {
+            list-style-type: none;
+            line-height: 1.2;
+            padding: 0;
+            margin: 0;
+
+            @include media-breakpoint-up(xl) {
+                line-height: 1.4;
+            }
+
+            li {
+                position: relative;
+                padding-left: 2rem;
+                margin: .5rem 0;
+
+                &:before {
+                    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-check' width='25' height='25' viewBox='0 0 24 24' stroke-width='2.2' stroke='%2327ae60' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M5 12l5 5l10 -10' /%3E%3C/svg%3E");
+                    position: absolute;
+                    left: 0;
+                    top: -.2rem;
+                }
+            }
+        }
+    }
+
+    .travelshop-detail-usps {
+        font-size: 1rem;
+        margin: .5rem 0;
+        padding: 0;
     }
 
     .travelshop-detail-services-desktop,
@@ -240,48 +326,21 @@
             display: block;
             border-bottom: 1px solid #bbb;
 
-            h2,
+            .travelshop-detail-services-desktop {
+                display: flex;
+            }
+
+            h2 {
+                line-height: 1;
+                margin-bottom: .5rem;
+            }
+
             p {
                 margin-bottom: 0;
             }
 
             p {
                 font-size: .9rem;
-            }
-        }
-
-        .travelshop-detail-services-desktop {
-            display: flex;
-            align-items: center;
-            padding: .5rem 0 0 0;
-            font-size: .8rem;
-
-            @include media-breakpoint-up(xl) {
-                font-size: .9rem;
-            }
-
-            ul {
-                list-style-type: none;
-                line-height: 1.2;
-                padding: 0;
-                margin: 0;
-
-                @include media-breakpoint-up(xl) {
-                    line-height: 1.4;
-                }
-
-                li {
-                    position: relative;
-                    padding-left: 2rem;
-                    margin: .5rem 0;
-
-                    &:before {
-                        content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-check' width='25' height='25' viewBox='0 0 24 24' stroke-width='2.2' stroke='%2327ae60' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M5 12l5 5l10 -10' /%3E%3C/svg%3E");
-                        position: absolute;
-                        left: 0;
-                        top: -.2rem;
-                    }
-                }
             }
         }
     }
