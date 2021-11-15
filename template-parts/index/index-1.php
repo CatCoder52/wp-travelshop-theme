@@ -3,6 +3,7 @@ use \Pressmind\Travelshop\Search;
 get_header();
 ?>
     <main>
+        <h1>Test-Commit // Webhook Test</h1>
         <?php
         /**
          * it's possible to load each of these layout-blocks with a shortcode, like
