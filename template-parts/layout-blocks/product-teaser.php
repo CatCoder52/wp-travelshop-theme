@@ -1,9 +1,12 @@
 <?php
+use Pressmind\Travelshop\Search;
+use Pressmind\Travelshop\Template;
+
 /**
  * <code>
  *  $args = (
- *          [headline] => Reise-Empfehlungen
- *          [text] => Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.
+ *          [headline] => [TOTAL_RESULT] Reise-Empfehlungen
+ *          [text] => [TOTAL_RESULT] products found. Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.
  *          [view] => Teaser1
  *          [search] => Array
  *                  (
@@ -19,11 +22,9 @@
  * @var array $args
  */
 
-//@TODO add cache -update/no_cache logic here
-$search = BuildSearch::fromRequest(isset($args['search']) ? $args['search'] : [], 'pm', true, 4);
-$products = $search->getResults();
-// if no items where found, we avoid output like headline or intro text...
-if(count($products) == 0){
+
+$result = Search::getResult(isset($args['search']) ? $args['search'] : [], 2, 4, true, false);
+if(count($result['items']) == 0){
     return;
 }
 ?>
@@ -33,17 +34,16 @@ if(count($products) == 0){
         <div class="col-12">
             <?php if(!empty($args['headline'])){ ?>
             <h2 class="mt-0">
-                <?php echo $args['headline'];?>
+                <?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['headline']);?>
             </h2>
             <?php } ?>
             <?php if(!empty($args['text'])){ ?>
             <p>
-                <?php echo $args['text'];?>
+                <?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['text']);?>
             </p>
             <?php } ?>
         </div>
         <?php } ?>
-
         <?php
 
        // Example 1: Using the the shortcode ts-list for displaying the product teasers
@@ -51,7 +51,7 @@ if(count($products) == 0){
        // Note: the View-Template "Teaser1" can be found in travelshop/template-parts/pm-views/{OBJECT_TYPE_NAME}_{VIEWNAME}.php
 
 
-       // Example 2: Using the pressmind® web-core SDK
+       // Example 2: Using the pressmind® web-core SDK (MySQL)
        //$conditions = array();
        //$conditions[] = Pressmind\Search\Condition\ObjectType::create(TS_TOUR_PRODUCTS);
        //$search = new Pressmind\Search($conditions, ['start' => 0, 'length' => 4], ['' => 'RAND()']);
@@ -68,10 +68,10 @@ if(count($products) == 0){
         if(!empty($args['view']) && preg_match('/^[0-9A-Za-z\_]+$/', $args['view']) !== false){
             $view = $args['view'];
         }
-        foreach ($products as $product) {
-            echo  $product->render($view, TS_LANGUAGE_CODE);
-        }
 
+        foreach ($result['items'] as $item) {
+            echo Template::render(get_stylesheet_directory().'/template-parts/pm-views/'.$view.'.php', $item);
+        }
        ?>
     </div>
 </section>

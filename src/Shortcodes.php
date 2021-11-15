@@ -13,8 +13,122 @@ class Shortcodes
         add_shortcode('ts-searchpage', [$this, 'searchPage']);
         add_shortcode('ts-layoutblock', [$this, 'layoutBlock']);
         add_shortcode('ts-modal', [$this, 'modal']);
+        add_shortcode('ts-company-name', [$this, 'ts_company_name']);
+        add_shortcode('ts-company-nick-name', [$this, 'ts_company_nick_name']);
+        add_shortcode('ts-company-street', [$this, 'ts_company_street']);
+        add_shortcode('ts-company-city', [$this, 'ts_company_city']);
+        add_shortcode('ts-company-zip', [$this, 'ts_company_zip']);
+        add_shortcode('ts-company-country', [$this, 'ts_company_country']);
+        add_shortcode('ts-company-phone', [$this, 'ts_company_phone']);
+        add_shortcode('ts-company-fax', [$this, 'ts_company_fax']);
+        add_shortcode('ts-company-email', [$this, 'ts_company_email']);
+        add_shortcode('ts-company-hotline', [$this, 'ts_company_hotline']);
+        add_shortcode('ts-company-hotline-info', [$this, 'ts_company_hotline_info']);
+        add_shortcode('ts-company-hotline-opening-times', [$this, 'ts_company_hotline_opening_times']);
+        add_shortcode('ts-company-hotline-info-2', [$this, 'ts_company_hotline_info_2']);
+        add_shortcode('ts-company-facebook', [$this, 'ts_company_facebook']);
+        add_shortcode('ts-company-twitter', [$this, 'ts_company_twitter']);
+        add_shortcode('ts-company-insta', [$this, 'ts_company_insta']);
+        add_shortcode('ts-company-youtube', [$this, 'ts_company_youtube']);
+        add_shortcode('ts-company-qualitybus', [$this, 'ts_company_qualitybus']);
+
         // TODO
         // add_shortcode('ts-ct-items', [$this, 'categoryTreeItems']);
+    }
+
+    public function ts_company_name()
+    {
+        return $this->get_wpsf_option('contact', 'contact', 'ts-company-name');
+    }
+
+    public function ts_company_nick_name()
+    {
+        return $this->get_wpsf_option('contact', 'contact', 'ts-company-nick-name');
+    }
+
+    public function ts_company_street()
+    {
+        return $this->get_wpsf_option('contact', 'contact', 'ts-company-street');
+    }
+
+    public function ts_company_zip()
+    {
+        return $this->get_wpsf_option('contact', 'contact', 'ts-company-zip');
+    }
+
+    public function ts_company_city()
+    {
+        return $this->get_wpsf_option('contact', 'contact', 'ts-company-city');
+    }
+
+    public function ts_company_country()
+    {
+        return $this->get_wpsf_option('contact', 'contact', 'ts-company-country');
+    }
+
+    public function ts_company_phone()
+    {
+        return $this->get_wpsf_option('contact', 'contact', 'ts-company-phone');
+    }
+
+    public function ts_company_fax()
+    {
+        return $this->get_wpsf_option('contact', 'contact', 'ts-company-fax');
+    }
+
+    public function ts_company_email()
+    {
+        return $this->get_wpsf_option('contact', 'contact', 'ts-company-email');
+    }
+
+    public function ts_company_hotline()
+    {
+        return $this->get_wpsf_option('contact', 'hotline', 'ts-company-hotline');
+    }
+
+    public function ts_company_hotline_info()
+    {
+        return $this->get_wpsf_option('contact', 'hotline', 'ts-company-hotline-info');
+    }
+
+    public function ts_company_hotline_opening_times()
+    {
+        return $this->get_wpsf_option('contact', 'hotline', 'ts-company-hotline-opening-times');
+    }
+
+    public function ts_company_hotline_info_2()
+    {
+        return $this->get_wpsf_option('contact', 'hotline', 'ts-company-hotline-info-2');
+    }
+
+    public function ts_company_facebook()
+    {
+        return $this->get_wpsf_option('contact', 'socialmedia', 'ts-company-facebook');
+    }
+
+    public function ts_company_twitter()
+    {
+        return $this->get_wpsf_option('contact', 'socialmedia', 'ts-company-twitter');
+    }
+
+    public function ts_company_insta()
+    {
+        return $this->get_wpsf_option('contact', 'socialmedia', 'ts-company-insta');
+    }
+
+    public function ts_company_youtube()
+    {
+        return $this->get_wpsf_option('contact', 'socialmedia', 'ts-company-youtube');
+    }
+
+    public function ts_company_qualitybus()
+    {
+        return $this->get_wpsf_option('contact', 'socialmedia', 'ts-company-qualitybus');
+    }
+
+    public function get_wpsf_option($tab_id, $section_id, $field_id)
+    {
+        return wpsf_get_setting('travelshop_wpsf', $tab_id . '_' . $section_id, $field_id);
     }
 
     /**
@@ -44,28 +158,17 @@ class Shortcodes
             }
         }
 
-
-        $search = \BuildSearch::fromRequest($atts);
-        $mediaObjects = $search->getResults();
-
-        /*
-        $total_result = $search->getTotalResultCount();
-        $current_page = $search->getPaginator()->getCurrentPage();
-        $pages = ceil($total_result / $search->getPaginator()->getPageSize());
-        */
-
+        $result = Search::getResult($atts);
         $view = 'Teaser1';
         if (empty($atts['view']) === false) {
             $view = $atts['view'];
         }
-
-        $output = '<div class="container">
-                <div class="row">';
-        foreach ($mediaObjects as $mediaObject) {
-            $output .= $mediaObject->render($view, 'de');
+        $output = '<div class="container"><div class="row">';
+        foreach ($result['items'] as $item) {
+            $item['class'] = 'col-12 col-md-6 col-lg-4';
+            $output .= Template::render(get_stylesheet_directory() . '/template-parts/pm-views/' . $view . '.php', $item);
         }
-        $output .= '</div>
-                </div>';
+        $output .= '</div></div>';
         return $output;
 
     }
@@ -88,7 +191,7 @@ class Shortcodes
                 continue;
             }
 
-            $page = $PMTravelShop->RouteProcessor->get_url_by_object_type($id_object_type);
+            $page = RouteHelper::get_url_by_object_type($id_object_type);
             $output .= '<li><a href="' . site_url() . '/' . $page . '/' . '">' . $page . '</a></li>';
         }
         $output .= '</ul>';
@@ -104,7 +207,7 @@ class Shortcodes
     public function searchPage($atts)
     {
         global $PMTravelShop;
-        $page = $PMTravelShop->RouteProcessor->get_url_by_object_type(constant($atts['page']));
+        $page = RouteHelper::get_url_by_object_type(constant($atts['page']));
         if ($page == false) {
             return null;
         }
@@ -136,7 +239,7 @@ class Shortcodes
         foreach ($treeItems as $item) {
             $item->toStdClass();
             $href = $url . '?pm-c[' . $fieldname . ']=' . $item->id;
-            $output .= '<li><a href="'.$href.'">'.$item->name.'</a></li>';
+            $output .= '<li><a href="' . $href . '">' . $item->name . '</a></li>';
 
         }
         $output .= '</ul>';
@@ -148,19 +251,20 @@ class Shortcodes
      * @param $atts
      * @return string
      */
-    public function layoutBlock($atts){
+    public function layoutBlock($atts)
+    {
 
-        if(!isset($atts['f'])){
+        if (!isset($atts['f'])) {
             return;
         }
 
-        $layoutblock_filename = '/template-parts/layout-blocks/'.$atts['f'].'.php';
-        if(!file_exists(get_template_directory().$layoutblock_filename)){
-            return '<pre>file not found: '.$layoutblock_filename.'</pre>';
+        $layoutblock_filename = '/template-parts/layout-blocks/' . $atts['f'] . '.php';
+        if (!file_exists(get_template_directory() . $layoutblock_filename)) {
+            return '<pre>file not found: ' . $layoutblock_filename . '</pre>';
         }
 
         ob_start();
-        load_template(get_template_directory().$layoutblock_filename, false, $atts);
+        load_template(get_template_directory() . $layoutblock_filename, false, $atts);
         $contents = ob_get_contents();
         ob_end_clean();
         return $contents;
@@ -172,7 +276,8 @@ class Shortcodes
      * @param $atts
      * @return false|string
      */
-    public function modal($atts){
+    public function modal($atts)
+    {
 
         $id_post = (int)$atts['id_post'];
         if (empty($id_post) || empty($atts['name'])) {
@@ -182,8 +287,8 @@ class Shortcodes
 
         $post = get_post($id_post);
 
-        if(empty($post)){
-            return 'error: post for id ('.$id_post.') for not found (cf7-shortcode [modal... ])';
+        if (empty($post)) {
+            return 'error: post for id (' . $id_post . ') for not found (cf7-shortcode [modal... ])';
         }
 
         $args = [
@@ -191,11 +296,11 @@ class Shortcodes
             'title' => $post->post_title,
             'id_post' => $id_post,
             'div_only' => (!empty($atts[0]) && $atts[0] == 'create_div_only'),
-            'content' =>  apply_filters('the_content', $post->post_content)
+            'content' => apply_filters('the_content', $post->post_content)
         ];
 
         ob_start();
-        require get_template_directory().'/template-parts/layout-blocks/modalscreen.php';
+        require get_template_directory() . '/template-parts/layout-blocks/modalscreen.php';
         $output = ob_get_contents();
         ob_end_clean();
         return $output;

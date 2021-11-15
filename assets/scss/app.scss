@@ -5,6 +5,7 @@
 @import "vendors/daterangepicker/daterangepicker";
 @import "vendors/pretty-dropdowns/prettydropdowns";
 @import "vendors/lightbox2/lightbox.min.css";
+@import "vendors/cookieconsent/cookieconsent";
 
 // -- abstracts
 @import "abstracts/variables";
@@ -16,6 +17,7 @@
 // -- base
 @import "base/typography";
 @import "base/container";
+@import "base/beaverbuilder";
 
 // -- components
 @import "components/offcanvas";
@@ -51,6 +53,11 @@
 @import "components/travelshop-price-box";
 @import "components/travelshop-gmaps-box";
 @import "components/travelshop-itinerary";
+@import "components/product-calendar";
+@import "components/month-teaser";
+@import "components/content-slider";
+@import "components/history";
+@import "components/team";
 
 
 // -- layout

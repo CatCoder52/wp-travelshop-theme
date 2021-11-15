@@ -1,5 +1,7 @@
 <?php
 
+use Pressmind\Travelshop\ThemeActivation;
+
 ini_set('display_errors', 'On');
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
@@ -25,6 +27,34 @@ $wp_path = find_wordpress_base_path() . "/";
 define('WP_USE_THEMES', false);
 
 require_once($wp_path . 'wp-load.php');
+
+function _get_all_image_sizes() {
+    global $_wp_additional_image_sizes;
+
+    $default_image_sizes = get_intermediate_image_sizes();
+
+    foreach ( $default_image_sizes as $size ) {
+        $image_sizes[ $size ][ 'width' ] = intval( get_option( "{$size}_size_w" ) );
+        $image_sizes[ $size ][ 'height' ] = intval( get_option( "{$size}_size_h" ) );
+        $image_sizes[ $size ][ 'crop' ] = get_option( "{$size}_crop" ) ? get_option( "{$size}_crop" ) : false;
+    }
+
+    if ( isset( $_wp_additional_image_sizes ) && count( $_wp_additional_image_sizes ) ) {
+        $image_sizes = array_merge( $image_sizes, $_wp_additional_image_sizes );
+    }
+
+    return $image_sizes;
+}
+
+echo "This script regenerates this image formats:\n";
+foreach(_get_all_image_sizes() as $name => $size){
+    echo " - ".$name." ".$size['width']."x".$size['height']."\n";
+}
+
+if(readline('Type <yes> if you want to regenerate this images sizes:') !== 'yes'){
+    exit;
+}
+
 
 global $wp, $wp_query, $wp_the_query, $wp_rewrite, $wp_did_header;
 
@@ -70,6 +100,12 @@ class RegenerateImages{
          * @var PM_Stateless $PM_Stateless
          */
         global $PM_Stateless;
+
+        /**
+         * update or create new images sizes if some changes are here
+         */
+        $ThemeActivation = new ThemeActivation();
+        $ThemeActivation->setThumbnailsizes();
 
         if (empty($post_id) === true) {
             $attachments = self::get_all_uploads();

@@ -7,7 +7,7 @@ This theme is the perfect starting point in order to build professional travelsh
 ![Device Overview](./docs/assets/mockup.jpg)
 
 #### Demo page
-[https://travelshop-theme.pressmind.de](https://travelshop-theme.pressmind.de)
+[https://development-travelshop-theme-de.pressmind.dev/](https://development-travelshop-theme-de.pressmind.dev/)
 
 #### Screenshot
 ![Overview Image Demo-Page](./docs/assets/overview.jpg)
@@ -41,7 +41,6 @@ Use workbox if you plan a offline mode or a advanced local caching strategy.
 
 ### Additional information
 #### What is it not?
-* It is not the pressmind's truetravel source, it is just a WordPress integration example for the [pressmind® SDK](https://github.com/pressmind/sdk).
 * A full featured, plug & play travelshop.
 * It is not a booking engine, but you can integrate your own booking engine or you can use the pressmind® IB3 booking engine.
 
@@ -104,6 +103,7 @@ In most cases, this is the basic setup for each travelshop:
 * [System requirements](./docs/readme-system-requirements.md)
 * [Step by step guide for installation & customization](./docs/readme-step-by-step-guide.md) (!recommend for onboarding)
 * [Installation Documentation](./docs/readme-installation.md)
+* [PHPStorm Setup](./docs/readme-phpstorm.md)
 * [Track changes in your own project/github repo](./docs/readme-track-changes-in-new-projects.md)
   
 ### Main developing topics

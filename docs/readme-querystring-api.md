@@ -371,15 +371,18 @@ GET https://yoursite.de/search/?pm-c[land_default]=xxx,yyyy
 GET https://yoursite.de/search/?pm-c[land_default]=xxx+yyyy
 ```
 ```
-WORDPRESS SHORTCODE [ts-list pm-c-land_default="xxx+yyyy"]
+WORDPRESS SHORTCODE [ts-list pm-ot="123" pm-c-land_default="xxx+yyyy"]
 
-WORDPRESS SHORTCODE [ts-list pm-c-land_default="xxx,yyyy"]
-! brackets [] are not supported in shortcodes, so the pattern is slightly different to the GET request.
+WORDPRESS SHORTCODE [ts-listpm-ot="123" pm-c-land_default="xxx,yyyy"]
+! Brackets [] are not supported in shortcodes, so the pattern is slightly different to the GET request.
+! The parameter pm-ot (object type id) is mandatory
+
 ```
 ```php
 // pressmind/sdk search conditions
 $search = new Pressmind\Search(
     [
+        \Pressmind\Search\Condition\ObjectType::create(123),
         \Pressmind\Search\Condition\Category::create('land_default', ['xxx', 'yyy'], 'OR'),
         // \Pressmind\Search\Condition\Category::create('land_default', ['xxx', 'yyy'], 'AND'),
     ]

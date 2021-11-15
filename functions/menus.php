@@ -9,6 +9,7 @@ add_action('init', function () {
         'mobile' => __('Mobile Menu', 'travelshop'),
         'footer_column_1' => __('Footer Column 1', 'travelshop'),
         'footer_column_2' => __('Footer Column 2', 'travelshop'),
+        'footer_meta_menu' => __('Footer Meta Menu', 'travelshop')
     );
 
     register_nav_menus($locations);
@@ -55,7 +56,7 @@ function buildTree(array &$elements, $parentId = 0)
                     $element->wpse_children = [];
                     foreach($treeItems as $item){
                         $tmp = new stdClass();
-                        $tmp->url =  site_url() . '/' . $PMTravelShop->RouteProcessor->get_url_by_object_type($id_object_type) . '/?pm-c['.$var_name.']='.$item->id;
+                        $tmp->url =  site_url() . '/' . Pressmind\Travelshop\RouteHelper::get_url_by_object_type($id_object_type) . '/?pm-c['.$var_name.']='.$item->id;
                         $tmp->title = $item->name;
                         $element->wpse_children[] = $tmp;
                     }

@@ -30,13 +30,18 @@
        // border-top: 1px solid #ccc;
        // border-bottom: 1px solid #ccc;
 
-       a {
-         color: #777;
-       }
+        &:first-child {
+          border-top-left-radius: $border-radius;
+          border-bottom-left-radius: $border-radius;
+        }
 
-       .breadcrumb-sep {
-         margin: 0 .3rem;
-       }
+        &:last-child {
+          border-top-right-radius: $border-radius;
+          border-bottom-right-radius: $border-radius;
+          border-right: 1px solid #ccc;
+        }
+      }
+    }
 
        &.bc-separator {
          display: none;

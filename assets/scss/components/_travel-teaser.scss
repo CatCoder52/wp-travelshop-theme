@@ -4,7 +4,6 @@
 	border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 
 	&:first-child {
-		padding-top: 1rem;
 		border-top: 1px solid rgba(0, 0, 0, 0.125);
 	}
 
@@ -340,8 +339,8 @@
 			}
 
 			img {
-				border-bottom-left-radius: calc(0.25rem - 1px);
-				border-bottom-right-radius: calc(0.25rem - 1px);
+				border-bottom-left-radius: calc(#{$card-border-radius} - 1px);
+				border-bottom-right-radius: calc(#{$card-border-radius} - 1px);
 			}
 
 			@include media-breakpoint-up(md) {

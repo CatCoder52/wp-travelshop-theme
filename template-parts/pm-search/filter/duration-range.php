@@ -1,51 +1,39 @@
 <?php
+
+use Pressmind\Registry;
+
 /**
- * @var \Pressmind\Search $search
+ * @TODO
+ *  - check if the duration is in the range and hide the other option values
+ *  - the ranges are working only with mongo at this moment. change this.
+ * @var $args ['duration_min']
+ * @var $args ['duration_max']
  */
-
-// get the min and max duration, based on the current search
-$dRangeFilter = new Pressmind\Search\Filter\Duration($search);
-$dRange = $dRangeFilter->getResult();
-
-if(empty($dRange->min) || empty($dRange->max)){
-    return;
-}
-
-if (isset($_GET['pm-du']) === true && preg_match('/^([0-9]+)\-([0-9]+)$/', $_GET['pm-du'], $m) > 0) {
-    $duration_from = $m[1];
-    $duration_to = $m[2];
-}else{
-    $duration_from = $dRange->min;
-    $duration_to = $dRange->max;
-}
-
 ?>
-<div class="list-filter-box list-filter-box-price">
+
+<div class="list-filter-box list-filter-box-checkboxes list-filter-box-sorting">
     <div class="list-filter-box-title">
-        <strong>Dauer <small>(in Tagen)</small></strong>
+        <strong>Dauer</strong>
     </div>
     <div class="list-filter-box-body">
-
-        <?php
-        // ion.rangeSlider is used here, see API Docu: @link http://ionden.com/a/plugins/ion.rangeSlider/api.html
-        ?>
-        <input type="text" class="js-range-slider" name="pm-du" value=""
-               data-type="double"
-               data-min="<?php echo $dRange->min; ?>"
-               data-max="<?php echo $dRange->max; ?>"
-               data-from="<?php echo $duration_from; ?>"
-               data-to="<?php echo $duration_to; ?>"
-               data-grid="false"
-               data-prefix=""
-               data-step="1"
-               data-hide-min-max="1"
-               data-hide-min-min="1"
-               data-input-values-separator="-"
-               data-disable="<?php
-               // disable the picker if there is no plausible step to pick
-               echo ($dRange->min == $dRange->max || ($dRange->max - $dRange->min) == 1 ) ? 'true' : 'false';
-               ?>"
-        />
-
+        <select class="form-control mb-0" name="pm-du">
+            <option value="">Dauer beliebig</option>
+            <?php
+            $config = Registry::getInstance()->get('config');
+            foreach ($config['data']['search_mongodb']['search']['touristic']['duration_ranges'] as $range) {
+                ?>
+                <option value="<?php echo implode('-', $range);?>"<?php echo !empty($_GET['pm-du']) && $_GET['pm-du'] == implode('-', $range) ? ' selected' : ''; ?>>
+                    <?php
+                        if(next($config['data']['search_mongodb']['search']['touristic']['duration_ranges'] )){
+                            echo implode('-', $range).' Tage';
+                        }else{
+                            echo $range[0].' Tage und mehr';
+                        }
+                    ?>
+                </option>
+               <?php
+            }
+            ?>
+        </select>
     </div>
 </div>

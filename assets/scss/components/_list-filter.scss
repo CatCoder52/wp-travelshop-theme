@@ -117,6 +117,34 @@
               }
             }
 
+            > .form-check-input:disabled + span {
+              border-color: $primary;
+              background-color: $primary;
+              cursor:default;
+
+              &:after {
+                content: '';
+                display: block;
+                height:2px;
+                width: 6px;
+
+                position: absolute;
+                top: 50%;
+                left: 50%;
+
+                transform: translate(-50%, -50%);
+                background-color: #fff;
+              }
+            }
+            .form-check-input:disabled ~ .form-check-label {
+              color: $body-color;
+            }
+
+            .form-check-input:disabled ~ .form-check-label,
+            .form-check-input:disabled {
+              cursor: default;
+            }
+
             + .form-check {
               margin-top: .25rem;
             }

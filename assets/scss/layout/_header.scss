@@ -76,6 +76,7 @@ body {
 		img {
 			@include media-breakpoint-down(sm) {
 				height: 14px !important;
+				width: auto;
 			}
 		}
 	}
@@ -175,6 +176,20 @@ body {
 		i {
 			font-size: 1.5rem; // 24px;
 		}
+	}
+
+	// -- calendar
+	.calendar.calendar-link {
+		position: relative;
+		transition: all 0.3s;
+
+		svg {
+			stroke: rgb(96, 125, 139) !important;
+		}
+	}
+
+	.p-r-0 {
+		padding-right: 0 !important;
 	}
 
 	// -- wishlist
@@ -302,7 +317,7 @@ body {
 }
 
 // fix the beaver builder admin bar issue on sticky headers
-.fl-builder .header-main {
+.fl-builder-edit .header-main {
 	top: 45px;
 }
 

@@ -1,21 +1,33 @@
 <?php
+
 /**
- * @var $id_object_type
+ * <code>
+ * $args = ['total_result' => 100,
+ *            'current_page' => 1,
+ *            'pages' => 10,
+ *            'page_size' => 10,
+ *            'cache' => [
+ *              'is_cached' => false,
+ *              'info' => []
+ *            ],
+ *            'id_object_type' => 123,
+ *            'duration_min' => 3,
+ *            'duration_max' => 5
+ *            'price_min' => 100
+ *            'price_max' => 200
+ *            'categories' => []
+ *            'items' => [],
+ *            'mongodb' => [
+ *              'aggregation_pipeline' => ''
+ *            ]
+ *           ];
+ * </code>
+ * @var array $args
  */
-
-
-if (empty($_GET['pm-ot']) === true) { // if the id_object_type is not defined by search, we use the information from the route
-    $_GET['pm-ot'] = $id_object_type;
-} else {
-    $id_object_type = (int)$_GET['pm-ot'];
-}
-
-
-$search = BuildSearch::fromRequest($_GET, 'pm', false);
 ?>
 <div class="content-block content-block-list-filter">
     <form id="filter" action="" method="GET">
-        <input type="hidden" name="pm-ot" value="<?php echo $id_object_type; ?>">
+        <input type="hidden" name="pm-ot" value="<?php echo $args['id_object_type']; ?>">
         <div class="list-filter">
             <div class="h4 mt-0 mb-4"><i class="la la-filter"></i> Filter</div>
 
@@ -33,24 +45,10 @@ $search = BuildSearch::fromRequest($_GET, 'pm', false);
                 require 'filter/order.php';
                 require 'filter/price-range.php';
                 require 'filter/duration-range.php';
-
-                // remove the filter from the search result, to allow access to all items in the filter
-                // if you remove this lines, the filter will be collapsed to the possible items that matches
-                // to the current search
-                $remove_items = [];
-                foreach(TS_FILTERS as $filter){
-                    $remove_items[] = 'pm-'.$filter['condition_type'].'['.$filter['fieldname'].']';
-                }
-                //$filter_fieldnames[] = 'pm-ho';
-
-                $filter_search = BuildSearch::rebuild($remove_items);
-
-                // draw filters
-                foreach(TS_FILTERS as $filter){
-                    list($id_tree, $fieldname, $name, $condition_type) = array_values($filter);
+                foreach(TS_FILTERS[$args['id_object_type']] as $filter){
+                    list($fieldname, $name, $behavior) = array_values($filter);
                     require 'filter/category-tree.php';
                 }
-
                 ?>
                 <div class="list-filter-box list-filter-box-submit">
                     <button type="button" class="btn btn-primary btn-block filter-prompt">Filter anwenden</button>

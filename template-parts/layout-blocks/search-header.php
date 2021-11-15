@@ -1,10 +1,17 @@
 <?php
 /**
- *  <code>
+ * <code>
  *  $args['headline']
+ *  $args[total_result] => 112
+ *  $args[current_page] => 1
+ *  $args[pages] => 10
+ *  $args[page_size] => 12
+ *  $args[id_object_type] => 2277
+ *  $args[... some more values search result ...]
  * </code>
  * @var array $args
  */
+
 ?>
 
 <section class="layout-block layout-block-search-header">

@@ -51,6 +51,11 @@ class BeaverBuilderModuleLoader{
         require_once BB_MODULE_TS_DIR . 'modules/icon-teaser/icon-teaser.php';
         require_once BB_MODULE_TS_DIR . 'modules/pm-product-teaser/pm-product-teaser.php';
         require_once BB_MODULE_TS_DIR . 'modules/pm-product-category-teaser/pm-product-category-teaser.php';
+        require_once BB_MODULE_TS_DIR . 'modules/pm-month-teaser/pm-month-teaser.php';
+        require_once BB_MODULE_TS_DIR . 'modules/pm-calendar/pm-calendar.php';
+        require_once BB_MODULE_TS_DIR . 'modules/slider-mixed-content/slider-mixed-content.php';
+        require_once BB_MODULE_TS_DIR . 'modules/history/history.php';
+        require_once BB_MODULE_TS_DIR . 'modules/team/team.php';
     }
 
     /**

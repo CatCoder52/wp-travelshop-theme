@@ -25,7 +25,7 @@
 
 		.panel {
 			border: none;
-			border-radius: 0.25rem;
+			border-radius: $border-radius;
 			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 			margin: 0 0 12px 0px;
 			position: relative;

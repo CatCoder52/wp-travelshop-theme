@@ -1,9 +1,12 @@
 <?php the_breadcrumb(null);?>
-<div class="content-main">
-    <div class="container">
-        <section class="content-block content-block-detail-header">
-            <?php the_title('<h1>', '</h1>'); ?>
-            <?php the_content(); ?>
+<div class="content-main" id="content-main">
+    <?php if ( !is_front_page() ) { ?>
+        <section class="content-block content-page">
+            <div class="container">
+                <?php the_content(); ?>
+            </div>
         </section>
-    </div>
+    <?php } else { ?>
+        <?php the_content(); ?>
+    <?php } ?>
 </div>

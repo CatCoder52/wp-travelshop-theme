@@ -5,6 +5,12 @@ use Exception;
 use Pressmind\DB\Adapter\Pdo;
 
 /**
+ * Mostly the right setting for our market
+ */
+date_default_timezone_set('Europe/Berlin');
+
+
+/**
  * The pressmind lib needs five CONSTANTS to work
  * BASE_PATH: The base path of the application (usually the directory that contains the document_root folder)
  * APPLICATION_PATH: This is the path where all application files are stored (it's a good idea to have the base path outside the document_root of your webserver)
@@ -15,21 +21,6 @@ use Pressmind\DB\Adapter\Pdo;
 define('BASE_PATH', dirname(dirname(dirname(__DIR__))));
 define('APPLICATION_PATH', __DIR__);
 define('WEBSERVER_DOCUMENT_ROOT', BASE_PATH);
-if (php_sapi_name() != "cli") {
-    define('WEBSERVER_HTTP', ((empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == 'off') ? 'http://' : 'https://') . $_SERVER['HTTP_HOST']);
-
-    /**
-     * WebP Support, if support of older Browsers like IE10 is required you can turn off WebP support here by using a conditional state based on request headers fo example
-     */
-    if (empty($_SERVER['HTTP_ACCEPT']) === false) {
-        define('WEBP_SUPPORT', in_array('image/webp', explode(',', $_SERVER['HTTP_ACCEPT'])));
-    }
-} else {
-    define('WEBSERVER_HTTP', 'http://127.0.0.1/');
-
-    // for some cli operations, like the cli/import.php we have to set a bigger memory limit.
-    ini_set('memory_limit', '2024M');
-}
 
 /**
  * The ENV constant is used by the configuration to determine the environmet the application is running in
@@ -65,8 +56,11 @@ require_once APPLICATION_PATH . DIRECTORY_SEPARATOR . 'Custom' . DIRECTORY_SEPAR
 /**
  * Import the composer autoloader
  */
-require_once APPLICATION_PATH . '/vendor/autoload.php';
 
+require_once APPLICATION_PATH . '/vendor/autoload.php';
+// load .env environment, if .env file exists
+$dotenv = \Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
+$dotenv->safeLoad();
 
 /**
  * Loading the configuration
@@ -76,8 +70,25 @@ require_once APPLICATION_PATH . '/vendor/autoload.php';
  * @See the generated pm-config.php file (which is created during the install process) for the required structure and options
  * @See the different config adapters for further information on YAML, XML and INI files (Pressmind\Config\Adapter)
  */
-$config_adapter = new Config('php', HelperFunctions::buildPathString([APPLICATION_PATH, 'pm-config.php']), ENV);
+$config_adapter = new Config('php', HelperFunctions::buildPathString([APPLICATION_PATH, getenv('PM_CONFIG')]), getenv('APP_ENV')  === false ? 'development' : getenv('APP_ENV'));
 $config = $config_adapter->read();
+
+if (php_sapi_name() != "cli") {
+    define('WEBSERVER_HTTP', ((empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == 'off') ? 'http://' : 'https://') . $_SERVER['HTTP_HOST']);
+
+    /**
+     * WebP Support, if support of older Browsers like IE10 is required you can turn off WebP support here by using a conditional state based on request headers fo example
+     */
+    if (empty($_SERVER['HTTP_ACCEPT']) === false) {
+        define('WEBP_SUPPORT', in_array('image/webp', explode(',', $_SERVER['HTTP_ACCEPT'])));
+    }
+} else {
+
+    define('WEBSERVER_HTTP', $config['server']['webserver_http']);
+
+    // for some cli operations, like the cli/import.php we have to set a bigger memory limit.
+    ini_set('memory_limit', '2024M');
+}
 
 /**
  * Configure the database adapter
@@ -98,10 +109,12 @@ try {
         $db->execute('SET SESSION sql_mode = "NO_ENGINE_SUBSTITUTION"');
     }
 
-    /* for debugging, log all mysql queries
+    /* for debugging, log all mysql queries */
+
+    /*
     $db->execute('SET global general_log = 1;');
     $db->execute('SET global log_output = "file"');
-    $db->execute('SET global general_log_file="'.APPLICATION_PATH.'/logs/mysql/query.log"');
+    $db->execute('SET global general_log_file="'.APPLICATION_PATH.'/logs/query.log"');
     */
 
 } catch (Exception $e) {

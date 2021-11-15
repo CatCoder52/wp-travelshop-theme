@@ -1,4 +1,7 @@
 <?php
+use Pressmind\Travelshop\Search;
+use Pressmind\Travelshop\Template;
+
 /**
  * <code>
  *  $args['headline']
@@ -58,7 +61,8 @@
 
                         <div class="teaser-category-image">
                             <a href="<?php echo $teaser['link'];?>" target="<?php echo !empty($teaser['link_target']) ? $teaser['link_target'] : '_self';?>">
-                                <div class="teaser-image" style="background-image: url('<?php echo $image; ?>');">
+                                <div class="teaser-image" role="img" aria-label="<?php echo !empty($teaser['headline']) ? $teaser['headline'] : ''; ?>" style="background-image: url('<?php echo $image; ?>');">
+
                                 </div>
                                 <div class="teaser-body">
                                     <?php if(!empty($teaser['headline'])){ ?>
@@ -69,23 +73,16 @@
                                 </div>
                             </a>
                         </div>
-
                     <?php
-                        $search = BuildSearch::fromRequest($teaser['search'] ?? [], 'pm', true, 4);
-                        $products = $search->getResults();
-                        if(count($products) > 0){
+                    $result = Search::getResult($teaser['search'] ?? [], 2, 4, true, false);
+                    if(count($result['items']) > 0){
                     ?>
                         <div class="teaser-body">
                             <div class="row teaser-products">
                                 <?php
-                                try{
-                                    foreach ($products as $product) {
-                                        echo  $product->render($args['view'] ?? 'Teaser4', TS_LANGUAGE_CODE);
-                                    }
-                                }catch (Exception $e){
-                                    echo $e->getMessage();
+                                foreach ($result['items'] as $item) {
+                                    echo Template::render(__DIR__.'/../pm-views/'.($args['view'] ?? 'Teaser4').'.php', $item);
                                 }
-
                                 ?>
                             </div>
                         </div>

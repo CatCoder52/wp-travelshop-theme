@@ -13,6 +13,11 @@ if (php_sapi_name() !== 'cli') {
 $first_install = !file_exists(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'pm-config.php');
 
 if($first_install) {
+
+    if(!file_exists('../.env')){
+        copy('../.env.default', '../.env');
+    }
+
     $sdk_directory = dirname(__DIR__)
         . DIRECTORY_SEPARATOR
         . 'vendor'
@@ -30,33 +35,60 @@ if($first_install) {
     echo "Please enter some initial configuration data.\n";
 
     $default_config_file = $sdk_directory . DIRECTORY_SEPARATOR . 'config.default.json';
-
     $config = json_decode(file_get_contents($default_config_file), true);
 
-    $db_host = readline("Enter Database Host [127.0.0.1]: ");
-    $db_port = readline("Enter Database Port [3306]: ");
-    $db_name = readline("Enter Database Name: ");
-    $db_user = readline("Enter Database Username: ");
-    $db_password = readline("Enter Database User Password: ");
-    $pressmind_api_key = readline("Enter Pressmind API Key: ");
-    $pressmind_api_user = readline("Enter Pressmind API User: ");
-    $pressmind_api_password = readline("Enter Pressmind API Password: ");
+    // add command line support
+    $options = getopt('',[
+        'db_host::',
+        'db_port::',
+        'db_name::',
+        'db_user::',
+        'db_password::',
+        'mongodb_uri::',
+        'mongodb_db::',
+        'pressmind_api_key::',
+        'pressmind_api_user::',
+        'pressmind_api_password::',
+        'webserver_http::'
+    ]);
+
+    // if no values are set by parameter, we ask...
+    $webserver_http = !empty($options['webserver_http']) ? $options['webserver_http'] : readline("Enter Webserver HTTP e.g. 'https://domain.de' [http://127.0.0.1]: ");
+    $db_host =  !empty($options['db_host']) ? $options['db_host'] : readline("Enter MySQL Database Host [127.0.0.1]: ");
+    $db_port = !empty($options['db_port']) ? $options['db_port'] : readline("Enter MySQL Database Port [3306]: ");
+    $db_name = !empty($options['db_name']) ? $options['db_name'] : readline("Enter MySQL Database Name: ");
+    $db_user = !empty($options['db_user']) ? $options['db_user'] : readline("Enter MySQL Database Username: ");
+    $db_password = !empty($options['db_password']) ? $options['db_password'] : readline("Enter MySQL Database Password: ");
+    $mongodb_uri = !empty($options['mongodb_uri']) ? $options['mongodb_uri'] : readline("Enter MongoDB Connection String e.g 'mongodb+srv://...': ");
+    $mongodb_db = !empty($options['mongodb_db']) ? $options['mongodb_db'] : readline("Enter MongoDB Database Name: ");
+    $pressmind_api_key = !empty($options['pressmind_api_key']) ? $options['pressmind_api_key'] : readline("Enter Pressmind API Key: ");
+    $pressmind_api_user = !empty($options['pressmind_api_user']) ? $options['pressmind_api_user'] : readline("Enter Pressmind API User: ");
+    $pressmind_api_password = !empty($options['pressmind_api_password']) ? $options['pressmind_api_password'] : readline("Enter Pressmind API Password: ");
+
 
     if(empty($db_host)) $db_host = '127.0.0.1';
     if(empty($db_port)) $db_port = '3306';
+    if(empty($webserver_http)) $webserver_http = 'http://127.0.0.1';
 
     $config['development']['database']['username'] = $db_user;
     $config['development']['database']['password'] = $db_password;
     $config['development']['database']['host'] = $db_host;
     $config['development']['database']['port']= $db_port;
     $config['development']['database']['dbname'] = $db_name;
+    $config['development']['database']['engine'] = 'MySQL';
 
     $config['development']['rest']['client']['api_key'] = $pressmind_api_key;
     $config['development']['rest']['client']['api_user'] = $pressmind_api_user;
     $config['development']['rest']['client']['api_password'] = $pressmind_api_password;
 
-    //Setting some default values in config
+    $config['development']['data']['search_mongodb']['database']['uri'] = $mongodb_uri;
+    $config['development']['data']['search_mongodb']['database']['db'] = $mongodb_db;
+    $config['development']['data']['search_mongodb']['enabled'] = true;
 
+    $config['development']['server']['webserver_http'] = $webserver_http;
+    $config['development']['server']['php_cli_binary'] = PHP_BINARY;
+
+    //Setting some default values in config
     $config['development']['server']['document_root'] = 'BASE_PATH';
     $config['development']['docs_dir'] = 'APPLICATION_PATH/docs';
 
@@ -83,6 +115,17 @@ if($first_install) {
     $config['development']['image_handling']['processor']['webp_support'] = true;
 
     // Setup Image Derivatives
+
+    $config['development']['image_handling']['processor']['derivatives']['thumbnail'] = [];
+    $config['development']['image_handling']['processor']['derivatives']['thumbnail']['max_width'] = 125;
+    $config['development']['image_handling']['processor']['derivatives']['thumbnail']['max_height'] = 83;
+    $config['development']['image_handling']['processor']['derivatives']['thumbnail']['preserve_aspect_ratio'] = true;
+    $config['development']['image_handling']['processor']['derivatives']['thumbnail']['crop'] = true;
+    $config['development']['image_handling']['processor']['derivatives']['thumbnail']['horizontal_crop'] = "center";
+    $config['development']['image_handling']['processor']['derivatives']['thumbnail']['vertical_crop'] = "center";
+    $config['development']['image_handling']['processor']['derivatives']['thumbnail']['webp_create'] = true;
+    $config['development']['image_handling']['processor']['derivatives']['thumbnail']['webp_quality'] = 80;
+
     $config['development']['image_handling']['processor']['derivatives']['teaser'] = [];
     $config['development']['image_handling']['processor']['derivatives']['teaser']['max_width'] = 250;
     $config['development']['image_handling']['processor']['derivatives']['teaser']['max_height'] = 170;
@@ -113,8 +156,18 @@ if($first_install) {
     $config['development']['image_handling']['processor']['derivatives']['detail']['webp_create'] = true;
     $config['development']['image_handling']['processor']['derivatives']['detail']['webp_quality'] = 80;
 
+    $config['development']['image_handling']['processor']['derivatives']['bigslide'] = [];
+    $config['development']['image_handling']['processor']['derivatives']['bigslide']['max_width'] = 1980;
+    $config['development']['image_handling']['processor']['derivatives']['bigslide']['max_height'] = 600;
+    $config['development']['image_handling']['processor']['derivatives']['bigslide']['preserve_aspect_ratio'] = true;
+    $config['development']['image_handling']['processor']['derivatives']['bigslide']['crop'] = true;
+    $config['development']['image_handling']['processor']['derivatives']['bigslide']['horizontal_crop'] = "center";
+    $config['development']['image_handling']['processor']['derivatives']['bigslide']['vertical_crop'] = "center";
+    $config['development']['image_handling']['processor']['derivatives']['bigslide']['webp_create'] = true;
+    $config['development']['image_handling']['processor']['derivatives']['bigslide']['webp_quality'] = 80;
+
     $config_file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'pm-config.php';
-    $config_text = "<?php\n\$config = " . _var_export($config, true) . ';';
+    $config_text = "<?php\n\$config = " . _var_export($config) . ';';
     echo 'Writing config to ' . $config_file . "\n";
     file_put_contents($config_file, $config_text);
 }
@@ -216,6 +269,20 @@ if($args[1] != 'only_static') {
         $media_types = [];
         $media_types_pretty_url = [];
         $media_types_allowed_visibilities = [];
+
+        $searchroutes = [];
+        $theme_config = [];
+        $type_map = [
+            'TOUR' => 'TS_TOUR_PRODUCTS',
+            'HOTEL' => 'TS_HOTEL_PRODUCTS',
+            'HOLIDAYHOME' => 'TS_HOLIDAYHOMES_PRODUCTS',
+            'DAYTRIP' => 'TS_DAYTRIPS_PRODUCTS',
+            'DESTINATION' => 'TS_DESTINATIONS'
+        ];
+
+        if(!isset($config['data']['primary_media_type_ids']) || !is_array($config['data']['primary_media_type_ids'])){
+            $config['data']['primary_media_type_ids'] = [];
+        }
         foreach ($response->result as $item) {
             Writer::write('Parsing media object type ' . $item->type_name, Writer::OUTPUT_SCREEN, 'install', Writer::TYPE_INFO);
             $media_types[$item->id_type] = ucfirst(HelperFunctions::human_to_machine($item->type_name));
@@ -228,12 +295,138 @@ if($args[1] != 'only_static') {
             ];
             $media_types_pretty_url[$item->id_type] = $pretty_url;
             $media_types_allowed_visibilities[$item->id_type] = [30];
+
+            if(isset($type_map[$item->gtxf_product_type])){
+                Writer::write('GTXF product type found for ID '.$item->id_type.' : ' . $item->gtxf_product_type, Writer::OUTPUT_SCREEN, 'install', Writer::TYPE_INFO);
+                $theme_config[$type_map[$item->gtxf_product_type]] = $item->id_type;
+            }
+
+            if(in_array($item->gtxf_product_type, ['TOUR', 'DAYTRIP', 'HOLIDAYHOME'])){
+                $config['data']['primary_media_type_ids'][] = $item->id_type;
+                $searchroutes[$type_map[$item->gtxf_product_type]]['default'] = [
+                            'route' => HelperFunctions::human_to_machine($item->type_name).'-suche',
+                            'title' => $item->type_name.' Suche - Travelshop',
+                            'meta_description' => ''
+                        ];
+            }
+        }
+
+        $theme_config['TS_SEARCH_ROUTES'] = _var_export($searchroutes);
+        $config['data']['primary_media_type_ids'] = array_unique($config['data']['primary_media_type_ids']);
+
+        $response = $client->sendRequest('ObjectType', 'getById', ['ids' => implode(',',$config['data']['primary_media_type_ids'])]);
+        $ts_search = [];
+        $mongodb_search_categories = [];
+        $mongodb_search_descriptions = [];
+        $mongodb_search_build_for= [];
+
+        foreach ($response->result as $item) {
+            if(empty($item->gtxf_product_type)){
+                continue;
+            }
+            $mongodb_search_build_for[$item->id][] = [
+                'language' => NULL,
+                'origin' => 0,
+            ];
+            foreach($item->fields as $field){
+                if(empty($field->sections)){
+                    continue;
+                }
+                if(empty($mongodb_search_descriptions[$item->id]['headline']) ){
+                    $mongodb_search_descriptions[$item->id]['headline'] = [
+                        'field' => 'name',
+                        'from' => null,
+                        'filter' => null,
+                    ];
+                }
+                foreach($field->sections as $section){
+                    if($field->type == 'categorytree'){
+                        $ts_search[$type_map[$item->gtxf_product_type]][] = [
+                            'fieldname' => strtolower($field->var_name.'_'.$section->name),
+                            'name' => $field->name,
+                            'behavior' => 'OR'
+                        ];
+                        $mongodb_search_categories[$item->id][strtolower($field->var_name.'_'.$section->name)] = null;
+                    }
+                    if(in_array($field->type, ['text', 'plaintext']) &&
+                        preg_match('/subline/', $field->var_name) > 0 &&
+                        empty($mongodb_search_descriptions[$item->id]['subline']) ){
+                        $mongodb_search_descriptions[$item->id]['subline'] = [
+                            'field' => strtolower($field->var_name.'_'.$section->name),
+                            'from' => null,
+                            'filter' => '\\Custom\\Filter::strip',
+                        ];
+                    }
+                    if(in_array($field->type, ['text', 'plaintext']) &&
+                        preg_match('/intro|einleitung/', $field->var_name) > 0 &&
+                        empty($mongodb_search_descriptions[$item->id]['intro']) ){
+                        $mongodb_search_descriptions[$item->id]['intro'] = [
+                            'field' => strtolower($field->var_name.'_'.$section->name),
+                            'from' => null,
+                            'filter' => '\\Custom\\Filter::strip',
+                        ];
+                    }
+                    if(in_array($field->type, ['picture']) &&
+                        preg_match('/bilder|picture|image/', $field->var_name) > 0 &&
+                        empty($mongodb_search_descriptions[$item->id]['image']) ){
+                        $mongodb_search_descriptions[$item->id]['image'] = [
+                            'field' => strtolower($field->var_name.'_'.$section->name),
+                            'from' => null,
+                            'filter' => '\\Custom\\Filter::firstPicture',
+                            'params' => [
+                                'derivative' => 'teaser',
+                            ],
+                        ];
+                    }
+                    if(in_array($field->type, ['picture']) &&
+                        preg_match('/bilder|picture|image/', $field->var_name) > 0 &&
+                        empty($mongodb_search_descriptions[$item->id]['bigslide']) ){
+                        $mongodb_search_descriptions[$item->id]['bigslide'] = [
+                            'field' => strtolower($field->var_name.'_'.$section->name),
+                            'from' => null,
+                            'filter' => '\\Custom\\Filter::firstPicture',
+                            'params' => [
+                                'derivative' => 'bigslide',
+                            ],
+                        ];
+                    }
+                    if(in_array($field->type, ['categorytree']) &&
+                        preg_match('/^zielgebiet|^destination/', $field->var_name) > 0 &&
+                        empty($mongodb_search_descriptions[$item->id]['destination']) ){
+                        $mongodb_search_descriptions[$item->id]['destination'] = [
+                            'field' => strtolower($field->var_name.'_'.$section->name),
+                            'from' => null,
+                            'filter' => '\\Custom\\Filter::lastTreeItemAsString',
+                        ];
+                    }
+                    if(in_array($field->type, ['categorytree']) &&
+                        preg_match('/^reiseart/', $field->var_name) > 0 &&
+                        empty($mongodb_search_descriptions[$item->id]['travel_type']) ){
+                        $mongodb_search_descriptions[$item->id]['travel_type'] = [
+                            'field' => strtolower($field->var_name.'_'.$section->name),
+                            'from' => null,
+                            'filter' => '\\Custom\\Filter::lastTreeItemAsString',
+                        ];
+                    }
+                }
+            }
+        }
+
+        if($first_install){
+            $theme_config['TS_FILTERS'] = $theme_config['TS_SEARCH'] = _var_export($ts_search);
+            \Custom\InstallHelper::writeConfig($theme_config);
+            $config['data']['search_mongodb']['search']['descriptions'] = $mongodb_search_descriptions;
+            $config['data']['search_mongodb']['search']['categories'] = $mongodb_search_categories;
+            $config['data']['search_mongodb']['search']['categories'] = $mongodb_search_categories;
+            $config['data']['search_mongodb']['search']['build_for'] = $mongodb_search_build_for;
+
         }
         $config['data']['media_types'] = $media_types;
         $config['data']['media_types_pretty_url'] = $media_types_pretty_url;
         $config['data']['media_types_allowed_visibilities'] = $media_types_allowed_visibilities;
         Registry::getInstance()->get('config_adapter')->write($config);
         Registry::getInstance()->add('config', $config);
+
         $importer->importMediaObjectTypes($ids);
     } catch (Exception $e) {
         Writer::write($e->getMessage(), Writer::OUTPUT_SCREEN, 'install', Writer::TYPE_ERROR);
@@ -271,17 +464,13 @@ if($args[1] == 'with_static' || $args[1] == 'only_static') {
  * @param bool $return
  * @return mixed|string|string[]|null
  */
-function _var_export($expression, $return = false) {
+function _var_export($expression) {
     $export = var_export($expression, true);
     $export = preg_replace("/^([ ]*)(.*)/m", '$1$1$2', $export);
     $array = preg_split("/\r\n|\n|\r/", $export);
     $array = preg_replace(["/\s*array\s\($/", "/\)(,)?$/", "/\s=>\s$/"], [NULL, ']$1', ' => ['], $array);
+    //$array = preg_replace("/[0-9]+\s*\=\>\s*\[\$/", "[", $array);
     $export = join(PHP_EOL, array_filter(["["] + $array));
-    if ($return) {
-        return $export;
-    } else  {
-        echo $export;
-    }
-    return null;
+    return $export;
 }
 // echo '!!!ATTENTION: Please have a look at the CHANGES.md file, there might be important information on breaking changes!!!!' . "\n";

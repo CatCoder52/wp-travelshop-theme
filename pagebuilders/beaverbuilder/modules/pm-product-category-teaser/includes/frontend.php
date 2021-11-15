@@ -55,4 +55,4 @@ foreach($settings->teasers as $teaser){
 }
 
 
-load_template(get_template_directory() . '/template-parts/layout-blocks/product-category-teaser.php', false,  $args);
+load_template_transient(get_template_directory() . '/template-parts/layout-blocks/product-category-teaser.php', false,  $args);

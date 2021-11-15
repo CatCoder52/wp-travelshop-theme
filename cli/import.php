@@ -92,6 +92,7 @@ switch ($args[1]) {
                     $media_object = new MediaObject($id);
                     $media_object->visibility = 10;
                     $media_object->update();
+                    $media_object->createMongoDBIndex();
                     Writer::write('Mediaobject ' . $id . ' successfully depublished (visibility set to 10/nobody)', Writer::OUTPUT_BOTH, 'import', Writer::TYPE_INFO);
                 } catch (Exception $e) {
                     Writer::write($e->getMessage(), Writer::OUTPUT_BOTH, 'import', Writer::TYPE_ERROR);
@@ -107,7 +108,7 @@ switch ($args[1]) {
             foreach ($ids as $id) {
                 try {
                     $media_object = new MediaObject($id);
-                    $media_object->delete();
+                    $media_object->delete(true);
                     Writer::write('Mediaobject ' . $id . ' successfully destroyed', Writer::OUTPUT_BOTH, 'import', Writer::TYPE_INFO);
                 } catch (Exception $e) {
                     Writer::write($e->getMessage(), Writer::OUTPUT_BOTH, 'import', Writer::TYPE_ERROR);
@@ -130,12 +131,16 @@ switch ($args[1]) {
     case '--help':
     case '-h':
     default:
-        $helptext = "usage: import.php [fullimport | mediaobject | itinerary | objecttypes] [<single id or commaseparated list of ids>]\n";
+        $helptext = "usage: import.php [fullimport | mediaobject | itinerary | objecttypes | remove_orphans | destroy | depublish] [<single id or commaseparated list of ids>]\n";
         $helptext .= "Example usages:\n";
         $helptext .= "php import.php fullimport\n";
-        $helptext .= "php import.php mediaobject 123456, 78901234 <single or multiple ids allowed>\n";
-        $helptext .= "php import.php objecttypes 123, 456 <singe or multiple ids allowed>\n";
-        $helptext .= "php import.php itinerary 123456 <singe or multiple ids allowed>\n";
+        $helptext .= "php import.php mediaobject 12345,12346  <single/multiple ids allowed  / imports one or more media objects>\n";
+        $helptext .= "php import.php objecttypes 12345,12346  <single/multiple ids allowed / imports media objects by given object types>\n";
+        $helptext .= "php import.php itinerary 12345,12346    <single/multiple ids allowed / imports itineraries for the given media object types>\n";
+        $helptext .= "php import.php destroy 12345,12346      <single/multiple ids allowed / removes the given media objects from the database>\n";
+        $helptext .= "php import.php depublish 12345,12346    <single/multiple ids allowed / sets the given media objects to the visibility=10/nobody state>\n";
+        $helptext .= "php import.php remove_orphans           <removes all orphans from the database that are not delivered by the pressmind api>\n";
+
         echo $helptext;
 }
 

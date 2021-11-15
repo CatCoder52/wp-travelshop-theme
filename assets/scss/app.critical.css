@@ -11716,6 +11716,17 @@ button.select-from-control i.la {
   padding-top: 60px;
   padding-bottom: 30px;
 }
+.footer-main .travelshop_meta_footer ul {
+  list-style-type: none;
+  padding: 0 0 30px 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.footer-main .travelshop_meta_footer ul li {
+  padding: 0;
+  margin: 0 1rem 0.5rem 0;
+}
 
 body {
   margin-top: 70px;
@@ -11789,6 +11800,7 @@ body {
 @media (max-width: 767.98px) {
   .header-main .navbar-brand img {
     height: 14px !important;
+    width: auto;
   }
 }
 .header-main nav.navbar {
@@ -11858,6 +11870,16 @@ body {
 }
 .header-main .toggler.search-toggler i {
   font-size: 1.5rem;
+}
+.header-main .calendar.calendar-link {
+  position: relative;
+  transition: all 0.3s;
+}
+.header-main .calendar.calendar-link svg {
+  stroke: #607d8b !important;
+}
+.header-main .p-r-0 {
+  padding-right: 0 !important;
 }
 .header-main .toggler.wishlist-toggler {
   position: relative;
@@ -11964,7 +11986,7 @@ body {
   top: 32px;
 }
 
-.fl-builder .header-main {
+.fl-builder-edit .header-main {
   top: 45px;
 }
 

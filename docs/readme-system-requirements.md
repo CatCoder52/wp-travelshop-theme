@@ -1,19 +1,20 @@
 # System requirements
 * Linux
-* Command line accesss
+* Command line access
 * PHP >= 7.3.*
 * MySQL or MariaDB
+* MongoDB (actually used as fast search engine)
 * Composer
 * PHP memory limit > 1 GB recommend
 * PHP extensions:
-    * ext-imagick or ext-gd (for best image quality ext-imagick is recommended)
+    * ext-imagick
     * ext-json
     * ext-curl
     * ext-bcmath
     * ext-pdo
     * ext-mbstring
     * ext-readline
-* a pressmind® license ;-)
+* a pressmind® PIM license ;-)
 
 It is recommended to install the software on an appropriate operating system.
 Linux is highly recommended, for developing purposes Mac OS X might work.  
@@ -22,8 +23,5 @@ For local development on Windows, please consider using a virtual environment li
 
 ### Recommended additional server infrastructure
 * redis-server
-* imagick
-* cwebp
-* jpegoptim
 * amazon s3 bucket for image storage
 * transparent cdn with amazon s3 support

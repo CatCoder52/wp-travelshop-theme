@@ -6,4 +6,4 @@ $args = [];
 $args['query'] = FLBuilderLoop::query( $settings )->query;
 $args['headline'] = $settings->headline;
 $args['text'] = $settings->text;
-load_template(get_template_directory() . '/template-parts/layout-blocks/info-teaser.php', false,  $args);
+load_template_transient(get_template_directory() . '/template-parts/layout-blocks/info-teaser.php', false,  $args);

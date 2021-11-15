@@ -6,7 +6,7 @@ jQuery(function ($) {
         this.endpoint_url = endpoint_url;
         this.requests = new Array();
 
-        this.call = function (query_string, scrollto, total_result_span_id, callback) {
+        this.call = function (query_string, scrollto, total_result_span_id, callback, target) {
 
             for (var i = 0; i < this.requests.length; i++) {
                 this.requests[i].abort();
@@ -17,7 +17,7 @@ jQuery(function ($) {
                 method: 'GET',
                 data: null
             }).done(function (data) {
-                callback(data, query_string, scrollto, total_result_span_id);
+                callback(data, query_string, scrollto, total_result_span_id, target);
             }));
         }
 
@@ -67,14 +67,9 @@ jQuery(function ($) {
             for (var key in data.html) {
                 if (key == 'search-result') {
                     $('#' + key).html(data.html[key]).find('.content-block-travel-cols').fadeIn()
-                        .css({
-                            top: 1000,
-                            position: 'relative'
-                        })
-                        .animate({
-                            top: 0
-                        }, 200, 'swing')
-                } else {
+                        .css({top:1000,position:'relative'})
+                        .animate({top:0}, 80, 'swing')
+                }else{
                     $('#' + key).html(data.html[key]);
                 }
 
@@ -107,11 +102,10 @@ jQuery(function ($) {
         this.scrollTo = function (scrollto) {
             $('html, body').stop().animate({
                 'scrollTop': $(scrollto).offset().top - $('header.affix').height()
-            }, 200, 'swing');
+            }, 150, 'swing');
         }
 
-
-        this.resultHandlerSearchBarStandalone = function (data, query_string, scrollto, total_result_span_id) {
+        this.resultHandlerSearchBarStandalone = function(data, query_string, scrollto, total_result_span_id){
 
             if (total_result_span_id != null) {
                 var total_count_span = $(total_result_span_id);
@@ -128,8 +122,7 @@ jQuery(function ($) {
 
         }
 
-
-        this.renderWishlist = function () {
+        this.renderWishlist = function() {
 
             let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
             if (wishlist !== null && wishlist.length !== 0) {
@@ -156,11 +149,16 @@ jQuery(function ($) {
 
         this.wishlistEventListeners = function () {
 
-            $('body').on('DOMSubtreeModified', '#search-result', function () {
-                _this.wishListInit();
-            });
+            if ($('#search-result').length > 0) {
+                // Create an observer instance linked to the callback function
+                var observer = new MutationObserver(function () {
+                    _this.wishListInit();
+                });
 
-            $('body').on('click', '.remove-from-wishlist', function (e) {
+                observer.observe(document.getElementById('search-result'), {attributes: true, childList: true});
+            }
+
+            $('body').on('click', '.remove-from-wishlist', function(e) {
                 let wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
                 if (!jQuery.isEmptyObject(wishlist)) {
                     if (wishlist.some(wi => wi['pm-id'] == $(e.target).data('pm-id'))) {
@@ -246,53 +244,43 @@ jQuery(function ($) {
             }
 
             // checkboxes
-            let tree_conditions = ['c', 'cl']; // cl = support for trees in object links
-            let i;
-            for (i in tree_conditions) {
-                let selected = [];
-                $(form).find('.category-tree input[data-type="' + tree_conditions[i] + '"]:checked').each(function () {
+            let selected = [];
+            $(form).find('.category-tree input:checked').each(function () {
 
-                    let id_parent = $(this).data('id-parent');
-                    let id = $(this).data('id');
-                    let name = $(this).data('name');
-                    let type = $(this).data('type');
+                let id_parent = $(this).data('id-parent');
+                let id = $(this).data('id');
+                let name = $(this).data('name');
 
-
-                    if (!selected[name]) {
-                        selected[name] = [];
-                    }
-
-                    let i = selected[name].indexOf(id_parent);
-                    if (i > -1) {
-                        // remove if parent is set
-                        selected[name].splice(i, 1);
-                    }
-
-                    i = selected[name].indexOf(id);
-                    if (i == -1) {
-                        // has no parent, add
-                        selected[name].push(id);
-                    }
-
-                });
-
-                let delimiter = ',';
-
-                /* @todo
-                if (selected_item.data('behaivor') == 'AND'){
-                    var delimiter = '+';
-                }
-                */
-
-                let key;
-                for (key in selected) {
-                    query.push('pm-' + tree_conditions[i] + '[' + key + ']=' + selected[key].join(delimiter));
+                if (!selected[name]) {
+                    selected[name] = [];
                 }
 
+                let i = selected[name].indexOf(id_parent);
+                if (i > -1) {
+                    // remove if parent is set
+                    selected[name].splice(i, 1);
+                }
+
+                i = selected[name].indexOf(id);
+                if (i == -1) {
+                    // has no parent, add
+                    selected[name].push(id);
+                }
+
+            });
+
+            let key;
+            let delimiter = ',';
+            for (key in selected) {
+                if ($('input[name='+key+'-behavior]').val() == 'AND'){
+                    delimiter = '%2B';
+                }else{
+                    delimiter = ',';
+                }
+                query.push('pm-c[' + key + ']=' + selected[key].join(delimiter));
             }
 
             // check and set price-range
-
             let price_range = $(form).find('input[name=pm-pr]').val();
             let price_mm_range = $(form).find('input[name=pm-pr]').data('min') + '-' + $(form).find('input[name=pm-pr]').data('max');
             if (price_range && price_mm_range != price_range && price_range != '') {
@@ -300,9 +288,8 @@ jQuery(function ($) {
             }
 
             // check and set duration-range
-            let duration_range = $(form).find('input[name=pm-du]').val();
-            let duration_mm_range = $(form).find('input[name=pm-du]').data('min') + '-' + $(form).find('input[name=pm-du]').data('max');
-            if (duration_range && duration_mm_range != duration_range && duration_range != '') {
+            let duration_range = $(form).find('select[name=pm-du]').val();
+            if (duration_range && duration_range != '') {
                 query.push('pm-du=' + duration_range);
             }
 
@@ -342,6 +329,12 @@ jQuery(function ($) {
             if ($(window).width() > 768) {
                 $("#search-filter").on('change', ".list-filter-box input, .list-filter-box select", function (e) {
                     var form = $(this).closest('form');
+
+                    // if the second level has no more selected items, we fall back to the parents value
+                    if($(this).closest('.form-check.has-second-level').find('input:checked').length == 0){
+                        $(this).closest('.form-check.has-second-level').find('input:disabled:first').attr("disabled", false).prop('checked', true);
+                    }
+
                     var query_string = _this.buildSearchQuery(form);
                     _this.setSpinner('#pm-search-result');
                     _this.call(query_string, '#search-result', null, _this.resultHandlerSearch);
@@ -351,6 +344,12 @@ jQuery(function ($) {
 
             $("#search-filter").on('click', ".list-filter-box-submit", function (e) {
                 var form = $(this).closest('form');
+
+                // if the second level has no more selected items, we fall back to the parents value
+                if($(this).closest('.form-check.has-second-level').find('input:checked').length == 0){
+                    $(this).closest('.form-check.has-second-level').find('input:disabled:first').attr("disabled", false).prop('checked', true);
+                }
+
                 var query_string = _this.buildSearchQuery(form);
                 _this.setSpinner('#pm-search-result');
                 _this.call(query_string, '#search-result', null, _this.resultHandlerSearch);
@@ -359,7 +358,6 @@ jQuery(function ($) {
 
         }
 
-
         this.searchbox = function () {
 
             /**
@@ -367,7 +365,7 @@ jQuery(function ($) {
              * The query string is added to the form > a.btn > href
              * If the search box is on the same site as the search result, than the ajax search query is fired
              */
-            $(".search-box input, .search-box  select").on('change', function (e) {
+            $('#main-search').on('change', '.search-box input, .search-box, select', function (e) {
 
                 let form = $(this).closest('form');
 
@@ -393,14 +391,383 @@ jQuery(function ($) {
 
         }
 
+        this.searchboxSwitch = function (){
+            $(".search-wrapper--tabs_btn").on('click', function (e) {
+                $(this).parents().find(".search-wrapper--tabs_btn").toggleClass('is--active');
+
+                let query_string = 'action=searchbar&pm-ot='+$(this).data('pm-ot');
+                _this.call(query_string, null, null, _this.resultHandlerSearchBar);
+
+            });
+        }
+
+        this.resultHandlerSearchBar = function(data){
+
+            for (var key in data.html) {
+                $('#' + key).html(data.html[key]);
+            }
+
+            _this.autoCompleteInit();
+            _this.dateRangePickerInit();
+            _this.initCategoryTreeSearchBarFields();
+        }
+
+        this.autoCompleteInit = function (){
+            if ($('.auto-complete').length > 0) {
+                console.log('auto autocomplete init');
+                $('.auto-complete').autocomplete({
+                    serviceUrl: '/wp-content/themes/travelshop/pm-ajax-endpoint.php?action=autocomplete',
+                    type: 'get',
+                    dataType: 'json',
+                    paramName: 'q',
+                    deferRequestBy: 0,
+                    minChars: 2,
+                    width: 'flex',
+                    groupBy: 'category',
+                    preventBadQueries: false,
+                    tabDisabled: true,
+                    preserveInput: true,
+                    onSelect: function (suggestion) {
+                        if (suggestion.data.type == 'link') {
+                            document.location.href = suggestion.data.url;
+                        } else if (suggestion.data.type == 'search') {
+                            var url = $(this).parents('form').attr('action');
+                            url += '?' + suggestion.data.search_request;
+                            document.location.href = url;
+                        }
+                    }
+                })
+            }
+        }
+
+        this.dateRangePickerInit = function (){
+            if ($('[data-type="daterange"]').length > 0) {
+
+                let easterDate = _this.theEasterDate(dayjs().year());
+                if(easterDate.isBefore(dayjs())){
+                    easterDate = _this.theEasterDate(dayjs().add(1, 'year').year());
+                }
+
+                let pfingstenDate = _this.theEasterDate(dayjs().year()).add(49, 'days');
+                if(pfingstenDate.isBefore(dayjs())){
+                    pfingstenDate = _this.theEasterDate(dayjs().add(1, 'year').year()).add(49, 'days');
+                }
+
+                let rosenmontagDate = _this.theEasterDate(dayjs().year()).subtract(48, 'days');
+                if(rosenmontagDate.isBefore(dayjs())){
+                    rosenmontagDate = _this.theEasterDate(dayjs().add(1, 'year').year()).subtract(48, 'days');
+                }
+
+
+                let picker = $('[data-type="daterange"]').daterangepicker({
+                    "ranges": {
+                        'Heute': [dayjs(), dayjs()],
+                        'Abreise in 30 Tagen': [dayjs().add(30, 'days'), dayjs().add(1, 'month')],
+                        'Abreise in 60 Tagen': [dayjs().add(60, 'days'), dayjs().add(1, 'month')],
+                        'in diesem Monat': [dayjs().startOf('month'), dayjs().endOf('month')],
+                        'über Rosenmontag': [rosenmontagDate.subtract(7, 'days'), rosenmontagDate],
+                        'über Ostern': [easterDate.subtract(7, 'days'), easterDate],
+                        'über Pfingsten': [pfingstenDate.subtract(7, 'days'), pfingstenDate],
+                        'über Weihnachten': [dayjs().date(15).month(11), dayjs().date(24).month(11)],
+                        'über Silvester': [dayjs().date(25).month(11), dayjs().date(31).month(11)],
+                        'im nächsten Monat': [dayjs().add(1, 'month').startOf('month'), dayjs().add(1, 'month').endOf('month')],
+                    },
+                    "showWeekNumbers": false,
+                    "autoUpdateInput": false,
+                    "alwaysShowCalendars": true,
+                    "showDropdowns": true,
+                    "minDate": $('[data-type="daterange"]').data('mindate'),
+                    "maxDate": $('[data-type="daterange"]').data('maxdate'),
+                    "showCustomRangeLabel": false,
+                    // "autoApply": true,
+                    "locale": {
+                        "format": "DD.MM.YYYY",
+                        "separator": " - ",
+                        "applyLabel": "Auswahl übernehmen",
+                        "fromLabel": "Von",
+                        "toLabel": "Bis",
+                        "customRangeLabel": "Custom",
+                        "weekLabel": "W",
+                        "daysOfWeek": [
+                            "So",
+                            "Mo",
+                            "Di",
+                            "Mi",
+                            "Do",
+                            "Fr",
+                            "Sa"
+                        ],
+                        "monthNames": [
+                            "Januar",
+                            "Februar",
+                            "März",
+                            "April",
+                            "Mai",
+                            "Juni",
+                            "Juli",
+                            "August",
+                            "September",
+                            "Oktober",
+                            "November",
+                            "Dezember"
+                        ],
+
+                        "firstDay": 1,
+                        "buttonClasses": "btn btn-outline-secondary btn-block",
+                        "applyButtonClasses": "btn btn-outline-secondary btn-block",
+                        "cancelClass": "btn-default",
+                        "cancelLabel": '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>'
+                    },
+                    /*
+                    "startDate": dayjs().startOf('hour'),
+                    "endDate": dayjs().startOf('hour').add(64, 'hour')
+                    */
+                }, function (start, end, label) {
+                    if ($(window).width() <= 767) {
+                        $([document.documentElement, document.body]).animate({
+                            scrollTop: $('.travelshop-datepicker').offset().top - 83
+                        }, 500);
+                    }
+                    //console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+                });
+
+
+                $('[data-type="daterange"]').on('apply.daterangepicker', function (ev, picker) {
+
+                    $(this).val(picker.startDate.format('DD.MM.') + ' - ' + picker.endDate.format('DD.MM.YYYY'));
+
+                    // build the a pm ready query string
+                    $(this).data('value', picker.startDate.format('YYYYMMDD') + '-' + picker.endDate.format('YYYYMMDD'));
+
+                    $(this).trigger('change');
+                });
+
+
+                $('[data-type="daterange"]').on('cancel.daterangepicker', function (ev, picker) {
+                    $(this).val('');
+                    $(this).data('value', '');
+                    $(this).trigger('change');
+                });
+
+                document.addEventListener("DOMContentLoaded", function (event) {
+                    $('.travelshop-datepicker-input').on('click', function () {
+                        $('.daterangepicker select').prettyDropdown({
+                            height: 30
+                        });
+                    });
+                    $('.monthselect').on('change', function () {
+                        $('.daterangepicker select').prettyDropdown({
+                            height: 30
+                        });
+                    });
+                });
+
+                // -- show/hide clear button in datepicker
+                $('.travelshop-datepicker-input').on('change', function (e) {
+                    if ($(e.target).val() != '') {
+                        $(e.target).parent().siblings('.datepicker-clear').show();
+                    } else {
+                        $(e.target).parent().siblings('.datepicker-clear').hide();
+                    }
+                });
+
+            }
+        }
+
+        /**
+         * based on this magic date (easter sunday), it's possible to calculate some special dates:
+         *
+         * offset to german feiertag from the easterdate
+         * - Weiberfastnacht	-52
+         * - Rosenmontag	-48
+         * - Fastnachtsdienstag	-47
+         * - Aschermittwoch	-46
+         * - Gründonnerstag	-3
+         * - Karfreitag	-2
+         * - Ostersonntag	0
+         * - Ostermontag	+1
+         * - Christi Himmelfahrt	+39
+         * - Pfingstsonntag	+49
+         * - Pfingstmontag	+50
+         * - Fronleichnam	+60
+         *
+         * @param Y Year YYYY
+         * @returns dayjs
+         */
+        this.theEasterDate = function (Y) {
+            var C = Math.floor(Y/100);
+            var N = Y - 19*Math.floor(Y/19);
+            var K = Math.floor((C - 17)/25);
+            var I = C - Math.floor(C/4) - Math.floor((C - K)/3) + 19*N + 15;
+            I = I - 30*Math.floor((I/30));
+            I = I - Math.floor(I/28)*(1 - Math.floor(I/28)*Math.floor(29/(I + 1))*Math.floor((21 - N)/11));
+            var J = Y + Math.floor(Y/4) + I + 2 - C + Math.floor(C/4);
+            J = J - 7*Math.floor(J/7);
+            var L = I - J;
+            var M = 3 + Math.floor((L + 40)/44);
+            var D = L + 28 - 31*Math.floor(M/4);
+
+            return dayjs().date(D).month(M - 1).year(Y);
+        }
+
+
+        /**
+         * Adds the multi item select feature to the the default bootstrap dropdown box
+         */
+        this.initCategoryTreeSearchBarFields = function(){
+
+            if ($('.dropdown-menu-select').length > 0) {
+
+                // -- prevent dropdown close when clicked inside
+                $('.dropdown-menu-select').on('click', function (e) {
+                    e.stopPropagation();
+                });
+
+                $('.dropdown-menu-select .filter-prompt').on('click', function (e) {
+                    e.preventDefault();
+
+                    $(this).parents('.dropdown').find('.dropdown-toggle').trigger('click');
+
+                    e.stopPropagation();
+                })
+
+                // -- make dropdown span-checkboxes clickable
+                $('.multi-level-checkboxes .form-check span').on('click', function (e) {
+                    if ($(e.target).siblings('input').is(':checked')) {
+                        $(e.target).siblings('input').prop('checked', false).trigger('change');
+                    } else {
+                        $(e.target).parent().find('input').prop('checked', true).trigger('change');
+                    }
+                });
+
+
+                // -- create label text on input change, put it into span
+                $('.dropdown-menu-select').find('input').on('change', function (e) {
+
+                    var placeHolderTag = $(this).parents('.dropdown').find('.selected-options'),
+                        placeHolderDefaultText = placeHolderTag.data('placeholder'),
+                        placeHolderGetText = placeHolderTag.text(),
+                        placeHolderOptionsText = '',
+                        that = $(this);
+
+                    if (placeHolderGetText != placeHolderDefaultText) {
+                        placeHolderOptionsText = placeHolderGetText;
+                    }
+
+                    var thatValue = that.parent().find('> label').text();
+                    thatValue = $.trim(thatValue);
+
+                    var allBoxes = $(this).parent().parent().find('input');
+                    var allEmpty = true;
+
+                    $(allBoxes).each(function (key, input) {
+                        if (input.checked) {
+                            allEmpty = false;
+                        }
+                    });
+
+                    // function to hide/show the clear-button
+                    if (!allEmpty) {
+                        $(this).parent().parent().parent().parent().find('.dropdownReiseziel .dropdown-clear').show();
+                    } else {
+                        $(this).parent().parent().parent().parent().find('.dropdownReiseziel .dropdown-clear').hide();
+                    }
+
+                    if (that.prop('checked') === true) {
+                        if (placeHolderOptionsText != '') {
+                            placeHolderOptionsText = placeHolderOptionsText + ', ' + thatValue;
+                        } else {
+                            placeHolderOptionsText = thatValue;
+                        }
+                    } else {
+                        if (placeHolderGetText.indexOf(',') != -1) {
+                            if (placeHolderGetText.indexOf(thatValue) == 0) {
+                                placeHolderOptionsText = placeHolderOptionsText.replace(thatValue + ', ', '');
+                            } else {
+                                placeHolderOptionsText = placeHolderOptionsText.replace(', ' + thatValue, '');
+                            }
+                        } else {
+                            placeHolderOptionsText = $.trim(placeHolderDefaultText);
+                        }
+                    }
+
+                    placeHolderTag.text(placeHolderOptionsText);
+
+                });
+
+                $('.dropdown-clear').on('click', function (e) {
+                    e.stopPropagation();
+                    var placeHolderTag = $(e.target).parent().parent().find('.selected-options');
+                    var dropdown = $(e.target).parent().parent().parent().find('.dropdown-menu');
+                    var allBoxes = $(dropdown).find('input');
+
+                    $(allBoxes).each(function (key, input) {
+                        if (input.checked) {
+                            $(input).prop('checked', false).trigger('change');
+                        }
+                    });
+
+                    $(placeHolderTag).empty().text('bitte wählen');
+
+                    $(e.target).hide();
+                });
+
+                // Init on load
+                $('.dropdown-menu-select input:checked').trigger('change');
+
+            }
+
+
+
+        }
+
+        this.initCalendarRowClick = function(){
+            if ( $('.product-calendar-group--items').length > 0 ) {
+                $('.product-calendar-group--items').on('click', '.product-calendar-group-item', function(e) {
+                    e.preventDefault();
+                    let row_id = $(this).data('row-id');
+
+                    if ( $(this).hasClass('is--active') ) { // close
+                        $(this).removeClass('is--active');
+                        $('.product-calendar-group-item--product[data-row-id="'+row_id+'"]').removeClass('is--open');
+
+                    } else { // open & load product
+                        let pm_id = $(this).data('pm-id');
+                        let pm_dr = $(this).data('pm-dr');
+                        $('.product-calendar-group-item').removeClass('is--active');
+                        $('.product-calendar-group-item--product').removeClass('is--open');
+                        $(this).addClass('is--active');
+                        let query_string = 'action=pm-view&view=Teaser5&pm-id='+pm_id+'&pm-dr='+pm_dr;
+                        _this.call(query_string, null, null, _this.calendarRowClickResultHandler, '.product-calendar-group-item--product[data-row-id="'+row_id+'"]');
+                        $('.product-calendar-group-item--product[data-row-id="'+row_id+'"]').addClass('is--open');
+                    }
+                    e.stopPropagation();
+                })
+            }
+        }
+
+        this.calendarRowClickResultHandler = function (data, query_string, scrollto, total_result_span_id, target){
+            $(target).html(data.html);
+            _this.wishlistEventListeners();
+            _this.wishListInit();
+        }
+
+        this.init = function(){
+            _this.renderWishlist();
+            _this.wishlistEventListeners();
+            _this.wishListInit();
+            _this.pagination();
+            _this.searchbox();
+            _this.searchboxSwitch();
+            _this.filter();
+            _this.autoCompleteInit();
+            _this.dateRangePickerInit();
+            _this.initCategoryTreeSearchBarFields();
+            _this.initCalendarRowClick();
+        }
+
     };
 
     var Search = new TSAjax('/wp-content/themes/travelshop/pm-ajax-endpoint.php');
-    Search.renderWishlist();
-    Search.wishlistEventListeners();
-    Search.wishListInit();
-    Search.pagination();
-    Search.searchbox();
-    Search.filter();
-
+    Search.init();
 });

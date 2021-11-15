@@ -59,7 +59,8 @@ $cheapest_price = $args['cheapest_price'];
                                 $tmp = [
                                         'date' => $date,
                                         'booking_package' => $booking_package,
-                                        'occupancies' => []
+                                        'occupancies' => [],
+                                        'discounts' => []
                                 ];
 
 
@@ -70,6 +71,15 @@ $cheapest_price = $args['cheapest_price'];
                                     $cheapest_price_filter->id_booking_package = $housing_option->id_booking_package;
                                     $cheapest_price_filter->id_date = $date->id;
                                     $housing_options_cheapest_price = $mo->getCheapestPrice($cheapest_price_filter);
+
+                                    // get all discounts for this date, to output the biggest available discount
+                                    if(!empty($housing_option->discount)) {
+                                        $discount = $housing_option->discount->toStdClass();
+                                        foreach($discount->scales as $scale){
+                                            $tmp['discount_scales'][$scale->id] = $scale;
+                                        }
+                                    }
+
                                     if(empty($occupancies[$housing_option->occupancy])){ // if is not set
                                         $tmp['occupancies'][$housing_option->occupancy]['option'] = $housing_option;
                                         $tmp['occupancies'][$housing_option->occupancy]['cheapest_price'] = $housing_options_cheapest_price;
@@ -120,10 +130,16 @@ $cheapest_price = $args['cheapest_price'];
                                      */
                                     $housing_options_cheapest_price_secondary = $row['occupancies'][1]['cheapest_price'];
 
-                                        /**
+                                    /**
                                      * @var $booking_package \Pressmind\ORM\Object\Touristic\Booking\Package
                                      */
                                     $booking_package = $row['booking_package'];
+
+
+                                    /**
+                                     * @var $discount_scales \Pressmind\ORM\Object\Touristic\Option\Discount\Scale[]
+                                     */
+                                    $discount_scales = $row['discount_scales'];
 
 
 
@@ -259,7 +275,12 @@ $cheapest_price = $args['cheapest_price'];
                                                 echo $housing_option_secondary->name. ' Zuschlag: ';
                                                 $diff =  $housing_options_cheapest_price_secondary->price_total - $housing_options_cheapest_price_primary->price_total;
                                                 echo PriceHandler::format($diff);
-                                                // bis zu X% Kinderrabatt
+
+                                                // return the discount row, like "Kinderrabatt: 0‑2 Jahre: bis zu 100%; 2‑13 Jahre: bis zu 8%"
+                                                if(!empty($discount_scales)){
+                                                    echo '<span class="d-none d-sm-none d-md-inline">,</span> <br class="d-md-none">'.PriceHandler::getCheapestOptionDiscount($discount_scales);
+                                                }
+
                                                 ?>
                                                 </small>
                                                 </p>

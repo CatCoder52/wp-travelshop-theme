@@ -1,3 +1,22 @@
+<?php
+/**
+ * @var $args['departure_min']
+ * @var $args['departure_max']
+ */
+
+$minDate = $maxDate = '';
+if(!empty($args['departure_min']) && !empty($args['departure_max'])){
+    $minDate = $args['departure_min']->format('d.m.Y');
+    $maxDate = $args['departure_max']->format('d.m.Y');
+}
+$human_readable_str = '';
+$value = '';
+if (empty($_GET['pm-dr']) === false) {
+    $dr = BuildSearch::extractDaterange($_GET['pm-dr']);
+    $human_readable_str = $dr[0]->format('d.m.') . ' - ' . $dr[1]->format('d.m.Y');
+    $value = $dr[0]->format('Ymd') . '-' . $dr[1]->format('Ymd');
+}
+?>
 <div class="form-group mb-md-0">
     <label for="">Reisezeitraum</label>
     <div>
@@ -7,12 +26,11 @@
             name="pm-dr"
             autocomplete="off"
             readonly
-            placeholder="egal" value="<?php
-        if (empty($_GET['pm-dr']) === false) {
-            $dr = BuildSearch::extractDaterange($_GET['pm-dr']);
-            echo $dr[0]->format('d.m.') . ' - ' . $dr[1]->format('d.m.Y');
-        }
-        ?>"/>
+            data-mindate="<?php echo $minDate;?>"
+            data-maxdate="<?php echo $maxDate;?>"
+            data-value="<?php echo $value; ?>"
+            placeholder="egal"
+            value="<?php echo $human_readable_str; ?>"/>
     </div>
     <svg xmlns="http://www.w3.org/2000/svg" 
         <?php if (!empty($_GET['pm-dr'])) { echo 'style="display: block;"'; } ?>

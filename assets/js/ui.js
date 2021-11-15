@@ -297,4 +297,46 @@ jQuery(function ($) {
 
         })
     }
+
+    /**
+     * this removes a current jquery violation:
+     * "Added non-passive event listener to a scroll-blocking 'touchstart' event. Consider marking event handler as 'passive' to make the page more responsive"
+     * https://stackoverflow.com/questions/46094912/added-non-passive-event-listener-to-a-scroll-blocking-touchstart-event
+     * @type {{setup: $.event.special.touchstart.setup}}
+     */
+    $.event.special.touchstart = {
+        setup: function (_, ns, handle) {
+            if ((ns.indexOf('noPreventDefault') > -1)) {
+                this.addEventListener("touchstart", handle, {passive: false});
+            } else {
+                this.addEventListener("touchstart", handle, {passive: true});
+            }
+        }
+    };
+
+
+
+
+    // -----------------------
+    // --- Content slider
+    // -----------------------
+
+    if ( $('.content-block-content-slider .content-slider--inner').length > 0 && $('.content-block-content-slider .content-slider--inner .content-slider--item').length > 1 ) {
+
+        var contentSlider = tns({
+            container: '.content-slider--inner',
+            items: 1,
+            slideBy: 'page',
+            autoplay: true,
+            autoplayTimeout: 7500,
+            autoplayButton: false,
+            autoplayHoverPause: true,
+            prevButton: '.prev-button',
+            nextButton: '.next-button',
+            nav: false,
+            autoHeight: false, // if this is set to true, we have a white space on load effect... perhaps a bug in the tiny-slider
+        });
+
+    }
+
 });
