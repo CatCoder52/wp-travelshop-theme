@@ -106,12 +106,16 @@ function getActiveParents(array &$elements, $parentId) {
 
 function activeIds(array &$elements, $currentId)
 {
-    $breadcrumb = array();
+    $breadcrumb = [];
 
     foreach ( $elements as &$element ) {
         if ( $element->object_id == $currentId ) {
             $parentId = $element->menu_item_parent;
 
+
+            echo "<pre>";
+            print_r($element);
+            echo "</pre>";
             if ( !in_array($breadcrumb, $element->ID) ) {
                 array_push($breadcrumb, $element->ID);
             }
