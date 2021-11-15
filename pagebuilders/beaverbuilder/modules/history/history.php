@@ -36,7 +36,6 @@ FLBuilder::register_module('TSWPHistory', array(
                         'form'          => 'history-item-form', // ID from registered form below
                         'preview_text'  => 'headline', // Name of a field to use for the preview text
                         'multiple'      => true,
-                        'limit'      => 4,
                     ),
 
                 ),
