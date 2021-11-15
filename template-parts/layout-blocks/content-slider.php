@@ -98,8 +98,13 @@ foreach ($args['items'] as $item) {
                             ?>
                             <div class="card">
                                 <div class="card-body">
+                                    <?php if(!empty($item['title'])){?>
                                     <h1><?php echo $item['title']; ?></h1>
-                                    <p><?php echo $item['text']; ?></p>
+                                    <?php } ?>
+                                    <?php if(!empty($item['text'])){?>
+                                        <p><?php echo $item['text']; ?></p>
+                                    <?php } ?>
+                                    <?php if(!empty($item['btn_link'])){?>
                                     <a class="btn btn-primary" href="<?php echo $item['btn_link']; ?>" target="<?php echo !empty($item['btn_link_target']) ? $item['btn_link_target'] : '_self';?>"><?php
                                         if (!empty($item['btn_label'])) {
                                             echo $item['btn_label'];
@@ -107,6 +112,7 @@ foreach ($args['items'] as $item) {
                                             echo "Mehr erfahren";
                                         }
                                         ?></a>
+                                    <?php } ?>
                                 </div>
                             </div>
                             <?php
