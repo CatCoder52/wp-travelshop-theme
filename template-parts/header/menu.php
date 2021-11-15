@@ -17,9 +17,7 @@ if (has_nav_menu('primary') === true) {
 
                 <?php
                 $menu_items = nav_menu_2_tree('primary');
-                echo "<pre>";
-                    print_r($menu_items);
-                echo "</pre>";
+
                 if (isset($menu_items)) {
                     foreach ($menu_items['navigation'] as $item) {
                         // Top Level
