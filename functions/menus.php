@@ -108,8 +108,6 @@ function activeIds(array &$elements, $currentId)
 {
     $breadcrumb = array();
 
-    print_r($_SERVER['REQUEST_URI']);
-
     foreach ( $elements as &$element ) {
 
         if ( $element->object == 'custom' && $element->url == $_SERVER['REQUEST_URI'] ) {
