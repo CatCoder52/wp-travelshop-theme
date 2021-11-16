@@ -110,6 +110,7 @@ function activeIds(array &$elements, $currentId)
 
     foreach ( $elements as &$element ) {
 
+        // -- check for individuel tree items
         if ( $element->object == 'custom' && $element->url == $_SERVER['REQUEST_URI'] ) {
             $parentId = $element->menu_item_parent;
 
@@ -129,6 +130,8 @@ function activeIds(array &$elements, $currentId)
                 }
             }
         }
+
+        // -- check for object_id // pages&Posts
         if ( $element->object_id == $currentId ) {
             $parentId = $element->menu_item_parent;
 
