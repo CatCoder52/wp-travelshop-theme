@@ -107,11 +107,14 @@ function getActiveParents(array &$elements, $parentId) {
 function activeIds(array &$elements, $currentId)
 {
     $breadcrumb = array();
+    $request_uri = $_SERVER['REQUEST_URI'];
+    $request_uri = explode('?', $request_uri);
+    $request_uri = $request_uri[0];
 
     foreach ( $elements as &$element ) {
 
         // -- check for individuel tree items
-        if ( $element->object == 'custom' && $element->url == $_SERVER['REQUEST_URI'] ) {
+        if ( $element->object == 'custom' && $element->url == $request_uri ) {
             $parentId = $element->menu_item_parent;
 
 
