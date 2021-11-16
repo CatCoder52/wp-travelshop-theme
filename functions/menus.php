@@ -111,6 +111,9 @@ function activeIds(array &$elements, $currentId)
     print_r($_SERVER['REQUEST_URI']);
 
     foreach ( $elements as &$element ) {
+        echo "<pre>";
+        print_r($element);
+        echo "</pre>";
         if ( $element->object_id == $currentId ) {
             $parentId = $element->menu_item_parent;
 
