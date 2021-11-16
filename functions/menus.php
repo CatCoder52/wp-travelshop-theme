@@ -111,9 +111,26 @@ function activeIds(array &$elements, $currentId)
     print_r($_SERVER['REQUEST_URI']);
 
     foreach ( $elements as &$element ) {
-        echo "<pre>";
-        print_r($element);
-        echo "</pre>";
+
+        if ( $element->object == 'custom' && $element->url == $_SERVER['REQUEST_URI'] ) {
+            $parentId = $element->menu_item_parent;
+
+
+            if ( !in_array($element->ID, $breadcrumb) ) {
+                array_push($breadcrumb, $element->ID);
+            }
+
+            if ( $parentId != 0 ) {
+                $activeParents = getActiveParents($elements, $element->menu_item_parent);
+                $activeParents = explode(',', $activeParents);
+
+                foreach ( $activeParents as $parent ) {
+                    if ( $parent != null ) {
+                        array_push($breadcrumb, $parent);
+                    }
+                }
+            }
+        }
         if ( $element->object_id == $currentId ) {
             $parentId = $element->menu_item_parent;
 
