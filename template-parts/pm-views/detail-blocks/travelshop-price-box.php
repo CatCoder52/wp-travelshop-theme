@@ -130,8 +130,7 @@ $housing_package = $housing_option[0]->getHousingPackage();
 
     </div>
     <div class="col-12">
-        <a class="btn btn-primary btn-block booking-btn green" target="_blank" rel="nofollow"
-            href="<?php echo \Pressmind\Travelshop\IB3Tools::get_bookinglink($booking_package->id_media_object, $booking_package->id, $date->id, $housing_package->id);?>">
+        <a class="btn btn-primary btn-block booking-btn green" data-modal="true" data-modal-id="50" target="_blank" rel="nofollow">
             zur Buchung
         </a>
     </div>

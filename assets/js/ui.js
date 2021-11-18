@@ -102,9 +102,8 @@ jQuery(function ($) {
     // -- Itinerary Steps Gallery
     // -----------------------------------------------
     if ($('.travelshop-itinerary').length > 0) {
-        $('.travelshop-itinerary-step-open').on('click', function (e) {
-            var targetSection = $(e.target).parent().parent();
-            targetSection.toggleClass('step-open');
+        $('.travelshop-itinerary-step').find('h3').on('click', function (e) {
+            $(e.target).parent().toggleClass('step-open');
         });
         $('.travelshop-itinerary-toggleall .it-open').on('click', function () {
             $('.travelshop-itinerary-step').addClass('step-open');

@@ -4,6 +4,7 @@ global $PMTravelShop;
 
 use Pressmind\Search\CheapestPrice;
 use Pressmind\Travelshop\PriceHandler;
+// use Pressmind\Travelshop\RouteHelper;
 
 /**
  * @var array $data
@@ -15,7 +16,7 @@ use Pressmind\Travelshop\PriceHandler;
 $mo = $data['media_object'];
 
 /**
- * @var Custom\MediaType\###CLASSNAME### $moc
+ * @var Custom\MediaType\Reise $moc
  */
 $moc = $mo->getDataForLanguage(TS_LANGUAGE_CODE);
 
@@ -56,121 +57,292 @@ $CheapestPriceFilter->occupancies = [2];
 
 $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
 
+$pictures = $moc->bilder_default;
+
 ?>
-    <div class="content-main">
+<div class="content-main">
 
-        <?php
+    <article class="travelshop-detail-container">
+        
+        <section class="container">
 
-            $breadcrumb = array();
-            $tmp = new stdClass();
-            $tmp->name = 'Startseite';
-            $tmp->url = site_url();
-            $breadcrumb[] = $tmp;
+            <div class="row">
 
+            <?php
+                $breadcrumb = array();
+                $tmp = new stdClass();
+                $tmp->name = 'Startseite';
+                $tmp->url = site_url();
+                $breadcrumb[] = $tmp;
 
-            $breadcrumb_search_url = site_url() . '/' . $PMTravelShop->RouteProcessor->get_url_by_object_type($mo->id_object_type) . '/';
-            if (is_array($moc->reiseart_default)) {
-                foreach ($moc->reiseart_default as $item) {
-                    $reiseart = $item->toStdClass();
-                    $tmp = new stdClass();
-                    $tmp->name = $reiseart->item->name;
-                    $tmp->url = $breadcrumb_search_url . '?pm-c[reiseart_default]=' . $reiseart->item->id;
-                    $breadcrumb[] = $tmp;
+                // $breadcrumb_search_url = site_url() . '/' . RouteHelper::get_url_by_object_type($mo->id_object_type) . '/';
+                $breadcrumb_search_url = '';
+                if (is_array($moc->reiseart_default)) {
+                    foreach ($moc->reiseart_default as $item) {
+                        $reiseart = $item->toStdClass();
+                        $tmp = new stdClass();
+                        $tmp->name = $reiseart->item->name;
+                        $tmp->url = $breadcrumb_search_url . '?pm-c[reiseart_default]=' . $reiseart->item->id;
+                        $breadcrumb[] = $tmp;
+                    }
                 }
-            }
-            if (is_array($moc->zielgebiet_default)) {
-                foreach ($moc->zielgebiet_default as $item) {
-                    $zielgebiet = $item->toStdClass();
-                    $tmp = new stdClass();
-                    $tmp->name = $zielgebiet->item->name;
-                    $tmp->url = $breadcrumb_search_url . '?pm-c[zielgebiet_default]=' . $zielgebiet->item->id;;
-                    $breadcrumb[] = $tmp;
+                if (is_array($moc->zielgebiet_default)) {
+                    foreach ($moc->zielgebiet_default as $item) {
+                        $zielgebiet = $item->toStdClass();
+                        $tmp = new stdClass();
+                        $tmp->name = $zielgebiet->item->name;
+                        $tmp->url = $breadcrumb_search_url . '?pm-c[zielgebiet_default]=' . $zielgebiet->item->id;;
+                        $breadcrumb[] = $tmp;
+                    }
                 }
-            }
 
+                $tmp = new stdClass();
+                $tmp->name = strip_tags($moc->headline_default);
+                $tmp->url = null;
+                $breadcrumb[] = $tmp;
 
-            $tmp = new stdClass();
-            $tmp->name = strip_tags($moc->headline_default);
-            $tmp->url = null;
-            $breadcrumb[] = $tmp;
+                // HARD BREADCRUMB BECAUSE OF BUG
+                echo '<section class="breadcrumb-wrapper"><div class="container"><nav aria-label="breadcrumb"><ol itemscope="" itemtype="https://schema.org/BreadcrumbList" class="breadcrumb"><li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="breadcrumb-item breadcrumb-home"><a itemprop="item" href="https://travelshop.michaelamting.de"> <span class="breadcrumb-name" itemprop="name">Travelshop <span class="breadcrumb-sep"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="#777" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><polyline points="9 6 15 12 9 18"></polyline></svg></span></span></a> <meta itemprop="position" content="2"></li><li class="bc-separator" style="display: none;"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="#777" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><polyline points="15 6 9 12 15 18"></polyline></svg><a itemprop="item" href="https://travelshop.michaelamting.de/reise-suche/?pm-c[reiseart_default]=kF332DCB8-FEF6-71C4-F9B9-0435E23EEAE5">Radreisen anzeigen</a></li> <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="breadcrumb-item "><a itemprop="item" href="https://travelshop.michaelamting.de/reise-suche/?pm-c[reiseart_default]=kF332DCB8-FEF6-71C4-F9B9-0435E23EEAE5"> <span class="breadcrumb-name" itemprop="name">Radreisen <span class="breadcrumb-sep"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="#777" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><polyline points="9 6 15 12 9 18"></polyline></svg></span></span></a> <meta itemprop="position" content="3"></li><li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="breadcrumb-item "><a itemprop="item" href="https://travelshop.michaelamting.de/reise-suche/?pm-c[zielgebiet_default]=F846ED62-9CC5-E3C4-E3E1-14B8DD7EC50E"> <span class="breadcrumb-name" itemprop="name">Schweiz <span class="breadcrumb-sep"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="#777" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><polyline points="9 6 15 12 9 18"></polyline></svg></span></span></a> <meta itemprop="position" content="4"></li><li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="breadcrumb-item "><a itemprop="item" href="https://travelshop.michaelamting.de/reise-suche/?pm-c[zielgebiet_default]=kD83342A3-9861-8672-9330-4251E13556F1"> <span class="breadcrumb-name" itemprop="name">St. Moritz <span class="breadcrumb-sep"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="#777" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><polyline points="9 6 15 12 9 18"></polyline></svg></span></span></a> <meta itemprop="position" content="5"></li><li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="breadcrumb-item "><span class="breadcrumb-name" itemprop="name">Große Schweiz-Rundreise <span class="breadcrumb-sep"></span></span><meta itemprop="position" content="6"></li></ol></nav></div></section>';
+                // the_breadcrumb(null, null, $breadcrumb);
+                ?>
 
-            the_breadcrumb(null, null, $breadcrumb);
-            ?>
-        <div class="container">
-            <section class="content-block content-block-detail-header">
-                <p>
-                    <?php
-                        $badges = array();
-                        if (is_array($moc->reiseart_default)) {
-                            foreach ($moc->reiseart_default as $mocart_default_item) {
-                                $mocart = $mocart_default_item->toStdClass();
-                                $badges[] = $mocart->item->name;
-                            }
-                        }
+                <div class="col-12 col-lg-8">
 
-                        if (is_array($moc->zielgebiet_default)) {
-                            foreach ($moc->zielgebiet_default as $k => $zielgebiet_default_item) {
-                                $zielgebiet = $zielgebiet_default_item->toStdClass();
-                                $badges[] = $zielgebiet->item->name;
-                            }
-                        }
-                        if (!empty($badges)) {
-                            echo '<span class="badge badge-secondary">' . implode('</span> <span class="badge badge-secondary">', $badges) . '</span>';
-                        }
-                        ?>
-                </p>
-                <h1><?php echo strip_tags($mo->name); ?></h1>
-                <p class="small"><?php echo strip_tags($moc->subline_default); ?></p>
-            </section>
-            <section class="content-block content-block-detail-info-grid">
-                <div class="row">
-                    <div class="col-12 col-lg-9">
-                        <?php
-                            // Imagebrowser
-                            load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/image-browser.php', false, $moc->bilder_default);
-                            ?>
-                        <!-- Price Box underneath the image gallery for mobile devices-->
-                        <div class="d-block d-lg-none">
-                            <?php
-                                // pricepox
-                                load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/price-box.php', false, array_merge($data, array('cheapest_price' => $cheapest_price)));
+                    <div class="travelshop-detail-head">
+
+                        <div class="travelshop-detail-badge">NEU</div>
+
+                        <div class="travelshop-image-slider-wrapper">
+                        
+                            <div class="travelshop-image-slider">
+                                
+                                <?php foreach($pictures as $picture) { ?>
+                                    <div>
+                                        <img src="<?php echo $picture->getUri('detail'); ?>" alt="<?php echo $picture->alt; ?>" loading="lazy" />
+                                        <div class="travelshop-image-slider-copyright">
+                                            <?php echo $picture->copyright; ?>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+                                
+                            </div>
+
+                            <!-- OVERLAYGALLERY: START -->
+                            <div id="detail-gallery-overlay">
+                                <button class="detail-gallery-overlay-close">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="28" height="28"
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z"/>
+                                        <line x1="18" y1="6" x2="6" y2="18"/>
+                                        <line x1="6" y1="6" x2="18" y2="18"/>
+                                    </svg>
+                                </button>
+                                <!-- GALLERY_SLIDER: START -->
+                                <div class="detail-gallery-overlay-slider">
+                                    <div class="detail-gallery-overlay-inner" id="detail-gallery-overlay-inner">
+
+                                        <?php
+                                        foreach ($pictures as $picture) {
+                                            ?>
+                                            <div class="detail-gallery-overlay-item">
+                                                <div class="detail-gallery-overlay-item--image">
+                                                    <img src="<?php echo $picture->getUri('detail'); ?>" class="w-100 h-100"/>
+                                                </div>
+                                                <div class="detail-gallery-overlay-item--caption">
+                                                    <?php echo $picture->caption; ?>
+                                                    <small><?php echo $picture->copyright; ?></small>
+                                                </div>
+                                            </div>
+                                        <?php } ?>
+
+                                    </div>
+                                </div>
+                                <!-- GALLERY_SLIDER: END -->
+
+                                <!-- GALLERY_THUMBNAILS: START -->
+                                <div class="detail-gallery-thumbnails" id="detail-gallery-thumbnails">
+
+                                    <?php
+                                    foreach ($pictures as $picture) {
+                                        ?>
+                                        <div class="detail-gallery-thumbnail-item">
+                                            <div class="detail-gallery-thumbnail-item--image">
+                                                <img src="<?php echo $picture->getUri('detail'); ?>" class="w-100 h-100"/>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+
+                                </div>
+                                <!-- GALLERY_THUMBNAILS: END -->
+                            </div>
+                            <!-- OVERLAYGALLERY: END -->
+                        
+                        </div>
+
+                        
+                        <div class="travelshop-detail-wrapper">
+
+                            <div class="travelshop-detail-details">
+                                <?php if(!empty($moc->zielgebiet_default[0]) && !empty($moc->reiseart_default[0])) { ?>
+                                    <div class="travelshop-detail-additional">
+                                        <small>
+                                            <span class="country">
+                                                <?php echo $moc->zielgebiet_default[0]->__get('item')->name; ?>
+                                            </span>
+                                            ·
+                                            <span class="type">
+                                                <?php echo $moc->reiseart_default[0]->__get('item')->name; ?>
+                                            </span>
+                                        </small>
+                                        <?php if(!empty($mo->code)) { ?>
+                                            <small class="code">
+                                                Code: <?php echo $mo->code; ?>
+                                            </small>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
+                                <?php 
+                                    // HARD BREADCRUMB BECAUSE OF BUG
+                                    echo '<section class="breadcrumb-wrapper"><div class="container"><nav aria-label="breadcrumb"><ol itemscope="" itemtype="https://schema.org/BreadcrumbList" class="breadcrumb"><li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="breadcrumb-item breadcrumb-home"><a itemprop="item" href="https://travelshop.michaelamting.de"> <span class="breadcrumb-name" itemprop="name">Travelshop <span class="breadcrumb-sep"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="#777" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><polyline points="9 6 15 12 9 18"></polyline></svg></span></span></a> <meta itemprop="position" content="2"></li><li class="bc-separator" style="display: none;"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="#777" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><polyline points="15 6 9 12 15 18"></polyline></svg><a itemprop="item" href="https://travelshop.michaelamting.de/reise-suche/?pm-c[reiseart_default]=kF332DCB8-FEF6-71C4-F9B9-0435E23EEAE5">Radreisen anzeigen</a></li> <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="breadcrumb-item "><a itemprop="item" href="https://travelshop.michaelamting.de/reise-suche/?pm-c[reiseart_default]=kF332DCB8-FEF6-71C4-F9B9-0435E23EEAE5"> <span class="breadcrumb-name" itemprop="name">Radreisen <span class="breadcrumb-sep"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="#777" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><polyline points="9 6 15 12 9 18"></polyline></svg></span></span></a> <meta itemprop="position" content="3"></li><li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="breadcrumb-item "><a itemprop="item" href="https://travelshop.michaelamting.de/reise-suche/?pm-c[zielgebiet_default]=F846ED62-9CC5-E3C4-E3E1-14B8DD7EC50E"> <span class="breadcrumb-name" itemprop="name">Schweiz <span class="breadcrumb-sep"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="#777" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><polyline points="9 6 15 12 9 18"></polyline></svg></span></span></a> <meta itemprop="position" content="4"></li><li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="breadcrumb-item "><a itemprop="item" href="https://travelshop.michaelamting.de/reise-suche/?pm-c[zielgebiet_default]=kD83342A3-9861-8672-9330-4251E13556F1"> <span class="breadcrumb-name" itemprop="name">St. Moritz <span class="breadcrumb-sep"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="#777" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><polyline points="9 6 15 12 9 18"></polyline></svg></span></span></a> <meta itemprop="position" content="5"></li><li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="breadcrumb-item "><span class="breadcrumb-name" itemprop="name">Große Schweiz-Rundreise <span class="breadcrumb-sep"></span></span><meta itemprop="position" content="6"></li></ol></nav></div></section>';
+                                    // the_breadcrumb(null, null, $breadcrumb);
                                 ?>
+                                <div class="travelshop-detail-heading">
+                                    <h1><?php echo strip_tags($mo->name); ?></h1>
+                                    <div    data-pm-id="<?php echo $mo->id; ?>"
+                                            data-pm-ot="<?php echo $mo->id_object_type; ?>"
+                                            data-pm-dr="<?php echo !is_null($cheapest_price) ? $cheapest_price->date_arrival->format('Ymd').'-'.$cheapest_price->date_arrival->format('Ymd') : ''; ?>"
+                                            data-pm-du="<?php echo !is_null($cheapest_price) ? $cheapest_price->duration : ''; ?>"
+                                            class="add-to-wishlist">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path class="wishlist-heart" d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <p class="subline"><?php echo strip_tags($moc->subline_default); ?></p>
+
+                                <?php if (empty($moc->usp_default) === false) { ?>
+                                    <div class="travelshop-detail-services-mobile">
+                                        <?php echo $moc->usp_default; ?>
+                                    </div>
+                                <?php } ?>
+                                
+                            </div>
+
+                            <?php if(count($pictures) > 1) { ?>
+                                <div style="background-image: url(<?php echo $pictures[1]->getUri('detail_thumb'); ?>);" class="travelshop-detail-gallerythumb">
+                                    <span class="travelshop-detail-gallerythumb-count">
+                                        <?php if(count($pictures) >= 3) { ?>
+                                            + <?php echo count($pictures) - 2; ?>
+                                        <?php } ?>
+                                    </span>
+                                </div>
+                            <?php } ?>
+
                         </div>
-                        <div class="detail-reise-content">
-                            <p>
-                                <?php echo $moc->einleitung_default; ?>
-                            </p>
-                        </div>
-                        <?php
-                        // tabs
-                        load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/tabs.php', false, array('moc' => $moc, 'mo' => $mo, 'cheapest_price' => $cheapest_price));
 
-                        // info line
-                        load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/info-line.php', false, array('moc' => $moc, 'mo' => $mo));
-
-                        // load itinerary
-                        load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/itinerary.php', false, array('moc' => $moc, 'mo' => $mo, 'cheapest_price' => $cheapest_price));
-
-                        ?>
                     </div>
-                    <div class="d-none d-lg-block col-lg-3">
-                        <!-- Price Box beside the image gallery for desktop devices-->
-                        <div class="sticky-container">
-                            <?php
-                                // pricepox
-                                load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/price-box.php', false, array_merge($data, array('cheapest_price' => $cheapest_price)));
-                                ?>
+
+                </div>
+
+                <div class="col-12 col-lg-4 travelshop-detail-info">
+                    <div class="travelshop-detail-info-head">
+                        <h2><?php echo strip_tags($mo->name); ?></h2>
+                        <p><?php echo strip_tags($moc->subline_default); ?></p>
+                        <?php if (empty($moc->usp_default) === false) { ?>
+                            <div class="travelshop-detail-services-desktop">
+                                <?php echo $moc->usp_default; ?>
+                            </div>
+                        <?php } ?>
+                    </div>
+                    <?php
+                        // pricepox
+                        load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/travelshop-price-box.php', false, array_merge($data, array('cheapest_price' => $cheapest_price)));
+                    ?>
+                </div>
+
+            </div>
+            
+            <?php 
+                // Booking Date Modal
+                $args = [];
+                $args['id_post'] = 50;
+                $args['title'] = 'Reisetermin wählen';
+                ob_start();
+                load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/booking-offers.php', false, array_merge($data, array('cheapest_price' => $cheapest_price)));
+                $args['content'] = ob_get_contents();
+                ob_end_clean();
+                include(get_template_directory() . '/template-parts/layout-blocks/modalscreen.php' ); 
+            ?>
+            
+        </section>
+
+        <section class="container"> 
+            <div class="row">
+                <div class="col-12">
+                    <?php include(get_template_directory() . '/template-parts/pm-views/detail-blocks/booking-offers-calendar.php'); ?>
+                </div>
+            </div>
+        </section>
+
+        <section class="container travelshop-itinerary-wrapper"> 
+            <div class="row flex-column-reverse flex-lg-row">
+                <div class="col-12 col-lg-8">
+                    <h2><span><?php echo strip_tags($mo->name); ?></span></h2>
+                    <p class="mb-0"><strong><?php echo strip_tags($moc->subline_default); ?></strong></p>
+                    <?php if (empty($moc->usp_default) === false) { ?>
+                        <div class="travelshop-detail-usps">
+                            <?php echo $moc->usp_default; ?>
                         </div>
+                    <?php } ?>
+                    <p>Einleitung: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                    <p class="travelshop-itinerary-toggleall">
+                        <span class="btn btn-primary it-open">Alle öffnen</span>
+                        <span class="btn btn-primary it-close">Alle schließen</span>
+                    </p>
+                    <?php // load itinerary
+                    load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/travelshop-itinerary.php', false, array('moc' => $moc, 'mo' => $mo, 'cheapest_price' => $cheapest_price)); ?>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="travelshop-detail-sidebar">
+                        <?php // load google maps image
+                            load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/travelshop-gmaps-box.php', false, array('moc' => $moc, 'mo' => $mo, 'cheapest_price' => $cheapest_price));
+                            if(!empty($moc->leistungen_default) && isset($moc->leistungen_default)) { ?>
+                                <div class="travelshop-detail-services">
+                                    <h2>Leistungen</h2>
+                                    <?php echo $moc->leistungen_default; ?>
+                                </div>
+                            <?php } ?>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
+
+        <div class="travelshop-detail-mobile-bar">
+            <div class="container">
+                <span class="travelshop-detail-mobile-bar-title"><?php echo strip_tags($mo->name); ?></span>
+                <p>
+                    <?php echo $booking_package->duration; ?> Tag<?php echo($booking_package->duration > 1 ? 'e' : ''); ?>
+                    - ab <strong><?php echo PriceHandler::format($mo->getCheapestPrice($cheapest_price_filter)->price_total); ?></strong>
+                </p>
+                <div class="travelshop-detail-mobile-bar-cta">
+                    <div class="travelshop-detail-mobile-bar-date">
+                        <span class="date">
+                            <a class="show-dates" data-modal="true" data-modal-id="50">
+                                <?php echo $date->departure->format('d.m.'); ?>
+                                -
+                                <?php echo $date->arrival->format('d.m.Y'); ?>
+                            </a>
+                        </span>
+                    </div>
+                    <a class="btn btn-primary btn-block booking-btn green" data-modal="true" data-modal-id="50" target="_blank" rel="nofollow">
+                        zur Buchung
+                    </a>
+                </div>
+            </div>
         </div>
-        <?php
-            // Detail Booking
-            load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/booking-offers.php', false, array_merge($data, array('cheapest_price' => $cheapest_price)));
-            ?>
+
+    </article>
+
 </div>
-</div>
-<?php
-// Gallery
-load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/gallery.php', false, $moc->bilder_default);

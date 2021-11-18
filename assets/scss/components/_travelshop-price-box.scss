@@ -52,6 +52,8 @@
         align-items: flex-start;
 
         .booking-btn {
+            color: #fff;
+            cursor: pointer;
             font-weight: bold;
 
             &.green {
@@ -63,6 +65,7 @@
                 &:active {
                     background-color: lighten($cta-detail-page, 15%) !important;
                     border-color: lighten($cta-detail-page, 15%) !important;
+                    color: #fff;
                 }
 
                 &.active {
