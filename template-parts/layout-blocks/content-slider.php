@@ -125,6 +125,9 @@ foreach ($args['items'] as $item) {
             </article>
             <?php
         }
+        if(empty($slide_items) && isset($_GET['fl_builder'])){
+            echo '<p height="50px;">{content Slider without valid slides is placed here}</p>';
+        }
         ?>
     </div>
 </section>
