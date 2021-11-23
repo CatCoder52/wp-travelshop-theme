@@ -83,7 +83,7 @@ if (empty($filteredParams) === false) {
                 <a href="<?php echo $args['url']; ?>"><?php echo $args['headline']; ?></a>
             </h1>
             <?php
-            $breadcrumb = array_filter([$args['travel_type'], $args['destination']]);
+            $breadcrumb = array_filter([$args['travel_type'] ?? [], $args['destination'] ?? []]);
             if (!empty($breadcrumb)) {
                 ?>
                 <p class="attribute-row">
