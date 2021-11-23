@@ -82,7 +82,7 @@ if (empty($filteredParams) === false) {
                 <a href="<?php echo $args['url']; ?>"><?php echo $args['headline']; ?></a>
             </h1>
             <?php
-            $breadcrumb = array_filter([$args['travel_type'], $args['destination'] ?? []]);
+            $breadcrumb = array_filter([$args['travel_type'] ?? [], $args['destination'] ?? []]);
             if (!empty($breadcrumb)) { ?>
                 <p class="attribute-row">
                     <span class="badge badge-secondary"><?php echo implode('</span> <span class="badge badge-secondary">', $breadcrumb); ?></span>
@@ -103,7 +103,12 @@ if (empty($filteredParams) === false) {
                 <div class="card-text date-row">
                     <span class="small">
                         <?php
-                        echo '<span>' . $args['cheapest_price']->duration . ' Tage Reise</span><br>';
+                        echo '<span>' . $args['cheapest_price']->duration . ' Tage Reise';
+                        if(!empty($args['cheapest_price']->option_board_type)){
+                            echo ', inkl. '.$args['cheapest_price']->option_board_type;
+                        }
+                        echo '</span>';
+                        echo '<br>';
                         ?>
                     </span>
                         <div class="dropdown">
