@@ -71,6 +71,93 @@ function buildTree(array &$elements, $parentId = 0)
     return $branch;
 }
 
+function activeItem(array &$elements)
+{
+    // current id
+    $current = get_the_ID();
+    $item = null;
+
+    foreach ( $elements as $element ) {
+        if ( $element->object_id == $current ) {
+            $item = $element;
+        }
+    }
+
+    return $item;
+}
+
+function getActiveParents(array &$elements, $parentId) {
+
+    $id = '';
+
+    foreach ( $elements as &$element ) {
+        if ( $element->ID == $parentId ) {
+            $id .= $element->ID . ',';
+
+            if ( $element->menu_item_parent != 0 ) {
+                $id .=  getActiveParents($elements, $element->menu_item_parent) . ',';
+            }
+        }
+    }
+
+
+    return $id;
+}
+
+function activeIds(array &$elements, $currentId)
+{
+    $breadcrumb = array();
+    $request_uri = $_SERVER['REQUEST_URI'];
+    $request_uri = explode('?', $request_uri);
+    $request_uri = $request_uri[0];
+
+    foreach ( $elements as &$element ) {
+
+        // -- check for individuel tree items
+        if ( $element->object == 'custom' && $element->url == $request_uri ) {
+            $parentId = $element->menu_item_parent;
+
+
+            if ( !in_array($element->ID, $breadcrumb) ) {
+                array_push($breadcrumb, $element->ID);
+            }
+
+            if ( $parentId != 0 ) {
+                $activeParents = getActiveParents($elements, $element->menu_item_parent);
+                $activeParents = explode(',', $activeParents);
+
+                foreach ( $activeParents as $parent ) {
+                    if ( $parent != null ) {
+                        array_push($breadcrumb, $parent);
+                    }
+                }
+            }
+        }
+
+        // -- check for object_id // pages&Posts
+        if ( $element->object_id == $currentId ) {
+            $parentId = $element->menu_item_parent;
+
+
+            if ( !in_array($element->ID, $breadcrumb) ) {
+                array_push($breadcrumb, $element->ID);
+            }
+
+            if ( $parentId != 0 ) {
+                $activeParents = getActiveParents($elements, $element->menu_item_parent);
+                $activeParents = explode(',', $activeParents);
+
+                foreach ( $activeParents as $parent ) {
+                    if ( $parent != null ) {
+                        array_push($breadcrumb, $parent);
+                    }
+                }
+            }
+        }
+    }
+
+    return $breadcrumb;
+}
 
 /**
  * Transform a navigational menu to it's tree structure
@@ -84,5 +171,11 @@ function nav_menu_2_tree($menu_position)
     $locations = get_nav_menu_locations(); //get all menu locations
     $primary = wp_get_nav_menu_object($locations[$menu_position]);
     $items = wp_get_nav_menu_items($primary);
-    return $items ? buildTree($items, 0) : null;
+    $tree = array();
+
+    $tree['navigation'] = $items ? buildTree($items, 0) : null;
+    $tree['active'] = $items ? activeItem($items) : null;
+    $tree['active_ids'] = $items ? activeIds($items, get_the_ID()) : null;
+
+    return $tree;
 }
