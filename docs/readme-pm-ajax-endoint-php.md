@@ -7,7 +7,7 @@ use the build in wp-admin-ajax.php endpoint.
 # Methods / Actions
 
 ## get Offers
-get offers for a defined media object.
+Get offers for a defined media object.
 ```
 GET pm-ajax-endpoint.php?action=offers&pm-id=123456
 ```
@@ -16,6 +16,7 @@ Parameters:
 
 |  Parameter  | example value | description |
 | --- | --- | --- |
+| pm-id |12345 | required, pressmind media object id
 | pm-l |0,10 | pagination, limit
 | pm-du |5-5 | duration range 
 | pm-dr |20211201-20211215 | date range
@@ -81,5 +82,5 @@ Result
 ]
 ```
 
-With this service its possible to build a offer table, like this:
+With this service its possible to build a offer table like this:
 ![](assets/pm-ajax-endpoint-1.jpg)
