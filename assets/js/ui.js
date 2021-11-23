@@ -56,18 +56,25 @@ jQuery(function ($) {
     // --------------------------------
     // --- Affix Header
     // --------------------------------
-    /*
-    $('body').css('margin-top', $('.header-main').height());
-    $(window).resize(function () {
-        $('body').css('margin-top', $('.header-main').height());
-    });
-    */
     $(window).scroll(function () {
         var scroll = $(window).scrollTop();
         if (scroll >= 200) {
             $('.header-main').addClass('affix');
         } else {
             $('.header-main').removeClass('affix');
+        }
+    });
+
+    // --------------------------------
+    // --- Travelshop Detail Bottom Bar
+    // --------------------------------
+    $(window).scroll(function () {
+        console.log($('.footer-main').offset().top);
+        var currentScrollPosition = $(window).scrollTop();
+        if (currentScrollPosition >= 400 && currentScrollPosition <= ($('.footer-main').offset().top - (Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - 125))) {
+            $('.travelshop-detail-mobile-bar').addClass('show');
+        } else {
+            $('.travelshop-detail-mobile-bar').removeClass('show');
         }
     });
 
@@ -99,7 +106,7 @@ jQuery(function ($) {
     }
 
     // -----------------------------------------------
-    // -- Itinerary Steps Gallery
+    // -- Itinerary Steps Toggle
     // -----------------------------------------------
     if ($('.travelshop-itinerary').length > 0) {
         $('.travelshop-itinerary-step').find('h3').on('click', function (e) {
@@ -117,6 +124,15 @@ jQuery(function ($) {
         });
     }
 
+    // -----------------------------------------------
+    // -- Lodgings Toggle
+    // -----------------------------------------------
+    if ($('.travelshop-lodgings-wrapper').length > 0) {
+        $('.travelshop-lodgings-element').find('h3').on('click', function (e) {
+            $(e.target).parent().toggleClass('lodging-open');
+        });
+    }
+
     // --------------------------------
     // --- Itinerary Steps Image Slider
     // --------------------------------
@@ -128,6 +144,37 @@ jQuery(function ($) {
                 items: 1,
                 mouseDrag: true,
                 navContainer: '.it-gallery-' + key,
+                navAsThumbnails: true,
+                edgePadding: 15,
+                responsive: {
+                    992: {
+                        disable: true
+                    }
+                },
+                controlsText: ['<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
+                    '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
+                    '  <polyline points="15 6 9 12 15 18" />\n' +
+                    '</svg>', '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
+                    '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
+                    '  <polyline points="9 6 15 12 9 18" />\n' +
+                    '</svg>'
+                ]
+            })
+        });
+
+    }
+
+    // --------------------------------
+    // --- Lodgings Image Slider
+    // --------------------------------
+    if ($('.travelshop-lodgings-element-gallery').length > 0) {
+
+        $('.travelshop-lodgings-element-gallery').each(function (key) {
+            let slider = tns({
+                container: '.lod-gallery-' + key,
+                items: 1,
+                mouseDrag: true,
+                navContainer: '.lod-gallery-' + key,
                 navAsThumbnails: true,
                 edgePadding: 15,
                 responsive: {

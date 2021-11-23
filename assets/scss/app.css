@@ -17511,7 +17511,14 @@ figure.wp-block-image figcaption {
   padding: 0.25rem 0.5rem;
   cursor: pointer;
   border: 1px solid #06f;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  padding-left: 0.15rem;
+  margin-left: -0.2rem;
+}
+.travelshop-price-box .show-dates span {
+  line-height: 1;
+  transform: translateY(1px);
 }
 .travelshop-price-box .icon-tabler-circle-check {
   position: absolute;
@@ -17593,6 +17600,9 @@ figure.wp-block-image figcaption {
   margin: 0.08rem 0.5rem 0 0;
   min-width: 20px;
   min-height: 20px;
+}
+.travelshop-price-box > div .icon-tabler-calendar-event {
+  margin: 0 0.5rem 0 0;
 }
 .travelshop-price-box > div small {
   display: inline-block;
@@ -17697,6 +17707,11 @@ figure.wp-block-image figcaption {
   cursor: pointer;
   font-weight: 400;
 }
+@media (min-width: 992px) {
+  .travelshop-itinerary .travelshop-itinerary-step h3 {
+    font-size: 1.4rem;
+  }
+}
 .travelshop-itinerary .travelshop-itinerary-step h3 svg {
   position: absolute;
   right: 0;
@@ -17795,33 +17810,16 @@ figure.wp-block-image figcaption {
   .travelshop-itinerary .travelshop-itinerary-step .travelshop-itinerary-step-more .travelshop-itinerary-step-gallery {
     flex-wrap: wrap;
     justify-content: flex-start;
-    margin: 0 -1.6666%;
+    margin: 0 -1.16666%;
     display: flex !important;
     transform: none !important;
   }
   .travelshop-itinerary .travelshop-itinerary-step .travelshop-itinerary-step-more .travelshop-itinerary-step-gallery a {
     display: block;
+    position: relative;
     width: 31%;
     margin: 0.5rem 1.16666%;
     pointer-events: all;
-  }
-  .travelshop-itinerary .travelshop-itinerary-step .travelshop-itinerary-step-more .travelshop-itinerary-step-gallery a img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-}
-
-@media (min-width: 992px) {
-  .travelshop-itinerary .travelshop-itinerary-step h3 {
-    font-size: 1.4rem;
-  }
-  .travelshop-itinerary .travelshop-itinerary-step .travelshop-itinerary-step-more {
-    flex-direction: column;
-  }
-  .travelshop-itinerary .travelshop-itinerary-step .travelshop-itinerary-step-more .travelshop-itinerary-step-gallery a {
-    display: block;
-    position: relative;
   }
   .travelshop-itinerary .travelshop-itinerary-step .travelshop-itinerary-step-more .travelshop-itinerary-step-gallery a:last-child {
     margin-right: 0;
@@ -17829,7 +17827,12 @@ figure.wp-block-image figcaption {
   .travelshop-itinerary .travelshop-itinerary-step .travelshop-itinerary-step-more .travelshop-itinerary-step-gallery a:hover {
     text-decoration: none;
   }
-  .travelshop-itinerary .travelshop-itinerary-step .travelshop-itinerary-step-more .travelshop-itinerary-step-gallery-image-copyright {
+  .travelshop-itinerary .travelshop-itinerary-step .travelshop-itinerary-step-more .travelshop-itinerary-step-gallery a img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .travelshop-itinerary .travelshop-itinerary-step .travelshop-itinerary-step-more .travelshop-itinerary-step-gallery a-image-copyright {
     position: static;
     margin-top: 0.25rem;
     text-align: center;
@@ -17837,6 +17840,7 @@ figure.wp-block-image figcaption {
     text-shadow: none;
   }
 }
+
 .product-calendar-wrap {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1), 0 0 0.25rem rgba(0, 0, 0, 0.05);
   margin-bottom: 2rem;
@@ -19413,16 +19417,136 @@ a {
   left: 0;
   top: 0;
 }
-.travelshop-detail-container .travelshop-itinerary-wrapper .travelshop-itinerary-toggleall {
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-itinerary-toggleall {
   text-align: right;
 }
-.travelshop-detail-container .travelshop-itinerary-wrapper .travelshop-itinerary-toggleall .btn, .travelshop-detail-container .travelshop-itinerary-wrapper .travelshop-itinerary-toggleall .blog-list-entry--comments-list .comment-respond input[type=submit], .blog-list-entry--comments-list .comment-respond .travelshop-detail-container .travelshop-itinerary-wrapper .travelshop-itinerary-toggleall input[type=submit] {
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-itinerary-toggleall .btn, .travelshop-detail-container .travelshop-content-wrapper .travelshop-itinerary-toggleall .blog-list-entry--comments-list .comment-respond input[type=submit], .blog-list-entry--comments-list .comment-respond .travelshop-detail-container .travelshop-content-wrapper .travelshop-itinerary-toggleall input[type=submit] {
   display: inline-block;
   font-size: 0.8rem;
   cursor: pointer;
 }
-.travelshop-detail-container .travelshop-itinerary-wrapper .travelshop-itinerary-toggleall .btn.it-close, .travelshop-detail-container .travelshop-itinerary-wrapper .travelshop-itinerary-toggleall .blog-list-entry--comments-list .comment-respond input.it-close[type=submit], .blog-list-entry--comments-list .comment-respond .travelshop-detail-container .travelshop-itinerary-wrapper .travelshop-itinerary-toggleall input.it-close[type=submit] {
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-itinerary-toggleall .btn.it-close, .travelshop-detail-container .travelshop-content-wrapper .travelshop-itinerary-toggleall .blog-list-entry--comments-list .comment-respond input.it-close[type=submit], .blog-list-entry--comments-list .comment-respond .travelshop-detail-container .travelshop-content-wrapper .travelshop-itinerary-toggleall input.it-close[type=submit] {
   display: none;
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper h2 {
+  margin-top: 2rem;
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element h3 {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  margin: 0;
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element h3 * {
+  pointer-events: none;
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element h3 > svg {
+  min-width: 30px;
+  min-height: 30px;
+  transition: 300ms ease-in-out all;
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element h3 .travelshop-lodgings-element-title {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+  font-weight: normal;
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element h3 .travelshop-lodgings-element-title > span {
+  margin-right: 0.5rem;
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element h3 .travelshop-lodgings-element-title .lodging-star-rating {
+  display: flex;
+  align-items: center;
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element h3 .travelshop-lodgings-element-title .lodging-star-rating svg {
+  margin: 0.25rem 0.25rem 0.25rem 0;
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element .travelshop-lodgings-element-more {
+  height: 0;
+  overflow: hidden;
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element.lodging-open h3 {
+  margin-bottom: 0.5rem;
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element.lodging-open h3 > svg {
+  transform: rotate(45deg);
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element.lodging-open .travelshop-lodgings-element-more {
+  height: auto;
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element .tns-outer {
+  position: relative;
+  order: 3;
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element .tns-outer .tns-controls {
+  z-index: 500;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element .tns-outer .tns-controls button {
+  position: absolute;
+  z-index: 500;
+  top: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  background-color: #fff;
+  border: 0;
+  outline: 0;
+  padding: 0.25rem;
+  transform: translateY(-50%);
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element .tns-outer .tns-controls button:first-child {
+  left: 0;
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element .tns-outer .tns-controls button:last-child {
+  right: 0;
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element .travelshop-lodgings-element-gallery {
+  margin: 0 0 1rem 0;
+  display: flex !important;
+  overflow-x: auto;
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element .travelshop-lodgings-element-gallery a {
+  display: block;
+  position: relative;
+  pointer-events: none;
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element .travelshop-lodgings-element-gallery a:last-child {
+  margin-right: 0;
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element .travelshop-lodgings-element-gallery img {
+  width: 100%;
+  height: auto;
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element .travelshop-lodgings-element-gallery-copyright {
+  text-align: left;
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  color: #fff;
+  font-size: 0.8rem;
+  text-shadow: 0px 0px 3px #000000;
+}
+@media (min-width: 992px) {
+  .travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element .travelshop-lodgings-element-gallery {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0 -1.16666%;
+    display: flex !important;
+    transform: none !important;
+  }
+  .travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element .travelshop-lodgings-element-gallery a {
+    display: block;
+    width: 31%;
+    margin: 0.5rem 1.16666%;
+    pointer-events: all;
+  }
+  .travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element .travelshop-lodgings-element-gallery a img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }
 .travelshop-detail-container .travelshop-detail-services-desktop,
 .travelshop-detail-container .travelshop-detail-usps,
@@ -19622,6 +19746,43 @@ a {
   padding: 0.75rem 1rem;
   border-top: 5px solid #ddd;
   background: #f2f4f7;
+  transform: translateY(100%);
+  transition: 300ms ease-in-out all;
+}
+.travelshop-detail-container .travelshop-detail-mobile-bar.show {
+  transform: translateY(0);
+}
+.travelshop-detail-container .travelshop-detail-mobile-bar .container, .travelshop-detail-container .travelshop-detail-mobile-bar .fl-builder-content .fl-row.fl-row-fixed-width, .fl-builder-content .travelshop-detail-container .travelshop-detail-mobile-bar .fl-row.fl-row-fixed-width, .travelshop-detail-container .travelshop-detail-mobile-bar .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .fl-row-content.fl-row-fixed-width, .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .travelshop-detail-container .travelshop-detail-mobile-bar .fl-row-content.fl-row-fixed-width {
+  padding: 0;
+}
+.travelshop-detail-container .travelshop-detail-mobile-bar .discount-label {
+  background-color: lightgray;
+  color: black;
+  border-radius: 10px;
+  width: auto;
+  position: relative;
+  font-size: 0.8rem;
+  padding: 2px 10px;
+  white-space: nowrap;
+}
+.travelshop-detail-container .travelshop-detail-mobile-bar .discount-label .price {
+  width: 30px;
+  position: relative;
+}
+.travelshop-detail-container .travelshop-detail-mobile-bar .discount-label .price:before {
+  position: absolute;
+  content: "";
+  top: 0.5em;
+  background: linear-gradient(to right, rgba(230, 0, 0, 0.8) 50%, rgba(230, 0, 0, 0) 100%);
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 2px;
+  transform: rotate(-20deg);
+  width: 110%;
+  height: 0.15em;
+}
+.travelshop-detail-container .travelshop-detail-mobile-bar .discount-label .discount {
+  color: #e60000;
+  font-weight: bold;
 }
 .travelshop-detail-container .travelshop-detail-mobile-bar .travelshop-detail-mobile-bar-title {
   display: block;
@@ -19640,19 +19801,28 @@ a {
 }
 .travelshop-detail-container .travelshop-detail-mobile-bar .travelshop-detail-mobile-bar-cta .travelshop-detail-mobile-bar-date {
   white-space: nowrap;
+  font-size: 0.8rem;
 }
 .travelshop-detail-container .travelshop-detail-mobile-bar .travelshop-detail-mobile-bar-cta .travelshop-detail-mobile-bar-date .date {
   padding: 0.25rem 0.5rem;
   cursor: pointer;
   border: 1px solid #06f;
-  display: inline-block;
+  display: flex;
+  align-items: center;
   margin-right: 1rem;
+}
+.travelshop-detail-container .travelshop-detail-mobile-bar .travelshop-detail-mobile-bar-cta .travelshop-detail-mobile-bar-date .date .icon {
+  margin-right: 0.2rem;
+}
+.travelshop-detail-container .travelshop-detail-mobile-bar .travelshop-detail-mobile-bar-cta .travelshop-detail-mobile-bar-date .date .show-dates {
+  transform: translateY(1px);
 }
 .travelshop-detail-container .travelshop-detail-mobile-bar .travelshop-detail-mobile-bar-cta .booking-btn {
   white-space: nowrap;
   color: #fff;
   cursor: pointer;
   font-weight: bold;
+  font-size: 0.8rem;
 }
 .travelshop-detail-container .travelshop-detail-mobile-bar .travelshop-detail-mobile-bar-cta .booking-btn.green {
   background-color: #27ae60;
@@ -19667,14 +19837,17 @@ a {
   background-color: #0b311b !important;
   border-color: #89e5b0 !important;
 }
+@media (min-width: 992px) {
+  .travelshop-detail-container .travelshop-detail-mobile-bar .travelshop-detail-mobile-bar-cta {
+    justify-content: flex-start;
+  }
+  .travelshop-detail-container .travelshop-detail-mobile-bar .travelshop-detail-mobile-bar-cta .booking-btn {
+    width: auto;
+  }
+}
 @media (min-width: 768px) {
   .travelshop-detail-container .travelshop-detail-mobile-bar {
     padding: 1.25rem 1rem;
-  }
-}
-@media (min-width: 992px) {
-  .travelshop-detail-container .travelshop-detail-mobile-bar {
-    display: none;
   }
 }
 

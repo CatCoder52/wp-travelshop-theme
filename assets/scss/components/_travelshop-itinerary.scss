@@ -13,6 +13,10 @@
             cursor: pointer;
             font-weight: 400;
 
+            @include media-breakpoint-up(lg) {
+                font-size: 1.4rem;
+            }
+
             svg {
                 position: absolute;
                 right: 0;
@@ -138,43 +142,16 @@
                 @include media-breakpoint-up(lg) {
                     flex-wrap: wrap;
                     justify-content: flex-start;
-                    margin: 0 -1.6666%;
+                    margin: 0 -1.16666%;
                     display: flex !important;
                     transform: none !important;
 
                     a {
                         display: block;
+                        position: relative;
                         width: 31%;
                         margin: .5rem 1.16666%;
                         pointer-events: all;
-
-                        img {
-                            display: block;
-                            width: 100%;
-                            height: auto;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@include media-breakpoint-up(lg) {
-    .travelshop-itinerary {
-        .travelshop-itinerary-step {
-            h3 {
-                font-size: 1.4rem;
-            }
-
-            .travelshop-itinerary-step-more {
-                flex-direction: column;
-
-                .travelshop-itinerary-step-gallery {
-
-                    a {
-                        display: block;
-                        position: relative;
 
                         &:last-child {
                             margin-right: 0;
@@ -183,18 +160,24 @@
                         &:hover {
                             text-decoration: none;
                         }
-                    }
 
-                    &-image {
-
-                        &-copyright {
-                            position: static;
-                            margin-top: .25rem;
-                            text-align: center;
-                            color: #000;
-                            text-shadow: none;
+                        img {
+                            display: block;
+                            width: 100%;
+                            height: auto;
                         }
 
+                        &-image {
+
+                            &-copyright {
+                                position: static;
+                                margin-top: .25rem;
+                                text-align: center;
+                                color: #000;
+                                text-shadow: none;
+                            }
+
+                        }
                     }
                 }
             }
