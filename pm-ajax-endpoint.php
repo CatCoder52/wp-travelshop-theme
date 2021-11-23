@@ -5,6 +5,9 @@
 
 use \Pressmind\Travelshop\Search;
 use \Pressmind\ORM\Object\MediaObject;
+use \Pressmind\Search\CheapestPrice;
+use \Pressmind\Travelshop\PriceHandler;
+use \Pressmind\Travelshop\IB3Tools;
 
 //error_reporting(-1);
 //ini_set('display_errors', 'On');
@@ -16,6 +19,7 @@ require_once 'src/BuildSearch.php';
 require_once 'src/RouteHelper.php';
 require_once 'src/PriceHandler.php';
 require_once 'src/Template.php';
+require_once 'src/IB3Tools.php';
 header('Content-type: application/json');
 header('Cache-Control: no-cache, no-store, must-revalidate');
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
@@ -79,7 +83,7 @@ if (empty($_GET['action'])) {
     ob_end_clean();
     echo $output;
     exit;
-} else if ($_GET['action'] == 'pm-view') {
+} else if ($_GET['action'] == 'pm-view') { // @TODO render() is possible deprecated
     $id_media_object = (int)$_GET['pm-id'];
     if(empty($id_media_object)){
         exit;
@@ -92,6 +96,40 @@ if (empty($_GET['action'])) {
     $Output->error = false;
     $Output->html = $mediaObject->render($view,TS_LANGUAGE_CODE);
     $result = json_encode($Output);
+    echo $result;
+    exit;
+}else if ($_GET['action'] == 'offers') {
+    $id_media_object = (int)$_GET['pm-id'];
+    if(empty($id_media_object)){
+        exit;
+    }
+    $mediaObject = new MediaObject($id_media_object);
+    $filter = new CheapestPrice();
+    if (isset($_GET['pm-du']) === true && preg_match('/^([0-9]+)\-([0-9]+)$/', $_GET['pm-du']) > 0) {
+        list($filter->duration_from, $filter->duration_to) = explode('-', $_GET['pm-du']);
+    }
+    if (isset($_GET['pm-dr']) === true) {
+        $dateRange = BuildSearch::extractDaterange($_GET['pm-dr']);
+        if($dateRange !== false){
+            $filter->date_from = $dateRange[0];
+            $filter->date_to = $dateRange[1];
+        }
+    }
+    $limit = [0,100];
+    if (isset($_GET['pm-l']) === true && preg_match('/^([0-9]+)\,([0-9]+)$/', $_GET['pm-l'], $m) > 0) {
+        $limit = [intval($m[1]), intval($m[2])];
+    }
+    $filter->occupancies_disable_fallback = true;
+    $prices = $mediaObject->getCheapestPrices($filter, ['date_departure' => 'ASC', 'price_total' => 'ASC'], $limit);
+    $offers = [];
+    foreach($prices as $price){
+        $tmp = new \stdClass();
+        $tmp = $price->toStdClass(false);
+        $tmp->price_total_formatted = PriceHandler::format($price->price_total);
+        $tmp->ib3_url = IB3Tools::get_bookinglink($id_media_object, $price->id_booking_package, $price->id_date, $price->id_housing_package);
+        $offers[] = $tmp;
+    }
+    $result = json_encode($offers);
     echo $result;
     exit;
 }else{
