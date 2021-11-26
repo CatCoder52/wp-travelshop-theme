@@ -171,7 +171,7 @@ define('PAGEBUILDER', 'beaverbuilder');
  * Create your api key here: https://console.cloud.google.com/apis/credentials
  *
  */
-define('TS_GOOGLEMAPS_API', 'AIzaSyAR2e2Fz1U5EfexwhRj2Q2EA094mA63GK8');
+define('TS_GOOGLEMAPS_API', '');
 
 /**
  * Send E-Mails via SMTP AUTH
