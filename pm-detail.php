@@ -32,7 +32,7 @@ if(count($mediaObjects) > 1 && !empty($_GET['preview'])){ ?>
     <main>
         <?php
         // @see template-parts/pm-views/
-        echo $mediaObjects[0]->render('Detail1');
+        echo $mediaObjects[0]->render('Detail2');
         ?>
         <div class="small" style="margin: 0;">Template: wp-content/themes/travelshop/pm-detail.php</div>
     </main>

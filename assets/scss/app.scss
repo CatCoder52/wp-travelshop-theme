@@ -4,6 +4,7 @@
 @import "vendors/tiny-slider/tiny-slider";
 @import "vendors/daterangepicker/daterangepicker";
 @import "vendors/pretty-dropdowns/prettydropdowns";
+@import "vendors/lightbox2/lightbox.min.css";
 @import "vendors/cookieconsent/cookieconsent";
 
 // -- abstracts
@@ -48,11 +49,16 @@
 @import "components/cf7";
 @import "components/modals";
 @import "components/product-category-teaser";
+@import "components/travelshop-image-slider";
+@import "components/travelshop-price-box";
+@import "components/travelshop-gmaps-box";
+@import "components/travelshop-itinerary";
 @import "components/product-calendar";
 @import "components/month-teaser";
 @import "components/content-slider";
 @import "components/history";
 @import "components/team";
+
 
 // -- layout
 @import "layout/footer";
@@ -64,6 +70,7 @@
 @import "pages/home";
 @import "pages/list";
 @import "pages/detail";
+@import "pages/detail2";
 
 // -- themes
 // this just an example for you're theme starting point

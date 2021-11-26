@@ -17,7 +17,13 @@ use Pressmind\Search\CheapestPrice;
 ?>
 <div class="row content-block-detail-booking-calendar">
     <div class="col-12">
+        <div class="booking-calendar-title">
             <h2>Buchungskalender</h2>
+            <div>
+                <a href="#" class="btn btn btn-outline-primary">7 Tage</a>
+                <a href="#" class="btn btn btn-outline-primary">14 Tage</a>
+            </div>
+        </div>
     </div>
     <div class="col-12">
         <div class="booking-calendar-slider">
