@@ -54,28 +54,26 @@
                                 <?php
                                 $menu_items = nav_menu_2_tree('ibe_head');
                                 if (isset($menu_items)) {
-                                    foreach ($menu_items as $item) {
-
+                                    foreach ($menu_items['navigation'] as $item) {
                                         // Top Level
                                         if (empty($item->wpse_children) === true) { // Level 1
                                             ?>
-                                            <li class="nav-item">
+                                            <li class="nav-item <?php if ( !empty($menu_items['active_ids']) && in_array( $item->ID, $menu_items['active_ids']) ) { echo "active"; } ?>">
                                                 <a class="nav-link"
                                                    href="<?php echo $item->url; ?>"><?php echo $item->title; ?></a>
                                             </li>
                                             <?php
                                         } else { // Level 2
                                             ?>
-                                            <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                            <li class="nav-item dropdown <?php if ( !empty($menu_items['active_ids']) && in_array( $item->ID, $menu_items['active_ids']) ) { echo "active"; } ?>">
+                                                <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown"
                                                    role="button"
                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <?php echo $item->title; ?> <i class="la la-angle-down"></i>
+                                                    <?php echo $item->title; ?>
                                                     <svg xmlns="http://www.w3.org/2000/svg"
-                                                         class="icon icon-tabler icon-tabler-caret-down" width="20"
-                                                         height="20" viewBox="0 0 24 24" stroke-width="1.5"
-                                                         stroke="#ccc" fill="none" stroke-linecap="round"
-                                                         stroke-linejoin="round">
+                                                         class="icon icon-tabler icon-tabler-caret-down" width="20" height="20"
+                                                         viewBox="0 0 24 24" stroke-width="1.5" stroke="#ccc" fill="#ccc"
+                                                         stroke-linecap="round" stroke-linejoin="round">
                                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                         <path d="M18 15l-6 -6l-6 6h12" transform="rotate(180 12 12)"/>
                                                     </svg>
@@ -84,8 +82,17 @@
                                                     <?php
                                                     foreach ($item->wpse_children as $child_items) {
                                                         ?>
-                                                        <a class="dropdown-item"
-                                                           href="<?php echo $child_items->url ?>"><?php echo $child_items->title; ?></a>
+                                                        <a class="dropdown-item <?php if ( !empty($menu_items['active_ids']) && in_array( $child_items->ID, $menu_items['active_ids']) ) { echo "active"; } ?>"
+                                                           href="<?php echo $child_items->url ?>">
+                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                 class="icon icon-tabler icon-tabler-caret-right" width="15" height="15"
+                                                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="#ccc" fill="#ccc"
+                                                                 stroke-linecap="round" stroke-linejoin="round">
+                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                                <path d="M18 15l-6 -6l-6 6h12" transform="rotate(90 12 12)"/>
+                                                            </svg>
+                                                            <?php echo $child_items->title; ?>
+                                                        </a>
                                                         <?php
                                                     }
                                                     ?>

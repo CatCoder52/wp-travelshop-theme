@@ -17,20 +17,21 @@ if (has_nav_menu('primary') === true) {
 
                 <?php
                 $menu_items = nav_menu_2_tree('primary');
+
                 if (isset($menu_items)) {
-                    foreach ($menu_items as $item) {
+                    foreach ($menu_items['navigation'] as $item) {
                         // Top Level
                         if (empty($item->wpse_children) === true) { // Level 1
                             ?>
-                            <li class="nav-item active">
+                            <li class="nav-item <?php if ( !empty($menu_items['active_ids']) && in_array( $item->ID, $menu_items['active_ids']) ) { echo "active"; } ?>">
                                 <a class="nav-link"
                                    href="<?php echo $item->url; ?>"><?php echo $item->title; ?></a>
                             </li>
                             <?php
                         } else { // Level 2
                             ?>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                            <li class="nav-item dropdown <?php if ( !empty($menu_items['active_ids']) && in_array( $item->ID, $menu_items['active_ids']) ) { echo "active"; } ?>">
+                                <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown"
                                    role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <?php echo $item->title; ?>
@@ -46,7 +47,7 @@ if (has_nav_menu('primary') === true) {
                                     <?php
                                     foreach ($item->wpse_children as $child_items) {
                                         ?>
-                                        <a class="dropdown-item"
+                                        <a class="dropdown-item <?php if ( !empty($menu_items['active_ids']) && in_array( $child_items->ID, $menu_items['active_ids']) ) { echo "active"; } ?>"
                                            href="<?php echo $child_items->url ?>">
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                  class="icon icon-tabler icon-tabler-caret-right" width="15" height="15"

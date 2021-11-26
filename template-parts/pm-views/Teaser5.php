@@ -80,7 +80,7 @@ if (empty($filteredParams) === false) {
             <div class="stripe-content-body">
                 <p><?php echo $args['subline']; ?></p>
                 <?php
-                $breadcrumb = array_filter([$args['travel_type'], $args['destination']]);
+                $breadcrumb = array_filter([$args['travel_type'] ?? [], $args['destination'] ?? []]);
                 if (!empty($breadcrumb)) { ?>
                     <p class="attribute-row">
                     <span
