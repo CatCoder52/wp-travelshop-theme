@@ -69,9 +69,8 @@ jQuery(function ($) {
     // --- Travelshop Detail Bottom Bar
     // --------------------------------
     $(window).scroll(function () {
-        console.log($('.footer-main').offset().top);
         var currentScrollPosition = $(window).scrollTop();
-        if (currentScrollPosition >= 400 && currentScrollPosition <= ($('.footer-main').offset().top - (Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - 125))) {
+        if (currentScrollPosition >= 400 && currentScrollPosition <= ($('.footer-main').offset().top - (Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - 250))) {
             $('.travelshop-detail-mobile-bar').addClass('show');
         } else {
             $('.travelshop-detail-mobile-bar').removeClass('show');

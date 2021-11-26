@@ -1,6 +1,6 @@
 .card-travel-wrapper {
-	padding-bottom:1rem;
-	margin-bottom:1rem;
+	padding-bottom: 1rem;
+	margin-bottom: 1rem;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 
 	&:first-child {
@@ -20,6 +20,7 @@
 		height: 100%;
 		border-width: 0;
 		flex-direction: row;
+		align-items: flex-start;
 
 		@include media-breakpoint-up(md) {
 			flex-direction: column;
@@ -29,6 +30,13 @@
 		.row {
 			position: relative;
 			height: 100%;
+		}
+
+		.card-image-holder {
+			img {
+				width: 100%;
+				height: auto !important;
+			}
 		}
 
 		.card-body {

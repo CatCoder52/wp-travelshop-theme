@@ -13153,6 +13153,7 @@ body.fl-builder-edit header.header-main {
   height: 100%;
   border-width: 0;
   flex-direction: row;
+  align-items: flex-start;
 }
 @media (min-width: 768px) {
   .card-travel-wrapper .card.card-travel {
@@ -13163,6 +13164,10 @@ body.fl-builder-edit header.header-main {
 .card-travel-wrapper .card.card-travel .row {
   position: relative;
   height: 100%;
+}
+.card-travel-wrapper .card.card-travel .card-image-holder img {
+  width: 100%;
+  height: auto !important;
 }
 .card-travel-wrapper .card.card-travel .card-body {
   padding: 0 0 0 1rem;
@@ -17761,6 +17766,7 @@ figure.wp-block-image figcaption {
   margin-top: 1rem;
 }
 .travelshop-itinerary .travelshop-itinerary-step.step-open .travelshop-itinerary-step-more .travelshop-itinerary-step-desc {
+  padding: 0.5rem 0;
   order: 2;
 }
 @media (min-width: 992px) {
@@ -19418,7 +19424,12 @@ a {
   top: 0;
 }
 .travelshop-detail-container .travelshop-content-wrapper .travelshop-itinerary-toggleall {
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.travelshop-detail-container .travelshop-content-wrapper .travelshop-itinerary-toggleall h2 {
+  margin-bottom: 0;
 }
 .travelshop-detail-container .travelshop-content-wrapper .travelshop-itinerary-toggleall .btn, .travelshop-detail-container .travelshop-content-wrapper .travelshop-itinerary-toggleall .blog-list-entry--comments-list .comment-respond input[type=submit], .blog-list-entry--comments-list .comment-respond .travelshop-detail-container .travelshop-content-wrapper .travelshop-itinerary-toggleall input[type=submit] {
   display: inline-block;
@@ -19436,6 +19447,8 @@ a {
   justify-content: space-between;
   cursor: pointer;
   margin: 0;
+  font-size: 1.4rem;
+  padding: 0.25rem 0.5rem;
 }
 .travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element h3 * {
   pointer-events: none;
@@ -19465,6 +19478,7 @@ a {
 .travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element .travelshop-lodgings-element-more {
   height: 0;
   overflow: hidden;
+  padding: 0 0.5rem;
 }
 .travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element.lodging-open h3 {
   margin-bottom: 0.5rem;
@@ -19474,6 +19488,7 @@ a {
 }
 .travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element.lodging-open .travelshop-lodgings-element-more {
   height: auto;
+  padding: 0.25rem 0.5rem;
 }
 .travelshop-detail-container .travelshop-content-wrapper .travelshop-lodgings-wrapper .travelshop-lodgings-element .tns-outer {
   position: relative;

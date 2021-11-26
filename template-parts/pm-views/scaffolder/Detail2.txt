@@ -2,9 +2,10 @@
 
 global $PMTravelShop;
 
+use Pressmind\HelperFunctions;
 use Pressmind\Search\CheapestPrice;
 use Pressmind\Travelshop\PriceHandler;
-// use Pressmind\Travelshop\RouteHelper;
+use Pressmind\Travelshop\RouteHelper;
 
 /**
  * @var array $data
@@ -19,6 +20,24 @@ $mo = $data['media_object'];
  * @var Custom\MediaType\Reise $moc
  */
 $moc = $mo->getDataForLanguage(TS_LANGUAGE_CODE);
+
+
+foreach ($moc->unterkunftsverknuepfung_default as $key => $unterkunft_link) {
+
+    $mo_related[$key] = new \Pressmind\ORM\Object\MediaObject($unterkunft_link->id_media_object_link, true);
+
+    // if the linked object is not available (in most cases it must be public)
+    if (empty($mo_related[$key]->id)) {
+        continue;
+    }
+
+    /**
+     * this is for better code complementation in lovely phpstorm
+     * @var $unterkunft_moc \Custom\MediaType\Unterkunft
+     */
+    $moc_related[$key] = $mo_related[$key]->getDataForLanguage();
+
+}
 
 
 /**
@@ -75,7 +94,7 @@ $pictures = $moc->bilder_default;
                 $tmp->url = site_url();
                 $breadcrumb[] = $tmp;
 
-                // $breadcrumb_search_url = site_url() . '/' . RouteHelper::get_url_by_object_type($mo->id_object_type) . '/';
+                $breadcrumb_search_url = site_url() . '/' . RouteHelper::get_url_by_object_type($mo->id_object_type) . '/';
                 $breadcrumb_search_url = '';
                 if (is_array($moc->reiseart_default)) {
                     foreach ($moc->reiseart_default as $item) {
@@ -257,7 +276,7 @@ $pictures = $moc->bilder_default;
                         <?php } ?>
                     </div>
                     <?php
-                        // pricepox
+                        // pricebox
                         load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/travelshop-price-box.php', false, array_merge($data, array('cheapest_price' => $cheapest_price)));
                     ?>
                 </div>
@@ -286,10 +305,11 @@ $pictures = $moc->bilder_default;
             </div>
         </section>
 
-        <section class="container travelshop-itinerary-wrapper"> 
+        <section class="container travelshop-content-wrapper"> 
             <div class="row flex-column-reverse flex-lg-row">
                 <div class="col-12 col-lg-8">
                     <h2><span><?php echo strip_tags($mo->name); ?></span></h2>
+                    <hr />
                     <p class="mb-0"><strong><?php echo strip_tags($moc->subline_default); ?></strong></p>
                     <?php if (empty($moc->usp_default) === false) { ?>
                         <div class="travelshop-detail-usps">
@@ -297,12 +317,77 @@ $pictures = $moc->bilder_default;
                         </div>
                     <?php } ?>
                     <p>Einleitung: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-                    <p class="travelshop-itinerary-toggleall">
+                    <div class="travelshop-itinerary-toggleall">
+                        <h2>Reiseverlauf</h2>
                         <span class="btn btn-primary it-open">Alle öffnen</span>
                         <span class="btn btn-primary it-close">Alle schließen</span>
-                    </p>
+                    </div>
+                    <hr class="mb-4" />
                     <?php // load itinerary
                     load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/travelshop-itinerary.php', false, array('moc' => $moc, 'mo' => $mo, 'cheapest_price' => $cheapest_price)); ?>
+                    <?php if(isset($mo_related)) { ?>
+
+                        <section class="travelshop-lodgings-wrapper">
+                            <h2>Unterkünfte</h2>
+                            <hr />
+                            
+                            <?php foreach($mo_related as $key => $lodging) { ?>
+
+                                <div class="travelshop-lodgings-element <?php echo $key == 0 ? 'lodging-open' : ''; ?>">
+                                    <h3>
+                                        <div class="travelshop-lodgings-element-title">
+                                            <span><?php echo $lodging->name ?></span>
+                                            <div class="lodging-star-rating">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="#ffbf00" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                    <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+                                                </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="#ffbf00" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                    <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+                                                </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="#ffbf00" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                    <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+                                                </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="#ffbf00" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                    <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+                                                </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="#ffbf00" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                    <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus travelshop-itinerary-step-open" width="30" height="30" viewBox="0 0 24 24" stroke-width="2.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg>
+                                    </h3>
+                                    <div class="travelshop-lodgings-element-more">
+                                        <?php echo $moc_related[$key]->beschreibung_text_default; ?>
+                                        <div class="travelshop-lodgings-element-gallery lod-gallery-<?php echo $key; ?>">
+                                            <?php foreach($moc_related[$key]->bilder_default as $picture) { ?>
+                                                <a href="<?php echo $picture->getUri('detail'); ?>" data-lightbox="lodging-gallery-<?php echo $key; ?>">
+                                                    <img src="<?php echo $picture->getUri('teaser'); ?>" alt="<?php echo $picture->alt; ?>" />
+                                                    <div class="travelshop-lodgings-element-gallery-copyright">
+                                                        <?php echo $picture->copyright; ?>
+                                                    </div>
+                                                </a>
+                                            <?php } ?>
+                                        </div>
+                                        <?php // var_dump($moc_related[$key]->bilder_default); ?>
+                                    </div>
+                                </div>
+
+                                <hr />
+
+                            <?php } ?>
+                    
+                        </section>
+                    <?php } ?>
                 </div>
                 <div class="col-12 col-lg-4">
                     <div class="travelshop-detail-sidebar">
@@ -320,18 +405,48 @@ $pictures = $moc->bilder_default;
         </section>
 
         <div class="travelshop-detail-mobile-bar">
+            <?php 
+                $c_dates = 0;
+                foreach($mo->booking_packages as $booking_package){
+                    $c_dates += count($booking_package->dates);
+                }
+                $date = $booking_package->dates[0];
+                $housing_option = $date->getHousingOptions();
+                $housing_package = $housing_option[0]->getHousingPackage();
+                $cheapest_price_filter = new CheapestPrice();
+                $cheapest_price_filter->id_option = $housing_option[0]->id;
+                $cheapest_price_filter->id_booking_package = $housing_option[0]->id_booking_package;
+                $cheapest_price_filter->id_date = $date->id;
+                $housing_options_cheapest_price = $mo->getCheapestPrice($cheapest_price_filter);
+            ?>
             <div class="container">
                 <span class="travelshop-detail-mobile-bar-title"><?php echo strip_tags($mo->name); ?></span>
                 <p>
                     <?php echo $booking_package->duration; ?> Tag<?php echo($booking_package->duration > 1 ? 'e' : ''); ?>
-                    - ab <strong><?php echo PriceHandler::format($mo->getCheapestPrice($cheapest_price_filter)->price_total); ?></strong>
+                    - ab <strong><?php echo str_replace('&nbsp;', '', PriceHandler::format($mo->getCheapestPrice($cheapest_price_filter)->price_total)); ?></strong>
+                    <?php if (($discount = PriceHandler::getDiscount($housing_options_cheapest_price)) !== false) { ?>
+                    <span class="discount-label">
+                        <span class="price"><?php echo str_replace('&nbsp;', '', $discount['price_before_discount']); ?></span>
+                        <span class="discount"><?php echo $discount['price_delta']; ?></span>
+                    </span>
+                    <?php } ?>
                 </p>
                 <div class="travelshop-detail-mobile-bar-cta">
                     <div class="travelshop-detail-mobile-bar-date">
                         <span class="date">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-event" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <rect x="4" y="5" width="16" height="16" rx="2" />
+                                <line x1="16" y1="3" x2="16" y2="7" />
+                                <line x1="8" y1="3" x2="8" y2="7" />
+                                <line x1="4" y1="11" x2="20" y2="11" />
+                                <rect x="8" y="15" width="2" height="2" />
+                            </svg>
                             <a class="show-dates" data-modal="true" data-modal-id="50">
+                                <?php echo HelperFunctions::dayNumberToLocalDayName($date->departure->format('N'), 'short'); ?>.
                                 <?php echo $date->departure->format('d.m.'); ?>
                                 -
+                                <?php echo HelperFunctions::dayNumberToLocalDayName($date->arrival->format('N'), 'short'); ?>.
                                 <?php echo $date->arrival->format('d.m.Y'); ?>
                             </a>
                         </span>
@@ -341,6 +456,21 @@ $pictures = $moc->bilder_default;
                     </a>
                 </div>
             </div>
+        </div>
+        <div class="container">
+        
+        <?php
+            $args = [
+                'headline' => 'Weitere Reisen entdecken',
+                'text' => 'Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.',
+                'search' => [
+                        'pm-li' => '0,4',
+                        'pm-o' => 'rand',
+                        'pm-ot' => TS_TOUR_PRODUCTS
+                ]
+            ];
+            load_template_transient(get_template_directory().'/template-parts/layout-blocks/product-teaser.php', false, $args);
+            ?>
         </div>
 
     </article>
