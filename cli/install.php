@@ -6,17 +6,31 @@ use Pressmind\ORM\Object\Scheduler\Task;
 use Pressmind\REST\Client;
 use Pressmind\System\Info;
 
+require_once '../vendor/autoload.php';
+if(!file_exists('../.env')){
+    copy('../.env.default', '../.env');
+}
+
+if(!file_exists('../.env')){
+    echo "error: ../.env does not exists\n";
+   exit();
+}
+
+$dotenv = \Dotenv\Dotenv::createUnsafeImmutable(dirname(__DIR__));
+$dotenv->safeLoad();
+
+error_reporting(-1);
+ini_set('display_errors', 'On');
+//@unlink('../pm-config.php');
+
 if (php_sapi_name() !== 'cli') {
     die("This file is meant to be run from command line");
 }
 
-$first_install = !file_exists(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'pm-config.php');
+$first_install = !file_exists(dirname(__DIR__) . DIRECTORY_SEPARATOR . getenv('PM_CONFIG'));
 
 if($first_install) {
-
-    if(!file_exists('../.env')){
-        copy('../.env.default', '../.env');
-    }
+    echo "Welcome to the initial installation of your new pressmind web-core project.\n";
 
     $sdk_directory = dirname(__DIR__)
         . DIRECTORY_SEPARATOR
@@ -38,7 +52,7 @@ if($first_install) {
     $config = json_decode(file_get_contents($default_config_file), true);
 
     // add command line support
-    $options = getopt('',[
+    $options = getopt('', [
         'db_host::',
         'db_port::',
         'db_name::',
@@ -68,7 +82,7 @@ if($first_install) {
 
     if(empty($db_host)) $db_host = '127.0.0.1';
     if(empty($db_port)) $db_port = '3306';
-    if(empty($webserver_http)) $webserver_http = 'http://127.0.0.1';
+    if(empty($webserver_http)) $webserver_http = '';
 
     $config['development']['database']['username'] = $db_user;
     $config['development']['database']['password'] = $db_password;
@@ -166,7 +180,7 @@ if($first_install) {
     $config['development']['image_handling']['processor']['derivatives']['bigslide']['webp_create'] = true;
     $config['development']['image_handling']['processor']['derivatives']['bigslide']['webp_quality'] = 80;
 
-    $config_file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'pm-config.php';
+    $config_file = dirname(__DIR__) . DIRECTORY_SEPARATOR . getenv('PM_CONFIG');
     $config_text = "<?php\n\$config = " . _var_export($config) . ';';
     echo 'Writing config to ' . $config_file . "\n";
     file_put_contents($config_file, $config_text);
@@ -433,8 +447,9 @@ if($args[1] != 'only_static') {
     }
 }
 echo "\n";
-Writer::write('It is recommended to install a cronjob on your system. Add the following line to your servers crontab:', Writer::OUTPUT_SCREEN, 'install', Writer::TYPE_INFO);
-Writer::write('*/1 * * * * php ' . APPLICATION_PATH . '/cli/cron.php > /dev/null 2>&1', Writer::OUTPUT_SCREEN, 'install', Writer::TYPE_INFO);
+// TODO:
+//Writer::write('It is recommended to install a cronjob on your system. Add the following line to your servers crontab:', Writer::OUTPUT_SCREEN, 'install', Writer::TYPE_INFO);
+//Writer::write('*/1 * * * * php ' . APPLICATION_PATH . '/cli/cron.php > /dev/null 2>&1', Writer::OUTPUT_SCREEN, 'install', Writer::TYPE_INFO);
 echo "\n";
 if($args[1] == 'with_static' || $args[1] == 'only_static') {
     try {

@@ -9,7 +9,7 @@ function the_breadcrumb($sep = ' › ', $home_title = 'Startseite', $custom_path
 {
     global $post;
 
-    if (is_category() || is_archive() || $post == null) {
+    if (is_category() || is_archive()) {
          return;
     }
 
