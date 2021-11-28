@@ -8,7 +8,7 @@ use Pressmind\Travelshop\PriceHandler;
  */
 
 ?>
-<div class="travelshop-price-box">
+<div class="price-box">
     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check" width="30" height="30"
          viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="#27ae60" stroke-linecap="round"
          stroke-linejoin="round">

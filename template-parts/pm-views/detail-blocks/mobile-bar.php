@@ -7,10 +7,10 @@ use Pressmind\Travelshop\PriceHandler;
  */
 
 ?>
-<div class="travelshop-detail-mobile-bar">
+<div class="mobile-bar">
 
     <div class="container">
-        <span class="travelshop-detail-mobile-bar-title"><?php echo $args['headline'] ?></span>
+        <span class="mobile-bar-title"><?php echo $args['headline'] ?></span>
         <p>
             <?php echo $args['cheapest_price']->duration; ?>
             Tag<?php echo($args['cheapest_price']->duration > 1 ? 'e' : ''); ?>
@@ -27,8 +27,8 @@ use Pressmind\Travelshop\PriceHandler;
                     </span>
             <?php } ?>
         </p>
-        <div class="travelshop-detail-mobile-bar-cta">
-            <div class="travelshop-detail-mobile-bar-date">
+        <div class="mobile-bar-cta">
+            <div class="mobile-bar-date">
                         <span class="date">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-event"
                                  width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50"

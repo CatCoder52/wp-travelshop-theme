@@ -1,5 +1,25 @@
-.travelshop-itinerary {
-    .travelshop-itinerary-step {
+.itinerary-toggleall {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+        margin-bottom: 0;
+    }
+
+    .btn {
+        display: inline-block;
+        font-size: .8rem;
+        cursor: pointer;
+
+        &.it-close {
+            display: none;
+        }
+    }
+}
+
+.itinerary {
+    .itinerary-step {
         border: 2px solid #ddd;
         border-left: 3px solid #06f;
         padding: 1rem;
@@ -37,7 +57,7 @@
                 }
             }
 
-            .travelshop-itinerary-step-more {
+            .itinerary-step-more {
                 height: auto;
                 padding-top: 1rem;
 
@@ -74,12 +94,12 @@
                     }
                 }
 
-                .travelshop-itinerary-step-catering {
+                .itinerary-step-catering {
                     order: 1;
                     margin-top: 1rem;
                 }
 
-                .travelshop-itinerary-step-desc {
+                .itinerary-step-desc {
                     padding: .5rem 0;
                     order: 2;
                 }
@@ -89,11 +109,11 @@
                         order: 0;
                     }
 
-                    .travelshop-itinerary-step-catering {
+                    .itinerary-step-catering {
                         order: 0;
                     }
 
-                    .travelshop-itinerary-step-desc {
+                    .itinerary-step-desc {
                         order: 0;
                     }
                 }
@@ -101,13 +121,13 @@
             }
         }
 
-        .travelshop-itinerary-step-more {
+        .itinerary-step-more {
             display: flex;
             flex-direction: column-reverse;
             overflow: hidden;
             height: 0;
 
-            .travelshop-itinerary-step-gallery {
+            .itinerary-step-gallery {
                 margin: 0 0 1rem 0;
                 display: flex !important;
                 overflow-x: auto;

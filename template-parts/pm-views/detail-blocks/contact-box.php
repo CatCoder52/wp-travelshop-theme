@@ -4,8 +4,8 @@
  */
 ?>
 
-<div class="travelshop-gmaps-box-contact">
-    <div class="travelshop-gmaps-box-contact-phone">
+<div class="box-contact">
+    <div class="box-contact-phone">
         <strong>Persönliche Beratung</strong><br />
         <a href="#">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone" width="20px" height="20px" viewBox="0 0 24 24" stroke-width="0" stroke="#000" fill="#06f" stroke-linecap="round" stroke-linejoin="round">
@@ -16,7 +16,7 @@
         </a><br />
         <small>Mo - Fr : 10:00 - 18:00 Uhr </small>
     </div>
-    <div class="travelshop-gmaps-box-contact-whatsapp">
+    <div class="box-contact-whatsapp">
         <a href="#">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#27ae60" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
