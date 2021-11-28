@@ -1,20 +1,20 @@
+<?php
+/**
+ * @var array $args
+ */
+?>
 <script>
-        var map_markers = JSON.parse('<?php echo json_encode($map_markers);?>');
-
+        let map_markers = JSON.parse('<?php echo json_encode($args['map_markers']);?>');
         function initMap() {
-
             if (map_markers.length == 0) {
                 return;
             }
-
             const map = new google.maps.Map(
                 document.getElementById('map'), {
                     zoom: 4,
                 }
             );
-
-            for (var i = 0; i < map_markers.length; i++) {
-
+            for (let i = 0; i < map_markers.length; i++) {
                 new google.maps.Marker({
                     position: new google.maps.LatLng(map_markers[i].lat, map_markers[i].lng),
                     map,
@@ -26,13 +26,11 @@
                 });
 
             }
-
-            var bounds = new google.maps.LatLngBounds();
-            for (var i = 0; i < map_markers.length; i++) {
+            let bounds = new google.maps.LatLngBounds();
+            for (let i = 0; i < map_markers.length; i++) {
                 bounds.extend(map_markers[i]);
             }
             map.fitBounds(bounds);
-
             new google.maps.Polyline({
                 path: map_markers,
                 geodesic: true,
@@ -47,14 +45,7 @@
                     },
                 ],
         }).setMap(map);
-
-
     }
-
 </script>
-
 <div id="map"></div>
-
-<script async
-        src="https://maps.googleapis.com/maps/api/js?key=<?php echo TS_GOOGLEMAPS_API;?>&callback=initMap">
-</script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=<?php echo TS_GOOGLEMAPS_API;?>&callback=initMap"></script>
