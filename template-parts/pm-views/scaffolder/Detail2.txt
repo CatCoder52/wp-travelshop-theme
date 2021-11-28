@@ -351,7 +351,7 @@ $args['breadcrumb'][] = $tmp;
                     'pm-ot' => TS_TOUR_PRODUCTS
             ]
         ];
-        load_template(get_template_directory().'/template-parts/layout-blocks/product-teaser.php', false, $args_similiar);
+        load_template_transient(get_template_directory().'/template-parts/layout-blocks/product-teaser.php', false, $args_similiar);
         ?>
     </div>
 
