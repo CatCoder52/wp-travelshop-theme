@@ -1,4 +1,4 @@
-.travelshop-image-slider-wrapper {
+.image-slider-wrapper {
     position: relative;
     margin: 0 -15px;
 
@@ -44,11 +44,30 @@
         right: 0;
     }
 
-    .travelshop-image-slider {
+    .image-slider {
+        max-height: 58.5vw;
+        overflow: hidden;
+
+        @include media-breakpoint-up(sm) {
+            max-height: 322px;
+        }
+
+        @include media-breakpoint-up(md) {
+            max-height: 435px;
+        }
+
+        @include media-breakpoint-up(lg) {
+            max-height: 385px;
+        }
+
+        @include media-breakpoint-up(xl) {
+            max-height: 461px;
+        }
+
         div {
             position: relative;
 
-            .travelshop-image-slider-copyright {
+            .image-slider-copyright {
                 font-size: .7rem;
                 position: absolute;
                 z-index: 450;
@@ -75,11 +94,11 @@
             display: none;
         }
 
-        .travelshop-image-slider {
+        .image-slider {
             display: block !important;
 
             div {
-                .travelshop-image-slider-copyright {
+                .image-slider-copyright {
                     left: auto;
                     bottom: auto;
                     right: 15px;

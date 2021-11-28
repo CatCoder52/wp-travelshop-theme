@@ -165,7 +165,7 @@ $args['breadcrumb'][] = $tmp;
 
 ?>
 <div class="content-main">
-    <article class="travelshop-detail-container">
+    <article class="detail-page-v2-container">
         <section class="container">
             <div class="row">
             <?php the_breadcrumb(null, null, $args['breadcrumb']); ?>
@@ -175,12 +175,12 @@ $args['breadcrumb'][] = $tmp;
                     load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/detail-head.php', false, $args);
                     ?>
                 </div>
-                <div class="col-12 col-lg-4 travelshop-detail-info">
-                    <div class="travelshop-detail-info-head">
+                <div class="col-12 col-lg-4 detail-info">
+                    <div class="detail-info-head">
                         <h2><?php echo $args['name']; ?></h2>
                         <p><?php echo $args['subline']; ?></p>
                         <?php if (empty($args['usps']) === false) { ?>
-                            <div class="travelshop-detail-services-desktop">
+                            <div class="detail-services-desktop">
                                 <?php echo $args['usps']; ?>
                             </div>
                         <?php } ?>
@@ -213,14 +213,14 @@ $args['breadcrumb'][] = $tmp;
             </div>
         </section>
 
-        <section class="container travelshop-content-wrapper"> 
+        <section class="container detail-content-wrapper"> 
             <div class="row flex-column-reverse flex-lg-row">
                 <div class="col-12 col-lg-8">
                     <h2><span><?php echo $args['headline']; ?></span></h2>
                     <hr />
                     <p class="mb-0"><strong><?php echo $args['subline']; ?></strong></p>
                     <?php if (!empty($args['usps'])) { ?>
-                        <div class="travelshop-detail-usps">
+                        <div class="detail-usps">
                             <?php echo $args['usps']; ?>
                         </div>
                     <?php } ?>
@@ -235,13 +235,13 @@ $args['breadcrumb'][] = $tmp;
                      ?>
                 </div>
                 <div class="col-12 col-lg-4">
-                    <div class="travelshop-detail-sidebar">
+                    <div class="detail-sidebar">
                         <?php // load google maps image
                             load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/gmaps-box.php', false, $args);
 
                             load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/map-box.php', false, $args);
                             if(!empty($args['services_included'])) { ?>
-                                <div class="travelshop-detail-services">
+                                <div class="detail-services">
                                     <h2>Leistungen</h2>
                                     <?php echo $args['services_included']; ?>
                                 </div>

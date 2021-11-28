@@ -66,26 +66,26 @@ jQuery(function ($) {
     });
 
     // --------------------------------
-    // --- Travelshop Detail Bottom Bar
+    // --- Detail Bottom Bar
     // --------------------------------
     $(window).scroll(function () {
         var currentScrollPosition = $(window).scrollTop();
         if (currentScrollPosition >= 400 && currentScrollPosition <= ($('.footer-main').offset().top - (Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - 250))) {
-            $('.travelshop-detail-mobile-bar').addClass('show');
+            $('.mobile-bar').addClass('show');
         } else {
-            $('.travelshop-detail-mobile-bar').removeClass('show');
+            $('.mobile-bar').removeClass('show');
         }
     });
 
     // --------------------------------
-    // --- Travelshop Detail Image Slider
+    // --- Detail Image Slider
     // --------------------------------
-    if ($('.travelshop-image-slider').length > 0) {
+    if ($('.image-slider').length > 0) {
         var slider = tns({
-            container: '.travelshop-image-slider',
+            container: '.image-slider',
             items: 1,
             mouseDrag: true,
-            navContainer: '.travelshop-image-slider',
+            navContainer: '.image-slider',
             navAsThumbnails: true,
             edgePadding: 15,
             responsive: {
@@ -107,37 +107,37 @@ jQuery(function ($) {
     // -----------------------------------------------
     // -- Itinerary Steps Toggle
     // -----------------------------------------------
-    if ($('.travelshop-itinerary').length > 0) {
-        $('.travelshop-itinerary-step').find('h3').on('click', function (e) {
+    if ($('.itinerary').length > 0) {
+        $('.itinerary-step').find('h3').on('click', function (e) {
             $(e.target).parent().toggleClass('step-open');
         });
-        $('.travelshop-itinerary-toggleall .it-open').on('click', function () {
-            $('.travelshop-itinerary-step').addClass('step-open');
+        $('.itinerary-toggleall .it-open').on('click', function () {
+            $('.itinerary-step').addClass('step-open');
             $('.it-close').css('display', 'inline-block');
             $('.it-open').css('display', 'none');
         });
-        $('.travelshop-itinerary-toggleall .it-close').on('click', function () {
-            $('.travelshop-itinerary-step').removeClass('step-open');
+        $('.itinerary-toggleall .it-close').on('click', function () {
+            $('.itinerary-step').removeClass('step-open');
             $('.it-open').css('display', 'inline-block');
             $('.it-close').css('display', 'none');
         });
     }
 
     // -----------------------------------------------
-    // -- Lodgings Toggle
+    // -- Description Block Toggle
     // -----------------------------------------------
-    if ($('.travelshop-lodgings-wrapper').length > 0) {
-        $('.travelshop-lodgings-element').find('h3').on('click', function (e) {
-            $(e.target).parent().toggleClass('lodging-open');
+    if ($('.description-block-wrapper').length > 0) {
+        $('.description-block-element').find('h3').on('click', function (e) {
+            $(e.target).parent().toggleClass('description-block-open');
         });
     }
 
     // --------------------------------
     // --- Itinerary Steps Image Slider
     // --------------------------------
-    if ($('.travelshop-itinerary-step-gallery').length > 0) {
+    if ($('.itinerary-step-gallery').length > 0) {
 
-        $('.travelshop-itinerary-step-gallery').each(function (key) {
+        $('.itinerary-step-gallery').each(function (key) {
             let slider = tns({
                 container: '.it-gallery-' + key,
                 items: 1,
@@ -164,11 +164,11 @@ jQuery(function ($) {
     }
 
     // --------------------------------
-    // --- Lodgings Image Slider
+    // --- Description Block Image Slider
     // --------------------------------
-    if ($('.travelshop-lodgings-element-gallery').length > 0) {
+    if ($('.description-block-element-gallery').length > 0) {
 
-        $('.travelshop-lodgings-element-gallery').each(function (key) {
+        $('.description-block-element-gallery').each(function (key) {
             let slider = tns({
                 container: '.lod-gallery-' + key,
                 items: 1,
@@ -223,7 +223,7 @@ jQuery(function ($) {
         })
     }
 
-    if ($('.detail-image-grid-holder').length > 0 || $('.travelshop-detail-gallerythumb').length > 0) {
+    if ($('.detail-image-grid-holder').length > 0 || $('.detail-gallerythumb').length > 0) {
         function addGalleryClasses() {
             console.log('open');
             $('#detail-gallery-overlay').addClass('is--show');
@@ -241,18 +241,18 @@ jQuery(function ($) {
         $('.detail-gallery-overlay-close').on('click', function () {
             removeGalleryClasses();
         })
-        $('.travelshop-detail-gallerythumb').on('click', function () {
+        $('.detail-gallerythumb').on('click', function () {
             addGalleryClasses();
         })
     }
 
     // --------------------------------
-    // --- Travelshop Detail Image Gallery Thumb
+    // --- Detail Image Gallery Thumb
     // --------------------------------
-    if ($('.travelshop-detail-gallerythumb').length > 0) {
-        $('.travelshop-detail-gallerythumb').width($('.travelshop-detail-gallerythumb').height());
+    if ($('.detail-gallerythumb').length > 0) {
+        $('.detail-gallerythumb').width($('.detail-gallerythumb').height());
         $(window).resize(function () {
-            $('.travelshop-detail-gallerythumb').width($('.travelshop-detail-gallerythumb').height());
+            $('.detail-gallerythumb').width($('.detail-gallerythumb').height());
         })
     }
 

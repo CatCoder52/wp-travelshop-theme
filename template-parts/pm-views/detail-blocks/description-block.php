@@ -3,21 +3,21 @@
  * @var array $args
  */
 ?>
-<section class="travelshop-lodgings-wrapper">
+<section class="description-block-wrapper">
     <?php
     foreach ($args['descriptions'] as $description) {
         ?>
         <h2><?php echo $description['headline']; ?></h2>
         <hr/>
         <?php foreach ($description['items'] as $k => $item) { ?>
-            <div class="travelshop-lodgings-element <?php echo $k == 0 ? 'lodging-open' : ''; ?>">
+            <div class="description-block-element <?php echo $k == 0 ? 'description-block-open' : ''; ?>">
                 <h3>
-                    <div class="travelshop-lodgings-element-title">
+                    <div class="description-block-element-title">
                         <span><?php echo $item['name']; ?></span>
                         <?php
                         if (!empty($item['icons'])) {
                             ?>
-                            <div class="lodging-star-rating">
+                            <div class="description-block-star-rating">
                                 <?php echo $item['icons']; // svg or img ?>
                             </div>
                             <?php
@@ -33,15 +33,15 @@
                         <line x1="5" y1="12" x2="19" y2="12"/>
                     </svg>
                 </h3>
-                <div class="travelshop-lodgings-element-more">
+                <div class="description-block-element-more">
                     <?php echo $item['text']; ?>
-                    <div class="travelshop-lodgings-element-gallery lod-gallery-<?php echo $k; ?>">
+                    <div class="description-block-element-gallery lod-gallery-<?php echo $k; ?>">
                         <?php foreach ($item['pictures'] as $picture) { ?>
                             <a href="<?php echo $picture->getUri('detail'); ?>"
-                               data-lightbox="lodging-gallery-<?php echo $k; ?>">
+                               data-lightbox="description-block-gallery-<?php echo $k; ?>">
                                 <img src="<?php echo $picture->getUri('teaser'); ?>"
                                      alt="<?php echo $picture->alt; ?>"/>
-                                <div class="travelshop-lodgings-element-gallery-copyright">
+                                <div class="description-block-element-gallery-copyright">
                                     <?php echo $picture->copyright; ?>
                                 </div>
                             </a>
