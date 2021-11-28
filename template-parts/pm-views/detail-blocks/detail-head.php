@@ -9,7 +9,7 @@
         <div class="travelshop-image-slider">
             <?php foreach ($args['pictures'] as $picture) { ?>
                 <div>
-                    <img src="<?php echo $picture['url_detail']; ?>" alt="<?php echo $picture->alt; ?>"
+                    <img src="<?php echo $picture['url_detail']; ?>" alt="<?php echo $picture['alt']; ?>"
                          loading="lazy"/>
                     <div class="travelshop-image-slider-copyright">
                         <?php echo $picture['copyright']; ?>
