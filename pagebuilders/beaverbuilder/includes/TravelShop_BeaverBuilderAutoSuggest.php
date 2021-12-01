@@ -63,7 +63,7 @@ final class TravelShop_BeaverBuilderAutoSuggest {
         $search = new Pressmind\Search(
             [
                 Pressmind\Search\Condition\Visibility::create(TS_VISIBILTY),
-                Pressmind\Search\Condition\ObjectType::create($id_object_type),
+               // Pressmind\Search\Condition\ObjectType::create($id_object_type),
             ]
         );
 
@@ -106,7 +106,7 @@ final class TravelShop_BeaverBuilderAutoSuggest {
         $search = new Pressmind\Search(
             [
                 Pressmind\Search\Condition\Visibility::create(TS_VISIBILTY),
-                Pressmind\Search\Condition\ObjectType::create($id_object_type),
+                //Pressmind\Search\Condition\ObjectType::create($id_object_type),
             ]
         );
 

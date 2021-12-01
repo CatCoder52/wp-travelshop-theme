@@ -45,16 +45,15 @@ class Calendar
             $title = 'concat_ws("", ' . implode(',', $field_titles) . ') as name';
         }
 
-        $items = $db->fetchAll('select distinct  mo.id, ps.date_departure,
+        $sql = 'select distinct  mo.id, ps.date_departure,
                             id_object_type, ' . $title . '
                         from pmt2core_cheapest_price_speed ps
                             inner join pmt2core_media_objects mo on (mo.id = ps.id_media_object)
                             ' . implode('', $joins) . '
                         where 
                             date_departure > now() 
-                            order by date_departure limit 500;');
-
-
+                            order by date_departure limit 500;';
+        $items = $db->fetchAll($sql);
         return $items;
 
     }

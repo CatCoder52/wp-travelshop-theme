@@ -89,7 +89,7 @@ foreach ($languages as $language) {
     $data['type'] = 'search';
     $data['language'] = $language;
     $data['base_url'] = $route_prefix;
-    $data['title'] = 'Reisekalendar | ' . get_bloginfo('name');
+    $data['title'] = 'Reisekalender | ' . get_bloginfo('name');
     $data['meta_description'] = '';
     $routes[$routename] = new Route('^' . $route_prefix . '/?', 'ts_calendar_hook', 'pm-calendar', $data);
 

@@ -12,7 +12,10 @@ use \Pressmind\Travelshop\IB3Tools;
 //error_reporting(-1);
 //ini_set('display_errors', 'On');
 
-require_once 'config-theme.php';
+require_once 'vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
+$dotenv->safeLoad();
+require_once getenv('CONFIG_THEME');
 require_once 'bootstrap.php';
 require_once 'src/Search.php';
 require_once 'src/BuildSearch.php';
@@ -83,7 +86,7 @@ if (empty($_GET['action'])) {
     ob_end_clean();
     echo $output;
     exit;
-} else if ($_GET['action'] == 'pm-view') { // @TODO render() is possible deprecated
+} else if ($_GET['action'] == 'pm-view') {
     $id_media_object = (int)$_GET['pm-id'];
     if(empty($id_media_object)){
         exit;
@@ -92,9 +95,13 @@ if (empty($_GET['action'])) {
     if(!empty($_GET['view']) && preg_match('/^[0-9A-Za-z\_]+$/', $_GET['view']) !== false){
         $view = $_GET['view'];
     }
-    $mediaObject = new MediaObject($id_media_object);
-    $Output->error = false;
-    $Output->html = $mediaObject->render($view,TS_LANGUAGE_CODE);
+    $result = Search::getResult(['pm-id' => $id_media_object], 2, 1, false, false);
+    $Output->error = true;
+    $Output->html = '<!-- media object not found -->';
+    if(!empty($result['items'][0])){
+        $Output->error = false;
+        $Output->html = \Pressmind\Travelshop\Template::render(__DIR__ . '/template-parts/pm-views/' . $view . '.php', $result['items'][0]);
+    }
     $result = json_encode($Output);
     echo $result;
     exit;

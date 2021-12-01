@@ -41,18 +41,19 @@ function the_breadcrumb($sep = ' › ', $home_title = 'Startseite', $custom_path
         $path[] = $item;
     }
 
-
     // Add the current post
-
-    $item = new stdClass();
-    $item->name = $post->post_title;
-    $item->url = null;
-    $path[] = $item;
-
+        if(!empty($post->post_title)){
+            $item = new stdClass();
+            $item->name = $post->post_title;
+            $item->url = null;
+            $path[] = $item;
+        }
     }else{
         $path = $custom_path;
     }
-
+    if(count($path) == 1){
+        return;
+    }
     ?>
     <section class="breadcrumb-wrapper">
         <div class="container">

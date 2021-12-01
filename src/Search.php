@@ -111,7 +111,7 @@ class Search
             'items' => $items,
             'mongodb' => [
                 'aggregation_pipeline_filter' => !empty($filter) ? $filter->buildQueryAsJson($getFilters) : null,
-                'aggregation_pipeline_search' => !empty($filter) ? $search->buildQueryAsJson($getFilters) : null
+                'aggregation_pipeline_search' => !empty($search) ? $search->buildQueryAsJson($getFilters) : null
             ]
         ];
     }
