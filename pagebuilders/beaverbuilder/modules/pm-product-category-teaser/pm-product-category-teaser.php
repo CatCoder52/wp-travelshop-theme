@@ -58,15 +58,6 @@ FLBuilder::register_module('TSPMProductCategoryTeaser', array(
                 'title'  => __( 'Common', 'fl-builder' ),
                 'fields' => array(
 
-                    'view' => array(
-                        'type'    => 'select',
-                        'label'   => 'Product Template',
-                        'default' => 'Teaser4',
-                        'options'       => array(
-                            'Teaser4'    => 'Teaser4',
-                        ),
-                    ),
-
                     'teaser_count_desktop' => array(
                         'type'    => 'select',
                         'label'   => 'Teaser Items',
@@ -88,7 +79,7 @@ FLBuilder::register_module('TSPMProductCategoryTeaser', array(
                     'teasers'     => array(
                         'type'          => 'form',
                         'label'         => __('Teaser', 'fl-builder'),
-                        'form'          => 'procuct-category-teaser-form', // ID from registered form below
+                        'form'          => 'product-category-teaser-form', // ID from registered form below
                         'preview_text'  => 'headline', // Name of a field to use for the preview text
                         'multiple'      => true,
                         'limit'      => 4,
@@ -103,7 +94,7 @@ FLBuilder::register_module('TSPMProductCategoryTeaser', array(
 ));
 
 
-FLBuilder::register_settings_form('procuct-category-teaser-form', array(
+FLBuilder::register_settings_form('product-category-teaser-form', array(
     'title' => __('Teaser', 'fl-builder'),
     'tabs'  => array(
 
@@ -145,13 +136,6 @@ FLBuilder::register_settings_form('procuct-category-teaser-form', array(
                             'default' => '',
                         ),
 
-                        'my_suggest_field4711' => array(
-                            'type'          => 'suggest',
-                            'label'         => __( 'Suggest Field', 'fl-builder' ),
-                            'action'        => 'fl_as_posts', // Search posts.
-                            'data'          => 'page', // Slug of the post type to search.
-                            'limit'         => 3, // Limits the number of selections that can be made.
-                        ),
                     )
                 )
             )
