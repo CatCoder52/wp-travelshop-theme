@@ -74,8 +74,8 @@ if (empty($_GET['pm-pr']) === false) {
 $CheapestPriceFilter->occupancies = [2];
 $args['cheapest_price'] = $mo->getCheapestPrice($CheapestPriceFilter);
 
-$args['destination'] = !empty($moc->zielgebiet_default[0]) ? $moc->zielgebiet_default[0]->item->name : null;
-$args['travel_type'] = !empty($moc->reiseart_default[0]) ? $moc->reiseart_default[0]->item->name : null;
+$args['destination'] = !empty($moc->zielgebiet_default[0]->item->name) ? $moc->zielgebiet_default[0]->item->name : null;
+$args['travel_type'] = !empty($moc->reiseart_default[0]->item->name) ? $moc->reiseart_default[0]->item->name : null;
 
 $args['map_markers'] = [];
 foreach ($args['media_object']->getItinerarySteps() as $step) {
@@ -90,10 +90,10 @@ foreach ($args['media_object']->getItinerarySteps() as $step) {
         }
     }
 }
-
-$args['map_url_detail'] = $moc->karte_default[0]->getUri('detail');
-$args['map_url_detail_thumb'] = $moc->karte_default[0]->getUri('detail_thumb');
-
+if(!empty($moc->karte_default[0]) && is_object($moc->karte_default[0])){
+    $args['map_url_detail'] = $moc->karte_default[0]->getUri('detail');
+    $args['map_url_detail_thumb'] = $moc->karte_default[0]->getUri('detail_thumb');
+}
 /**
  * Add decriptions blocks
  * <code>
@@ -136,72 +136,76 @@ $args['descriptions'][] = [
 /**
  * List Housings/Hotels from object link
  */
-$housings = [];
-foreach ($moc->unterkunftsverknuepfung_default as $key => $link) {
-    $linked_mo = new \Pressmind\ORM\Object\MediaObject($link->id_media_object_link, true);
-    // if the linked object is not available (in most cases it must be public)
-    if (empty($linked_mo->id)) {
-        continue;
+
+if(!empty($moc->unterkunftsverknuepfung_default) && is_array($moc->unterkunftsverknuepfung_default)){
+    $housings = [];
+    foreach ($moc->unterkunftsverknuepfung_default as $key => $link) {
+        $linked_mo = new \Pressmind\ORM\Object\MediaObject($link->id_media_object_link, true);
+        // if the linked object is not available (in most cases it must be public)
+        if (empty($linked_mo->id)) {
+            continue;
+        }
+        /**
+         * this is for better code complementation in lovely phpstorm and other ide's
+         * @var $linked_moc \Custom\MediaType\Unterkunft
+         */
+        $linked_moc = $linked_mo->getDataForLanguage(TS_LANGUAGE_CODE);
+        $tmp = [];
+        $tmp['name'] = strip_tags($linked_mo->name);
+        // draw hotel stars if available
+        if(!empty($linked_moc->sterne_default[0]->item->name) && intval($linked_moc->sterne_default[0]->item->name) > 0){
+            $tmp['icons'] = str_repeat('<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="#ffbf00" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"/></svg>',
+                                        intval($linked_moc->sterne_default[0]->item->name));
+        }
+        $tmp['text'] = $linked_moc->beschreibung_text_default;
+        $tmp['pictures']  = [];
+        foreach($linked_moc->bilder_default as $item){
+            $tmp['pictures'][] = [
+                'caption' => $item->caption,
+                'copyright' => $item->copyright,
+                'url_detail' => $item->getUri('detail'),
+                'url_teaser' => $item->getUri('teaser'),
+            ];
+        }
+        $housings[] = $tmp;
     }
-    /**
-     * this is for better code complementation in lovely phpstorm and other ide's
-     * @var $linked_moc \Custom\MediaType\Unterkunft
-     */
-    $linked_moc = $linked_mo->getDataForLanguage(TS_LANGUAGE_CODE);
-    $tmp = [];
-    $tmp['name'] = strip_tags($linked_mo->name);
-    // draw hotel stars if available
-    if(!empty($linked_moc->sterne_default[0]->item->name) && intval($linked_moc->sterne_default[0]->item->name) > 0){
-        $tmp['icons'] = str_repeat('<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="#ffbf00" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"/></svg>',
-                                    intval($linked_moc->sterne_default[0]->item->name));
-    }
-    $tmp['text'] = $linked_moc->beschreibung_text_default;
-    $tmp['pictures']  = [];
-    foreach($linked_moc->bilder_default as $item){
-        $tmp['pictures'][] = [
-            'caption' => $item->caption,
-            'copyright' => $item->copyright,
-            'url_detail' => $item->getUri('detail'),
-            'url_teaser' => $item->getUri('teaser'),
+
+    if(count($housings) > 0){
+        $args['descriptions'][] = [
+            'headline' => count($housings) == 1 ? 'Unterkunft' : 'Unterkünfte',
+            'items' => $housings
         ];
     }
-    $housings[] = $tmp;
 }
-
-if(count($housings) > 0){
-    $args['descriptions'][] = [
-        'headline' => count($housings) == 1 ? 'Unterkunft' : 'Unterkünfte',
-        'items' => $housings
-    ];
-}
-
-
 /**
  * List Textbausteine/Textbricks from object links
  */
-$textbricks = [];
-foreach ($moc->textbaustein_default as $key => $link) {
-    $linked_mo = new \Pressmind\ORM\Object\MediaObject($link->id_media_object_link, true);
-    // if the linked object is not available (in most cases it must be public)
-    if (empty($linked_mo->id)) {
-        continue;
-    }
-    /**
-     * this is for better code complementation in lovely phpstorm and other ide's
-     * @var $linked_moc \Custom\MediaType\Textbaustein
-     */
-    $linked_moc = $linked_mo->getDataForLanguage(TS_LANGUAGE_CODE);
-    $tmp = [];
-    $tmp['name'] = strip_tags($linked_mo->name);
-    $tmp['text'] = $linked_moc->text_default;
-    $textbricks[] = $tmp;
-}
 
-if(count($textbricks) > 0){
-    $args['descriptions'][] = [
-        'headline' => count($textbricks) == 1 ? 'Textbaustein' : 'Textbausteine',
-        'items' => $textbricks
-    ];
+if(!empty($moc->unterkunftsverknuepfung_default) && is_array($moc->unterkunftsverknuepfung_default)){
+    $textbricks = [];
+    foreach ($moc->textbaustein_default as $key => $link) {
+        $linked_mo = new \Pressmind\ORM\Object\MediaObject($link->id_media_object_link, true);
+        // if the linked object is not available (in most cases it must be public)
+        if (empty($linked_mo->id)) {
+            continue;
+        }
+        /**
+         * this is for better code complementation in lovely phpstorm and other ide's
+         * @var $linked_moc \Custom\MediaType\Textbaustein
+         */
+        $linked_moc = $linked_mo->getDataForLanguage(TS_LANGUAGE_CODE);
+        $tmp = [];
+        $tmp['name'] = strip_tags($linked_mo->name);
+        $tmp['text'] = $linked_moc->text_default;
+        $textbricks[] = $tmp;
+    }
+
+    if(count($textbricks) > 0){
+        $args['descriptions'][] = [
+            'headline' => count($textbricks) == 1 ? 'Textbaustein' : 'Textbausteine',
+            'items' => $textbricks
+        ];
+    }
 }
 
 /**
