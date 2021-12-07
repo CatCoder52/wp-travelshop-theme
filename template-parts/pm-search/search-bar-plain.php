@@ -3,7 +3,6 @@
 use Pressmind\Travelshop\RouteHelper;
 
 /**
- * @var int $id_object_type
  * <code>
  *  $args[total_result] => 112
  *  $args[current_page] => 1

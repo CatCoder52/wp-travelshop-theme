@@ -67,7 +67,7 @@ if (empty($filteredParams) === false) {
             <div class='stripe-duration'>
                 <strong><?php echo $args['cheapest_price']->duration; ?></strong>
                 <br/>
-                <small>Tage</small>
+                <small><?php echo $args['cheapest_price']->duration == 1 ? 'Tag' : 'Tage';?></small>
             </div>
 
         </div>

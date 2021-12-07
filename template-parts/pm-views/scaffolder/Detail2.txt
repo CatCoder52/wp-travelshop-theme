@@ -22,40 +22,6 @@ $mo = $data['media_object'];
 $moc = $mo->getDataForLanguage(TS_LANGUAGE_CODE);
 
 
-/**
- * Set the Cheapest Price, based on the current search parameters
- */
-
-$CheapestPriceFilter = new CheapestPrice();
-if (empty($_GET['pm-dr']) === false) {
-    $dateRange = BuildSearch::extractDaterange($_GET['pm-dr']);
-    if ($dateRange !== false) {
-        $CheapestPriceFilter->date_from = $dateRange[0];
-        $CheapestPriceFilter->date_to = $dateRange[1];
-    }
-}
-
-if (empty($_GET['pm-du']) === false) {
-    $durationRange = BuildSearch::extractDurationRange($_GET['pm-du']);
-    if ($durationRange !== false) {
-        $CheapestPriceFilter->duration_from = $durationRange[0];
-        $CheapestPriceFilter->duration_to = $durationRange[1];
-    }
-}
-
-
-if (empty($_GET['pm-pr']) === false) {
-    $priceRange = BuildSearch::extractPriceRange($_GET['pm-pr']);
-    if ($priceRange !== false) {
-        $CheapestPriceFilter->price_from = $priceRange[0];
-        $CheapestPriceFilter->price_to = $priceRange[1];
-    }
-}
-
-//@todo add idd and idbp to the cheapest price
-
-$CheapestPriceFilter->occupancies = [2];
-
 $args = [];
 $args['pictures'] = [];
 foreach($moc->bilder_default as $item){
@@ -67,6 +33,7 @@ foreach($moc->bilder_default as $item){
     ];
 }
 $args['id_media_object'] = $mo->id;
+$args['media_object'] = $mo;
 $args['id_object_type'] = $mo->id_object_type;
 $args['code'] = $mo->code;
 $args['name'] = $mo->name;
@@ -76,10 +43,40 @@ $args['subline'] = strip_tags($moc->subline_default);
 $args['usps'] = $moc->usp_default;
 $args['services_included'] = $moc->leistungen_default;
 $args['intro'] = $moc->einleitung_default;
+
+/**
+ * Set the Cheapest Price, based on the current search parameters
+ * @todo add idd and idbp to the cheapest price filter
+ */
+
+$CheapestPriceFilter = new CheapestPrice();
+if (empty($_GET['pm-dr']) === false) {
+    $dateRange = BuildSearch::extractDaterange($_GET['pm-dr']);
+    if ($dateRange !== false) {
+        $CheapestPriceFilter->date_from = $dateRange[0];
+        $CheapestPriceFilter->date_to = $dateRange[1];
+    }
+}
+if (empty($_GET['pm-du']) === false) {
+    $durationRange = BuildSearch::extractDurationRange($_GET['pm-du']);
+    if ($durationRange !== false) {
+        $CheapestPriceFilter->duration_from = $durationRange[0];
+        $CheapestPriceFilter->duration_to = $durationRange[1];
+    }
+}
+if (empty($_GET['pm-pr']) === false) {
+    $priceRange = BuildSearch::extractPriceRange($_GET['pm-pr']);
+    if ($priceRange !== false) {
+        $CheapestPriceFilter->price_from = $priceRange[0];
+        $CheapestPriceFilter->price_to = $priceRange[1];
+    }
+}
+$CheapestPriceFilter->occupancies = [2];
 $args['cheapest_price'] = $mo->getCheapestPrice($CheapestPriceFilter);
-$args['destination'] = !empty($moc->zielgebiet_default[0]) ? $moc->zielgebiet_default[0]->item->name : null;
-$args['travel_type'] = !empty($moc->reiseart_default[0]) ? $moc->reiseart_default[0]->item->name : null;
-$args['media_object'] = $mo;
+
+$args['destination'] = !empty($moc->zielgebiet_default[0]->item->name) ? $moc->zielgebiet_default[0]->item->name : null;
+$args['travel_type'] = !empty($moc->reiseart_default[0]->item->name) ? $moc->reiseart_default[0]->item->name : null;
+
 $args['map_markers'] = [];
 foreach ($args['media_object']->getItinerarySteps() as $step) {
     foreach ($step->geopoints as $geopoint) {
@@ -93,50 +90,132 @@ foreach ($args['media_object']->getItinerarySteps() as $step) {
         }
     }
 }
-
-$args['map_url_detail'] = $moc->karte_default[0]->getUri('detail');
-$args['map_url_detail_thumb'] = $moc->karte_default[0]->getUri('detail_thumb');
-
-
+if(!empty($moc->karte_default[0]) && is_object($moc->karte_default[0])){
+    $args['map_url_detail'] = $moc->karte_default[0]->getUri('detail');
+    $args['map_url_detail_thumb'] = $moc->karte_default[0]->getUri('detail_thumb');
+}
+/**
+ * Add decriptions blocks
+ * <code>
+ * $args['descriptions'][] = [
+ *          'headline' => '',
+ *          'items' => [[
+ *              'name' => '',
+ * '            text' => '',
+ * '            icons' => '',
+ * '            pictures' => [
+ *              [
+ *                  'caption' => '',
+ *                  'copyright' => null,
+ *                  'url_detail' => null,
+ *                  'url_teaser' => null,
+ *              ]
+ *          ]
+ *          ]
+ *      ]
+ * ];
+ * </code>
+ *
+ */
 
 $args['descriptions'] = [];
-$housings = [];
-foreach ($moc->unterkunftsverknuepfung_default as $key => $link) {
-    $linked_mo = new \Pressmind\ORM\Object\MediaObject($link->id_media_object_link, true);
-    // if the linked object is not available (in most cases it must be public)
-    if (empty($linked_mo->id)) {
-        continue;
+
+
+$args['descriptions'][] = [
+    'headline' => null,
+    'items' => [[
+        'name' => !empty(strip_tags($moc->beschreibung_headline_default)) ? strip_tags($moc->beschreibung_headline_default) : 'Beschreibung',
+        'text' => preg_replace(['/<span[^>]*?class="Head_1"[^>]*>(.*?)<\/span>/', '/\<ul\>/'], ['<h5>$1</h5>', '<ul class="checked-list">'], $moc->beschreibung_text_default),
+        'icons' => null,
+    ]
+
+    ]
+];
+
+
+/**
+ * List Housings/Hotels from object link
+ */
+
+if(!empty($moc->unterkunftsverknuepfung_default) && is_array($moc->unterkunftsverknuepfung_default)){
+    $housings = [];
+    foreach ($moc->unterkunftsverknuepfung_default as $key => $link) {
+        $linked_mo = new \Pressmind\ORM\Object\MediaObject($link->id_media_object_link, true);
+        // if the linked object is not available (in most cases it must be public)
+        if (empty($linked_mo->id)) {
+            continue;
+        }
+        /**
+         * this is for better code complementation in lovely phpstorm and other ide's
+         * @var $linked_moc \Custom\MediaType\Unterkunft
+         */
+        $linked_moc = $linked_mo->getDataForLanguage(TS_LANGUAGE_CODE);
+        $tmp = [];
+        $tmp['name'] = strip_tags($linked_mo->name);
+        // draw hotel stars if available
+        if(!empty($linked_moc->sterne_default[0]->item->name) && intval($linked_moc->sterne_default[0]->item->name) > 0){
+            $tmp['icons'] = str_repeat('<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="#ffbf00" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"/></svg>',
+                                        intval($linked_moc->sterne_default[0]->item->name));
+        }
+        $tmp['text'] = $linked_moc->beschreibung_text_default;
+        $tmp['pictures']  = [];
+        foreach($linked_moc->bilder_default as $item){
+            $tmp['pictures'][] = [
+                'caption' => $item->caption,
+                'copyright' => $item->copyright,
+                'url_detail' => $item->getUri('detail'),
+                'url_teaser' => $item->getUri('teaser'),
+            ];
+        }
+        $housings[] = $tmp;
     }
-    /**
-     * this is for better code complementation in lovely phpstorm and other ide's
-     * @var $linked_moc \Custom\MediaType\Unterkunft
-     */
-    $linked_moc = $linked_mo->getDataForLanguage();
-    $tmp = [];
-    $tmp['name'] = strip_tags($linked_mo->name);
-    // draw hotel stars if available
-    if(!empty($linked_moc->sterne_default[0]->item->name) && intval($linked_moc->sterne_default[0]->item->name) > 0){
-        $tmp['icons'] = str_repeat('<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="#ffbf00" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"/></svg>',
-                                    intval($linked_moc->sterne_default[0]->item->name));
+
+    if(count($housings) > 0){
+        $args['descriptions'][] = [
+            'headline' => count($housings) == 1 ? 'Unterkunft' : 'Unterkünfte',
+            'items' => $housings
+        ];
     }
-    $tmp['text'] = $linked_moc->beschreibung_text_default;
-    $tmp['pictures'] = $linked_moc->bilder_default;
-    $housings[] = $tmp;
+}
+/**
+ * List Textbausteine/Textbricks from object links
+ */
+
+if(!empty($moc->unterkunftsverknuepfung_default) && is_array($moc->unterkunftsverknuepfung_default)){
+    $textbricks = [];
+    foreach ($moc->textbaustein_default as $key => $link) {
+        $linked_mo = new \Pressmind\ORM\Object\MediaObject($link->id_media_object_link, true);
+        // if the linked object is not available (in most cases it must be public)
+        if (empty($linked_mo->id)) {
+            continue;
+        }
+        /**
+         * this is for better code complementation in lovely phpstorm and other ide's
+         * @var $linked_moc \Custom\MediaType\Textbaustein
+         */
+        $linked_moc = $linked_mo->getDataForLanguage(TS_LANGUAGE_CODE);
+        $tmp = [];
+        $tmp['name'] = strip_tags($linked_mo->name);
+        $tmp['text'] = $linked_moc->text_default;
+        $textbricks[] = $tmp;
+    }
+
+    if(count($textbricks) > 0){
+        $args['descriptions'][] = [
+            'headline' => count($textbricks) == 1 ? 'Textbaustein' : 'Textbausteine',
+            'items' => $textbricks
+        ];
+    }
 }
 
-if(count($housings) > 0){
-    $args['descriptions']['housings'] = [
-        'headline' => count($housings) == 1 ? 'Unterkunft' : 'Unterkünfte',
-        'items' => $housings
-    ];
-}
-
+/**
+ * Breadcrumb
+ */
 $args['breadcrumb'] = [];
 $tmp = new stdClass();
 $tmp->name = 'Startseite';
 $tmp->url = site_url();
 $args['breadcrumb'][] = $tmp;
-
 $breadcrumb_search_url = site_url() . '/' . RouteHelper::get_url_by_object_type($mo->id_object_type) . '/';
 if (is_array($moc->reiseart_default)) {
     foreach ($moc->reiseart_default as $item) {
@@ -156,45 +235,47 @@ if (is_array($moc->zielgebiet_default)) {
         $args['breadcrumb'][] = $tmp;
     }
 }
-
 $tmp = new stdClass();
 $tmp->name = strip_tags($moc->headline_default);
 $tmp->url = null;
 $args['breadcrumb'][] = $tmp;
-
-
 ?>
 <div class="content-main">
     <article class="detail-page-v2-container">
         <section class="container">
             <div class="row">
-            <?php the_breadcrumb(null, null, $args['breadcrumb']); ?>
+                <?php
+                // = = = > load the breadcrumb  < = = =
+                the_breadcrumb(null, null, $args['breadcrumb']);
+                ?>
                 <div class="col-12 col-lg-8">
                     <?php
-                    // Detail Header
+                    // = = = > detail header < = = =
                     load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/detail-head.php', false, $args);
                     ?>
                 </div>
                 <div class="col-12 col-lg-4 detail-info">
                     <div class="detail-info-head">
                         <h2><?php echo $args['name']; ?></h2>
-                        <p><?php echo $args['subline']; ?></p>
-                        <?php if (empty($args['usps']) === false) { ?>
+                        <?php if (!empty($args['subline'])) { ?>
+                            <p><?php echo $args['subline']; ?></p>
+                        <?php } ?>
+                        <?php if (!empty($args['usps'])) { ?>
                             <div class="detail-services-desktop">
                                 <?php echo $args['usps']; ?>
                             </div>
                         <?php } ?>
                     </div>
                     <?php
-                        // Price Box
+                        // = = = > load the price box < = = =
                         $id_price_box_modal = uniqid();
                         $args['id_modal_price_box'] = $id_price_box_modal;
                         load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/price-box2.php', false, $args);
                     ?>
                 </div>
             </div>
-            <?php 
-                // Booking Offers Modal
+            <?php
+                // = = = > load booking offers modal window < = = =
                 $args_modal = [];
                 $args_modal['title'] = 'Reisetermin wählen';
                 $args_modal['id_modal'] = $args['id_modal_price_box'];
@@ -207,6 +288,7 @@ $args['breadcrumb'][] = $tmp;
             <div class="row">
                 <div class="col-12">
                     <?php
+                    // = = = > load booking calendar < = = =
                     load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/booking-offers-calendar.php', false, $args);
                     ?>
                 </div>
@@ -218,27 +300,32 @@ $args['breadcrumb'][] = $tmp;
                 <div class="col-12 col-lg-8">
                     <h2><span><?php echo $args['headline']; ?></span></h2>
                     <hr />
-                    <p class="mb-0"><strong><?php echo $args['subline']; ?></strong></p>
+                    <?php if (!empty($args['subline'])) { ?>
+                        <p class="mb-0"><strong><?php echo $args['subline']; ?></strong></p>
+                    <?php } ?>
                     <?php if (!empty($args['usps'])) { ?>
                         <div class="detail-usps">
                             <?php echo $args['usps']; ?>
                         </div>
                     <?php } ?>
-                    <p><?php echo $args['intro'];?></p>
-
+                    <?php if (!empty($args['intro'])) { ?>
+                        <p><?php echo $args['intro'];?></p>
+                    <?php } ?>
                     <?php
-                    // Itinerary
+                    // = = = > itinerary < = = =
                     load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/itinerary.php', false, $args);
 
-                    // Other description blocks
+                    // = = = > load common description blocks < = = =
                     load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/description-block.php', false, $args);
                      ?>
                 </div>
                 <div class="col-12 col-lg-4">
                     <div class="detail-sidebar">
-                        <?php // load google maps image
+                        <?php
+                            // = = = > load google maps image < = = =
                             load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/gmaps-box.php', false, $args);
 
+                            // = = = > load static map image (NOT GOOGLE, just an image) < = = =
                             load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/map-box.php', false, $args);
                             if(!empty($args['services_included'])) { ?>
                                 <div class="detail-services">
@@ -251,13 +338,15 @@ $args['breadcrumb'][] = $tmp;
             </div>
         </section>
         <?php
+        // = = = > load sticky footer bar < = = =
         load_template(get_template_directory().'/template-parts/pm-views/detail-blocks/mobile-bar.php', false, $args);
         ?>
     </article>
+    <hr>
     <div class="container">
     <?php
-        // Similiar products
-        $args = [
+        // = = = > load similiar products < = = =
+        $args_similiar = [
             'headline' => 'Kunden buchten auch:',
             'text' => 'Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.',
             'search' => [
@@ -266,7 +355,7 @@ $args['breadcrumb'][] = $tmp;
                     'pm-ot' => TS_TOUR_PRODUCTS
             ]
         ];
-        load_template_transient(get_template_directory().'/template-parts/layout-blocks/product-teaser.php', false, $args);
+        load_template_transient(get_template_directory().'/template-parts/layout-blocks/product-teaser.php', false, $args_similiar);
         ?>
     </div>
 

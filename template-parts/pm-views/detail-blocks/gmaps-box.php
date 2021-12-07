@@ -10,7 +10,7 @@ if (empty($args['media_object']->getItinerarySteps())) {
 }
 
 if(empty(TS_GOOGLEMAPS_API)){
-    echo 'TS_GOOGLEMAPS_API is empty, no google maps api kex specified';
+    echo '<!-- TS_GOOGLEMAPS_API is empty, no google maps api key specified -->';
     return;
 }
 

@@ -23,6 +23,20 @@ if (empty($args['media_object']->getItinerarySteps())) {
     return;
 }
 
+$valid = false;
+foreach ($args['media_object']->getItinerarySteps() as $key => $step) {
+    foreach ($step->sections as $section) {
+        if(!empty(strip_tags($section->content->headline))){
+            $valid = true;
+        }
+    }
+}
+
+if(!$valid){
+    return;
+}
+
+
 ?>
 <div class="itinerary-toggleall">
     <h2>Reiseverlauf</h2>
@@ -33,10 +47,14 @@ if (empty($args['media_object']->getItinerarySteps())) {
 <section class="itinerary">
     <?php 
     foreach ($args['media_object']->getItinerarySteps() as $key => $step) {
-        foreach ($step->sections as $section) { ?>
+        foreach ($step->sections as $section) {
+            if(empty(strip_tags($section->content->headline))){
+                continue;
+            }
+            ?>
             <div class="itinerary-step">
                 <h3>
-                    <?php echo $section->content->headline; ?>
+                    <?php echo $section->content->headline; ?>xx
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus itinerary-step-open" width="30" height="30" viewBox="0 0 24 24" stroke-width="2.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <line x1="12" y1="5" x2="12" y2="19" />
@@ -58,9 +76,9 @@ if (empty($args['media_object']->getItinerarySteps())) {
                         <?php }
                         ?>
                     </div>
-                    <div class="itinerary-step-catering">
+                    <!-- <div class="itinerary-step-catering">
                         Hier kommt die Verpflegung hin
-                    </div>
+                    </div>-->
                 </div>
             </div>
     <?php } 

@@ -5,15 +5,19 @@
 ?>
 <section class="description-block-wrapper">
     <?php
-    foreach ($args['descriptions'] as $description) {
+    foreach ($args['descriptions'] as $i => $description) {
         ?>
+        <?php if (!empty($description['headline'])) { ?>
         <h2><?php echo $description['headline']; ?></h2>
+        <?php } ?>
         <hr/>
         <?php foreach ($description['items'] as $k => $item) { ?>
-            <div class="description-block-element <?php echo $k == 0 ? 'description-block-open' : ''; ?>">
+            <div class="description-block-element <?php echo $i == 0 ? 'description-block-open' : ''; ?>">
                 <h3>
                     <div class="description-block-element-title">
+                        <?php if (!empty($item['name'])) { ?>
                         <span><?php echo $item['name']; ?></span>
+                        <?php } ?>
                         <?php
                         if (!empty($item['icons'])) {
                             ?>
@@ -34,19 +38,23 @@
                     </svg>
                 </h3>
                 <div class="description-block-element-more">
-                    <?php echo $item['text']; ?>
+                    <?php if (!empty($item['text'])) { ?>
+                        <?php echo $item['text']; ?>
+                    <?php } ?>
+                    <?php if (!empty($item['pictures'])) { ?>
                     <div class="description-block-element-gallery lod-gallery-<?php echo $k; ?>">
                         <?php foreach ($item['pictures'] as $picture) { ?>
-                            <a href="<?php echo $picture->getUri('detail'); ?>"
+                            <a href="<?php echo $picture['url_detail']; ?>"
                                data-lightbox="description-block-gallery-<?php echo $k; ?>">
-                                <img src="<?php echo $picture->getUri('teaser'); ?>"
-                                     alt="<?php echo $picture->alt; ?>"/>
+                                <img src="<?php echo $picture['url_teaser']; ?>"
+                                     alt="<?php echo $picture['alt']; ?>"/>
                                 <div class="description-block-element-gallery-copyright">
-                                    <?php echo $picture->copyright; ?>
+                                    <?php echo $picture['copyright']; ?>
                                 </div>
                             </a>
                         <?php } ?>
                     </div>
+                    <?php } ?>
                 </div>
             </div>
             <hr/>

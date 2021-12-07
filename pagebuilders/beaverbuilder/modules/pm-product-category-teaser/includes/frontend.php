@@ -6,7 +6,7 @@
 $args = [];
 $args['headline'] = $settings->headline;
 $args['text'] = $settings->text;
-$args['view'] = $settings->view;
+$args['view'] = 'Teaser4';
 $args['teaser_count_desktop'] = $settings->teaser_count_desktop;
 
 global $config;

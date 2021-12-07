@@ -103,7 +103,8 @@ if (empty($filteredParams) === false) {
                 <div class="card-text date-row">
                     <span class="small">
                         <?php
-                        echo '<span>' . $args['cheapest_price']->duration . ' Tage Reise';
+                        echo '<span>' . ($args['cheapest_price']->duration > 1 ? $args['cheapest_price']->duration. ' Tage Reise' : ' Tagesfahrt');
+
                         if(!empty($args['cheapest_price']->option_board_type)){
                             echo ', inkl. '.$args['cheapest_price']->option_board_type;
                         }
@@ -119,11 +120,16 @@ if (empty($filteredParams) === false) {
                                 <?php
                                 $today = new DateTime();
                                 $date_to_format = $args['cheapest_price']->date_departure->format('Y') == $today->format('Y') ? 'd.m.' : 'd.m.Y';
-                                echo '<i class="circle green"></i>' .
-                                     \Pressmind\HelperFunctions::dayNumberToLocalDayName($args['cheapest_price']->date_departure->format('N'), 'short') . '. ' .
-                                     $args['cheapest_price']->date_departure->format('d.m.') . ' - ' .
-                                     \Pressmind\HelperFunctions::dayNumberToLocalDayName($args['cheapest_price']->date_arrival->format('N'), 'short') . '. ' .
-                                     $args['cheapest_price']->date_arrival->format($date_to_format);
+                                echo '<i class="circle green"></i>';
+                                if($args['cheapest_price']->duration > 1) {
+                                    echo \Pressmind\HelperFunctions::dayNumberToLocalDayName($args['cheapest_price']->date_departure->format('N'), 'short') . '. ' .
+                                        $args['cheapest_price']->date_departure->format('d.m.') . ' - ' .
+                                        \Pressmind\HelperFunctions::dayNumberToLocalDayName($args['cheapest_price']->date_arrival->format('N'), 'short') . '. ' .
+                                        $args['cheapest_price']->date_arrival->format($date_to_format);
+                                }else{
+                                   echo \Pressmind\HelperFunctions::dayNumberToLocalDayName($args['cheapest_price']->date_departure->format('N'), 'short') . '. ' .
+                                    $args['cheapest_price']->date_departure->format('d.m.');
+                                }
                                 /*
                                 if($c_dates > 1){
                                     echo '<br><span>'.($c_dates - 1).' weitere'.($c_dates - 1  ==  1? 'r' : '').' Termin'.($c_dates - 1  >  1? 'e' : '').'</span>';

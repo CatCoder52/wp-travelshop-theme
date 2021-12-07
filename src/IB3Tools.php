@@ -12,9 +12,10 @@ class IB3Tools{
      * @param int $id_housing_option
      * @param string $url for history back link
      * @param string $dc discount code
+     * @param string $booking_type enum(reqeust,option,fix) or null ('fix' is the ib3 default value)
      * @return string
      */
-   public static function get_bookinglink($id_media_object, $id_booking_package, $id_date, $id_housing_package = null, $id_housing_option = null, $url = null, $dc = null): string
+   public static function get_bookinglink($id_media_object, $id_booking_package, $id_date, $id_housing_package = null, $id_housing_option = null, $url = null, $dc = null, $booking_type = null): string
    {
 
        $p = [];
@@ -35,6 +36,10 @@ class IB3Tools{
 
        if(!is_null($dc)){
            $p[] = 'dc='.$dc;
+       }
+
+       if(!is_null($booking_type)){
+           $p[] = 't='.$booking_type;
        }
 
        return trim(TS_IBE3_BASE_URL, '/').'/?'.implode('&', $p);
