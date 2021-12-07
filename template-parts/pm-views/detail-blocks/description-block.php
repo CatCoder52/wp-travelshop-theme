@@ -38,7 +38,10 @@
                     </svg>
                 </h3>
                 <div class="description-block-element-more">
-                    <?php echo $item['text']; ?>
+                    <?php if (!empty($item['text'])) { ?>
+                        <?php echo $item['text']; ?>
+                    <?php } ?>
+                    <?php if (!empty($item['pictures'])) { ?>
                     <div class="description-block-element-gallery description-block-gallery-<?php echo $k; ?>">
                         <?php foreach ($item['pictures'] as $picture) { ?>
                             <a href="<?php echo $picture['url_detail']; ?>"
