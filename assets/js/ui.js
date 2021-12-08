@@ -170,10 +170,10 @@ jQuery(function ($) {
 
         $('.description-block-element-gallery').each(function (key) {
             let slider = tns({
-                container: '.lod-gallery-' + key,
+                container: '.description-block-gallery-' + key,
                 items: 1,
                 mouseDrag: true,
-                navContainer: '.lod-gallery-' + key,
+                navContainer: '.description-block-gallery-' + key,
                 navAsThumbnails: true,
                 edgePadding: 15,
                 responsive: {
