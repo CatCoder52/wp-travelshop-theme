@@ -42,7 +42,7 @@
                         <?php echo $item['text']; ?>
                     <?php } ?>
                     <?php if (!empty($item['pictures'])) { ?>
-                    <div class="description-block-element-gallery lod-gallery-<?php echo $k; ?>">
+                    <div class="description-block-element-gallery description-block-gallery-<?php echo $k; ?>">
                         <?php foreach ($item['pictures'] as $picture) { ?>
                             <a href="<?php echo $picture['url_detail']; ?>"
                                data-lightbox="description-block-gallery-<?php echo $k; ?>">
