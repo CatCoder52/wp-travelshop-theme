@@ -23,6 +23,7 @@ use Pressmind\Travelshop\Template;
  */
 
 
+// @todo: replace this, pm-li had no effect!
 $page_size = explode($args['seach']['pm-li'], ',');
 $page_size = (int)$page_size[1];
 
