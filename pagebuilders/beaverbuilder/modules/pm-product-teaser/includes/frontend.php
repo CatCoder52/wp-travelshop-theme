@@ -7,6 +7,8 @@ $args = [];
 $args['headline'] = $settings->headline;
 $args['text'] = $settings->text;
 
+var_dump($settings->link_top);
+
 if ( $settings->link_top === 'true' ) {
     $args['link_top'] = true;
     echo "WAS";
