@@ -9,6 +9,7 @@ $args['text'] = $settings->text;
 
 if ( $settings->link_top == 'true' ) {
     $args['link_top'] = true;
+    echo "WAS";
 } else {
     $args['link_top'] = false;
 }
