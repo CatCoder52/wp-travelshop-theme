@@ -28,6 +28,7 @@ if(count($result['items']) == 0){
     return;
 }
 $countItems = $result['items'];
+$moreResultsLink = '/mehr-reisen-link/';
 ?>
 <section class="content-block content-block-travel-cols">
     <div class="row">
@@ -47,7 +48,7 @@ $countItems = $result['items'];
             </div>
         <?php if ( isset($args['link_top']) && $args['link_top'] === true ) { ?>
             <div class="col-12 col-md-auto">
-                <a class="btn btn-primary">
+                <a href="<?php echo $moreResultsLink; ?>" title="<?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['link_top_text']);?>" class="btn btn-primary">
                     <?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['link_top_text']);?>
                 </a>
             </div>
@@ -89,7 +90,7 @@ $countItems = $result['items'];
     <?php if ( isset($args['link_bottom']) && $args['link_bottom'] === true ) { ?>
     <div class="row">
         <div class="col-12 text-center">
-            <a class="btn btn-primary">
+            <a href="<?php echo $moreResultsLink; ?>" title="<?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['link_bottom_text']);?>" class="btn btn-primary">
                 <?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['link_bottom_text']);?>
             </a>
         </div>
