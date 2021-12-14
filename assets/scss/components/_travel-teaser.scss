@@ -406,6 +406,20 @@
 			width: 100%;
 			align-items: center;
 			justify-content: center;
+
+			font-size: $font-size-sm;
+			color: $headings-color;
+			font-weight: 600;
+
+			background-color: $gray-200;
+			transition: backgroun-color .3s, color .3s;
+
+			@include border-radius(.25rem);
+
+			&:hover, &:focus, &:active {
+				color: $primary;
+				background-color: $gray-300;
+			}
 		}
 	}
 }
