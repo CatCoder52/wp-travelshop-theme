@@ -31,18 +31,24 @@ if(count($result['items']) == 0){
 <section class="content-block content-block-travel-cols">
     <div class="row">
         <?php if(!empty($args['headline']) || !empty($args['intro'])){ ?>
-        <div class="col-12">
-            <?php if(!empty($args['headline'])){ ?>
-            <h2 class="mt-0">
-                <?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['headline']);?>
-            </h2>
-            <?php } ?>
-            <?php if(!empty($args['text'])){ ?>
-            <p>
-                <?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['text']);?>
-            </p>
-            <?php } ?>
-        </div>
+
+            <div class="col-12 <?php if ( isset($args['link_top']) && $args['link_top'] === true ) { ?>col-md<?php } ?>">
+                <?php if(!empty($args['headline'])){ ?>
+                <h2 class="mt-0">
+                    <?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['headline']);?>
+                </h2>
+                <?php } ?>
+                <?php if(!empty($args['text'])){ ?>
+                <p>
+                    <?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['text']);?>
+                </p>
+                <?php } ?>
+            </div>
+        <?php if ( isset($args['link_top']) && $args['link_top'] === true ) { ?>
+            <div class="col-12 col-md-auto">
+                awd
+            </div>
+        <?php } ?>
         <?php } ?>
         <?php
 
