@@ -96,7 +96,7 @@ $moreResultsLink = '/mehr-reisen-link/';
 
         if (isset($args['link_teaser']) && $args['link_teaser'] === true) {
             ?>
-            <div class="col-12 col-md-6 col-lg-3 card-travel-wrapper-link">
+            <div class="col-12 col-md-6 col-lg-3 card-travel-wrapper-link text-center">
                 <a class="btn-further btn-teaser-link d-none d-md-block" href="btn-further-teaser" href="<?php echo $moreResultsLink; ?>" title="<?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['link_teaser_text']);?>">
                     <?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['link_teaser_text']);?>
                 </a>
