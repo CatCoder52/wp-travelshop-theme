@@ -25,6 +25,8 @@ if ( $settings->link_bottom == 'true' ) {
     $args['link_bottom'] = false;
 }
 
+print_r($settings);
+
 $args['link_top_text'] =  $settings->link_top_text;
 $args['link_teaser_text'] =  $settings->link_teaser_text;
 $args['link_bottom_text'] =  $settings->link_bottom_text;
