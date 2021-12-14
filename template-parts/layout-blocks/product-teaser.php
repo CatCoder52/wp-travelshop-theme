@@ -23,7 +23,10 @@ use Pressmind\Travelshop\Template;
  */
 
 
-$result = Search::getResult(isset($args['search']) ? $args['search'] : [], 2, 4, true, false);
+$page_size = explode($args['seach']['pm-li'], ',');
+$page_size = (int)$page_size[1];
+
+$result = Search::getResult(isset($args['search']) ? $args['search'] : [], 2, $page_size, true, false);
 if(count($result['items']) == 0){
     return;
 }
