@@ -67,8 +67,8 @@ get_header();
                     'link_bottom' => true,
                     'link_teaser' => true,
                     'link_top_text' => 'Alle Reisen',
-                    'link_bottom_text' => 'Alle {count_further_objects} Reisen',
-                    'link_teaser_text' => '{count_further_objects} weitere Reisen',
+                    'link_bottom_text' => 'Alle [TOTAL_RESULT] Reisen',
+                    'link_teaser_text' => '[TOTAL_RESULT] weitere Reisen',
                     'search' => [
                             'pm-li' => '0,4',
                             'pm-o' => 'rand',
