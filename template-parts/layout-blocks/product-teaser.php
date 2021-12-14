@@ -48,7 +48,7 @@ $countItems = $result['items'];
         <?php if ( isset($args['link_top']) && $args['link_top'] === true ) { ?>
             <div class="col-12 col-md-auto">
                 <a class="btn btn-primary">
-                    <?php echo str_repeat($result['link_top_text'], '{count_further_objects}', $countItems); ?>
+                    <?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['link_top_text']);?>
                 </a>
             </div>
         </div>
@@ -90,7 +90,7 @@ $countItems = $result['items'];
     <div class="row">
         <div class="col-12 text-center">
             <a class="btn btn-primary">
-                <?php echo str_repeat($result['link_bottom_text'], '{count_further_objects}', $countItems); ?>
+                <?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['link_bottom_text']);?>
             </a>
         </div>
     </div>
