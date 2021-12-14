@@ -10643,9 +10643,10 @@ body.fl-builder-edit header.header-main {
       align-items: center;
       justify-content: center;
       font-size: 0.875rem;
+      color: #212529;
       font-weight: 600;
       background-color: #e9ecef;
-      transition: backgroun-color .3s, color .3s;
+      transition: background-color .3s, color .3s;
       border-radius: 0.25rem; }
       .card-travel-wrapper-link a.btn-further.btn-teaser-link:hover, .card-travel-wrapper-link a.btn-further.btn-teaser-link:focus, .card-travel-wrapper-link a.btn-further.btn-teaser-link:active {
         color: #0066ff;
