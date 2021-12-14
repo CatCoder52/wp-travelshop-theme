@@ -400,5 +400,12 @@
 .card-travel-wrapper-link {
 	@include media-breakpoint-up(md) {
 		padding-bottom: $grid-gutter-width !important;
+
+		a.btn-further.btn-teaser-link {
+			height: 100%;
+			width: 100%;
+			align-items: center;
+			justify-content: center;
+		}
 	}
 }

@@ -10636,7 +10636,12 @@ body.fl-builder-edit header.header-main {
 
 @media (min-width: 768px) {
   .card-travel-wrapper-link {
-    padding-bottom: 30px !important; } }
+    padding-bottom: 30px !important; }
+    .card-travel-wrapper-link a.btn-further.btn-teaser-link {
+      height: 100%;
+      width: 100%;
+      align-items: center;
+      justify-content: center; } }
 
 .travelshop-teaser-mega-stripe {
   margin-bottom: 1rem; }
