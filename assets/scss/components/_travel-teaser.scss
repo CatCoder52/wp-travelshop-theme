@@ -395,3 +395,10 @@
 		}
 	}
 }
+
+// -- card teaser link
+.card-travel-wrapper-link {
+	@include media-breakpoint-up(md) {
+		padding-bottom: $grid-gutter-width;
+	}
+}
