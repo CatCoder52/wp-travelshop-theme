@@ -24,8 +24,12 @@ use Pressmind\Travelshop\Template;
 
 
 // @todo: replace this, pm-li had no effect!
-$page_size = explode($args['seach']['pm-li'], ',');
-$page_size = (int)$page_size[1];
+$page_size = 4;
+
+if ( isset ( $args['search']['pm-li'] ) && !empty($args['search']['pm-li']) ) {
+    $page_size = explode($args['search']['pm-li'], ',');
+    $page_size = (int)$page_size[1];
+}
 
 $result = Search::getResult(isset($args['search']) ? $args['search'] : [], 2, $page_size, true, false);
 if(count($result['items']) == 0){
