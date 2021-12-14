@@ -53,6 +53,54 @@ FLBuilder::register_module('TSPMProductTeaser', array(
                 ),
             ),
 
+            'links' => array(
+                'title' => __('Links', 'fl-builder'),
+                'fields' => array(
+                    'link_top'  => array(
+                        'type' => 'select',
+                        'label' => __('Button above products', 'fl-builder'),
+                        'default'       => 'false',
+                        'options'       => array(
+                            'false'      => __( 'Yes', 'fl-builder' ),
+                            'true'      => __( 'No', 'fl-builder' )
+                        ),
+                    ),
+                    'link_teaser'  => array(
+                        'type' => 'select',
+                        'label' => __('Button as teaser', 'fl-builder'),
+                        'default'       => 'false',
+                        'options'       => array(
+                            'false'      => __( 'Yes', 'fl-builder' ),
+                            'true'      => __( 'No', 'fl-builder' )
+                        ),
+                    ),
+                    'link_bottom'  => array(
+                        'type' => 'select',
+                        'label' => __('Button underneath products', 'fl-builder'),
+                        'default'       => 'false',
+                        'options'       => array(
+                            'false'      => __( 'Yes', 'fl-builder' ),
+                            'true'      => __( 'No', 'fl-builder' )
+                        ),
+                    ),
+                    'link_top_text' => array(
+                        'type' => 'text',
+                        'label' => __('Button-Text above products', 'fl-builder'),
+                        'default' => '[TOTAL_RESULT] weitere Reisen'
+                    ),
+                    'link_teaser_text' => array(
+                        'type' => 'text',
+                        'label' => __('Button-Text as teaser', 'fl-builder'),
+                        'default' => '[TOTAL_RESULT] weitere Reisen'
+                    ),
+                    'link_bottom_text' => array(
+                        'type' => 'text',
+                        'label' => __('Button-Text underneath products', 'fl-builder'),
+                        'default' => '[TOTAL_RESULT] weitere Reisen'
+                    ),
+                )
+            )
+
         ),
     ),
 	'content2'    => array(
