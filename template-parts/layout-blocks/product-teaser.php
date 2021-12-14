@@ -28,6 +28,7 @@ $page_size = 4;
 
 if ( isset ( $args['search']['pm-li'] ) && !empty($args['search']['pm-li']) ) {
     $page_size = explode($args['search']['pm-li'], ',');
+    print_r($page_size);
     $page_size = (int)$page_size[1];
 }
 
