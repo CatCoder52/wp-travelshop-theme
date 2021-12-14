@@ -48,14 +48,6 @@ FLBuilder::register_module('TSPMProductTeaser', array(
                         'help' => 'Tip: use the shortcode [TOTAL_RESULT] in this field to display the amount of found products',
                         'default' => 'Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip. ',
                     ),
-
-
-                ),
-            ),
-
-            'links' => array(
-                'title' => __('Links', 'fl-builder'),
-                'fields' => array(
                     'link_top'  => array(
                         'type' => 'select',
                         'label' => __('Button above products', 'fl-builder'),
@@ -98,8 +90,10 @@ FLBuilder::register_module('TSPMProductTeaser', array(
                         'label' => __('Button-Text underneath products', 'fl-builder'),
                         'default' => '[TOTAL_RESULT] weitere Reisen'
                     ),
-                )
-            )
+
+                ),
+            ),
+
 
         ),
     ),
