@@ -10642,14 +10642,15 @@ body.fl-builder-edit header.header-main {
       width: 100%;
       align-items: center;
       justify-content: center;
-      font-size: 0.875rem;
+      font-size: 1.25rem;
       color: #212529;
-      font-weight: 600;
+      font-weight: 700;
       background-color: #e9ecef;
       transition: background-color .3s, color .3s;
       border-radius: 0.25rem; }
       .card-travel-wrapper-link a.btn-further.btn-teaser-link:hover, .card-travel-wrapper-link a.btn-further.btn-teaser-link:focus, .card-travel-wrapper-link a.btn-further.btn-teaser-link:active {
         color: #0066ff;
+        text-decoration: none;
         background-color: #dee2e6; } }
 
 .travelshop-teaser-mega-stripe {
