@@ -48,6 +48,8 @@ if(count($result['items']) == 0){
             <div class="col-12 col-md-auto">
                 awd
             </div>
+        </div>
+        <div class="row">
         <?php } ?>
         <?php } ?>
         <?php
