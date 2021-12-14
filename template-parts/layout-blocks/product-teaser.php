@@ -27,6 +27,7 @@ $result = Search::getResult(isset($args['search']) ? $args['search'] : [], 2, 4,
 if(count($result['items']) == 0){
     return;
 }
+$countItems = $result['items'];
 ?>
 <section class="content-block content-block-travel-cols">
     <div class="row">
@@ -46,7 +47,9 @@ if(count($result['items']) == 0){
             </div>
         <?php if ( isset($args['link_top']) && $args['link_top'] === true ) { ?>
             <div class="col-12 col-md-auto">
-                awd
+                <a class="btn btn-primary">
+                    <?php echo str_repeat($result['link_top_text'], '{count_further_objects}', $countItems); ?>
+                </a>
             </div>
         </div>
         <div class="row">
@@ -82,4 +85,14 @@ if(count($result['items']) == 0){
         }
        ?>
     </div>
+
+    <?php if ( isset($args['link_bottom']) && $args['link_bottom'] === true ) { ?>
+    <div class="row">
+        <div class="col-12 text-center">
+            <a class="btn btn-primary">
+                <?php echo str_repeat($result['link_bottom_text'], '{count_further_objects}', $countItems); ?>
+            </a>
+        </div>
+    </div>
+    <?php } ?>
 </section>
