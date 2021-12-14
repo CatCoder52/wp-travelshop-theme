@@ -100,9 +100,11 @@ $moreResultsLink = '/mehr-reisen-link/';
                 <a class="btn-further btn-teaser-link d-none d-md-block" href="btn-further-teaser" href="<?php echo $moreResultsLink; ?>" title="<?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['link_teaser_text']);?>">
                     <?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['link_teaser_text']);?>
                 </a>
+                <?php if ( isset($args['link_bottom']) && $args['link_bottom'] === false ) { ?>
                 <a class="btn btn-primary btn-further d-inline d-md-none" href="btn-further-teaser" href="<?php echo $moreResultsLink; ?>" title="<?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['link_teaser_text']);?>">
                     <?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['link_teaser_text']);?>
                 </a>
+                <?php } ?>
             </div>
             <?php
         }
