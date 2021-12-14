@@ -7,28 +7,24 @@ $args = [];
 $args['headline'] = $settings->headline;
 $args['text'] = $settings->text;
 
-var_dump($settings->link_top);
 
 if ( $settings->link_top = 'true' ) {
     $args['link_top'] = true;
-    echo "WAS";
 } else {
     $args['link_top'] = false;
 }
 
-if ( $settings->link_teaser == 'true' ) {
+if ( $settings->link_teaser = 'true' ) {
     $args['link_teaser'] = true;
 } else {
     $args['link_teaser'] = false;
 }
 
-if ( $settings->link_bottom == 'true' ) {
+if ( $settings->link_bottom = 'true' ) {
     $args['link_bottom'] = true;
 } else {
     $args['link_bottom'] = false;
 }
-
-print_r($settings);
 
 $args['link_top_text'] =  $settings->link_top_text;
 $args['link_teaser_text'] =  $settings->link_teaser_text;
