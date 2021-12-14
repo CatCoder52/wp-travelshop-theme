@@ -47,7 +47,7 @@ $moreResultsLink = '/mehr-reisen-link/';
                 <?php } ?>
             </div>
         <?php if ( isset($args['link_top']) && $args['link_top'] === true ) { ?>
-            <div class="col-12 col-md-auto pt-4 pt-md-0">
+            <div class="col-12 col-md-auto pt-4 pt-md-0 pb-4">
                 <a href="<?php echo $moreResultsLink; ?>" title="<?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['link_top_text']);?>" class="btn btn-primary">
                     <?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['link_top_text']);?>
                 </a>
