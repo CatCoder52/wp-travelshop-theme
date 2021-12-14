@@ -62,6 +62,5 @@ $args['view'] = !empty($settings->{'view'}) ? $settings->{'view'} : 'Teaser1';
 // delete empty keys
 $args['search'] = array_filter($args['search']);
 
-print_r($args);
 
 load_template_transient(get_template_directory() . '/template-parts/layout-blocks/product-teaser.php', false,  $args);

@@ -31,7 +31,6 @@ if ( isset ( $args['search']['pm-li'] ) && !empty($args['search']['pm-li']) ) {
     $page_size = (int)$page_size[1];
 }
 
-print_r($args);
 
 $result = Search::getResult(isset($args['search']) ? $args['search'] : [], 2, $page_size, true, false);
 if(count($result['items']) == 0){
