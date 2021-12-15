@@ -51,6 +51,12 @@ if (empty($_GET['action'])) {
     ob_end_clean();
     $Output->error = false;
     $result = json_encode($Output);
+    if(json_last_error() > 0){
+        $Output->error = true;
+        $Output->msg = 'json error: '.json_last_error_msg();
+        $Output->html = $Output->msg;
+        $result = json_encode($Output);
+    }
     echo $result;
     exit;
 } else if ($_GET['action'] == 'wishlist'){
