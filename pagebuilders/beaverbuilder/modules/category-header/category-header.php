@@ -29,9 +29,49 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
     'common' => array(
         'title'    => __( 'Common', 'fl-builder' ),
         'sections' => array(
-            'common'    => array(
-                'title'  => __( 'Common', 'fl-builder' ),
+            'media' => array(
+                'title' => __('Media', 'fl-builder' ),
                 'fields' => array(
+                    'media_type' => array(
+                        'type' => 'select',
+                        'label' => __('Media-Type', 'fl-builder'),
+                        'default' => 'image',
+                        'options' => array(
+                            'image' => 'Image',
+                            'video' => 'Video'
+                        ),
+                        'toggle' => array(
+                            'image' => array(
+                                'fields' => array('image', 'image_alt_text')
+                            ),
+                            'video' => array(
+                                'fields' => array('video')
+                            )
+                        )
+                    ),
+
+                    'video'    => array(
+                        'type'          => 'video',
+                        'label'         => __('Slide-Video', 'fl-builder'),
+                    ),
+
+                    'image'    => array(
+                        'type'          => 'photo',
+                        'label'         => __('Slide-Image', 'fl-builder'),
+                    ),
+
+                    'image_alt_text'     => array(
+                        'type'    => 'text',
+                        'label'   => __( 'Image alternative text', 'fl-builder' ),
+                        'default' => '',
+                    ),
+
+                )
+            ),
+            'content'    => array(
+                'title'  => __( 'Content', 'fl-builder' ),
+                'fields' => array(
+
                     'headline'     => array(
                         'type'    => 'text',
                         'label'   => __( 'Headline', 'fl-builder' ),
@@ -42,12 +82,6 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                         'type'    => 'text',
                         'label'   => __( 'Subline', 'fl-builder' ),
                         'default' => 'Subline',
-                    ),
-
-                    'lead'     => array(
-                        'type'    => 'text',
-                        'label'   => __( 'Lead', 'fl-builder' ),
-                        'default' => 'Lead text for a nice travel product.',
                     ),
 
                     'text'     => array(
@@ -70,19 +104,120 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                         'label'   => __( 'Button label', 'fl-builder' ),
                         'default' => 'Jetzt entdecken',
                     ),
-
-                    'bg_image'    => array(
-                        'type'          => 'photo',
-                        'label'         => __('Image', 'fl-builder')
-                    ),
-
-                    'bg_image_alt_text'     => array(
-                        'type'    => 'text',
-                        'label'   => __( 'Image alternative text', 'fl-builder' ),
-                        'default' => '',
-                    ),
                 ),
             ),
+
+            'style' => array(
+                'title' => __('Style', 'fl-builder'),
+                'fields' => array(
+                    'content_alignment_vertical' => array(
+                        'type' => 'select',
+                        'label' => __('Vertical content alignment', 'fl-builder'),
+                        'options' => array(
+                            'top' => 'Top',
+                            'middle' => 'Middle',
+                            'bottom' => 'Bottom'
+                        ),
+                        'default' => 'middle'
+                    ),
+                    'content_alignment_horizontal' => array(
+                        'type' => 'select',
+                        'label' => __('Horizontal content alignment', 'fl-builder'),
+                        'options' => array(
+                            'left' => 'Left',
+                            'center' => 'Center',
+                            'right' => 'Right'
+                        ),
+                        'default' => 'center'
+                    ),
+                    'content_box_type' => array(
+                        'type' => 'select',
+                        'label' => __('Content box type', 'fl-builder'),
+                        'options' => array(
+                            'transparent' => 'Transparent',
+                            'boxed' => 'Boxed'
+                        ),
+                        'default' => 'boxed',
+                        'toggle' => array(
+                            'boxed' => array(
+                                'fields' => array('content_box_background')
+                            )
+                        )
+                    ),
+                    'content_box_background' => array(
+                        'type' => 'color',
+                        'label'         => __( 'Content box background', 'fl-builder' ),
+                        'default'       => 'FFFFFF',
+                        'show_reset'    => true,
+                        'show_alpha'    => true
+                    ),
+                    'background_overlay_type' => array(
+                        'type' => 'select',
+                        'label' => __('Background overlay type', 'fl-builder'),
+                        'options' => array(
+                            'none' => 'None',
+                            'color' => 'Color',
+                            'gradient' => 'Gradient'
+                        ),
+                        'default' => 'none',
+                        'toggle' => array(
+                            'none' => array(
+                                'fields' => array()
+                            ),
+                            'color' => array(
+                                'fields' => array('background_overlay_color')
+                            ),
+                            'gradient' => array(
+                                'fields' => array('background_overlay_gradient')
+                            )
+                        )
+                    ),
+                    'background_overlay_color' => array(
+                        'type' => 'color',
+                        'label' => __('Background overlay color', 'fl-builder'),
+                        'show_reset' => true,
+                        'show_alpha' => true
+                    ),
+                    'background_overlay_gradient' => array(
+                        'type' => 'gradient',
+                        'label' => __('Background overlay gradient', 'fl-builder'),
+                        'show_reset' => true,
+                        'show_alpha' => true,
+                        'preview' => array(
+                            'type'     => 'css',
+                            'selector' => '.category-header-overlay--gradient',
+                            'property' => 'background-image',
+                        ),
+                    ),
+                    'headline_typography' => array(
+                        'type'       => 'typography',
+                        'label'      => __('Headline styling', 'fl-builder'),
+                        'responsive' => true,
+                        'preview'    => array(
+                            'type'      => 'css',
+                            'selector'  => '.category-header-title',
+                        ),
+                    ),
+                    'subline_typography' => array(
+                        'type'       => 'typography',
+                        'label'      => __('Subline styling', 'fl-builder'),
+                        'responsive' => true,
+                        'preview'    => array(
+                            'type'      => 'css',
+                            'selector'  => '.category-header-subline',
+                        ),
+                    ),
+                    'text_typography' => array(
+                        'type'       => 'typography',
+                        'label'      => __('Text styling', 'fl-builder'),
+                        'responsive' => true,
+                        'preview'    => array(
+                            'type'      => 'css',
+                            'selector'  => '.category-header-text',
+                        ),
+                    ),
+                )
+            )
 
         ),
     ),
