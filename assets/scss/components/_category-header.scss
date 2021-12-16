@@ -40,6 +40,8 @@
 
   // -- content handling
   .category-header-content-wrapper  {
+    position: relative;
+
     @include media-breakpoint-up(md) {
       position: absolute;
       top:0;
@@ -47,8 +49,12 @@
       right:0;
       bottom:0;
 
-      z-index: 6;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
     }
+
+    z-index: 6;
+
 
     .container {
       height: 100%;
