@@ -107,7 +107,7 @@ FLBuilder::register_settings_form('mixed-slide-form', array(
 
                         'video'    => array(
                             'type'          => 'video',
-                            'label'         => __('Slide-Image', 'fl-builder'),
+                            'label'         => __('Slide-Video', 'fl-builder'),
                         ),
 
                         'image'    => array(
