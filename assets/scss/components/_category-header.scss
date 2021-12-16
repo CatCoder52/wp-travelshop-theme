@@ -44,6 +44,12 @@
   .category-header-content-wrapper  {
     position: relative;
 
+
+    @include media-breakpoint-down(sm) {
+      // fallback mobile;
+      margin-top: -3rem;
+    }
+
     @include media-breakpoint-up(md) {
       position: absolute;
       top:0;
@@ -101,6 +107,9 @@
             .h3 {
               font-size: $font-size-base;
             }
+
+            // -- simple fallback ffor mobile!
+            background-color: #fff !important;
           }
         }
 
