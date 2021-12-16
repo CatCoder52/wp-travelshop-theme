@@ -79,9 +79,7 @@
                 $overlay_style = 'style="background-color: rgba(0,0,0,.25);"';
             }
         } else {
-            $oGradient = (object) $args['background_overlay_gradient'];
-            echo FLBuilderColor::gradient($oGradient);
-            $overlay_style = 'style="background-image: '. FLBuilderColor::gradient($oGradient) .'"';
+            $overlay_style = 'style="background-image: '. $args['background_overlay_gradient'] .'"';
         }
         ?>
 
