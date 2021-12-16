@@ -14925,13 +14925,14 @@ figure.wp-block-image figcaption {
       bottom: 0;
       background-size: cover;
       background-position: center center; }
-  .category-header .category-header-content-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 6; }
+  @media (min-width: 768px) {
+    .category-header .category-header-content-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 6; } }
   .category-header .category-header-overlay {
     position: absolute;
     top: 0;

@@ -130,6 +130,16 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                         ),
                         'default' => 'center'
                     ),
+                    'content_box_text_align' => array(
+                        'type' => 'select',
+                        'label' => __('Content box text align', 'fl-builder'),
+                        'options' => array(
+                            'text-left' => 'left',
+                            'text-center' => 'center',
+                            'text-right' => 'right'
+                        ),
+                        'default' => 'text-left'
+                    ),
                     'content_box_type' => array(
                         'type' => 'select',
                         'label' => __('Content box type', 'fl-builder'),
