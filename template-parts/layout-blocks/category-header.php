@@ -64,7 +64,30 @@
 
     <?php ## Overlay handling ?>
     <?php if ( $args['background_overlay_type'] !== 'none' ) { ?>
+        <?php
+        ## Style tag
+        $overlay_style = '';
+
+        if ( $args['background_overlay_type'] == 'color' ) {
+            if ( !empty($args['background_overlay_color']) ) {
+                if ( strlen($args['background_overlay_color']) < 8 ) {
+                    $overlay_style = 'style="background-color: #'.$args['background_overlay_color'].';"';
+                } else {
+                    $overlay_style = 'style="background-color: '.$args['background_overlay_color'].';"';
+                }
+            } else {
+                $overlay_style = 'style="background-color: rgba(0,0,0,.25);"';
+            }
+        } else {
+
+        }
+        ?>
+
         <div class="category-header-overlay category-header-overlay--<?php echo $args['background_overlay_type']; ?>">
         </div>
     <?php } ?>
 </div>
+
+<pre>
+    <?php var_dump($args); ?>
+</pre>
