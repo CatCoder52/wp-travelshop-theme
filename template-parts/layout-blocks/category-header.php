@@ -80,6 +80,7 @@
             }
         } else {
             $oGradient = (object) $args['background_overlay_gradient'];
+            echo FLBuilderColor::gradient($oGradient);
             $overlay_style = 'style="background-image: '. FLBuilderColor::gradient($oGradient) .'"';
         }
         ?>
