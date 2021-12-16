@@ -7,8 +7,8 @@ class TSWPCategoryHeader extends FLBuilderModule {
      */
     public function __construct() {
         parent::__construct(array(
-            'name'            => __( 'Jumbotron', 'fl-builder' ),
-            'description'     => __( 'Just a simple Jumbotron', 'fl-builder' ),
+            'name'            => __( 'Category Header', 'fl-builder' ),
+            'description'     => __( 'customizable category header', 'fl-builder' ),
             'category'        => __( 'Content Modules', 'fl-builder' ),
             'group'        => __( 'Travelshop', 'fl-builder' ),
             'editor_export'   => false,
