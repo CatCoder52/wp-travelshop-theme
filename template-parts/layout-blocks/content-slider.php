@@ -88,7 +88,6 @@ foreach ($args['items'] as $item) {
         foreach ($slide_items as $item) {
             ?>
             <article class="content-slider--item content-slider--item__<?php echo $item['type']; ?>">
-                <div class="content-slider--image">
                 <?php
                 if ($item['type'] == 'content') {
                     if ($item['media_type'] == 'video' ) {
