@@ -10084,6 +10084,10 @@ body.fl-builder .content-block.content-page > .container, body.fl-builder .fl-bu
 body.fl-builder-edit header.header-main {
   z-index: 9 !important; }
 
+body.fl-builder .content-block.content-page {
+  margin-top: 0 !important;
+  padding-top: 0 !important; }
+
 /**
  *  Global offcanvas mixin wich is used in breakpoints by variant elements.
  */
