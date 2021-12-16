@@ -49,6 +49,27 @@
 
       z-index: 6;
     }
+
+    .container {
+      height: 100%;
+
+      .category-header-content-positioning {
+        height: 100%;
+        display: flex;
+
+        .category-header-content {
+          padding: 2rem;
+          @include border-radius($border-radius);
+        }
+
+        @include media-breakpoint-up(md) {
+          .category-header-content {
+            width: 100%;
+            max-width: 680px;
+          }
+        }
+      }
+    }
   }
 
   // -- overlay handling

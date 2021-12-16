@@ -14933,6 +14933,18 @@ figure.wp-block-image figcaption {
       right: 0;
       bottom: 0;
       z-index: 6; } }
+  .category-header .category-header-content-wrapper .container, .category-header .category-header-content-wrapper .fl-builder-content .fl-row.fl-row-fixed-width, .fl-builder-content .category-header .category-header-content-wrapper .fl-row.fl-row-fixed-width, .category-header .category-header-content-wrapper .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .fl-row-content.fl-row-fixed-width, .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .category-header .category-header-content-wrapper .fl-row-content.fl-row-fixed-width {
+    height: 100%; }
+    .category-header .category-header-content-wrapper .container .category-header-content-positioning, .category-header .category-header-content-wrapper .fl-builder-content .fl-row.fl-row-fixed-width .category-header-content-positioning, .fl-builder-content .category-header .category-header-content-wrapper .fl-row.fl-row-fixed-width .category-header-content-positioning, .category-header .category-header-content-wrapper .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .fl-row-content.fl-row-fixed-width .category-header-content-positioning, .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .category-header .category-header-content-wrapper .fl-row-content.fl-row-fixed-width .category-header-content-positioning {
+      height: 100%;
+      display: flex; }
+      .category-header .category-header-content-wrapper .container .category-header-content-positioning .category-header-content, .category-header .category-header-content-wrapper .fl-builder-content .fl-row.fl-row-fixed-width .category-header-content-positioning .category-header-content, .fl-builder-content .category-header .category-header-content-wrapper .fl-row.fl-row-fixed-width .category-header-content-positioning .category-header-content, .category-header .category-header-content-wrapper .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .fl-row-content.fl-row-fixed-width .category-header-content-positioning .category-header-content, .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .category-header .category-header-content-wrapper .fl-row-content.fl-row-fixed-width .category-header-content-positioning .category-header-content {
+        padding: 2rem;
+        border-radius: 0.25rem; }
+      @media (min-width: 768px) {
+        .category-header .category-header-content-wrapper .container .category-header-content-positioning .category-header-content, .category-header .category-header-content-wrapper .fl-builder-content .fl-row.fl-row-fixed-width .category-header-content-positioning .category-header-content, .fl-builder-content .category-header .category-header-content-wrapper .fl-row.fl-row-fixed-width .category-header-content-positioning .category-header-content, .category-header .category-header-content-wrapper .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .fl-row-content.fl-row-fixed-width .category-header-content-positioning .category-header-content, .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .category-header .category-header-content-wrapper .fl-row-content.fl-row-fixed-width .category-header-content-positioning .category-header-content {
+          width: 100%;
+          max-width: 680px; } }
   .category-header .category-header-overlay {
     position: absolute;
     top: 0;
