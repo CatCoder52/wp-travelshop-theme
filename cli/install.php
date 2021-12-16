@@ -433,6 +433,7 @@ if($args[1] != 'only_static') {
             $config['data']['search_mongodb']['search']['categories'] = $mongodb_search_categories;
             $config['data']['search_mongodb']['search']['categories'] = $mongodb_search_categories;
             $config['data']['search_mongodb']['search']['build_for'] = $mongodb_search_build_for;
+            $config['data']['search_mongodb']['search']['touristic']['departure_offset_to'] = 730;
 
         }
         $config['data']['media_types'] = $media_types;
