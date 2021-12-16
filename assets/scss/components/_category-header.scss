@@ -56,10 +56,34 @@
       .category-header-content-positioning {
         height: 100%;
         display: flex;
+        flex-direction: row;
+
+        align-items: center;
+        justify-content: center;
+
+        &.content-header-vertical--top {
+          align-items: flex-start;
+        }
+
+        &.content-header-vertical--bottom {
+          align-items: flex-end;
+        }
+
+        &.content-header-horizontal--left {
+          justify-content: flex-start;
+        }
+
+        &.content-header-horizontal--right {
+          justify-content: flex-end;
+        }
 
         .category-header-content {
           padding: 2rem;
           @include border-radius($border-radius);
+
+          .category-header-button {
+            margin: 1rem 0 0 0;
+          }
         }
 
         @include media-breakpoint-up(md) {
