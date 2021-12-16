@@ -28,35 +28,37 @@
 
     <?php ## Content ?>
     <?php if ( $args['headline'] ) { ?>
-        <div class="category-header-content-wrapper content-header-vertical--<?php echo $args['content_alignment_vertical']; ?> content-header-horizontal--<?php echo $args['content_alignment_horizontal']; ?>">
+        <div class="category-header-content-wrapper ">
             <div class="container">
-                <article class="category-header-content category-header-content--<?php echo $args['content_box_type']; ?>" <?php if ( $args['content_box_type'] == 'boxed' && !empty($args['content_box_background']) ) { ?>style="background-color: <?php if ( strlen($args['content_box_background']) < 8 ) { ?>#<?php } ?><?php echo $args['content_box_background']; ?>"<?php } ?>>
-                    <h1 class="category-header-title" <?php if ( !empty($args['headline_color']) ) { ?>style="color: <?php if ( strlen($args['headline_color']) < 8 ) { ?>#<?php } ?><?php echo $args['headline_color']; ?>"<?php } ?>>
-                        <?php echo $args['headline']; ?>
-                    </h1>
+                <div class="category-header-content-positioning content-header-vertical--<?php echo $args['content_alignment_vertical']; ?> content-header-horizontal--<?php echo $args['content_alignment_horizontal']; ?>">
+                    <article class="category-header-content category-header-content--<?php echo $args['content_box_type']; ?>" <?php if ( $args['content_box_type'] == 'boxed' && !empty($args['content_box_background']) ) { ?>style="background-color: <?php if ( strlen($args['content_box_background']) < 8 ) { ?>#<?php } ?><?php echo $args['content_box_background']; ?>"<?php } ?>>
+                        <h1 class="category-header-title" <?php if ( !empty($args['headline_color']) ) { ?>style="color: <?php if ( strlen($args['headline_color']) < 8 ) { ?>#<?php } ?><?php echo $args['headline_color']; ?>"<?php } ?>>
+                            <?php echo $args['headline']; ?>
+                        </h1>
 
-                    <?php if ( !empty($args['subline']) ) { ?>
-                        <div class="category-header-subline h3" <?php if ( !empty($args['subline_color']) ) { ?>style="color: <?php if ( strlen($args['subline_color']) < 8 ) { ?>#<?php } ?><?php echo $args['subline_color']; ?>"<?php } ?>>
-                            <?php echo $args['subline']; ?>
-                        </div>
-                    <?php } ?>
+                        <?php if ( !empty($args['subline']) ) { ?>
+                            <div class="category-header-subline h3" <?php if ( !empty($args['subline_color']) ) { ?>style="color: <?php if ( strlen($args['subline_color']) < 8 ) { ?>#<?php } ?><?php echo $args['subline_color']; ?>"<?php } ?>>
+                                <?php echo $args['subline']; ?>
+                            </div>
+                        <?php } ?>
 
-                    <?php if ( !empty($args['text']) ) { ?>
-                        <div class="category-header-text" <?php if ( !empty($args['text_color']) ) { ?>style="color: <?php if ( strlen($args['text_color']) < 8 ) { ?>#<?php } ?><?php echo $args['text_color']; ?>"<?php } ?>>
-                            <?php echo $args['text']; ?>
-                        </div>
-                    <?php } ?>
+                        <?php if ( !empty($args['text']) ) { ?>
+                            <div class="category-header-text" <?php if ( !empty($args['text_color']) ) { ?>style="color: <?php if ( strlen($args['text_color']) < 8 ) { ?>#<?php } ?><?php echo $args['text_color']; ?>"<?php } ?>>
+                                <?php echo $args['text']; ?>
+                            </div>
+                        <?php } ?>
 
-                    <?php if ( !empty($args['btn_link']) ) { ?>
-                        <div class="category-header-button">
-                            <a class="btn btn-primary" href="<?php echo $args['btn_link']; ?>" title="<?php if ( !empty($args['btn_label']) ) { echo $args['btn_label']; } else { echo $args['headline']; } ?>" target="<?php echo $args['btn_link_target']; ?>">
-                                <?php
-                                if ( !empty($args['btn_label']) ) { echo $args['btn_label']; } else { echo "Mehr lesen"; };
-                                ?>
-                            </a>
-                        </div>
-                    <?php } ?>
-                </article>
+                        <?php if ( !empty($args['btn_link']) ) { ?>
+                            <div class="category-header-button">
+                                <a class="btn btn-primary" href="<?php echo $args['btn_link']; ?>" title="<?php if ( !empty($args['btn_label']) ) { echo $args['btn_label']; } else { echo $args['headline']; } ?>" target="<?php echo $args['btn_link_target']; ?>">
+                                    <?php
+                                    if ( !empty($args['btn_label']) ) { echo $args['btn_label']; } else { echo "Mehr lesen"; };
+                                    ?>
+                                </a>
+                            </div>
+                        <?php } ?>
+                    </article>
+                </div>
             </div>
         </div>
 
