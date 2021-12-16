@@ -14902,29 +14902,31 @@ figure.wp-block-image figcaption {
 
 .category-header {
   position: relative; }
-  .category-header .category-header-media .category-header-media-holder > div {
-    position: relative;
-    padding-bottom: 56.25%;
-    overflow: hidden; }
-    @media (min-width: 768px) {
-      .category-header .category-header-media .category-header-media-holder > div {
-        padding-bottom: 23.8095238095%;
-        min-height: 600px; } }
-    .category-header .category-header-media .category-header-media-holder > div > video {
-      position: absolute;
-      left: 50%;
-      /* % of surrounding element */
-      top: 50%;
-      transform: translate(-50%, -50%);
-      /* % of current element */ }
-    .category-header .category-header-media .category-header-media-holder > div > div {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-size: cover;
-      background-position: center center; }
+  .category-header .category-header-media {
+    position: relative; }
+    .category-header .category-header-media .category-header-media-holder > div {
+      position: relative;
+      padding-bottom: 56.25%;
+      overflow: hidden; }
+      @media (min-width: 768px) {
+        .category-header .category-header-media .category-header-media-holder > div {
+          padding-bottom: 23.8095238095%;
+          min-height: 600px; } }
+      .category-header .category-header-media .category-header-media-holder > div > video {
+        position: absolute;
+        left: 50%;
+        /* % of surrounding element */
+        top: 50%;
+        transform: translate(-50%, -50%);
+        /* % of current element */ }
+      .category-header .category-header-media .category-header-media-holder > div > div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-size: cover;
+        background-position: center center; }
   .category-header .category-header-content-wrapper {
     position: relative;
     z-index: 6; }
