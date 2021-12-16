@@ -92,7 +92,7 @@
         }
 
         .category-header-content {
-          padding: 2rem;
+          padding: 1.25rem;
           @include border-radius($border-radius);
 
           .category-header-button {
@@ -117,6 +117,7 @@
           .category-header-content {
             width: 100%;
             max-width: 680px;
+            padding: 2rem;
           }
         }
       }
