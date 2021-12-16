@@ -1,30 +1,30 @@
 <?php
 
-class TSWPJumbotron extends FLBuilderModule {
+class TSWPCategoryHeader extends FLBuilderModule {
 
-	/**
-	 * @method __construct
-	 */
-	public function __construct() {
-		parent::__construct(array(
-			'name'            => __( 'Jumbotron', 'fl-builder' ),
-			'description'     => __( 'Just a simple Jumbotron', 'fl-builder' ),
-			'category'        => __( 'Content Modules', 'fl-builder' ),
-			'group'        => __( 'Travelshop', 'fl-builder' ),
-			'editor_export'   => false,
-			'partial_refresh' => true,
-			'icon'            => 'slides.svg',
-            'dir'           => BB_MODULE_TS_DIR . 'modules/jumbotron/',
-            'url'           => BB_MODULE_TS_URL . 'modules/jumbotron/',
-		));
-	}
+    /**
+     * @method __construct
+     */
+    public function __construct() {
+        parent::__construct(array(
+            'name'            => __( 'Jumbotron', 'fl-builder' ),
+            'description'     => __( 'Just a simple Jumbotron', 'fl-builder' ),
+            'category'        => __( 'Content Modules', 'fl-builder' ),
+            'group'        => __( 'Travelshop', 'fl-builder' ),
+            'editor_export'   => false,
+            'partial_refresh' => true,
+            'icon'            => 'slides.svg',
+            'dir'           => BB_MODULE_TS_DIR . 'modules/category-header/',
+            'url'           => BB_MODULE_TS_URL . 'modules/category-header/',
+        ));
+    }
 
 }
 
 /**
  * Register the module and its form settings.
  */
-FLBuilder::register_module('TSWPJumbotron', array(
+FLBuilder::register_module('TSWPCategoryHeader', array(
 
     'common' => array(
         'title'    => __( 'Common', 'fl-builder' ),
