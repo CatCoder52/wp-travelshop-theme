@@ -14925,7 +14925,7 @@ figure.wp-block-image figcaption {
       bottom: 0;
       background-size: cover;
       background-position: center center; }
-  .category-header .category-header-content {
+  .category-header .category-header-content-wrapper {
     position: absolute;
     top: 0;
     left: 0;
