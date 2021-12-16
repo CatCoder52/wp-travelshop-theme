@@ -5,9 +5,6 @@
 
 $args = [];
 
-echo "<pre>";
-    var_dump($settings);
-echo "</pre>";
 
 foreach($settings->slides as $slide){
 
@@ -18,6 +15,7 @@ foreach($settings->slides as $slide){
             'text' => $slide->text,
             'image_post_id' => $slide->image,
             'media_type' => $slide->media_type,
+            'video' => $slide->video,
             'image' => $slide->image_src,
             'image_alt_tag' => $slide->image_alt_text,
             'btn_link' => $slide->btn_link,
