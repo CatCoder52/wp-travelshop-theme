@@ -78,17 +78,17 @@ FLBuilder::register_module('TSPMProductTeaser', array(
                     'link_top_text' => array(
                         'type' => 'text',
                         'label' => __('Button-Text above products', 'fl-builder'),
-                        'default' => '[TOTAL_RESULT] weitere Reisen'
+                        'default' => 'Alle [TOTAL_RESULT] Reisen anzeigen'
                     ),
                     'link_teaser_text' => array(
                         'type' => 'text',
                         'label' => __('Button-Text as teaser', 'fl-builder'),
-                        'default' => '[TOTAL_RESULT] weitere Reisen'
+                        'default' => '[TOTAL_RESULT] weitere Reisen anzeigen'
                     ),
                     'link_bottom_text' => array(
                         'type' => 'text',
                         'label' => __('Button-Text underneath products', 'fl-builder'),
-                        'default' => '[TOTAL_RESULT] weitere Reisen'
+                        'default' => 'Alle [TOTAL_RESULT] Spanien Reisen anzeigen'
                     ),
 
                 ),
