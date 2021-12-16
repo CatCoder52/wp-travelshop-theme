@@ -10647,6 +10647,7 @@ body.fl-builder-edit header.header-main {
       font-weight: 700;
       background-color: #e9ecef;
       transition: background-color .3s, color .3s;
+      padding: 2rem;
       border-radius: 0.25rem; }
       .card-travel-wrapper-link a.btn-further.btn-teaser-link:hover, .card-travel-wrapper-link a.btn-further.btn-teaser-link:focus, .card-travel-wrapper-link a.btn-further.btn-teaser-link:active {
         color: #0066ff;

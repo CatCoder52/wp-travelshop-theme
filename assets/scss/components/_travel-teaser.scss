@@ -413,6 +413,7 @@
 
 			background-color: $gray-200;
 			transition: background-color .3s, color .3s;
+			padding: 2rem;
 
 			@include border-radius(.25rem);
 
