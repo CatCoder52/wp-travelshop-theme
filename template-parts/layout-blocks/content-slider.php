@@ -89,8 +89,17 @@ foreach ($args['items'] as $item) {
             ?>
             <article class="content-slider--item content-slider--item__<?php echo $item['type']; ?>">
                 <div class="content-slider--image">
-                    <div style="background-image: url('<?php echo $item['image']; ?>');"></div>
-                </div>
+                <?php
+                if ($item['type'] == 'content') {
+                ?>
+                    <div class="content-slider--image">
+                        <div style="background-image: url('<?php echo $item['image']; ?>');"></div>
+                    </div>
+                <?php } else { ?>
+                    <div class="content-slider--image">
+                        <div style="background-image: url('<?php echo $item['image']; ?>');"></div>
+                    </div>
+                <?php } ?>
                 <div class="content-slider--content">
                     <div class="container">
                         <?php
