@@ -1,6 +1,4 @@
-<pre>
-    <?php var_dump($args); ?>
-</pre>
+
 <div class="category-header">
 
     <?php ## Media handling ?>
