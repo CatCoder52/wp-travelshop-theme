@@ -31,7 +31,7 @@
         <div class="category-header-content-wrapper content-header-vertical--<?php echo $args['content_alignment_vertical']; ?> content-header-horizontal--<?php echo $args['content_alignment_horizontal']; ?>">
             <div class="container">
                 <article class="category-header-content category-header-content--<?php echo $args['content_box_type']; ?>">
-                    <h1 class="category-header-title" <?php if ( !empty($args['headline_color']) ) { ?>style="color: <?php if ( strlen($args['headline']) < 8 ) { ?>#<?php } ?><?php echo $args['headline_color']; ?>"<?php } ?>>
+                    <h1 class="category-header-title" <?php if ( !empty($args['headline_color']) ) { ?>style="color: <?php if ( strlen($args['headline_color']) < 8 ) { ?>#<?php } ?><?php echo $args['headline_color']; ?>"<?php } ?>>
                         <?php echo $args['headline']; ?>
                     </h1>
 
