@@ -40,7 +40,7 @@ $countItems = $result['items'];
 $moreResultsLink = '/mehr-reisen-link/';
 ?>
 <section class="content-block content-block-travel-cols">
-    <div class="row">
+    <div class="row <?php if ( isset($args['link_top']) && $args['link_top'] === true ) { ?>align-items-baseline<?php } ?>">
         <?php if(!empty($args['headline']) || !empty($args['intro'])){ ?>
 
             <div class="col-12 <?php if ( isset($args['link_top']) && $args['link_top'] === true ) { ?>col-md<?php } ?>">
