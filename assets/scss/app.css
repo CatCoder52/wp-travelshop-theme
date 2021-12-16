@@ -10654,6 +10654,19 @@ body.fl-builder-edit header.header-main {
         text-decoration: none;
         background-color: #dee2e6; } }
 
+.btn-further .icon.icon-circle {
+  width: 2rem;
+  height: 2rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  display: inline-block;
+  position: relative; }
+  .btn-further .icon.icon-circle svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg); }
+
 .travelshop-teaser-mega-stripe {
   margin-bottom: 1rem; }
   .travelshop-teaser-mega-stripe .stripe-inner {

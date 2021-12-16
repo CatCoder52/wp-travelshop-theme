@@ -425,3 +425,23 @@
 		}
 	}
 }
+
+// -- buttons
+.btn-further {
+	.icon.icon-circle {
+		width: 2rem;
+		height: 2rem;
+		background-color: #fff;
+		border-radius: 1rem;
+		display: inline-block;
+		position: relative;
+
+		svg {
+			position:  absolute;
+			top: 50%;
+			left: 50%;
+
+			transform: translate(-50%, -50%) rotate(-90deg);
+		}
+	}
+}
