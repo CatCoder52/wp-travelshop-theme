@@ -92,6 +92,16 @@
           .category-header-button {
             margin: 1rem 0 0 0;
           }
+
+          @include media-breakpoint-down(sm) {
+            h1 {
+              font-size: $font-size-lg;
+            }
+
+            .h2 {
+              font-size: $font-size-base;
+            }
+          }
         }
 
         @include media-breakpoint-up(md) {
