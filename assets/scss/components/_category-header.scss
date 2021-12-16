@@ -1,5 +1,39 @@
 .category-header {
 
   // -- media handling
+  .category-header-media {
+    .category-header-media-holder {
+      > div {
+        position: relative;
+        padding-bottom: 100% * ( 9 / 16 );
 
+        @include media-breakpoint-up(md) {
+          padding-bottom: 100% * ( 5 / 21 );
+          min-height: 600px;
+        }
+
+        overflow: hidden;
+
+        // -- video
+        > video {
+          position: absolute;
+          left: 50%; /* % of surrounding element */
+          top: 50%;
+          transform: translate(-50%, -50%); /* % of current element */
+        }
+
+        // -- image
+        > div {
+          position: absolute;
+          top:0;
+          left:0;
+          right:0;
+          bottom:0;
+
+          background-size: cover;
+          background-position: center center;
+        }
+      }
+    }
+  }
 }
