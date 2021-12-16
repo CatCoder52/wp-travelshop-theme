@@ -14634,7 +14634,8 @@ figure.wp-block-image figcaption {
       /* merge with above css */ }
       .content-block-content-slider .content-slider--item .content-slider--video > div {
         position: relative;
-        /* or absolute or fixed */ }
+        /* or absolute or fixed */
+        overflow: hidden; }
       .content-block-content-slider .content-slider--item .content-slider--video video {
         position: absolute;
         left: 50%;

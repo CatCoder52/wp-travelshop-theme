@@ -127,6 +127,7 @@
       /* merge with above css */
       > div {
         position: relative; /* or absolute or fixed */
+        overflow: hidden;
       }
       video {
         position: absolute;
