@@ -83,7 +83,7 @@
         }
         ?>
 
-        <div class="category-header-overlay category-header-overlay--<?php echo $args['background_overlay_type']; ?>">
+        <div class="category-header-overlay category-header-overlay--<?php echo $args['background_overlay_type']; ?>" <?php echo $overlay_style; ?>>
         </div>
     <?php } ?>
 </div>
