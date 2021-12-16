@@ -53,6 +53,13 @@ body.fl-builder .content-block.content-page > .container {
       // fluid inner width
       .fl-row-content.fl-row-full-width {
         @extend .container-fluid;
+
+        // -- simple fix for category header + slider
+        .fl-module-category-header,
+        .fl-module-slider-mixed-content {
+          margin-left: -($grid-gutter-width / 2) !important;
+          margin-right: -($grid-gutter-width / 2)  !important;
+        }
       }
 
       // remove spacings left/right to remove "content-hops"
