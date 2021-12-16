@@ -104,6 +104,9 @@ $moreResultsLink = '/mehr-reisen-link/';
                 <?php if ( isset($args['link_bottom']) && $args['link_bottom'] === false ) { ?>
                 <a class="btn btn-primary btn-further d-inline d-md-none" href="btn-further-teaser" href="<?php echo $moreResultsLink; ?>" title="<?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['link_teaser_text']);?>">
                     <?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['link_teaser_text']);?>
+                    <span class="icon icon-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 407.437 407.437" style="enable-background:new 0 0 407.437 407.437;" xml:space="preserve"> <polygon points="386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 "></polygon></svg>
+                    </span>
                 </a>
                 <?php } ?>
             </div>
@@ -117,6 +120,9 @@ $moreResultsLink = '/mehr-reisen-link/';
         <div class="col-12 text-center pb-4">
             <a href="<?php echo $moreResultsLink; ?>" title="<?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['link_bottom_text']);?>" class="btn btn-primary btn-lg btn-further">
                 <?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['link_bottom_text']);?>
+                <span class="icon icon-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 407.437 407.437" style="enable-background:new 0 0 407.437 407.437;" xml:space="preserve"> <polygon points="386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 "></polygon></svg>
+                    </span>
             </a>
         </div>
     </div>
