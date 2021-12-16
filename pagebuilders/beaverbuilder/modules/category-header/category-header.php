@@ -189,33 +189,25 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                             'property' => 'background-image',
                         ),
                     ),
-                    'headline_typography' => array(
-                        'type'       => 'typography',
-                        'label'      => __('Headline styling', 'fl-builder'),
-                        'responsive' => true,
-                        'preview'    => array(
-                            'type'      => 'css',
-                            'selector'  => '.category-header-title',
-                        ),
+                    'headline_color' => array(
+                        'type'       => 'color',
+                        'label'      => __('Headline color', 'fl-builder'),
+                        'show_reset' => true,
+                        'show_alpha' => true
                     ),
-                    'subline_typography' => array(
-                        'type'       => 'typography',
-                        'label'      => __('Subline styling', 'fl-builder'),
-                        'responsive' => true,
-                        'preview'    => array(
-                            'type'      => 'css',
-                            'selector'  => '.category-header-subline',
-                        ),
+                    'subline_color' => array(
+                        'type'       => 'color',
+                        'label'      => __('Subline color', 'fl-builder'),
+                        'show_reset' => true,
+                        'show_alpha' => true
                     ),
-                    'text_typography' => array(
-                        'type'       => 'typography',
-                        'label'      => __('Text styling', 'fl-builder'),
-                        'responsive' => true,
-                        'preview'    => array(
-                            'type'      => 'css',
-                            'selector'  => '.category-header-text',
-                        ),
+                    'text_color' => array(
+                        'type'       => 'color',
+                        'label'      => __('Text color', 'fl-builder'),
+                        'show_reset' => true,
+                        'show_alpha' => true
                     ),
+
                 )
             )
 
