@@ -406,6 +406,7 @@
 			width: 100%;
 			align-items: center;
 			justify-content: center;
+			flex-direction: column;
 
 			font-size: $font-size-lg;
 			color: $body-color;
@@ -421,6 +422,10 @@
 				color: $primary;
 				text-decoration: none;
 				background-color: $gray-300;
+			}
+
+			.icon.icon-circle {
+				margin-top: .5rem;
 			}
 		}
 	}
@@ -442,6 +447,18 @@
 			left: 50%;
 
 			transform: translate(-50%, -50%) rotate(-90deg);
+			color: $primary;
+
+			* {
+				fill: $primary;
+			}
+		}
+	}
+
+	&.btn-further-bottom {
+		.icon.icon-circle {
+			margin-bottom: -.5rem;
+			margin-left: .5rem;
 		}
 	}
 }

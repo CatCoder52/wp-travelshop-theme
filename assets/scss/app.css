@@ -10642,6 +10642,7 @@ body.fl-builder-edit header.header-main {
       width: 100%;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
       font-size: 1.25rem;
       color: #212529;
       font-weight: 700;
@@ -10652,7 +10653,9 @@ body.fl-builder-edit header.header-main {
       .card-travel-wrapper-link a.btn-further.btn-teaser-link:hover, .card-travel-wrapper-link a.btn-further.btn-teaser-link:focus, .card-travel-wrapper-link a.btn-further.btn-teaser-link:active {
         color: #0066ff;
         text-decoration: none;
-        background-color: #dee2e6; } }
+        background-color: #dee2e6; }
+      .card-travel-wrapper-link a.btn-further.btn-teaser-link .icon.icon-circle {
+        margin-top: .5rem; } }
 
 .btn-further .icon.icon-circle {
   width: 2rem;
@@ -10665,7 +10668,13 @@ body.fl-builder-edit header.header-main {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(-90deg); }
+    transform: translate(-50%, -50%) rotate(-90deg);
+    color: #0066ff; }
+    .btn-further .icon.icon-circle svg * {
+      fill: #0066ff; }
+.btn-further.btn-further-bottom .icon.icon-circle {
+  margin-bottom: -.5rem;
+  margin-left: .5rem; }
 
 .travelshop-teaser-mega-stripe {
   margin-bottom: 1rem; }
