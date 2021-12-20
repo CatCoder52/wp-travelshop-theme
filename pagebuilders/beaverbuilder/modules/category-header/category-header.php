@@ -91,45 +91,39 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                         'label'   => __( 'Text', 'fl-builder' ),
                         'default' => 'Some more informations'
                     ),
-
-                    'btn_link'     => array(
-                        'type'          => 'link',
-                        'label'         => __('Button link', 'fl-builder'),
-                        'show_target'   => true,
-                        'show_nofollow' => true,
-                    ),
-
-                    'btn_label'     => array(
-                        'type'    => 'text',
-                        'label'   => __( 'Button label', 'fl-builder' ),
-                        'default' => 'Jetzt entdecken',
-                    ),
                 ),
+            ),
+
+            'position' => array(
+              'title' => __('Position', 'fl-builder'),
+              'fields' => array(
+                  'content_alignment_vertical' => array(
+                      'type' => 'select',
+                      'label' => __('Vertical content alignment', 'fl-builder'),
+                      'options' => array(
+                          'top' => 'Top',
+                          'middle' => 'Middle',
+                          'bottom' => 'Bottom',
+                          'underneath' => 'unter Inhalt'
+                      ),
+                      'default' => 'middle'
+                  ),
+                  'content_alignment_horizontal' => array(
+                      'type' => 'select',
+                      'label' => __('Horizontal content alignment', 'fl-builder'),
+                      'options' => array(
+                          'left' => 'Left',
+                          'center' => 'Center',
+                          'right' => 'Right'
+                      ),
+                      'default' => 'center'
+                  ),
+              )
             ),
 
             'style' => array(
                 'title' => __('Style', 'fl-builder'),
                 'fields' => array(
-                    'content_alignment_vertical' => array(
-                        'type' => 'select',
-                        'label' => __('Vertical content alignment', 'fl-builder'),
-                        'options' => array(
-                            'top' => 'Top',
-                            'middle' => 'Middle',
-                            'bottom' => 'Bottom'
-                        ),
-                        'default' => 'middle'
-                    ),
-                    'content_alignment_horizontal' => array(
-                        'type' => 'select',
-                        'label' => __('Horizontal content alignment', 'fl-builder'),
-                        'options' => array(
-                            'left' => 'Left',
-                            'center' => 'Center',
-                            'right' => 'Right'
-                        ),
-                        'default' => 'center'
-                    ),
                     'content_box_text_align' => array(
                         'type' => 'select',
                         'label' => __('Content box text align', 'fl-builder'),
@@ -145,7 +139,8 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                         'label' => __('Content box type', 'fl-builder'),
                         'options' => array(
                             'transparent' => 'Transparent',
-                            'boxed' => 'Boxed'
+                            'boxed' => 'Boxed',
+                            'docked' => 'Docked'
                         ),
                         'default' => 'boxed',
                         'toggle' => array(

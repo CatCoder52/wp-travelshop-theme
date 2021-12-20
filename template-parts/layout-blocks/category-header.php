@@ -72,16 +72,6 @@
                                 <?php echo $args['text']; ?>
                             </div>
                         <?php } ?>
-
-                        <?php if ( !empty($args['btn_link']) ) { ?>
-                            <div class="category-header-button">
-                                <a class="btn btn-primary" href="<?php echo $args['btn_link']; ?>" title="<?php if ( !empty($args['btn_label']) ) { echo $args['btn_label']; } else { echo $args['headline']; } ?>" target="<?php echo $args['btn_link_target']; ?>">
-                                    <?php
-                                    if ( !empty($args['btn_label']) ) { echo $args['btn_label']; } else { echo "Mehr lesen"; };
-                                    ?>
-                                </a>
-                            </div>
-                        <?php } ?>
                     </article>
                 </div>
             </div>
