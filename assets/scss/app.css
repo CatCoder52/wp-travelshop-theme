@@ -14650,7 +14650,8 @@ figure.wp-block-image figcaption {
         /* % of surrounding element */
         top: 50%;
         transform: translate(-50%, -50%);
-        /* % of current element */ }
+        /* % of current element */
+        min-width: 100vw; }
     @media (max-width: 767.98px) {
       .content-block-content-slider .content-slider--item .content-slider--content .container, .content-block-content-slider .content-slider--item .content-slider--content .fl-builder-content .fl-row.fl-row-fixed-width, .fl-builder-content .content-block-content-slider .content-slider--item .content-slider--content .fl-row.fl-row-fixed-width, .content-block-content-slider .content-slider--item .content-slider--content .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .fl-row-content.fl-row-fixed-width, .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .content-block-content-slider .content-slider--item .content-slider--content .fl-row-content.fl-row-fixed-width {
         padding-left: 0;
@@ -14926,7 +14927,8 @@ figure.wp-block-image figcaption {
         /* % of surrounding element */
         top: 50%;
         transform: translate(-50%, -50%);
-        /* % of current element */ }
+        /* % of current element */
+        min-width: 100vw; }
       .category-header .category-header-media .category-header-media-holder > div > div {
         position: absolute;
         top: 0;
