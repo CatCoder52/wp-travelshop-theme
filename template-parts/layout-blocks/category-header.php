@@ -51,10 +51,6 @@
         <?php } ?>
     </div>
 
-    <pre>
-        <?php var_dump($args); ?>
-    </pre>
-
     <?php ## Content ?>
     <?php if ( $args['headline'] ) { ?>
         <div class="category-header-content-wrapper ">
