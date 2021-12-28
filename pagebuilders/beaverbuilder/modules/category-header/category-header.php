@@ -30,7 +30,7 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
         'title'    => __( 'Common', 'fl-builder' ),
         'sections' => array(
             'media' => array(
-                'title' => __('Media', 'fl-builder' ),
+                'title' => __('Hintergrund', 'fl-builder' ),
                 'fields' => array(
                     'media_type' => array(
                         'type' => 'select',
@@ -64,6 +64,46 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                         'type'    => 'text',
                         'label'   => __( 'Image alternative text', 'fl-builder' ),
                         'default' => '',
+                    ),
+
+
+                    'background_overlay_type' => array(
+                        'type' => 'select',
+                        'label' => __('Background overlay type', 'fl-builder'),
+                        'options' => array(
+                            'none' => 'None',
+                            'color' => 'Color',
+                            'gradient' => 'Gradient'
+                        ),
+                        'default' => 'none',
+                        'toggle' => array(
+                            'none' => array(
+                                'fields' => array()
+                            ),
+                            'color' => array(
+                                'fields' => array('background_overlay_color')
+                            ),
+                            'gradient' => array(
+                                'fields' => array('background_overlay_gradient')
+                            )
+                        )
+                    ),
+                    'background_overlay_color' => array(
+                        'type' => 'color',
+                        'label' => __('Background overlay color', 'fl-builder'),
+                        'show_reset' => true,
+                        'show_alpha' => true
+                    ),
+                    'background_overlay_gradient' => array(
+                        'type' => 'gradient',
+                        'label' => __('Background overlay gradient', 'fl-builder'),
+                        'show_reset' => true,
+                        'show_alpha' => true,
+                        'preview' => array(
+                            'type'     => 'css',
+                            'selector' => '.category-header-overlay--gradient',
+                            'property' => 'background-image',
+                        ),
                     ),
 
                 )
@@ -126,7 +166,7 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                 'fields' => array(
                     'content_box_text_align' => array(
                         'type' => 'select',
-                        'label' => __('Content box text align', 'fl-builder'),
+                        'label' => __('Content box inner text align', 'fl-builder'),
                         'options' => array(
                             'text-left' => 'left',
                             'text-center' => 'center',
@@ -155,44 +195,6 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                         'default'       => 'FFFFFF',
                         'show_reset'    => true,
                         'show_alpha'    => true
-                    ),
-                    'background_overlay_type' => array(
-                        'type' => 'select',
-                        'label' => __('Background overlay type', 'fl-builder'),
-                        'options' => array(
-                            'none' => 'None',
-                            'color' => 'Color',
-                            'gradient' => 'Gradient'
-                        ),
-                        'default' => 'none',
-                        'toggle' => array(
-                            'none' => array(
-                                'fields' => array()
-                            ),
-                            'color' => array(
-                                'fields' => array('background_overlay_color')
-                            ),
-                            'gradient' => array(
-                                'fields' => array('background_overlay_gradient')
-                            )
-                        )
-                    ),
-                    'background_overlay_color' => array(
-                        'type' => 'color',
-                        'label' => __('Background overlay color', 'fl-builder'),
-                        'show_reset' => true,
-                        'show_alpha' => true
-                    ),
-                    'background_overlay_gradient' => array(
-                        'type' => 'gradient',
-                        'label' => __('Background overlay gradient', 'fl-builder'),
-                        'show_reset' => true,
-                        'show_alpha' => true,
-                        'preview' => array(
-                            'type'     => 'css',
-                            'selector' => '.category-header-overlay--gradient',
-                            'property' => 'background-image',
-                        ),
                     ),
                     'headline_color' => array(
                         'type'       => 'color',
