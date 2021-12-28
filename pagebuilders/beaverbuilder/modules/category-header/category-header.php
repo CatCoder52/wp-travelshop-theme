@@ -146,6 +146,7 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                           'bottom' => 'Bottom',
                           'underneath' => 'unter Inhalt'
                       ),
+                      'responsive' => true,
                       'default' => 'middle'
                   ),
                   'content_alignment_horizontal' => array(
@@ -156,6 +157,7 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                           'center' => 'Center',
                           'right' => 'Right'
                       ),
+                      'responsive' => true,
                       'default' => 'center'
                   ),
               )
