@@ -118,10 +118,38 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                         'default' => 'Headline',
                     ),
 
+                    'headline_type' => array(
+                        'type' => 'select',
+                        'label' => __('Headline type', 'fl-builder'),
+                        'options' => array(
+                            'h1' => 'H1',
+                            'h2' => 'H2',
+                            'h3' => 'H3',
+                            'h4' => 'H4',
+                            'h5' => 'H5',
+                            'h6' => 'H6',
+                        ),
+                        'default' => 'h1'
+                    ),
+
                     'subline'     => array(
                         'type'    => 'text',
                         'label'   => __( 'Subline', 'fl-builder' ),
                         'default' => 'Subline',
+                    ),
+
+                    'subline_type' => array(
+                        'type' => 'select',
+                        'label' => __('Subline type', 'fl-builder'),
+                        'options' => array(
+                            'h1' => 'H1',
+                            'h2' => 'H2',
+                            'h3' => 'H3',
+                            'h4' => 'H4',
+                            'h5' => 'H5',
+                            'h6' => 'H6',
+                        ),
+                        'default' => 'h2'
                     ),
 
                     'text'     => array(
