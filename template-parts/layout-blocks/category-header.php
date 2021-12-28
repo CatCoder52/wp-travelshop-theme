@@ -56,11 +56,11 @@
         <div class="category-header-content-wrapper ">
             <div class="container">
                 <div class="category-header-content-positioning content-header-vertical--<?php echo $args['content_alignment_vertical']; ?>
-                content-header-vertical--<?php echo $args['content_alignment_vertical_medium']; ?>_tablet
-                content-header-vertical--<?php echo $args['content_alignment_vertical_responsive']; ?>_handy
+                content-header-vertical-medium--<?php echo $args['content_alignment_vertical_medium']; ?>
+                content-header-vertical-small--<?php echo $args['content_alignment_vertical_responsive']; ?>
                 content-header-horizontal--<?php echo $args['content_alignment_horizontal']; ?>
-                content-header-horizontal--<?php echo $args['content_alignment_horizontal_medium']; ?>_tablet
-                content-header-horizontal--<?php echo $args['content_alignment_horizontal_responsive']; ?>_handy">
+                content-header-horizontal-medium--<?php echo $args['content_alignment_horizontal_medium']; ?>
+                content-header-horizontal-small--<?php echo $args['content_alignment_horizontal_responsive']; ?>">
                     <article class="category-header-content <?php echo $args['content_box_text_align']; ?> category-header-content--<?php echo $args['content_box_type']; ?>" <?php if ( $args['content_box_type'] == 'boxed' && !empty($args['content_box_background']) ) { ?>style="background-color: <?php if ( strlen($args['content_box_background']) < 8 ) { ?>#<?php } ?><?php echo $args['content_box_background']; ?>"<?php } ?>>
                         <h1 class="category-header-title" <?php if ( !empty($args['headline_color']) ) { ?>style="color: <?php if ( strlen($args['headline_color']) < 8 ) { ?>#<?php } ?><?php echo $args['headline_color']; ?>"<?php } ?>>
                             <?php echo $args['headline']; ?>
