@@ -182,7 +182,7 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                             'boxed' => 'Boxed',
                             'docked' => 'Docked'
                         ),
-                        'default' => 'boxed',
+                        'default' => 'transparent',
                         'toggle' => array(
                             'boxed' => array(
                                 'fields' => array('content_box_background')
@@ -199,18 +199,21 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                     'headline_color' => array(
                         'type'       => 'color',
                         'label'      => __('Headline color', 'fl-builder'),
+                        'default'       => 'FFFFFF',
                         'show_reset' => true,
                         'show_alpha' => true
                     ),
                     'subline_color' => array(
                         'type'       => 'color',
                         'label'      => __('Subline color', 'fl-builder'),
+                        'default'       => 'FFFFFF',
                         'show_reset' => true,
                         'show_alpha' => true
                     ),
                     'text_color' => array(
                         'type'       => 'color',
                         'label'      => __('Text color', 'fl-builder'),
+                        'default'       => 'FFFFFF',
                         'show_reset' => true,
                         'show_alpha' => true
                     ),
