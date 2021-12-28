@@ -174,13 +174,8 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                           'bottom' => 'Bottom',
                           'underneath' => 'unter Inhalt'
                       ),
-                      'responsive'  => array(
-                        'placeholder' => array(
-                            'default'    =>  'middle',
-                            'medium'     =>  'middle',
-                            'responsive' =>  'middle',
-                        ),
-                      ),
+                      'responsive' => true,
+                      'default' => 'middle'
                   ),
                   'content_alignment_horizontal' => array(
                       'type' => 'select',
@@ -190,13 +185,8 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                           'center' => 'Center',
                           'right' => 'Right'
                       ),
-                      'responsive'  => array(
-                          'placeholder' => array(
-                              'default'    =>  'Center',
-                              'medium'     =>  'Center',
-                              'responsive' =>  'Center',
-                          ),
-                      ),
+                      'responsive' => true,
+                      'default' => 'center'
                   ),
               )
             ),
