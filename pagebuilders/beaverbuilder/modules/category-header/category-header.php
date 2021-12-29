@@ -224,7 +224,7 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                         'default' => 'transparent',
                         'toggle' => array(
                             'boxed' => array(
-                                'fields' => array('content_box_background')
+                                'fields' => array('content_box_background', 'content_box_max_height')
                             )
                         )
                     ),
@@ -235,6 +235,15 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                         'show_reset'    => true,
                         'show_alpha'    => true
                     ),
+
+                    'content_box_max_height' => array(
+                        'type' => 'unit',
+                        'label' => __('Content box max width', 'fl-builder'),
+                        'description' => 'px',
+                        'placeholder' => 680,
+                        'default' => 680,
+                    ),
+
                     'headline_color' => array(
                         'type'       => 'color',
                         'label'      => __('Headline color', 'fl-builder'),
