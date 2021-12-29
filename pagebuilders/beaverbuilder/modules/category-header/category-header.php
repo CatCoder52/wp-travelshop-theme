@@ -106,6 +106,15 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                         ),
                     ),
 
+                    'background_height' => array(
+                        'type' => 'unit',
+                        'label' => __('Background height', 'fl-builder'),
+                        'description' => 'px',
+                        'placeholder' => 100,
+                        'default' => 100,
+                        'responsive'  => true,
+                    )
+
                 )
             ),
             'content'    => array(
