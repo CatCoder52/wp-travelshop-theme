@@ -164,7 +164,7 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                     'text'     => array(
                         'type'    => 'editor',
                         'media_buttons' => false,
-                        'wpautop'       => false,
+                        'wpautop'       => true,
                         'label'   => __( 'Text', 'fl-builder' ),
                         'default' => 'Some more informations'
                     ),
