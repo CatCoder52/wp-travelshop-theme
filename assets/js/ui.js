@@ -137,30 +137,31 @@ jQuery(function ($) {
     // --------------------------------
     if ($('.itinerary-step-gallery').length > 0) {
 
-        $('.itinerary-step-gallery').each(function (key) {
-            let slider = tns({
-                container: '.it-gallery-' + key,
-                items: 1,
-                mouseDrag: true,
-                navContainer: '.it-gallery-' + key,
-                navAsThumbnails: true,
-                edgePadding: 15,
-                responsive: {
-                    992: {
-                        disable: true
-                    }
-                },
-                controlsText: ['<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
-                    '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
-                    '  <polyline points="15 6 9 12 15 18" />\n' +
-                    '</svg>', '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
-                    '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
-                    '  <polyline points="9 6 15 12 9 18" />\n' +
-                    '</svg>'
-                ]
-            })
-        });
-
+        if ($(window).width() < 992) {
+            $('.itinerary-step-gallery').each(function (key) {
+                let slider = tns({
+                    container: '.it-gallery-' + key,
+                    items: 1,
+                    mouseDrag: true,
+                    navContainer: '.it-gallery-' + key,
+                    navAsThumbnails: true,
+                    edgePadding: 15,
+                    responsive: {
+                        992: {
+                            disable: true
+                        }
+                    },
+                    controlsText: ['<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
+                        '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
+                        '  <polyline points="15 6 9 12 15 18" />\n' +
+                        '</svg>', '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
+                        '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
+                        '  <polyline points="9 6 15 12 9 18" />\n' +
+                        '</svg>'
+                    ]
+                })
+            });
+        }
     }
 
     // --------------------------------
@@ -168,30 +169,31 @@ jQuery(function ($) {
     // --------------------------------
     if ($('.description-block-element-gallery').length > 0) {
 
-        $('.description-block-element-gallery').each(function (key) {
-            let slider = tns({
-                container: '.description-block-gallery-' + key,
-                items: 1,
-                mouseDrag: true,
-                navContainer: '.description-block-gallery-' + key,
-                navAsThumbnails: true,
-                edgePadding: 15,
-                responsive: {
-                    992: {
-                        disable: true
-                    }
-                },
-                controlsText: ['<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
-                    '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
-                    '  <polyline points="15 6 9 12 15 18" />\n' +
-                    '</svg>', '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
-                    '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
-                    '  <polyline points="9 6 15 12 9 18" />\n' +
-                    '</svg>'
-                ]
-            })
-        });
-
+        if ($(window).width() <= 992) {
+            $('.description-block-element-gallery').each(function (key) {
+                let slider = tns({
+                    container: '.description-block-gallery-' + key,
+                    items: 1,
+                    mouseDrag: true,
+                    navContainer: '.description-block-gallery-' + key,
+                    navAsThumbnails: true,
+                    edgePadding: 15,
+                    responsive: {
+                        992: {
+                            disable: true
+                        }
+                    },
+                    controlsText: ['<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
+                        '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
+                        '  <polyline points="15 6 9 12 15 18" />\n' +
+                        '</svg>', '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">\n' +
+                        '  <path stroke="none" d="M0 0h24v24H0z"/>\n' +
+                        '  <polyline points="9 6 15 12 9 18" />\n' +
+                        '</svg>'
+                    ]
+                })
+            });
+        }
     }
 
     // -----------------------------------------------
@@ -226,13 +228,13 @@ jQuery(function ($) {
     if ($('.detail-image-grid-holder').length > 0 || $('.detail-gallerythumb').length > 0) {
         function addGalleryClasses() {
             console.log('open');
-            $('#detail-gallery-overlay').addClass('is--show');
+            $('.detail-gallery-overlay').addClass('is--show');
             $('body').addClass('modal-open');
         }
 
         function removeGalleryClasses() {
             console.log('close');
-            $('#detail-gallery-overlay').removeClass('is--show');
+            $('.detail-gallery-overlay').removeClass('is--show');
             $('body').removeClass('modal-open');
         }
         $('.detail-image-grid-holder img').on('click', function () {
