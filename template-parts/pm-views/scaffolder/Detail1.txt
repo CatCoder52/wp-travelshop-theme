@@ -128,13 +128,13 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
                     <div class="col-12 col-lg-9">
                         <?php
                         // Imagebrowser
-                        load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/image-browser.php', false, $moc->bilder_default);
+                        echo Template::render(APPLICATION_PATH . '/template-parts/pm-views/detail-blocks/image-browser.php', $moc->bilder_default);
                         ?>
                         <!-- Price Box underneath the image gallery for mobile devices-->
                         <div class="d-block d-lg-none">
                             <?php
                             // pricepox
-                            load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/price-box.php', false, array_merge($data, array('cheapest_price' => $cheapest_price)));
+                            echo Template::render(APPLICATION_PATH . '/template-parts/pm-views/detail-blocks/price-box.php', array_merge($data, array('cheapest_price' => $cheapest_price)));
                             ?>
                         </div>
                         <div class="detail-reise-content">
@@ -144,10 +144,10 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
                         </div>
                         <?php
                         // tabs
-                        load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/tabs.php', false, array('moc' => $moc, 'mo' => $mo, 'cheapest_price' => $cheapest_price));
+                        echo Template::render(APPLICATION_PATH . '/template-parts/pm-views/detail-blocks/tabs.php', array('moc' => $moc, 'mo' => $mo, 'cheapest_price' => $cheapest_price));
 
                         // info line
-                        load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/info-line.php', false, array('moc' => $moc, 'mo' => $mo));
+                        echo Template::render(APPLICATION_PATH . '/template-parts/pm-views/detail-blocks/info-line.php', array('moc' => $moc, 'mo' => $mo));
 
                         // load itinerary
                         //load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/itinerary.php', false, array('moc' => $moc, 'mo' => $mo, 'cheapest_price' => $cheapest_price));
@@ -161,7 +161,7 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
                         <div class="sticky-container">
                             <?php
                             // pricepox
-                            load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/price-box.php', false, array_merge($data, array('cheapest_price' => $cheapest_price)));
+                            echo Template::render(APPLICATION_PATH . '/template-parts/pm-views/detail-blocks/price-box.php', array_merge($data, array('cheapest_price' => $cheapest_price)));
                             ?>
                         </div>
                     </div>
@@ -171,9 +171,9 @@ $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
         <?php
         // Detail Booking
         //load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/booking-offers-per-date.php', false, array_merge($data, array('cheapest_price' => $cheapest_price)));
-        load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/booking-offers.php', false, array_merge($data, array('cheapest_price' => $cheapest_price)));
+        echo Template::render(APPLICATION_PATH . '/template-parts/pm-views/detail-blocks/booking-offers.php', array_merge($data, array('cheapest_price' => $cheapest_price)));
         ?>
     </div>
 <?php
 // Gallery
-load_template(get_template_directory() . '/template-parts/pm-views/detail-blocks/gallery.php', false, $moc->bilder_default);
+echo Template::render(APPLICATION_PATH . '/template-parts/pm-views/detail-blocks/gallery.php', $moc->bilder_default);
