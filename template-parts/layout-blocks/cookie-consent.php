@@ -1,10 +1,12 @@
 <?php
+// @TODO improve pagespeed
 if ( TS_COOKIE_CONSENT === FALSE ) {
    return;
 }
 ?>
 <script src="/wp-content/themes/travelshop/assets/js/cookieconsent.min.js"></script>
 <script>
+
 
     var cc = initCookieConsent();
 
@@ -15,7 +17,7 @@ if ( TS_COOKIE_CONSENT === FALSE ) {
         autoclear_cookies : true,
         cookie_expiration : 365,
         force_consent: true,
-
+        hide_from_bots : true,
         gui_options : {
             consent_modal : {
                 layout : 'cloud',
