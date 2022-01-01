@@ -14,6 +14,7 @@
 use Pressmind\HelperFunctions;
 use Pressmind\Travelshop\Calendar;
 use Pressmind\Travelshop\RouteHelper;
+use Pressmind\Travelshop\Template;
 
 
 $travel_months = Calendar::getTravelMonthRanges();
@@ -49,8 +50,6 @@ if (empty($travel_months)) {
                     <div class='col-12 col-sm-6 col-lg-4'>
                         <div class='teaser month-teaser'>
                             <?php
-                            $month_title = HelperFunctions::monthNumberToLocalMonthName($item['from']->format('n'));
-                            $month_title .= $item['from']->format('Y') != date('Y') ? ' ' . $item['from']->format('Y') : '';
                             // select a random media object for displaying the image in the teaser (loop trough if the're is a media object without images
                             $image_url = '';
                             $image_copyright = '';
@@ -73,7 +72,8 @@ if (empty($travel_months)) {
                                 $image_url = '/placeholder.svg?wh=80x80&text='.HelperFunctions::monthNumberToLocalMonthName($item['from']->format('n'));
                             }
                             ?>
-                            <a href='<?php echo RouteHelper::get_url_by_object_type($args['id_object_type']) . '/?pm-o=date_departure-asc&pm-dr='.$item['from']->format('Ymd').'-'.$item['to']->format('Ymd'); ?>' title="<?php echo $month_title; ?>">
+                            <a href='<?php echo RouteHelper::get_url_by_object_type($args['id_object_type']) . '/?pm-o=date_departure-asc&pm-dr='.$item['from']->format('Ymd').'-'.$item['to']->format('Ymd'); ?>'
+                               title="<?php echo Template::render(APPLICATION_PATH . '/template-parts/micro-templates/month-name.php', ['date' => $item['from']]); ?>">
                                 <div class="month-teaser-image">
                                     <div>
                                         <img src="<?php echo $image_url; ?>"
@@ -84,7 +84,11 @@ if (empty($travel_months)) {
                                     </div>
                                 </div>
                                 <div class="month-teaser-title">
-                                    <?php echo $month_title; ?>
+                                    <?php
+                                    echo Template::render(APPLICATION_PATH . '/template-parts/micro-templates/month-name.php', [
+                                        'date' => $item['from']
+                                    ]);
+                                    ?>
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                          x="0px" y="0px" viewBox="0 0 407.437 407.437"
                                          style="enable-background:new 0 0 407.437 407.437;" xml:space="preserve"> <polygon
