@@ -1,37 +1,37 @@
 <?php
 namespace Pressmind\Travelshop;
 
+use Pressmind\ORM\Object\CheapestPriceSpeed;
+
 class IB3Tools{
 
     /**
      * Build the booking linked based on several parameters
-     * @param int $id_media_object
-     * @param int $id_booking_package
-     * @param int $id_date
-     * @param int $id_housing_package
-     * @param int $id_housing_option
+     * @param CheapestPriceSpeed $CheapestPriceSpeed
      * @param string $url for history back link
      * @param string $dc discount code
-     * @param string $booking_type enum(reqeust,option,fix) or null ('fix' is the ib3 default value)
+     * @param string $booking_type enum(request,option,fix) or null ('fix' is the ib3 default value)
      * @return string
      */
-   public static function get_bookinglink($id_media_object, $id_booking_package, $id_date, $id_housing_package = null, $id_housing_option = null, $url = null, $dc = null, $booking_type = null): string
+   public static function get_bookinglink($CheapestPriceSpeed, $url = null, $dc = null, $booking_type = null): string
    {
 
        $p = [];
-       $p[] = 'imo='.$id_media_object;
-       $p[] = 'idbp='.$id_booking_package;
-       $p[] = 'idd='.$id_date;
-       if(!is_null($id_housing_package)){
-           $p[] = 'idhp='.$id_housing_package;
+       $p[] = 'imo='.$CheapestPriceSpeed->id_media_object;
+       $p[] = 'idbp='.$CheapestPriceSpeed->id_booking_package;
+       $p[] = 'idd='.$CheapestPriceSpeed->id_date;
+       if(!empty($CheapestPriceSpeed->id_housing_package)){
+           $p[] = 'idhp='.$CheapestPriceSpeed->id_housing_package;
        }
        // @TODO: possible improvement: set more than one housing_options here (with there amount)
-       if(!is_null($id_housing_option)) {
-           $p[] = 'iho[' . $id_housing_option . ']=1';
+       if(!empty($CheapestPriceSpeed->id_option)) {
+           $p[] = 'iho[' . $CheapestPriceSpeed->id_option . ']=1';
        }
 
-       if(!is_null($url)){
-           $p[] = 'url='.base64_encode($url);
+       if(!empty($CheapestPriceSpeed->transport_type)){
+           $p[] = 'idt1='.$CheapestPriceSpeed->id_transport_1;
+           $p[] = 'idt2='.$CheapestPriceSpeed->id_transport_2;
+           $p[] = 'tt='.$CheapestPriceSpeed->transport_type;
        }
 
        if(!is_null($dc)){
@@ -42,6 +42,9 @@ class IB3Tools{
            $p[] = 't='.$booking_type;
        }
 
+       if(!is_null($url)){
+           $p[] = 'url='.base64_encode($url);
+       }
        return trim(TS_IBE3_BASE_URL, '/').'/?'.implode('&', $p);
 
    }
