@@ -13,7 +13,6 @@ use Pressmind\Travelshop\PriceHandler;
 // build a date to best price map
 $filter = new CheapestPrice();
 $filter->occupancies_disable_fallback = false;
-$filter->occupancies = [2];
 
 /**
  * @var \Pressmind\ORM\Object\CheapestPriceSpeed[] $offers
@@ -40,8 +39,8 @@ foreach($offers as $offer){
             $date_to_cheapest_price[$offer->date_departure->format('Y-m-j')] = $offer;
         }
 }
-$durations = array_unique($durations, SORT_NUMERIC);
-$transport_types = array_unique($transport_types, SORT_ASC);
+$durations = array_unique(array_filter($durations), SORT_NUMERIC);
+$transport_types = array_unique(array_filter($transport_types), SORT_ASC);
 
 // find the min and max date range
 $from = new DateTime(array_key_first($date_to_cheapest_price));
@@ -72,7 +71,11 @@ if ($interval->format('%m') < 3) {
             <div>
                 <?php
                     foreach($durations as $duration) { ?>
-                        <a href="<?php echo Template::modifyUrl($args['url'], ['pm-du' => $duration, 'pm-dr' => '']); ?>" class="btn btn<?php echo ($duration == $args['cheapest_price']->duration) ? ' btn-primary' : ' btn-outline-primary';?>"><?php echo $duration;?> Tage</a>
+                        <a href="<?php echo Template::modifyUrl($args['url'], ['pm-du' => $duration, 'pm-dr' => '']); ?>" class="btn btn<?php echo ($duration == $args['cheapest_price']->duration) ? ' btn-primary' : ' btn-outline-primary';?>"><?php
+                            echo Template::render(APPLICATION_PATH.'/template-parts/micro-templates/duration.php', [
+                                'duration' => $duration,
+                            ]);
+                            ?></a>
                 <?php } ?>
                 <?php
                 foreach($transport_types as $transport_type) { ?>

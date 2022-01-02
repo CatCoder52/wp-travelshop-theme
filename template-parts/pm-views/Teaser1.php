@@ -72,13 +72,9 @@ if (empty($filteredParams) === false) {
                 <a href="<?php echo $args['url']; ?>"><?php echo $args['headline']; ?></a>
             </h1>
             <?php
-            $breadcrumb = array_filter([$args['travel_type'] ?? [], $args['destination'] ?? []]);
-            if (!empty($breadcrumb)) { ?>
-                <p class="attribute-row">
-                    <span class="badge badge-secondary"><?php echo implode('</span> <span class="badge badge-secondary">', $breadcrumb); ?></span>
-                </p>
-                <?php
-            }
+            echo Template::render(APPLICATION_PATH.'/template-parts/micro-templates/attribute-row.php', [
+                'attributes' => array_filter([$args['travel_type'] ?? [], $args['destination'] ?? []]),
+            ]);
             ?>
             <?php if (empty($args['subline']) === false) { ?>
                 <p class="card-text subline">
