@@ -1,6 +1,10 @@
 <?php
 use Pressmind\HelperFunctions;
 use Pressmind\Search\CheapestPrice;
+use Pressmind\Travelshop\IB3Tools;
+use Pressmind\Travelshop\Template;
+use Pressmind\Travelshop\PriceHandler;
+
 
 /**
  * @var array $args
@@ -9,7 +13,6 @@ use Pressmind\Search\CheapestPrice;
 // build a date to best price map
 $filter = new CheapestPrice();
 $filter->occupancies_disable_fallback = false;
-$filter->occupancies = [2];
 
 /**
  * @var \Pressmind\ORM\Object\CheapestPriceSpeed[] $offers
@@ -21,8 +24,10 @@ $offers = $args['media_object']->getCheapestPrices($filter, ['date_departure' =>
  */
 $date_to_cheapest_price = [];
 $durations = [];
+$transport_types = [];
 foreach($offers as $offer){
         $durations[] = $offer->duration;
+        $transport_types[] = $offer->transport_type;
         // if the date has multiple prices, display only the cheapest
         if (!empty($date_to_cheapest_price[$offer->date_departure->format('Y-m-j')]) &&
             $offer->price_total < $date_to_cheapest_price[$offer->date_departure->format('Y-m-j')]->price_total
@@ -34,7 +39,8 @@ foreach($offers as $offer){
             $date_to_cheapest_price[$offer->date_departure->format('Y-m-j')] = $offer;
         }
 }
-$durations = array_unique($durations, SORT_NUMERIC);
+$durations = array_unique(array_filter($durations), SORT_NUMERIC);
+$transport_types = array_unique(array_filter($transport_types), SORT_ASC);
 
 // find the min and max date range
 $from = new DateTime(array_key_first($date_to_cheapest_price));
@@ -54,18 +60,32 @@ if ($interval->format('%m') < 3) {
     <div class="col-12">
         <div class="booking-calendar-title">
             <h2>Buchungskalender
-                <?php if(count($durations) == 1) {
-                    echo ' - '.$durations[0]. ' Tage Reise';
-                }
-                    ?>
-
+               <?php echo Template::render(APPLICATION_PATH . '/template-parts/micro-templates/duration.php', ['duration' => $args['cheapest_price']->duration]); ?>
+                <?php
+                echo Template::render(APPLICATION_PATH.'/template-parts/micro-templates/transport_type_human_string.php', [
+                    'transport_type' => $args['cheapest_price']->transport_type,
+                ]);
+                ?>
             </h2>
-            <?php if(count($durations) > 1){ ?>
+            <?php if(count($durations) > 0 && count($transport_types) > 0){ ?>
             <div>
                 <?php
-                    // @TODO
                     foreach($durations as $duration) { ?>
-                <a href="#" class="btn btn btn-outline-primary"><?php echo $duration;?> Tage</a>
+                        <a href="<?php echo Template::modifyUrl($args['url'], ['pm-du' => $duration, 'pm-dr' => '']); ?>" class="btn btn<?php echo ($duration == $args['cheapest_price']->duration) ? ' btn-primary' : ' btn-outline-primary';?>"><?php
+                            echo Template::render(APPLICATION_PATH.'/template-parts/micro-templates/duration.php', [
+                                'duration' => $duration,
+                            ]);
+                            ?></a>
+                <?php } ?>
+                <?php
+                foreach($transport_types as $transport_type) { ?>
+                    <a href="<?php echo Template::modifyUrl($args['url'], ['pm-tr' => $transport_type, 'pm-dr' =>'']); ?>" class="btn btn<?php echo ($transport_type == $args['cheapest_price']->transport_type) ? ' btn-primary' : ' btn-outline-primary';?>"><?php
+
+                        echo Template::render(APPLICATION_PATH.'/template-parts/micro-templates/transport_type_human_string.php', [
+                            'transport_type' => $transport_type,
+                        ]);
+
+                    ?></a>
                 <?php } ?>
             </div>
             <?php } ?>
@@ -88,7 +108,12 @@ if ($interval->format('%m') < 3) {
                 }
                 ?>
                 <div class="calendar-wrapper">
-                    <div class="month-name"><?php echo HelperFunctions::monthNumberToLocalMonthName($dt->format('n')).($today->format('Y') != $dt->format('Y') ? $dt->format(' Y')  : ''); ?></div>
+                    <div class="month-name">
+                        <?php
+                        echo Template::render(APPLICATION_PATH . '/template-parts/micro-templates/month-name.php', [
+                            'date' => $dt]);
+                        ?>
+                    </div>
                     <ul class="calendar">
                         <?php
                         foreach (range(1, 7) as $day_of_week) {
@@ -100,10 +125,14 @@ if ($interval->format('%m') < 3) {
                             $current_date = $dt->format('Y-m-') . $day;
                             if (!empty($date_to_cheapest_price[$current_date])) {
                                 ?>
-                                <li class="travel-date" title="<?php echo $date_to_cheapest_price[$current_date]->duration.' '.(($date_to_cheapest_price[$current_date]->duration > 1) ? 'Tage' : 'Tag'); ?> - zur Buchung" data-toggle="tooltip"><a href="<?php echo \Pressmind\Travelshop\IB3Tools::get_bookinglink($date_to_cheapest_price[$current_date]->id_media_object, $date_to_cheapest_price[$current_date]->id_booking_package, $date_to_cheapest_price[$current_date]->id_date, $date_to_cheapest_price[$current_date]->id_housing_package);?>"><?php echo $day; ?>
-                                        <div>ab&nbsp;<?php
-                                            echo number_format($date_to_cheapest_price[$current_date]->price_total, TS_PRICE_DECIMALS, TS_PRICE_DECIMAL_SEPARATOR, TS_PRICE_THOUSANDS_SEPARATOR);
-                                            ?>&nbsp;€
+                                <li class="travel-date position-relative" title="<?php
+                                echo Template::render(APPLICATION_PATH . '/template-parts/micro-templates/duration.php', ['duration' => $date_to_cheapest_price[$current_date]->duration]); ?>
+                                <?php
+                                echo Template::render(APPLICATION_PATH.'/template-parts/micro-templates/transport_type_human_string.php', [
+                                    'transport_type' => $date_to_cheapest_price[$current_date]->transport_type,
+                                ]);
+                                ?> <br> zur Buchung" data-html="true" data-toggle="tooltip"><a href="<?php echo IB3Tools::get_bookinglink($date_to_cheapest_price[$current_date]);?>" class="stretched-link"><?php echo $day; ?>
+                                        <div>ab&nbsp;<?php echo PriceHandler::format($date_to_cheapest_price[$current_date]->price_total); ?>
                                         </div>
                                     </a></li>
                                 <?php

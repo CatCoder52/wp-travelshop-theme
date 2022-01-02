@@ -13,6 +13,7 @@ use Pressmind\Search\CheapestPrice;
 use Pressmind\HelperFunctions;
 use Pressmind\Travelshop\PriceHandler;
 use Pressmind\Travelshop\Calendar;
+use Pressmind\Travelshop\Template;
 
 // get the calendar items
 $items = Calendar::get();
@@ -57,8 +58,8 @@ if (count($items) == 0) {
 
                         <div class="product-calendar-group--title">
                             <h3><?php
-                                echo HelperFunctions::monthNumberToLocalMonthName($items[0]->date_departure->format('n'));
-                                echo $items[0]->date_departure->format('Y') != date('Y') ? ' ' . $items[0]->date_departure->format('Y') : '';
+                                echo Template::render(APPLICATION_PATH . '/template-parts/micro-templates/month-name.php', [
+                                    'date' => $items[0]->date_departure]);
                                 ?>
                             </h3>
                         </div>
@@ -71,17 +72,14 @@ if (count($items) == 0) {
                                 <div class="col-3 md-align-right">Preis</div>
                             </div>
                             <?php
-
                             $date_count = 1;
                             foreach ($items as $item) {
-
                                 $mo = new \Pressmind\ORM\Object\MediaObject($item->id);
                                 $CheapestPriceFilter = new CheapestPrice();
                                 $CheapestPriceFilter->date_from = $CheapestPriceFilter->date_to = $item->date_departure;
                                 $cheapest_price = $mo->getCheapestPrice($CheapestPriceFilter);
                             ?>
                                 <div class="product-calendar-group-item row" data-row-id="<?php echo $month_count . "-" . $date_count; ?>" data-pm-id="<?php echo $item->id; ?>" data-pm-dr="<?php echo $CheapestPriceFilter->date_from->format("Ymd") . '-' . $CheapestPriceFilter->date_to->format("Ymd"); ?>">
-
                                     <div class="col-12 col-md-3">
                                         <div class="arrow--wrapper">
                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 407.437 407.437" style="enable-background:new 0 0 407.437 407.437;" xml:space="preserve">
@@ -90,19 +88,10 @@ if (count($items) == 0) {
                                             <i class="circle green"></i>
                                             <?php
                                             if(!empty($cheapest_price)) {
-
-                                                if(!empty($cheapest_price->duration) && $cheapest_price->duration > 1) {
-                                                    echo HelperFunctions::dayNumberToLocalDayName($cheapest_price->date_departure->format('N'), 'short') . '. ' .
-                                                        $cheapest_price->date_departure->format('d.m.') .
-                                                        ' - ' .
-                                                        HelperFunctions::dayNumberToLocalDayName($cheapest_price->date_arrival->format('N'), 'short') . '. ' .
-                                                        $cheapest_price->date_arrival->format('d.m.');
-                                                }else{
-                                                    echo HelperFunctions::dayNumberToLocalDayName($cheapest_price->date_departure->format('N'), 'short') . '. ' .
-                                                        $cheapest_price->date_departure->format('d.m.');
-                                                }
-
-
+                                                echo Template::render(APPLICATION_PATH . '/template-parts/micro-templates/travel-date-range.php', [
+                                                    'date_departure' => $cheapest_price->date_departure,
+                                                    'date_arrival' => $cheapest_price->date_arrival
+                                                ]);
                                             }
                                             ?>
                                         </div>
@@ -111,31 +100,23 @@ if (count($items) == 0) {
                                         <strong><?php echo $item->name; ?></strong>
                                     </div>
                                     <div class="col-6 col-md-2">
-                                        <?php
-                                        if(!empty($cheapest_price->duration) ) {
-                                            echo $cheapest_price->duration > 1 ? $cheapest_price->duration.' Tage' : 'Tagesfahrt';
-                                        }
-                                        ?>
+                                        <?php echo Template::render(APPLICATION_PATH.'/template-parts/micro-templates/duration.php', ['duration' => $cheapest_price->duration]);?>
                                     </div>
                                     <div class="col-6 col-md-3 md-align-right">
                                         <span class="price">
                                             <?php
                                             if (!empty($cheapest_price) && ($discount = PriceHandler::getDiscount($cheapest_price)) !== false) {
-                                            ?>
-                                                <div class="discount-wrapper">
-                                                    <p>
-                                                        <span class="msg"><?php echo $discount['name']; ?></span>
-                                                        <span class="discount-label">
-                                                            <span class="price"><?php echo $discount['price_before_discount']; ?></span>
-                                                            <span class="discount"><?php echo $discount['price_delta']; ?></span>
-                                                        </span>
-                                                    </p>
-                                                </div>
-                                            <?php
+                                                echo Template::render(APPLICATION_PATH.'/template-parts/micro-templates/discount.php', [
+                                                    'cheapest_price' => $cheapest_price,
+                                                    'discount' => $discount,
+                                                    'hide-price-total' => true,
+                                                    'hide-discount-valid-to' => true,
+                                                ]);
                                             }
                                             if (empty($cheapest_price->price_total) === false) {
-                                                echo '<small><span>Preis p.P.</span> <strong>ab</strong> </small><strong>' . PriceHandler::format($cheapest_price->price_total) . '</strong>';
-                                            }
+                                                echo Template::render(APPLICATION_PATH.'/template-parts/micro-templates/price-1.php', [
+                                                    'cheapest_price' => $args['cheapest_price'],
+                                                ]);                                            }
                                             ?>
                                         </span>
                                     </div>

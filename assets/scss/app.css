@@ -14683,6 +14683,11 @@ body.fl-builder-edit header.header-main {
 }
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-clock,
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-calendar-event,
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-plane,
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-car,
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-bus,
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-ticket,
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-star,
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-bed {
   margin: 0.08rem 0.5rem 0 0;
   min-width: 20px;
@@ -14737,6 +14742,11 @@ body.fl-builder-edit header.header-main {
   }
   .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-clock,
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-calendar-event,
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-plane,
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-car,
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-bus,
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-ticket,
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-star,
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-bed {
     margin-right: 1rem;
   }
@@ -17823,6 +17833,11 @@ figure.wp-block-image figcaption {
 }
 .price-box > div .icon-tabler-clock,
 .price-box > div .icon-tabler-calendar-event,
+.price-box > div .icon-tabler-plane,
+.price-box > div .icon-tabler-car,
+.price-box > div .icon-tabler-bus,
+.price-box > div .icon-tabler-ticket,
+.price-box > div .icon-tabler-star,
 .price-box > div .icon-tabler-bed {
   margin: 0.08rem 0.5rem 0 0;
   min-width: 20px;
