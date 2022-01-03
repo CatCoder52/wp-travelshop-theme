@@ -91,6 +91,7 @@
         <?php if ( !empty($args['background_height_responsive']) ) { ?>
         .category-header.category-header--<?php echo $args['uid']; ?> .category-header-media-holder > div {
             padding-bottom: <?php echo $args['background_height_responsive']; ?>px;
+            min-height: <?php echo $args['background_height_responsive']; ?>px;
         }
         <?php } ?>
 
@@ -98,6 +99,7 @@
         @media( min-width: 992px ) {
             .category-header.category-header--<?php echo $args['uid']; ?> .category-header-media-holder > div {
                 padding-bottom: <?php echo $args['background_height_medium']; ?>px;
+                min-height: <?php echo $args['background_height_medium']; ?>px;
             }
         }
         <?php } ?>
@@ -106,6 +108,7 @@
         @media( min-width: 1200px ) {
             .category-header.category-header--<?php echo $args['uid']; ?> .category-header-media-holder > div {
                 padding-bottom: <?php echo $args['background_height']; ?>px;
+                min-height: <?php echo $args['background_height']; ?>px;
             }
         }
         <?php } ?>
