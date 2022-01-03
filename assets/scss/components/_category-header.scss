@@ -168,6 +168,10 @@
       flex-wrap: wrap;
       flex-direction: row;
 
+      &.category-header-docked--left {
+        flex-direction: row-reverse;
+      }
+
       .category-header-media {
         flex: 1;
         width: 100%;

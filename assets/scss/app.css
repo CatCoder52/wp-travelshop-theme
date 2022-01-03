@@ -15010,6 +15010,8 @@ figure.wp-block-image figcaption {
       display: flex;
       flex-wrap: wrap;
       flex-direction: row; }
+      .category-header.category-header--docked.category-header-docked--left {
+        flex-direction: row-reverse; }
       .category-header.category-header--docked .category-header-media {
         flex: 1;
         width: 100%;
