@@ -224,9 +224,18 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                         'default' => 'transparent',
                         'toggle' => array(
                             'boxed' => array(
-                                'fields' => array('content_box_background', 'content_box_max_height')
+                                'fields' => array('content_box_background', 'content_box_max_height', 'content_box_break')
                             )
                         )
+                    ),
+                    'content_box_break' => array(
+                        'type' => 'select',
+                        'label' => __('Break content box under image/video on mobile devices', 'fl-builder'),
+                        'options' => array(
+                            'break' => 'yes',
+                            'no-break' => 'no'
+                        ),
+                        'default' => 'break'
                     ),
                     'content_box_background' => array(
                         'type' => 'color',
