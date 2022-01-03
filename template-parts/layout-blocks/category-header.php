@@ -61,7 +61,7 @@
                 content-header-horizontal--<?php echo $args['content_alignment_horizontal']; ?>
                 content-header-horizontal-medium--<?php echo $args['content_alignment_horizontal_medium']; ?>
                 content-header-horizontal-small--<?php echo $args['content_alignment_horizontal_responsive']; ?>">
-                    <article class="category-header-content <?php echo $args['content_box_text_align']; ?> category-header-content--<?php echo $args['content_box_type']; ?>" <?php if ( $args['content_box_type'] == 'boxed' && !empty($args['content_box_background']) ) { ?>style="background-color: <?php if ( strlen($args['content_box_background']) < 8 ) { ?>#<?php } ?><?php echo $args['content_box_background']; ?>"<?php } ?>>
+                    <article class="category-header-content <?php echo $args['content_box_text_align']; ?> category-header-content--<?php echo $args['content_box_type']; ?>" <?php if ( $args['content_box_type'] == 'boxed' || $args['content_box_type'] == 'docked' && !empty($args['content_box_background']) ) { ?>style="background-color: <?php if ( strlen($args['content_box_background']) < 8 ) { ?>#<?php } ?><?php echo $args['content_box_background']; ?>"<?php } ?>>
                         <h1 class="category-header-title" <?php if ( !empty($args['headline_color']) ) { ?>style="color: <?php if ( strlen($args['headline_color']) < 8 ) { ?>#<?php } ?><?php echo $args['headline_color']; ?>"<?php } ?>>
                             <?php echo $args['headline']; ?>
                         </h1>
