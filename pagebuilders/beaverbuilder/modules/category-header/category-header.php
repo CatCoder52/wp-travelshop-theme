@@ -110,8 +110,8 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                         'type' => 'unit',
                         'label' => __('Background height', 'fl-builder'),
                         'description' => 'px',
-                        'placeholder' => 100,
-                        'default' => 100,
+                        'placeholder' => 400,
+                        'default' => 400,
                         'responsive'  => true,
                     )
 
