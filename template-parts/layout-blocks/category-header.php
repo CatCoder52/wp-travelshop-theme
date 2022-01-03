@@ -96,7 +96,7 @@
         <?php } ?>
 
         <?php if ( !empty($args['background_height_medium']) ) { ?>
-        @media( min-width: 992px ) {
+        @media( min-width: 768px ) {
             .category-header.category-header--<?php echo $args['uid']; ?> .category-header-media-holder > div {
                 padding-bottom: <?php echo $args['background_height_medium']; ?>px;
                 min-height: <?php echo $args['background_height_medium']; ?>px;
@@ -113,16 +113,26 @@
         }
         <?php } ?>
 
-        <?php if ( !empty($args['content_box_max_height']) && $args['content_box_type'] == 'boxed' )  { ?>
+        <?php if ( !empty($args['content_box_max_height']) && $args['content_box_type'] == 'boxed' && $args['content_box_break'] == 'break' )  { ?>
+        @media( min-width: 768px ) {
+            .category-header.category-header--<?php echo $args['uid']; ?> .category-header-content-wrapper .container .category-header-content-positioning .category-header-content {
+                max-width: <?php echo $args['content_box_max_height']; ?>px;
+            }
+        }
+        <?php } ?>
+
+        <?php if ( !empty($args['content_box_max_height']) && $args['content_box_type'] == 'boxed' && $args['content_box_break'] == 'no-break' )  { ?>
         .category-header.category-header--<?php echo $args['uid']; ?> .category-header-content-wrapper .container .category-header-content-positioning .category-header-content {
             max-width: <?php echo $args['content_box_max_height']; ?>px;
         }
         <?php } ?>
 
         <?php if ( !empty($args['content_box_max_height']) && $args['content_box_type'] == 'docked' ) { ?>
-        .category-header.category-header--<?php echo $args['uid']; ?> .category-header-content-wrapper  {
-            max-width: <?php echo $args['content_box_max_height']; ?>px;
-            flex: 0 0 <?php echo $args['content_box_max_height']; ?>px;
+        @media( min-width: 768px ) {
+            .category-header.category-header--<?php echo $args['uid']; ?> .category-header-content-wrapper  {
+                max-width: <?php echo $args['content_box_max_height']; ?>px;
+                flex: 0 0 <?php echo $args['content_box_max_height']; ?>px;
+            }
         }
         <?php } ?>
     </style>

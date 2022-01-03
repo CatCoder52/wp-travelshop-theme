@@ -15002,7 +15002,7 @@ figure.wp-block-image figcaption {
       flex-wrap: wrap;
       flex-direction: row; }
       .category-header.category-header--docked .category-header-media {
-        flex: 1 1 auto;
+        flex: 1;
         width: 100%;
         max-width: 100%; }
       .category-header.category-header--docked .category-header-content-wrapper {
