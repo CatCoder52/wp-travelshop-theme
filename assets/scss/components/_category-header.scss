@@ -124,7 +124,7 @@
 
   // -- break
   @include media-breakpoint-down(sm) {
-    &.category-header--break {
+    &.category-header--break, &.category-header--docked {
       .category-header-content-wrapper{
         position: static;
         padding-top: 0;
