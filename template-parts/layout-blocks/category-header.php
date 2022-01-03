@@ -1,5 +1,5 @@
 
-<div class="category-header category-header--<?php echo $args['content_box_type']; ?>">
+<div class="category-header category-header--<?php echo $args['content_box_type']; ?> category-header--<?php echo $args['content_box_break']; ?>">
 
     <?php ## Media handling ?>
 
