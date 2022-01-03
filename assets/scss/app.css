@@ -15008,7 +15008,8 @@ figure.wp-block-image figcaption {
       .category-header.category-header--docked .category-header-content-wrapper {
         flex: 0 0 680px;
         max-width: 680px;
-        width: 100%; } }
+        width: 100%;
+        position: static; } }
 
 .footer-main {
   background-color: #e9ecef; }
