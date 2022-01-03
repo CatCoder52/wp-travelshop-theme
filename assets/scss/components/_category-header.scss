@@ -155,8 +155,10 @@
         padding-left:0;
         padding-right: 0;
 
-        .category-header-content {
-          height: 100%;
+        @include media-breakpoint-up(md) {
+          .category-header-content {
+            height: 100%;
+          }
         }
       }
     }
