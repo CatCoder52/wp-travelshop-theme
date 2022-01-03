@@ -14996,6 +14996,19 @@ figure.wp-block-image figcaption {
         margin-right: 0 !important;
         padding-left: 0 !important;
         padding-right: 0 !important; } }
+  @media (min-width: 768px) {
+    .category-header.category-header--docked {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row; }
+      .category-header.category-header--docked .category-header-media {
+        flex: 1 1 auto;
+        width: 100%;
+        max-width: 100%; }
+      .category-header.category-header--docked .category-header-content-wrapper {
+        flex: 0 0 680px;
+        max-width: 680px;
+        width: 100%; } }
 
 .footer-main {
   background-color: #e9ecef; }

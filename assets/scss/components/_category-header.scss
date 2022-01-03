@@ -143,4 +143,25 @@
       }
     }
   }
+
+  // -- docked style
+  &.category-header--docked {
+    @include media-breakpoint-up(md) {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+
+      .category-header-media {
+        flex: 1 1 auto;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .category-header-content-wrapper {
+        flex: 0 0 680px;
+        max-width: 680px;
+        width: 100%;
+      }
+    }
+  }
 }
