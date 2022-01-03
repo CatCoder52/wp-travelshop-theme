@@ -225,6 +225,9 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                         'toggle' => array(
                             'boxed' => array(
                                 'fields' => array('content_box_background', 'content_box_max_height', 'content_box_break')
+                            ),
+                            'docked' => array(
+                                'fields' => array('content_box_background')
                             )
                         )
                     ),
