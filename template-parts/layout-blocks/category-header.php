@@ -1,5 +1,5 @@
 
-<div class="category-header category-header--<?php echo $args['uid']; ?> category-header--<?php echo $args['content_box_type']; ?> <?php if (  $args['content_box_type'] == 'boxed' ) { ?>category-header--<?php echo $args['content_box_break'];  }?>">
+<div class="category-header category-header--<?php echo $args['uid']; ?> category-header--<?php echo $args['content_box_type']; ?> <?php if (  $args['content_box_type'] == 'boxed' ) { ?>category-header--<?php echo $args['content_box_break'];  }?> <?php if ( $args['content_box_type'] == 'docked' ) { ?> category-header-docked--<?php echo $args['content_alignment_horizontal']; ?> <?php } ?>">
 
     <?php ## Media handling ?>
 
@@ -53,7 +53,7 @@
 
     <?php ## Content ?>
     <?php if ( $args['headline'] ) { ?>
-        <div class="category-header-content-wrapper ">
+        <div class="category-header-content-wrapper">
             <div class="container">
                 <div class="category-header-content-positioning content-header-vertical--<?php echo $args['content_alignment_vertical']; ?>
                 content-header-vertical-medium--<?php echo $args['content_alignment_vertical_medium']; ?>
