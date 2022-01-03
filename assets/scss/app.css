@@ -14995,7 +14995,11 @@ figure.wp-block-image figcaption {
         margin-left: 0 !important;
         margin-right: 0 !important;
         padding-left: 0 !important;
-        padding-right: 0 !important; } }
+        padding-right: 0 !important;
+        width: 100%;
+        max-width: 100%; }
+        .category-header.category-header--break .category-header-content-wrapper .container .category-header-content-positioning, .category-header.category-header--break .category-header-content-wrapper .fl-builder-content .fl-row.fl-row-fixed-width .category-header-content-positioning, .fl-builder-content .category-header.category-header--break .category-header-content-wrapper .fl-row.fl-row-fixed-width .category-header-content-positioning, .category-header.category-header--break .category-header-content-wrapper .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .fl-row-content.fl-row-fixed-width .category-header-content-positioning, .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .category-header.category-header--break .category-header-content-wrapper .fl-row-content.fl-row-fixed-width .category-header-content-positioning, .category-header.category-header--docked .category-header-content-wrapper .container .category-header-content-positioning, .category-header.category-header--docked .category-header-content-wrapper .fl-builder-content .fl-row.fl-row-fixed-width .category-header-content-positioning, .fl-builder-content .category-header.category-header--docked .category-header-content-wrapper .fl-row.fl-row-fixed-width .category-header-content-positioning, .category-header.category-header--docked .category-header-content-wrapper .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .fl-row-content.fl-row-fixed-width .category-header-content-positioning, .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .category-header.category-header--docked .category-header-content-wrapper .fl-row-content.fl-row-fixed-width .category-header-content-positioning {
+          display: block; } }
   .category-header.category-header--docked .category-header-content-wrapper {
     padding-top: 0;
     padding-bottom: 0; }
