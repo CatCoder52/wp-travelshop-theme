@@ -14984,6 +14984,14 @@ figure.wp-block-image figcaption {
     bottom: 0;
     right: 0;
     z-index: 3; }
+  @media (max-width: 767.98px) {
+    .category-header.category-header--break .category-header-content-wrapper {
+      position: static;
+      padding-top: 0;
+      padding-bottom: 0; }
+      .category-header.category-header--break .category-header-content-wrapper .container, .category-header.category-header--break .category-header-content-wrapper .fl-builder-content .fl-row.fl-row-fixed-width, .fl-builder-content .category-header.category-header--break .category-header-content-wrapper .fl-row.fl-row-fixed-width, .category-header.category-header--break .category-header-content-wrapper .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .fl-row-content.fl-row-fixed-width, .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .category-header.category-header--break .category-header-content-wrapper .fl-row-content.fl-row-fixed-width {
+        margin: 0;
+        padding: 0; } }
 
 .footer-main {
   background-color: #e9ecef; }

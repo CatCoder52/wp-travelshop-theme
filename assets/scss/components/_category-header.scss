@@ -121,4 +121,20 @@
 
     z-index: 3;
   }
+
+  // -- break
+  @include media-breakpoint-down(sm) {
+    &.category-header--break {
+      .category-header-content-wrapper{
+        position: static;
+        padding-top: 0;
+        padding-bottom: 0;
+
+        .container{
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+  }
 }
