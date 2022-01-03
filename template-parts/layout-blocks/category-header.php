@@ -83,4 +83,31 @@
         </div>
 
     <?php } ?>
+
+    <?php
+    // generate style for image height
+    ?>
+    <style>
+        <?php if ( !empty($args['background_height_responsive']) ) { ?>
+        .category-header.category-header--<?php echo $args['uid']; ?> .category-header-media-holder > div {
+            padding-bottom: <?php echo $args['background_height_responsive']; ?>px;
+        }
+        <?php } ?>
+
+        <?php if ( !empty($args['background_height_medium']) ) { ?>
+        @media( min-width: 992px ) {
+            .category-header.category-header--<?php echo $args['uid']; ?> .category-header-media-holder > div {
+                padding-bottom: <?php echo $args['background_height_medium']; ?>px;
+            }
+        }
+        <?php } ?>
+
+        <?php if ( !empty($args['background_height']) ) { ?>
+        @media( min-width: 1200px ) {
+            .category-header.category-header--<?php echo $args['uid']; ?> .category-header-media-holder > div {
+                padding-bottom: <?php echo $args['background_height']; ?>px;
+            }
+        }
+        <?php } ?>
+    </style>
 </div>
