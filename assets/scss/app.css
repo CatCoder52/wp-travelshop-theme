@@ -15025,6 +15025,19 @@ figure.wp-block-image figcaption {
         max-width: 680px;
         width: 100%;
         position: static; } }
+  .category-header .category-header-text ul {
+    padding-left: 0;
+    list-style-type: none; }
+    .category-header .category-header-text ul li {
+      padding-left: 1.5rem;
+      position: relative; }
+      .category-header .category-header-text ul li:before {
+        content: "\2713";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 1rem; }
 
 .footer-main {
   background-color: #e9ecef; }
