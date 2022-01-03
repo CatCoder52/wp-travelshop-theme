@@ -2,6 +2,11 @@
 /**
  * @var object $settings defined by beaver builder module
  */
+?>
+<pre>
+    <?php var_dump($node); ?>
+</pre>
+<?php
 $args = (array)$settings;
 $args['background_overlay_gradient'] = FLBuilderColor::gradient($settings->background_overlay_gradient);
 
