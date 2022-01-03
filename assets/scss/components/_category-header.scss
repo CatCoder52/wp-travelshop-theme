@@ -43,24 +43,15 @@
 
   // -- content handling
   .category-header-content-wrapper  {
-    position: relative;
 
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
 
-    @include media-breakpoint-down(sm) {
-      // fallback mobile;
-      margin-top: -3rem;
-    }
-
-    @include media-breakpoint-up(md) {
-      position: absolute;
-      top:0;
-      left:0;
-      right:0;
-      bottom:0;
-
-      padding-top: 2rem;
-      padding-bottom: 2rem;
-    }
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 
     z-index: 6;
 
@@ -95,6 +86,8 @@
         .category-header-content {
           padding: 1.25rem;
           @include border-radius($border-radius);
+          width: 100%;
+          max-width: 680px;
 
           .category-header-button {
             margin: 1rem 0 0 0;
@@ -108,16 +101,9 @@
             .h3 {
               font-size: $font-size-base;
             }
-
-            // -- simple fallback ffor mobile!
-            background-color: #fff !important;
           }
-        }
 
-        @include media-breakpoint-up(md) {
-          .category-header-content {
-            width: 100%;
-            max-width: 680px;
+          @include media-breakpoint-up(md) {
             padding: 2rem;
           }
         }
