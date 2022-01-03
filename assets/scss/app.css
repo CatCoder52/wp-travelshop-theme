@@ -15029,7 +15029,7 @@ figure.wp-block-image figcaption {
     padding-left: 0;
     list-style-type: none; }
     .category-header .category-header-text ul li {
-      padding-left: 1.5rem;
+      padding-left: 1.125rem;
       position: relative; }
       .category-header .category-header-text ul li:before {
         content: "\2713";
