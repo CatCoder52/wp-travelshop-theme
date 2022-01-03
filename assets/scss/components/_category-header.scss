@@ -89,6 +89,10 @@
           width: 100%;
           max-width: 680px;
 
+          &.category-header-content--docked {
+            @include border-radius(0);
+          }
+
           .category-header-button {
             margin: 1rem 0 0 0;
           }
