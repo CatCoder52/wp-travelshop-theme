@@ -4,7 +4,7 @@
  */
 ?>
 <pre>
-    <?php var_dump($node); ?>
+    <?php var_dump($module); ?>
 </pre>
 <?php
 $args = (array)$settings;
