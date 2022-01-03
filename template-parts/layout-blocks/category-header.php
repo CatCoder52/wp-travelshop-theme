@@ -113,11 +113,17 @@
         }
         <?php } ?>
 
-        <?php if ( !empty($args['content_box_max_height']) && ($args['content_box_type'] == 'boxed' || $args['content_box_type'] == 'docked') ) { ?>
-            .category-header.category-header--<?php echo $args['uid']; ?> .category-header-content-wrapper .container .category-header-content-positioning .category-header-content {
-                padding-bottom: <?php echo $args['background_height']; ?>px;
-                min-height: <?php echo $args['background_height']; ?>px;
-            }
+        <?php if ( !empty($args['content_box_max_height']) && $args['content_box_type'] == 'boxed'  { ?>
+        .category-header.category-header--<?php echo $args['uid']; ?> .category-header-content-wrapper .container .category-header-content-positioning .category-header-content {
+            max-width: <?php echo $args['content_box_max_height']; ?>px;
+        }
+        <?php } ?>
+
+        <?php if ( !empty($args['content_box_max_height']) && $args['content_box_type'] == 'docked' ) { ?>
+        .category-header.category-header--<?php echo $args['uid']; ?> .category-header-content-wrapper  {
+            max-width: <?php echo $args['content_box_max_height']; ?>px;
+            flex: 0 0 <?php echo $args['content_box_max_height']; ?>px;
+        }
         <?php } ?>
     </style>
 </div>
