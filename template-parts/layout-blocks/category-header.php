@@ -112,5 +112,12 @@
             }
         }
         <?php } ?>
+
+        <?php if ( !empty($args['content_box_max_height']) && ($args['content_box_type'] == 'boxed' || $args['content_box_type'] == 'docked') ) { ?>
+            .category-header.category-header--<?php echo $args['uid']; ?> .category-header-content-wrapper .container .category-header-content-positioning .category-header-content {
+                padding-bottom: <?php echo $args['background_height']; ?>px;
+                min-height: <?php echo $args['background_height']; ?>px;
+            }
+        <?php } ?>
     </style>
 </div>
