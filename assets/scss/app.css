@@ -15005,6 +15005,9 @@ figure.wp-block-image figcaption {
     .category-header.category-header--docked .category-header-content-wrapper > .container-fluid, .category-header.category-header--docked .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .category-header-content-wrapper > .fl-row-content.fl-row-full-width, .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .category-header.category-header--docked .category-header-content-wrapper > .fl-row-content.fl-row-full-width {
       padding-left: 0;
       padding-right: 0; }
+      .category-header.category-header--docked .category-header-content-wrapper > .container-fluid .category-header-content-positioning, .category-header.category-header--docked .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .category-header-content-wrapper > .fl-row-content.fl-row-full-width .category-header-content-positioning, .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .category-header.category-header--docked .category-header-content-wrapper > .fl-row-content.fl-row-full-width .category-header-content-positioning {
+        display: block;
+        width: 100%; }
       .category-header.category-header--docked .category-header-content-wrapper > .container-fluid .category-header-content, .category-header.category-header--docked .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .category-header-content-wrapper > .fl-row-content.fl-row-full-width .category-header-content, .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .category-header.category-header--docked .category-header-content-wrapper > .fl-row-content.fl-row-full-width .category-header-content {
         display: block; }
         @media (min-width: 768px) {
