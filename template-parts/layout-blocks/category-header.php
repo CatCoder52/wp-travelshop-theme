@@ -90,7 +90,7 @@
         <?php
             if ( $args['background_overlay_type'] == 'gradient' ) {
                 ?>
-            .fl-builder-content-77 .fl-node-<?php echo $args['uid']; ?> .category-header-overlay {
+            .fl-node-<?php echo $args['uid']; ?> .category-header-overlay {
                 background-image: <?php echo $args['background_overlay_color']; ?>
             }
         <?php
