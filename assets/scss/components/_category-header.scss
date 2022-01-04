@@ -194,6 +194,17 @@
     }
   }
 
+  // -- color shematas
+  &.category-header--docked,
+  &.category-header--boxed {
+    .category-header-content--primary {
+      background-color: $primary;
+    }
+    .category-header-content--white {
+      background-color: #fff;
+    }
+  }
+
   // -- checklist
   .category-header-text {
     ul {
