@@ -15048,7 +15048,9 @@ figure.wp-block-image figcaption {
       margin: 0; }
       .category-header .category-header-text ul li {
         padding-left: 1.125rem;
-        position: relative; }
+        position: relative;
+        display: inline-block;
+        clear: both; }
         .category-header .category-header-text ul li:before {
           content: "\2713";
           display: block;

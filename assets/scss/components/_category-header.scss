@@ -237,6 +237,8 @@
       li {
         padding-left: 1.125rem;
         position: relative;
+        display: inline-block;
+        clear: both;
 
         &:before {
           content: "\2713";
