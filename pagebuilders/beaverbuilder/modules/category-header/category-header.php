@@ -197,6 +197,13 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                       'responsive' => true,
                       'default' => 'center'
                   ),
+                  'content_inner_padding' =>  array(
+                      'type' => 'unit',
+                      'label' => __('Content box inner padding', 'fl-builder'),
+                      'description' => 'px',
+                      'placeholder' => 30,
+                      'default' => 30,
+                  )
               )
             ),
 

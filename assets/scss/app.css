@@ -14943,11 +14943,10 @@ figure.wp-block-image figcaption {
     left: 0;
     right: 0;
     bottom: 0;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
     z-index: 6; }
     .category-header .category-header-content-wrapper .container-fluid, .category-header .category-header-content-wrapper .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .fl-row-content.fl-row-full-width, .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .category-header .category-header-content-wrapper .fl-row-content.fl-row-full-width {
-      height: 100%; }
+      height: 100%;
+      padding: 0; }
       .category-header .category-header-content-wrapper .container-fluid .category-header-content-positioning, .category-header .category-header-content-wrapper .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .fl-row-content.fl-row-full-width .category-header-content-positioning, .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .category-header .category-header-content-wrapper .fl-row-content.fl-row-full-width .category-header-content-positioning {
         height: 100%;
         display: flex;

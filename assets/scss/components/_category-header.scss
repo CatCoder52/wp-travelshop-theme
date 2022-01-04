@@ -50,14 +50,12 @@
     right:0;
     bottom:0;
 
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-
     z-index: 6;
 
 
     .container-fluid {
       height: 100%;
+      padding: 0;
 
       .category-header-content-positioning {
         height: 100%;

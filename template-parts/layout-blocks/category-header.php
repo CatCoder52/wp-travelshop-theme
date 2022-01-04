@@ -53,7 +53,7 @@
 
     <?php ## Content ?>
     <?php if ( $args['headline'] ) { ?>
-        <div class="category-header-content-wrapper">
+        <div class="category-header-content-wrapper" <?php if ( $args['content_box_type'] !== 'docked' ) { ?>style="padding: <?php echo $args['content_inner_padding']; ?>px;"<?php } ?>>
             <div class="container-fluid">
                 <div class="category-header-content-positioning content-header-vertical--<?php echo $args['content_alignment_vertical']; ?>
                 content-header-vertical-medium--<?php echo $args['content_alignment_vertical_medium']; ?>
