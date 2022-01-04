@@ -237,8 +237,6 @@
       li {
         padding-left: 1.125rem;
         position: relative;
-        display: inline-block;
-        clear: both;
 
         &:before {
           content: "\2713";
@@ -267,6 +265,23 @@
     ol + p,
     ul + p {
       margin: .5rem 0 0 0;
+    }
+  }
+
+  .category-header-content.text-center {
+    .category-header-text {
+      ul {
+        margin-top: -.25rem;
+        li {
+          display: inline;
+          margin-right: .5rem;
+          margin-top: .25rem;
+
+          + li {
+            margin-top: 0;
+          }
+        }
+      }
     }
   }
 

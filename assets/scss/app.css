@@ -15048,9 +15048,7 @@ figure.wp-block-image figcaption {
       margin: 0; }
       .category-header .category-header-text ul li {
         padding-left: 1.125rem;
-        position: relative;
-        display: inline-block;
-        clear: both; }
+        position: relative; }
         .category-header .category-header-text ul li:before {
           content: "\2713";
           display: block;
@@ -15070,6 +15068,14 @@ figure.wp-block-image figcaption {
     .category-header .category-header-text ol + p,
     .category-header .category-header-text ul + p {
       margin: .5rem 0 0 0; }
+  .category-header .category-header-content.text-center .category-header-text ul {
+    margin-top: -.25rem; }
+    .category-header .category-header-content.text-center .category-header-text ul li {
+      display: inline;
+      margin-right: .5rem;
+      margin-top: .25rem; }
+      .category-header .category-header-content.text-center .category-header-text ul li + li {
+        margin-top: 0; }
   .category-header.category-header--boxed .category-header-text a, .category-header.category-header--docked .category-header-text a {
     color: inherit;
     transition: all .3s;
