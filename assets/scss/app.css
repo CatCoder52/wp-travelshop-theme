@@ -15103,6 +15103,8 @@ figure.wp-block-image figcaption {
         color: inherit;
         opacity: .75;
         text-decoration: none; }
+  .category-header.category-header--transparent .category-header-content {
+    max-width: 680px; }
 
 .footer-main {
   background-color: #e9ecef; }
