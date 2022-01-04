@@ -181,7 +181,6 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                           'top' => 'Top',
                           'middle' => 'Middle',
                           'bottom' => 'Bottom',
-                          'underneath' => 'unter Inhalt'
                       ),
                       'responsive' => true,
                       'default' => 'middle'

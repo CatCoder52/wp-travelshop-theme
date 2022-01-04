@@ -63,12 +63,12 @@
                 content-header-horizontal-small--<?php echo $args['content_alignment_horizontal_responsive']; ?>">
                     <article class="category-header-content <?php echo $args['content_box_text_align']; ?> category-header-content--<?php echo $args['content_box_type']; ?> <?php if ( ($args['content_box_type'] == 'boxed' || $args['content_box_type']== 'docked') && ( !empty($args['content_box_background']) ) ) { ?> category-header-content--<?php echo $args['content_box_background']; ?><?php } ?>
                     ">
-                        <h1 class="category-header-title" <?php if ( !empty($args['headline_color']) ) { ?>style="color: <?php if ( strlen($args['headline_color']) < 8 ) { ?>#<?php } ?><?php echo $args['headline_color']; ?>"<?php } ?>>
+                        <<?php echo $args['headline_type']; ?>> class="category-header-title" <?php if ( !empty($args['headline_color']) ) { ?>style="color: <?php if ( strlen($args['headline_color']) < 8 ) { ?>#<?php } ?><?php echo $args['headline_color']; ?>"<?php } ?>>
                             <?php echo $args['headline']; ?>
-                        </h1>
+                        </<?php echo $args['headline_type']; ?>>
 
                         <?php if ( !empty($args['subline']) ) { ?>
-                            <div class="category-header-subline h3" <?php if ( !empty($args['subline_color']) ) { ?>style="color: <?php if ( strlen($args['subline_color']) < 8 ) { ?>#<?php } ?><?php echo $args['subline_color']; ?>"<?php } ?>>
+                            <div class="category-header-subline <?php echo $args['subline_type']; ?>" <?php if ( !empty($args['subline_color']) ) { ?>style="color: <?php if ( strlen($args['subline_color']) < 8 ) { ?>#<?php } ?><?php echo $args['subline_color']; ?>"<?php } ?>>
                                 <?php echo $args['subline']; ?>
                             </div>
                         <?php } ?>
