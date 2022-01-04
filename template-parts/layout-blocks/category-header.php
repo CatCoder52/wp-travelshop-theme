@@ -11,8 +11,7 @@
     <div class="category-header-media category-header-media--<?php echo $args['media_type']; ?>">
         <div class="category-header-media-holder">
             <?php
-
-            if ( !empty($video) && !empty($image) ) {
+            if ( empty($video) && empty($image) ) {
                 ?>
                 <?php echo get_stylesheet_directory_uri(); ?>
                 <div class="media-image">
@@ -66,17 +65,17 @@
     <?php ## Content ?>
     <?php if ( $args['headline'] ) { ?>
         <?php
-            if ( !empty($args['content_alignment_vertical_responsive'])) {
+            if ( empty($args['content_alignment_vertical_responsive'])) {
                 $args['content_alignment_vertical_responsive'] = $args['content_alignment_vertical'];
             }
-            if ( !empty($args['content_alignment_vertical_medium'])) {
+            if ( empty($args['content_alignment_vertical_medium'])) {
                 $args['content_alignment_vertical_medium'] = $args['content_alignment_vertical'];
 
             }
-            if ( !empty($args['content_alignment_horizontal_responsive'])) {
+            if ( empty($args['content_alignment_horizontal_responsive'])) {
                 $args['content_alignment_horizontal_responsive'] = $args['content_alignment_horizontal'];
             }
-            if ( !empty($args['content_alignment_horizontal_medium'])) {
+            if ( empty($args['content_alignment_horizontal_medium'])) {
                 $args['content_alignment_horizontal_medium'] = $args['content_alignment_horizontal'];
 
             }
