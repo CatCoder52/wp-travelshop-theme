@@ -23,7 +23,7 @@
           left: 50%; /* % of surrounding element */
           top: 50%;
           transform: translate(-50%, -50%); /* % of current element */
-          min-width: 100vw;
+          min-width: 100%;
         }
 
         // -- image
