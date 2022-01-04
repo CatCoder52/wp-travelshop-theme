@@ -5,24 +5,34 @@
 
     <div class="category-header-media category-header-media--<?php echo $args['media_type']; ?>">
         <div class="category-header-media-holder">
-            <?php if ( $args['media_type'] == 'image' ) { ?>
-                <?php
-                $image = wp_get_attachment_image_url( $args['image'], 'bigslide');
+            <?php
+            $video = wp_get_attachment_url( $args['video'] );
+            $image = wp_get_attachment_image_url( $args['image'], 'bigslide');
+
+            if ( !empty($video) && !empty($image) ) {
                 ?>
                 <div class="media-image">
-                    <div style="background-image: url('<?php echo $image; ?>');"></div>
+                    <div style="background-image: url('<?php echo get_stylesheet_directory_uri().'/assets/img/slide-1.webp' ?>');"></div>
                 </div>
-            <?php } else { ?>
                 <?php
-                $video = wp_get_attachment_url( $args['video'] );
+            } else {
                 ?>
-                <div class="media-video">
-                    <video autoplay muted loop style="pointer-events: none;">
-                        <source src="<?php echo $video; ?>" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            <?php } ?>
+                <?php if ( $args['media_type'] == 'image' ) { ?>
+
+                    <div class="media-image">
+                        <div style="background-image: url('<?php echo $image; ?>');"></div>
+                    </div>
+                <?php } else { ?>
+                    <div class="media-video">
+                        <video autoplay muted loop style="pointer-events: none;">
+                            <source src="<?php echo $video; ?>" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                <?php } ?>
+            <?php
+            }
+            ?>
         </div>
 
         <?php ## Overlay handling ?>
