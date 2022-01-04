@@ -86,8 +86,7 @@
         .category-header-content {
           padding: 1.25rem;
           @include border-radius($border-radius);
-          width: 100%;
-          max-width: 680px;
+          width: auto;
 
           &.category-header-content--docked {
             @include border-radius(0);
