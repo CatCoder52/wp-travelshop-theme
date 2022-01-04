@@ -56,7 +56,7 @@
     z-index: 6;
 
 
-    .container {
+    .container-fluid {
       height: 100%;
 
       .category-header-content-positioning {
@@ -133,7 +133,7 @@
         padding-top: 0;
         padding-bottom: 0;
 
-        .container {
+        .container-fluid {
           margin-left: 0 !important;
           margin-right: 0 !important;
           padding-left: 0 !important;
@@ -156,7 +156,7 @@
       padding-top: 0;
       padding-bottom:0;
 
-      > .container {
+      > .container-fluid {
         padding-left:0;
         padding-right: 0;
 

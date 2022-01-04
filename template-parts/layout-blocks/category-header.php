@@ -54,7 +54,7 @@
     <?php ## Content ?>
     <?php if ( $args['headline'] ) { ?>
         <div class="category-header-content-wrapper">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="category-header-content-positioning content-header-vertical--<?php echo $args['content_alignment_vertical']; ?>
                 content-header-vertical-medium--<?php echo $args['content_alignment_vertical_medium']; ?>
                 content-header-vertical-small--<?php echo $args['content_alignment_vertical_responsive']; ?>
