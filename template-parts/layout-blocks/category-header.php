@@ -3,14 +3,18 @@
 
     <?php ## Media handling ?>
 
+    <?php
+    $video = wp_get_attachment_url( $args['video'] );
+    $image = wp_get_attachment_image_url( $args['image'], 'bigslide');
+    ?>
+
     <div class="category-header-media category-header-media--<?php echo $args['media_type']; ?>">
         <div class="category-header-media-holder">
             <?php
-            $video = wp_get_attachment_url( $args['video'] );
-            $image = wp_get_attachment_image_url( $args['image'], 'bigslide');
 
             if ( !empty($video) && !empty($image) ) {
                 ?>
+                <?php echo get_stylesheet_directory_uri().'/assets/img/slide-1.webp' ?>
                 <div class="media-image">
                     <div style="background-image: url('<?php echo get_stylesheet_directory_uri().'/assets/img/slide-1.webp' ?>');"></div>
                 </div>
