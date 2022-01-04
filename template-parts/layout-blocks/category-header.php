@@ -13,7 +13,6 @@
             <?php
             if ( empty($video) && empty($image) ) {
                 ?>
-                <?php echo get_stylesheet_directory_uri(); ?>
                 <div class="media-image">
                     <div style="background-image: url('<?php echo get_stylesheet_directory_uri().'/assets/img/slide-1.webp' ?>');"></div>
                 </div>
