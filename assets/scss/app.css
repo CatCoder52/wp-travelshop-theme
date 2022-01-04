@@ -14987,8 +14987,7 @@ figure.wp-block-image figcaption {
   @media (max-width: 767.98px) {
     .category-header.category-header--break .category-header-content-wrapper, .category-header.category-header--docked .category-header-content-wrapper {
       position: static;
-      padding-top: 0;
-      padding-bottom: 0; }
+      padding: 0 !important; }
       .category-header.category-header--break .category-header-content-wrapper .container-fluid, .category-header.category-header--break .category-header-content-wrapper .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .fl-row-content.fl-row-full-width, .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .category-header.category-header--break .category-header-content-wrapper .fl-row-content.fl-row-full-width, .category-header.category-header--docked .category-header-content-wrapper .container-fluid, .category-header.category-header--docked .category-header-content-wrapper .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .fl-row-content.fl-row-full-width, .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .category-header.category-header--docked .category-header-content-wrapper .fl-row-content.fl-row-full-width {
         margin-left: 0 !important;
         margin-right: 0 !important;
