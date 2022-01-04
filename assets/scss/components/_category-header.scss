@@ -140,6 +140,10 @@
 
           .category-header-content-positioning {
             display: block;
+
+            .category-header-content {
+              @include border-radius(0);
+            }
           }
         }
       }
