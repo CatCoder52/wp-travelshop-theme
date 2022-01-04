@@ -15068,6 +15068,13 @@ figure.wp-block-image figcaption {
     .category-header .category-header-text ol + p,
     .category-header .category-header-text ul + p {
       margin: .5rem 0 0 0; }
+  .category-header.category-header--boxed .category-header-text a, .category-header.category-header--docked .category-header-text a {
+    color: inherit;
+    transition: all .3s;
+    font-weight: 700; }
+    .category-header.category-header--boxed .category-header-text a:hover, .category-header.category-header--boxed .category-header-text a:focus, .category-header.category-header--boxed .category-header-text a:active, .category-header.category-header--docked .category-header-text a:hover, .category-header.category-header--docked .category-header-text a:focus, .category-header.category-header--docked .category-header-text a:active {
+      color: inherit;
+      opacity: .75; }
   .category-header.category-header--transparent .category-header-text, .category-header.category-header--transparent .category-header-title, .category-header.category-header--transparent .category-header-subline {
     color: #fff;
     text-shadow: 0 0 1rem rgba(0, 0, 0, 0.15); }
