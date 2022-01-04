@@ -91,7 +91,7 @@
             if ( $args['background_overlay_type'] == 'gradient' ) {
                 ?>
             .fl-node-<?php echo $args['uid']; ?> .category-header-overlay {
-                background-image: <?php echo $args['background_overlay_color']; ?>
+                background-image: <?php echo $args['background_overlay_gradient']; ?>
             }
         <?php
             }
