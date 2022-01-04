@@ -15075,6 +15075,10 @@ figure.wp-block-image figcaption {
     .category-header.category-header--boxed .category-header-text a:hover, .category-header.category-header--boxed .category-header-text a:focus, .category-header.category-header--boxed .category-header-text a:active, .category-header.category-header--docked .category-header-text a:hover, .category-header.category-header--docked .category-header-text a:focus, .category-header.category-header--docked .category-header-text a:active {
       color: inherit;
       opacity: .75; }
+  .category-header.category-header--boxed .category-header-text .category-header-content--primary, .category-header.category-header--docked .category-header-text .category-header-content--primary {
+    color: #fff; }
+  .category-header.category-header--boxed .category-header-text .category-header-content--white a, .category-header.category-header--docked .category-header-text .category-header-content--white a {
+    color: #0066ff; }
   .category-header.category-header--transparent .category-header-text, .category-header.category-header--transparent .category-header-title, .category-header.category-header--transparent .category-header-subline {
     color: #fff;
     text-shadow: 0 0 1rem rgba(0, 0, 0, 0.15); }

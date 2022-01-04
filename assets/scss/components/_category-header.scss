@@ -281,6 +281,18 @@
           opacity: .75;
         }
       }
+
+      .category-header-content--primary {
+        color: #fff;
+      }
+
+
+
+      .category-header-content--white {
+        a {
+          color: $primary;
+        }
+      }
     }
   }
 
