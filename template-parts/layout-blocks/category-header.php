@@ -41,8 +41,6 @@
                 } else {
                     $overlay_style = 'style="background-color: rgba(0,0,0,.25);"';
                 }
-            } else {
-                $overlay_style = 'style="background-image: '. $args['background_overlay_gradient'] .'"';
             }
             ?>
 
@@ -89,6 +87,15 @@
     // generate style for image height
     ?>
     <style>
+        <?php
+            if ( $args['background_overlay_type'] == 'gradient' ) {
+                ?>
+            .fl-builder-content-77 .fl-node-<?php echo $args['uid']; ?> .category-header-overlay {
+                background-image: <?php echo $args['background_overlay_color']; ?>
+            }
+        <?php
+            }
+         ?>
         <?php if ( !empty($args['background_height_responsive']) ) { ?>
         .category-header.category-header--<?php echo $args['uid']; ?> .category-header-media-holder > div {
             padding-bottom: <?php echo $args['background_height_responsive']; ?>px;
