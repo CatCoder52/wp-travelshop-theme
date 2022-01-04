@@ -325,6 +325,10 @@
       color: #fff;
       text-shadow: 0 0 1rem rgba(0,0,0,.15);
 
+      hr {
+        border-top: 1px solid #fff;
+      }
+
       a {
         color: inherit;
         transition: all .3s;

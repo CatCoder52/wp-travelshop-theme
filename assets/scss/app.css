@@ -15095,6 +15095,8 @@ figure.wp-block-image figcaption {
   .category-header.category-header--transparent .category-header-text, .category-header.category-header--transparent .category-header-title, .category-header.category-header--transparent .category-header-subline {
     color: #fff;
     text-shadow: 0 0 1rem rgba(0, 0, 0, 0.15); }
+    .category-header.category-header--transparent .category-header-text hr, .category-header.category-header--transparent .category-header-title hr, .category-header.category-header--transparent .category-header-subline hr {
+      border-top: 1px solid #fff; }
     .category-header.category-header--transparent .category-header-text a, .category-header.category-header--transparent .category-header-title a, .category-header.category-header--transparent .category-header-subline a {
       color: inherit;
       transition: all .3s;
