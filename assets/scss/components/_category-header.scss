@@ -128,8 +128,7 @@
     &.category-header--break, &.category-header--docked {
       .category-header-content-wrapper{
         position: static;
-        padding-top: 0;
-        padding-bottom: 0;
+        padding: 0 !important;
 
         .container-fluid {
           margin-left: 0 !important;
