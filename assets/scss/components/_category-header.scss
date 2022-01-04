@@ -95,12 +95,12 @@
           }
 
           @include media-breakpoint-down(sm) {
-            h1 {
-              font-size: $font-size-lg;
+            .category-header-title {
+              font-size: $font-size-lg !important;
             }
 
-            .h3 {
-              font-size: $font-size-base;
+            .category-header-subline {
+              font-size: $font-size-base !important;
             }
           }
 
@@ -286,11 +286,12 @@
         color: #fff;
       }
 
-
-
       .category-header-content--white {
-        a {
-          color: $primary;
+
+        .category-header-text {
+          a {
+            color: $primary;
+          }
         }
       }
     }
