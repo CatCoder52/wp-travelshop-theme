@@ -116,7 +116,7 @@
 
         <?php if ( !empty($args['content_box_max_height']) && $args['content_box_max_height'] !== '0' && $args['content_box_type'] == 'boxed' && $args['content_box_break'] == 'break' )  { ?>
         @media( min-width: 768px ) {
-            .category-header.category-header--<?php echo $args['uid']; ?> .category-header-content-wrapper .container .category-header-content-positioning .category-header-content {
+            .category-header.category-header--<?php echo $args['uid']; ?> .category-header-content-wrapper .container-fluid .category-header-content-positioning .category-header-content {
                 max-width: <?php echo $args['content_box_max_height']; ?>px;
                 width: 100%;
             }
@@ -124,7 +124,7 @@
         <?php } ?>
 
         <?php if ( !empty($args['content_box_max_height']) && $args['content_box_max_height'] !== '0' && $args['content_box_type'] == 'boxed' && $args['content_box_break'] == 'no-break' )  { ?>
-        .category-header.category-header--<?php echo $args['uid']; ?> .category-header-content-wrapper .container .category-header-content-positioning .category-header-content {
+        .category-header.category-header--<?php echo $args['uid']; ?> .category-header-content-wrapper .container-fluid .category-header-content-positioning .category-header-content {
             max-width: <?php echo $args['content_box_max_height']; ?>px;
             width: 100%;
         }
