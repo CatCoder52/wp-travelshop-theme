@@ -213,8 +213,22 @@
     }
   }
 
+  .category-header-title {
+    margin: 0;
+  }
+
+  .category-header-subline {
+    margin: 0;
+  }
+
+  .category-header-title + .category-header-subline {
+    margin: .5rem 0 0 0;
+  }
+
   // -- checklist
   .category-header-text {
+    margin: 1rem 0 0 ;
+
     ul {
       padding-left:0;
       list-style-type: none;
