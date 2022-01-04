@@ -281,17 +281,21 @@
           opacity: .75;
         }
       }
+    }
 
-      .category-header-content--primary {
+    .category-header-content--primary {
+      .category-header-text,
+      .category-header-title,
+      .category-header-subline {
         color: #fff;
       }
+    }
 
-      .category-header-content--white {
+    .category-header-content--white {
 
-        .category-header-text {
-          a {
-            color: $primary;
-          }
+      .category-header-text {
+        a {
+          color: $primary;
         }
       }
     }
