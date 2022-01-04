@@ -15074,7 +15074,8 @@ figure.wp-block-image figcaption {
     font-weight: 700; }
     .category-header.category-header--boxed .category-header-text a:hover, .category-header.category-header--boxed .category-header-text a:focus, .category-header.category-header--boxed .category-header-text a:active, .category-header.category-header--docked .category-header-text a:hover, .category-header.category-header--docked .category-header-text a:focus, .category-header.category-header--docked .category-header-text a:active {
       color: inherit;
-      opacity: .75; }
+      opacity: .75;
+      text-decoration: none; }
   .category-header.category-header--boxed .category-header-content--primary .category-header-text,
   .category-header.category-header--boxed .category-header-content--primary .category-header-title,
   .category-header.category-header--boxed .category-header-content--primary .category-header-subline, .category-header.category-header--docked .category-header-content--primary .category-header-text,
@@ -15092,7 +15093,8 @@ figure.wp-block-image figcaption {
       font-weight: 700; }
       .category-header.category-header--transparent .category-header-text a:hover, .category-header.category-header--transparent .category-header-text a:focus, .category-header.category-header--transparent .category-header-text a:active, .category-header.category-header--transparent .category-header-title a:hover, .category-header.category-header--transparent .category-header-title a:focus, .category-header.category-header--transparent .category-header-title a:active, .category-header.category-header--transparent .category-header-subline a:hover, .category-header.category-header--transparent .category-header-subline a:focus, .category-header.category-header--transparent .category-header-subline a:active {
         color: inherit;
-        opacity: .75; }
+        opacity: .75;
+        text-decoration: none; }
 
 .footer-main {
   background-color: #e9ecef; }
