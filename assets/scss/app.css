@@ -15044,7 +15044,8 @@ figure.wp-block-image figcaption {
     margin: 1rem 0 0; }
     .category-header .category-header-text ul {
       padding-left: 0;
-      list-style-type: none; }
+      list-style-type: none;
+      margin: 0; }
       .category-header .category-header-text ul li {
         padding-left: 1.125rem;
         position: relative; }
@@ -15055,6 +15056,28 @@ figure.wp-block-image figcaption {
           top: 0;
           left: 0;
           font-size: 1rem; }
+    .category-header .category-header-text ol {
+      margin: 0; }
+    .category-header .category-header-text p {
+      margin: 0; }
+    .category-header .category-header-text p + p,
+    .category-header .category-header-text p + ul,
+    .category-header .category-header-text p + ol,
+    .category-header .category-header-text ol + ul,
+    .category-header .category-header-text ul + ol,
+    .category-header .category-header-text ol + p,
+    .category-header .category-header-text ul + p {
+      margin: .5rem 0 0 0; }
+  .category-header.category-header--transparent .category-header-text, .category-header.category-header--transparent .category-header-title, .category-header.category-header--transparent .category-header-subline {
+    color: #fff;
+    text-shadow: 0 0 1rem rgba(0, 0, 0, 0.15); }
+    .category-header.category-header--transparent .category-header-text a, .category-header.category-header--transparent .category-header-title a, .category-header.category-header--transparent .category-header-subline a {
+      color: inherit;
+      transition: all .3s;
+      font-weight: 700; }
+      .category-header.category-header--transparent .category-header-text a:hover, .category-header.category-header--transparent .category-header-text a:focus, .category-header.category-header--transparent .category-header-text a:active, .category-header.category-header--transparent .category-header-title a:hover, .category-header.category-header--transparent .category-header-title a:focus, .category-header.category-header--transparent .category-header-title a:active, .category-header.category-header--transparent .category-header-subline a:hover, .category-header.category-header--transparent .category-header-subline a:focus, .category-header.category-header--transparent .category-header-subline a:active {
+        color: inherit;
+        opacity: .75; }
 
 .footer-main {
   background-color: #e9ecef; }

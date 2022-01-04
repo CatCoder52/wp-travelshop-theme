@@ -232,6 +232,7 @@
     ul {
       padding-left:0;
       list-style-type: none;
+      margin: 0;
 
       li {
         padding-left: 1.125rem;
@@ -244,6 +245,43 @@
           top: 0;
           left:0;
           font-size: 1rem;
+        }
+      }
+    }
+
+    ol {
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    p + p,
+    p + ul,
+    p + ol,
+    ol + ul,
+    ul + ol,
+    ol + p,
+    ul + p {
+      margin: .5rem 0 0 0;
+    }
+  }
+
+  // -- transparent header
+  &.category-header--transparent {
+    .category-header-text, .category-header-title, .category-header-subline {
+      color: #fff;
+      text-shadow: 0 0 1rem rgba(0,0,0,.15);
+
+      a {
+        color: inherit;
+        transition: all .3s;
+        font-weight: $font-weight-bold;
+
+        &:hover, &:focus, &:active {
+          color: inherit;
+          opacity: .75;
         }
       }
     }
