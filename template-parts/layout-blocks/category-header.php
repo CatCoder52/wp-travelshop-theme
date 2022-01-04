@@ -68,9 +68,9 @@
                         </<?php echo $args['headline_type']; ?>>
 
                         <?php if ( !empty($args['subline']) ) { ?>
-                            <div class="category-header-subline <?php echo $args['subline_type']; ?>" <?php if ( !empty($args['subline_color']) ) { ?>style="color: <?php if ( strlen($args['subline_color']) < 8 ) { ?>#<?php } ?><?php echo $args['subline_color']; ?>"<?php } ?>>
+                            <<?php echo $args['subline_type']; ?> class="category-header-subline" <?php if ( !empty($args['subline_color']) ) { ?>style="color: <?php if ( strlen($args['subline_color']) < 8 ) { ?>#<?php } ?><?php echo $args['subline_color']; ?>"<?php } ?>>
                                 <?php echo $args['subline']; ?>
-                            </div>
+                            </<?php echo $args['subline_type']; ?>>
                         <?php } ?>
 
                         <?php if ( !empty($args['text']) ) { ?>
