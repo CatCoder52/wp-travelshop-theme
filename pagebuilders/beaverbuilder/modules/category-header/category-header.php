@@ -101,7 +101,7 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                         'show_alpha' => true,
                         'preview' => array(
                             'type'     => 'css',
-                            'selector' => '.category-header-overlay--gradient',
+                            'selector' => '.category-header-overlay',
                             'property' => 'background-image',
                         ),
                     ),
