@@ -15001,7 +15001,8 @@ figure.wp-block-image figcaption {
           display: block; } }
   .category-header.category-header--docked .category-header-content-wrapper {
     padding-top: 0;
-    padding-bottom: 0; }
+    padding-bottom: 0;
+    width: 100%; }
     .category-header.category-header--docked .category-header-content-wrapper > .container-fluid, .category-header.category-header--docked .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .category-header-content-wrapper > .fl-row-content.fl-row-full-width, .fl-builder-content .fl-row.fl-row-full-width .fl-row-content-wrap .category-header.category-header--docked .category-header-content-wrapper > .fl-row-content.fl-row-full-width {
       padding-left: 0;
       padding-right: 0; }

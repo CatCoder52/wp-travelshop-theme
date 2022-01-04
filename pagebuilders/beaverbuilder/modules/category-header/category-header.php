@@ -241,11 +241,13 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                         'default' => 'break'
                     ),
                     'content_box_background' => array(
-                        'type' => 'color',
-                        'label'         => __( 'Content box background', 'fl-builder' ),
-                        'default'       => 'FFFFFF',
-                        'show_reset'    => true,
-                        'show_alpha'    => true
+                        'type' => 'select',
+                        'label'         => __( 'Content box color shema', 'fl-builder' ),
+                        'default'       => 'white',
+                        'options' => array(
+                            'white' => 'White',
+                            'primary' => 'Primary'
+                        )
                     ),
 
                     'content_box_max_height' => array(
