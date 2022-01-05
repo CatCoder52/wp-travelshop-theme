@@ -142,7 +142,6 @@
     </div>
 </footer>
 <?php
-load_template_transient(get_template_directory().'/template-parts/layout-blocks/cookie-consent.php', false);
 wp_footer();
 ?>
 </body>
