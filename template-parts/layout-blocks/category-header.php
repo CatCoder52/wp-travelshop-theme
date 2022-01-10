@@ -126,16 +126,16 @@
          ?>
         <?php if ( !empty($args['background_height_responsive']) ) { ?>
         .category-header.category-header--<?php echo $args['uid']; ?> .category-header-media-holder > div {
-            padding-bottom: <?php echo $args['background_height_responsive']; ?>px;
-            min-height: <?php echo $args['background_height_responsive']; ?>px;
+            padding-bottom: <?php echo $args['background_height_responsive']; ?>px !important;
+            min-height: <?php echo $args['background_height_responsive']; ?>px !important;
         }
         <?php } ?>
 
         <?php if ( !empty($args['background_height_medium']) ) { ?>
         @media( min-width: 768px ) {
             .category-header.category-header--<?php echo $args['uid']; ?> .category-header-media-holder > div {
-                padding-bottom: <?php echo $args['background_height_medium']; ?>px;
-                min-height: <?php echo $args['background_height_medium']; ?>px;
+                padding-bottom: <?php echo $args['background_height_medium']; ?>px !important;
+                min-height: <?php echo $args['background_height_medium']; ?>px !important;
             }
         }
         <?php } ?>
@@ -143,8 +143,8 @@
         <?php if ( !empty($args['background_height']) ) { ?>
         @media( min-width: 1200px ) {
             .category-header.category-header--<?php echo $args['uid']; ?> .category-header-media-holder > div {
-                padding-bottom: <?php echo $args['background_height']; ?>px;
-                min-height: <?php echo $args['background_height']; ?>px;
+                padding-bottom: <?php echo $args['background_height']; ?>px !important;
+                min-height: <?php echo $args['background_height']; ?>px !important;
             }
         }
         <?php } ?>
