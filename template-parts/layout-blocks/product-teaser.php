@@ -118,7 +118,7 @@ $moreResultsLink = '/mehr-reisen-link/';
             <a href="<?php echo $moreResultsLink; ?>" title="<?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['link_bottom_text']);?>" class="btn btn-primary btn-lg btn-further btn-further-bottom">
                 <?php echo str_replace('[TOTAL_RESULT]', $result['total_result'], $args['link_bottom_text']);?>
                 <span class="icon icon-circle">
-<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="16" height="16" viewBox="0 0 24 24" stroke-width="3" stroke="#007BFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="16" height="16" viewBox="0 0 24 24" stroke-width="3" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
         <polyline points="9 6 15 12 9 18"></polyline>
     </svg>                    </span>
