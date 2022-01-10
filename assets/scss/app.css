@@ -10676,7 +10676,7 @@ body.fl-builder .content-block.content-page {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(-90deg);
+    transform: translate(-50%, -50%);
     color: #0066ff; }
     .btn-further .icon.icon-circle svg * {
       fill: #0066ff; }
