@@ -436,7 +436,6 @@
 	.icon.icon-circle {
 		width: 2rem;
 		height: 2rem;
-		background-color: #fff;
 		border-radius: 1rem;
 		display: inline-block;
 		position: relative;
@@ -447,11 +446,6 @@
 			left: 50%;
 
 			transform: translate(-50%, -50%);
-			color: $primary;
-
-			* {
-				fill: $primary;
-			}
 		}
 	}
 
