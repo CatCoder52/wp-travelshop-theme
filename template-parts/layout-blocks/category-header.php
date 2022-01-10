@@ -21,6 +21,7 @@
                 ?>
                 <?php if ( $args['media_type'] == 'image' ) { ?>
 
+
                     <div class="media-image">
                         <div style="background-image: url('<?php echo $image; ?>');"></div>
                     </div>
