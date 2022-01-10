@@ -14932,8 +14932,8 @@ figure.wp-block-image figcaption {
         left: 0;
         right: 0;
         bottom: 0;
-        background-size: cover;
-        background-position: center center; }
+        object-fit: cover;
+        object-position: center; }
   .category-header .category-header-content-wrapper {
     position: absolute;
     top: 0;

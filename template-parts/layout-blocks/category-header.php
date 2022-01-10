@@ -14,7 +14,7 @@
             if ( empty($video) && empty($image) ) {
                 ?>
                 <div class="media-image">
-                    <div style="background-image: url('<?php echo get_stylesheet_directory_uri().'/assets/img/slide-1.webp' ?>');"></div>
+                    <img src="<?php echo $image; ?>" alt="<?php echo $args['headline']; ?>" />
                 </div>
                 <?php
             } else {
@@ -23,7 +23,7 @@
 
 
                     <div class="media-image">
-                        <div style="background-image: url('<?php echo $image; ?>');"></div>
+                        <img src="<?php echo $image; ?>" alt="<?php echo $args['headline']; ?>" />
                     </div>
                 <?php } else { ?>
                     <div class="media-video">
