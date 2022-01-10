@@ -14926,7 +14926,7 @@ figure.wp-block-image figcaption {
         transform: translate(-50%, -50%);
         /* % of current element */
         min-width: 100%; }
-      .category-header .category-header-media .category-header-media-holder > div > div {
+      .category-header .category-header-media .category-header-media-holder > div > img {
         position: absolute;
         top: 0;
         left: 0;
