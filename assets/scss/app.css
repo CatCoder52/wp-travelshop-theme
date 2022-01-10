@@ -10668,6 +10668,7 @@ body.fl-builder .content-block.content-page {
 .btn-further .icon.icon-circle {
   width: 2rem;
   height: 2rem;
+  background-color: #fff;
   border-radius: 1rem;
   display: inline-block;
   position: relative; }
