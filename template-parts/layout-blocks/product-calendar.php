@@ -115,8 +115,9 @@ if (count($items) == 0) {
                                             }
                                             if (empty($cheapest_price->price_total) === false) {
                                                 echo Template::render(APPLICATION_PATH.'/template-parts/micro-templates/price-1.php', [
-                                                    'cheapest_price' => $args['cheapest_price'],
-                                                ]);                                            }
+                                                    'cheapest_price' => $cheapest_price,
+                                                ]);
+                                            }
                                             ?>
                                         </span>
                                     </div>
