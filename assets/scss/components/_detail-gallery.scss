@@ -1,4 +1,3 @@
-
 // -- image grid
 .detail-image-grid {
   .detail-image-grid-holder {
@@ -14,8 +13,8 @@
 
     span.copyright {
       position: absolute;
-      bottom:0;
-      right:0;
+      bottom: 0;
+      right: 0;
 
       padding: .25rem;
 
@@ -31,17 +30,17 @@
     span.more-images {
       @include border-radius($card-border-radius);
       position: absolute;
-      top:0;
-      left:0;
-      right:0;
+      top: 0;
+      left: 0;
+      right: 0;
 
       z-index: 4;
-      bottom:0;
+      bottom: 0;
       pointer-events: none;
       background-color: rgba(#000, .25);
 
       span.count {
-        position:absolute;
+        position: absolute;
         top: 50%;
         left: 50%;
 
@@ -62,10 +61,10 @@
 
       img {
         position: absolute;
-        top:0;
-        left:0;
-        right:0;
-        bottom:0;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
 
         object-fit: cover;
         object-position: center;
@@ -82,12 +81,12 @@
 // --- Gallery Overlay
 // -------------------------------------------
 
-#detail-gallery-overlay {
+.detail-gallery-overlay {
   position: fixed;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 9999;
   background-color: rgba(#000, .85);
 
@@ -113,8 +112,8 @@
     transition: color .3s;
     font-size: 1rem;
     background-color: rgba(#fff, .05);
-    width:40px;
-    height:40px;
+    width: 40px;
+    height: 40px;
     border-radius: 20px;
     text-shadow: 0 0 10px #000;
     line-height: 40px;
@@ -134,7 +133,7 @@
     height: 70vh;
     left: 0;
     right: 0;
-    bottom:auto;
+    bottom: auto;
 
     .tns-controls {
       position: absolute;
@@ -147,7 +146,7 @@
       pointer-events: none;
       z-index: 20;
 
-      > button {
+      >button {
         pointer-events: none;
         @include resetbutton();
         display: inline-block;
@@ -159,8 +158,8 @@
         font-size: 1rem;
 
         background-color: rgba(#fff, .05);
-        width:40px;
-        height:40px;
+        width: 40px;
+        height: 40px;
         border-radius: 20px;
         line-height: 40px;
         text-align: center;
@@ -169,7 +168,7 @@
           color: #fff;
         }
 
-        + button {
+        +button {
           float: right;
         }
       }
@@ -184,12 +183,12 @@
         position: relative;
         width: 100%;
 
-        > img {
+        >img {
           position: absolute;
-          left:0 ;
-          right:0;
-          bottom:50px;
-          top:0;
+          left: 0;
+          right: 0;
+          bottom: 50px;
+          top: 0;
 
           object-fit: contain;
           object-position: center;
@@ -211,7 +210,7 @@
         small {
           display: block;
           clear: both;
-          margin-top: ( $grid-gutter-width / 3 );
+          margin-top: ($grid-gutter-width / 3);
         }
 
         @include noselect();
@@ -227,7 +226,7 @@
   #detail-gallery-thumbnails {
     position: absolute;
     bottom: $grid-gutter-width;
-    left:0;
+    left: 0;
     right: 0;
 
     padding-left: $grid-gutter-width;
@@ -244,7 +243,8 @@
 
       transition: opacity .3s;
 
-      &:hover, &.tns-nav-active {
+      &:hover,
+      &.tns-nav-active {
         opacity: 1;
       }
 

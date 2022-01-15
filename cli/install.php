@@ -170,6 +170,16 @@ if($first_install) {
     $config['development']['image_handling']['processor']['derivatives']['detail']['webp_create'] = true;
     $config['development']['image_handling']['processor']['derivatives']['detail']['webp_quality'] = 80;
 
+    $config['development']['image_handling']['processor']['derivatives']['detail_gallery'] = [];
+    $config['development']['image_handling']['processor']['derivatives']['detail_gallery']['max_width'] = 1200;
+    $config['development']['image_handling']['processor']['derivatives']['detail_gallery']['max_height'] = 750;
+    $config['development']['image_handling']['processor']['derivatives']['detail_gallery']['preserve_aspect_ratio'] = true;
+    $config['development']['image_handling']['processor']['derivatives']['detail_gallery']['crop'] = true;
+    $config['development']['image_handling']['processor']['derivatives']['detail_gallery']['horizontal_crop'] = "center";
+    $config['development']['image_handling']['processor']['derivatives']['detail_gallery']['vertical_crop'] = "center";
+    $config['development']['image_handling']['processor']['derivatives']['detail_gallery']['webp_create'] = true;
+    $config['development']['image_handling']['processor']['derivatives']['detail_gallery']['webp_quality'] = 80;
+
     $config['development']['image_handling']['processor']['derivatives']['bigslide'] = [];
     $config['development']['image_handling']['processor']['derivatives']['bigslide']['max_width'] = 1980;
     $config['development']['image_handling']['processor']['derivatives']['bigslide']['max_height'] = 600;

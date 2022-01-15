@@ -737,7 +737,7 @@ jQuery(function ($) {
                         $('.product-calendar-group-item').removeClass('is--active');
                         $('.product-calendar-group-item--product').removeClass('is--open');
                         $(this).addClass('is--active');
-                        let query_string = 'action=pm-view&view=Teaser5&pm-id='+pm_id+'&pm-dr='+pm_dr;
+                        let query_string = 'action=pm-view&view=Teaser3&pm-id='+pm_id+'&pm-dr='+pm_dr;
                         _this.call(query_string, null, null, _this.calendarRowClickResultHandler, '.product-calendar-group-item--product[data-row-id="'+row_id+'"]');
                         $('.product-calendar-group-item--product[data-row-id="'+row_id+'"]').addClass('is--open');
                     }

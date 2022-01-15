@@ -54,7 +54,7 @@ if(!$valid){
             ?>
             <div class="itinerary-step">
                 <h3>
-                    <?php echo $section->content->headline; ?>xx
+                    <?php echo $section->content->headline; ?>
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus itinerary-step-open" width="30" height="30" viewBox="0 0 24 24" stroke-width="2.5" stroke="#06f" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <line x1="12" y1="5" x2="12" y2="19" />

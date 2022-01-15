@@ -1,5 +1,7 @@
 <?php
 use Pressmind\Travelshop\PriceHandler;
+use Pressmind\Travelshop\Template;
+
 /**
  * <code>
  * $args = [
@@ -42,14 +44,14 @@ if (empty($filteredParams) === false) {
 <section class="wishlist-item">
     <div class="wishlist-item-image">
         <a href="<?php echo $args['url'] ; ?>">
-            <?php if (!empty($args['image']['url'])) { ?>
-                <img src="<?php echo $args['image']['url']; ?>"
-                     alt="<?php echo $args['headline']; ?>"
-                     title="<?php echo $args['image']['copyright']; ?>"
-                />
-            <?php }else{ ?>
-                <img src="/placeholder.svg?wh=250x170" class="card-img-top"/>
-            <?php } ?>
+            <?php
+            echo Template::render(APPLICATION_PATH.'/template-parts/micro-templates/image.php', [
+                'image' => $args['image'],
+                'width' => 250,
+                'height' => 170,
+                'class' => '',
+            ]);
+            ?>
         </a>
     </div>
     <div class="wishlist-item-data">

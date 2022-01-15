@@ -9,6 +9,9 @@ global $PMTravelShop;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=0">
+    <?php if(TS_COOKIE_CONSENT){?>
+        <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/js/cookieconsent.min.js"></script>
+    <?php } ?>
     <link rel="preload" as="image" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/travelshop-logo.svg">
     <link rel="preload" as="image" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/slide-1.jpg" media="(min-width: 601px)">
     <link rel="preload" as="image" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/slide-1-mobile.jpg" media="(max-width: 600px)">
@@ -25,11 +28,15 @@ global $PMTravelShop;
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/splash_1242.png" sizes="1242x2208" rel="apple-touch-startup-image" />
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/splash_750.png" sizes="750x1334" rel="apple-touch-startup-image" />
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/splash_640.png" sizes="640x1136" rel="apple-touch-startup-image" />
-
     <meta name="robots" content="index,follow">
-    <?php wp_head(); ?>
+    <?php
+    wp_head();
+    ?>
 </head>
 <body <?php body_class(); ?>>
+<?php
+load_template_transient(get_template_directory().'/template-parts/layout-blocks/cookie-consent.php', false);
+?>
 <header class="header-main">
     <div class="container">
         <div class="row header-main-row">

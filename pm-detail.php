@@ -27,6 +27,29 @@ if(count($mediaObjects) > 1 && !empty($_GET['preview'])){ ?>
         - your url strategy is wrong, see <i>pm-config.php</i>, url strategy must be "count-up" or "unique" <br>
         - edit your theme <i>pm-detail.php</i> and make multiple media objects as product variants running.<br>
     </div>
+<?php }
+if(!empty($_GET['preview'])){
+    $map_visibility = [
+            10 => 'Nobody',
+            30 => 'Public',
+            40 => 'Extranet',
+            50 => 'Intranet',
+            60 => 'Hidden'
+    ];
+?>
+   <div style="position: fixed; bottom: 0; left: auto; z-index: 99999">
+    <div class="badge badge-danger">
+        PREVIEW
+    </div>
+       <?php
+       foreach($mediaObjects as $mediaObject){?>
+       <div class="badge badge-info">
+           <?php
+           echo 'ID: '. $mediaObject->getId().'/'.$map_visibility[$mediaObject->visibility] ?? $mediaObject->visibility;
+           ?>
+       </div>
+    <?php } ?>
+   </div>
 <?php } ?>
     <main>
         <?php

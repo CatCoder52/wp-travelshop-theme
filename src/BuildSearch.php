@@ -201,11 +201,10 @@ class BuildSearch
         }
 
         if (empty($request[$prefix.'-tr']) === false){
-            if(preg_match('/^[a-z,A-Z\,]+$/', $request[$prefix.'-tr']) > 0){
-                $transport_types = explode(',', $request[$prefix.'-tr']);
+            $transport_types = self::extractTransportTypes($request[$prefix.'-tr']);
+            if(!empty($transport_types)){
                 $conditions[] = Pressmind\Search\Condition\Transport::create($transport_types);
                 $validated_search_parameters[$prefix.'-tr'] = implode(',', $transport_types);
-
             }
         }
 
@@ -394,7 +393,7 @@ class BuildSearch
 
         self::$validated_search_parameters = $validated_search_parameters;
 
-        if($paginator){
+        if($paginator){ // @TODO this needs a refactoring
             $page = 0;
             //$page_size = 10;
             if (isset($request[$prefix.'-l']) === true && preg_match('/^([0-9]+)\,([0-9]+)$/', $request[$prefix.'-l'], $m) > 0) {
@@ -478,6 +477,9 @@ class BuildSearch
         if(preg_match('/^([0-9]+)\-([0-9]+)$/', $str, $m) > 0){
             return array($m[1], $m[2]);
         }
+        if(preg_match('/^([0-9]+)$/', $str, $m) > 0){
+            return array($m[1], $m[1]);
+        }
         return false;
     }
 
@@ -494,6 +496,16 @@ class BuildSearch
     }
 
 
+    /**
+     * @param $str
+     * @return []
+     */
+    public static function extractTransportTypes($str){
+        if(preg_match('/^[a-z,A-Z\,]+$/', $str) > 0){
+            return explode(',', $str);
+        }
+        return [];
+    }
 
 }
 

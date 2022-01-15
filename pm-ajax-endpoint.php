@@ -8,6 +8,7 @@ use \Pressmind\ORM\Object\MediaObject;
 use \Pressmind\Search\CheapestPrice;
 use \Pressmind\Travelshop\PriceHandler;
 use \Pressmind\Travelshop\IB3Tools;
+use Pressmind\Travelshop\Template;
 
 //error_reporting(-1);
 //ini_set('display_errors', 'On');
@@ -106,7 +107,7 @@ if (empty($_GET['action'])) {
     $Output->html = '<!-- media object not found -->';
     if(!empty($result['items'][0])){
         $Output->error = false;
-        $Output->html = \Pressmind\Travelshop\Template::render(__DIR__ . '/template-parts/pm-views/' . $view . '.php', $result['items'][0]);
+        $Output->html = Template::render(__DIR__ . '/template-parts/pm-views/' . $view . '.php', $result['items'][0]);
     }
     $result = json_encode($Output);
     echo $result;
@@ -139,7 +140,7 @@ if (empty($_GET['action'])) {
         $tmp = new \stdClass();
         $tmp = $price->toStdClass(false);
         $tmp->price_total_formatted = PriceHandler::format($price->price_total);
-        $tmp->ib3_url = IB3Tools::get_bookinglink($id_media_object, $price->id_booking_package, $price->id_date, $price->id_housing_package);
+        $tmp->ib3_url = IB3Tools::get_bookinglink($price, $mediaObject->getPrettyUrl());
         $offers[] = $tmp;
     }
     $result = json_encode($offers);

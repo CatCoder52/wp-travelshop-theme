@@ -6,6 +6,7 @@ use ImagickException;
 use Pressmind\Image\Processor\Adapter\Factory;
 use Pressmind\Image\Processor\Config;
 use Pressmind\Log\Writer;
+use Pressmind\ORM\Object\Itinerary\Step\DocumentMediaObject;
 use Pressmind\ORM\Object\MediaObject\DataType\Picture;
 
 if(php_sapi_name() == 'cli') {
@@ -23,7 +24,10 @@ Writer::write('Image processor started', WRITER::OUTPUT_FILE, 'image_processor',
 
 try {
     /** @var Picture[] $result */
-    $result = Picture::listAll(array('download_successful' => 0));
+    $result =  array_merge(
+        Picture::listAll(array('download_successful' => 0)),
+        DocumentMediaObject::listAll(array('download_successful' => 0))
+    );
 } catch (Exception $e) {
     Writer::write($e->getMessage(), WRITER::OUTPUT_BOTH, 'image_processor', Writer::TYPE_ERROR);
 }
@@ -37,18 +41,20 @@ foreach ($result as $image) {
     try {
         $binary_image = $image->downloadOriginal();
     } catch (Exception $e) {
-        Writer::write($e->getMessage(), WRITER::OUTPUT_FILE, 'image_processor', Writer::TYPE_ERROR);
+        Writer::write($e->getMessage(), WRITER::OUTPUT_BOTH, 'image_processor', Writer::TYPE_ERROR);
         continue;
     }
     $imageProcessor = Factory::create($config['image_handling']['processor']['adapter']);
     Writer::write('Creating derivatives', WRITER::OUTPUT_BOTH, 'image_processor', Writer::TYPE_INFO);
     foreach ($config['image_handling']['processor']['derivatives'] as $derivative_name => $derivative_config) {
         try {
+            Writer::write('Creating derivative: '.$derivative_name, WRITER::OUTPUT_BOTH, 'image_processor', Writer::TYPE_INFO);
+
             $processor_config = Config::create($derivative_name, $derivative_config);
             $image->createDerivative($processor_config, $imageProcessor, $binary_image);
             Writer::write('Processing sections', WRITER::OUTPUT_FILE, 'image_processor', Writer::TYPE_INFO);
         } catch (Exception $e) {
-            Writer::write($e->getMessage(), WRITER::OUTPUT_FILE, 'image_processor', Writer::TYPE_ERROR);
+            Writer::write($e->getMessage(), WRITER::OUTPUT_BOTH, 'image_processor', Writer::TYPE_ERROR);
             continue;
         }
         foreach ($image->sections as $section) {
@@ -59,7 +65,7 @@ foreach ($result as $image) {
                 $section->createDerivative($processor_config, $imageProcessor, $binary_section_file);
                 unset($binary_section_file);
             } catch (Exception $e) {
-                Writer::write($e->getMessage(), WRITER::OUTPUT_FILE, 'image_processor', Writer::TYPE_ERROR);
+                Writer::write($e->getMessage(), WRITER::OUTPUT_BOTH, 'image_processor', Writer::TYPE_ERROR);
                 continue;
             }
         }
