@@ -87,6 +87,29 @@ FLBuilder::register_settings_form('mixed-slide-form', array(
                 'content_slide'       => array( // Section
                     'title'         => '', // Section Title
                     'fields'        => array( // Section Fields
+                        'media_type' => array(
+                            'type' => 'select',
+                            'label' => __('Media-Type', 'fl-builder'),
+                            'default' => 'image',
+                            'options' => array(
+                                'image' => 'Image',
+                                'video' => 'Video'
+                            ),
+                            'toggle' => array(
+                                'image' => array(
+                                    'fields' => array('image', 'image_alt_text')
+                                ),
+                                'video' => array(
+                                    'fields' => array('video')
+                                )
+                            )
+                        ),
+
+                        'video'    => array(
+                            'type'          => 'video',
+                            'label'         => __('Slide-Video', 'fl-builder'),
+                        ),
+
                         'image'    => array(
                             'type'          => 'photo',
                             'label'         => __('Slide-Image', 'fl-builder'),

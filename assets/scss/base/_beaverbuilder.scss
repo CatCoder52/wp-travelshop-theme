@@ -53,6 +53,13 @@ body.fl-builder .content-block.content-page > .container {
       // fluid inner width
       .fl-row-content.fl-row-full-width {
         @extend .container-fluid;
+
+        // -- simple fix for category header + slider
+        .fl-module-category-header,
+        .fl-module-slider-mixed-content {
+          margin-left: -($grid-gutter-width / 2) !important;
+          margin-right: -($grid-gutter-width / 2)  !important;
+        }
       }
 
       // remove spacings left/right to remove "content-hops"
@@ -68,4 +75,10 @@ body.fl-builder .content-block.content-page > .container {
 // -- fix zinde of header main if fl-edit
 body.fl-builder-edit header.header-main {
   z-index: 9 !important;
+}
+
+// -- fix spacing between header and bb content
+body.fl-builder .content-block.content-page {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }

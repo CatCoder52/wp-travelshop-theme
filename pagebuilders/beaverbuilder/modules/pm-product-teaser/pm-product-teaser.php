@@ -48,10 +48,52 @@ FLBuilder::register_module('TSPMProductTeaser', array(
                         'help' => 'Tip: use the shortcode [TOTAL_RESULT] in this field to display the amount of found products',
                         'default' => 'Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip. ',
                     ),
-
+                    'link_top'  => array(
+                        'type' => 'select',
+                        'label' => __('Button above products', 'fl-builder'),
+                        'default'       => 'false',
+                        'options'       => array(
+                            'false'      => __( 'Yes', 'fl-builder' ),
+                            'true'      => __( 'No', 'fl-builder' )
+                        ),
+                    ),
+                    'link_teaser'  => array(
+                        'type' => 'select',
+                        'label' => __('Button as teaser', 'fl-builder'),
+                        'default'       => 'false',
+                        'options'       => array(
+                            'false'      => __( 'Yes', 'fl-builder' ),
+                            'true'      => __( 'No', 'fl-builder' )
+                        ),
+                    ),
+                    'link_bottom'  => array(
+                        'type' => 'select',
+                        'label' => __('Button underneath products', 'fl-builder'),
+                        'default'       => 'false',
+                        'options'       => array(
+                            'false'      => __( 'Yes', 'fl-builder' ),
+                            'true'      => __( 'No', 'fl-builder' )
+                        ),
+                    ),
+                    'link_top_text' => array(
+                        'type' => 'text',
+                        'label' => __('Button-Text above products', 'fl-builder'),
+                        'default' => 'Alle [TOTAL_RESULT] Reisen anzeigen'
+                    ),
+                    'link_teaser_text' => array(
+                        'type' => 'text',
+                        'label' => __('Button-Text as teaser', 'fl-builder'),
+                        'default' => '[TOTAL_RESULT] weitere Reisen anzeigen'
+                    ),
+                    'link_bottom_text' => array(
+                        'type' => 'text',
+                        'label' => __('Button-Text underneath products', 'fl-builder'),
+                        'default' => 'Alle [TOTAL_RESULT] Spanien Reisen anzeigen'
+                    ),
 
                 ),
             ),
+
 
         ),
     ),

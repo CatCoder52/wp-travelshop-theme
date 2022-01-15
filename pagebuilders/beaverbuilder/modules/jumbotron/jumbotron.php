@@ -14,8 +14,8 @@ class TSWPJumbotron extends FLBuilderModule {
 			'editor_export'   => false,
 			'partial_refresh' => true,
 			'icon'            => 'slides.svg',
-            'dir'           => BB_MODULE_TS_DIR . 'modules/wp-info-teaser/',
-            'url'           => BB_MODULE_TS_URL . 'modules/wp-info-teaser/',
+            'dir'           => BB_MODULE_TS_DIR . 'modules/jumbotron/',
+            'url'           => BB_MODULE_TS_URL . 'modules/jumbotron/',
 		));
 	}
 

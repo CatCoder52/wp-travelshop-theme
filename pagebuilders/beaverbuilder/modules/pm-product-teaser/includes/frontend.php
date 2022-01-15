@@ -7,6 +7,29 @@ $args = [];
 $args['headline'] = $settings->headline;
 $args['text'] = $settings->text;
 
+
+if ( $settings->link_top = 'true' ) {
+    $args['link_top'] = true;
+} else {
+    $args['link_top'] = false;
+}
+
+if ( $settings->link_teaser = 'true' ) {
+    $args['link_teaser'] = true;
+} else {
+    $args['link_teaser'] = false;
+}
+
+if ( $settings->link_bottom = 'true' ) {
+    $args['link_bottom'] = true;
+} else {
+    $args['link_bottom'] = false;
+}
+
+$args['link_top_text'] =  $settings->link_top_text;
+$args['link_teaser_text'] =  $settings->link_teaser_text;
+$args['link_bottom_text'] =  $settings->link_bottom_text;
+
 // bind the beaver builder settings to the query string api
 $args['search']['pm-ot'] = !empty($settings->{'pm-ot'}) ? $settings->{'pm-ot'} : ''; // id_object_type
 $args['search']['pm-l'] = !empty($settings->page) && !empty($settings->items_per_page) ? $settings->page.','.$settings->items_per_page : '';
@@ -38,4 +61,6 @@ $args['view'] = !empty($settings->{'view'}) ? $settings->{'view'} : 'Teaser1';
 
 // delete empty keys
 $args['search'] = array_filter($args['search']);
+
+
 load_template_transient(get_template_directory() . '/template-parts/layout-blocks/product-teaser.php', false,  $args);

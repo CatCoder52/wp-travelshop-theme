@@ -56,6 +56,7 @@ class BeaverBuilderModuleLoader{
         require_once BB_MODULE_TS_DIR . 'modules/slider-mixed-content/slider-mixed-content.php';
         require_once BB_MODULE_TS_DIR . 'modules/history/history.php';
         require_once BB_MODULE_TS_DIR . 'modules/team/team.php';
+        require_once BB_MODULE_TS_DIR . 'modules/category-header/category-header.php';
     }
 
     /**

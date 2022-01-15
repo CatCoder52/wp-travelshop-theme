@@ -4,6 +4,8 @@
  */
 
 $args = [];
+
+
 foreach($settings->slides as $slide){
 
     if($slide->slide_type == 'content'){
@@ -12,6 +14,8 @@ foreach($settings->slides as $slide){
             'title' => $slide->headline,
             'text' => $slide->text,
             'image_post_id' => $slide->image,
+            'media_type' => $slide->media_type,
+            'video' => $slide->video,
             'image' => $slide->image_src,
             'image_alt_tag' => $slide->image_alt_text,
             'btn_link' => $slide->btn_link,

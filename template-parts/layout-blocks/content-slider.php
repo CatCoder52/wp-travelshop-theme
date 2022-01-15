@@ -88,9 +88,37 @@ foreach ($args['items'] as $item) {
         foreach ($slide_items as $item) {
             ?>
             <article class="content-slider--item content-slider--item__<?php echo $item['type']; ?>">
-                <div class="content-slider--image">
-                    <div style="background-image: url('<?php echo $item['image']; ?>');"></div>
-                </div>
+                <?php
+                if ($item['type'] == 'content') {
+                    if ($item['media_type'] == 'video' ) {
+                    ?>
+                        <div class="content-slider--video">
+
+                            <?php
+                            $video_src = wp_get_attachment_url( $item['video'] );
+                            ?>
+                            <div class="media-video">
+                                <video autoplay muted loop style="pointer-events: none;">
+                                    <source src="<?php echo $video_src; ?>" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+
+                        </div>
+                    <?php
+                    } else {
+                    ?>
+                        <div class="content-slider--image">
+                            <div style="background-image: url('<?php echo $item['image']; ?>');"></div>
+                        </div>
+                    <?php
+                    }
+                ?>
+                <?php } else { ?>
+                    <div class="content-slider--image">
+                        <div style="background-image: url('<?php echo $item['image']; ?>');"></div>
+                    </div>
+                <?php } ?>
                 <div class="content-slider--content">
                     <div class="container">
                         <?php

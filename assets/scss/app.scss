@@ -3,8 +3,8 @@
 @import "vendors/ion-rangeslider/range-slider";
 @import "vendors/tiny-slider/tiny-slider";
 @import "vendors/daterangepicker/daterangepicker";
-@import "vendors/pretty-dropdowns/prettydropdowns";
-@import "vendors/lightbox2/lightbox.min";
+@import "vendors/pretty-dropdowns/prettydropdowns.css";
+@import "vendors/lightbox2/lightbox.min.css";
 @import "vendors/cookieconsent/cookieconsent";
 
 // -- abstracts
@@ -63,6 +63,7 @@
 @import "components/history";
 @import "components/team";
 @import "components/trust-box";
+@import "components/category-header";
 
 
 // -- layout

@@ -107,7 +107,8 @@
       overflow: hidden;
     }
 
-    .content-slider--image {
+    .content-slider--image,
+    .content-slider--video {
       > div {
         padding-bottom: 100% * ( 9 / 16 );
 
@@ -119,6 +120,21 @@
           padding-bottom: 100% * ( 5 / 21 );
           min-height: 600px;
         }
+      }
+    }
+
+    .content-slider--video {
+      /* merge with above css */
+      > div {
+        position: relative; /* or absolute or fixed */
+        overflow: hidden;
+      }
+      video {
+        position: absolute;
+        left: 50%; /* % of surrounding element */
+        top: 50%;
+        transform: translate(-50%, -50%); /* % of current element */
+        min-width: 100vw;
       }
     }
 
