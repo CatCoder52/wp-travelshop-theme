@@ -35,7 +35,7 @@ get_header();
                     'link_bottom_text' => 'Alle [TOTAL_RESULT] Reisen zum Thema anzeigen',
                     'link_teaser_text' => 'Alle [TOTAL_RESULT] Reisen zum Thema anzeigen',
                     'search' => [
-                            'pm-li' => '0,4',
+                            'pm-l' => '0,4',
                             'pm-o' => 'rand',
                             'pm-ot' => TS_TOUR_PRODUCTS
                     ]
