@@ -66,9 +66,9 @@ get_header();
                     'link_top' => true,
                     'link_bottom' => true,
                     'link_teaser' => true,
-                    'link_top_text' => 'Alle Reisen',
-                    'link_bottom_text' => 'Alle [TOTAL_RESULT] Reisen',
-                    'link_teaser_text' => '[TOTAL_RESULT] weitere Reisen',
+                    'link_top_text' => 'Alle [TOTAL_RESULT] Reisen zum Thema anzeigen',
+                    'link_bottom_text' => 'Alle [TOTAL_RESULT] Reisen zum Thema anzeigen',
+                    'link_teaser_text' => 'Alle [TOTAL_RESULT] Reisen zum Thema anzeigen',
                     'search' => [
                             'pm-li' => '0,3',
                             'pm-o' => 'rand',
