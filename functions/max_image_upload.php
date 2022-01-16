@@ -44,6 +44,9 @@ add_filter( 'wp_handle_upload', function($data){
  * Create webp images during upload
  */
 add_filter( 'wp_generate_attachment_metadata', function ($meta) {
+    if(!isset($meta['file'])){
+        return $meta;
+    }
     $pathinfo = pathinfo($meta['file']);
     if(in_array($pathinfo['extension'], ['jpg', 'jpeg']) !== true && TS_WP_IMAGE_WEBP_ENABLED === true){
         return $meta;

@@ -51,11 +51,15 @@ foreach ($args['items'] as $item) {
                 $item['image'] = $product['items'][0]['bigslide']['url'];
                 $item['image_alt_tag'] = $product['items'][0]['bigslide']['copyright'];
             }else{
-                $item['image'] = SITE_URL . "/wp-content/themes/travelshop/assets/img/placeholder.svg.php?wh=250x170&text=image is not set";
+                $item['image'] = SITE_URL . "/placeholder.svg?wh=250x170&text=image is not set";
             }
         }
-    }elseif($item['type'] == 'content' && !empty($item['image_post_id'])){
-        $item['image'] = wp_get_attachment_image_url( $item['image_post_id'], 'bigslide');
+    }elseif($item['type'] == 'content'){
+        if(!empty($item['image_post_id'])){
+            $item['image'] = wp_get_attachment_image_url($item['image_post_id'], 'bigslide');
+        }else{
+            $item['image'] = SITE_URL . "/placeholder.svg?wh=250x170&text=image is not set";
+        }
     }
     $slide_items[] = $item;
 }
