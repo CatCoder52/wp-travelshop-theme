@@ -21,7 +21,7 @@
 } ?> <?php if ($args['content_box_type'] == 'docked') { ?> category-header-docked--<?php echo $args['content_alignment_horizontal']; ?> <?php } ?>">
     <?php
     // Media handling
-    $video = empty($args['image']) && $args['media_type'] == 'video' ? SITE_URL . "/placeholder.svg?wh=1200x800&text=image is not set" : wp_get_attachment_image_url($args['video']);
+    $video = empty($args['video']) && $args['media_type'] == 'video' ? SITE_URL . "/placeholder.svg?wh=1200x800&text=image is not set" : wp_get_attachment_url($args['video']);
     $image = empty($args['image']) && $args['media_type'] == 'image' ? SITE_URL . "/placeholder.svg?wh=1200x800&text=image is not set" : wp_get_attachment_image_url($args['image'], 'bigslide');
     ?>
     <div class="category-header-media category-header-media--<?php echo $args['media_type']; ?>">
