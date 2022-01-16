@@ -100,8 +100,8 @@ foreach($config['data']['search_mongodb']['search']['categories'] as $id_ot => $
                 FLBuilder::render_settings_field('items_per_page', array(
                     'type' => 'unit',
                     'label' => 'Items per page',
-                    'default' => '6',
-                    'placeholder' => '6',
+                    'default' => '4',
+                    'placeholder' => '4',
                     'sanitize' => 'absint',
                     'slider' => array(
                         'min' => 1,

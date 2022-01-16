@@ -96,6 +96,7 @@ class Search
             'current_page' => $result->currentPage,
             'pages' => $result->pages,
             'page_size' => $page_size,
+            'query_string' => \BuildSearch::getCurrentQueryString(),
             'cache' => [
                 'is_cached' => false,
                 'info' => []

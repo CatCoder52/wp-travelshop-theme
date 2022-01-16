@@ -48,47 +48,67 @@ FLBuilder::register_module('TSPMProductTeaser', array(
                         'help' => 'Tip: use the shortcode [TOTAL_RESULT] in this field to display the amount of found products',
                         'default' => 'Travel is the movement of people between relatively distant geographical locations, and can involve travel by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip. ',
                     ),
+                ),
+            ),
+            'more_button'    => array(
+                'title'  => __( 'More Buttons', 'fl-builder' ),
+                'fields' => array(
                     'link_top'  => array(
                         'type' => 'select',
-                        'label' => __('Button above products', 'fl-builder'),
-                        'default'       => 'false',
+                        'label' => __('Button as small link, position top', 'fl-builder'),
+                        'default'       => 'true',
                         'options'       => array(
-                            'false'      => __( 'Yes', 'fl-builder' ),
-                            'true'      => __( 'No', 'fl-builder' )
+                            'true'      => __( 'Yes', 'fl-builder' ),
+                            'false'      => __( 'No', 'fl-builder' )
                         ),
-                    ),
-                    'link_teaser'  => array(
-                        'type' => 'select',
-                        'label' => __('Button as teaser', 'fl-builder'),
-                        'default'       => 'false',
-                        'options'       => array(
-                            'false'      => __( 'Yes', 'fl-builder' ),
-                            'true'      => __( 'No', 'fl-builder' )
-                        ),
-                    ),
-                    'link_bottom'  => array(
-                        'type' => 'select',
-                        'label' => __('Button underneath products', 'fl-builder'),
-                        'default'       => 'false',
-                        'options'       => array(
-                            'false'      => __( 'Yes', 'fl-builder' ),
-                            'true'      => __( 'No', 'fl-builder' )
+                        'toggle'        => array(
+                            'true'      => array(
+                                'fields'        => array( 'link_top_text'),
+                            ),
                         ),
                     ),
                     'link_top_text' => array(
                         'type' => 'text',
-                        'label' => __('Button-Text above products', 'fl-builder'),
-                        'default' => 'Alle [TOTAL_RESULT] Reisen anzeigen'
+                        'label' => __('Label', 'fl-builder'),
+                        'default' => 'Alle [TOTAL_RESULT] Reisen zum Thema anzeigen'
+                    ),
+                    'link_teaser'  => array(
+                        'type' => 'select',
+                        'label' => __('Button as fat teaser, inline', 'fl-builder'),
+                        'default'       => 'false',
+                        'options'       => array(
+                            'true'      => __( 'Yes', 'fl-builder' ),
+                            'false'      => __( 'No', 'fl-builder' )
+                        ),
+                        'toggle'        => array(
+                            'true'      => array(
+                                'fields'        => array( 'link_teaser_text'),
+                            ),
+                        ),
                     ),
                     'link_teaser_text' => array(
                         'type' => 'text',
-                        'label' => __('Button-Text as teaser', 'fl-builder'),
-                        'default' => '[TOTAL_RESULT] weitere Reisen anzeigen'
+                        'label' => __('Label', 'fl-builder'),
+                        'default' => 'Alle [TOTAL_RESULT] Reisen zum Thema anzeigen'
+                    ),
+                    'link_bottom'  => array(
+                        'type' => 'select',
+                        'label' => __('Big button, position bottom', 'fl-builder'),
+                        'default'       => 'true',
+                        'options'       => array(
+                            'true'      => __( 'Yes', 'fl-builder' ),
+                            'false'      => __( 'No', 'fl-builder' )
+                        ),
+                        'toggle'        => array(
+                            'true'      => array(
+                                'fields'        => array( 'link_bottom_text'),
+                            ),
+                        ),
                     ),
                     'link_bottom_text' => array(
                         'type' => 'text',
-                        'label' => __('Button-Text underneath products', 'fl-builder'),
-                        'default' => 'Alle [TOTAL_RESULT] Spanien Reisen anzeigen'
+                        'label' => __('Label', 'fl-builder'),
+                        'default' => ' Alle [TOTAL_RESULT] Reisen zum Thema anzeigen'
                     ),
 
                 ),
