@@ -32,6 +32,16 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
             'media' => array(
                 'title' => __('Hintergrund', 'fl-builder' ),
                 'fields' => array(
+
+                    'background_height' => array(
+                        'type' => 'unit',
+                        'label' => __('Height', 'fl-builder'),
+                        'description' => 'px',
+                        'placeholder' => 400,
+                        'default' => 400,
+                        'responsive'  => true,
+                        'help' => 'The height of the whole element.'
+                    ),
                     'media_type' => array(
                         'type' => 'select',
                         'label' => __('Media-Type', 'fl-builder'),
@@ -49,27 +59,26 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                             )
                         )
                     ),
-
                     'video'    => array(
                         'type'          => 'video',
-                        'label'         => __('Slide-Video', 'fl-builder'),
+                        'label'         => __('Video', 'fl-builder'),
                     ),
-
                     'image'    => array(
                         'type'          => 'photo',
-                        'label'         => __('Slide-Image', 'fl-builder'),
+                        'label'         => __('Image', 'fl-builder'),
+                        'show_remove'   => true,
+                        'help' => 'To know: the selected image size has no effect. The bigslide-version is used by template.'
                     ),
-
                     'image_alt_text'     => array(
                         'type'    => 'text',
-                        'label'   => __( 'Image alternative text', 'fl-builder' ),
+                        'label'   => __( 'alt-text', 'fl-builder' ),
                         'default' => '',
+                        'help' => 'Nice stuff for search engines'
+
                     ),
-
-
                     'background_overlay_type' => array(
                         'type' => 'select',
-                        'label' => __('Background overlay type', 'fl-builder'),
+                        'label' => __('Overlay shade type', 'fl-builder'),
                         'options' => array(
                             'none' => 'None',
                             'color' => 'Color',
@@ -90,31 +99,23 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                     ),
                     'background_overlay_color' => array(
                         'type' => 'color',
-                        'label' => __('Background overlay color', 'fl-builder'),
+                        'label' => __('Overlay shade color', 'fl-builder'),
                         'show_reset' => true,
-                        'show_alpha' => true
+                        'show_alpha' => true,
+                        'help' => 'Tip: use the alpha channel to create transparent overlays!'
                     ),
                     'background_overlay_gradient' => array(
                         'type' => 'gradient',
-                        'label' => __('Background overlay gradient', 'fl-builder'),
+                        'label' => __('Overlay gradient', 'fl-builder'),
                         'show_reset' => true,
                         'show_alpha' => true,
+                        'help' => 'Tip: use the alpha channel to create transparent overlays!',
                         'preview' => array(
                             'type'     => 'css',
                             'selector' => '.category-header-overlay',
                             'property' => 'background-image',
                         ),
                     ),
-
-                    'background_height' => array(
-                        'type' => 'unit',
-                        'label' => __('Background height', 'fl-builder'),
-                        'description' => 'px',
-                        'placeholder' => 400,
-                        'default' => 400,
-                        'responsive'  => true,
-                    )
-
                 )
             ),
             'content'    => array(
@@ -125,6 +126,7 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                         'type'    => 'text',
                         'label'   => __( 'Headline', 'fl-builder' ),
                         'default' => 'Headline',
+                        'help' => 'Tip: if this field is empty, the whole content box is hidden/disabled.'
                     ),
 
                     'headline_type' => array(
@@ -166,17 +168,18 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                         'media_buttons' => false,
                         'wpautop'       => true,
                         'label'   => __( 'Text', 'fl-builder' ),
-                        'default' => 'Some more informations'
+                        'default' => 'Some more informations',
+                        'help' => 'Tip: use list\'s in this field. the bullets have nice check-icons. Pro Tip: use the &lt;hr&gt; element in src-editor.'
                     ),
                 ),
             ),
 
             'position' => array(
-              'title' => __('Position', 'fl-builder'),
+              'title' => __('Position Content-Box', 'fl-builder'),
               'fields' => array(
                   'content_alignment_vertical' => array(
                       'type' => 'select',
-                      'label' => __('Vertical content alignment', 'fl-builder'),
+                      'label' => __('Vertical', 'fl-builder'),
                       'options' => array(
                           'top' => 'Top',
                           'middle' => 'Middle',
@@ -187,7 +190,7 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                   ),
                   'content_alignment_horizontal' => array(
                       'type' => 'select',
-                      'label' => __('Horizontal content alignment', 'fl-builder'),
+                      'label' => __('Horizontal', 'fl-builder'),
                       'options' => array(
                           'left' => 'Left',
                           'center' => 'Center',
@@ -198,20 +201,21 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                   ),
                   'content_inner_padding' =>  array(
                       'type' => 'unit',
-                      'label' => __('Content box inner padding', 'fl-builder'),
+                      'label' => __('Inner padding', 'fl-builder'),
                       'description' => 'px',
                       'placeholder' => 30,
                       'default' => 30,
+                      'help' => 'The inner padding will define the space between the box and the frame border.'
                   )
               )
             ),
 
             'style' => array(
-                'title' => __('Style', 'fl-builder'),
+                'title' => __('Style Content-Box', 'fl-builder'),
                 'fields' => array(
                     'content_box_text_align' => array(
                         'type' => 'select',
-                        'label' => __('Content box inner text align', 'fl-builder'),
+                        'label' => __('Text align', 'fl-builder'),
                         'options' => array(
                             'text-left' => 'left',
                             'text-center' => 'center',
@@ -221,7 +225,7 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                     ),
                     'content_box_type' => array(
                         'type' => 'select',
-                        'label' => __('Content box type', 'fl-builder'),
+                        'label' => __('Box-Style', 'fl-builder'),
                         'options' => array(
                             'transparent' => 'Transparent',
                             'boxed' => 'Boxed',
@@ -248,20 +252,19 @@ FLBuilder::register_module('TSWPCategoryHeader', array(
                     ),
                     'content_box_background' => array(
                         'type' => 'select',
-                        'label'         => __( 'Content box color shema', 'fl-builder' ),
+                        'label'         => __( 'Content box theme', 'fl-builder' ),
                         'default'       => 'white',
                         'options' => array(
                             'white' => 'White',
                             'primary' => 'Primary'
-                        )
+                        ),
                     ),
-
                     'content_box_max_height' => array(
                         'type' => 'unit',
                         'label' => __('Content box max width', 'fl-builder'),
                         'description' => 'px',
-                        'placeholder' => 680,
-                        'default' => 680,
+                        'placeholder' => 380,
+                        'default' => 380,
                     ),
 
                 )
