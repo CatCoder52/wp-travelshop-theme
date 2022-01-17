@@ -93,6 +93,23 @@ foreach ($languages as $language) {
     $data['meta_description'] = '';
     $routes[$routename] = new Route('^' . $route_prefix . '/?', 'ts_calendar_hook', 'pm-calendar', $data);
 
+    // route by id
+    $route_prefix = $language_prefix .  'id';
+    $data = [];
+    $data['type'] = 'detail-by-id';
+    $data['language'] = $language;
+    $data['base_url'] = $route_prefix;
+    $routename = 'ts_by_id_route';
+    $routes[$routename] = new Route('^' . $route_prefix . '/([0-9]+)', 'ts_detail_hook', 'pm-detail', $data);
+
+    // route by code
+    $route_prefix = $language_prefix .  'code';
+    $data = [];
+    $data['type'] = 'detail-by-code';
+    $data['language'] = $language;
+    $data['base_url'] = $route_prefix;
+    $routename = 'ts_by_code_route';
+    $routes[$routename] = new Route('^' . $route_prefix . '/(.+?)', 'ts_detail_hook', 'pm-detail', $data);
 
 }
 
@@ -103,19 +120,35 @@ foreach ($languages as $language) {
 function ts_detail_hook($data)
 {
     global $wp, $wp_query, $post;
-
     $post = null;
 
     try {
-
-        if (MULTILANGUAGE_SITE) {
-            $route = preg_replace('(^' . $data['language'] . '\/)', '', $wp->request);
-        } else {
-            $route = $wp->request;
+        if($data['type'] == 'detail'){
+            if (MULTILANGUAGE_SITE) {
+                $route = preg_replace('(^' . $data['language'] . '\/)', '', $wp->request);
+            } else {
+                $route = $wp->request;
+            }
+            // get the media object id by url, language is not supported at this moment
+            $r = Pressmind\ORM\Object\MediaObject::getByPrettyUrl('/' . $route . '/', $data['id_object_type'], $data['language'], null);
+        }elseif($data['type'] == 'detail-by-id'){
+            if (MULTILANGUAGE_SITE) {
+                $id = preg_replace('(^' . $data['language'] . '\/id\/)', '', $wp->request);
+            } else {
+                $id = preg_replace('(^id\/)', '', $wp->request);
+            }
+            $r = [];
+            $r[0] = new Pressmind\ORM\Object\MediaObject($id, false, (!empty($_GET['no_cache']) || !empty($_GET['update_cache'])));
+        }elseif($data['type'] == 'detail-by-code'){
+            if (MULTILANGUAGE_SITE) {
+                $code = preg_replace('(^' . $data['language'] . '\/code\/)', '', $wp->request);
+            } else {
+                $code = preg_replace('(^code\/)', '', $wp->request);
+            }
+            $r = Pressmind\ORM\Object\MediaObject::getByCode($code);
+        }else{
+            exit('route type not valid');
         }
-
-        // get the media object id by url, language is not supported at this moment
-        $r = Pressmind\ORM\Object\MediaObject::getByPrettyUrl('/' . $route . '/', $data['id_object_type'], $data['language'], null);
 
         if (empty($r[0]->id) === true) {
             WPFunctions::throw404();
