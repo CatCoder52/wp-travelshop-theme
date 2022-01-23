@@ -19,7 +19,6 @@ get_header();
                         ?>
                     </div>
                 </div>
-                <?php //load_template(get_template_directory() . '/template-parts/layout-blocks/info-teaser.php'); ?>
             </div>
         </div>
     </main>
