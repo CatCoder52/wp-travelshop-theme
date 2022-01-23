@@ -14309,6 +14309,7 @@ body.fl-builder .content-block.content-page {
   font-weight: bold;
 }
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.green {
+  color: white;
   background-color: #27ae60;
   border-color: #27ae60;
 }
@@ -14319,6 +14320,55 @@ body.fl-builder .content-block.content-page {
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.green.active {
   background-color: #0b311b !important;
   border-color: #89e5b0 !important;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.red {
+  color: white;
+  background-color: #a40505;
+  border-color: #a40505;
+  pointer-events: none;
+  cursor: default;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.red:hover, .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.red:focus, .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.red:active {
+  background-color: #ee0707 !important;
+  border-color: #ee0707 !important;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.red.active {
+  background-color: #100000 !important;
+  border-color: #f94949 !important;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.orange {
+  color: white;
+  background-color: #e85900;
+  border-color: #e85900;
+  pointer-events: none;
+  cursor: default;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.orange:hover, .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.orange:focus, .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.orange:active {
+  background-color: #ff8336 !important;
+  border-color: #ff8336 !important;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.orange.active {
+  background-color: #4f1e00 !important;
+  border-color: #ffb282 !important;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.gray {
+  color: white;
+  background-color: #262626;
+  border-color: #262626;
+  pointer-events: none;
+  cursor: default;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.gray:hover, .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.gray:focus, .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.gray:active {
+  background-color: #4c4c4c !important;
+  border-color: #4c4c4c !important;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn.gray.active {
+  background-color: black !important;
+  border-color: #737373 !important;
+}
+.content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .booking-btn .loader {
+  width: 25px;
+  display: none;
 }
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-clock,
 .content-block.content-block-detail-booking .content-block-detail-booking-inner .booking-row > div .icon-tabler-calendar-event,
@@ -17453,22 +17503,69 @@ figure.wp-block-image figcaption {
   align-items: flex-start;
 }
 .price-box > div .booking-btn {
-  color: #fff;
-  cursor: pointer;
   font-weight: bold;
 }
 .price-box > div .booking-btn.green {
+  color: white;
   background-color: #27ae60;
   border-color: #27ae60;
 }
 .price-box > div .booking-btn.green:hover, .price-box > div .booking-btn.green:focus, .price-box > div .booking-btn.green:active {
   background-color: #4bd786 !important;
   border-color: #4bd786 !important;
-  color: #fff;
 }
 .price-box > div .booking-btn.green.active {
   background-color: #0b311b !important;
   border-color: #89e5b0 !important;
+}
+.price-box > div .booking-btn.red {
+  color: white;
+  background-color: #a40505;
+  border-color: #a40505;
+  pointer-events: none;
+  cursor: default;
+}
+.price-box > div .booking-btn.red:hover, .price-box > div .booking-btn.red:focus, .price-box > div .booking-btn.red:active {
+  background-color: #ee0707 !important;
+  border-color: #ee0707 !important;
+}
+.price-box > div .booking-btn.red.active {
+  background-color: #100000 !important;
+  border-color: #f94949 !important;
+}
+.price-box > div .booking-btn.orange {
+  color: white;
+  background-color: #e85900;
+  border-color: #e85900;
+  pointer-events: none;
+  cursor: default;
+}
+.price-box > div .booking-btn.orange:hover, .price-box > div .booking-btn.orange:focus, .price-box > div .booking-btn.orange:active {
+  background-color: #ff8336 !important;
+  border-color: #ff8336 !important;
+}
+.price-box > div .booking-btn.orange.active {
+  background-color: #4f1e00 !important;
+  border-color: #ffb282 !important;
+}
+.price-box > div .booking-btn.gray {
+  color: white;
+  background-color: #262626;
+  border-color: #262626;
+  pointer-events: none;
+  cursor: default;
+}
+.price-box > div .booking-btn.gray:hover, .price-box > div .booking-btn.gray:focus, .price-box > div .booking-btn.gray:active {
+  background-color: #4c4c4c !important;
+  border-color: #4c4c4c !important;
+}
+.price-box > div .booking-btn.gray.active {
+  background-color: black !important;
+  border-color: #737373 !important;
+}
+.price-box > div .booking-btn .loader {
+  width: 25px;
+  display: none;
 }
 .price-box > div .icon-tabler-clock,
 .price-box > div .icon-tabler-calendar-event,
@@ -17844,24 +17941,69 @@ figure.wp-block-image figcaption {
   transform: translateY(1px);
 }
 .mobile-bar .mobile-bar-cta .booking-btn {
-  white-space: nowrap;
-  color: #fff;
-  cursor: pointer;
   font-weight: bold;
-  font-size: 0.8rem;
 }
 .mobile-bar .mobile-bar-cta .booking-btn.green {
+  color: white;
   background-color: #27ae60;
   border-color: #27ae60;
 }
 .mobile-bar .mobile-bar-cta .booking-btn.green:hover, .mobile-bar .mobile-bar-cta .booking-btn.green:focus, .mobile-bar .mobile-bar-cta .booking-btn.green:active {
   background-color: #4bd786 !important;
   border-color: #4bd786 !important;
-  color: #fff;
 }
 .mobile-bar .mobile-bar-cta .booking-btn.green.active {
   background-color: #0b311b !important;
   border-color: #89e5b0 !important;
+}
+.mobile-bar .mobile-bar-cta .booking-btn.red {
+  color: white;
+  background-color: #a40505;
+  border-color: #a40505;
+  pointer-events: none;
+  cursor: default;
+}
+.mobile-bar .mobile-bar-cta .booking-btn.red:hover, .mobile-bar .mobile-bar-cta .booking-btn.red:focus, .mobile-bar .mobile-bar-cta .booking-btn.red:active {
+  background-color: #ee0707 !important;
+  border-color: #ee0707 !important;
+}
+.mobile-bar .mobile-bar-cta .booking-btn.red.active {
+  background-color: #100000 !important;
+  border-color: #f94949 !important;
+}
+.mobile-bar .mobile-bar-cta .booking-btn.orange {
+  color: white;
+  background-color: #e85900;
+  border-color: #e85900;
+  pointer-events: none;
+  cursor: default;
+}
+.mobile-bar .mobile-bar-cta .booking-btn.orange:hover, .mobile-bar .mobile-bar-cta .booking-btn.orange:focus, .mobile-bar .mobile-bar-cta .booking-btn.orange:active {
+  background-color: #ff8336 !important;
+  border-color: #ff8336 !important;
+}
+.mobile-bar .mobile-bar-cta .booking-btn.orange.active {
+  background-color: #4f1e00 !important;
+  border-color: #ffb282 !important;
+}
+.mobile-bar .mobile-bar-cta .booking-btn.gray {
+  color: white;
+  background-color: #262626;
+  border-color: #262626;
+  pointer-events: none;
+  cursor: default;
+}
+.mobile-bar .mobile-bar-cta .booking-btn.gray:hover, .mobile-bar .mobile-bar-cta .booking-btn.gray:focus, .mobile-bar .mobile-bar-cta .booking-btn.gray:active {
+  background-color: #4c4c4c !important;
+  border-color: #4c4c4c !important;
+}
+.mobile-bar .mobile-bar-cta .booking-btn.gray.active {
+  background-color: black !important;
+  border-color: #737373 !important;
+}
+.mobile-bar .mobile-bar-cta .booking-btn .loader {
+  width: 25px;
+  display: none;
 }
 @media (min-width: 992px) {
   .mobile-bar .mobile-bar-cta {
@@ -18677,8 +18819,12 @@ figure.wp-block-image figcaption {
   padding: 1rem;
   text-align: center;
 }
-.trust-box svg {
+.trust-box .icon-tabler-mood-smile {
   margin-bottom: 0.5rem;
+}
+.trust-box .icon-tabler-eye {
+  margin-bottom: 3px;
+  color: blue;
 }
 .trust-box p {
   margin-bottom: 0;

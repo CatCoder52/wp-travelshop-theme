@@ -32,6 +32,9 @@ global $PMTravelShop;
     <?php
     wp_head();
     ?>
+    <script>
+        var ts_ajax_check_availibility_endpoint = '<?php echo defined('TS_IBE3_CHECK_AVAILABILITY_URL') && !empty(TS_IBE3_CHECK_AVAILABILITY_URL) ? TS_IBE3_CHECK_AVAILABILITY_URL : '/wp-content/themes/travelshop/pm-ajax-endpoint.php'; ?>';
+    </script>
 </head>
 <body <?php body_class(); ?>>
 <?php

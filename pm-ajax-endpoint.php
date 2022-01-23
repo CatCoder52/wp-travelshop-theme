@@ -146,6 +146,35 @@ if (empty($_GET['action'])) {
     $result = json_encode($offers);
     echo $result;
     exit;
+}else if ($_GET['action'] == 'checkAvailability') {
+    $id_offer = (int)$_GET['id_offer'];
+    if(empty($id_offer)){
+        exit;
+    }
+    if(defined('TS_DEMO_MODE') && TS_DEMO_MODE === true){
+        sleep(1.5);
+        $demo_mode = [];
+        $demo_mode[0] = $demo_mode[1] = $demo_mode[2] = ['green', 'zur Buchung', 'bookable', true];
+        $demo_mode[3] = ['orange', 'Anfrage', 'request', true];
+        $demo_mode[4] = ['gray', 'Buchungsstop', '', false];
+        $demo_mode[5] = ['red', 'ausgebucht', '', false];
+        $random_state = array_rand($demo_mode, 1);
+        $r = new stdClass();
+        $r->class = $demo_mode[$random_state][0];
+        $r->msg = $r->btn_msg = $demo_mode[$random_state][1];
+        $r->booking_type = $demo_mode[$random_state][2];
+        $r->bookable = $demo_mode[$random_state][3];
+    }else{
+        sleep(0.2);
+        $r = new stdClass();
+        $r->class = 'green';
+        $r->msg = $r->btn_msg = 'zur Buchung';
+        $r->booking_type = 'bookable';
+        $r->bookable = true;
+    }
+    $result = json_encode($r);
+    echo $result;
+    exit;
 }else{
     header("HTTP/1.0 400 Bad Request");
     $Output->msg = 'error: action not known';

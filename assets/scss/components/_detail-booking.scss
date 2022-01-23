@@ -100,29 +100,7 @@
 				display: flex;
 				align-items: flex-start;
 
-				.booking-btn {
-					font-weight: bold;
-
-					&.green {
-						background-color: $cta-detail-page;
-						border-color: $cta-detail-page;
-
-						&:hover,
-						&:focus,
-						&:active {
-							background-color: lighten($cta-detail-page, 15%) !important;
-							border-color: lighten($cta-detail-page, 15%) !important;
-						}
-
-						&.active {
-							background-color: darken($cta-detail-page, 30%) !important;
-							border-color: lighten($cta-detail-page, 30%) !important;
-						}
-					}
-
-
-
-				}
+				@include booking_btn;
 
 				.icon-tabler-clock,
 				.icon-tabler-calendar-event,

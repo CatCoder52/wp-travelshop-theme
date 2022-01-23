@@ -17,6 +17,19 @@ if(defined('WP_DEBUG_DISPLAY') && WP_DEBUG_DISPLAY === true) {
 
 define('SITE_URL', getenv('SITE_URL'));
 
+/**
+ * Url to the pressmind IB3 if used
+ */
+define('TS_IBE3_BASE_URL', getenv('TS_IBE3_BASE_URL'));
+define('TS_IBE3_CHECK_AVAILABILITY_URL', getenv('TS_IBE3_CHECK_AVAILABILITY_URL'));
+
+/**
+ * Demo mode, current function
+ * - create random data in checkAvailability()
+ */
+define('TS_DEMO_MODE', true);
+
+
 // Activate multilanguage support
 // one big change is the routing, if multilanguage, all routes have the language code as prefix:
 // domain.de/de/reisen/schoene-reise/ instead of domain.de/reisen/schoene-reise/
@@ -144,11 +157,6 @@ define('TS_PRICE_CURRENCY', '€');
  * enum (RIGHT, LEFT)
  */
 define('TS_PRICE_CURRENCY_POSITION', 'RIGHT');
-
-/**
- * Url to the pressmind IB3 if used
- */
-define('TS_IBE3_BASE_URL', 'https://demo.pressmind-ibe.net/');
 
 
 /**
@@ -297,3 +305,14 @@ define('TS_WP_IMAGE_WEBP_QUALITY', 80);
  */
 define('TS_COOKIE_CONSENT', TRUE);
 define('TS_GOOGLETAGMANAGER_UA_ID', 'UA-1234-1');
+
+/**
+ * @TODO not implemented yet
+ * Enables routes based on categpry-trees
+ * Example Tree: Deutschland > Sauerland > Schmallenberg
+ * Created route: site.de/deutschland/sauerland/schmallenberg
+ */
+define('TS_LANDINGPAGE', [
+    ['type' => 'categorytree', 'id_tree' => 1207, 'fieldname' => 'zielgebiet_default'],
+    ['type' => 'categorytree', 'id_tree' => 1206, 'fieldname' => 'reiseart_default'],
+]);

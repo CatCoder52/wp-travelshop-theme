@@ -90,3 +90,85 @@ Creates a strike trough price
   }
 
 }
+@mixin booking_btn(){
+
+  .booking-btn {
+    font-weight: bold;
+
+    &.green {
+      color: $booking-button-green-txt;
+      background-color: $booking-button-green;
+      border-color: $booking-button-green;
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: lighten($booking-button-green, 15%) !important;
+        border-color: lighten($booking-button-green, 15%) !important;
+      }
+      &.active {
+        background-color: darken($booking-button-green, 30%) !important;
+        border-color: lighten($booking-button-green, 30%) !important;
+      }
+    }
+
+    &.red {
+      color: $booking-button-red-txt;
+      background-color: $booking-button-red;
+      border-color: $booking-button-red;
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: lighten($booking-button-red, 15%) !important;
+        border-color: lighten($booking-button-red, 15%) !important;
+      }
+      &.active {
+        background-color: darken($booking-button-red, 30%) !important;
+        border-color: lighten($booking-button-red, 30%) !important;
+      }
+      pointer-events: none;
+      cursor: default;
+    }
+
+    &.orange {
+      color: $booking-button-orange-txt;
+      background-color: $booking-button-orange;
+      border-color: $booking-button-orange;
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: lighten($booking-button-orange, 15%) !important;
+        border-color: lighten($booking-button-orange, 15%) !important;
+      }
+      &.active {
+        background-color: darken($booking-button-orange, 30%) !important;
+        border-color: lighten($booking-button-orange, 30%) !important;
+      }
+      pointer-events: none;
+      cursor: default;
+    }
+
+    &.gray {
+      color: $booking-button-gray-txt;
+      background-color: $booking-button-gray;
+      border-color: $booking-button-gray;
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: lighten($booking-button-gray, 15%) !important;
+        border-color: lighten($booking-button-gray, 15%) !important;
+      }
+      &.active {
+        background-color: darken($booking-button-gray, 30%) !important;
+        border-color: lighten($booking-button-gray, 30%) !important;
+      }
+      pointer-events: none;
+      cursor: default;
+    }
+    .loader {
+      width: 25px;
+      display: none;
+    }
+
+  }
+
+}
