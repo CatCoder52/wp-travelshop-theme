@@ -414,7 +414,6 @@ jQuery(function ($) {
 
         this.autoCompleteInit = function (){
             if ($('.auto-complete').length > 0) {
-                console.log('auto autocomplete init');
                 $('.auto-complete').autocomplete({
                     serviceUrl: '/wp-content/themes/travelshop/pm-ajax-endpoint.php?action=autocomplete',
                     type: 'get',
@@ -750,6 +749,20 @@ jQuery(function ($) {
             $(target).html(data.html);
             _this.wishlistEventListeners();
             _this.wishListInit();
+        }
+
+
+        
+        this.initBookingBtnClickHandler = function (){
+            if ($('.booking-btn').length > 0) {
+                $('.booking-btn').on('click', function (e) {
+                    e.stopPropagation();
+
+                    console.log('clicked');
+
+
+                });
+            }
         }
 
         this.init = function(){
