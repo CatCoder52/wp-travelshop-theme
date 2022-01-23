@@ -147,10 +147,7 @@ if (empty($_GET['action'])) {
     echo $result;
     exit;
 }else if ($_GET['action'] == 'checkAvailability') {
-    $id_offer = (int)$_GET['id_offer'];
-    if(empty($id_offer)){
-        exit;
-    }
+    //print_r($request);
     if(defined('TS_DEMO_MODE') && TS_DEMO_MODE === true){
         sleep(1.5);
         $demo_mode = [];

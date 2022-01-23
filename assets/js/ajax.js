@@ -754,20 +754,24 @@ jQuery(function ($) {
             _this.wishListInit();
         }
 
-        this.checkAvailability = function (id_offer, booking_btn){
+        this.checkAvailability = function (id_offer, quantity, booking_btn){
             this.requests.push($.ajax({
-                url: ts_ajax_check_availibility_endpoint + '?action=checkAvailability&id_offer=' + id_offer,
-                method: 'GET',
-                data: null
-            }).done(function (data) {
-                $(booking_btn).find('span').html(data.btn_msg);
-                $(booking_btn).attr('title', data.msg);
+                url: ts_ajax_check_availibility_endpoint,
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({'checks' : [{
+                    'id_offer' : id_offer,
+                    'quantity' : quantity
+                }]}),
+            }).done(function (response) {
+                $(booking_btn).find('span').html(response.data[0].btn_msg);
+                $(booking_btn).attr('title', response.data[0].msg);
                 $(booking_btn).find('.loader').hide();
                 $(booking_btn).removeClass('green');
-                $(booking_btn).addClass(data.class);
-                if(data.bookable === true){
+                $(booking_btn).addClass(response.data[0].class);
+                if(response.data[0].bookable === true){
                     $(booking_btn).find('svg').show();
-                    location.href = $(booking_btn).attr('href') + '&t='+data.booking_type;
+                    //location.href = $(booking_btn).attr('href') + '&t='+data.booking_type;
                 }
             }));
         }
@@ -783,7 +787,7 @@ jQuery(function ($) {
                     $(this).find('.loader').show();
                     $(this).find('svg').hide();
                     $(this).find('span').html('');
-                    _this.checkAvailability($(this).data('id-offer'), this);
+                    _this.checkAvailability($(this).data('id-offer'), 1, this);
                 });
             }
         }
