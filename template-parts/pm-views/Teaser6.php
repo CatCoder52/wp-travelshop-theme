@@ -92,8 +92,7 @@ if (empty($filteredParams) === false) {
                         </span>
                         <?php
                         echo Template::render(APPLICATION_PATH.'/template-parts/micro-templates/date-dropdown.php', [
-                            'date_departure' => $args['cheapest_price']->date_departure,
-                            'date_arrival' => $args['cheapest_price']->date_arrival,
+                            'date_departures' => $args['cheapest_price']->date_departures,
                             'dates_per_month' => $args['dates_per_month'],
                             'departure_date_count' => $args['departure_date_count'],
                             'url' => $args['url']

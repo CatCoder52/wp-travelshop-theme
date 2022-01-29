@@ -14,7 +14,7 @@ use Pressmind\Travelshop\Template;
  */
 
 $today = new DateTime();
-$date_to_format = $args['date_departure']->format('Y') == $today->format('Y') ? 'd.m.' : 'd.m.Y';
+$date_format = $args['date_departures'][0]->format('Y') == $today->format('Y') ? 'd.m.' : 'd.m.Y';
 ?>
 <div class="dropdown">
     <button class="btn <?php echo $args['departure_date_count'] == 1  || empty($args['dates_per_month']) ? ' disabled' : ' dropdown-toggle'; ?>"
@@ -22,11 +22,10 @@ $date_to_format = $args['date_departure']->format('Y') == $today->format('Y') ? 
             id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
         <?php
-        echo '<i class="circle green"></i>';
+        echo '<i class="circle green"></i> ab ';
         echo Template::render(APPLICATION_PATH.'/template-parts/micro-templates/travel-date-range.php', [
-            'date_departure' => $args['date_departure'],
-            'date_arrival' => $args['date_arrival'],
-            'date_to_format ' => $date_to_format
+            'date_departure' => $args['date_departures'][0],
+            'date_from_format ' => $date_format
         ]);
         ?>
     </button>
@@ -43,8 +42,7 @@ $date_to_format = $args['date_departure']->format('Y') == $today->format('Y') ? 
                         echo '<i class="circle green"></i>';
                         echo Template::render(APPLICATION_PATH.'/template-parts/micro-templates/travel-date-range.php', [
                             'date_departure' => $date['date_departure'],
-                            'date_arrival' => $date['date_arrival'],
-                            'date_to_format ' => $date_to_format
+                            'date_from_format ' => $date_format
                         ]);
                         ?>
                     </a>

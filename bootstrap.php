@@ -107,6 +107,7 @@ try {
     $db = new Pdo($db_config);
     if(strtolower($config['database']['engine']) == 'mysql') {
         $db->execute('SET SESSION sql_mode = "NO_ENGINE_SUBSTITUTION"');
+        $db->execute('SET SESSION group_concat_max_len = 1000000000;'); // avoid breaking creating mongodb index if the touroperator has many departures per product
     }
 
     /* for debugging, log all mysql queries */

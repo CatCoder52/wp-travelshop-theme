@@ -9,8 +9,7 @@ get_header();
          * echo do_shortcode('[ts-layoutblock f="search-header"]');
          * @see readme-shortcodes.md
          */
-
-        $args = Search::getResult(['pm-ot' => TS_TOUR_PRODUCTS],2, 12, true, false);
+        $args = Search::getResult(['pm-ot' => TS_TOUR_PRODUCTS],2, 12, true, true);
         $args['headline'] = 'Finde deine Traumreise!';
         load_template_transient(get_template_directory().'/template-parts/layout-blocks/search-header.php', false, $args);
         ?>

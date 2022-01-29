@@ -4,7 +4,7 @@
  */
 use Pressmind\Travelshop\Template;
 use Pressmind\Travelshop\Search;
-$result = Search::getResult($_GET ,2, 12, false, false);
+$result = Search::getResult($_GET,2, 12, false, false);
 $view = 'Teaser2';
 if (!empty($_GET['view']) && preg_match('/^[0-9A-Za-z\_]+$/', $_GET['view']) !== false) {
     $view = $_GET['view'];

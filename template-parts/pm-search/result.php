@@ -125,9 +125,11 @@ if($args['cache']['is_cached']){
 if(!empty($_GET['debug'])) {
     echo '<pre>';
     echo "Filter:\n";
-    print_r($args['mongodb']['aggregation_pipeline_filter']);
+    echo "Duration:".$args['mongodb']['duration_filter_ms']."\n";
+    echo $args['mongodb']['aggregation_pipeline_filter'];
     echo "\n";
     echo "Search:\n";
-    print_r($args['mongodb']['aggregation_pipeline_search']);
+    echo "Duration:".$args['mongodb']['duration_search_ms']."\n";
+    echo $args['mongodb']['aggregation_pipeline_search'];
     echo '</pre>';
 }

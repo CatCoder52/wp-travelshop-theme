@@ -7,7 +7,7 @@ class BuildSearch
      * Contains the current GET request as validated array
      * @var array
      */
-    private static $validated_search_parameters;
+    private static $validated_search_parameters = [];
     private static $page_size = 10;
     private static $page = 1;
 
@@ -373,9 +373,8 @@ class BuildSearch
             }
         }
 
-        $order = array('price' => 'asc');
+        $order = array('price_total' => 'asc');
         $allowed_orders = array('rand', 'price-desc', 'price-asc', 'date_departure-asc', 'date_departure-desc');
-
         if (empty($request[$prefix.'-o']) === false && in_array($request[$prefix.'-o'], $allowed_orders) === true) {
 
             if($request[$prefix.'-o'] == 'rand'){

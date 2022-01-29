@@ -28,6 +28,8 @@ class Search
     public static function getResult($request, $occupancy = 2, $page_size = 12, $getFilters = false, $returnFiltersOnly = false)
     {
 
+        $duration_filter_ms = null;
+        $duration_search_ms = null;
         if (empty($request['pm-ho']) === true) {
             // if the price duration slider is active, we have to set the housing occupancy search
             // (to display the correct search result with the correct cheapeast price inside)
@@ -40,50 +42,61 @@ class Search
                 $FilterCondition[] =  new \Pressmind\Search\Condition\MongoDB\ObjectType((int)$request['pm-ot']);
             }
             $FilterCondition[] = new \Pressmind\Search\Condition\MongoDB\Occupancy($occupancy);
-            $filter = new \Pressmind\Search\MongoDB( $FilterCondition, ['price_total' => 'asc'], TS_LANGUAGE_CODE);
+            $filter = new \Pressmind\Search\MongoDB($FilterCondition, ['price_total' => 'asc'], TS_LANGUAGE_CODE);
+            $start_time = microtime(true);
             $result_filter = $filter->getResult(true, true);
+            $end_time = microtime(true);
+            $duration_filter_ms = ($end_time - $start_time)  * 1000;
         }
-        $search = \BuildSearch::fromRequestMongoDB($request, 'pm', true, $page_size);
-        $result = $search->getResult($getFilters, false);
+
         $items = [];
-        foreach ($result->documents as $document) {
-            $document = json_decode(json_encode($document), true);
-            $item = (array)$document['description'];
-            $item['id_media_object'] = $document['id_media_object'];
-            $item['id_object_type'] = $document['id_object_type'];
-            $item['url'] = $document['url'];
-            $item['dates_per_month'] = [];
-            if(!empty($document['dates_per_month'])){
-                $item['dates_per_month'] = $document['dates_per_month'];
-                foreach($document['dates_per_month'] as $k => $month){
-                    foreach($month['five_dates_in_month'] as $k1 => $date){
-                        $item['dates_per_month'][$k]['five_dates_in_month'][$k1]['date_departure'] = new \DateTime($date['date_departure']);
-                        $item['dates_per_month'][$k]['five_dates_in_month'][$k1]['date_arrival'] = new \DateTime($date['date_arrival']);
+        if(!$returnFiltersOnly) {
+            $search = \BuildSearch::fromRequestMongoDB($request, 'pm', true, $page_size);
+            $start_time = microtime(true);
+            $result = $search->getResult(false, false);
+            $end_time = microtime(true);
+            $duration_search_ms = ($end_time - $start_time) * 1000;
+            foreach ($result->documents as $document) {
+                $document = json_decode(json_encode($document), true);
+                $item = (array)$document['description'];
+                $item['id_media_object'] = $document['id_media_object'];
+                $item['id_object_type'] = $document['id_object_type'];
+                $item['url'] = $document['url'];
+                $item['dates_per_month'] = [];
+                if (!empty($document['dates_per_month'])) {
+                    $item['dates_per_month'] = $document['dates_per_month'];
+                    foreach ($document['dates_per_month'] as $k => $month) {
+                        foreach ($month['five_dates_in_month'] as $k1 => $date) {
+                            $item['dates_per_month'][$k]['five_dates_in_month'][$k1]['date_departure'] = new \DateTime($date['date_departure']);
+                            $item['dates_per_month'][$k]['five_dates_in_month'][$k1]['date_arrival'] = new \DateTime($date['date_arrival']);
+                        }
                     }
                 }
+                $item['possible_durations'] = !empty($document['possible_durations']) ? $document['possible_durations'] : [];
+                $item['last_modified_date'] = $document['last_modified_date'];
+                if (!empty($document['prices'])) {
+                    $item['cheapest_price'] = new \stdClass();
+                    $item['cheapest_price']->duration = $document['prices']['duration'];
+                    $item['cheapest_price']->price_total = $document['prices']['price_total'];
+                    $item['cheapest_price']->price_regular_before_discount = $document['prices']['price_regular_before_discount'];
+                    $item['cheapest_price']->earlybird_discount = $document['prices']['earlybird_discount'];
+                    $item['cheapest_price']->earlybird_discount_f = $document['prices']['earlybird_discount_f'];
+                    $item['cheapest_price']->date_departures = [];
+                    if (!empty($document['prices']['date_departures'])) {
+                        foreach ($document['prices']['date_departures'] as $date_departure) {
+                            $item['cheapest_price']->date_departures[] = new \DateTime($date_departure);
+                        }
+                    }
+                    $item['cheapest_price']->earlybird_discount_date_to = new \DateTime($document['prices']['earlybird_discount_date_to']);
+                    $item['cheapest_price']->option_board_type = $document['prices']['option_board_type'];
+                } else {
+                    $document['prices'] = null;
+                }
+                $item['departure_date_count'] = $document['departure_date_count'];
+                $item['possible_durations'] = !empty($document['possible_durations']) ? $document['possible_durations'] : [];
+                //$item['best_price_meta'] = $document['best_price_meta'];
+                $items[] = $item;
             }
-            $item['possible_durations'] = !empty($document['possible_durations']) ? $document['possible_durations'] : [];
-            $item['last_modified_date'] = $document['last_modified_date'];
-            if(!empty($document['prices'])){
-                $item['cheapest_price'] = new \stdClass();
-                $item['cheapest_price']->duration = $document['prices']['duration'];
-                $item['cheapest_price']->price_total = $document['prices']['price_total'];
-                $item['cheapest_price']->price_regular_before_discount = $document['prices']['price_regular_before_discount'];
-                $item['cheapest_price']->earlybird_discount = $document['prices']['earlybird_discount'];
-                $item['cheapest_price']->earlybird_discount_f = $document['prices']['earlybird_discount_f'];
-                $item['cheapest_price']->date_departure = new \DateTime($document['prices']['date_departure']);
-                $item['cheapest_price']->date_arrival = new \DateTime($document['prices']['date_arrival']);
-                $item['cheapest_price']->departure_range_from = new \DateTime($document['prices']['departure_range_from']);
-                $item['cheapest_price']->departure_range_to = new \DateTime($document['prices']['departure_range_to']);
-                $item['cheapest_price']->earlybird_discount_date_to = new \DateTime($document['prices']['earlybird_discount_date_to']);
-                $item['cheapest_price']->option_board_type = $document['prices']['option_board_type'];
-            }else{
-                $document['prices'] = null;
-            }
-            $item['departure_date_count'] = $document['departure_date_count'];
-            $item['possible_durations'] = !empty($document['possible_durations']) ? $document['possible_durations'] : [];
-            //$item['best_price_meta'] = $document['best_price_meta'];
-            $items[] = $item;
         }
         $categories = [];
         if(!empty($result_filter->categoriesGrouped)){
@@ -92,9 +105,9 @@ class Search
             }
         }
         return [
-            'total_result' => $result->total,
-            'current_page' => $result->currentPage,
-            'pages' => $result->pages,
+            'total_result' => !empty($result->total) ? $result->total : null,
+            'current_page' => !empty($result->currentPage) ? $result->currentPage : null,
+            'pages' => !empty($result->pages) ? $result->pages : null,
             'page_size' => $page_size,
             'query_string' => \BuildSearch::getCurrentQueryString(),
             'cache' => [
@@ -111,6 +124,8 @@ class Search
             'price_max' => !empty($result_filter->maxPrice) ? $result_filter->maxPrice : null,
             'items' => $items,
             'mongodb' => [
+                'duration_filter_ms' => $duration_filter_ms,
+                'duration_search_ms' => $duration_search_ms,
                 'aggregation_pipeline_filter' => !empty($filter) ? $filter->buildQueryAsJson($getFilters) : null,
                 'aggregation_pipeline_search' => !empty($search) ? $search->buildQueryAsJson($getFilters) : null
             ]

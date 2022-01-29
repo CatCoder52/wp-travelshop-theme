@@ -11,7 +11,7 @@ use Pressmind\Travelshop\IB3Tools;
 ?>
 <div data-pm-id="<?php echo $args['id_media_object']; ?>"
      data-pm-ot="<?php echo $args['id_object_type']; ?>"
-     data-pm-dr="<?php echo !is_null($args['cheapest_price']) ? $args['cheapest_price']->date_arrival->format('Ymd') . '-' . $args['cheapest_price']->date_arrival->format('Ymd') : ''; ?>"
+     data-pm-dr="<?php echo !is_null($args['cheapest_price']) ? $args['cheapest_price']->date_departures[0]->format('Ymd') : null;?>"
      data-pm-du="<?php echo !is_null($args['cheapest_price']) ? $args['cheapest_price']->duration : ''; ?>"
      class="add-to-wishlist">
     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="30"

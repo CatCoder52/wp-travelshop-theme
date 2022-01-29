@@ -49,8 +49,10 @@ use Pressmind\Travelshop\RouteHelper;
                             <circle cx="10" cy="10" r="7"/>
                             <line x1="21" y1="21" x2="15" y2="15"/>
                         </svg>
-                        <span class="search-bar-total-count" data-default="Suchen" data-total-count-singular="Reise"
-                              data-total-count-plural="Reisen"><?php echo empty($args['total_result']) ? 'Suchen' : $args['total_result'] . ' Reisen'; ?></span>
+                        <img class="loader" src="<?php echo WEBSERVER_HTTP; ?>/wp-content/themes/travelshop/assets/img/loading-dots.svg">
+                        <span class="search-bar-total-count" data-default="Suchen" data-total-count-singular="Reise anzeigen"
+                              data-total-count-plural="Reisen anzeigen">
+                            <?php echo empty($args['total_result']) ? 'Suchen' : $args['total_result'] . ' Reisen anzeigen'; ?></span>
                     </a>
                 </div>
             </div>
