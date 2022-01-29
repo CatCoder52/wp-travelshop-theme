@@ -787,7 +787,7 @@ jQuery(function ($) {
                 $(booking_btn).addClass(response.data[0].class);
                 if(response.data[0].bookable === true){
                     $(booking_btn).find('svg').show();
-                    location.href = $(booking_btn).attr('href') + '&t='+data.booking_type;
+                    location.href = $(booking_btn).attr('href') + '&t='+response.data[0].booking_type;
                 }
             }));
         }
