@@ -45,11 +45,17 @@
       }
 
       .btn {
+        padding: 0px;
+        height: 38px;
         display: flex;
         justify-content: center;
         align-items: center;
         svg {
           margin-right: .25rem;
+        }
+        .loader {
+          width: 25px;
+          display: none;
         }
       }
     }

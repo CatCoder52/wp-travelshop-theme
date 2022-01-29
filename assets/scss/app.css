@@ -15019,12 +15019,18 @@ button.select-from-control i.la {
   font-size: 1rem;
 }
 .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper--inner .btn, .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper--inner .blog-list-entry--comments-list .comment-respond input[type=submit], .blog-list-entry--comments-list .comment-respond .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper--inner input[type=submit] {
+  padding: 0px;
+  height: 38px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper--inner .btn svg, .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper--inner .blog-list-entry--comments-list .comment-respond input[type=submit] svg, .blog-list-entry--comments-list .comment-respond .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper--inner input[type=submit] svg {
   margin-right: 0.25rem;
+}
+.layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper--inner .btn .loader, .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper--inner .blog-list-entry--comments-list .comment-respond input[type=submit] .loader, .blog-list-entry--comments-list .comment-respond .layout-block.layout-block-search-header .layout-block-search-header--search .search-wrapper--inner input[type=submit] .loader {
+  width: 25px;
+  display: none;
 }
 
 .jumbotron {

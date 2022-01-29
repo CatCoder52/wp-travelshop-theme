@@ -35,6 +35,18 @@ jQuery(function ($) {
             $('.pagination').show();
         }
 
+        this.setButtonLoader = function (btn) {
+            btn.find('svg').hide();
+            btn.find('span').hide();
+            btn.find('.loader').show();
+        }
+
+        this.removeButtonLoader = function (btn) {
+            btn.find('svg').show();
+            btn.find('span').show();
+            btn.find('.loader').hide();
+        }
+
         this.resultHandlerWishlist = function (data) {
 
             // set the wishlist
@@ -108,21 +120,19 @@ jQuery(function ($) {
             }, 150, 'swing');
         }
 
-        this.resultHandlerSearchBarStandalone = function(data, query_string, scrollto, total_result_span_id){
+        this.resultHandlerSearchBarStandalone = function(data, query_string, scrollto, btn){
 
-            if (total_result_span_id != null) {
-                let total_count_span = $(total_result_span_id);
-                let str = '';
-                if (data.count == 1) {
-                    str = data.count + ' ' + total_count_span.data('total-count-singular');
-                } else if (data.count > 1 || data.count == 0) {
-                    str = data.count + ' ' + total_count_span.data('total-count-plural');
-                } else {
-                    str = data.count + ' ' + total_count_span.data('total-count-default');
-                }
-                total_count_span.html(str.trim());
+            _this.removeButtonLoader(btn)
+            let total_count_span = btn.find('span');
+            let str = '';
+            if (data.count == 1) {
+                str = data.count + ' ' + total_count_span.data('total-count-singular');
+            } else if (data.count > 1 || data.count == 0) {
+                str = data.count + ' ' + total_count_span.data('total-count-plural');
+            } else {
+                str = data.count + ' ' + total_count_span.data('total-count-default');
             }
-
+            total_count_span.html(str.trim());
         }
 
         this.renderWishlist = function() {
@@ -368,7 +378,7 @@ jQuery(function ($) {
              * The query string is added to the form > a.btn > href
              * If the search box is on the same site as the search result, than the ajax search query is fired
              */
-            $('#main-search').on('change', '.search-box input, .search-box, select', function (e) {
+            $('#main-search').on('change', '.search-box input, .search-box select', function (e) {
 
                 let form = $(this).closest('form');
 
@@ -383,10 +393,11 @@ jQuery(function ($) {
                 let current_location = window.location.href.split('?');
                 if (current_location[0] == href[0]) {
                     _this.setSpinner('#pm-search-result');
-                    _this.call(query_string, null, '.search-bar-total-count', _this.resultHandlerSearch);
+                    _this.call(query_string, null, button, _this.resultHandlerSearch);
                 } else {
+                    _this.setButtonLoader(button);
                     // in this case we have placed a search box on a site without a direct result output
-                    _this.call(query_string, null, '.search-bar-total-count', _this.resultHandlerSearchBarStandalone);
+                    _this.call(query_string, null, button, _this.resultHandlerSearchBarStandalone);
                 }
 
                 e.preventDefault();
@@ -771,7 +782,7 @@ jQuery(function ($) {
                 $(booking_btn).addClass(response.data[0].class);
                 if(response.data[0].bookable === true){
                     $(booking_btn).find('svg').show();
-                    //location.href = $(booking_btn).attr('href') + '&t='+data.booking_type;
+                    location.href = $(booking_btn).attr('href') + '&t='+data.booking_type;
                 }
             }));
         }
