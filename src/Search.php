@@ -104,6 +104,26 @@ class Search
                 $categories[$item->_id->field_name][$item->_id->level][$item->_id->id_item] = $item->_id;
             }
         }
+
+        if(TS_CALENDAR_SHOW_DEPARTURES === true){
+            $start_time = microtime(true);
+            $filter_departures = [];
+            foreach ($result_filter->documents as $document) {
+                $document = json_decode(json_encode($document), true);
+                if (!empty($document['prices']['date_departures'])) {
+                    foreach ($document['prices']['date_departures'] as $date_departure) {
+                        $date_departure = new \DateTime($date_departure);
+                        $filter_departures[] = $date_departure->format('Y-m-d');
+                    }
+                }
+            }
+
+            $filter_departures = array_unique($filter_departures);
+            sort($filter_departures);
+            $end_time = microtime(true);
+            $departure_filter_ms = ($end_time - $start_time)  * 1000;
+        }
+
         return [
             'total_result' => !empty($result->total) ? $result->total : null,
             'current_page' => !empty($result->currentPage) ? $result->currentPage : null,
@@ -122,6 +142,7 @@ class Search
             'departure_max' => !empty($result_filter->maxDeparture) ? new \DateTime($result_filter->maxDeparture) : null,
             'price_min' => !empty($result_filter->minPrice) ? $result_filter->minPrice  : null,
             'price_max' => !empty($result_filter->maxPrice) ? $result_filter->maxPrice : null,
+            'departure_dates' => !empty($filter_departures) ? $filter_departures : null,
             'items' => $items,
             'mongodb' => [
                 'duration_filter_ms' => $duration_filter_ms,
