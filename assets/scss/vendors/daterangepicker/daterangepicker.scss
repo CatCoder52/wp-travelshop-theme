@@ -178,6 +178,12 @@
   color: inherit;
 }
 
+.daterangepicker td.has_departures {
+  font-weight: bold;
+  color: green!important;
+  background-color: #fff;
+}
+
 .daterangepicker td.week, .daterangepicker th.week {
   font-size: 80%;
   color: #ccc;
@@ -211,7 +217,7 @@
 .daterangepicker td.active, .daterangepicker td.active:hover {
   background-color: #357ebd;
   border-color: transparent;
-  color: #fff;
+  color: #fff!important;
 }
 
 .daterangepicker th.month {

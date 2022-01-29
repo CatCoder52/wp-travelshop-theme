@@ -492,6 +492,11 @@ jQuery(function ($) {
                     "minDate": $('[data-type="daterange"]').data('mindate'),
                     "maxDate": $('[data-type="daterange"]').data('maxdate'),
                     "showCustomRangeLabel": false,
+                    isCustomDate: function(date) {
+                        if($('[data-type="daterange"]').data('departures').indexOf(date.format('YYYY-MM-DD')) >= 0){
+                            return 'has_departures';
+                        }
+                        },
                     // "autoApply": true,
                     "locale": {
                         "format": "DD.MM.YYYY",

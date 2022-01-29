@@ -9,6 +9,12 @@ if(!empty($args['departure_min']) && !empty($args['departure_max'])){
     $minDate = $args['departure_min']->format('d.m.Y');
     $maxDate = $args['departure_max']->format('d.m.Y');
 }
+
+$departures_dates = '[]';
+if(!empty($args['departure_dates'])){
+    $departures_dates = json_encode($args['departure_dates']);
+}
+
 $human_readable_str = '';
 $value = '';
 if (empty($_GET['pm-dr']) === false) {
@@ -30,6 +36,7 @@ if (empty($_GET['pm-dr']) === false) {
             data-maxdate="<?php echo $maxDate;?>"
             data-value="<?php echo $value; ?>"
             placeholder="egal"
+            data-departures='{<?php echo $departures_dates;?>}'
             value="<?php echo $human_readable_str; ?>"/>
     </div>
     <svg xmlns="http://www.w3.org/2000/svg" 

@@ -10774,6 +10774,12 @@ Build date: 2018-12-12 00:07:25
   color: inherit;
 }
 
+.daterangepicker td.has_departures {
+  font-weight: bold;
+  color: green !important;
+  background-color: #fff;
+}
+
 .daterangepicker td.week, .daterangepicker th.week {
   font-size: 80%;
   color: #ccc;
@@ -10807,7 +10813,7 @@ Build date: 2018-12-12 00:07:25
 .daterangepicker td.active, .daterangepicker td.active:hover {
   background-color: #357ebd;
   border-color: transparent;
-  color: #fff;
+  color: #fff !important;
 }
 
 .daterangepicker th.month {

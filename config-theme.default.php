@@ -306,6 +306,12 @@ define('TS_WP_IMAGE_WEBP_QUALITY', 80);
 define('TS_COOKIE_CONSENT', TRUE);
 define('TS_GOOGLETAGMANAGER_UA_ID', 'UA-1234-1');
 
+
+/**
+ * Marks departure dates in the datepicker control (these dates are usually styled green)
+ */
+define('TS_CALENDAR_SHOW_DEPARTURES', true);
+
 /**
  * @TODO not implemented yet
  * Enables routes based on categpry-trees
