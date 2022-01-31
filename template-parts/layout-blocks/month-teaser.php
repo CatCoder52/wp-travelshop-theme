@@ -59,7 +59,7 @@ if (empty($travel_months)) {
                                 $moc = $mo->getDataForLanguage(TS_LANGUAGE_CODE);
                                 if (!empty($moc->bilder_default) && is_array($moc->bilder_default) && count($moc->bilder_default) > 0) {
                                     $rand_image = array_rand($moc->bilder_default);
-                                    $image_url = $moc->bilder_default[$rand_image]->getUri('thumbnail');
+                                    $image_url = $moc->bilder_default[$rand_image]->getUri('thumbnail', false, 'base');
                                     $image_copyright = $moc->bilder_default[$rand_image]->copyright;
                                     break;
                                 }

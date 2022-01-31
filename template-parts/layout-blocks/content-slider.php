@@ -113,14 +113,14 @@ foreach ($args['items'] as $item) {
                     } else {
                     ?>
                         <div class="content-slider--image">
-                            <div style="background-image: url('<?php echo $item['image']; ?>');"></div>
+                            <div role="img" aria-label="<?php echo !empty($args['headline']) ? $args['headline'] : ''; ?>" style="background-image: url('<?php echo $item['image']; ?>');"></div>
                         </div>
                     <?php
                     }
                 ?>
                 <?php } else { ?>
                     <div class="content-slider--image">
-                        <div style="background-image: url('<?php echo $item['image']; ?>');"></div>
+                        <div role="img" aria-label="<?php echo !empty($args['headline']) ? $args['headline'] : ''; ?>" style="background-image: url('<?php echo $item['image']; ?>');"></div>
                     </div>
                 <?php } ?>
                 <div class="content-slider--content">

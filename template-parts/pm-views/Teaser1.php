@@ -1,4 +1,6 @@
 <?php
+
+use Pressmind\Registry;
 use Pressmind\Travelshop\PriceHandler;
 use Pressmind\Travelshop\Template;
 /**
@@ -25,6 +27,8 @@ use Pressmind\Travelshop\Template;
 /**
  * DON'T USE WordPress Stuff here
  */
+
+$config = Registry::getInstance()->get('config');
 
 // only this search params are transmitted, price range (pm-pr), date range (pm-dr), duration range (pm-du), housingoption occupancy (pm-ho)
 $allowedParams = ['pm-pr', 'pm-dr', 'pm-du', 'pm-ho', 'pm-tr'];
@@ -59,8 +63,6 @@ if (empty($filteredParams) === false) {
                     <?php
                     echo Template::render(APPLICATION_PATH.'/template-parts/micro-templates/image.php', [
                         'image' => $args['image'],
-                        'width' => 250,
-                        'height' => 170,
                         'class' => 'card-img-top',
                     ]);
                     ?>

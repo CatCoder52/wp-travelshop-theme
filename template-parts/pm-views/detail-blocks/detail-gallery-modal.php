@@ -1,4 +1,8 @@
-<!-- OVERLAYGALLERY: START -->
+<?php
+/**
+ * @var array $args
+ */
+?>
 <div class="detail-gallery-overlay">
     <button class="detail-gallery-overlay-close">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="28" height="28"
@@ -9,7 +13,6 @@
             <line x1="6" y1="6" x2="18" y2="18"/>
         </svg>
     </button>
-    <!-- GALLERY_SLIDER: START -->
     <div class="detail-gallery-overlay-slider">
         <div class="detail-gallery-overlay-inner" id="detail-gallery-overlay-inner">
             <?php
@@ -17,7 +20,7 @@
                 ?>
                 <div class="detail-gallery-overlay-item">
                     <div class="detail-gallery-overlay-item--image">
-                        <img src="<?php echo $picture['url_detail']; ?>" class="w-100 h-100"/>
+                        <img src="<?php echo $picture['url_detail_gallery']; ?>" class="w-100 h-100" loading="lazy"/>
                     </div>
                     <div class="detail-gallery-overlay-item--caption">
                         <?php echo $picture['caption']; ?>
@@ -27,19 +30,15 @@
             <?php } ?>
         </div>
     </div>
-    <!-- GALLERY_SLIDER: END -->
-    <!-- GALLERY_THUMBNAILS: START -->
     <div class="detail-gallery-thumbnails" id="detail-gallery-thumbnails">
         <?php
         foreach ($args['pictures'] as $picture) {
             ?>
             <div class="detail-gallery-thumbnail-item">
                 <div class="detail-gallery-thumbnail-item--image">
-                    <img src="<?php echo $picture['url_detail']; ?>" class="w-100 h-100"/>
+                    <img src="<?php echo $picture['url_thumbnail']; ?>" class="w-100 h-100" loading="lazy"/>
                 </div>
             </div>
         <?php } ?>
     </div>
-    <!-- GALLERY_THUMBNAILS: END -->
 </div>
-<!-- OVERLAYGALLERY: END -->

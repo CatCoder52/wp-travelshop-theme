@@ -8,7 +8,7 @@ use Pressmind\Image\Processor\Config;
 use Pressmind\Log\Writer;
 use Pressmind\ORM\Object\Itinerary\Step\DocumentMediaObject;
 use Pressmind\ORM\Object\MediaObject\DataType\Picture;
-
+use \Pressmind\Search\MongoDB\Indexer;
 if(php_sapi_name() == 'cli') {
     putenv('ENV=DEVELOPMENT');
 }
@@ -34,7 +34,12 @@ try {
 
 Writer::write('Processing ' . count($result) . ' images', WRITER::OUTPUT_BOTH, 'image_processor', Writer::TYPE_INFO);
 
+$id_media_objects = [];
 foreach ($result as $image) {
+
+    if(!empty($image->id_media_object)){ // @TODO build this for DocumentMediaObject (no id_media_object is directly present in this case)
+        $id_media_objects[] = $image->id_media_object;
+    }
     $binary_image = null;
     Writer::write('Processing image ID:' . $image->getId(), WRITER::OUTPUT_BOTH, 'image_processor', Writer::TYPE_INFO);
     Writer::write('Downloading image from ' . $image->tmp_url, WRITER::OUTPUT_BOTH, 'image_processor', Writer::TYPE_INFO);
@@ -72,4 +77,13 @@ foreach ($result as $image) {
     }
     unset($binary_image);
 }
+
+if(!empty($id_media_objects)){
+    Writer::write('Update MongoDB Index (new urls are present)', WRITER::OUTPUT_SCREEN, 'image_processor', Writer::TYPE_INFO);
+    $id_media_objects = array_unique($id_media_objects);
+    $Indexer = new Indexer();
+    $Indexer->upsertMediaObject($id_media_objects);
+    Writer::write('updated', WRITER::OUTPUT_SCREEN, 'image_processor', Writer::TYPE_INFO);
+}
+
 Writer::write('Image processor finished', WRITER::OUTPUT_FILE, 'image_processor', Writer::TYPE_INFO);

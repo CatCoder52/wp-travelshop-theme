@@ -45,7 +45,7 @@ if (empty($filteredParams) === false) {
     <div class="stripe-inner">
         <div class="stripe-image"
              role="img" aria-label="<?php echo $args['headline']; ?>"
-             style="background-image:url(<?php echo !empty($args['image']['url']) ? $args['image']['url'] : '/placeholder.svg?wh=250x170&text=bilder_default%20not%20found' ; ?>);">
+             style="background-image:url(<?php echo !empty($args['image_square']['url']) ? $args['image_square']['url'] : '/placeholder.svg?wh=250x170&text=bilder_default%20not%20found'; ?>);">
             <?php
             echo Template::render(APPLICATION_PATH.'/template-parts/micro-templates/wishlist-heart.php', [
                    'cheapest_price' => $args['cheapest_price'],

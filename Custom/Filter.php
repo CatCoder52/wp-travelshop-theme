@@ -24,13 +24,13 @@ class Filter
      * @param $array
      * @return array|null
      */
-    public static function firstPicture($array, $derivate)
+    public static function firstPicture($array, $derivate, $section = null)
     {
         if (!empty($array[0])) {
             $Picture = new Picture();
             $Picture->fromArray($array[0]);
             return [
-                'url' => $Picture->getUri($derivate),
+                'url' => $Picture->getUri($derivate, false, $section),
                 'size' => $Picture->getSizes($derivate, false),
                 'copyright' => $Picture->copyright,
                 'caption' => $Picture->caption

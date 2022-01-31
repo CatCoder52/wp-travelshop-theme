@@ -47,8 +47,6 @@ if (empty($filteredParams) === false) {
             <?php
             echo Template::render(APPLICATION_PATH.'/template-parts/micro-templates/image.php', [
                 'image' => $args['image'],
-                'width' => 250,
-                'height' => 170,
                 'class' => '',
             ]);
             ?>

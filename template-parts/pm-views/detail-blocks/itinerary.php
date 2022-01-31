@@ -67,8 +67,8 @@ if(!$valid){
                     </div>
                     <div class="itinerary-step-gallery it-gallery-<?php echo $key; ?>">
                         <?php foreach($step->document_media_objects as $picture) { ?>
-                            <a href="<?php echo $picture->getUri('detail'); ?>" data-lightbox="itinerary-step-<?php echo $step->id; ?>">
-                              <img src="<?php echo $picture->getUri('teaser'); ?>" alt="<?php echo $picture->alt; ?>" />
+                            <a href="<?php echo $picture->getUri('detail_gallery'); ?>" data-lightbox="itinerary-step-<?php echo $step->id; ?>">
+                              <img src="<?php echo $picture->getUri('teaser'); ?>" alt="<?php echo $picture->alt; ?>" loading="lazy" />
                               <div class="itinerary-step-gallery-image-copyright">
                                 <?php echo $picture->copyright; ?>
                               </div>
