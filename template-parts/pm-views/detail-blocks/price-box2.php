@@ -17,7 +17,9 @@ use Pressmind\Travelshop\Template;
     </div>
     <div class="col-12">
         <span class="date">
+
             <a class="show-dates" data-modal="true" data-modal-id="<?php echo $args['id_modal_price_box']; ?>">
+                <p class="small">Angebot wählen:</p>
                 <?php echo Template::render(APPLICATION_PATH.'/template-parts/micro-templates/transport-icon.php', ['transport_type' => $args['cheapest_price']->transport_type]);?>
                 <span>
                     <?php echo Template::render(APPLICATION_PATH.'/template-parts/micro-templates/travel-date-range.php', [
