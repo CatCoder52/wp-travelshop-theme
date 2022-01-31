@@ -132,7 +132,7 @@ if($first_install) {
 
     $config['development']['image_handling']['processor']['derivatives']['thumbnail'] = [];
     $config['development']['image_handling']['processor']['derivatives']['thumbnail']['max_width'] = 125;
-    $config['development']['image_handling']['processor']['derivatives']['thumbnail']['max_height'] = 83;
+    $config['development']['image_handling']['processor']['derivatives']['thumbnail']['max_height'] = 78;
     $config['development']['image_handling']['processor']['derivatives']['thumbnail']['preserve_aspect_ratio'] = true;
     $config['development']['image_handling']['processor']['derivatives']['thumbnail']['crop'] = true;
     $config['development']['image_handling']['processor']['derivatives']['thumbnail']['horizontal_crop'] = "center";
@@ -142,7 +142,7 @@ if($first_install) {
 
     $config['development']['image_handling']['processor']['derivatives']['teaser'] = [];
     $config['development']['image_handling']['processor']['derivatives']['teaser']['max_width'] = 250;
-    $config['development']['image_handling']['processor']['derivatives']['teaser']['max_height'] = 170;
+    $config['development']['image_handling']['processor']['derivatives']['teaser']['max_height'] = 156;
     $config['development']['image_handling']['processor']['derivatives']['teaser']['preserve_aspect_ratio'] = true;
     $config['development']['image_handling']['processor']['derivatives']['teaser']['crop'] = true;
     $config['development']['image_handling']['processor']['derivatives']['teaser']['horizontal_crop'] = "center";
@@ -150,9 +150,19 @@ if($first_install) {
     $config['development']['image_handling']['processor']['derivatives']['teaser']['webp_create'] = true;
     $config['development']['image_handling']['processor']['derivatives']['teaser']['webp_quality'] = 80;
 
+    $config['development']['image_handling']['processor']['derivatives']['square'] = [];
+    $config['development']['image_handling']['processor']['derivatives']['square']['max_width'] = 300;
+    $config['development']['image_handling']['processor']['derivatives']['square']['max_height'] = 300;
+    $config['development']['image_handling']['processor']['derivatives']['square']['preserve_aspect_ratio'] = true;
+    $config['development']['image_handling']['processor']['derivatives']['square']['crop'] = true;
+    $config['development']['image_handling']['processor']['derivatives']['square']['horizontal_crop'] = "center";
+    $config['development']['image_handling']['processor']['derivatives']['square']['vertical_crop'] = "center";
+    $config['development']['image_handling']['processor']['derivatives']['square']['webp_create'] = true;
+    $config['development']['image_handling']['processor']['derivatives']['square']['webp_quality'] = 80;
+
     $config['development']['image_handling']['processor']['derivatives']['detail_thumb'] = [];
-    $config['development']['image_handling']['processor']['derivatives']['detail_thumb']['max_width'] = 180;
-    $config['development']['image_handling']['processor']['derivatives']['detail_thumb']['max_height'] = 180;
+    $config['development']['image_handling']['processor']['derivatives']['detail_thumb']['max_width'] = 90;
+    $config['development']['image_handling']['processor']['derivatives']['detail_thumb']['max_height'] = 90;
     $config['development']['image_handling']['processor']['derivatives']['detail_thumb']['preserve_aspect_ratio'] = true;
     $config['development']['image_handling']['processor']['derivatives']['detail_thumb']['crop'] = true;
     $config['development']['image_handling']['processor']['derivatives']['detail_thumb']['horizontal_crop'] = "center";
@@ -161,8 +171,8 @@ if($first_install) {
     $config['development']['image_handling']['processor']['derivatives']['detail_thumb']['webp_quality'] = 80;
 
     $config['development']['image_handling']['processor']['derivatives']['detail'] = [];
-    $config['development']['image_handling']['processor']['derivatives']['detail']['max_width'] = 610;
-    $config['development']['image_handling']['processor']['derivatives']['detail']['max_height'] = 385;
+    $config['development']['image_handling']['processor']['derivatives']['detail']['max_width'] = 730;
+    $config['development']['image_handling']['processor']['derivatives']['detail']['max_height'] = 460;
     $config['development']['image_handling']['processor']['derivatives']['detail']['preserve_aspect_ratio'] = true;
     $config['development']['image_handling']['processor']['derivatives']['detail']['crop'] = true;
     $config['development']['image_handling']['processor']['derivatives']['detail']['horizontal_crop'] = "center";
@@ -399,6 +409,7 @@ if($args[1] != 'only_static') {
                             'filter' => '\\Custom\\Filter::firstPicture',
                             'params' => [
                                 'derivative' => 'teaser',
+                                'section' => 'base',
                             ],
                         ];
                     }
@@ -411,9 +422,25 @@ if($args[1] != 'only_static') {
                             'filter' => '\\Custom\\Filter::firstPicture',
                             'params' => [
                                 'derivative' => 'bigslide',
+                                'section' => 'panorama',
                             ],
                         ];
                     }
+
+                    if(in_array($field->type, ['picture']) &&
+                        preg_match('/bilder|picture|image/', $field->var_name) > 0 &&
+                        empty($mongodb_search_descriptions[$item->id]['image_square']) ){
+                        $mongodb_search_descriptions[$item->id]['image_square'] = [
+                            'field' => strtolower($field->var_name.'_'.$section->name),
+                            'from' => null,
+                            'filter' => '\\Custom\\Filter::firstPicture',
+                            'params' => [
+                                'derivative' => 'square',
+                                'section' => 'quadrate',
+                            ],
+                        ];
+                    }
+
                     if(in_array($field->type, ['categorytree']) &&
                         preg_match('/^zielgebiet|^destination/', $field->var_name) > 0 &&
                         empty($mongodb_search_descriptions[$item->id]['destination']) ){
