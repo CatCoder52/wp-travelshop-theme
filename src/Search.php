@@ -105,7 +105,7 @@ class Search
             }
         }
 
-        if(TS_CALENDAR_SHOW_DEPARTURES === true){
+        if(TS_CALENDAR_SHOW_DEPARTURES === true && empty($result_filter) === false){
             $start_time = microtime(true);
             $filter_departures = [];
             foreach ($result_filter->documents as $document) {
