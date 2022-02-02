@@ -116,6 +116,7 @@ In most cases, this is the basic setup for each travelshop:
 * [BeaverBuilder support](./docs/readme-beaverbuilder.md)
 * [Modal screens and windows support](./docs/readme-modals.md)
 * [Contact Form 7 support](./docs/readme-forms.md)
+* [Images from pressmind PIM](./docs/readme-images.md)
 * Take a look at the [pressmind web-core project](https://github.com/pressmind/web-core-skeleton-basic/#quickstart),
   most of the pressmind sdk implementation in this theme is based on those examples.
 * [Maintenance & troubleshooting](./docs/readme-maintenance.md)
