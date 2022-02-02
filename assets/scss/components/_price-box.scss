@@ -18,10 +18,16 @@
         align-items: center;
         padding-left: .15rem;
         margin-left: -.2rem;
+        flex-wrap: wrap;
 
         span {
             line-height: 1;
             transform: translateY(1px);
+        }
+
+        p{
+            flex: 1 1 100%;
+            margin-bottom: 0;
         }
     }
 

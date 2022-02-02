@@ -12577,6 +12577,15 @@ body.fl-builder .content-block.content-page {
   padding-top: 0 !important;
 }
 
+.icon-tabler.icon-tabler-caret-right {
+  width: 15px;
+  height: 15px;
+}
+.icon-tabler.icon-tabler-check {
+  width: 12px;
+  height: 12px;
+}
+
 /**
  *  Global offcanvas mixin wich is used in breakpoints by variant elements.
  */
@@ -17453,10 +17462,15 @@ figure.wp-block-image figcaption {
   align-items: center;
   padding-left: 0.15rem;
   margin-left: -0.2rem;
+  flex-wrap: wrap;
 }
 .price-box .show-dates span {
   line-height: 1;
   transform: translateY(1px);
+}
+.price-box .show-dates p {
+  flex: 1 1 100%;
+  margin-bottom: 0;
 }
 .price-box .icon-tabler-circle-check {
   position: absolute;
@@ -20138,6 +20152,7 @@ a {
     position: relative;
     max-width: 105px;
     width: 25%;
+    max-height: 105px;
     border: 3px solid #fff;
     cursor: pointer;
   }
@@ -20221,6 +20236,10 @@ a {
 
 body {
   font-display: swap !important;
+}
+
+.add-to-wishlist svg {
+  pointer-events: none !important;
 }
 
 /*# sourceMappingURL=app.css.map */
