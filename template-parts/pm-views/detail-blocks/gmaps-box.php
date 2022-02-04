@@ -39,5 +39,5 @@ $id_modal = uniqid();
     $args_maps = [];
     $args_maps['id_modal'] = $id_modal;
     $args_maps['title'] = 'Reise-Etappen';
-    $args_maps['content'] = \Pressmind\Travelshop\Template::render(APPLICATION_PATHAPPLICATION_PATH . '/template-parts/pm-views/detail-blocks/gmaps-map.php', $args);
+    $args_maps['content'] = \Pressmind\Travelshop\Template::render(APPLICATION_PATH . '/template-parts/pm-views/detail-blocks/gmaps-map.php', $args);
     load_template(get_template_directory() . '/template-parts/layout-blocks/modalscreen.php', false, $args_maps);
