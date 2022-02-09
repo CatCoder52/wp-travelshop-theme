@@ -236,6 +236,10 @@ function ts_detail_hook($data)
         }
 
         $wp_query->set('media_objects', $mediaObjects);
+        add_filter( 'body_class', function( $classes ) {
+            $classes[] = 'pm-detail-page';
+            return $classes;
+        });
         return;
 
     } catch (\Exception $e) {
