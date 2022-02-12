@@ -6,6 +6,10 @@ use Pressmind\Travelshop\Template;
 /**
  * @var array $args
  */
+
+if(empty($args['cheapest_price'])){
+    return;
+}
 ?>
 <div class="price-box">
     <?php

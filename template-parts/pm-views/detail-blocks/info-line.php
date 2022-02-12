@@ -1,32 +1,32 @@
 <?php
-
 /**
+ * <code>
+ * $args['id_media_object']
+ * $args['code']
+ * $args['is_cached_since']
+ * </code>
  * @var array $args
  */
-
-/**
- * @var Custom\MediaType\Reise $moc
- */
-$moc = $args['moc'];
-
-/**
- * @var Pressmind\ORM\Object\MediaObject $mo
- */
-$mo = $args['mo'];
 ?>
-
 <div class="small mb-2">
-    ID/Code: <?php echo $mo->id. ' '.$mo->code; ?>
+    ID/Code:
     <?php
+    echo $args['id_media_object'];
+    if(!empty($args['code'])){
+        echo '/'.$args['code'];
+    }
     /**
      * if the media object is cached, we display a short information about the content age
      */
-    if($mo->isCached()){
-        $cacheinfo = $mo->getCacheInfo();
-        $cachetime = new DateTime($cacheinfo['date']);
-        $cachetime->setTimezone(new DateTimeZone('Europe/Berlin'));
-        echo '| Stand: '.$cachetime->format('d.m.Y H:i');
+    if(!empty($args['is_cached_since'])){
+        echo '| Stand: '.$args['is_cached_since'];
+    }
+    /**
+     * if we are running with crs imported data we can display the created date
+     */
+    if(!empty($args['booking_package_created_date'])){
+        echo '<br>Preise & Verfügbarkeiten Stand: '.$args['booking_package_created_date'];
     }
     ?>
-   |  Programmänderungen vorbehalten.
+    <br>Programmänderungen vorbehalten.
 </div>
